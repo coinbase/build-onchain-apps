@@ -1,0 +1,17 @@
+*.d.ts
+*.json
+*.md
+dist/
+node_modules/
+
+# Nx/Builds
+.docusaurus
+.next
+.nx
+**/cjs/
+**/dts/
+**/esm/
+**/lib/
+**/mjs/
+**/out/
+**/templates/
