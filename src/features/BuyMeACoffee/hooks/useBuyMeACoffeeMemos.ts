@@ -12,8 +12,8 @@ import type { Memo } from '../types';
 function useBuyMeACoffeeMemos() {
   const [memos, setMemos] = useState<Memo[]>([]);
 
-  const handleSuccess = useCallback((memos: Memo[]) => {
-    setMemos(memos);
+  const handleSuccess = useCallback((newMemos: Memo[]) => {
+    setMemos(newMemos);
   }, []);
 
   // Below is a very basic example of how to call a read-only function on a contract (with no arguments).
