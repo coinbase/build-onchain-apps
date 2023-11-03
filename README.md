@@ -4,8 +4,6 @@
 
 <br />
 <br />
-<br />
-<br />
 
 ## Getting Started
 
@@ -14,10 +12,14 @@ More coming here
 ## Develop
 
 ```bash
+# Install
 npm install
+
+# Format
+npm run format
 ```
 
 ## Contribution
 
-We welcome contributions to Build Onchain Apps! ☕️ 💙🔵
+We welcome contributions to Build Onchain Apps! ☕️ 🔵
 To contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
