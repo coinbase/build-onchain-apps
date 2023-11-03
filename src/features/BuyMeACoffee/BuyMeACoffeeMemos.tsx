@@ -9,7 +9,7 @@ import useBuyMeACoffeeMemos from './hooks/useBuyMeACoffeeMemos';
 function BuyMeACoffeeMemos() {
   const { memos, refetchMemos } = useBuyMeACoffeeMemos();
 
-  // write inside useEffect hook reftech memos every 10 seconds 
+  // Demo the feature how to refetch the memos every 10 seconds 
   useEffect(() => {
     const interval = setInterval(() => {
       refetchMemos();
