@@ -10,5 +10,5 @@ export default function App({ Component, pageProps }: AppProps) {
     <Web3Providers>
       <Component {...pageProps} />
     </Web3Providers>
-  )
+  );
 }
