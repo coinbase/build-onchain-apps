@@ -1,6 +1,16 @@
+
+import { convertBigIntTimestampToDate } from '@/utils/timestamp';
 import { Memo } from '../types';
 
+/**
+ * Memo received from the coffee purchase in BuyMeACoffee smart contract.
+ * https://github.com/alchemyplatform/RTW3-Week2-BuyMeACoffee-Contracts/blob/main/contracts/BuyMeACoffee.sol#L16
+ * @param name Name of the person who sent the memo.
+ * @param message Message sent by the person.
+ * @param timestamp Timestamp of the memo.
+ */
 function MemoCard({ name, message, timestamp }: Memo) {
+  const convertedTimestamp = convertBigIntTimestampToDate(timestamp);
   return (
     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md w-auto max-w-[24rem]">
       <div className="p-6">
@@ -14,7 +24,7 @@ function MemoCard({ name, message, timestamp }: Memo) {
             {name}
           </p>
           <p className="block antialiased font-sans text-sm font-light leading-normal text-gray-700">
-            {timestamp.toString()}
+            {convertedTimestamp.toString()}
           </p>
         </div>
       </div>
