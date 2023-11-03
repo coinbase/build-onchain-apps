@@ -14,13 +14,13 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 
 ```bash
 # Install
-npm install
+yarn
 
 # Format fix
-npm run format
+yarn run format
 
 # Lint fix
-npm run lint
+yarn run lint
 ```
 
 ## Contribution
