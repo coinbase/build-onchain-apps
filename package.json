@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "format": "prettier --log-level warn --write .",
+    "format:check": "prettier --check .",
     "lint": "next lint",
     "start": "next start"
   },
