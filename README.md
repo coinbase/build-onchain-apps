@@ -3,7 +3,6 @@
 > The easier way to build onchain apps.
 
 <br />
-<br />
 
 ## Getting Started
 
@@ -11,12 +10,17 @@ More coming here
 
 ## Develop
 
+For all available scripts, check the [package.json](https://github.com/base-org/build-onchain-apps/blob/main/package.json), but if you don't know where to start, here are some useful ones.
+
 ```bash
 # Install
 npm install
 
-# Format
+# Format fix
 npm run format
+
+# Lint fix
+npm run lint
 ```
 
 ## Contribution
