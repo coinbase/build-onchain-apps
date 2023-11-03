@@ -12,6 +12,7 @@ module.exports = {
     'airbnb/rules/react',
     'airbnb/rules/react-a11y',
     'plugin:relay/strict',
+    'next/core-web-vitals'
   ],
   rules: {
     'react/destructuring-assignment': 'off',
@@ -123,5 +124,9 @@ module.exports = {
     // Hard to migrate
     // Errors for all try/catch blocks and any types from third-parties
     '@typescript-eslint/no-unsafe-member-access': 'off',
+
+    // We prefer React named imports only
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };
