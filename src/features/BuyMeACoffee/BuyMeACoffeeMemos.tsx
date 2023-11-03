@@ -9,13 +9,13 @@ import useBuyMeACoffeeMemos from './hooks/useBuyMeACoffeeMemos';
 function BuyMeACoffeeMemos() {
   const { memos, refetchMemos } = useBuyMeACoffeeMemos();
 
-  // Demo the feature how to refetch the memos every 10 seconds 
+  // Demo the feature how to refetch the memos every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       refetchMemos();
     }, 10000);
     return () => clearInterval(interval);
-  } , [refetchMemos]);
+  }, [refetchMemos]);
 
   if (!memos) return null;
 

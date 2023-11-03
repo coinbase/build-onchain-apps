@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'; 
+import { useCallback, useState } from 'react';
 import { contractAddress, contractABI } from '../contract/contractInfo';
 import { useContractRead } from 'wagmi';
 
@@ -22,7 +22,7 @@ function useBuyMeACoffeeMemos() {
     address: contractAddress as `0x${string}`,
     abi: contractABI,
     functionName: 'getMemos',
-    onSuccess: handleSuccess
+    onSuccess: handleSuccess,
   });
 
   return {
