@@ -4,5 +4,5 @@
 
 RC. IN-PROGRESS
 
-* **docs** added Documentation Request template #4 (#6)
-* **chore** setup initial scaffolding
+- **docs** added Documentation Request template #4 (#6)
+- **chore** setup initial scaffolding
