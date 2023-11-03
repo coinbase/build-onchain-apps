@@ -25,4 +25,5 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Format Check
-      run: npm run format:check || echo "Error::Please run 'npm run format' and commit again."
+      # When fails, please run "npm run format" to your code
+      run: npm run format:check
