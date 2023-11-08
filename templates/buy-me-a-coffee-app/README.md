@@ -1,4 +1,4 @@
-# [Base App]
+# [Buy Me A Coffee App]
 
 ## Getting Started
 
@@ -13,11 +13,11 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 yarn
 
 # Format fix
-yarn workspace @build-onchain-apps/base-app format
+yarn workspace @build-onchain-apps/buy-me-a-coffee-app format
 
 # Lint fix
-yarn workspace @build-onchain-apps/base-app lint
+yarn workspace @build-onchain-apps/buy-me-a-coffee-app lint
 
 # Run
-yarn workspace @build-onchain-apps/base-app dev
+yarn workspace @build-onchain-apps/buy-me-a-coffee-app dev
 ```
