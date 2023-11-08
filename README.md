@@ -1,4 +1,4 @@
-# [Build Onchain Apps](https://github.com/base-org/build-onchain-apps) Monorepo
+# [Build Onchain Apps](https://github.com/base-org/build-onchain-apps)
 
 > The easier way to build onchain apps.
 
@@ -6,9 +6,10 @@
 
 ## Packages
 
-| Package                                       | Description                                 |
-| --------------------------------------------- | :------------------------------------------ |
-| [create-base-app](/templates/create-base-app) | Template to quickly bootstrap a onchain app |
+| Package                                               | Description                                 |
+| ----------------------------------------------------- | :------------------------------------------ |
+| [buy-me-a-coffee-app](/templates/buy-me-a-coffee-app) | Template to quickly bootstrap a onchain app |
+| [cli](/packages/cli)                                  | Build Onchain Apps CLI                      |
 
 ## Getting Started
 
@@ -23,13 +24,10 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 yarn
 
 # Format fix
-yarn workspace @build-onchain-apps/base-app format
+yarn format
 
 # Lint fix
-yarn workspace @build-onchain-apps/base-app lint
-
-# Run
-yarn workspace @build-onchain-apps/base-app dev
+yarn lint
 ```
 
 ## Contribution
