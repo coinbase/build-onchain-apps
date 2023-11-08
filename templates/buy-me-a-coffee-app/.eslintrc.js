@@ -12,7 +12,8 @@ module.exports = {
     'airbnb/rules/react',
     'airbnb/rules/react-a11y',
     'plugin:relay/strict',
-    'next/core-web-vitals'
+    'next/core-web-vitals',
+    "prettier"
   ],
   rules: {
     'react/destructuring-assignment': 'off',

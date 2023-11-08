@@ -1,0 +1,53 @@
+{
+  "name": "@build-onchain-apps/buy-me-a-coffee-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "format": "prettier --log-level warn --write .",
+    "format:check": "prettier --check .",
+    "lint": "next lint --fix",
+    "lint:check": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^1.2.0",
+    "next": "13.5.6",
+    "react": "^18",
+    "react-dom": "^18",
+    "wagmi": "^1.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "@typescript-eslint/type-utils": "^5.54.1",
+    "@typescript-eslint/types": "^5.54.1",
+    "@typescript-eslint/utils": "^5.54.1",
+    "autoprefixer": "^10",
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-next": "13.5.6",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-codeframe": "^7.32.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jest": "^27.1.4",
+    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-perf": "^3.3.1",
+    "eslint-plugin-relay": "^1.8.3",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "postcss": "^8",
+    "prettier": "3.0.3",
+    "tailwindcss": "^3",
+    "typescript": "~5.0.4"
+  }
+}

@@ -4,6 +4,13 @@
 
 <br />
 
+## Packages
+
+| Package                                               | Description                                 |
+| ----------------------------------------------------- | :------------------------------------------ |
+| [buy-me-a-coffee-app](/templates/buy-me-a-coffee-app) | Template to quickly bootstrap a onchain app |
+| [cli](/packages/cli)                                  | Build Onchain Apps CLI                      |
+
 ## Getting Started
 
 More coming here
@@ -17,13 +24,17 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 yarn
 
 # Format fix
-yarn run format
+yarn format
 
 # Lint fix
-yarn run lint
+yarn lint
 ```
 
 ## Contribution
 
 We welcome contributions to Build Onchain Apps! ☕️ 🔵
 To contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
