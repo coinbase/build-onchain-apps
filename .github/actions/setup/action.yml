@@ -10,7 +10,7 @@ runs:
       with:
         node-version-file: ".nvmrc"
         registry-url: https://registry.npmjs.org
-        cache: pnpm
+        cache: yarn
 
     - name: Install Foundry
       uses: foundry-rs/foundry-toolchain@v1
@@ -24,5 +24,5 @@ runs:
       run: forge build
 
     - name: Install node modules
-      run: pnpm install --frozen-lockfile
+      run: yarn install --frozen-lockfile
       shell: bash
