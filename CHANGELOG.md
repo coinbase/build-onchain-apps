@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.2
+
+### Patch Changes
+
+- c81b2e2: Initial scaffolding
+
 ## 0.1.0 (~~~)
 
 RC. IN-PROGRESS
