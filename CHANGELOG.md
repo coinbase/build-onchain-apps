@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.4
+
+### Patch Changes
+
+- 2ff99db: - **chore:** Added some extra context in the README.md
+- Updated dependencies [2ff99db]
+  - @base-org/build-onchain-apps@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
