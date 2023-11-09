@@ -1,6 +1,6 @@
 {
   "name": "@base-org/build-onchain-apps",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "scripts": {
     "build": "echo 'Coming soon'",
@@ -13,7 +13,7 @@
     "release:version": "changeset version && yarn install --lockfile-only"
   },
   "dependencies": {
-    "@base-org/build-onchain-apps": "^0.0.3"
+    "@base-org/build-onchain-apps": "^0.0.4"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",

@@ -31,10 +31,10 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@base-org/build-onchain-apps@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@base-org/build-onchain-apps/-/build-onchain-apps-0.0.3.tgz#ba34f18e8bb93d20374e3e9e312f26276ca38327"
-  integrity sha512-29qtf55WiUX+al2ef6NHrVFtbdbCCNwCIHFqG63gsZkDfE+A0eRT6jfzz1TLRkI7mhU476kyBV7eU8MUJvGY5Q==
+"@base-org/build-onchain-apps@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@base-org/build-onchain-apps/-/build-onchain-apps-0.0.4.tgz#1228111f620e7c65d2d31b659460ed34a003de7f"
+  integrity sha512-93+N4dWyM8ROaz+ITll3GQmf8QPVJ4UjnqLVn5nS7C6zQXu2HwtoCK+TuYy8dW5zrvhKsAizIskU5ixmLhgMfg==
 
 "@changesets/apply-release-plan@^6.1.4":
   version "6.1.4"
