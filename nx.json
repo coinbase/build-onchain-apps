@@ -1,9 +1,5 @@
 {
-  "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"]
-    }
-  },
+  "targetDefaults": {},
   "affected": {
     "defaultBase": "main"
   }
