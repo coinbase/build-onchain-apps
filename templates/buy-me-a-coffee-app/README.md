@@ -13,11 +13,11 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 yarn
 
 # Format fix
-yarn workspace @build-onchain-apps/buy-me-a-coffee-app format
+yarn format
 
 # Lint fix
-yarn workspace @build-onchain-apps/buy-me-a-coffee-app lint
+yarn lint
 
 # Run
-yarn workspace @build-onchain-apps/buy-me-a-coffee-app dev
+yarn dev
 ```
