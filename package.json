@@ -1,6 +1,6 @@
 {
   "name": "@base-org/build-onchain-apps",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "scripts": {
     "build": "echo 'Coming soon'",

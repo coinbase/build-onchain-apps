@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.3
+
+### Patch Changes
+
+- 33abfd1: Package cleanup
+
 ## 0.0.2
 
 ### Patch Changes
