@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Nx/Builds
+.next
+next-env.d.ts
+
 # compiled output
 dist
 tmp
