@@ -3,14 +3,12 @@
 > The easier way to build onchain apps.
 
 <br />
+<br />
 
-## Packages
+Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make. **Buil Onchain Apps** as a library focuses on automating and simplifying the creation of new Onchain Apps and enhancing existing ones.
 
-| Package                                               | Description                                 |
-| ----------------------------------------------------- | :------------------------------------------ |
-| [buy-me-a-coffee-app](/templates/buy-me-a-coffee-app) | Template to quickly bootstrap a onchain app |
-| [cli](/packages/cli)                                  | Build Onchain Apps CLI                      |
-
+We just started; stay tuned for more to come!!! ☕️ 🔵
+                
 ## Getting Started
 
 More coming here
