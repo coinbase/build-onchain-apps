@@ -4,17 +4,9 @@
 
 ### Patch Changes
 
-- 33abfd1: Package cleanup
-
-## 0.0.2
-
-### Patch Changes
-
-- c81b2e2: Initial scaffolding
-
-## 0.1.0 (~~~)
-
-RC. IN-PROGRESS
-
+- **feat:** adding buy me a coffee feature for demo reading from smart contract #7
+- **chore:** added lint checks as script and in CI #11 (#18)
+- **chore:** setup Github Actions format workflow #12
+- **chore:** added prettier and did a nice first run ✨ #2 (#14)
 - **docs** added Documentation Request template #4 (#6)
 - **chore** setup initial scaffolding
