@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "@base-org/build-onchain-apps",
   "version": "0.0.1",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
@@ -7,11 +8,14 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "nx run-many --target=build --all",
+    "build": "echo 'Coming soon'",
     "format": "nx run-many --target=format --all",
     "format:check": "nx run-many --target=format:check --all",
     "lint": "nx run-many --target=lint --all",
-    "lint:check": "nx run-many --target=lint:check --all"
+    "lint:check": "nx run-many --target=lint:check --all",
+    "release:check": "changeset status --verbose --since=origin/main",
+    "release:publish": "yarn install && yarn build && changeset publish",
+    "release:version": "changeset version && yarn install --lockfile-only"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
