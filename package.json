@@ -3,13 +3,17 @@
   "name": "build-onchain-apps",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "workspaces": [
-    "templates/*"
+    "templates/*",
+    "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
-    "format": "yarn workspaces run format",
-    "format:check": "yarn workspaces run format:check",
-    "lint": "yarn workspaces run lint",
-    "lint:check": "yarn workspaces run lint:check"
+    "build": "nx run-many --target=build --all",
+    "format": "nx run-many --target=format --all",
+    "format:check": "nx run-many --target=format:check --all",
+    "lint": "nx run-many --target=lint --all",
+    "lint:check": "nx run-many --target=lint:check --all"
+  },
+  "devDependencies": {
+    "nx": "17.0.3"
   }
 }
