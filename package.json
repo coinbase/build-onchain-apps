@@ -1,12 +1,7 @@
 {
-  "private": true,
   "name": "@base-org/build-onchain-apps",
   "version": "0.0.1",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
-  "workspaces": [
-    "templates/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "echo 'Coming soon'",
     "format": "nx run-many --target=format --all",
