@@ -2,22 +2,22 @@
   "name": "build-onchain-apps",
   "version": "0.0.1",
   "description": "Build Onchain Apps CLI",
-  "scripts": {
-    "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
+    "got": "^11.8.5",
+    "rimraf": "^5.0.5",
+    "inquirer": "^8.2.5",
+    "tar": "4.4.18",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@types/figlet": "^1.5.8",
-    "@types/node": "^20.9.0",
-    "typescript": "^5.2.2"
+    "@types/inquirer": "^8.2.5",
+    "@types/tar": "4.0.3"
   },
   "type": "commonjs",
   "main": "./src/index.js",

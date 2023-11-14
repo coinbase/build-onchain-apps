@@ -1,17 +1,20 @@
-#! /usr/bin/env node
-import { Command } from "commander"; // add this line
+#!/usr/bin/env node
+import * as chalk from 'chalk';
+import { Command } from 'commander';
 import { textSync } from 'figlet';
+import { createProject } from './create';
 
 const program = new Command();
 
 program
-  .version("0.0.1")
-  .description("An example hello world CLI")
-  .option("-l, --ls  [value]", "List directory contents")
-  .parse(process.argv);
+  .command('create [templateName]')
+  .arguments('[templateName]')
+  .usage(`${chalk.green('<templateName>')} [options]`)
+  .description('Create a new project from a template')
+  .action(createProject);
 
-if (!process.argv.slice(2).length) {
-    program.outputHelp();
-}
+program.parse(process.argv);
 
-console.log(textSync("Build Onchain"));
+console.log(
+  chalk.blueBright(textSync('Build Onchain', { horizontalLayout: 'full' }))
+);
