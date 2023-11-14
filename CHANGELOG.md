@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0
+
+### Minor Changes
+
+- 82cc0ed: feat: new build-onchain-apps CLI for onchain app creation
+
 ## 0.0.4
 
 ### Patch Changes
