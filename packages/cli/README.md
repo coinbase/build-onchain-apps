@@ -1,22 +1,25 @@
 # Build Onchain Apps CLI
 
-## Running Locally
+## How to run it
 
-1. First build
+To get started, open a new shell and run:
 
-```bash
-yarn
-yarn build
+```
+npx build-onchain-apps@latest create buy-me-a-coffee-app
 ```
 
-2. Install the CLI globally
+## Local Development
 
-```bash
-yarn global add "file:$PWD"
+To test the CLI locally, run:
+
+1. Run the local NPM registry:
+
+```
+npx nx local-registry
 ```
 
-3. Test it out
+2. In a different window, publish a new version of the packages:
 
-```bash
-build-onchain-apps
+```
+npx nx run-many -t publish --ver 0.0.1 --tag latest
 ```

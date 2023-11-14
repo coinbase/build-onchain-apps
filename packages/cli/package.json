@@ -1,11 +1,7 @@
 {
-  "name": "@base-org/build-onchain-apps",
+  "name": "build-onchain-apps",
   "version": "0.0.1",
   "description": "Build Onchain Apps CLI",
-  "main": "dist/index.js",
-  "bin": {
-    "build-onchain-apps": "./dist/index.js"
-  },
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,11 +11,18 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^11.1.0",
-    "figlet": "^1.7.0"
+    "figlet": "^1.7.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.8",
     "@types/node": "^20.9.0",
     "typescript": "^5.2.2"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "bin": {
+    "build-onchain-apps": "./bin/index.js"
   }
 }
