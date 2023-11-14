@@ -4,14 +4,19 @@ import * as inquirer from 'inquirer';
 import {
   downloadAndExtractTemplates,
   getTemplateDir,
-  TEMPLATE_CHOICES,
+  getTemplateChoices,
   updatePackageJson,
   displayFinalInstructions,
   removeDownloadedTemplates,
 } from './utils/templates';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
+/**
+ * This function is responsible for copying the onchain template and create new project.
+ */
 export const createProject = async (templateName: string) => {
+  // Check if the current directory is writeable
+  // If not, exit the process
   if (!(await isRootDirWriteable())) {
     console.error(
       chalk.red(
@@ -31,9 +36,11 @@ export const createProject = async (templateName: string) => {
       'Downloading files from base-org/build-onchain-apps. This might take a moment... \n'
     )}`
   );
-  await downloadAndExtractTemplates();
 
-  if (templateName && !TEMPLATE_CHOICES.includes(templateName)) {
+  // Download the template from github.com/base-org/build-onchain-apps/templates and extract it
+  await downloadAndExtractTemplates();
+  const templateChoices = getTemplateChoices();
+  if (templateName && !templateChoices.includes(templateName)) {
     console.log(
       chalk.yellow(
         `${templateName} does not exists. Choose one of the following templates: \n`
@@ -41,13 +48,13 @@ export const createProject = async (templateName: string) => {
     );
   }
 
-  if (!templateName || !TEMPLATE_CHOICES.includes(templateName)) {
+  if (!templateName || !templateChoices.includes(templateName)) {
     const answer = await inquirer.prompt([
       {
         type: 'list',
         name: 'templateName',
         message: 'Choose a template:',
-        choices: TEMPLATE_CHOICES,
+        choices: templateChoices,
       },
     ]);
     templateName = answer.templateName;

@@ -12,7 +12,6 @@ import { ROOT_DIR } from './dir';
 
 export const TEMPLATES_ENGINE_DIR = `${ROOT_DIR}/.build-onchain-apps`;
 export const TEMPLATES_DIR = `${TEMPLATES_ENGINE_DIR}/templates`;
-export const TEMPLATE_CHOICES = ['buy-me-a-coffee-app'];
 
 const pipeline = promisify(Stream.pipeline);
 
@@ -27,6 +26,18 @@ export async function downloadAndExtractTemplates(): Promise<void> {
     extract({ cwd: TEMPLATES_ENGINE_DIR, strip: 1 })
   );
 }
+
+export const getTemplateDir = (appName: string) => {
+  return path.join(TEMPLATES_DIR, appName);
+};
+
+export const getTemplateChoices = (): string[] => {
+  const templates = fs.readdirSync(TEMPLATES_DIR).filter((file) => {
+    const filePath = path.join(TEMPLATES_DIR, file);
+    return fs.statSync(filePath).isDirectory();
+  });
+  return templates;
+};
 
 export async function removeDownloadedTemplates() {
   try {
@@ -59,8 +70,4 @@ export const displayFinalInstructions = (appName: string) => {
   );
   console.log(chalk.blue(`Run 'yarn' to install dependencies.`));
   console.log(chalk.blue(`Run 'yarn dev' to start the development server.`));
-};
-
-export const getTemplateDir = (appName: string) => {
-  return path.join(TEMPLATES_DIR, appName);
 };
