@@ -1,104 +1,390 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-
-const inter = Inter({ subsets: ['latin'] });
+import * as React from 'react';
+import NextLink from 'next/link';
+import {
+  Theme,
+  themePropDefs,
+  //
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+  //
+  AspectRatio,
+  //
+  Avatar,
+  avatarPropDefs,
+  //
+  Badge,
+  badgePropDefs,
+  //
+  Blockquote,
+  blockquotePropDefs,
+  //
+  Box,
+  //
+  Button,
+  buttonPropDefs,
+  //
+  CalloutRoot,
+  CalloutIcon,
+  CalloutText,
+  calloutRootPropDefs,
+  //
+  Card,
+  cardPropDefs,
+  //
+  Checkbox,
+  checkboxPropDefs,
+  //
+  Code,
+  codePropDefs,
+  //
+  Container,
+  //
+  ContextMenuRoot,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuLabel,
+  ContextMenuItem,
+  ContextMenuGroup,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuCheckboxItem,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+  ContextMenuSeparator,
+  contextMenuContentPropDefs,
+  //
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+  dialogContentPropDefs,
+  //
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
+  dropdownMenuContentPropDefs,
+  //
+  Em,
+  Flex,
+  Grid,
+  //
+  Heading,
+  headingPropDefs,
+  //
+  HoverCardRoot,
+  HoverCardTrigger,
+  HoverCardContent,
+  hoverCardContentPropDefs,
+  //
+  IconButton,
+  iconButtonPropDefs,
+  //
+  Inset,
+  //
+  Kbd,
+  kbdPropDefs,
+  //
+  Link,
+  linkPropDefs,
+  //
+  PopoverRoot,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverClose,
+  //
+  Quote,
+  //
+  RadioGroupRoot,
+  RadioGroupItem,
+  radioGroupPropDefs,
+  //
+  ScrollArea,
+  scrollAreaPropDefs,
+  //
+  Section,
+  //
+  SelectRoot,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+  selectRootPropDefs,
+  selectTriggerPropDefs,
+  selectContentPropDefs,
+  //
+  Separator,
+  //
+  Slider,
+  sliderPropDefs,
+  //
+  Strong,
+  //
+  Switch,
+  switchPropDefs,
+  //
+  TableRoot,
+  TableHeader,
+  TableRow,
+  TableColumnHeaderCell,
+  TableBody,
+  TableRowHeaderCell,
+  TableCell,
+  tableRootPropDefs,
+  //
+  TabsRoot,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  tabsListPropDefs,
+  //
+  TextArea,
+  textAreaPropDefs,
+  //
+  TextFieldRoot,
+  TextFieldSlot,
+  TextFieldInput,
+  textFieldPropDefs,
+  //
+  Text,
+  textPropDefs,
+  //
+  Tooltip,
+  //
+  // helpers:
+  themeAccentColorsOrdered,
+  useThemeContext,
+  //
+  ThemePanel,
+} from '@radix-ui/themes';
+// import {
+//   ArrowRightIcon,
+//   CaretDownIcon,
+//   InfoCircledIcon,
+//   MagnifyingGlassIcon,
+//   StarIcon,
+// } from '@radix-ui/react-icons';
+// import { getPeopleForColor } from '@lib/people';
+import styles from './playground.module.css';
+import { MobileMenuProvider, MobileMenu } from '@/components/MobileMenu';
+import { ThemesHeader } from '@/components/ThemesHeader';
+// import { ThemesPanelBackgroundImage } from '@/components/ThemesPanelBackgroundImage';
+import { useTheme } from 'next-themes';
+import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
+import Head from 'next/head';
+import { ThemesMobileMenu } from '@/components/ThemesMobileMenu';
 
 export default function Home() {
+  const { systemTheme, setTheme } = useTheme();
+
+  const {
+    onAccentColorChange,
+    onGrayColorChange,
+    onRadiusChange,
+    onScalingChange,
+    onPanelBackgroundChange,
+  } = useThemeContext();
+
+  // When the page unmounts, reset theme settings to match the default applied to `/themes` section
+  // so they don't persist on other pages.
+  React.useEffect(() => {
+    return () => {
+      onAccentColorChange('indigo');
+      onGrayColorChange(themePropDefs.grayColor.default);
+      onRadiusChange(themePropDefs.radius.default);
+      onScalingChange(themePropDefs.scaling.default);
+      onPanelBackgroundChange(themePropDefs.panelBackground.default);
+    };
+  }, []);
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <ConnectButton />
-        </div>
+    <MobileMenuProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      <TitleAndMetaTags
+        title="Playground – Radix Themes"
+        description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
+        image="themes.png"
+      />
+
+      <div className={styles.PlaygroundRoot}>
+        {/* Set default values for settings we don't want affecting the header */}
+        <Theme radius="medium" scaling="100%">
+          <MobileMenu>
+            <ThemesHeader />
+          </MobileMenu>
+          x
+          <ThemesHeader />
+          <ThemesMobileMenu />
+        </Theme>
+
+        <Box display={{ initial: 'none', lg: 'block' }}>
+          <ThemePanel
+            onAppearanceChange={(newTheme) => {
+              const newThemeMatchesSystem = newTheme === systemTheme;
+              setTheme(newThemeMatchesSystem ? 'system' : (newTheme as 'light' | 'dark'));
+            }}
+            style={{
+              top: 'var(--header-height)',
+              maxHeight: 'calc(100vh - var(--header-height) - var(--space-4) * 2)',
+            }}
+          />
+        </Box>
+
+        <Section size={{ initial: '2', md: '3' }}>
+          <Flex direction="column" gap="9" mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
+            <PlaygroundSection>
+              <Flex align="baseline" gap="4" mt="2">
+                <Heading id="alert-dialog">
+                  <Link color="gray" underline="hover" highContrast href="#alert-dialog">
+                    Alert Dialog
+                  </Link>
+                </Heading>
+                <NextLink passHref legacyBehavior href="/themes/docs/components/alert-dialog">
+                  <Link className={styles.PlaygroundDocsLink} size="2">
+                    View in docs
+                  </Link>
+                </NextLink>
+              </Flex>
+              <Flex gap="4" align="center">
+                <AlertDialogRoot>
+                  <AlertDialogTrigger>
+                    <Button size="1">Open</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
+                    <AlertDialogTitle size="2" mb="1">
+                      Revoke access
+                    </AlertDialogTitle>
+                    <AlertDialogDescription size="1" mb="3">
+                      Are you sure? This application will no longer be accessible and any existing
+                      sessions will be expired.
+                    </AlertDialogDescription>
+
+                    <Flex gap="2" mt="3" justify="end">
+                      <AlertDialogCancel>
+                        <Button size="1" variant="soft" color="gray">
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <AlertDialogAction>
+                        <Button size="1" color="red">
+                          Revoke
+                        </Button>
+                      </AlertDialogAction>
+                    </Flex>
+                  </AlertDialogContent>
+                </AlertDialogRoot>
+
+                <AlertDialogRoot>
+                  <AlertDialogTrigger>
+                    <Button size="2">Open</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
+                    <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
+                    <AlertDialogDescription size="2" mb="4">
+                      Are you sure? This application will no longer be accessible and any existing
+                      sessions will be expired.
+                    </AlertDialogDescription>
+
+                    <Flex gap="3" mt="4" justify="end">
+                      <AlertDialogCancel>
+                        <Button variant="soft" color="gray">
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <AlertDialogAction>
+                        <Button color="red">Revoke</Button>
+                      </AlertDialogAction>
+                    </Flex>
+                  </AlertDialogContent>
+                </AlertDialogRoot>
+
+                <AlertDialogRoot>
+                  <AlertDialogTrigger>
+                    <Button size="3">Open</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
+                    <AlertDialogTitle>Revoke access</AlertDialogTitle>
+                    <AlertDialogDescription size="2" mb="4">
+                      Are you sure? This application will no longer be accessible and any existing
+                      sessions will be expired.
+                    </AlertDialogDescription>
+
+                    <Flex gap="3" mt="4" justify="end">
+                      <AlertDialogCancel>
+                        <Button variant="soft" color="gray">
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <AlertDialogAction>
+                        <Button color="red">Revoke</Button>
+                      </AlertDialogAction>
+                    </Flex>
+                  </AlertDialogContent>
+                </AlertDialogRoot>
+
+                <AlertDialogRoot>
+                  <AlertDialogTrigger>
+                    <Button size="4">Open</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
+                    <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
+                    <AlertDialogDescription size="3" mb="5">
+                      Are you sure? This application will no longer be accessible and any existing
+                      sessions will be expired.
+                    </AlertDialogDescription>
+
+                    <Flex gap="3" mt="5" justify="end">
+                      <AlertDialogCancel>
+                        <Button size="3" variant="soft" color="gray">
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <AlertDialogAction>
+                        <Button size="3" color="red">
+                          Revoke
+                        </Button>
+                      </AlertDialogAction>
+                    </Flex>
+                  </AlertDialogContent>
+                </AlertDialogRoot>
+              </Flex>
+            </PlaygroundSection>
+          </Flex>
+        </Section>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </MobileMenuProvider>
   );
 }
+
+const PlaygroundSection: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
+  <Flex
+    className={styles.PlaygroundSection}
+    direction="column"
+    gap="5"
+    mb={{ initial: '5', sm: '8' }}
+  >
+    {children}
+  </Flex>
+);
