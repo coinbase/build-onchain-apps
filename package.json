@@ -3,6 +3,8 @@
   "version": "0.0.4",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "dependencies": {
+    "commander": "^11.1.0",
+    "figlet": "^1.7.0",
     "tslib": "^2.3.0"
   },
   "scripts": {
