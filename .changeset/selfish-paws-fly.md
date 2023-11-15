@@ -1,5 +1,5 @@
 ---
-'build-onchain-apps': patch
+'@base-org/build-onchain-apps': patch
 ---
 
-Release build-onchain-apps CLI
+feat: Release build-onchain-apps CLI

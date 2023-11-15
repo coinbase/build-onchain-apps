@@ -1,6 +1,6 @@
 {
-  "name": "build-onchain-apps",
-  "version": "0.0.0",
+  "name": "@base-org/build-onchain-apps",
+  "version": "0.0.4",
   "description": "Build Onchain Apps CLI",
   "repository": {
     "type": "git",
@@ -30,7 +30,6 @@
     "build-onchain-apps": "./bin/index.js"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   }
 }
