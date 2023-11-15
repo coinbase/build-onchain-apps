@@ -1,5 +1,6 @@
-import { convertBigIntTimestampToDate } from '@/utils/timestamp';
+import { convertBigIntTimestampToDate } from '@utils/timestamp';
 import { Memo } from '../types';
+import { Card, Text, Flex, Quote, Avatar } from '@radix-ui/themes';
 
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.
@@ -11,23 +12,26 @@ import { Memo } from '../types';
 function MemoCard({ name, message, timestamp }: Memo) {
   const convertedTimestamp = convertBigIntTimestampToDate(timestamp);
   return (
-    <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md w-auto max-w-[24rem]">
-      <div className="p-6">
-        <p className="block antialiased font-sans text-base leading-relaxed text-gray-700 font-normal">
-          {message}
-        </p>
-      </div>
-      <div className="p-6 flex items-center pt-1">
-        <div className="ml-4">
-          <p className="block antialiased font-sans text-base leading-relaxed text-blue-gray-900 font-medium">
-            {name}
-          </p>
-          <p className="block antialiased font-sans text-sm font-light leading-normal text-gray-700">
-            {convertedTimestamp.toString()}
-          </p>
-        </div>
-      </div>
-    </div>
+    <Card variant="surface">
+      <Flex gap="3">
+        <Flex align="center" justify="between" gap="3">
+          <Avatar size="3" radius="full" fallback="T" color="orange" />
+        </Flex>
+        <Flex direction="column" gap="2" grow="1">
+          <Flex align="center" justify="between">
+            <Text as="div" size="2" weight="bold">
+              {name}
+            </Text>
+            <Text as="div" size="2" color="gray">
+              {convertedTimestamp.toDateString()}
+            </Text>
+          </Flex>
+          <Text as="div" color="gray" size="2">
+            <Quote>{message}</Quote>
+          </Text>
+        </Flex>
+      </Flex>
+    </Card>
   );
 }
 

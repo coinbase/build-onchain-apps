@@ -1,6 +1,8 @@
 import { Memo } from '../types';
 import { MemoCard } from './MemoCard';
 
+import { Flex } from '@radix-ui/themes';
+
 type MemosProps = {
   memos: Memo[];
 };
@@ -13,7 +15,7 @@ type MemosProps = {
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
   return (
-    <div className="flex flex-col gap-2">
+    <Flex direction="column" gap="3" width="100%">
       {memos.map((memo) => {
         return (
           <MemoCard
@@ -24,7 +26,7 @@ function Memos({ memos }: MemosProps) {
           />
         );
       })}
-    </div>
+    </Flex>
   );
 }
 
