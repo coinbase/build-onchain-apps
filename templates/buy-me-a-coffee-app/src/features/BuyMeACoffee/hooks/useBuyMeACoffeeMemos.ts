@@ -31,4 +31,4 @@ function useBuyMeACoffeeMemos() {
   };
 }
 
-export default useBuyMeACoffeeMemos;
+export { useBuyMeACoffeeMemos };
