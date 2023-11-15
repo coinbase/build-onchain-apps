@@ -5,7 +5,7 @@
 <br />
 <br />
 
-Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make. **Buil Onchain Apps** as a library focuses on automating and simplifying the creation of new Onchain Apps and enhancing existing ones.
+Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make. **Build Onchain Apps** as a library focuses on automating and simplifying the creation of new Onchain Apps and enhancing existing ones.
 
 We just started; stay tuned for more to come!!! ☕️ 🔵
                 
