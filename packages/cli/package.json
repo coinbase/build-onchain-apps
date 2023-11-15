@@ -1,10 +1,14 @@
 {
   "name": "build-onchain-apps",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Build Onchain Apps CLI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/base-org/build-onchain-apps.git"
+  },
+  "license": "Apache-2.0",
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
@@ -24,5 +28,9 @@
   "typings": "./src/index.d.ts",
   "bin": {
     "build-onchain-apps": "./bin/index.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

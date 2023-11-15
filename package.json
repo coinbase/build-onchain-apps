@@ -1,6 +1,7 @@
 {
   "name": "@base-org/build-onchain-apps",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "private": true,
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "dependencies": {
     "chalk": "^4.1.2",
@@ -65,10 +66,9 @@
     "typescript": "~5.2.2",
     "verdaccio": "^5.0.4"
   },
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "nx": {
     "includedScripts": []
   }
