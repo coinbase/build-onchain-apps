@@ -1,11 +1,18 @@
-import React from 'react';
+import { useCallback } from 'react';
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { IconButton, Tooltip } from '@radix-ui/themes';
 import Head from 'next/head';
 
-export const ThemeToggle = () => {
+export function ThemeToggle() {
   const { theme, systemTheme, setTheme } = useTheme();
+
+  const handleThemeChange = useCallback(() => {
+    const resolvedTheme = theme === 'system' ? systemTheme : theme;
+    const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+    const newThemeMatchesSystem = newTheme === systemTheme;
+    setTheme(newThemeMatchesSystem ? 'system' : newTheme);
+  }, [theme, systemTheme, setTheme]);
 
   return (
     <>
@@ -23,18 +30,7 @@ export const ThemeToggle = () => {
       </Head>
 
       <Tooltip className="radix-themes-custom-fonts" content="Toggle theme">
-        <IconButton
-          size="3"
-          variant="ghost"
-          color="gray"
-          onClick={() => {
-            // Set 'system' theme if the next theme matches the system theme
-            const resolvedTheme = theme === 'system' ? systemTheme : theme;
-            const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
-            const newThemeMatchesSystem = newTheme === systemTheme;
-            setTheme(newThemeMatchesSystem ? 'system' : newTheme);
-          }}
-        >
+        <IconButton size="3" variant="ghost" color="gray" onClick={handleThemeChange}>
           <SunIcon
             width="16"
             height="16"
@@ -49,4 +45,4 @@ export const ThemeToggle = () => {
       </Tooltip>
     </>
   );
-};
+}

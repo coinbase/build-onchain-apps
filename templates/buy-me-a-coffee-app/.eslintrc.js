@@ -4,6 +4,7 @@ module.exports = {
   overrides: [],
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    tsconfigRootDir: __dirname,
     project: './tsconfig.json',
   },
   plugins: ['react-perf', 'relay', '@typescript-eslint', 'import'],
@@ -38,7 +39,6 @@ module.exports = {
     // Performance: Avoid unnecessary renders
     'react-perf/jsx-no-new-array-as-prop': 'warn',
     'react-perf/jsx-no-new-function-as-prop': 'warn',
-    'react-perf/jsx-no-new-object-as-prop': ['warn', { nativeAllowList: ['style'] }],
 
     // We prefer function declarations
     'react/function-component-definition': [
@@ -129,5 +129,6 @@ module.exports = {
     // We prefer React named imports only
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/extensions': 'off',
   },
 };
