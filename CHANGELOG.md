@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- 3a07a26: fix: bin path pointing to wrong folder.
+
 ## 0.1.2
 
 ### Patch Changes
