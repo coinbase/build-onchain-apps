@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- db3de61: fix: CLI broken by missing dist files
+
 ## 0.1.1
 
 ### Patch Changes
