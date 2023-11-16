@@ -31,26 +31,6 @@ yarn format
 yarn lint
 ```
 
-### Local Development
-
-1. Run the local NPM registry:
-
-```bash
-yarn local:start-registry
-```
-
-2. In a different window, publish a new version of the packages:
-
-```bash
-yarn local:publish --ver 0.0.1 --tag latest
-```
-
-3. To test the CLI locally, run:
-
-```bash
-npx @base-org/build-onchain-apps@latest create buy-me-a-coffee-app
-```
-
 ## Contribution
 
 We welcome contributions to Build Onchain Apps! ☕️ 🔵
