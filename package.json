@@ -56,6 +56,10 @@
     "access": "public",
     "provenance": true
   },
+  "files": [
+    "src/",
+    "dist/"
+  ],
   "nx": {
     "includedScripts": []
   },
@@ -64,5 +68,5 @@
   "typings": "./src/index.d.ts",
   "bin": {
     "build-onchain-apps": "./src/index.js"
-  }
+  } 
 }
