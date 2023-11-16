@@ -29,4 +29,4 @@ jobs:
         run: npm run lint
       - name: Format Check
         # When fails, please run "npm run format" to your code
-        run: npm run format:check --verbose
+        run: npm run format:check --base=main --head=HEAD
