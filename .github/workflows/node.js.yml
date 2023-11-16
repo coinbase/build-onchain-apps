@@ -28,5 +28,6 @@ jobs:
         # When fails, please run "npm run lint" to your code
         run: npm run lint
       # - name: Format Check
+      #   https://github.com/nrwl/nx/issues/4159
       #   # When fails, please run "npm run format" to your code
       #   run: npm run format:check --base=main --head=HEAD
