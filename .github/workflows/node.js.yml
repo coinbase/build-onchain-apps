@@ -24,9 +24,9 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - name: Format Check
-        # When fails, please run "npm run format" to your code
-        run: npm run format:check
       - name: Lint Check
         # When fails, please run "npm run lint" to your code
         run: npm run lint
+      - name: Format Check
+        # When fails, please run "npm run format" to your code
+        run: npm run format:check
