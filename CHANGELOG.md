@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+### Patch Changes
+
+- 48855b8: chore: release CLI
+
 ## 0.1.0
 
 ### Minor Changes
