@@ -8,7 +8,7 @@
 Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make. **Build Onchain Apps** as a library focuses on automating and simplifying the creation of new Onchain Apps and enhancing existing ones.
 
 We just started; stay tuned for more to come!!! ☕️ 🔵
-                
+
 ## Getting Started
 
 More coming here
@@ -20,6 +20,9 @@ For all available scripts, check the [package.json](https://github.com/base-org/
 ```bash
 # Install
 yarn
+
+# Format fix
+yarn build
 
 # Format fix
 yarn format

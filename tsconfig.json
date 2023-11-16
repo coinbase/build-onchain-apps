@@ -9,14 +9,23 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
+    "module": "commonjs",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "build-onchain-apps/cli": ["packages/cli/src/index.ts"]
+      "@base-org/build-onchain-apps": ["src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

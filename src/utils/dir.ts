@@ -9,7 +9,7 @@ export function makeDir(root: string, options = { recursive: true }) {
 
 export async function isWriteable(root: string) {
   try {
-    await fs.promises.access(root, (fs.constants || fs).W_OK);
+    await fs.promises.access(root, fs.constants.W_OK);
     return true;
   } catch (err) {
     return false;
