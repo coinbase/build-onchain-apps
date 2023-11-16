@@ -1,7 +1,38 @@
 {
-  "name": "@build-onchain-apps/source",
+  "name": "@base-org/build-onchain-apps",
   "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "src",
+  "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/@base-org/build-onchain-apps",
+        "main": "./src/index.ts",
+        "tsConfig": "./tsconfig.lib.json",
+        "assets": ["*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src/**/*.ts", "./package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "coverage/@base-org/build-onchain-apps"
+      }
+    },
+    "publish": {
+      "command": "node scripts/publish.mjs @base-org/build-onchain-apps {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "local-registry": {
       "executor": "@nx/js:verdaccio",
       "options": {
@@ -10,5 +41,6 @@
         "storage": "tmp/local-registry/storage"
       }
     }
-  }
+  },
+  "tags": []
 }
