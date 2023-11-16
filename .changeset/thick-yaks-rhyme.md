@@ -2,4 +2,4 @@
 '@base-org/build-onchain-apps': patch
 ---
 
-fix: missing dist folder
+fix: CLI broken by missing dist files
