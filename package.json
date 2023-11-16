@@ -22,7 +22,6 @@
     "format": "nx format",
     "format:check": "nx format:check",
     "lint": "nx lint",
-    "lint:check": "nx lint:check",
     "local:start-registry": "nx local-registry",
     "local:publish": "nx publish @base-org/build-onchain-apps",
     "release:check": "changeset status --verbose --since=origin/main",

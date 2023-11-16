@@ -22,9 +22,9 @@ jobs:
         with:
           submodules: recursive
 
-      - name: "Setup"
+      - name: 'Setup'
         uses: ./.github/actions/setup
-        
+
       - name: Build
         shell: bash
         run: yarn build
@@ -37,8 +37,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          title: "chore: version packages 🔖"
-          commit: "chore: version packages 🔖"
+          title: 'chore: version packages 🔖'
+          commit: 'chore: version packages 🔖'
           publish: yarn release:publish
           version: yarn release:version
         env:
