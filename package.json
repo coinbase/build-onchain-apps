@@ -64,9 +64,9 @@
     "includedScripts": []
   },
   "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts",
   "bin": {
-    "build-onchain-apps": "./src/index.js"
+    "build-onchain-apps": "./dist/src/index.js"
   }
 }
