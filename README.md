@@ -3,7 +3,6 @@
 > The easier way to build onchain apps.
 
 <br />
-<br />
 
 Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make. **Build Onchain Apps** as a library focuses on automating and simplifying the creation of new Onchain Apps and enhancing existing ones.
 
@@ -23,47 +22,49 @@ If you've previously installed `@base-org/build-onchain-apps` globally via `npm 
 
 _([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))_
 
-## Contribution
+<br >
 
-We welcome contributions to Build Onchain Apps! ☕️ 🔵
-To contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+## Contributing ☕️ 🔵
 
-### Development
+The main purpose of this repository is to continue evolving Build Onchain Apps, making it better and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Build Onchain Apps.
 
-For all available scripts, check the [package.json](https://github.com/base-org/build-onchain-apps/blob/main/package.json), but if you don't know where to start, here are some useful ones.
+
+### [Code of Conduct](CODE_OF_CONDUCT.md).
+Build Onchain Apps has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
+
+
+### [Contributing Guide](CONTRIBUTING.md).
+Read our contributing guide to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Build Onchain Apps.
+
+### Develop
+
+To build and test the package locally use these quick steps
 
 ```bash
+## Quick Start
+# Clone the repo
 git clone https://github.com/base-org/build-onchain-apps.git
 cd build-onchain-apps
+
+# Run initial install
 yarn
-```
 
-> Do not use npm to install the dependencies, as the specific package versions in `yarn.lock` are used to build and test build-onchain-apps.
-
-To build the compiler and all the other modules included in the package:
-
-```bash
+# Build all dependencies
 yarn build
-```
 
-### Testing Locally
 
-To test the package locally, use `npm link` to link the local package to the global npm registry.
-
-```bash
-yarn build
+## Test Local Package
+# Link the local package to the global npm registry
 npm link
-# Call CLI using the following command
+
+# Test CLI using the local package
 build-onchain-apps create
-```
 
-After you are done testing, you can unlink the package from the global npm registry.
-
-```bash
+# After testing, unlink the package from the global npm registry
 npm unlink @base-org/build-onchain-apps
 ```
 
-### Adding new templates
+#### Adding new templates
 
 To make a new template, make a folder for it in the `templates` folder and set up your project there. Treat each template like its own Node.js project and run the commands in its folder.
 
