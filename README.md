@@ -12,7 +12,7 @@ We just started; stay tuned for more to come!!! ☕️ 🔵
 ## Getting Started
 
 ```sh
-npx @base-org/build-onchain-apps@latest create
+npx @base-org/build-onchain-apps@latest create <TEMPLATE_APP>
 ```
 
 <p align='center'>
