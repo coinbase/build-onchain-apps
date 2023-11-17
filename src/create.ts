@@ -12,7 +12,8 @@ import {
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
 /**
- * This function is responsible for copying the onchain template and create new project.
+ * Responsible for copying the 
+ * onchain template and create new project.
  */
 export const createProject = async (templateName: string) => {
   // Check if the current directory is writeable

@@ -66,7 +66,7 @@ export const updatePackageJson = (
 export const displayFinalInstructions = (appName: string) => {
   console.log(chalk.green(`🚀 Project '${appName}' created successfully!`));
   console.log(
-    chalk.blue(`Type 'cd ${appName}' to navigate into your new project.`)
+    chalk.blue(`Type 'cd apps/${appName}' to navigate into your new project.`)
   );
   console.log(chalk.blue(`Run 'yarn' to install dependencies.`));
   console.log(chalk.blue(`Run 'yarn dev' to start the development server.`));

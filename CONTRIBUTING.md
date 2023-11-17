@@ -33,7 +33,7 @@ This project and everyone participating in it are governed by our [Code of Condu
 
 ### Pull Requests
 
-1. **Fork the repository** and create your branch from `master`.
+1. **Fork the repository** and create your branch from `main`.
 
 2. **Make your changes**: Apply your changes, following the coding conventions described below.
 

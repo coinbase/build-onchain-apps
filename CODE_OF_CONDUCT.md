@@ -1,4 +1,4 @@
-# Code of Conduct for [Your Project Name]
+# Code of Conduct for Build Onchain Apps
 
 ## 1. Purpose
 
