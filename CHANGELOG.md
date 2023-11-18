@@ -4,33 +4,31 @@
 
 ### Patch Changes
 
-- 3a07a26: fix: bin path pointing to wrong folder.
+- 3a07a26: **fix**: bin path pointing to wrong folder.
 
 ## 0.1.2
 
 ### Patch Changes
 
-- db3de61: fix: CLI broken by missing dist files
+- db3de61: **fix**: CLI broken by missing dist files
 
 ## 0.1.1
 
 ### Patch Changes
 
-- 48855b8: chore: release CLI
+- 48855b8: **chore**: release CLI
 
 ## 0.1.0
 
 ### Minor Changes
 
-- 82cc0ed: feat: new build-onchain-apps CLI for onchain app creation
+- 82cc0ed: **feat**: new build-onchain-apps CLI for onchain app creation
 
 ## 0.0.4
 
 ### Patch Changes
 
 - 2ff99db: - **chore:** Added some extra context in the README.md
-- Updated dependencies [2ff99db]
-  - @base-org/build-onchain-apps@0.0.4
 
 ## 0.0.3
 
