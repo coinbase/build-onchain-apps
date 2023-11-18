@@ -11,8 +11,11 @@ import {
 } from './utils/templates';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
+// Default location for all Onchain Applications
+const APPS_DIR = 'apps/';
+
 /**
- * Responsible for copying the 
+ * Responsible for copying the
  * onchain template and create new project.
  */
 export const createProject = async (templateName: string) => {
@@ -71,7 +74,7 @@ export const createProject = async (templateName: string) => {
   ]);
 
   const appName = appNameAnswer.appName;
-  const projectDir = getProjectDir(appName);
+  const projectDir = getProjectDir(APPS_DIR + appName);
 
   if (fs.existsSync(projectDir)) {
     console.error(

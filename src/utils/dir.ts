@@ -20,6 +20,6 @@ export async function isRootDirWriteable() {
   return isWriteable(ROOT_DIR);
 }
 
-export function getProjectDir(appName: string) {
-  return path.join(ROOT_DIR, appName);
+export function getProjectDir(appDirLocation: string) {
+  return path.join(ROOT_DIR, appDirLocation);
 }
