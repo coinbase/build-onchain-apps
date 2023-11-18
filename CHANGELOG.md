@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- eddd242: feat: moved templates created inside apps/ #59
+
 ## 0.1.3
 
 ### Patch Changes
