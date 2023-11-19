@@ -1,8 +1,8 @@
 # [Build Onchain Apps](https://github.com/base-org/build-onchain-apps)
 
-> The easier way to build onchain applications.
+> Build Onchain Applications with the best user experience. ☕️
 
-[![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md)[![NPM Downloads](http://img.shields.io/npm/dm/@base-org/build-onchain-apps.svg)](https://www.npmjs.com/package/@base-org/build-onchain-apps)
+[![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@base-org/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@base-org/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/base-org/build-onchain-apps.svg?color=3498DB)](https://github.com/base-org/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/blob/main/LICENSE)
 
 Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make.
 
@@ -107,6 +107,14 @@ cd templates/buy-me-a-coffee-app
 yarn
 yarn dev
 ```
+
+<br>
+
+## Community ☁️ 🌁 ☁️
+Building Onchain Applications is all about community, whether you are ready for a hackathon or building your next company; for any questions, feel free to:
+1. open an [issue](https://github.com/base-org/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
+2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), Alvaro;
+3. let us know [what project you build](https://github.com/base-org/build-onchain-apps/discussions/64) with this library.
 
 <br>
 
