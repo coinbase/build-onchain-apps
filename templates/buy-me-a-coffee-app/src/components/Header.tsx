@@ -1,12 +1,14 @@
 import { useState, ReactNode, useEffect } from 'react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
+import Image from 'next/image';
+
 import styles from './Header.module.css';
 import { ThemeToggle } from './ThemeToggle';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { classNames } from '../utils/classNames';
-import { Logo } from './Logo';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import logo from '../../public/logo.svg';
 
 export type HeaderProps = {
   children?: ReactNode;
@@ -49,7 +51,7 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
         <div className={styles.HeaderInner}>
           <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
             <NextLink href="/" passHref legacyBehavior>
-              <Logo />
+              <Image src={logo} alt="Onchain Coffee App" />
             </NextLink>
           </Flex>
 
