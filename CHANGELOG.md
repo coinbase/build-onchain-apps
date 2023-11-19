@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- 1eac3f8: fix: polish README and fix a few console errors
+
 ## 0.2.0
 
 ### Minor Changes
