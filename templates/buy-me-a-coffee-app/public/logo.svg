@@ -1,21 +1,13 @@
-type LogoProps = {
-  color?: 'white' | 'black';
-  width?: string;
-  height?: string;
-};
-
-export function Logo({ width = 'auto', height = '40' }: LogoProps) {
-  return (
-    <svg
+<svg
       version="1.1"
       id="coffee_to_go"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width={width}
-      height={height}
+      width="100%"
+      height="40"
       viewBox="0 0 157 211"
-      enable-background="new 0 0 157 211"
+      enableBackground="new 0 0 157 211"
     >
       <g id="parts_group">
         <path
@@ -94,5 +86,3 @@ export function Logo({ width = 'auto', height = '40' }: LogoProps) {
         />
       </g>
     </svg>
-  );
-}

@@ -4,37 +4,37 @@
 
 ### Minor Changes
 
-- eddd242: feat: moved templates created inside apps/ #59
+- **feat**: moved templates created inside apps/ #59
 
 ## 0.1.3
 
 ### Patch Changes
 
-- 3a07a26: **fix**: bin path pointing to wrong folder.
+- **fix**: bin path pointing to wrong folder.
 
 ## 0.1.2
 
 ### Patch Changes
 
-- db3de61: **fix**: CLI broken by missing dist files
+- **fix**: CLI broken by missing dist files
 
 ## 0.1.1
 
 ### Patch Changes
 
-- 48855b8: **chore**: release CLI
+- **chore**: release CLI
 
 ## 0.1.0
 
 ### Minor Changes
 
-- 82cc0ed: **feat**: new build-onchain-apps CLI for onchain app creation
+- **feat**: new build-onchain-apps CLI for onchain app creation
 
 ## 0.0.4
 
 ### Patch Changes
 
-- 2ff99db: - **chore:** Added some extra context in the README.md
+- **chore:** Added some extra context in the README.md
 
 ## 0.0.3
 

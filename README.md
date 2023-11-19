@@ -2,6 +2,8 @@
 
 > The easier way to build onchain applications.
 
+[![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md)[![NPM Downloads](http://img.shields.io/npm/dm/@base-org/build-onchain-apps.svg)](https://www.npmjs.com/package/@base-org/build-onchain-apps)
+
 Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make.
 
 **Build Onchain Apps** takes an opinionated approach to simplify and automate your experience. So, if you are either a hackathon participant and/or an ambitious entrepreneur aiming to establish the next successful company, this is built with you in mind. 💙
@@ -23,8 +25,8 @@ Out of the box 🧰 🧙 ✨
 
 ## Getting Started
 
+#### Step 1: Kick off your Onchain App
 ```bash
-## Kick off your Onchain App
 npx @base-org/build-onchain-apps@latest create
 ```
 
@@ -33,13 +35,30 @@ npx @base-org/build-onchain-apps@latest create
   width='600' alt='Build Onchain Apps'>
 </p>
 
-#### When using Build Onchain Apps remember
+#### Step 2: Obtain Project ID from [Wallet Connect](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
+```bash
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_PROJECT_ID_HERE
+```
 
-To remove global installation via `npm uninstall -g @base-org/build-onchain-apps` or `yarn global remove @base-org/build-onchain-apps` to ensure that npx always uses the latest version.
+#### Step 3: Install and Run your Onchain App
+```bash
+# Install dependencies
+yarn
 
-[npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f)
+# Run Onchain App
+yarn dev
+```
 
-<br >
+🎉 Congrats now enjoy your App with some coffee ☕️
+
+<br>
+
+## Keep in mind
+When using Build Onchain Apps remember
+- To remove global installation via `npm uninstall -g @base-org/build-onchain-apps` or `yarn global remove @base-org/build-onchain-apps` to ensure that npx always uses the latest version.
+- [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f)
+
+<br>
 
 ## Contributing ☕️ 🔵
 
@@ -63,10 +82,8 @@ To build and test the package locally use these quick steps
 git clone https://github.com/base-org/build-onchain-apps.git
 cd build-onchain-apps
 
-# Run initial install
+# Install and build latest dependencies
 yarn
-
-# Build all dependencies
 yarn build
 
 
@@ -90,6 +107,8 @@ cd templates/buy-me-a-coffee-app
 yarn
 yarn dev
 ```
+
+<br>
 
 ## License
 
