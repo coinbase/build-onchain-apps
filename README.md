@@ -31,7 +31,7 @@ npx @base-org/build-onchain-apps@latest create
 ```
 
 <p align='center'>
-  <img src='https://images.ctfassets.net/c5bd0wqjc7v0/3dFiAAcNU2DauF5zvakbA0/cc4bcc4621a12da40e6248b41e450844/cli.gif' 
+  <img src='./docs/images/build-onchain-apps-step-1.gif' 
   width='600' alt='Build Onchain Apps'>
 </p>
 
