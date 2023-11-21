@@ -3,10 +3,11 @@ import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/them
 import Head from 'next/head';
 import { ThemesHeader } from '@/components/ThemesHeader';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
-import { FormBuyCoffee, Memos, useBuyMeACoffeeMemos } from '@/features/BuyMeACoffee';
+import { FormBuyCoffee, Memos } from '@/features/BuyMeACoffee';
+import { useOnchainCoffeeMemos } from '@/onchain/hooks/useOnchainCoffeeMemos';
 
 export default function Home() {
-  const { memos, refetchMemos } = useBuyMeACoffeeMemos();
+  const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
   const handleOncomplete = useCallback(() => {
     void refetchMemos();
