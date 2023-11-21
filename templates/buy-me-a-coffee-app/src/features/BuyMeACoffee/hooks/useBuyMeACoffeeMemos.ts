@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { contractAddress, contractABI } from '../contract/contractInfo';
 import { useContractRead } from 'wagmi';
+import { contractAddress, contractABI } from '../contract/contractInfo';
 
 import type { Memo } from '../types';
 

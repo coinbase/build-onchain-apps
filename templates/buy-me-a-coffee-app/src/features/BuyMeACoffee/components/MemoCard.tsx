@@ -1,6 +1,6 @@
+import { Card, Text, Flex, Quote, Avatar } from '@radix-ui/themes';
 import { convertBigIntTimestampToDate } from '@utils/timestamp';
 import { Memo } from '../types';
-import { Card, Text, Flex, Quote, Avatar } from '@radix-ui/themes';
 
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.

@@ -2,10 +2,10 @@ import '@radix-ui/themes/styles.css';
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 
-import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
 import Web3Providers from './Web3Providers';
+import type { AppProps } from 'next/app';
 
 const themeValues = { light: 'light-theme', dark: 'dark-theme' };
 
