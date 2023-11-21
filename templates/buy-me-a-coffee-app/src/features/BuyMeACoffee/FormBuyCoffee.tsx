@@ -4,8 +4,7 @@ import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from
 
 import { parseEther } from 'viem';
 import { Card, Text, Flex, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
-import { contractAddress, contractABI } from '../contract/contractInfo';
-
+import { contractAddress, contractABI } from '@/onchain/contract/contractInfo';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;

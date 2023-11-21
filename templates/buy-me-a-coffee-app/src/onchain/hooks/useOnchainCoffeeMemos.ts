@@ -2,17 +2,17 @@ import { useCallback, useState } from 'react';
 import { useContractRead } from 'wagmi';
 import { contractAddress, contractABI } from '../contract/contractInfo';
 
-import type { Memo } from '../types';
+import type { CoffeeMemo } from '@/types';
 
 /**
  * Hooks is abstracting away the logic of calling a read-only function on a contract.
  * offers a refetch function to refetch the data.
  * @returns The memos and a function to refetch them.
  */
-function useBuyMeACoffeeMemos() {
-  const [memos, setMemos] = useState<Memo[]>([]);
+function useOnchainCoffeeMemos() {
+  const [memos, setMemos] = useState<CoffeeMemo[]>([]);
 
-  const handleSuccess = useCallback((newMemos: Memo[]) => {
+  const handleSuccess = useCallback((newMemos: CoffeeMemo[]) => {
     setMemos(newMemos);
   }, []);
 
@@ -31,4 +31,4 @@ function useBuyMeACoffeeMemos() {
   };
 }
 
-export { useBuyMeACoffeeMemos };
+export { useOnchainCoffeeMemos };

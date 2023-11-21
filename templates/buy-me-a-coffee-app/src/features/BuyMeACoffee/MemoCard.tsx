@@ -1,6 +1,6 @@
 import { Card, Text, Flex, Quote, Avatar } from '@radix-ui/themes';
 import { convertBigIntTimestampToDate } from '@utils/timestamp';
-import { Memo } from '../types';
+import type { CoffeeMemo } from '@/types';
 
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.
@@ -9,7 +9,7 @@ import { Memo } from '../types';
  * @param message Message sent by the person.
  * @param timestamp Timestamp of the memo.
  */
-function MemoCard({ name, message, timestamp }: Memo) {
+function MemoCard({ name, message, timestamp }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(timestamp);
   return (
     <Card variant="surface">

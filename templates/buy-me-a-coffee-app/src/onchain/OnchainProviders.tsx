@@ -23,7 +23,10 @@ const wagmiConfig = createConfig({
   publicClient,
 });
 
-function Web3Providers({ children }: Props) {
+/**
+ * // TODO
+ */
+function OnchainProviders({ children }: Props) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
@@ -31,4 +34,4 @@ function Web3Providers({ children }: Props) {
   );
 }
 
-export default Web3Providers;
+export default OnchainProviders;
