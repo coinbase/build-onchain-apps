@@ -1,7 +1,7 @@
+import { Flex } from '@radix-ui/themes';
 import { Memo } from '../types';
 import { MemoCard } from './MemoCard';
 
-import { Flex } from '@radix-ui/themes';
 
 type MemosProps = {
   memos: Memo[];

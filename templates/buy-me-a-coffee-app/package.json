@@ -12,6 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.7.2",
     "@radix-ui/react-context": "^1.0.1",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",

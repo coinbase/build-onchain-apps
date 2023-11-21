@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
+import Head from 'next/head';
 import { ThemesHeader } from '@/components/ThemesHeader';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
-import Head from 'next/head';
 import { FormBuyCoffee, Memos, useBuyMeACoffeeMemos } from '@/features/BuyMeACoffee';
 
 export default function Home() {
