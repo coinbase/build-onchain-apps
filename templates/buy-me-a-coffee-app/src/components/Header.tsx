@@ -1,10 +1,9 @@
 import { useState, ReactNode, useEffect } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
-
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
+import { AccountConnectButton } from '@/onchain/components';
 import logo from '../../public/logo.svg';
 import { classNames } from '../utils/classNames';
 import { ThemeToggle } from './ThemeToggle';
@@ -41,7 +40,6 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
     return () => removeEventListener('scroll', handleScroll);
   }, [ghost]);
 
-  //
   return (
     <Theme asChild className="radix-themes-custom-fonts">
       <div
@@ -57,8 +55,7 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
 
           <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
             {children}
-
-            <ConnectButton />
+            <AccountConnectButton />
 
             {gitHubLink && (
               <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">

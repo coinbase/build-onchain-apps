@@ -11,7 +11,7 @@ Building an Onchain Application can feel overwhelming due to the many libraries,
 Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
-- Onchain building blocs: [RainbowKit](https://www.rainbowkit.com/) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Onchain building blocs: [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_
@@ -26,6 +26,7 @@ Out of the box 🧰 🧙 ✨
 ## Getting Started
 
 #### Step 1: Kick off your Onchain App
+
 ```bash
 npx @base-org/build-onchain-apps@latest create
 ```
@@ -36,11 +37,13 @@ npx @base-org/build-onchain-apps@latest create
 </p>
 
 #### Step 2: Obtain Project ID from [Wallet Connect](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
+
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_PROJECT_ID_HERE
 ```
 
 #### Step 3: Install and Run your Onchain App
+
 ```bash
 # Install dependencies
 yarn
@@ -54,7 +57,9 @@ yarn dev
 <br>
 
 ## Keep in mind
+
 When using Build Onchain Apps remember
+
 - To remove global installation via `npm uninstall -g @base-org/build-onchain-apps` or `yarn global remove @base-org/build-onchain-apps` to ensure that npx always uses the latest version.
 - [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f)
 
@@ -111,7 +116,9 @@ yarn dev
 <br>
 
 ## Community ☁️ 🌁 ☁️
+
 Building Onchain Applications is all about community, whether you are ready for a hackathon or building your next company; for any questions, feel free to:
+
 1. open an [issue](https://github.com/base-org/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
 2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), [@alvaroraminelli](https://twitter.com/alvaroraminelli);
 3. let us know [what project you build](https://github.com/base-org/build-onchain-apps/discussions/64) with this library.

@@ -1,37 +1,48 @@
 import React, { ReactNode } from 'react';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { arbitrum, baseGoerli, goerli, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { baseGoerli } from 'wagmi/chains';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { publicProvider } from 'wagmi/providers/public';
+import { infuraProvider } from 'wagmi/providers/infura';
 
 type Props = { children: ReactNode };
 
-const { chains, publicClient } = configureChains(
-  [baseGoerli, mainnet, polygon, optimism, arbitrum, zora, goerli],
-  [publicProvider()],
-);
+// TODO Docs ~~~
+if (!process.env.NEXT_PUBLIC_INFURA_ID) {
+  const infuriaErrMessage =
+    'To use Coinbase Wallet SDK you need to provide a NEXT_PUBLIC_INFURA_ID env variable';
+  throw new Error(infuriaErrMessage);
+}
 
-const { connectors } = getDefaultWallets({
-  appName: 'Dapp',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '',
-  chains,
-});
+// TODO Docs ~~~
+const chains = [baseGoerli];
+const apiKey = process.env.NEXT_PUBLIC_INFURA_ID || '';
 
+// TODO Docs ~~~
+// https://wagmi.sh/react/providers/infura
+const { publicClient } = configureChains(chains, [infuraProvider({ apiKey }), publicProvider()]);
+
+/**
+ * It handles the configuration for all hooks with CoinbaseWalletConnector
+ * and supports connecting with Coinbase Wallet.
+ */
 const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
+  connectors: [
+    new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName: 'BuyMeACoffee',
+      },
+    }),
+  ],
   publicClient,
 });
 
 /**
- * // TODO
+ * TODO Docs ~~~
  */
 function OnchainProviders({ children }: Props) {
-  return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
-    </WagmiConfig>
-  );
+  return <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>;
 }
 
 export default OnchainProviders;
