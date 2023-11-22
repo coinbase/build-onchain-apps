@@ -1,23 +1,24 @@
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useBalance, useConnect, useDisconnect } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { Button, Flex, Dialog } from '@radix-ui/themes';
+import { Box, Button, Flex, Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
+import { getSlicedAddress } from '../utils/address';
+import { getAccountBalance } from '../utils/balance';
 
-const getSlicedAddress = (address: `0x${string}` | undefined) => {
-  if (!address) {
-    return '';
-  }
-  return `${address.slice(0, 5)}...${address.slice(-4)}`;
-};
-
+/**
+ * TODO Docs
+ */
 export function AccountConnectButton() {
-  const { address, isConnected } = useAccount();
   const { connect } = useConnect({
     connector: new CoinbaseWalletConnector({
       options: {
         appName: 'BuyMeACoffee',
       },
     }),
+  });
+  const { address, isConnected } = useAccount();
+  const { data } = useBalance({
+    address,
   });
   const { disconnect } = useDisconnect();
 
@@ -46,7 +47,12 @@ export function AccountConnectButton() {
       {isConnected ? (
         <Dialog.Root>
           <Dialog.Trigger>
-            <Button>{getSlicedAddress(address)}</Button>
+            <Flex gap="3" align="center" justify="center">
+              <Box width="auto"><b>{getAccountBalance(data)}</b></Box>
+              <Box width="auto">
+                <Button>{getSlicedAddress(address)}</Button>
+              </Box>
+            </Flex>
           </Dialog.Trigger>
 
           <Dialog.Content style={{ maxWidth: 450 }}>

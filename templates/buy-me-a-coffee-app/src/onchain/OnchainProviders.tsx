@@ -8,15 +8,15 @@ import { infuraProvider } from 'wagmi/providers/infura';
 type Props = { children: ReactNode };
 
 // TODO Docs ~~~
-if (!process.env.NEXT_PUBLIC_INFURA_ID) {
+if (!process.env.NEXT_PUBLIC_INFURA_API_KEY) {
   const infuriaErrMessage =
-    'To use Coinbase Wallet SDK you need to provide a NEXT_PUBLIC_INFURA_ID env variable';
+    'To use Coinbase Wallet SDK you need to provide a NEXT_PUBLIC_INFURA_API_KEY env variable';
   throw new Error(infuriaErrMessage);
 }
 
 // TODO Docs ~~~
 const chains = [baseGoerli];
-const apiKey = process.env.NEXT_PUBLIC_INFURA_ID || '';
+const apiKey = process.env.NEXT_PUBLIC_INFURA_API_KEY || '';
 
 // TODO Docs ~~~
 // https://wagmi.sh/react/providers/infura
