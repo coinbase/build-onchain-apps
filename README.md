@@ -11,7 +11,7 @@ Building an Onchain Application can feel overwhelming due to the many libraries,
 Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
-- Onchain building blocs: [RainbowKit](https://www.rainbowkit.com/) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Onchain building blocs: [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_

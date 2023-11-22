@@ -1,8 +1,8 @@
 import { useState, ReactNode, useEffect } from 'react';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
-
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import logo from '../../public/logo.svg';
@@ -41,6 +41,24 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
     return () => removeEventListener('scroll', handleScroll);
   }, [ghost]);
 
+  const { address, isConnected } = useAccount();
+  const { connect, isLoading } = useConnect({
+    connector: new CoinbaseWalletConnector({
+      options: {
+        appName: 'BuyMeACoffee',
+      },
+    }),
+  });
+  const { disconnect } = useDisconnect();
+
+  const onDisconnect = () => {
+    disconnect?.();
+  };
+
+  const onConnect = () => {
+    connect?.();
+  };
+
   //
   return (
     <Theme asChild className="radix-themes-custom-fonts">
@@ -58,7 +76,15 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
           <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
             {children}
 
-            <ConnectButton />
+            {isConnected ? (
+              <button onClick={onDisconnect} type="button">
+                {`${address.slice(0, 5)}...${address.slice(-4)}`}
+              </button>
+            ) : (
+              <button onClick={onConnect} type="button">
+                {isLoading ? <span>Loading..</span> : <span>Connect your wallet</span>}
+              </button>
+            )}
 
             {gitHubLink && (
               <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
