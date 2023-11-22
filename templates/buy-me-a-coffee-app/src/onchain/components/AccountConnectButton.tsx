@@ -1,10 +1,18 @@
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { Flex } from '@radix-ui/themes';
+import { Button, Flex, Dialog } from '@radix-ui/themes';
+import { useCallback } from 'react';
+
+const getSlicedAddress = (address: `0x${string}` | undefined) => {
+  if (!address) {
+    return '';
+  }
+  return `${address.slice(0, 5)}...${address.slice(-4)}`;
+};
 
 export function AccountConnectButton() {
   const { address, isConnected } = useAccount();
-  const { connect, isLoading } = useConnect({
+  const { connect } = useConnect({
     connector: new CoinbaseWalletConnector({
       options: {
         appName: 'BuyMeACoffee',
@@ -13,30 +21,52 @@ export function AccountConnectButton() {
   });
   const { disconnect } = useDisconnect();
 
-  const onDisconnect = () => {
-    disconnect?.();
-  };
+  const handleConnectWallet = useCallback(() => {
+    connect();
+  }, [connect]);
 
-  const onConnect = () => {
-    connect?.();
-  };
+  const handleDisconnectWallet = useCallback(() => {
+    disconnect();
+  }, [disconnect]);
 
-  console.log('ciao.0', address);
-  console.log('ciao.1', isConnected);
-  console.log('ciao.2', connect);
-  console.log('ciao.3', isLoading);
-  console.log('ciao.4', disconnect);
+  // onClick handler function for the copy button
+  const handleCopyAddress = useCallback(() => {
+    navigator.clipboard
+      .writeText(address as string)
+      .then(() => {
+        // set is copied
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [address]);
 
   return (
     <Flex gap="8">
       {isConnected ? (
-        <button onClick={onDisconnect} type="button">
-          {`${address.slice(0, 5)}...${address.slice(-4)}`}
-        </button>
+        <Dialog.Root>
+          <Dialog.Trigger>
+            <Button>{getSlicedAddress(address)}</Button>
+          </Dialog.Trigger>
+
+          <Dialog.Content style={{ maxWidth: 450 }}>
+            <Dialog.Title>{getSlicedAddress(address)}</Dialog.Title>
+            <Dialog.Description size="2" mb="4">
+              ~~~
+            </Dialog.Description>
+
+            <Flex gap="3" mt="4" justify="end">
+              <Dialog.Close onClick={handleCopyAddress}>
+                <Button>Copy Address</Button>
+              </Dialog.Close>
+              <Dialog.Close onClick={handleDisconnectWallet}>
+                <Button>Disconnect</Button>
+              </Dialog.Close>
+            </Flex>
+          </Dialog.Content>
+        </Dialog.Root>
       ) : (
-        <button onClick={onConnect} type="button">
-          {isLoading ? <span>Loading..</span> : <span>Connect your wallet</span>}
-        </button>
+        <Button onClick={handleConnectWallet}>Connect Wallet</Button>
       )}
     </Flex>
   );
