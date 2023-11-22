@@ -36,10 +36,10 @@ npx @base-org/build-onchain-apps@latest create
   width='600' alt='Build Onchain Apps'>
 </p>
 
-#### Step 2: Obtain Project ID from [Wallet Connect](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
+#### Step 2: Obtain INFURIA ID from [infura.io](https://www.infura.io/) and assign to the `.env` file
 
 ```bash
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_PROJECT_ID_HERE
+NEXT_PUBLIC_INFURA_ID=ADD_INFURA_ID_HERE
 ```
 
 #### Step 3: Install and Run your Onchain App
