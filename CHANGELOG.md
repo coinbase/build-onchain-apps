@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- 734c828: **feat**: replaced RainbowKit with Coinbase Wallet SDK 💙
+  **feat**: started shaping `AccountConnectButton` onchain component
+
 ## 0.2.2
 
 ### Patch Changes
