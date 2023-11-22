@@ -2,4 +2,5 @@
 '@base-org/build-onchain-apps': minor
 ---
 
-feat: replaced Rainbowkit with Coinbase Wallet SDK
+**feat**: replaced RainbowKit with Coinbase Wallet SDK 💙
+**feat**: started shaping `AccountConnectButton` onchain component
