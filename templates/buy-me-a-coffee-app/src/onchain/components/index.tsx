@@ -1,1 +1,1 @@
-export * from './accountConnectButton';
+export * from './AccountConnectButton';

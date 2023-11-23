@@ -1,5 +1,5 @@
 import { Flex } from '@radix-ui/themes';
-import { MemoCard } from './MemoCard';
+import MemoCard from './MemoCard';
 import type { CoffeeMemo } from '@/types';
 
 type MemosProps = {
@@ -29,4 +29,4 @@ function Memos({ memos }: MemosProps) {
   );
 }
 
-export { Memos };
+export default Memos;

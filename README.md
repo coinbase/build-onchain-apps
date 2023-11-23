@@ -12,7 +12,7 @@ Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
 - Onchain building blocs: [Base](https://base.org/) + [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🧰
+- Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_
