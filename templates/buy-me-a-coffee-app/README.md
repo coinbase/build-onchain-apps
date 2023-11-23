@@ -2,7 +2,13 @@
 
 ## Getting Started
 
-Obtain Project ID from [Wallet Connect](https://cloud.walletconnect.com/sign-in) and assign to `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` in the `.env` file.
+#### Step 1: Obtain ALCHEMY API KEY from [alchemy.com](https://www.alchemy.com/) and assign to the `.env` file
+
+```bash
+NEXT_PUBLIC_ALCHEMY_API_KEY=ADD_ALCHEMY_API_KEY_HERE
+```
+
+#### Step 2: Install and Run your Onchain App
 
 ```bash
 # Install
