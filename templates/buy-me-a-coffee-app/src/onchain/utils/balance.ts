@@ -6,4 +6,3 @@ import type { WagmiFetchBalanceResult } from '../types';
 export const getAccountBalance = (data?: WagmiFetchBalanceResult) => {
   return `${data?.formatted.slice(0, 5)} ${data?.symbol}`;
 };
-  

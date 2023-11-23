@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { baseGoerli } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy'
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { getWalletConnector } from './utils/walletConnector';
 

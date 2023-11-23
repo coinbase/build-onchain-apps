@@ -4,23 +4,23 @@
 
 ### Minor Changes
 
-- 734c828: **feat**: replaced RainbowKit with Coinbase Wallet SDK 💙
-  **feat**: started shaping `AccountConnectButton` onchain component
+- **feat**: replaced RainbowKit with Coinbase Wallet SDK 💙 (734c828)
+- **feat**: started shaping `AccountConnectButton` onchain component
 
 ## 0.2.2
 
 ### Patch Changes
 
-- a77dc73: **feat**: added some nice Linting for import/order
-  **feat**: added onchain/ folder to keep nice and neat all Onchain TS specific code
-  **feat**: added NEXT_PUBLIC_INFURA_ID in .env.example
-  **chore**: moved the code a bit around, so all Onchain code is mostly in one folder
+- **feat**: added some nice Linting for import/order (a77dc73)
+- **feat**: added onchain/ folder to keep nice and neat all Onchain TS specific code
+- **feat**: added NEXT_PUBLIC_INFURA_ID in .env.example
+- **chore**: moved the code a bit around, so all Onchain code is mostly in one folder
 
 ## 0.2.1
 
 ### Patch Changes
 
-- 1eac3f8: fix: polish README and fix a few console errors
+- **fix**: polish README and fix a few console errors (1eac3f8)
 
 ## 0.2.0
 

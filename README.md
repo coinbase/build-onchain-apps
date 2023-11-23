@@ -12,7 +12,7 @@ Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
 - Onchain building blocs: [Base](https://base.org/) + [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx)
+- Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🧰
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_
@@ -37,10 +37,10 @@ npx @base-org/build-onchain-apps@latest create
   width='600' alt='Build Onchain Apps'>
 </p>
 
-#### Step 2: Obtain INFURIA ID from [infura.io](https://www.infura.io/) and assign to the `.env` file
+#### Step 2: Obtain ALCHEMY API KEY from [alchemy.com](https://www.alchemy.com/) and assign to the `.env` file
 
 ```bash
-NEXT_PUBLIC_INFURA_API_KEY=ADD_INFURA_API_KEY_HERE
+NEXT_PUBLIC_ALCHEMY_API_KEY=ADD_ALCHEMY_API_KEY_HERE
 ```
 
 #### Step 3: Install and Run your Onchain App

@@ -42,7 +42,9 @@ export function AccountConnectButton() {
         <Dialog.Root>
           <Dialog.Trigger>
             <Flex gap="3" align="center" justify="center">
-              <Box width="auto"><b>{getAccountBalance(data)}</b></Box>
+              <Box width="auto">
+                <b>{getAccountBalance(data)}</b>
+              </Box>
               <Box width="auto">
                 <Button>{getSlicedAddress(address)}</Button>
               </Box>
