@@ -120,4 +120,4 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   );
 }
 
-export { FormBuyCoffee };
+export default FormBuyCoffee;

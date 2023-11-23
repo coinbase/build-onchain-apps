@@ -35,4 +35,4 @@ function MemoCard({ name, message, timestamp }: CoffeeMemo) {
   );
 }
 
-export { MemoCard };
+export default MemoCard;
