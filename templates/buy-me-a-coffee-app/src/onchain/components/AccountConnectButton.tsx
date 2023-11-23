@@ -1,4 +1,4 @@
-import { useAccount, useBalance, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useBalance, useConnect, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Box, Button, Flex, Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
@@ -20,7 +20,12 @@ export function AccountConnectButton() {
   const { data } = useBalance({
     address,
   });
+  const { chain } = useNetwork();
+  const { chains } = useSwitchNetwork();
   const { disconnect } = useDisconnect();
+
+  console.log('chain', chain);
+  console.log('chains', chains);
 
   const handleConnectWallet = useCallback(() => {
     connect();
