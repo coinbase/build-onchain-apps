@@ -1,34 +1,23 @@
-import { useAccount, useBalance, useConnect, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { useAccount, useBalance, useConnect, useDisconnect } from 'wagmi';
 import { Box, Button, Flex, Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { getSlicedAddress } from '../utils/address';
 import { getAccountBalance } from '../utils/balance';
+import { getWalletConnector } from '../utils/walletConnector';
 
 /**
  * TODO Docs
  */
 export function AccountConnectButton() {
-  const { connect } = useConnect({
-    connector: new CoinbaseWalletConnector({
-      options: {
-        appName: 'BuyMeACoffee',
-      },
-    }),
-  });
   const { address, isConnected } = useAccount();
+  const { connect } = useConnect();
   const { data } = useBalance({
     address,
   });
-  const { chain } = useNetwork();
-  const { chains } = useSwitchNetwork();
   const { disconnect } = useDisconnect();
 
-  console.log('chain', chain);
-  console.log('chains', chains);
-
   const handleConnectWallet = useCallback(() => {
-    connect();
+    connect({ connector: getWalletConnector() });
   }, [connect]);
 
   const handleDisconnectWallet = useCallback(() => {

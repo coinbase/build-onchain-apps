@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { baseGoerli } from 'wagmi/chains';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public';
+import { getWalletConnector } from './utils/walletConnector';
 
 type Props = { children: ReactNode };
 
@@ -15,31 +15,17 @@ if (!process.env.NEXT_PUBLIC_ALCHEMY_API_KEY) {
 }
 
 // TODO Docs ~~~
-// const projectID = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '';
-
-// TODO Docs ~~~
-// https://wagmi.sh/react/providers/infura
-const { chains, publicClient } = configureChains(
+const { publicClient } = configureChains(
   [baseGoerli],
   [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }), publicProvider()],
 );
-
-const walletConnector = new CoinbaseWalletConnector({
-  chains,
-  options: {
-    appName: 'BuyMeACoffee',
-  },
-});
-
-console.log('mare.chains', chains);
-console.log('mare.walletConnector', walletConnector);
 
 /**
  * It handles the configuration for all hooks with CoinbaseWalletConnector
  * and supports connecting with Coinbase Wallet.
  */
 const wagmiConfig = createConfig({
-  connectors: [walletConnector],
+  connectors: [getWalletConnector()],
   publicClient,
 });
 

@@ -23,7 +23,7 @@
     "react-dom": "^18",
     "react-remove-scroll": "^2.5.7",
     "scroll-into-view-if-needed": "^3.1.0",
-    "viem": "^1.2.13",
+    "viem": "^1.19.7",
     "wagmi": "^1.4.5"
   },
   "devDependencies": {
