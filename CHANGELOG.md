@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### Patch Changes
+
+- 1203109: - **feat**: reversed the memos order.
+
 ## 0.4.0
 
 ### Minor Changes
