@@ -12,6 +12,7 @@ import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
 // Default location for all Onchain Applications
 const APPS_DIR = 'apps/';
+const MAIN_APP_NAME = 'build-onchain-apps';
 
 /**
  * Responsible for copying the
@@ -62,7 +63,7 @@ export const createProject = async () => {
     process.exit(1);
   }
 
-  fs.cpSync(getAppDir(APPS_DIR + '/build-onchain-apps'), newAppDir, { recursive: true });
+  fs.cpSync(getAppDir(MAIN_APP_NAME), newAppDir, { recursive: true });
   const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
 
   if (isPackageJsonUpdated) {
