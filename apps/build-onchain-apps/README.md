@@ -1,4 +1,4 @@
-# Buy Me A Coffee App
+# Build Onchain Apps site
 
 ## Getting Started
 

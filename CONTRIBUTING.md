@@ -50,7 +50,3 @@ This project and everyone participating in it are governed by our [Code of Condu
 - Use clear and descriptive variable names.
 - Comment your code where necessary.
 - Follow the lint configurations.
-
----
-
-Feel free to customize this template according to the specific needs and nuances of Base Web. A well-crafted `CONTRIBUTING.md` can help your project attract quality contributions and foster a collaborative community.

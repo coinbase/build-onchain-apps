@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- 1203109: - **feat**: reversed the memos order.
+- **feat**: reversed the memos order (1203109).
 
 ## 0.4.0
 
