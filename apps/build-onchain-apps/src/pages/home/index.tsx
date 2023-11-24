@@ -21,8 +21,8 @@ export default function Home() {
       </Head>
 
       <TitleAndMetaTags
-        title="Buy Me A Coffee – Build Onchain Apps"
-        description="Templates for building onchain apps."
+        title="Build Onchain Apps"
+        description="Build Onchain Applications with the best consumer experience in a few minutes."
         image="themes.png"
       />
 
