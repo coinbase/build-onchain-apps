@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- f776f3f: - **feat**: renaming templates into apps (#80)
+
 ## 0.4.1
 
 ### Patch Changes
