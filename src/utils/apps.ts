@@ -10,38 +10,40 @@ import { rimraf } from 'rimraf';
 
 import { ROOT_DIR } from './dir';
 
-export const TEMPLATES_ENGINE_DIR = `${ROOT_DIR}/.build-onchain-apps`;
-export const TEMPLATES_DIR = `${TEMPLATES_ENGINE_DIR}/templates`;
+export const APPS_ENGINE_DIR = `${ROOT_DIR}/.build-onchain-apps`;
+export const APPS_DIR = `${APPS_ENGINE_DIR}/apps`;
 
 const pipeline = promisify(Stream.pipeline);
 
-export async function downloadAndExtractTemplates(): Promise<void> {
-  // ensure the templates directory exists
-  await makeDir(TEMPLATES_DIR);
+export async function downloadAndExtractApps(): Promise<void> {
+  // ensure the apps directory exists
+  await makeDir(APPS_DIR);
 
   return pipeline(
     got.stream(
       'https://codeload.github.com/base-org/build-onchain-apps/tar.gz/main'
     ),
-    extract({ cwd: TEMPLATES_ENGINE_DIR, strip: 1 })
+    extract({ cwd: APPS_ENGINE_DIR, strip: 1 })
   );
 }
 
-export const getTemplateDir = (appName: string) => {
-  return path.join(TEMPLATES_DIR, appName);
+export const getAppDir = (appName: string) => {
+  return path.join(APPS_DIR, appName);
 };
 
-export const getTemplateChoices = (): string[] => {
-  const templates = fs.readdirSync(TEMPLATES_DIR).filter((file) => {
-    const filePath = path.join(TEMPLATES_DIR, file);
+export const getAppChoices = (): string[] => {
+  const apps = fs.readdirSync(APPS_DIR).filter((file) => {
+    console.log('file', file);
+    const filePath = path.join(APPS_DIR, file);
     return fs.statSync(filePath).isDirectory();
   });
-  return templates;
+  console.log('apps', apps);
+  return apps;
 };
 
-export async function removeDownloadedTemplates() {
+export async function removeDownloadedApps() {
   try {
-    await rimraf.sync(TEMPLATES_ENGINE_DIR);
+    await rimraf.sync(APPS_ENGINE_DIR);
   } catch (e) {
     console.error('Error while removing directories:', e);
   }
@@ -58,15 +60,15 @@ export const updatePackageJson = (
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
     return true;
   } else {
-    console.warn(chalk.yellow('package.json not found in the template.'));
+    console.warn(chalk.yellow('package.json not found in the app.'));
     return false;
   }
 };
 
 export const displayFinalInstructions = (appName: string) => {
-  console.log(chalk.green(`🚀 Project '${appName}' created successfully!`));
+  console.log(chalk.green(`🚀 Onchain App '${appName}' created successfully!`));
   console.log(
-    chalk.blue(`Type 'cd apps/${appName}' to navigate into your new project.`)
+    chalk.blue(`Type 'cd apps/${appName}' to navigate into your new Onchain App.\n`)
   );
   console.log(chalk.blue(`Run 'yarn' to install dependencies.`));
   console.log(chalk.blue(`Run 'yarn dev' to start the development server.`));

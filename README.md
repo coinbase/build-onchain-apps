@@ -60,15 +60,6 @@ yarn dev
 
 <br>
 
-## Keep in mind
-
-When using Build Onchain Apps remember
-
-- To remove global installation via `npm uninstall -g @base-org/build-onchain-apps` or `yarn global remove @base-org/build-onchain-apps` to ensure that npx always uses the latest version.
-- [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f)
-
-<br>
-
 ## Contributing ☕️ 🔵
 
 The main purpose of this repository is to continue evolving Build Onchain Apps, making it better and easier to use. Development of Build Onchain Apps happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Build Onchain Apps.
@@ -107,15 +98,12 @@ build-onchain-apps create
 npm unlink @base-org/build-onchain-apps
 ```
 
-#### Adding new templates
+### Keep in mind
 
-To make a new template, make a folder for it in the `templates` folder and set up your project there. Treat each template like its own Node.js project and run the commands in its folder.
+When using Build Onchain Apps remember
 
-```bash
-cd templates/buy-me-a-coffee-app
-yarn
-yarn dev
-```
+- To remove global installation via `npm uninstall -g @base-org/build-onchain-apps` or `yarn global remove @base-org/build-onchain-apps` to ensure that npx always uses the latest version.
+- [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f)
 
 <br>
 

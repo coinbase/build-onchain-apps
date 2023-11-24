@@ -2,13 +2,13 @@ import * as chalk from 'chalk';
 import * as fs from 'fs';
 import * as inquirer from 'inquirer';
 import {
-  downloadAndExtractTemplates,
-  getTemplateDir,
-  getTemplateChoices,
+  downloadAndExtractApps,
+  getAppDir,
+  getAppChoices,
   updatePackageJson,
   displayFinalInstructions,
-  removeDownloadedTemplates,
-} from './utils/templates';
+  removeDownloadedApps,
+} from './utils/apps';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
 // Default location for all Onchain Applications
@@ -16,9 +16,9 @@ const APPS_DIR = 'apps/';
 
 /**
  * Responsible for copying the
- * onchain template and create new project.
+ * onchain app and create new project.
  */
-export const createProject = async (templateName: string) => {
+export const createProject = async (appName: string) => {
   // Check if the current directory is writeable
   // If not, exit the process
   if (!(await isRootDirWriteable())) {
@@ -41,55 +41,55 @@ export const createProject = async (templateName: string) => {
     )}`
   );
 
-  // Download the template from github.com/base-org/build-onchain-apps/templates and extract it
-  await downloadAndExtractTemplates();
-  const templateChoices = getTemplateChoices();
-  if (templateName && !templateChoices.includes(templateName)) {
+  // Download the app from github.com/base-org/build-onchain-apps/apps and extract it
+  await downloadAndExtractApps();
+  const appChoices = getAppChoices();
+  if (appName && !appChoices.includes(appName)) {
     console.log(
       chalk.yellow(
-        `${templateName} does not exists. Choose one of the following templates: \n`
+        `${appName} does not exists. Choose one of the following apps: \n`
       )
     );
   }
 
-  if (!templateName || !templateChoices.includes(templateName)) {
+  if (!appName || !appChoices.includes(appName)) {
     const answer = await inquirer.prompt([
       {
         type: 'list',
-        name: 'templateName',
-        message: 'Choose a template:',
-        choices: templateChoices,
+        name: 'appName',
+        message: 'Choose a App:',
+        choices: appChoices,
       },
     ]);
-    templateName = answer.templateName;
+    appName = answer.appName;
   }
 
-  const appNameAnswer = await inquirer.prompt([
+  const newAppNameAnswer = await inquirer.prompt([
     {
       type: 'input',
-      name: 'appName',
-      message: 'Enter the name for your new onchain app:',
-      validate: (input: string) => !!input || 'Project name cannot be empty.',
+      name: 'newAppName',
+      message: 'Enter the name for your new Onchain app:',
+      validate: (input: string) => !!input || 'Onchain App name cannot be empty.',
     },
   ]);
 
-  const appName = appNameAnswer.appName;
-  const projectDir = getProjectDir(APPS_DIR + appName);
+  const newAppName = newAppNameAnswer.newAppName;
+  const projectDir = getProjectDir(APPS_DIR + newAppName);
 
   if (fs.existsSync(projectDir)) {
     console.error(
       chalk.red('A directory with the project name already exists.')
     );
-    removeDownloadedTemplates();
+    removeDownloadedApps();
     process.exit(1);
   }
 
-  fs.cpSync(getTemplateDir(templateName), projectDir, { recursive: true });
-  const isPackageJsonUpdated = updatePackageJson(projectDir, appName);
+  fs.cpSync(getAppDir(appName), projectDir, { recursive: true });
+  const isPackageJsonUpdated = updatePackageJson(projectDir, newAppName);
 
   if (isPackageJsonUpdated) {
-    displayFinalInstructions(appName);
+    displayFinalInstructions(newAppName);
   }
 
-  removeDownloadedTemplates();
+  removeDownloadedApps();
 };
