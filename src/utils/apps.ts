@@ -31,16 +31,6 @@ export const getAppDir = (appName: string) => {
   return path.join(APPS_DIR, appName);
 };
 
-export const getAppChoices = (): string[] => {
-  const apps = fs.readdirSync(APPS_DIR).filter((file) => {
-    console.log('file', file);
-    const filePath = path.join(APPS_DIR, file);
-    return fs.statSync(filePath).isDirectory();
-  });
-  console.log('apps', apps);
-  return apps;
-};
-
 export async function removeDownloadedApps() {
   try {
     await rimraf.sync(APPS_ENGINE_DIR);

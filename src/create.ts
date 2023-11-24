@@ -4,7 +4,6 @@ import * as inquirer from 'inquirer';
 import {
   downloadAndExtractApps,
   getAppDir,
-  getAppChoices,
   updatePackageJson,
   displayFinalInstructions,
   removeDownloadedApps,
@@ -18,7 +17,7 @@ const APPS_DIR = 'apps/';
  * Responsible for copying the
  * onchain app and create new project.
  */
-export const createProject = async (appName: string) => {
+export const createProject = async () => {
   // Check if the current directory is writeable
   // If not, exit the process
   if (!(await isRootDirWriteable())) {
@@ -43,27 +42,6 @@ export const createProject = async (appName: string) => {
 
   // Download the app from github.com/base-org/build-onchain-apps/apps and extract it
   await downloadAndExtractApps();
-  const appChoices = getAppChoices();
-  if (appName && !appChoices.includes(appName)) {
-    console.log(
-      chalk.yellow(
-        `${appName} does not exists. Choose one of the following apps: \n`
-      )
-    );
-  }
-
-  if (!appName || !appChoices.includes(appName)) {
-    const answer = await inquirer.prompt([
-      {
-        type: 'list',
-        name: 'appName',
-        message: 'Choose a App:',
-        choices: appChoices,
-      },
-    ]);
-    appName = answer.appName;
-  }
-
   const newAppNameAnswer = await inquirer.prompt([
     {
       type: 'input',
@@ -74,22 +52,21 @@ export const createProject = async (appName: string) => {
   ]);
 
   const newAppName = newAppNameAnswer.newAppName;
-  const projectDir = getProjectDir(APPS_DIR + newAppName);
-
-  if (fs.existsSync(projectDir)) {
+  const newAppDir = getProjectDir(APPS_DIR + newAppName);
+  
+  if (fs.existsSync(newAppDir)) {
     console.error(
-      chalk.red('A directory with the project name already exists.')
+      chalk.red('A directory with the App name already exists.')
     );
     removeDownloadedApps();
     process.exit(1);
   }
 
-  fs.cpSync(getAppDir(appName), projectDir, { recursive: true });
-  const isPackageJsonUpdated = updatePackageJson(projectDir, newAppName);
+  fs.cpSync(getAppDir(APPS_DIR + '/build-onchain-apps'), newAppDir, { recursive: true });
+  const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
 
   if (isPackageJsonUpdated) {
     displayFinalInstructions(newAppName);
   }
-
   removeDownloadedApps();
 };
