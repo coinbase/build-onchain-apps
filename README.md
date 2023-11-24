@@ -1,12 +1,12 @@
 # [Build Onchain Apps](https://github.com/base-org/build-onchain-apps)
 
-> Build Onchain Applications with the best user experience. ☕️
+> Build Onchain Applications with the best consumer experience in a few minutes. ☕️
 
 [![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@base-org/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@base-org/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/base-org/build-onchain-apps.svg?color=3498DB)](https://github.com/base-org/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/blob/main/LICENSE)
 
-Building an Onchain Application can feel overwhelming due to the many libraries, best practices, and choices developers and entrepreneurs must make.
+**Build Onchain Apps** takes an opinionated approach to streamlining and automating early decisions you must make in building your Consumer App.
 
-**Build Onchain Apps** takes an opinionated approach to simplify and automate your experience. So, if you are either a hackathon participant and/or an ambitious entrepreneur aiming to establish the next successful company, this is built with you in mind. 💙
+So, if you are either a hackathon participant and/or an ambitious entrepreneur aiming to establish the next successful company, this is built with you in mind. 💙
 
 Out of the box 🧰 🧙 ✨
 
@@ -20,6 +20,9 @@ Out of the box 🧰 🧙 ✨
 - _Tests Suite (Coming Soon)_
 - _Web Vitals optimization (Coming Soon)_
 - _In-depth step by step documentation (Coming Soon)_
+- _Hardhat & @typechain/hardhat integration_
+- _One click deploy on Vercel_
+- _Onchain UI components: Balances, Minting, Airdrop, etc..._
 - _We just started; stay tuned for more to come!!! ☕️_
 
 <br >
