@@ -3,8 +3,8 @@ import '@/global.css';
 
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
-import OnchainProviders from '@/onchain/OnchainProviders';
 import type { AppProps } from 'next/app';
+import OnchainProviders from '@/onchain/OnchainProviders';
 
 const themeValues = { light: 'light-theme', dark: 'dark-theme' };
 
