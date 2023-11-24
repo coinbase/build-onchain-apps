@@ -7,10 +7,8 @@ import { createProject } from './create';
 const program = new Command();
 
 program
-  .command('create [templateName]')
-  .arguments('[templateName]')
-  .usage(`${chalk.green('<templateName>')} [options]`)
-  .description('Create a new project from a template')
+  .command('create')
+  .description('Create a new App')
   .action(createProject);
 
 program.parse(process.argv);
