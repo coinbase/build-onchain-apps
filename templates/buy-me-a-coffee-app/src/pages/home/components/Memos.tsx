@@ -24,7 +24,7 @@ function Memos({ memos }: MemosProps) {
             timestamp={memo.timestamp}
           />
         );
-      })}
+      }).reverse()}
     </Flex>
   );
 }
