@@ -37,7 +37,7 @@ npx @base-org/build-onchain-apps@latest create
 
 <p align='center'>
   <img src='./docs/images/build-onchain-apps-step-1.gif' 
-  width='600' alt='Build Onchain Apps'>
+  width='800' alt='Build Onchain Apps'>
 </p>
 
 #### Step 2: Obtain ALCHEMY API KEY from [alchemy.com](https://www.alchemy.com/) and assign to the `.env` file
@@ -56,7 +56,12 @@ yarn
 yarn dev
 ```
 
-🎉 Congrats now enjoy your App with some coffee ☕️
+<p align='center'>
+  <img src='./docs/images/build-onchain-apps-step-2.gif' 
+  width='800' alt='Build Onchain Apps'>
+</p>
+
+#### _<p style="color:#f8ffe5"><span style="color:#ef476f">Congrats ✨</span>, Time to enjoy your <span style="color:#1b9aaa">Onchain App</span> with some <span style="color:#ffc43d">coffee</span> ☕️</p>_
 
 <br>
 
