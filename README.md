@@ -61,7 +61,7 @@ yarn dev
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### _<p style="color:#f8ffe5"><span style="color:#ef476f">Congrats ✨</span>, Time to enjoy your <span style="color:#1b9aaa">Onchain App</span> with some <span style="color:#ffc43d">coffee</span> ☕️</p>_
+<p style="color:#f8ffe5"><i><b><span style="color:#ef476f">Congrats ✨</span>, Time to enjoy your <span style="color:#1b9aaa">Onchain App</span> with some <span style="color:#ffc43d">coffee</span> ☕️</b></i></p>
 
 <br>
 
