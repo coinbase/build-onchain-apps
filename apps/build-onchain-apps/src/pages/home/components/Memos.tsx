@@ -15,16 +15,18 @@ function Memos({ memos }: MemosProps) {
   if (!memos) return null;
   return (
     <Flex direction="column" gap="3" width="100%">
-      {memos.map((memo) => {
-        return (
-          <MemoCard
-            key={memo.timestamp.toString()}
-            name={memo.name}
-            message={memo.message}
-            timestamp={memo.timestamp}
-          />
-        );
-      }).reverse()}
+      {memos
+        .map((memo) => {
+          return (
+            <MemoCard
+              key={memo.timestamp.toString()}
+              name={memo.name}
+              message={memo.message}
+              timestamp={memo.timestamp}
+            />
+          );
+        })
+        .reverse()}
     </Flex>
   );
 }
