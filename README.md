@@ -57,11 +57,11 @@ yarn dev
 ```
 
 <p align='center'>
-  <img src='./docs/images/build-onchain-apps-step-2.gif' 
+  <img src='./docs/images/build-onchain-apps-step-2-date-11-25.gif' 
   width='800' alt='Build Onchain Apps'>
 </p>
 
-<p style="color:#f8ffe5"><i><b><span style="color:#ef476f">Congrats ✨</span>, Time to enjoy your <span style="color:#1b9aaa">Onchain App</span> with some <span style="color:#ffc43d">coffee</span> ☕️</b></i></p>
+#### _Congrats ✨, Time to enjoy your Onchain App with some coffee ☕️_
 
 <br>
 
