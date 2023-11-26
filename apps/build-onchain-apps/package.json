@@ -25,7 +25,8 @@
     "react-remove-scroll": "^2.5.7",
     "scroll-into-view-if-needed": "^3.1.0",
     "viem": "^1.19.7",
-    "wagmi": "^1.4.5"
+    "wagmi": "^1.4.5",
+    "workbox-webpack-plugin": "^7.0.0"
   },
   "devDependencies": {
     "@types/minipass": "^3.3.5",
