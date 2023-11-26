@@ -16,10 +16,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       <TitleAndMetaTags
         title="Build Onchain Apps"
         description="Build Onchain Applications with the best consumer experience in a few minutes."
