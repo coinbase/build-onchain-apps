@@ -2,4 +2,4 @@
 '@base-org/build-onchain-apps': minor
 ---
 
-- **feat**: supported more Wallets with RainbowKit
+- **feat**: supported more Wallets with RainbowKit (#85)
