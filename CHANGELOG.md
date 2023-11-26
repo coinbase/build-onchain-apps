@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- 9c3d3ed: - **feat**: supported more Wallets with RainbowKit (#85)
+
 ## 0.5.0
 
 ### Minor Changes
