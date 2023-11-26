@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- f776f3f: - **feat**: renaming templates into apps (#80)
+- **feat**: renaming templates into apps (#80) (f776f3f)
 
 ## 0.4.1
 

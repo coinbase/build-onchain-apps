@@ -11,7 +11,7 @@ So, if you are either a hackathon participant and/or an ambitious entrepreneur a
 Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
-- Onchain building blocs: [Base](https://base.org/) + [Coinbase Wallet SDK](https://github.com/coinbase/coinbase-wallet-sdk) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Onchain building blocs: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
 - Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
@@ -40,10 +40,10 @@ npx @base-org/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### Step 2: Obtain ALCHEMY API KEY from [alchemy.com](https://www.alchemy.com/) and assign to the `.env` file
+#### Step 2: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
 
 ```bash
-NEXT_PUBLIC_ALCHEMY_API_KEY=ADD_ALCHEMY_API_KEY_HERE
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 ```
 
 #### Step 3: Install and Run your Onchain App
@@ -103,6 +103,7 @@ build-onchain-apps create
 npm unlink @base-org/build-onchain-apps
 npm uninstall -g @base-org/build-onchain-apps
 ```
+
 <br>
 
 ## Community ☁️ 🌁 ☁️
