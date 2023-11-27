@@ -4,7 +4,7 @@
 
 [![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@coinbase/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@coinbase/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
-**Build Onchain Apps** takes an opinionated approach to streamlining and automating early decisions you must make in building your Consumer App.
+**Build Onchain Apps** takes an opinionated approach to streamlining and automating early decisions you must make in building your consumer product.
 
 So, if you are either a hackathon participant and/or an ambitious entrepreneur aiming to establish the next successful company, this is built with you in mind. 💙
 
@@ -12,7 +12,7 @@ Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
 - Onchain building blocs: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🎨
+- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_
@@ -29,7 +29,7 @@ Out of the box 🧰 🧙 ✨
 
 ## Getting Started
 
-#### Step 1: Kick off your Onchain App
+#### Step 1: Kick off your onchain app
 
 ```bash
 npx @coinbase/build-onchain-apps@latest create
@@ -46,13 +46,13 @@ npx @coinbase/build-onchain-apps@latest create
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 ```
 
-#### Step 3: Install and Run your Onchain App
+#### Step 3: Install and Run your onchain app
 
 ```bash
 # Install dependencies
 yarn
 
-# Run Onchain App
+# Run onchain app
 yarn dev
 ```
 
@@ -61,7 +61,7 @@ yarn dev
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### _Congrats ✨, Time to enjoy your Onchain App with some coffee ☕️_
+#### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
 
 <br>
 

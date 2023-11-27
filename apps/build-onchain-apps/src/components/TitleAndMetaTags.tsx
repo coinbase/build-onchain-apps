@@ -11,7 +11,7 @@ type TitleAndMetaTagsProps = {
 };
 
 export function TitleAndMetaTags({
-  title = 'Buy Me A Coffee - Build Onchain Apps',
+  title = 'Build Onchain Apps',
   description = 'The easier way to build onchain apps.',
   image,
   url = 'https://github.com/coinbase/build-onchain-apps',
