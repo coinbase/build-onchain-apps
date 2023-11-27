@@ -1,6 +1,6 @@
 # [Build Onchain Apps](https://github.com/base-org/build-onchain-apps)
 
-> Build Onchain Applications with the best consumer experience in a few minutes. ☕️
+> Build onchain applications with the best consumer experience in a few minutes. ☕️
 
 [![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@base-org/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@base-org/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/base-org/build-onchain-apps.svg?color=3498DB)](https://github.com/base-org/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/blob/main/LICENSE)
 
