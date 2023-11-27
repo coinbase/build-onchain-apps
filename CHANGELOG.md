@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.1
+
+### Patch Changes
+
+- 241fdb8: - **docs** : onchain app is now lowercase
+
 ## 0.7.0
 
 ### Minor Changes
