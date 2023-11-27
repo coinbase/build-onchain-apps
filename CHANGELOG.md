@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1
+
+### Patch Changes
+
+- 9fe88a7: docs quick update
+- 9fe88a7: moved repo
+
 ## 0.6.0
 
 ### Minor Changes
