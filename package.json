@@ -1,7 +1,7 @@
 {
-  "name": "@base-org/build-onchain-apps",
+  "name": "@coinbase/build-onchain-apps",
   "version": "0.6.1",
-  "repository": "https://github.com/base-org/build-onchain-apps.git",
+  "repository": "https://github.com/coinbase/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
     "@nx/devkit": "^17.1.2",
@@ -23,7 +23,7 @@
     "format:check": "nx format:check",
     "lint": "nx lint",
     "local:start-registry": "nx local-registry",
-    "local:publish": "nx publish @base-org/build-onchain-apps",
+    "local:publish": "nx publish @coinbase/build-onchain-apps",
     "release:check": "changeset status --verbose --since=origin/main",
     "release:publish": "yarn install && yarn build && changeset publish",
     "release:version": "changeset version && yarn install --lockfile-only"
