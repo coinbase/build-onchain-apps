@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@base-org/build-onchain-apps": ["src/index.ts"]
+      "@coinbase/build-onchain-apps": ["src/index.ts"]
     }
   },
   "files": [],
