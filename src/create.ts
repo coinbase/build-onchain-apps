@@ -37,11 +37,11 @@ export const createProject = async () => {
 
   console.log(
     `${chalk.cyan(
-      'Downloading files from base-org/build-onchain-apps. This might take a moment... \n'
+      'Downloading files from coinbase/build-onchain-apps. This might take a moment... \n'
     )}`
   );
 
-  // Download the app from github.com/base-org/build-onchain-apps/apps and extract it
+  // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
   await downloadAndExtractApps();
   const newAppNameAnswer = await inquirer.prompt([
     {

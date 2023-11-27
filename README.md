@@ -2,7 +2,7 @@
 
 > Build onchain applications with the best consumer experience in a few minutes. ☕️
 
-[![Current version](https://img.shields.io/github/tag/base-org/build-onchain-apps?color=3498DB&label=version)](https://github.com/base-org/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@coinbase/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@coinbase/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/base-org/build-onchain-apps.svg?color=3498DB)](https://github.com/base-org/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/base-org/build-onchain-apps?color=3498DB)](https://github.com/base-org/build-onchain-apps/blob/main/LICENSE)
+[![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@coinbase/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@coinbase/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
 **Build Onchain Apps** takes an opinionated approach to streamlining and automating early decisions you must make in building your Consumer App.
 
@@ -12,7 +12,7 @@ Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
 - Onchain building blocs: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Onchain UI components: [AccountConnectButton](https://github.com/base-org/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🎨
+- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/templates/buy-me-a-coffee-app/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - _Support Progressive Web Apps (Coming Soon)_
@@ -84,7 +84,7 @@ To build and test the package locally use these quick steps
 ```bash
 ## Quick Start
 # Clone the repo
-git clone https://github.com/base-org/build-onchain-apps.git
+git clone https://github.com/coinbase/build-onchain-apps.git
 cd build-onchain-apps
 
 # Install and build latest dependencies
@@ -110,9 +110,9 @@ npm uninstall -g @coinbase/build-onchain-apps
 
 Building Onchain Applications is all about community, whether you are ready for a hackathon or building your next company; for any questions, feel free to:
 
-1. open an [issue](https://github.com/base-org/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
+1. open an [issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
 2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), [@alvaroraminelli](https://twitter.com/alvaroraminelli);
-3. let us know [what project you build](https://github.com/base-org/build-onchain-apps/discussions/64) with this library.
+3. let us know [what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) with this library.
 
 <br>
 
