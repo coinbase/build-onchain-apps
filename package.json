@@ -1,6 +1,6 @@
 {
   "name": "@base-org/build-onchain-apps",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "repository": "https://github.com/base-org/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
