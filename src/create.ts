@@ -10,7 +10,7 @@ import {
 } from './utils/apps';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 
-// Default location for all Onchain Applications
+// Default location for all onchain applications
 const APPS_DIR = 'apps/';
 const MAIN_APP_NAME = 'build-onchain-apps';
 
@@ -47,8 +47,8 @@ export const createProject = async () => {
     {
       type: 'input',
       name: 'newAppName',
-      message: 'Enter the name for your new Onchain app:',
-      validate: (input: string) => !!input || 'Onchain App name cannot be empty.',
+      message: 'Enter the name for your new onchain app:',
+      validate: (input: string) => !!input || 'onchain app name cannot be empty.',
     },
   ]);
 

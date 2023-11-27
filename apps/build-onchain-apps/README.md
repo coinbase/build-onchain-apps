@@ -8,7 +8,7 @@
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 ```
 
-#### Step 2: Install and Run your Onchain App
+#### Step 2: Install and Run your onchain app
 
 ```bash
 # Install

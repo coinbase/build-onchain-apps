@@ -4,20 +4,13 @@
 
 ### Minor Changes
 
-- 8cccd55: @coinbase/build-onchain-apps
-
-## 0.6.1
-
-### Patch Changes
-
-- 9fe88a7: docs quick update
-- 9fe88a7: moved repo
+- feat: moved repo to @coinbase/build-onchain-apps (8cccd55)
 
 ## 0.6.0
 
 ### Minor Changes
 
-- 9c3d3ed: - **feat**: supported more Wallets with RainbowKit (#85)
+**feat**: supported more Wallets with RainbowKit (#85)(9c3d3ed)
 
 ## 0.5.0
 
