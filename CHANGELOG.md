@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0
+
+### Minor Changes
+
+- 8cccd55: @coinbase/build-onchain-apps
+
 ## 0.6.1
 
 ### Patch Changes
