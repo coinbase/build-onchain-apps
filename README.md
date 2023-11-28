@@ -15,7 +15,7 @@ Out of the box 🧰 🧙 ✨
 - Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
-- _Support Progressive Web Apps (Coming Soon)_
+- Support Progressive Web Apps ⚡️
 - _Client Analytics (Coming Soon)_
 - _Tests Suite (Coming Soon)_
 - _Web Vitals optimization (Coming Soon)_
