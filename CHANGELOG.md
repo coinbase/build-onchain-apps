@@ -4,13 +4,13 @@
 
 ### Patch Changes
 
-- 241fdb8: - **docs** : onchain app is now lowercase
+- **docs**: onchain app is now lowercase (241fdb8)
 
 ## 0.7.0
 
 ### Minor Changes
 
-- feat: moved repo to @coinbase/build-onchain-apps (8cccd55)
+- **fea**: moved repo to @coinbase/build-onchain-apps (8cccd55)
 
 ## 0.6.0
 
