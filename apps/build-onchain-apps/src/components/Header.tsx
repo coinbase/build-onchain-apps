@@ -3,21 +3,20 @@ import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
-import { AccountConnectButton } from '@/onchain/components';
 import logo from '../../public/logo.svg';
 import { classNames } from '../utils/classNames';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.css';
+import { AccountConnectButton } from '@/onchain/components';
 
 export type HeaderProps = {
   children?: ReactNode;
-  gitHubLink?: string;
   ghost?: boolean;
 };
 
 type ScrollState = 'at-top' | 'scrolling-up' | 'scrolling-down';
 
-export function Header({ children, gitHubLink, ghost }: HeaderProps) {
+function Header({ children, ghost }: HeaderProps) {
   const [scrollState, setScrollState] = useState<ScrollState>('at-top');
 
   useEffect(() => {
@@ -57,15 +56,13 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
             {children}
             <AccountConnectButton />
 
-            {gitHubLink && (
               <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
                 <IconButton asChild size="3" variant="ghost" color="gray">
-                  <a href={gitHubLink} target="_blank" aria-labelledby="View GitHub Button">
+                  <a href="https://github.com/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps" target="_blank" aria-labelledby="View GitHub Button">
                     <GitHubLogoIcon width="16" height="16" />
                   </a>
                 </IconButton>
               </Tooltip>
-            )}
 
             <ThemeToggle />
           </Flex>
@@ -74,3 +71,5 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
     </Theme>
   );
 }
+
+export default Header;
