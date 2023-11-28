@@ -15,12 +15,12 @@ import {
 type Props = { children: ReactNode };
 
 // TODO Docs ~~~
-if (!process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID) {
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '';
+if (!projectId) {
   const providerErrMessage =
     'To connect to all Wallets you need to provide a NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID env variable';
   throw new Error(providerErrMessage);
 }
-const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
 // TODO Docs ~~~
 const { chains, publicClient } = configureChains([baseGoerli], [publicProvider()]);

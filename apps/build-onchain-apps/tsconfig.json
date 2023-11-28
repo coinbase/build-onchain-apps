@@ -36,7 +36,8 @@
     "custom.d.ts",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/pwa/cache.js"
   ],
   "exclude": [
     "node_modules"

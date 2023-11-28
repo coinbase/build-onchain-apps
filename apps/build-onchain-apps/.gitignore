@@ -13,6 +13,12 @@
 # production
 /build
 
+# PWA files
+sw.js
+sw.js.map
+workbox***.js
+workbox***.js.map
+
 # misc
 .DS_Store
 *.pem
