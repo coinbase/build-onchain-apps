@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
-import Head from 'next/head';
 import { ThemesHeader } from '@/components/ThemesHeader';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
 import { useOnchainCoffeeMemos } from '@/onchain/hooks/useOnchainCoffeeMemos';
@@ -16,10 +15,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       <TitleAndMetaTags
         title="Build Onchain Apps"
         description="Build Onchain Applications with the best consumer experience in a few minutes."
