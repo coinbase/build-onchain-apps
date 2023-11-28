@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.2
+
+### Patch Changes
+
+- 2fb70ad: - **feat** : converted App into
+
 ## 0.7.1
 
 ### Patch Changes
