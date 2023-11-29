@@ -56,7 +56,7 @@ export const updatePackageJson = (
 };
 
 export const displayFinalInstructions = (appName: string) => {
-  console.log(chalk.green(`🚀 onchain app '${appName}' created successfully!`));
+  console.log(chalk.green(`Onchain app '${appName}' created successfully! 🚀`));
   console.log(
     chalk.blue(`Type 'cd apps/${appName}' to navigate into your new onchain app.\n`)
   );

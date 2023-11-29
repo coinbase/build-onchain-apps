@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- 2fb70ad: - **feat** : converted App into
+- **feat** : converted App into a Progressive Web App (2fb70ad)
 
 ## 0.7.1
 
