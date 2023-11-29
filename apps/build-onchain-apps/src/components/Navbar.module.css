@@ -10,8 +10,6 @@
   display: flex;
   gap: 8px;
   justify-content: center;
-  padding: 8px;
-  border-radius: 6px;
   list-style: none;
   margin: 0;
 }
