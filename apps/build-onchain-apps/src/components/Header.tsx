@@ -52,8 +52,9 @@ function Header({ children, ghost }: HeaderProps) {
             </NextLink>
           </Flex>
 
-          <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pl="4">
-            {children}
+          {children}
+
+          <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
             <AccountConnectButton />
 
             <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">

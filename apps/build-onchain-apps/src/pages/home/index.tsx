@@ -24,15 +24,16 @@ export default function Home() {
 
       <div>
         <Theme radius="medium" scaling="100%">
-          <Header />
-          <Navbar>
-            <NavbarLink href="/">
-              Home
-            </NavbarLink>
-            <NavbarLink href="/coffee">
-              Buy My Coffee
-            </NavbarLink>
-          </Navbar>
+          <Header>
+            <Navbar>
+              <NavbarLink href="/">
+                Home
+              </NavbarLink>
+              <NavbarLink href="/home">
+                Buy My Coffee
+              </NavbarLink>
+            </Navbar>
+          </Header>
         </Theme>
 
         <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>

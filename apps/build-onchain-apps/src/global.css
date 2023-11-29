@@ -24,6 +24,10 @@ svg {
   overflow: visible;
 }
 
+ul {
+  padding-inline-start: 0;
+}
+
 #__next {
   position: relative;
   z-index: 0;

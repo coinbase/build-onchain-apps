@@ -1,5 +1,4 @@
 .NavigationMenuRoot {
-  position: relative;
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -24,17 +23,11 @@
   text-decoration: none;
   border-radius: 4px;
   font-size: 14px;
-  color: var(--accent-11);
+  color: var(--accent-5-contrast);
 }
 
-.active {
-  background-color: var(--accent-3);
-}
-
+.active,
+.NavigationMenuLink:hover,
 .NavigationMenuLink:active {
-  background-color: var(--accent-3);
-}
-
-.NavigationMenuLink:hover {
-  background-color: var(--accent-3);
+  background-color: var(--accent-5);
 }
