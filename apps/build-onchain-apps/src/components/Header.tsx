@@ -11,13 +11,12 @@ import styles from './Header.module.css';
 
 export type HeaderProps = {
   children?: ReactNode;
-  gitHubLink?: string;
   ghost?: boolean;
 };
 
 type ScrollState = 'at-top' | 'scrolling-up' | 'scrolling-down';
 
-export function Header({ children, gitHubLink, ghost }: HeaderProps) {
+function Header({ children, ghost }: HeaderProps) {
   const [scrollState, setScrollState] = useState<ScrollState>('at-top');
 
   useEffect(() => {
@@ -48,24 +47,26 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
       >
         <div className={styles.HeaderInner}>
           <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
-            <NextLink href="/" passHref legacyBehavior>
+            <NextLink href="/" passHref>
               <Image src={logo} alt="Onchain Coffee App" />
             </NextLink>
           </Flex>
 
-          <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
+          <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pl="4">
             {children}
             <AccountConnectButton />
 
-            {gitHubLink && (
-              <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
-                <IconButton asChild size="3" variant="ghost" color="gray">
-                  <a href={gitHubLink} target="_blank" aria-labelledby="View GitHub Button">
-                    <GitHubLogoIcon width="16" height="16" />
-                  </a>
-                </IconButton>
-              </Tooltip>
-            )}
+            <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
+              <IconButton asChild size="3" variant="ghost" color="gray">
+                <a
+                  href="https://github.com/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps"
+                  target="_blank"
+                  aria-labelledby="View GitHub Button"
+                >
+                  <GitHubLogoIcon width="16" height="16" />
+                </a>
+              </IconButton>
+            </Tooltip>
 
             <ThemeToggle />
           </Flex>
@@ -74,3 +75,5 @@ export function Header({ children, gitHubLink, ghost }: HeaderProps) {
     </Theme>
   );
 }
+
+export default Header;
