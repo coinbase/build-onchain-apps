@@ -3,9 +3,9 @@ import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
+import { classNames } from '@/utils/classNames';
 import { AccountConnectButton } from '@/onchain/components';
 import logo from '../../public/logo.svg';
-import { classNames } from '../utils/classNames';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.css';
 
