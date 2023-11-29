@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.3
+
+### Patch Changes
+
+- d0f433b: - **feat** : Create Navbar component using @radix-ui/react-navigation-menu
+
 ## 0.7.2
 
 ### Patch Changes
