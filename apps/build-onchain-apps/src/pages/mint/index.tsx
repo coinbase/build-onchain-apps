@@ -1,23 +1,13 @@
-import { useCallback } from 'react';
 import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
 import Header from '@/components/Header';
 import { DefaultNavbar } from '@/components/Navbar';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
-import { useOnchainCoffeeMemos } from '@/onchain/hooks/useOnchainCoffeeMemos';
-import FormBuyCoffee from './components/FormBuyCoffee';
-import Memos from './components/Memos';
 
-export default function Home() {
-  const { memos, refetchMemos } = useOnchainCoffeeMemos();
-
-  const handleOncomplete = useCallback(() => {
-    void refetchMemos();
-  }, [refetchMemos]);
-
+export default function Mint() {
   return (
     <>
       <TitleAndMetaTags
-        title="Build Onchain Apps"
+        title="Build Onchain Apps - Mint"
         description="Build Onchain Applications with the best consumer experience in a few minutes."
         image="themes.png"
       />
@@ -38,10 +28,9 @@ export default function Home() {
                     Messages
                   </Text>
                 </Flex>
-                {memos?.length > 0 && <Memos memos={memos} />}
               </Box>
               <Box position="relative" pt="9">
-                <FormBuyCoffee onComplete={handleOncomplete} />
+                
               </Box>
             </Grid>
           </Section>
