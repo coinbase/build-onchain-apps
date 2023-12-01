@@ -9,7 +9,7 @@ import {
 } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
 import { useCallback, useEffect, useState } from 'react';
-import abi from '@/onchain/contract/OZ1155';
+import abi from '@/onchain/contract/Custom1155';
 
 // A future enhancement would be to support multiple mints, getting chain, abi, and
 // contract address through dynamic routes, like `/mints/[tokenType]/[chain]/[contractAddress]`

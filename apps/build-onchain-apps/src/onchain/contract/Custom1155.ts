@@ -1,3 +1,7 @@
+/**
+ * This ABI is trimmed down to just the functions we expect to call for the
+ * sake of minimizing bytes downloaded.
+ */
 const abi = [
   {
     inputs: [
