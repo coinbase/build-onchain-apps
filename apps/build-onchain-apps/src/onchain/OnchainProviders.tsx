@@ -23,7 +23,7 @@ if (!projectId) {
 }
 
 // TODO Docs ~~~
-const { chains, publicClient } = configureChains([baseGoerli, base], [publicProvider()]);
+const { chains, publicClient } = configureChains([baseGoerli], [publicProvider()]);
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
