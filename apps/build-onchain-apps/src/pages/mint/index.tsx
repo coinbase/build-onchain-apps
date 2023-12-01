@@ -1,9 +1,12 @@
-import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
+import { Theme, Container, Section } from '@radix-ui/themes';
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import { DefaultNavbar } from '@/components/Navbar';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
 
-export default function Mint() {
+const Mint = dynamic(async () => import('./components/Mint').then(mod => mod.Mint), { ssr: false })
+
+export default function MintPage() {
   return (
     <>
       <TitleAndMetaTags
@@ -21,18 +24,7 @@ export default function Mint() {
 
         <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
           <Section size={{ initial: '2', md: '3' }}>
-            <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
-              <Box>
-                <Flex mb="5">
-                  <Text size="8" weight="bold" mb="1">
-                    Messages
-                  </Text>
-                </Flex>
-              </Box>
-              <Box position="relative" pt="9">
-                
-              </Box>
-            </Grid>
+            <Mint />
           </Section>
         </Container>
       </div>

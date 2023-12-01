@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
+import { baseGoerli, base } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
@@ -23,7 +23,7 @@ if (!projectId) {
 }
 
 // TODO Docs ~~~
-const { chains, publicClient } = configureChains([baseGoerli], [publicProvider()]);
+const { chains, publicClient } = configureChains([baseGoerli, base], [publicProvider()]);
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
