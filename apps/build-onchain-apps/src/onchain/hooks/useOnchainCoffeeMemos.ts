@@ -3,6 +3,7 @@ import { useContractRead } from 'wagmi';
 import { contractAddress, contractABI } from '../contract/contractInfo';
 
 import type { CoffeeMemo } from '@/types';
+import { markStep } from '@/utils/analytics';
 
 /**
  * Hooks is abstracting away the logic of calling a read-only function on a contract.
@@ -16,6 +17,7 @@ function useOnchainCoffeeMemos() {
     setMemos(newMemos);
   }, []);
 
+  markStep('useContractRead.refetchMemos');
   // Below is a very basic example of how to call a read-only function on a contract (with no arguments).
   // The BuyMeACoffee-Contracts contract  https://github.com/alchemyplatform/RTW3-Week2-BuyMeACoffee-Contracts
   const { refetch: refetchMemos } = useContractRead({
@@ -24,6 +26,7 @@ function useOnchainCoffeeMemos() {
     functionName: 'getMemos',
     onSuccess: handleSuccess,
   });
+  markStep('useContractRead.refetchMemos');
 
   return {
     memos,

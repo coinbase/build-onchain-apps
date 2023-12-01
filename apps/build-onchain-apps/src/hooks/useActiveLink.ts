@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { type LinkProps as NextLinkProps } from 'next/link';
 
-export function useActiveLink (props: Pick<NextLinkProps, 'href' | 'as'>) {
+export function useActiveLink(props: Pick<NextLinkProps, 'href' | 'as'>) {
   const { asPath, isReady } = useRouter();
   const [active, setActive] = useState(false);
 
@@ -26,4 +26,4 @@ export function useActiveLink (props: Pick<NextLinkProps, 'href' | 'as'>) {
   }, [asPath, isReady, props.as, props.href, active]);
 
   return active;
-};
+}

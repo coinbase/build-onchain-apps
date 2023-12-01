@@ -5,9 +5,13 @@ import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
 import OnchainProviders from '@/onchain/OnchainProviders';
+import { initAnalytics } from '@/utils/analytics';
 import type { AppProps } from 'next/app';
 
 const themeValues = { light: 'light-theme', dark: 'dark-theme' };
+
+// TODO ~~~
+initAnalytics();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

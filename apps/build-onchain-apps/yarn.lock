@@ -6044,10 +6044,10 @@ pathe@^1.1.0, pathe@^1.1.1:
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-1.1.1.tgz#1dd31d382b974ba69809adc9a7a347e65d84829a"
   integrity sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==
 
-perfume.js@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/perfume.js/-/perfume.js-9.0.0.tgz#cebc16013a2902e865fb388d496cb056b0863b3d"
-  integrity sha512-CMqUQKV4VmPvCWALt3iERPgEW4SbdI4rl6HCWQMFUQXTmGd4pWYirCPwoxHEik9yzYBe+Yw3MZQ5BsvH5iBuwA==
+perfume.js@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/perfume.js/-/perfume.js-9.1.0.tgz#533dfdedb4ca077ce1c728f406ecb6af0b88b9ff"
+  integrity sha512-GM4rGk9Iw1BuM7r47ImLnfJ9WG+YH68CpglU2yEbJePKwyoVD2S1LJtdgUxK4jTbu+WIycjX4hZDjdkqTzLNCA==
   dependencies:
     web-vitals "^3.5.0"
 

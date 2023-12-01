@@ -26,12 +26,8 @@ export default function Home() {
         <Theme radius="medium" scaling="100%">
           <Header>
             <Navbar>
-              <NavbarLink href="/">
-                Home
-              </NavbarLink>
-              <NavbarLink href="/home">
-                Buy My Coffee
-              </NavbarLink>
+              <NavbarLink href="/">Home</NavbarLink>
+              <NavbarLink href="/home">Buy My Coffee</NavbarLink>
             </Navbar>
           </Header>
         </Theme>
