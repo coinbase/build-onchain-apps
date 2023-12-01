@@ -2,4 +2,4 @@
 '@coinbase/build-onchain-apps': patch
 ---
 
-perfume
+- **feat** : Init support Web Vitals with the Perfume.js library
