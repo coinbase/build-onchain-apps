@@ -11,7 +11,7 @@ So, if you are either a hackathon participant and/or an ambitious entrepreneur a
 Out of the box 🧰 🧙 ✨
 
 - Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
-- Onchain building blocs: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Onchain building blocks: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
 - Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/components/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
