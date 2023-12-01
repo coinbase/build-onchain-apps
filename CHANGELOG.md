@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- d0f433b: - **feat** : Create Navbar component using @radix-ui/react-navigation-menu
+- **feat** : Create Navbar component using @radix-ui/react-navigation-menu (d0f433b)
 
 ## 0.7.2
 
