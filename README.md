@@ -111,7 +111,7 @@ npm uninstall -g @coinbase/build-onchain-apps
 Building Onchain Applications is all about community, whether you are ready for a hackathon or building your next company; for any questions, feel free to:
 
 1. open an [issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
-2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), [@alvaroraminelli](https://twitter.com/alvaroraminelli);
+2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), [@alvaroraminelli](https://twitter.com/alvaroraminelli), [codyrnova](https://twitter.com/codyrnova), [snoopies_eth](https://twitter.com/snoopies_eth)
 3. let us know [what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) with this library.
 
 <br>
