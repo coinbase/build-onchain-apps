@@ -4,7 +4,12 @@ import Header from '@/components/Header';
 import { DefaultNavbar } from '@/components/Navbar';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
 
-const Mint = dynamic(async () => import('./components/Mint').then(mod => mod.Mint), { ssr: false })
+// Because the mint page relies so heavily on client-side state, without disabling SSR
+// for its internals we get annoying hydration errors. A future enhancement would be to
+// read token metadata through a provider that is available server-side.
+const Mint = dynamic(async () => import('./components/Mint').then((mod) => mod.Mint), {
+  ssr: false,
+});
 
 export default function MintPage() {
   return (
