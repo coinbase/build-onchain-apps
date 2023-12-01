@@ -1,13 +1,20 @@
 import { Box, Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
-import { useAccount, useContractRead, useContractWrite, useNetwork, usePrepareContractWrite, useSwitchNetwork } from 'wagmi';
-import { base } from 'viem/chains';
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  useNetwork,
+  usePrepareContractWrite,
+  useSwitchNetwork,
+} from 'wagmi';
+import { baseGoerli } from 'viem/chains';
 import { useCallback, useEffect, useState } from 'react';
-import abi from '@/onchain/contract/Zora1155';
+import abi from '@/onchain/contract/OZ1155';
 
 // A future enhancement would be to support multiple mints, getting chain, abi, and
 // contract address through dynamic routes, like `/mints/[tokenType]/[chain]/[contractAddress]`
-const CONTRACT_ADDRESS: `0x${string}` = '0x3d7fc1b3798f4db833485d0f3d73133df53389ec';
-const EXPECTED_CHAIN = base;
+const CONTRACT_ADDRESS: `0x${string}` = '0xBB955f815131818D62A220F70F5938daF812522d';
+const EXPECTED_CHAIN = baseGoerli;
 
 const CONTRACT = {
   abi,
@@ -27,7 +34,7 @@ export function Mint() {
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
     enabled: onCorrectNetwork,
-  })
+  });
   const { write: mint } = useContractWrite(config);
 
   if (!isConnected) {
@@ -39,10 +46,8 @@ export function Mint() {
   }
 
   if (isLoading) {
-    return null;
+    return <span>loading...</span>;
   }
-
-  console.log(mint)
 
   return (
     <Grid columns={{ md: '420px 1fr' }} gap={{ md: '9' }}>
@@ -85,7 +90,7 @@ function ipfsToHTTP(ipfsURI: string) {
   const cid = ipfsURI.replace('ipfs://', '');
   // This is a free public gateway. For production use, you'll likely want a
   // paid provider.
-  return `https://${cid}.ipfs.cf-ipfs.com`;
+  return `https://ipfs.io/ipfs/${cid}`;
 }
 
 type CollectionMetadataResult =
@@ -109,12 +114,13 @@ function useCollectionMetadata(enabled: boolean) {
 
   const { data: contractURI } = useContractRead({
     ...CONTRACT,
-    functionName: 'contractURI',
+    functionName: 'uri',
+    args: [BigInt(1)],
     enabled,
   });
 
-  const fetchCollectionMetadata = useCallback(async (ipfsContractURI: string) => {
-    const response = await fetch(ipfsToHTTP(ipfsContractURI));
+  const fetchCollectionMetadata = useCallback(async (contractURI: string) => {
+    const response = await fetch(contractURI);
     const json = (await response.json()) as { name: string; image: string };
     setResult({
       collectionName: json.name,
