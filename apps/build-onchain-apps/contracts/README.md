@@ -61,7 +61,7 @@ Create a `.env` file using the `.env.example` file provided.
 
 ```shell
 $ source .env
-$ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${BASE_GOERLI_RPC_URL} --etherscan-api-key ${BASESCAN_API_KEY}
+$ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url https://goerli.base.org --etherscan-api-key ${BASESCAN_API_KEY}
 ```
 
 ![Deployment](./assets/deployment.png)
