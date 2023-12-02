@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
 import Header from '@/components/Header';
-import { Navbar, NavbarLink } from '@/components/Navbar';
+import { DefaultNavbar } from '@/components/Navbar';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
 import { useOnchainCoffeeMemos } from '@/onchain/hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './components/FormBuyCoffee';
@@ -25,14 +25,7 @@ export default function Home() {
       <div>
         <Theme radius="medium" scaling="100%">
           <Header>
-            <Navbar>
-              <NavbarLink href="/">
-                Home
-              </NavbarLink>
-              <NavbarLink href="/home">
-                Buy My Coffee
-              </NavbarLink>
-            </Navbar>
+            <DefaultNavbar />
           </Header>
         </Theme>
 
