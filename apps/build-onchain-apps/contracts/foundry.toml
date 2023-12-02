@@ -5,9 +5,9 @@ libs = ["lib"]
 fs_permissions = [{ access = "read", path = "./"}]
 
 [rpc_endpoints]
-base_goerli="${BASE_GOERLI_RPC_URL}"
+base_goerli="${RPC_URl}"
 
 [etherscan]
-base_goerli={key="${BASESCAN_API_KEY}"}
+base_goerli={key="${BLOCK_EXPLORER_API_KEY}"}
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
