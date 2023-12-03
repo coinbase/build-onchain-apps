@@ -8,7 +8,6 @@ import { contractAddress, contractABI } from '@/onchain/contract/contractInfo';
 
 // TODO: Home and Buy Me a Coffee should be the same routes
 // TODO: Fix README.md as instructions to start app are incorrect
-// TODO: Remove hello.ts or any boilerplate code
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
