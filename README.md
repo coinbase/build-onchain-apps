@@ -16,11 +16,11 @@ Out of the box 🧰 🧙 ✨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - Support Progressive Web Apps ⚡️
+- Foundry integration
 - _Client Analytics (Coming Soon)_
 - _Tests Suite (Coming Soon)_
 - _Web Vitals optimization (Coming Soon)_
 - _In-depth step by step documentation (Coming Soon)_
-- Foundry integration
 - _One click deploy on Vercel_
 - _Onchain UI components: Balances, Minting, Airdrop, etc..._
 - _We just started; stay tuned for more to come!!! ☕️_
