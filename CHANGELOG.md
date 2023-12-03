@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.4
+
+### Patch Changes
+
+- 4538e67: - **feat** : Init support Web Vitals with the Perfume.js library
+
 ## 0.7.3
 
 ### Patch Changes
