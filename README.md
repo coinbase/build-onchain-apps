@@ -20,7 +20,7 @@ Out of the box 🧰 🧙 ✨
 - _Tests Suite (Coming Soon)_
 - _Web Vitals optimization (Coming Soon)_
 - _In-depth step by step documentation (Coming Soon)_
-- _Hardhat & @typechain/hardhat integration_
+- Foundry integration
 - _One click deploy on Vercel_
 - _Onchain UI components: Balances, Minting, Airdrop, etc..._
 - _We just started; stay tuned for more to come!!! ☕️_
