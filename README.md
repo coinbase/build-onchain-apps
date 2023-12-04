@@ -79,20 +79,31 @@ Read our contributing guide to learn about our development process, how to propo
 
 ### Develop
 
-To build and test the package locally use these quick steps
-
+To build and test either the CLI or the template, start by cloning the repo.
 ```bash
 ## Quick Start
 # Clone the repo
 git clone https://github.com/coinbase/build-onchain-apps.git
 cd build-onchain-apps
+```
 
+### Develop the Build Onchain Apps - template
+```
+# Go to template application
+cd apps/build-onchain-apps
+
+# Install and run latest template
+yarn
+yarn dev
+```
+
+### Develop the Build Onchain Apps - CLI
+```
+# From the root repo
 # Install and build latest dependencies
 yarn
 yarn build
 
-
-## Test Local Package
 # Link the local package to the global npm registry
 npm link
 
