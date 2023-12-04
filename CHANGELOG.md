@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- 4c62641: - **feat**: Upgraded from v1 to Yarn v4 (#123)
+  - **feat**: Added Foundry support (#119)
+  - **feat**: Added Basic Mint page example (#117)
+  - **feat**: Init support Web Vitals with the Perfume.js library (#113)
+
 ## 0.7.3
 
 ### Patch Changes
