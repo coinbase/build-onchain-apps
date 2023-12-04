@@ -66,7 +66,6 @@
   "type": "commonjs",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
-  "bin": {
-    "build-onchain-apps": "./dist/src/index.js"
-  }
+  "bin": "./dist/src/index.js",
+  "packageManager": "yarn@4.0.2"
 }
