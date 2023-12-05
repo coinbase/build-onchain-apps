@@ -1523,7 +1523,6 @@ __metadata:
     next: "npm:13.5.6"
     next-pwa: "npm:5.6.0"
     next-themes: "npm:^0.2.1"
-    perfume.js: "npm:9.0.0"
     postcss: "npm:^8"
     prettier: "npm:3.0.3"
     react: "npm:^18"
@@ -10804,15 +10803,6 @@ __metadata:
   version: 1.1.1
   resolution: "pathe@npm:1.1.1"
   checksum: 3ae5a0529c3415d91c3ac9133f52cffea54a0dd46892fe059f4b80faf36fd207957d4594bdc87043b65d0761b1e5728f81f46bafff3b5302da4e2e48889b8c0e
-  languageName: node
-  linkType: hard
-
-"perfume.js@npm:9.0.0":
-  version: 9.0.0
-  resolution: "perfume.js@npm:9.0.0"
-  dependencies:
-    web-vitals: "npm:^3.5.0"
-  checksum: 36fca30cae10d175b1ab43f4e747c1e672fb4986b3359e5777c9747baaebcd46bebf0e3bfc5b94dfac4b37b4d3ab51c885f2eed10858477a8152ec2184cc490c
   languageName: node
   linkType: hard
 
