@@ -80,8 +80,8 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     <Box style={{ whiteSpace: 'nowrap' }}>
       <Flex direction="column">
         <Flex justify="center" position="relative">
-          <form onSubmit={handleSubmit}>
-            <Card size="4" style={{ width: 400 }}>
+          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+            <Card size="4">
               <Heading as="h3" size="6" trim="start" mb="5">
                 Buy Me A Coffee
               </Heading>
