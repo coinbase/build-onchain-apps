@@ -22,7 +22,7 @@ const config = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    './src/**/*.{ts}',
+    './src/**/*.{ts|tsx}',
     // Ignore type definition files
     '!./**/*.d.ts',
   ],
@@ -162,7 +162,7 @@ const config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/?(*.)+(test).+(ts)"],
+  testMatch: ["**/?(*.)+(test).+(ts|tsx)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
