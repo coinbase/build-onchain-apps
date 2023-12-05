@@ -28,7 +28,7 @@ const config = {
   ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "<rootDir>/coverage",
+  coverageDirectory: '<rootDir>/coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -39,11 +39,7 @@ const config = {
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    "json",
-    "json-summary",
-    "lcov",
-  ],
+  coverageReporters: ['json', 'json-summary', 'lcov'],
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
@@ -52,7 +48,7 @@ const config = {
       functions: 0,
       lines: 0,
       statements: 0,
-    }
+    },
   },
 
   // A path to a custom dependency extractor
@@ -79,7 +75,7 @@ const config = {
   // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
-  maxWorkers: "50%",
+  maxWorkers: '50%',
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -162,7 +158,7 @@ const config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/?(*.)+(test).+(ts|tsx)"],
+  testMatch: ['**/?(*.)+(test).+(ts|tsx)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
