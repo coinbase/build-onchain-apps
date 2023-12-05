@@ -41,3 +41,11 @@ Thumbs.db
 .nx/cache
 
 package-lock.json
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
