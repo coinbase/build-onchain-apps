@@ -1499,7 +1499,7 @@ __metadata:
     "@typescript-eslint/utils": "npm:^5.54.1"
     autoprefixer: "npm:^10"
     babel-jest: "npm:^29.7.0"
-    client-analytics: "npm:^0.0.1"
+    client-analytics: "npm:0.0.1"
     eslint: "npm:^8.27.0"
     eslint-config-airbnb: "npm:19.0.4"
     eslint-config-airbnb-typescript: "npm:17.0.0"
@@ -6063,7 +6063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"client-analytics@npm:^0.0.1":
+"client-analytics@npm:0.0.1":
   version: 0.0.1
   resolution: "client-analytics@npm:0.0.1"
   dependencies:
