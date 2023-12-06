@@ -80,14 +80,16 @@ Read our contributing guide to learn about our development process, how to propo
 ### Develop
 
 To build and test either the CLI or the template, start by cloning the repo.
+
 ```bash
 ## Quick Start
 # Clone the repo
 git clone https://github.com/coinbase/build-onchain-apps.git
-cd build-onchain-apps
+cd apps/build-onchain-apps
 ```
 
 ### Develop the Build Onchain Apps - template
+
 ```
 # Go to template application
 cd apps/build-onchain-apps
@@ -98,6 +100,7 @@ yarn dev
 ```
 
 ### Develop the Build Onchain Apps - CLI
+
 ```
 # From the root repo
 # Install and build latest dependencies
