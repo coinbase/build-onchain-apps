@@ -1,9 +1,8 @@
 .NavigationMenuRoot {
-  margin-top: 20px;
+  height: 100%;
   display: flex;
   justify-content: center;
-  width: 100vw;
-  z-index: 1;
+  align-items: center;
 }
 
 .NavigationMenuList {

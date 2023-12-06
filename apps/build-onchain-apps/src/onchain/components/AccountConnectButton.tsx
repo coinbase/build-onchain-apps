@@ -75,7 +75,7 @@ export function AccountConnectButton() {
                   <Dialog.Root>
                     <Dialog.Trigger>
                       <Flex gap="3" align="center" justify="center">
-                        <Box width="auto">
+                        <Box width="auto" display={{ initial: 'none', md: 'block' }}>
                           <b>{getAccountBalance(data)}</b>
                         </Box>
                         <Box width="auto">
