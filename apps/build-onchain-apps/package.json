@@ -11,7 +11,7 @@
     "lint:check": "next lint",
     "start": "next start",
     "test": "yarn jest .",
-    "test:coverage": "yarn jest . --coverage; open coverage/lcov-report/index.html"
+    "test:coverage": "yarn jest . --coverage"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.7.2",
