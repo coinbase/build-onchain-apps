@@ -14,10 +14,13 @@ This repository contains a sample `BuyMeACoffee.sol` contract which allows the u
 ├── foundry.toml
 ├── script
 │   └── BuyMeACoffee.s.sol
+│   └── CustomERC155.s.sol
 ├── src
 │   └── BuyMeACoffee.sol
+│    └── CustomERC155.sol
 └── test
     └── BuyMeACoffee.t.sol
+    └── CustomERC155.t.sol
 
 ```
 
