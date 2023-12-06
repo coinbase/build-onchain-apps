@@ -1,7 +1,6 @@
 import { Theme, Container, Section } from '@radix-ui/themes';
 import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
-import { DefaultNavbar } from '@/components/Navbar';
 import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
@@ -22,9 +21,7 @@ export default function MintPage() {
 
       <div>
         <Theme radius="medium" scaling="100%">
-          <Header>
-            <DefaultNavbar />
-          </Header>
+          <Header />
         </Theme>
 
         <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>

@@ -1,5 +1,5 @@
-import { useState, ReactNode, useEffect } from 'react';
-import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
+import { useState, useEffect } from 'react';
+import { Box, Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -8,15 +8,15 @@ import { AccountConnectButton } from '@/onchain/components';
 import logo from '../../public/logo.svg';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.css';
+import { DefaultNavbar } from './Navbar';
 
 export type HeaderProps = {
-  children?: ReactNode;
   ghost?: boolean;
 };
 
 type ScrollState = 'at-top' | 'scrolling-up' | 'scrolling-down';
 
-function Header({ children, ghost }: HeaderProps) {
+function Header({ ghost }: HeaderProps) {
   const [scrollState, setScrollState] = useState<ScrollState>('at-top');
 
   useEffect(() => {
@@ -52,7 +52,10 @@ function Header({ children, ghost }: HeaderProps) {
             </NextLink>
           </Flex>
 
-          {children}
+          {/* TODO: how to make hamburger + drawer menu with Radix??? */}
+          <Flex align="center" justify="center" height="100%" display={{ initial: 'none', sm: 'flex' }}>
+            <DefaultNavbar />
+          </Flex>
 
           <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
             <AccountConnectButton />
