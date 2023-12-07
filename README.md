@@ -40,13 +40,13 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### Step 2: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
+#### Step 1.1: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env` file
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 ```
 
-#### Step 3: Install and Run your onchain app
+#### Step 1.2: Install and Run your onchain app
 
 ```bash
 # Install dependencies
@@ -60,6 +60,49 @@ yarn dev
   <img src='./docs/images/build-onchain-apps-step-2-date-11-25.gif' 
   width='800' alt='Build Onchain Apps'>
 </p>
+
+#### Step 2: Kick start your contracts
+
+```bash
+
+# Initialize git
+git init
+
+# Install Foundry
+
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+```
+
+#### Step 2.1: Build, test and format the sample contracts
+
+```bash
+
+cd contracts
+
+# Install openzeppelin
+forge install openzeppelin/openzeppelin-contracts --no-commit
+forge remappings > remappings.txt
+
+# Build
+forge build
+
+# Test
+forge test
+
+# Format
+forge fmt
+```
+
+#### Step 2.3: Deploy contracts to Base goerli
+
+Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key.
+
+```bash
+source .env
+
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+```
 
 #### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
 
