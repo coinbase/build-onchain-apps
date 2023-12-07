@@ -46,7 +46,10 @@ function useCollectionMetadata(enabled: boolean) {
     enabled,
   });
 
-  const fetchCollectionMetadata = useCallback(async (contractURI: string) => {
+  const fetchCollectionMetadata = useCallback(async () => {
+    if (!contractURI) {
+      return;
+    }
     const response = await fetch(contractURI);
     const json = (await response.json()) as { name: string; description: string; image: string };
     setResult({
@@ -55,11 +58,11 @@ function useCollectionMetadata(enabled: boolean) {
       imageAddress: ipfsToHTTP(json.image),
       isLoading: false,
     });
-  }, []);
+  }, [contractURI]);
 
   useEffect(() => {
     if (contractURI) {
-      void fetchCollectionMetadata(contractURI);
+      void fetchCollectionMetadata();
     }
   }, [contractURI, fetchCollectionMetadata]);
 
