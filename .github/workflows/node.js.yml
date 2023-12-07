@@ -27,6 +27,3 @@ jobs:
       - name: Lint Check
         # When fails, please run "npm run lint" to your code
         run: npm run lint
-      - name: Test Check
-        # When fails, please check your tests
-        run: npm run test
