@@ -81,6 +81,7 @@ foundryup
 cd contracts
 
 # Install openzeppelin
+forge install
 forge install openzeppelin/openzeppelin-contracts --no-commit
 forge remappings > remappings.txt
 
