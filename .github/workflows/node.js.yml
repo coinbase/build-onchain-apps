@@ -22,8 +22,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: Install dependencies
+      - name: CLI Install dependencies
         run: npm install
-      - name: Lint Check
+      - name: CLI Lint Check
+        # When fails, please run "npm run lint" to your code
+        run: npm run lint
+      - name: App Install dependencies
+        working-directory: ./apps/build-onchain-apps
+        run: npm install
+      - name: App Lint Check
+        working-directory: ./apps/build-onchain-apps
         # When fails, please run "npm run lint" to your code
         run: npm run lint
