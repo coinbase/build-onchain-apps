@@ -1,14 +1,14 @@
 # Changelog
 
-## 0.8.1
+## 0.9.0
 
 ### Patch Changes
 
-- 5028c14: - **docs**: easier instructions and setup (#138)
-  - **feat**: replaced Typescript "ES5" target with "ES2020" (#136)
-  - **feat**: added ERC1155 contracts (#133)
-  - **feat**: setting up the initial Jest configuration and tests (#128) (#134)
-  - **feat**: added Lint and Tests into the Github Actions for apps/build-onchain-apps (#135)
+- **docs**: easier instructions and setup (#138) (5028c14)
+- **feat**: replaced Typescript "ES5" target with "ES2020" (#136)
+- **feat**: added ERC1155 contracts (#133)
+- **feat**: setting up the initial Jest configuration and tests (#128) (#134)
+- **feat**: added Lint and Tests into the Github Actions for apps/build-onchain-apps (#135)
 
 ## 0.8.0
 
