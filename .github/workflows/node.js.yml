@@ -34,3 +34,7 @@ jobs:
         working-directory: ./apps/build-onchain-apps
         # When fails, please run "npm run lint" to your code
         run: npm run lint
+      - name: App Test Check
+        working-directory: ./apps/build-onchain-apps
+        # When fails, please check your tests
+        run: npm run test
