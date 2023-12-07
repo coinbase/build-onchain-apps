@@ -25,9 +25,6 @@ function useOnchainCoffeeMemos() {
     onSuccess: handleSuccess,
   });
 
-  console.log('refetchMemos', refetchMemos);
-  console.log('memos', memos);
-
   return {
     memos,
     refetchMemos,
