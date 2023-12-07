@@ -2,7 +2,13 @@ import { getAccountBalance } from './balance';
 
 describe('getAccountBalance', () => {
   it('should return a string of class names', () => {
-    const accountBalance = getAccountBalance({ formatted: '1234567890', symbol: 'test' });
-    expect(accountBalance).toEqual('12345 test');
+    const wagmiFetchBalanceResult = {
+      decimals: 18,
+      formatted: "0.097970395124611628",
+      symbol: "ETH",
+      value: 97970395124611628n
+    };
+    const accountBalance = getAccountBalance(wagmiFetchBalanceResult);
+    expect(accountBalance).toEqual('0.097 ETH');
   });
 });

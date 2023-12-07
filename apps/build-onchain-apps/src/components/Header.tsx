@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
+import { Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -53,7 +53,12 @@ function Header({ ghost }: HeaderProps) {
           </Flex>
 
           {/* TODO: how to make hamburger + drawer menu with Radix??? */}
-          <Flex align="center" justify="center" height="100%" display={{ initial: 'none', sm: 'flex' }}>
+          <Flex
+            align="center"
+            justify="center"
+            height="100%"
+            display={{ initial: 'none', sm: 'flex' }}
+          >
             <DefaultNavbar />
           </Flex>
 
