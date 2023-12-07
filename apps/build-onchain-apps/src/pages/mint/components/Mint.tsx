@@ -1,4 +1,5 @@
 import { Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
+import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
 import abi from '@/onchain/contract/Custom1155';
@@ -53,7 +54,7 @@ export function Mint() {
   return (
     <Grid columns={{ md: '420px 1fr' }} gap={{ md: '9' }}>
       <Flex direction="column" align="center" gap="5">
-        <img src={imageAddress} alt={collectionName} />
+        <Image src={imageAddress} alt={collectionName} />
       </Flex>
       <Flex direction="column" align="center" gap="5">
         <Text size="5" weight="bold" mb="1">

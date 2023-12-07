@@ -10,8 +10,8 @@
     "lint": "next lint --fix",
     "lint:check": "next lint",
     "start": "next start",
-    "test": "yarn jest .",
-    "test:coverage": "yarn jest . --coverage"
+    "test": "jest .",
+    "test:coverage": "jest . --coverage"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.7.2",
