@@ -40,6 +40,14 @@ curl -L https://foundry.paradigm.xyz | bash
 foundryup
 ```
 
+### Install openzeppelin
+
+```shell
+forge install
+forge install openzeppelin/openzeppelin-contracts --no-commit
+forge remappings > remappings.txt
+```
+
 ### Build
 
 ```shell
@@ -60,7 +68,7 @@ $ forge fmt
 
 ### Deploy to Base Goerli
 
-Create a `.env` file using the `.env.example` file provided.
+Create a `.env` file using the `.env.example` file provided. Update the private key value with your private key.
 
 ```shell
 $ source .env
