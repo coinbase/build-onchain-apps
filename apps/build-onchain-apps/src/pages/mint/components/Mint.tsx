@@ -54,7 +54,7 @@ export function Mint() {
   return (
     <Grid columns={{ md: '420px 1fr' }} gap={{ md: '9' }}>
       <Flex direction="column" align="center" gap="5">
-        <Image src={imageAddress} alt={collectionName} />
+        <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </Flex>
       <Flex direction="column" align="center" gap="5">
         <Text size="5" weight="bold" mb="1">
