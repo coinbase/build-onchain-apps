@@ -2,7 +2,7 @@
 # cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: CLI
 on:
   push:
     branches: ['main']
@@ -27,14 +27,3 @@ jobs:
       - name: CLI Lint Check
         # When fails, please run "npm run lint" to your code
         run: npm run lint
-      - name: App Install dependencies
-        working-directory: ./apps/build-onchain-apps
-        run: npm install
-      - name: App Lint Check
-        working-directory: ./apps/build-onchain-apps
-        # When fails, please run "npm run lint" to your code
-        run: npm run lint
-      - name: App Test Check
-        working-directory: ./apps/build-onchain-apps
-        # When fails, please check your tests
-        run: npm run test
