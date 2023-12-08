@@ -14,16 +14,16 @@
 
 ### Minor Changes
 
-- **feat**: Upgraded from v1 to Yarn v4 (#123) (4c62641)
-- **feat**: Added Foundry support (#119)
-- **feat**: Added Basic Mint page example (#117)
-- **feat**: Init support Web Vitals with the Perfume.js library (#113)
+- **feat**: upgraded from v1 to Yarn v4 (#123) (4c62641)
+- **feat**: added Foundry support (#119)
+- **feat**: added Basic Mint page example (#117)
+- **feat**: init support Web Vitals with the Perfume.js library (#113)
 
 ## 0.7.3
 
 ### Patch Changes
 
-- **feat** : Create Navbar component using @radix-ui/react-navigation-menu (d0f433b)
+- **feat** : create Navbar component using @radix-ui/react-navigation-menu (d0f433b)
 
 ## 0.7.2
 
@@ -128,7 +128,7 @@
 
 ### Patch Changes
 
-- **chore:** Added some extra context in the README.md
+- **chore:** added some extra context in the README.md
 
 ## 0.0.3
 
