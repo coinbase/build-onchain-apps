@@ -21,7 +21,10 @@ const config = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: undefined,
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}",
+    "!**/node_modules/**",
+  ],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: '<rootDir>/coverage',
@@ -172,8 +175,12 @@ const config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    // Required to find the root babel config when jest is ran in subfolders
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        babelConfig: true,
+      },
+    ],
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
