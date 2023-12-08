@@ -1530,7 +1530,7 @@ __metadata:
     "@typescript-eslint/type-utils": "npm:^5.54.1"
     "@typescript-eslint/types": "npm:^5.54.1"
     "@typescript-eslint/utils": "npm:^5.54.1"
-    autoprefixer: "npm:^10"
+    autoprefixer: "npm:^10.4.16"
     babel-jest: "npm:^29.7.0"
     client-analytics: "npm:0.0.1"
     eslint: "npm:^8.27.0"
@@ -1556,13 +1556,13 @@ __metadata:
     next: "npm:13.5.6"
     next-pwa: "npm:5.6.0"
     next-themes: "npm:^0.2.1"
-    postcss: "npm:^8"
+    postcss: "npm:^8.4.32"
     prettier: "npm:3.0.3"
     react: "npm:^18"
     react-dom: "npm:^18"
     react-remove-scroll: "npm:^2.5.7"
     scroll-into-view-if-needed: "npm:^3.1.0"
-    tailwindcss: "npm:^3"
+    tailwindcss: "npm:^3.3.6"
     ts-jest: "npm:^29.1.1"
     typescript: "npm:~5.0.4"
     viem: "npm:^1.19.7"
@@ -5550,7 +5550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10":
+"autoprefixer@npm:^10.4.16":
   version: 10.4.16
   resolution: "autoprefixer@npm:10.4.16"
   dependencies:
@@ -10295,7 +10295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.6":
+"nanoid@npm:^3.3.6, nanoid@npm:^3.3.7":
   version: 3.3.7
   resolution: "nanoid@npm:3.3.7"
   bin:
@@ -11055,7 +11055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.31, postcss@npm:^8, postcss@npm:^8.4.23":
+"postcss@npm:8.4.31, postcss@npm:^8.4.23":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -11063,6 +11063,17 @@ __metadata:
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.0.2"
   checksum: 748b82e6e5fc34034dcf2ae88ea3d11fd09f69b6c50ecdd3b4a875cfc7cdca435c958b211e2cb52355422ab6fccb7d8f2f2923161d7a1b281029e4a913d59acf
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.32":
+  version: 8.4.32
+  resolution: "postcss@npm:8.4.32"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 39308a9195fa34d4dbdd7b58a896cff0c7809f84f7a4ac1b95b68ca86c9138a395addff33075668ed3983d41b90aac05754c445237a9365eb1c3a5602ebd03ad
   languageName: node
   linkType: hard
 
@@ -12424,9 +12435,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3":
-  version: 3.3.5
-  resolution: "tailwindcss@npm:3.3.5"
+"tailwindcss@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "tailwindcss@npm:3.3.6"
   dependencies:
     "@alloc/quick-lru": "npm:^5.2.0"
     arg: "npm:^5.0.2"
@@ -12453,7 +12464,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: a57c0a9cdba9db19097e34e25b7e4690fab43f31ba200afc3bb9635a03036ca93e9884a17b616fb8a2486d57d2ecc9a06862ce4685b3ace57f7a67436e7594a0
+  checksum: 69caade773249cb963c33e81f85b7fc423dcb74b416727483f434f4e12874187f633970c9de864fa96736289abaf71189314a53589ada0be6c09ccb0e8b78391
   languageName: node
   linkType: hard
 
