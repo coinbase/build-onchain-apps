@@ -20,8 +20,7 @@
       "options": {
         "lintFilePatterns": [
           "./src/**/*.ts",
-          "./package.json",
-          "./scripts/**/*.ts"
+          "./package.json"
         ]
       }
     },
