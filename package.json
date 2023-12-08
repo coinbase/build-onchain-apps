@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@nx/devkit": "^17.1.2",
+    "@nx/js": "^17.2.0",
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
@@ -32,7 +33,6 @@
     "@changesets/cli": "^2.26.2",
     "@nx/eslint": "17.1.2",
     "@nx/eslint-plugin": "17.1.2",
-    "@nx/js": "^17.2.0",
     "@nx/vite": "17.1.2",
     "@nx/workspace": "17.1.2",
     "@swc-node/register": "~1.6.7",
