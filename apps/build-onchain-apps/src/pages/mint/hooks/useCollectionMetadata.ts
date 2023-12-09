@@ -45,7 +45,7 @@ function useCollectionMetadata(enabled: boolean) {
     if (!contractURI) {
       return;
     }
-    const response = await fetch(contractURI);
+    const response = await fetch(contractURI as URL);
     const json = (await response.json()) as { name: string; description: string; image: string };
     setResult({
       collectionName: json.name,
