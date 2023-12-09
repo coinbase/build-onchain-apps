@@ -1530,6 +1530,7 @@ __metadata:
     "@typescript-eslint/type-utils": "npm:^5.54.1"
     "@typescript-eslint/types": "npm:^5.54.1"
     "@typescript-eslint/utils": "npm:^5.54.1"
+    abitype: "npm:^0.10.3"
     autoprefixer: "npm:^10.4.16"
     babel-jest: "npm:^29.7.0"
     client-analytics: "npm:0.0.1"
@@ -5135,6 +5136,21 @@ __metadata:
     zod:
       optional: true
   checksum: ec559461d901d456820faf307e21b2c129583d44f4c68257ed9d0d44eae461114a7049046e715e069bc6fa70c410f644e06bdd2c798ac30d0ada794cd2a6c51e
+  languageName: node
+  linkType: hard
+
+"abitype@npm:^0.10.3":
+  version: 0.10.3
+  resolution: "abitype@npm:0.10.3"
+  peerDependencies:
+    typescript: ">=5.0.4"
+    zod: ^3 >=3.22.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+    zod:
+      optional: true
+  checksum: f9e302a5761bf0b1c71b4e90f06d078e34d8ab1df3161c4353a3e3792e85b4997ef87bd1ed899fc3309775e3422f696254a24377b70897143b6d6ffce94b458a
   languageName: node
   linkType: hard
 

@@ -51,6 +51,7 @@
     "@typescript-eslint/type-utils": "^5.54.1",
     "@typescript-eslint/types": "^5.54.1",
     "@typescript-eslint/utils": "^5.54.1",
+    "abitype": "^0.10.3",
     "autoprefixer": "^10.4.16",
     "babel-jest": "^29.7.0",
     "eslint": "^8.27.0",
