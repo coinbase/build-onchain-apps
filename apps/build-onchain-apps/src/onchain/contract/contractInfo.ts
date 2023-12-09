@@ -7,8 +7,6 @@ type Contract = {
   address: `0x${string}`;
 };
 
-// TODO: A future enhancement would be to support multiple mints, getting chain, abi, and
-// contract address through dynamic routes, like `/mints/[tokenType]/[chain]/[contractAddress]`
 export const CONTRACT_BUY_ME_COFFEE: Contract = {
   abi: BuyMeACoffeeABI,
   address: '0xeeC0bD3B58293ff45004C7eFf02917Beef28257c',
