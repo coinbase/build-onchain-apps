@@ -2,22 +2,14 @@ import { Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
-import abi from '@/onchain/contract/Custom1155';
+import { CONTRACT_CUSTOM_1155 } from '@/onchain/contract/contractInfo';
 import useCollectionMetadata from '../hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
-// A future enhancement would be to support multiple mints, getting chain, abi, and
-// contract address through dynamic routes, like `/mints/[tokenType]/[chain]/[contractAddress]`
-const CONTRACT_ADDRESS: `0x${string}` = '0xBB955f815131818D62A220F70F5938daF812522d';
 const EXPECTED_CHAIN = baseGoerli;
 
-const CONTRACT = {
-  abi,
-  address: CONTRACT_ADDRESS,
-};
-
-export function Mint() {
+function Mint() {
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
 
@@ -27,7 +19,8 @@ export function Mint() {
     useCollectionMetadata(onCorrectNetwork);
 
   const { config } = usePrepareContractWrite({
-    ...CONTRACT,
+    address: CONTRACT_CUSTOM_1155.address,
+    abi: CONTRACT_CUSTOM_1155.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
     enabled: onCorrectNetwork,
@@ -66,3 +59,5 @@ export function Mint() {
     </Grid>
   );
 }
+
+export default Mint;
