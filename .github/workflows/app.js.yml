@@ -33,3 +33,7 @@ jobs:
         working-directory: ./apps/build-onchain-apps
         # When fails, please check your tests
         run: npm run test
+      - name: App Build Check
+        working-directory: ./apps/build-onchain-apps
+        # When fails, please check your tests
+        run: npm run build
