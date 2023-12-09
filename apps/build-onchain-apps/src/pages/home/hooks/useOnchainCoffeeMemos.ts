@@ -31,4 +31,4 @@ function useOnchainCoffeeMemos() {
   };
 }
 
-export { useOnchainCoffeeMemos };
+export default useOnchainCoffeeMemos;
