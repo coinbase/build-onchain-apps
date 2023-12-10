@@ -4,20 +4,10 @@ title: "Bug: "
 labels: ["type: bug"]
 
 body:
-  - type: input
-    id: description
-    attributes:
-      label: Describe the bug
-      description: A clear and concise description of what the bug is.
-      placeholder: Tell us what you see!
-    validations:
-      required: true
-
   - type: textarea
     id: steps
     attributes:
-      label: Steps
-      description: Steps to reproduce the behavior.
+      label: Describe the bug and the steps to reproduce it
       placeholder: |
         1. Go to '...'
         2. Click on '....'
@@ -29,23 +19,13 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
-      description: A clear and concise description of what you expected to happen.
-    validations:
-      required: true
-
-  - type: textarea
-    id: additional
-    attributes:
-      label: Additional info
-      description: If applicable, include links to screenshots or error logs
+      label: What's the expected behavior?
 
   - type: textarea
     id: environment
     attributes:
-      label: Environment
-      description: Please fill in details for bugs reported in your environment
+      label: What version of the libraries are you using?
       placeholder: |
-        - OS: [e.g. Fedora]
-        - Version [e.g. 37]
+        - Build Onchain Apps: [e.g. 0.9.x]
+        - Wagmi [e.g. 1.4.x]
 
