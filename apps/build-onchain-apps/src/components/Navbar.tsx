@@ -65,7 +65,7 @@ export function DefaultNavbar() {
   return (
     <Navbar>
       <NavbarLink href="/">Home</NavbarLink>
-      <NavbarLink href="/home">Buy My Coffee</NavbarLink>
+      <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
       <NavbarLink href="/mint">Mint</NavbarLink>
     </Navbar>
   );

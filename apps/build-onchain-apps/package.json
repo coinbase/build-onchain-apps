@@ -40,6 +40,7 @@
     "@babel/preset-typescript": "^7.23.3",
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
     "@types/babel__preset-env": "^7",
     "@types/jest": "^29.5.10",
     "@types/minipass": "^3.3.5",
