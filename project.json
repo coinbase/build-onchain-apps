@@ -18,11 +18,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "./src/**/*.ts",
-          "./package.json",
-          "./scripts/**/*.ts"
-        ]
+        "lintFilePatterns": ["./src/**/*.ts", "./package.json"]
       }
     },
     "test": {
@@ -31,18 +27,6 @@
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "coverage/@coinbase/build-onchain-apps"
-      }
-    },
-    "publish": {
-      "command": "node scripts/publish.mjs @coinbase/build-onchain-apps {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
-    "local-registry": {
-      "executor": "@nx/js:verdaccio",
-      "options": {
-        "port": 4873,
-        "config": ".verdaccio/config.yml",
-        "storage": "tmp/local-registry/storage"
       }
     }
   },
