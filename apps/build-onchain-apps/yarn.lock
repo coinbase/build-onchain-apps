@@ -1534,7 +1534,6 @@ __metadata:
     abitype: "npm:^0.10.3"
     autoprefixer: "npm:^10.4.16"
     babel-jest: "npm:^29.7.0"
-    client-analytics: "npm:0.0.1"
     eslint: "npm:^8.27.0"
     eslint-config-airbnb: "npm:19.0.4"
     eslint-config-airbnb-typescript: "npm:17.0.0"
@@ -1558,6 +1557,7 @@ __metadata:
     next: "npm:13.5.6"
     next-pwa: "npm:5.6.0"
     next-themes: "npm:^0.2.1"
+    perfume.js: "npm:9.2.0"
     postcss: "npm:^8.4.32"
     prettier: "npm:3.0.3"
     react: "npm:^18"
@@ -4206,13 +4206,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/history@npm:^4.7.11":
-  version: 4.7.11
-  resolution: "@types/history@npm:4.7.11"
-  checksum: 3facf37c2493d1f92b2e93a22cac7ea70b06351c2ab9aaceaa3c56aa6099fb63516f6c4ec1616deb5c56b4093c026a043ea2d3373e6c0644d55710364d02c934
-  languageName: node
-  linkType: hard
-
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0, @types/istanbul-lib-coverage@npm:^2.0.1":
   version: 2.0.6
   resolution: "@types/istanbul-lib-coverage@npm:2.0.6"
@@ -4325,16 +4318,6 @@ __metadata:
   dependencies:
     "@types/react": "npm:*"
   checksum: 33b53078ed7e9e0cfc4dc691e938f7db1cc06353bc345947b41b581c3efe2b980c9e4eb6460dbf5ddc521dd91959194c970221a2bd4bfad9d23ebce338e12938
-  languageName: node
-  linkType: hard
-
-"@types/react-router@npm:^5.1.20":
-  version: 5.1.20
-  resolution: "@types/react-router@npm:5.1.20"
-  dependencies:
-    "@types/history": "npm:^4.7.11"
-    "@types/react": "npm:*"
-  checksum: 1f7eee61981d2f807fa01a34a0ef98ebc0774023832b6611a69c7f28fdff01de5a38cabf399f32e376bf8099dcb7afaf724775bea9d38870224492bea4cb5737
   languageName: node
   linkType: hard
 
@@ -6116,13 +6099,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"charenc@npm:0.0.2":
-  version: 0.0.2
-  resolution: "charenc@npm:0.0.2"
-  checksum: a45ec39363a16799d0f9365c8dd0c78e711415113c6f14787a22462ef451f5013efae8a28f1c058f81fc01f2a6a16955f7a5fd0cd56247ce94a45349c89877d8
-  languageName: node
-  linkType: hard
-
 "chokidar@npm:^3.5.3":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
@@ -6194,17 +6170,6 @@ __metadata:
   peerDependencies:
     webpack: ">=4.0.0 <6.0.0"
   checksum: 55fe230dddb9fdf2b3cbffa7fab4e47570c84d524f9ae81a3fa1f58ec4077349e9aabf6a2b5bcf4915f1e4205d2dd6b945e633146fccb21dd59989260527615f
-  languageName: node
-  linkType: hard
-
-"client-analytics@npm:0.0.1":
-  version: 0.0.1
-  resolution: "client-analytics@npm:0.0.1"
-  dependencies:
-    "@types/react-router": "npm:^5.1.20"
-    md5: "npm:^2.3.0"
-    perfume.js: "npm:^9.2.0"
-  checksum: 4ad1ac36b30dce8329d1d7c3f9f00b7ac77853f802c64b79b078673f7e150fddc383ca5c71f80b07d4eded444bb69f97b5024863e76a7d3cb562467022bc7d12
   languageName: node
   linkType: hard
 
@@ -6446,13 +6411,6 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 5738c312387081c98d69c98e105b6327b069197f864a60593245d64c8089c8a0a744e16349281210d56835bb9274130d825a78b2ad6853ca13cfbeffc0c31750
-  languageName: node
-  linkType: hard
-
-"crypt@npm:0.0.2":
-  version: 0.0.2
-  resolution: "crypt@npm:0.0.2"
-  checksum: adbf263441dd801665d5425f044647533f39f4612544071b1471962209d235042fb703c27eea2795c7c53e1dfc242405173003f83cf4f4761a633d11f9653f18
   languageName: node
   linkType: hard
 
@@ -8633,13 +8591,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:~1.1.6":
-  version: 1.1.6
-  resolution: "is-buffer@npm:1.1.6"
-  checksum: ae18aa0b6e113d6c490ad1db5e8df9bdb57758382b313f5a22c9c61084875c6396d50bbf49315f5b1926d142d74dfb8d31b40d993a383e0a158b15fea7a82234
-  languageName: node
-  linkType: hard
-
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
@@ -10159,17 +10110,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"md5@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "md5@npm:2.3.0"
-  dependencies:
-    charenc: "npm:0.0.2"
-    crypt: "npm:0.0.2"
-    is-buffer: "npm:~1.1.6"
-  checksum: 14a21d597d92e5b738255fbe7fe379905b8cb97e0a49d44a20b58526a646ec5518c337b817ce0094ca94d3e81a3313879c4c7b510d250c282d53afbbdede9110
-  languageName: node
-  linkType: hard
-
 "media-query-parser@npm:^2.0.2":
   version: 2.0.2
   resolution: "media-query-parser@npm:2.0.2"
@@ -11002,7 +10942,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfume.js@npm:^9.2.0":
+"perfume.js@npm:9.2.0":
   version: 9.2.0
   resolution: "perfume.js@npm:9.2.0"
   dependencies:
