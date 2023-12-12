@@ -21,7 +21,7 @@
         "lintFilePatterns": [
           "./src/**/*.ts",
           "./package.json",
-          "./scripts/**/*.ts"
+          "./scripts/*.ts"
         ]
       }
     },
