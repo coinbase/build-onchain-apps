@@ -15,6 +15,7 @@
     "tslib": "^2.3.0"
   },
   "scripts": {
+    "build": "nx build",
     "test": "nx test",
     "format": "nx format",
     "format:check": "nx format:check",
@@ -28,6 +29,7 @@
     "@changesets/cli": "^2.26.2",
     "@nx/eslint": "17.1.2",
     "@nx/eslint-plugin": "17.1.2",
+    "@nx/js": "^17.2.0",
     "@nx/vite": "17.1.2",
     "@nx/workspace": "17.1.2",
     "@swc-node/register": "~1.6.7",
