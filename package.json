@@ -9,7 +9,6 @@
     "figlet": "^1.7.0",
     "got": "^11.8.5",
     "inquirer": "^8.2.5",
-    "nx": "^17.1.2",
     "rimraf": "^5.0.5",
     "tar": "4.4.18",
     "tslib": "^2.3.0"
@@ -43,6 +42,7 @@
     "@vitest/ui": "~0.32.0",
     "eslint": "~8.46.0",
     "eslint-config-prettier": "^9.0.0",
+    "nx": "^17.1.2",
     "prettier": "^2.6.2",
     "typescript": "~5.3.3",
     "verdaccio": "^5.27.0",
