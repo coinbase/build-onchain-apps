@@ -1,12 +1,12 @@
 import '@radix-ui/themes/styles.css';
-import '@/global.css';
+import '../src/styles/global.css';
 
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
-import OnchainProviders from '@/onchain/OnchainProviders';
-import { MobileMenuProvider } from '@/components/MobileMenu';
-import { initAnalytics } from '@/utils/analytics';
+import OnchainProviders from '../src/onchain/OnchainProviders';
+import { MobileMenuProvider } from '../src/components/MobileMenu';
+import { initAnalytics } from '../src/utils/analytics';
 import type { AppProps } from 'next/app';
 
 const themeValues = { light: 'light-theme', dark: 'dark-theme' };

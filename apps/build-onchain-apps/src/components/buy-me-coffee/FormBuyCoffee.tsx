@@ -4,7 +4,7 @@ import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from
 
 import { parseEther } from 'viem';
 import { Card, Text, Flex, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
-import { CONTRACT_BUY_ME_COFFEE } from '@/onchain/contract/contractInfo';
+import { CONTRACT_BUY_ME_COFFEE } from '../../onchain/contract/contractInfo';
 
 // TODO: Home and Buy Me a Coffee should be the same routes
 
