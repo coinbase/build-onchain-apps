@@ -4,8 +4,6 @@
   "repository": "https://github.com/coinbase/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
-    "@nx/devkit": "^17.1.2",
-    "@nx/js": "^17.2.0",
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
@@ -17,13 +15,10 @@
     "tslib": "^2.3.0"
   },
   "scripts": {
-    "build": "nx build",
     "test": "nx test",
     "format": "nx format",
     "format:check": "nx format:check",
     "lint": "nx lint",
-    "local:start-registry": "nx local-registry",
-    "local:publish": "nx publish @coinbase/build-onchain-apps",
     "release:check": "changeset status --verbose --since=origin/main",
     "release:publish": "yarn install && yarn build && changeset publish",
     "release:version": "changeset version && yarn install --immutable"

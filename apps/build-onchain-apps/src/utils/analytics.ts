@@ -20,11 +20,7 @@ function initWebVitals() {
   perfumeLib = require('perfume.js');
   perfumeLib.initPerfume({
     analyticsTracker: ({ metricName, data }) => {
-      console.log(
-        `%c⚡️ ${metricName} `,
-        'color:#ff6d00;font-size:11px;',
-        data,
-      );
+      console.log(`%c⚡️ ${metricName} `, 'color:#ff6d00;font-size:11px;', data);
     },
   });
 }
