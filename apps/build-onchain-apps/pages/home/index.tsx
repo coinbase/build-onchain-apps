@@ -1,7 +1,7 @@
 import { Theme, Flex, Container, Section } from '@radix-ui/themes';
-import Header from '@/components/Header';
-import { TitleAndMetaTags } from '@/components/TitleAndMetaTags';
-import styles from './Home.module.css';
+import Header from '../../src/components/Header';
+import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
+import styles from '../../src/styles/Home.module.css';
 
 export default function Home() {
   return (

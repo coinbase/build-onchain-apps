@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
 import { useContractRead } from 'wagmi';
-import { CONTRACT_BUY_ME_COFFEE } from '@/onchain/contract/contractInfo';
-import { markStep } from '@/utils/analytics';
+import { CONTRACT_BUY_ME_COFFEE } from '../onchain/contract/contractInfo';
+import { markStep } from '../utils/analytics';
 
-import type { CoffeeMemo } from '@/types';
+import type { CoffeeMemo } from '../types';
 
 /**
  * Hooks is abstracting away the logic of calling a read-only function on a contract.
