@@ -9,6 +9,7 @@ import {
   removeDownloadedApps,
 } from './utils/apps';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
+import { initGit, isGitInstalled } from './utils/git';
 
 // Default location for all onchain applications
 const APPS_DIR = 'apps/';
@@ -48,17 +49,16 @@ export const createProject = async () => {
       type: 'input',
       name: 'newAppName',
       message: 'Enter the name for your new onchain app:',
-      validate: (input: string) => !!input || 'onchain app name cannot be empty.',
+      validate: (input: string) =>
+        !!input || 'onchain app name cannot be empty.',
     },
   ]);
 
   const newAppName = newAppNameAnswer.newAppName;
   const newAppDir = getProjectDir(APPS_DIR + newAppName);
-  
+
   if (fs.existsSync(newAppDir)) {
-    console.error(
-      chalk.red('A directory with the App name already exists.')
-    );
+    console.error(chalk.red('A directory with the App name already exists.'));
     removeDownloadedApps();
     process.exit(1);
   }
@@ -69,5 +69,10 @@ export const createProject = async () => {
   if (isPackageJsonUpdated) {
     displayFinalInstructions(newAppName);
   }
+
+  if (isGitInstalled()) {
+    initGit(newAppDir);
+  }
+
   removeDownloadedApps();
 };
