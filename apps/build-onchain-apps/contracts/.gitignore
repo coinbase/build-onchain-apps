@@ -6,9 +6,10 @@ out/
 !/broadcast
 /broadcast/*/31337/
 /broadcast/**/dry-run/
-
+broadcast/
 # Docs
 docs/
 
 # Dotenv file
 .env
+

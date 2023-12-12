@@ -4,3 +4,6 @@
 [submodule "apps/build-onchain-apps/contracts/lib/openzeppelin-contracts"]
 	path = apps/build-onchain-apps/contracts/lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "lib/openzeppelin-contracts"]
+	path = lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
