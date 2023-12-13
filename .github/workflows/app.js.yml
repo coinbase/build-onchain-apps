@@ -36,4 +36,6 @@ jobs:
       - name: App Test Build
         working-directory: ./apps/build-onchain-apps
         # When fails, please check your build
-        run: npm run build
+        run: | 
+          cp .env.local.default .env.local
+          npm run build
