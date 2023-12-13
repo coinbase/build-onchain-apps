@@ -76,5 +76,5 @@ export const createProject = async () => {
     initGit(newAppDir);
   }
 
-  // removeDownloadedApps();
+  removeDownloadedApps();
 };
