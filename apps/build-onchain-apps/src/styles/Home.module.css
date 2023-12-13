@@ -14,7 +14,7 @@
   z-index: 2;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(235, 235, 245, 0.38);
+  color: rgb(235 235 245 / 38%);
   transition:
     color 0.4s,
     opacity 0.4s;
@@ -53,5 +53,5 @@
   line-height: 1.7;
   font-size: 0.875em;
   color: var(--vp-code-block-color);
-  transition: rgba(235, 235, 245, 0.6);
+  transition: rgb(235 235 245 / 60%);
 }

@@ -19,6 +19,7 @@ body {
   margin: 0;
   min-width: 320px;
   color: var(--gray-12);
+  text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -43,6 +44,7 @@ pre {
   font-size: 1em;
 }
 
+/* stylelint-disable-next-line */
 #__next {
   position: relative;
   z-index: 0;
