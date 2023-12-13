@@ -19,7 +19,7 @@ const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '';
 if (!projectId) {
   const providerErrMessage =
     'To connect to all Wallets you need to provide a NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID env variable';
-  console.error(providerErrMessage);
+  throw new Error(providerErrMessage);
 }
 
 // TODO Docs ~~~
