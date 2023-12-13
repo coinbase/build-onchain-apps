@@ -13,7 +13,7 @@ import { initGit, isGitInstalled } from './utils/git';
 
 // Default location for all onchain applications
 const APPS_DIR = 'apps/';
-const MAIN_APP_NAME = 'build-onchain-apps';
+const MAIN_APP_NAME = 'build-onchain-apps-restructure-contracts-folder';
 
 /**
  * Responsible for copying the
