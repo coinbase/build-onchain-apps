@@ -18,17 +18,20 @@ jobs:
           submodules: recursive
 
       - name: Install Foundry
+        working-directory: ./apps/build-onchain-apps/contracts
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
 
       - name: Run Forge build
+        working-directory: ./apps/build-onchain-apps/contracts
         run: |
           forge --version
           forge build --sizes
         id: build
 
       - name: Run Forge tests
+        working-directory: ./apps/build-onchain-apps/contracts
         run: |
           forge test -vvv
         id: test
