@@ -50,4 +50,3 @@ package-lock.json
 !.yarn/sdks
 !.yarn/versions
 
-lib/
