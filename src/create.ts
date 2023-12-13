@@ -63,7 +63,9 @@ export const createProject = async () => {
     process.exit(1);
   }
 
-  fs.cpSync(getAppDir(MAIN_APP_NAME), newAppDir, { recursive: true });
+  fs.cpSync(getAppDir(MAIN_APP_NAME), newAppDir, {
+    recursive: true,
+  });
   const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
 
   if (isPackageJsonUpdated) {
@@ -74,5 +76,5 @@ export const createProject = async () => {
     initGit(newAppDir);
   }
 
-  removeDownloadedApps();
+  // removeDownloadedApps();
 };
