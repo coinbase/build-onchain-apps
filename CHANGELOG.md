@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0
+
+### Minor Changes
+
+- 846aa54: - **fix**: mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package.
+
 ## 0.10.0
 
 ### Minor Changes
