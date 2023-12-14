@@ -1,8 +1,27 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import { render } from '@testing-library/react';
 import Header from './Header';
 
-jest.mock('wagmi');
+jest.mock('wagmi', () => ({
+  useAccount: jest.fn(() => ({
+    address: null,
+    isError: null,
+    isLoading: null,
+  })),
+  useBalance: jest.fn(),
+  useDisconnect: jest.fn(),
+}));
+
+jest.mock('@rainbow-me/rainbowkit', () => ({
+  ConnectButton: jest.fn(() => ({
+    address: null,
+    isError: null,
+    isLoading: null,
+  })),
+}));
 
 describe('Header', () => {
   // Changes scroll state based on user scroll behavior
