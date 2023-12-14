@@ -5,10 +5,3 @@
 import 'jest-extended';
 // Enable jest-dom functions
 import '@testing-library/jest-dom';
-
-// WalletConnect has dependencies that do not run in the node environment.
-// To bypass this we'll mock the connector.
-jest.mock('@wagmi/core/connectors/walletConnect');
-
-
-jest.mock('wagmi');
