@@ -40,10 +40,11 @@ curl -L https://foundry.paradigm.xyz | bash
 foundryup
 ```
 
-### Install openzeppelin
+### Install dependencies
 
 ```shell
 forge install
+forge remappings > remappings.txt
 ```
 
 ### Build
