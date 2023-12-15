@@ -25,13 +25,6 @@ function initWebVitals() {
   });
 }
 
-export const markStep = function (stepName: string) {
-  if (isClient() && perfumeLib && perfumeLib.markStep) {
-    perfumeLib.end('perf.' + stepName);
-    perfumeLib.start('perf.' + stepName);
-  }
-};
-
 export const initAnalytics = function () {
   if (isClient()) {
     try {
@@ -41,5 +34,12 @@ export const initAnalytics = function () {
         console.error(e);
       }
     }
+  }
+};
+
+export const markStep = function (stepName: string) {
+  if (isClient() && perfumeLib && perfumeLib.markStep) {
+    perfumeLib.end('perf.' + stepName);
+    perfumeLib.start('perf.' + stepName);
   }
 };
