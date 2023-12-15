@@ -81,8 +81,10 @@ foundryup
 ```bash
 cd contracts
 
-# Install openzeppelin
+### Install dependencies
+
 forge install
+forge remappings > remappings.txt
 
 # Build
 forge build

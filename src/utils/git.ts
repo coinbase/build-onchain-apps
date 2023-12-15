@@ -12,11 +12,6 @@ export function isGitInstalled() {
 export function initGit(appDir: string) {
   try {
     execSync('git init', { cwd: appDir, stdio: 'ignore' });
-    execSync('git add -A', { cwd: appDir, stdio: 'ignore' });
-    execSync('git commit -m "Initial commit from Create Onchain App"', {
-      cwd: appDir,
-      stdio: 'ignore',
-    });
     execSync(
       'git submodule add https://github.com/openzeppelin/openzeppelin-contracts apps/build-onchain-apps/contracts/lib/openzeppelin-contract',
       {
