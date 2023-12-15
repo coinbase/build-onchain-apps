@@ -1,5 +1,5 @@
 import { Theme, Flex, Container, Section } from '@radix-ui/themes';
-import Header from '../../src/components/Header';
+import Header from '../../src/components/header/Header';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 import styles from '../../src/styles/Home.module.css';
 

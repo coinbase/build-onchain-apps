@@ -1,6 +1,6 @@
 import { Theme, Container, Section } from '@radix-ui/themes';
 import dynamic from 'next/dynamic';
-import Header from '../../src/components/Header';
+import Header from '../../src/components/header/Header';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { Theme, Box, Container, Flex, Grid, Section, Text } from '@radix-ui/themes';
-import Header from '../../src/components/Header';
+import Header from '../../src/components/header/Header';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 import useOnchainCoffeeMemos from '../../src/hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from '../../src/components/buy-me-coffee/FormBuyCoffee';

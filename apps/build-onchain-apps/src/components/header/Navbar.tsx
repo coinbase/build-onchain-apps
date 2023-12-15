@@ -7,8 +7,8 @@ import {
   type NavigationMenuLinkProps,
 } from '@radix-ui/react-navigation-menu';
 import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
-import { classNames } from '../utils/classNames';
-import useActiveLink from '../hooks/useActiveLink';
+import { classNames } from '../../utils/classNames';
+import useActiveLink from '../../hooks/useActiveLink';
 import styles from './Navbar.module.css';
 
 export type NavbarLinkProps = Omit<NavigationMenuLinkProps, 'href'> &
