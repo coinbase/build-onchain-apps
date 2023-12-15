@@ -67,13 +67,12 @@ export const createProject = async () => {
     recursive: true,
   });
 
-  if (isGitInstalled()) {
-    initGit(newAppDir);
-  }
-
   const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
 
   if (isPackageJsonUpdated) {
+    if (isGitInstalled()) {
+      initGit(newAppDir);
+    }
     displayFinalInstructions(newAppName);
   }
 
