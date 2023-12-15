@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0
+
+### Minor Changes
+
+- 2a27b64: - **feat**: reduces the number of commands to run for the user in the contracts folder #168
+  - **chore**: code refactoring to make the app easier to test #167
+
 ## 0.11.0
 
 ### Minor Changes
