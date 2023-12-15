@@ -13,14 +13,14 @@ export function initGit(appDir: string) {
   try {
     execSync('git init', { cwd: appDir, stdio: 'ignore' });
     execSync(
-      'git submodule add https://github.com/openzeppelin/openzeppelin-contracts apps/build-onchain-apps/contracts/lib/openzeppelin-contract',
+      'git submodule add https://github.com/openzeppelin/openzeppelin-contracts contracts/lib/openzeppelin-contract',
       {
         cwd: appDir,
         stdio: 'ignore',
       }
     );
     execSync(
-      'git submodule add https://github.com/foundry-rs/forge-std apps/build-onchain-apps/contracts/lib/forge-std',
+      'git submodule add https://github.com/foundry-rs/forge-std contracts/lib/forge-std',
       {
         cwd: appDir,
         stdio: 'ignore',
