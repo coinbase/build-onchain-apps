@@ -1,19 +1,52 @@
-## Foundry
+## Contracts
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project is built using Foundry. For more information, visit the docs [here](https://book.getfoundry.sh/)
 
-Foundry consists of:
+## Introduction
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This repository contains a sample `BuyMeACoffee.sol` contract which allows the user to buy the owner a coffee with `0.001 ether`. Along with that the user can send the owner a memo.
 
-## Documentation
+## Project Layout
 
-https://book.getfoundry.sh/
+```
+
+.
+├── foundry.toml
+├── script
+│   └── BuyMeACoffee.s.sol
+│   └── CustomERC155.s.sol
+├── src
+│   └── BuyMeACoffee.sol
+│    └── CustomERC155.sol
+└── test
+    └── BuyMeACoffee.t.sol
+    └── CustomERC155.t.sol
+
+```
+
+- You can configure Foundry's behavior using foundry.toml.
+- The default directory for contracts is src/.
+- The default directory for tests is test/
+- The default directory for writing scripts is script/
 
 ## Usage
+
+### Installation
+
+Install foundry using
+
+```shell
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+```
+
+### Install openzeppelin
+
+```shell
+forge install
+forge install openzeppelin/openzeppelin-contracts --no-commit
+forge remappings > remappings.txt
+```
 
 ### Build
 
@@ -33,34 +66,21 @@ $ forge test
 $ forge fmt
 ```
 
-### Gas Snapshots
+### Deploy to Base Goerli
+
+Create a `.env` file using the `.env.example` file provided. Update the private key value with your private key.
 
 ```shell
-$ forge snapshot
+$ source .env
+$ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
-### Anvil
+![Deployment](./assets/deployment.png)
 
-```shell
-$ anvil
-```
+![Verified](./assets/verified.png)
 
-### Deploy
+Forge runs your solidity script. In that script it tries to broadcast the transaction. It writes it back into the broadcast folder in a run-latest.json file. **It will also automatically verify your contract on Goerli BaseScan**. Learn more about scripting from [here](https://book.getfoundry.sh/tutorials/solidity-scripting)
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+### ABI
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMeACoffee.json` and copy the value corresponding to the `abi` key
