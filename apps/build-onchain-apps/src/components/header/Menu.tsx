@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
-import { AccountConnectButton } from '../../onchainkit';
+import { AccountConnectButton } from '../../onchain';
 import logo from '../../../public/logo.svg';
 import { ThemeToggle } from '../ThemeToggle';
 import { DefaultNavbar } from './Navbar';
