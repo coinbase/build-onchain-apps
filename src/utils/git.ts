@@ -26,6 +26,7 @@ export function initGit(appDir: string) {
     );
     return true;
   } catch (e) {
+    console.error(e);
     return false;
   }
 }
