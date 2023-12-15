@@ -21,7 +21,7 @@ export async function downloadAndExtractApps(): Promise<void> {
 
   return pipeline(
     got.stream(
-      'https://codeload.github.com/coinbase/build-onchain-apps/tar.gz/refs/heads/restructure-contracts'
+      'https://codeload.github.com/coinbase/build-onchain-apps/tar.gz/main'
     ),
     extract({ cwd: APPS_ENGINE_DIR, strip: 1 })
   );
