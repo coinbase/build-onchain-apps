@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { classNames } from '../../utils/classNames';
-import { AccountConnectButton } from '../../onchain/components';
-import logo from '../../public/logo.svg';
+import { AccountConnectButton } from '../../onchainkit/components';
+import logo from '../../../public/logo.svg';
 import { ThemeToggle } from '../ThemeToggle';
-import styles from './Header.module.css';
+import styles from '../../styles/Header.module.css';
 import { DefaultNavbar } from './Navbar';
 import { MobileMenu, useMobileMenuContext } from './MobileMenu';
 
