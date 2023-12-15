@@ -4,14 +4,14 @@
 
 ### Minor Changes
 
-- 2a27b64: - **feat**: reduces the number of commands to run for the user in the contracts folder #168
-  - **chore**: code refactoring to make the app easier to test #167
+- **feat**: reduces the number of commands to run for the user in the contracts folder #168 (2a27b64)
+- **chore**: code refactoring to make the app easier to test #167
 
 ## 0.11.0
 
 ### Minor Changes
 
-- 846aa54: - **fix**: mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package.
+- **fix**: mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package. (846aa54)
 
 ## 0.10.0
 
