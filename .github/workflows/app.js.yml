@@ -1,4 +1,4 @@
-name: App Build
+name: App Lint / Test / Build
 on:
   push:
     branches: ['main']
@@ -21,6 +21,14 @@ jobs:
       - name: App Install dependencies
         working-directory: ./apps/build-onchain-apps
         run: npm install
+      - name: App Lint Check
+        working-directory: ./apps/build-onchain-apps
+        # When fails, please run "npm run lint" to your code
+        run: npm run lint
+      - name: App Test Check
+        working-directory: ./apps/build-onchain-apps
+        # When fails, please check your tests
+        run: npm run test
       - name: App Test Build
         working-directory: ./apps/build-onchain-apps
         # When fails, please check your build
