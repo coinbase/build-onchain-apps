@@ -42,7 +42,7 @@ npx @coinbase/build-onchain-apps@latest create
 ```
 
 <p align='center'>
-  <img src='./docs/images/build-onchain-apps-step-1.gif' 
+  <img src='./docs/images/build-onchain-apps-step-1.gif'
   width='800' alt='Build Onchain Apps'>
 </p>
 
@@ -63,16 +63,13 @@ yarn dev
 ```
 
 <p align='center'>
-  <img src='./docs/images/build-onchain-apps-step-2-date-11-25.gif' 
+  <img src='./docs/images/build-onchain-apps-step-2-date-11-25.gif'
   width='800' alt='Build Onchain Apps'>
 </p>
 
 #### Step 2: Kick start your contracts
 
 ```bash
-# Initialize git
-git init
-
 # Install Foundry
 
 curl -L https://foundry.paradigm.xyz | bash
@@ -84,10 +81,8 @@ foundryup
 ```bash
 cd contracts
 
-# Install openzeppelin
+# Install dependencies
 forge install
-forge install openzeppelin/openzeppelin-contracts --no-commit
-forge remappings > remappings.txt
 
 # Build
 forge build
