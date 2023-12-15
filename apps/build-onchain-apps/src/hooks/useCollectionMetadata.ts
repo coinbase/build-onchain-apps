@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useContractRead } from 'wagmi';
-import { CONTRACT_CUSTOM_1155 } from '../../src/onchain/contract/contractInfo';
+import { CONTRACT_CUSTOM_1155 } from '../contract/info';
 import ipfsToHTTP from '../../src/utils/ipfsToHTTP';
 
 // A future enhancement would be to track error state from the contract read

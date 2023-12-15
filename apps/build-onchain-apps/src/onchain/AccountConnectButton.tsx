@@ -2,8 +2,8 @@ import { useAccount, useBalance, useDisconnect } from 'wagmi';
 import { Box, Button, Flex, Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { getSlicedAddress } from '../utils/address';
-import { getAccountBalance } from '../utils/balance';
+import { getSlicedAddress } from './utils/address';
+import { getAccountBalance } from './utils/balance';
 import '@rainbow-me/rainbowkit/styles.css';
 
 /**
