@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 
 export function isGitInstalled() {
   try {
+    console.log('git --version');
     execSync('git --version', { stdio: 'ignore' });
     return true;
   } catch (e) {
@@ -11,6 +12,7 @@ export function isGitInstalled() {
 
 export function initGit(appDir: string) {
   try {
+    console.log('appDir');
     execSync('git init', { cwd: appDir, stdio: 'ignore' });
     execSync(
       'git submodule add https://github.com/openzeppelin/openzeppelin-contracts contracts/lib/openzeppelin-contracts',
