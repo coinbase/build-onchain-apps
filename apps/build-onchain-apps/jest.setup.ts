@@ -1,5 +1,5 @@
-// Jest is an amazing test runner and has some awesome assertion APIs 
-// built in by default. However, there are times when having more 
+// Jest is an amazing test runner and has some awesome assertion APIs
+// built in by default. However, there are times when having more
 // specific matchers (assertions) would be far more convenient.
 // https://jest-extended.jestcommunity.dev/docs/matchers/
 import 'jest-extended';
