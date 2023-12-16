@@ -2,7 +2,7 @@
 
 > Build onchain applications with the best consumer experience in a few minutes. ☕️
 
-[![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![NPM Downloads](http://img.shields.io/npm/dm/@coinbase/build-onchain-apps.svg?color=3498DB)](https://www.npmjs.com/package/@coinbase/build-onchain-apps) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
+[![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
 <br />
 
@@ -16,18 +16,16 @@ So, if you are either a hackathon participant and/or an ambitious entrepreneur a
 
 Out of the box 🧰 🧙 ✨
 
-- Web2 building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
+- Web building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
 - Onchain building blocks: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchainkit/components/AccountConnectButton.tsx) 🎨
+- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅
 - Tests Suite
 - Support Progressive Web Apps ⚡️
 - Foundry integration
-- _Client Analytics (Coming Soon)_
-- _Web Vitals optimization (Coming Soon)_
+- Web Vitals analytics
 - _In-depth step by step documentation (Coming Soon)_
-- _One click deploy on Vercel_
 - _Onchain UI components: Balances, Minting, Airdrop, etc..._
 - _We just started; stay tuned for more to come!!! ☕️_
 
