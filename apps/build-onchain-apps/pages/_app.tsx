@@ -11,7 +11,8 @@ import type { AppProps } from 'next/app';
 
 const themeValues = { light: 'light-theme', dark: 'dark-theme' };
 
-// TODO ~~~
+// Stat analytics before the App renders,
+// so we can track page views and early events
 initAnalytics();
 
 export default function App({ Component, pageProps }: AppProps) {
