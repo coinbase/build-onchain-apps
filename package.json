@@ -15,7 +15,6 @@
   },
   "scripts": {
     "build": "nx build",
-    "test": "nx test",
     "format": "nx format",
     "format:check": "nx format:check",
     "lint": "nx lint",
