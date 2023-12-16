@@ -20,14 +20,6 @@
       "options": {
         "lintFilePatterns": ["./src/**/*.ts", "./package.json"]
       }
-    },
-    "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
-      "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "coverage/@coinbase/build-onchain-apps"
-      }
     }
   },
   "tags": []
