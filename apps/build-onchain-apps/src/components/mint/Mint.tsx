@@ -2,7 +2,7 @@ import { Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
-import { CONTRACT_CUSTOM_1155 } from '../../onchain/contract/contractInfo';
+import { CONTRACT_CUSTOM_1155 } from '../../contract/info';
 import useCollectionMetadata from '../../hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';

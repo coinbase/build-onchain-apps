@@ -27,7 +27,7 @@ Unacceptable behavior from any community member will not be tolerated and includ
 
 ## 4. Reporting Issues
 
-If you experience or witness unacceptable behavior—or have any other concerns—please report it by contacting us via [your email] or [another contact method]. All reports will be handled with discretion.
+If you experience or witness unacceptable behavior—or have any other concerns—please report it by opening a support ticket in the [Base Discord](https://base.org/discord). All reports will be handled with discretion.
 
 ## 5. Consequences for Unacceptable Behavior
 

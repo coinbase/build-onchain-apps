@@ -24,6 +24,10 @@ jobs:
 
       - name: 'Setup'
         uses: ./.github/actions/setup
+      
+      - name: Install node modules
+        run: yarn install --frozen-lockfile
+        shell: bash
 
       - name: Build
         shell: bash

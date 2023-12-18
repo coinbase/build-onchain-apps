@@ -13,10 +13,10 @@ This repository contains a sample `BuyMeACoffee.sol` contract which allows the u
 .
 ├── foundry.toml
 ├── script
-│   └── BuyMeACoffee.s.sol
+│   └── BuyMeACoffee.s.sol
 │   └── CustomERC155.s.sol
 ├── src
-│   └── BuyMeACoffee.sol
+│   └── BuyMeACoffee.sol
 │    └── CustomERC155.sol
 └── test
     └── BuyMeACoffee.t.sol
@@ -40,12 +40,10 @@ curl -L https://foundry.paradigm.xyz | bash
 foundryup
 ```
 
-### Install openzeppelin
+### Install dependencies
 
 ```shell
 forge install
-forge install openzeppelin/openzeppelin-contracts --no-commit
-forge remappings > remappings.txt
 ```
 
 ### Build
