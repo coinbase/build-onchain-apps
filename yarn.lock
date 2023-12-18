@@ -1693,7 +1693,6 @@ __metadata:
     "@nx/eslint": "npm:17.1.2"
     "@nx/eslint-plugin": "npm:17.1.2"
     "@nx/js": "npm:^17.2.0"
-    "@nx/vite": "npm:17.1.2"
     "@nx/workspace": "npm:17.1.2"
     "@swc-node/register": "npm:~1.6.7"
     "@swc/core": "npm:~1.3.85"
@@ -1990,15 +1989,6 @@ __metadata:
   bin:
     tao: index.js
   checksum: 6e9eb4f16867cc111d4df2564d9cb7d523053dffbbccb235a4a0c36cbf94c94d9461252076a41c9cf3cc91187469a28380a2a0ff7ac3e9a7356a1a393d1f4610
-  languageName: node
-  linkType: hard
-
-"@nrwl/vite@npm:17.1.2":
-  version: 17.1.2
-  resolution: "@nrwl/vite@npm:17.1.2"
-  dependencies:
-    "@nx/vite": "npm:17.1.2"
-  checksum: b86f904f7ea67d46bb00423a3c43f99e49457856147730ac3763d5d80c4d9079d928505f2e22976a208d25ac671bcedf73b584780e6f9678bd0e153191d9acae
   languageName: node
   linkType: hard
 
@@ -2331,24 +2321,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/vite@npm:17.1.2":
-  version: 17.1.2
-  resolution: "@nx/vite@npm:17.1.2"
-  dependencies:
-    "@nrwl/vite": "npm:17.1.2"
-    "@nx/devkit": "npm:17.1.2"
-    "@nx/js": "npm:17.1.2"
-    "@phenomnomnominal/tsquery": "npm:~5.0.1"
-    "@swc/helpers": "npm:~0.5.0"
-    enquirer: "npm:~2.3.6"
-    tsconfig-paths: "npm:^4.1.2"
-  peerDependencies:
-    vite: ^4.3.4
-    vitest: ">=0.31.0 <1.0.0"
-  checksum: 3496af5b13b59d9c20bd7bc2d33dbeb3b5e1017ebf20eaef67386fd4d362b94011d367bfb08706a366f368ace05ae8a913561a481052db63adb4d6fde7ca1cc1
-  languageName: node
-  linkType: hard
-
 "@nx/workspace@npm:17.1.2":
   version: 17.1.2
   resolution: "@nx/workspace@npm:17.1.2"
@@ -2557,15 +2529,6 @@ __metadata:
   version: 0.1.2
   resolution: "@swc/counter@npm:0.1.2"
   checksum: 18be012107d4ba1f79776c48d83391ca2159103d7d31a59ff52fcc8024db51b71c5f46714a9fb73981739bc8a38dc6f385a046b71cc08f6043f3c47f5c409eab
-  languageName: node
-  linkType: hard
-
-"@swc/helpers@npm:~0.5.0":
-  version: 0.5.3
-  resolution: "@swc/helpers@npm:0.5.3"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 7003b9dafad38e27a4474a3dcf78d2aee85ce4bb7ee171ecc2d5b533768fb4f8fc9dbd6a1c3a9df5f8001e61ff416b93681e0a7dcbdc0df109b3e09c50cd4615
   languageName: node
   linkType: hard
 

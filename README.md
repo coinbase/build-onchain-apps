@@ -2,24 +2,25 @@
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
-> Accelerate your web3 creativity with the Build Onchain Apps Toolbox. ☕️
+> Accelerate your web3 creativity with the Build Onchain Apps Toolkit. ☕️
 
 [![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
 <br />
 
-**Build Onchain Apps Toolbox** takes an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
+**Build Onchain Apps Toolkit** takes an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
 
 The generated onchain app aims to provide everything you need to run a web product, along with additional tools, documentation, and tricks for building onchain.
 
-Whether you're a hackathon participant or an ambitious entrepreneur looking to establish the next successful company, this toolbox is designed with you in mind. 💙
+Whether you're a hackathon participant or an ambitious entrepreneur looking to establish the next successful company, this toolkit is designed with you in mind. 💙
 
 <br />
 
-Out of the box 🧰 🧙 ✨
+Building blocks out of the box 🧰 🧙 ✨
 
-- Web building blocks: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
-- Onchain building blocks: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Web: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
+- Onchain: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
+- Experiences: send, mint 🌁
 - Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/AccountConnectButton.tsx) 🎨
 - Support EOA Wallet integration 👛
 - Linting and Prettier 💅

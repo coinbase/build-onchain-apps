@@ -13,17 +13,17 @@ export default function BuyMeCoffee() {
 
   return (
     <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
-        <Box>
-          <Flex mb="5">
-            <Text size="8" weight="bold" mb="1">
-              Messages
-            </Text>
-          </Flex>
-          {memos?.length > 0 && <Memos memos={memos} />}
-        </Box>
-        <Box position="relative" pt="9">
-          <FormBuyCoffee onComplete={handleOncomplete} />
-        </Box>
-      </Grid>
+      <Box>
+        <Flex mb="5">
+          <Text size="8" weight="bold" mb="1">
+            Messages
+          </Text>
+        </Flex>
+        {memos?.length > 0 && <Memos memos={memos} />}
+      </Box>
+      <Box position="relative" pt="9">
+        <FormBuyCoffee onComplete={handleOncomplete} />
+      </Box>
+    </Grid>
   );
 }
