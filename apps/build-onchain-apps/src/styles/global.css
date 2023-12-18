@@ -16,16 +16,17 @@
 }
 
 body {
-  margin: 0;
   min-width: 320px;
+  margin: 0;
   color: var(--gray-12);
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 svg {
   display: block;
-  vertical-align: middle;
   overflow: visible;
+  vertical-align: middle;
 }
 
 ul {
@@ -39,10 +40,11 @@ pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
   font-feature-settings: normal;
-  font-variation-settings: normal;
   font-size: 1em;
+  font-variation-settings: normal;
 }
 
+/* stylelint-disable-next-line */
 #__next {
   position: relative;
   z-index: 0;

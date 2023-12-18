@@ -1,4 +1,4 @@
-name: App Lint / Test / Build
+name: App Lint / Styles / Test / Build
 on:
   push:
     branches: ['main']
@@ -25,6 +25,9 @@ jobs:
         working-directory: ./apps/build-onchain-apps
         # When fails, please run "npm run lint" to your code
         run: npm run lint
+      - name: App Stylelint
+        working-directory: ./apps/build-onchain-apps
+        run: npm run stylelint
       - name: App Test Check
         working-directory: ./apps/build-onchain-apps
         # When fails, please check your tests

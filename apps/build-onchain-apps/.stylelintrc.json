@@ -1,0 +1,13 @@
+{ 
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["tailwind"]
+    }],
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null
+  }
+}
