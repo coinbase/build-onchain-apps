@@ -25,14 +25,3 @@
   background-color: var(--color-background);
   box-shadow: 0 1px var(--gray-a4);
 }
-
-.HeaderThemeToggleContainer {
-  display: flex;
-  align-items: center;
-}
-
-@media (width <= 519px) {
-  [data-mobile-menu-open='true'] .HeaderThemeToggleContainer {
-    display: none;
-  }
-}
