@@ -1,7 +1,7 @@
 .CodeBlock {
+  position: relative;
   border-radius: 8px;
   margin: 16px 0;
-  position: relative;
   background-color: #161618;
   overflow-x: auto;
   transition: background-color 0.5s;
@@ -9,12 +9,12 @@
 
 .CodeBlockLang {
   position: absolute;
+  z-index: 2;
   top: 2px;
   right: 8px;
-  z-index: 2;
+  color: rgb(235 235 245 / 38%);
   font-size: 12px;
   font-weight: 500;
-  color: rgb(235 235 245 / 38%);
   transition:
     color 0.4s,
     opacity 0.4s;
@@ -23,35 +23,35 @@
 .CodeBlockLang pre,
 .CodeBlockLang code {
   direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 }
 
 .CodeBlockPre {
   position: relative;
   z-index: 1;
-  margin: 0;
   padding: 20px 0;
+  margin: 0;
   background: transparent;
   overflow-x: auto;
 }
 
 .CodeBlockCode {
-  padding: 0 24px;
   width: fit-content;
   min-width: 100%;
-  line-height: 1.7;
-  font-size: 0.875em;
+  padding: 0 24px;
   color: var(--vp-code-block-color);
+  font-size: 0.875em;
+  line-height: 1.7;
   transition: rgb(235 235 245 / 60%);
 }

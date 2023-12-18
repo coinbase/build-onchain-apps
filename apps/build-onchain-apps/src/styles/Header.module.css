@@ -4,16 +4,16 @@
 
 .HeaderInner {
   position: fixed;
-  height: inherit;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 2;
-  user-select: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: inherit;
   box-shadow: 0 1px transparent;
   transition:
     background-color 180ms,
     box-shadow 180ms;
+  user-select: none;
 }
 
 /* Faster transition when the header gains background (and slower when it loses it) */

@@ -1568,6 +1568,7 @@ __metadata:
     react-remove-scroll: "npm:^2.5.7"
     scroll-into-view-if-needed: "npm:^3.1.0"
     stylelint: "npm:^16.0.2"
+    stylelint-config-idiomatic-order: "npm:^10.0.0"
     stylelint-config-standard: "npm:^35.0.0"
     stylelint-order: "npm:^6.0.4"
     tailwindcss: "npm:^3.3.6"
@@ -12740,6 +12741,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"stylelint-config-idiomatic-order@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "stylelint-config-idiomatic-order@npm:10.0.0"
+  dependencies:
+    stylelint-order: "npm:^6.0.2"
+  peerDependencies:
+    stylelint: ">=11"
+  checksum: 5352e39697de684b7b3d832f4af7c741ceb4e7836c8b3a9118f46b45c2209ef711696ecc7ad49bf334f4f059433d12528ed358c9a32bb14815d04ef1bbd9e667
+  languageName: node
+  linkType: hard
+
 "stylelint-config-recommended@npm:^14.0.0":
   version: 14.0.0
   resolution: "stylelint-config-recommended@npm:14.0.0"
@@ -12760,7 +12772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-order@npm:^6.0.4":
+"stylelint-order@npm:^6.0.2, stylelint-order@npm:^6.0.4":
   version: 6.0.4
   resolution: "stylelint-order@npm:6.0.4"
   dependencies:
