@@ -3,6 +3,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  background-color: var(--color-background);
 }
 
 .NavigationMenuList {
