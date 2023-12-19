@@ -54,6 +54,23 @@ export type NavbarProps = {
 export function Navbar({ children }: NavbarProps) {
   return (
     <Theme asChild className="radix-themes-custom-fonts">
+      <div className="w-[1280px] h-16 px-10 py-4 bg-white bg-opacity-10 rounded-[50px] border border-stone-300 backdrop-blur-2xl justify-between items-center inline-flex">
+        <div className="h-8 justify-start items-center gap-4 flex">
+          <div className="w-8 h-8 relative" />
+          <div className="text-center text-white text-xl font-medium font-['Coinbase Mono']">
+            BUILD ONCHAIN APPS
+          </div>
+        </div>
+        <div className="justify-start items-center gap-6 flex">
+          <div className="text-center text-white text-base font-normal font-['Coinbase Mono']">
+            Docs
+          </div>
+          <div className="text-center text-white text-base font-normal font-['Coinbase Mono']">
+            Support us
+          </div>
+          <div className="w-6 h-6 relative" />
+        </div>
+      </div>
       <Root className={styles.NavigationMenuRoot}>
         <List className={styles.NavigationMenuList}>{children}</List>
       </Root>

@@ -36,20 +36,25 @@ function Header({ ghost }: HeaderProps) {
   }, [ghost]);
 
   return (
-    <Theme asChild className="radix-themes-custom-fonts">
-      <div
-        data-scroll-state={scrollState}
-        className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
-      >
-        <MobileMenu>
-          <DefaultNavbar />
-        </MobileMenu>
-
-        <div className={styles.HeaderInner}>
-          <Menu />
+    <div className="flex flex-row justify-center items-start w-screen h-[145px] bg-gradient-to-b from-orange-600 via-pink-500 to-pink-500">
+      <div className="mt-[32px] w-[1280px] h-16 px-10 py-4 bg-white bg-opacity-10 rounded-[50px] border border-stone-300 backdrop-blur-2xl justify-between items-center inline-flex">
+        <div className="h-8 justify-start items-center gap-4 flex">
+          <div className="w-8 h-8 relative" />
+          <div className="text-center text-white text-xl font-medium font-['Coinbase Mono']">
+            BUILD ONCHAIN APPS
+          </div>
+        </div>
+        <div className="justify-start items-center gap-6 flex">
+          <div className="text-center text-white text-base font-normal font-['Coinbase Mono']">
+            Docs
+          </div>
+          <div className="text-center text-white text-base font-normal font-['Coinbase Mono']">
+            Support us
+          </div>
+          <div className="w-6 h-6 relative" />
         </div>
       </div>
-    </Theme>
+    </div>
   );
 }
 
