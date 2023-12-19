@@ -1,4 +1,4 @@
-import { baseGoerli, Chain, goerli } from 'viem/chains';
+import { baseGoerli, Chain, base } from 'viem/chains';
 import { Environment } from './environment';
 import { getCurrentEnvironment } from './configuration';
 
@@ -6,8 +6,8 @@ import { getCurrentEnvironment } from './configuration';
 export const supportedChains = new Map<Environment, Chain[]>([
   [Environment.localhost, [baseGoerli]],
   [Environment.development, [baseGoerli]],
-  [Environment.staging, [goerli]],
-  [Environment.production, [goerli]],
+  [Environment.staging, [base]],
+  [Environment.production, [base]],
 ]);
 
 /**
