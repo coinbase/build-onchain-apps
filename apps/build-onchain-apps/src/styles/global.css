@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --header-height: 60px;
   --quick-nav-display: none;
   --component-highlights-item-width: calc(100vw - 100px);
   --developer-experience-code-window-background: var(--slate-12);
 
-  /* Palette */ 
-  --palette-bg-black: #141519;
+  /* Palette */
+  --palette-bg-black: #0A0B0D;
+  --palette-bg-soft-black: #141519;
+  --palette-bg-white: #fff;
 
-  /* Build Onchain Apps shared variables */ 
+  /* Build Onchain Apps shared variables */
   --boat-color-background: var(--palette-bg-black);
+  --boat-color-text: var(--palette-bg-white);
 }
 
 *,
@@ -30,7 +32,7 @@ body {
   min-width: 320px;
   margin: 0;
   background-color: var(--boat-color-background);
-  color: var(--gray-12);
+  color: var(--boat-color-text);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -54,6 +56,10 @@ pre {
   font-feature-settings: normal;
   font-size: 1em;
   font-variation-settings: normal;
+}
+
+.radix-themes {
+  color: var(--boat-color-text);
 }
 
 /* stylelint-disable-next-line */

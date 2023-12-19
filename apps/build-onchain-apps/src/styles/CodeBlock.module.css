@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 8px;
   margin: 16px 0;
-  background-color: #161618;
+  background-color: var(--palette-bg-soft-black);
   overflow-x: auto;
   transition: background-color 0.5s;
 }

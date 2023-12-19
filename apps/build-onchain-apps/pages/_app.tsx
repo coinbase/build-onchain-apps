@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <OnchainProviders>
-        <Theme accentColor="orange">
+        <Theme>
           <MobileMenuProvider>
             <Component {...pageProps} />
           </MobileMenuProvider>
