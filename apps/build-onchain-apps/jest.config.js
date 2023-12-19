@@ -21,7 +21,12 @@ const config = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/onchain/**/index.ts', '!**/node_modules/**'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    'pages/api/**/*.{ts,tsx}',
+    '!src/onchain/**/index.ts',
+    '!**/node_modules/**',
+  ],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: '<rootDir>/coverage',
@@ -129,7 +134,7 @@ const config = {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>/src', '<rootDir>/pages/api'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
