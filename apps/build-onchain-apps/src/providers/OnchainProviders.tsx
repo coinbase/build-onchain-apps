@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
@@ -11,6 +10,7 @@ import {
   coinbaseWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { getChainsForEnvironment } from '../utils/chainConfiguration';
 
 type Props = { children: ReactNode };
 
@@ -23,7 +23,11 @@ if (!projectId) {
 }
 
 // TODO Docs ~~~
-const { chains, publicClient } = configureChains([baseGoerli], [publicProvider()]);
+const supportedChains = getChainsForEnvironment();
+if (!supportedChains) {
+  throw new Error('Must configure supported chains in utils/chainConfiguration');
+}
+const { chains, publicClient } = configureChains(supportedChains, [publicProvider()]);
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
