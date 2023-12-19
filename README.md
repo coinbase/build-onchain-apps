@@ -42,6 +42,8 @@ Building blocks out of the box 🧰 🧙 ✨
 npx @coinbase/build-onchain-apps@latest create
 ```
 
+test!!!
+
 <p align='center'>
   <img src='./docs/images/build-onchain-apps-step-1.gif'
   width='800' alt='Build Onchain Apps'>
