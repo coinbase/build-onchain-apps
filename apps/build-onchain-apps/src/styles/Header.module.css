@@ -10,12 +10,12 @@
   right: 0;
   left: 0;
   height: inherit;
+  background-color: var(--boat-color-background);
   box-shadow: 0 1px transparent;
   transition:
     background-color 180ms,
     box-shadow 180ms;
   user-select: none;
-  background-color: var(--boat-color-background);
 }
 
 /* Faster transition when the header gains background (and slower when it loses it) */
