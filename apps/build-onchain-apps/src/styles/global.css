@@ -11,7 +11,7 @@
   /* Palette */ 
   --palette-bg-black: #141519;
   /* Build Onchain Apps shared variables */ 
-  --color-background: var(--palette-bg-black);
+  --boat-color-background: var(--palette-bg-black);
 }
 
 *,
@@ -21,11 +21,11 @@
 }
 
 html {
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
   min-width: 320px;
   margin: 0;
   color: var(--gray-12);
@@ -58,5 +58,5 @@ pre {
 #__next {
   position: relative;
   z-index: 0;
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
 }

@@ -1,6 +1,6 @@
 .HeaderRoot {
   height: var(--header-height);
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
 }
 
 .HeaderInner {
@@ -15,7 +15,7 @@
     background-color 180ms,
     box-shadow 180ms;
   user-select: none;
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
 }
 
 /* Faster transition when the header gains background (and slower when it loses it) */
@@ -24,6 +24,6 @@
 }
 
 .HeaderRoot:not(.ghost[data-scroll-state='at-top']) > .HeaderInner {
-  background-color: var(--color-background);
+  background-color: var(--boat-color-background);
   box-shadow: 0 1px var(--gray-a4);
 }
