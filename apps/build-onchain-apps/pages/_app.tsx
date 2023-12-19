@@ -9,7 +9,7 @@ import MobileMenuProvider from '../src/providers/MobileMenuProvider';
 import { initAnalytics } from '../src/utils/analytics';
 import type { AppProps } from 'next/app';
 
-const themeValues = { light: 'light-theme', dark: 'dark-theme' };
+const themeValues = { dark: 'dark-theme' };
 
 // Stat analytics before the App renders,
 // so we can track page views and early events

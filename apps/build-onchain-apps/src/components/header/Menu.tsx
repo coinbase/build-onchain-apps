@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
 import logo from '../../../public/logo.svg';
-import { ThemeToggle } from '../ThemeToggle';
 import { DefaultNavbar } from './Navbar';
 import { useMobileMenuContext } from './MobileMenu';
 
@@ -56,8 +55,6 @@ function Menu() {
             </a>
           </IconButton>
         </Tooltip>
-
-        <ThemeToggle />
       </Flex>
     </>
   );
