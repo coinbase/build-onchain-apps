@@ -1,4 +1,4 @@
-import { baseGoerli, goerli } from 'viem/chains';
+import { baseGoerli, base } from 'viem/chains';
 import { Environment } from './environment';
 import { getChainsForEnvironment } from './chainConfiguration';
 
@@ -12,6 +12,6 @@ describe('getCurrentEnvironment', () => {
   });
 
   it('should return mainnet for production', () => {
-    expect(getChainsForEnvironment(Environment.production)).toEqual([goerli]);
+    expect(getChainsForEnvironment(Environment.production)).toEqual([base]);
   });
 });

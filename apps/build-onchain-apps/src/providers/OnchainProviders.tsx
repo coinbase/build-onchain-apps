@@ -28,6 +28,7 @@ if (!supportedChains) {
   throw new Error('Must configure supported chains in utils/chainConfiguration');
 }
 const { chains, publicClient } = configureChains(supportedChains, [publicProvider()]);
+
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
