@@ -116,15 +116,11 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 
 ## Contributing ☕️ 🔵
 
-The main purpose of this repository is to continue evolving Build Onchain Apps, making it better and easier to use. Development of Build Onchain Apps happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Build Onchain Apps.
+Read below to learn how you can take part in improving Build Onchain Apps Toolkit.
 
-### [Code of Conduct](CODE_OF_CONDUCT.md).
+### [Code of Conduct](CODE_OF_CONDUCT.md)
 
-Build Onchain Apps has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
-
-### [Contributing Guide](CONTRIBUTING.md).
-
-Read our contributing guide to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Build Onchain Apps.
+### [Contributing Guide](CONTRIBUTING.md)
 
 ### Develop
 
@@ -137,7 +133,7 @@ git clone https://github.com/coinbase/build-onchain-apps.git
 
 ### Develop the App
 
-```
+```bash
 # Go to main application
 cd apps/build-onchain-apps
 
@@ -148,7 +144,7 @@ yarn dev
 
 ### Develop the CLI
 
-```
+```bash
 # From the root repo
 # Install and build latest dependencies
 yarn
@@ -167,13 +163,67 @@ npm uninstall -g @coinbase/build-onchain-apps
 
 <br>
 
-## Community ☁️ 🌁 ☁️
+## The Team and Our Community ☁️ 🌁 ☁️
 
-Building Onchain Applications is all about community, whether you are ready for a hackathon or building your next company; for any questions, feel free to:
+BOAT is all about community; for any questions, feel free to:
 
-1. open an [issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+) and ask a question here on GitHub;
-2. reach out to the maintainers on Twitter: [@zizzamia](https://twitter.com/Zizzamia), [@alvaroraminelli](https://twitter.com/alvaroraminelli), [@snoopies_eth](https://twitter.com/snoopies_eth), [@wespickett](https://twitter.com/wespickett), [@renanmav](https://twitter.com/renanmav), [@codyrnova](https://twitter.com/codyrnova)
-3. let us know [what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) with this library.
+1. [Open an issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+)
+<br />
+<br />
+2. [Tell us what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) with BOAT ⛵️
+<br />
+<br />
+3. Reach out to the core maintainers on Twitter or Farcaster
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/Zizzamia">
+          <img width="70" height="70" src="https://github.com/zizzamia.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/Zizzamia">Leonardo Zizzamia</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/snoopies_eth">
+          <img width="70" height="70" src="https://github.com/Sneh1999.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/snoopies_eth">Sneh Koul</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/alvaroraminelli">
+          <img width="70" height="70" src="https://github.com/alvaroraminelli.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/wespickett">
+          <img width="70" height="70" src="https://github.com/wespickett.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/wespickett">Wesley Pickett</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://warpcast.com/cnasc">
+          <img width="70" height="70" src="https://github.com/cnasc.png?s=100">
+        </a>
+        <br />
+        <a href="https://warpcast.com/cnasc">Chris Nascone</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/mochikuan">
+          <img width="70" height="70" src="https://pbs.twimg.com/profile_images/1712595142614347776/c5yeQaaU_400x400.jpg">
+        </a>
+        <br />
+        <a href="https://twitter.com/mochikuan">Rose Kuan</a>
+      </td>
+     </tr>
+  </tbody>
+</table>
 
 <br>
 
