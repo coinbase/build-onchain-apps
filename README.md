@@ -165,35 +165,31 @@ npm uninstall -g @coinbase/build-onchain-apps
 
 ## The Team and Our Community ☁️ 🌁 ☁️
 
-BOAT is all about community; for any questions, feel free to:
+Build Onchain Apps Toolkit is all about community; for any questions, feel free to:
 
 1. [Open an issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+)
-<br />
-<br />
-2. [Tell us what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) with BOAT ⛵️
-<br />
-<br />
+2. [Tell us what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) ⛵️
 3. Reach out to the core maintainers on Twitter or Farcaster
 <table>
   <tbody>
     <tr>
       <td align="center" valign="top">
         <a href="https://twitter.com/Zizzamia">
-          <img width="70" height="70" src="https://github.com/zizzamia.png?s=100">
+          <img width="80" height="80" src="https://github.com/zizzamia.png?s=100">
         </a>
         <br />
         <a href="https://twitter.com/Zizzamia">Leonardo Zizzamia</a>
       </td>
       <td align="center" valign="top">
         <a href="https://twitter.com/snoopies_eth">
-          <img width="70" height="70" src="https://github.com/Sneh1999.png?s=100">
+          <img width="80" height="80" src="https://github.com/Sneh1999.png?s=100">
         </a>
         <br />
         <a href="https://twitter.com/snoopies_eth">Sneh Koul</a>
       </td>
       <td align="center" valign="top">
         <a href="https://twitter.com/alvaroraminelli">
-          <img width="70" height="70" src="https://github.com/alvaroraminelli.png?s=100">
+          <img width="80" height="80" src="https://github.com/alvaroraminelli.png?s=100">
         </a>
         <br />
         <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
@@ -202,21 +198,21 @@ BOAT is all about community; for any questions, feel free to:
     <tr>
       <td align="center" valign="top">
         <a href="https://twitter.com/wespickett">
-          <img width="70" height="70" src="https://github.com/wespickett.png?s=100">
+          <img width="80" height="80" src="https://github.com/wespickett.png?s=100">
         </a>
         <br />
         <a href="https://twitter.com/wespickett">Wesley Pickett</a>
       </td>
       <td align="center" valign="top">
         <a href="https://warpcast.com/cnasc">
-          <img width="70" height="70" src="https://github.com/cnasc.png?s=100">
+          <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
         </a>
         <br />
         <a href="https://warpcast.com/cnasc">Chris Nascone</a>
       </td>
       <td align="center" valign="top">
         <a href="https://twitter.com/mochikuan">
-          <img width="70" height="70" src="https://pbs.twimg.com/profile_images/1712595142614347776/c5yeQaaU_400x400.jpg">
+          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1712595142614347776/c5yeQaaU_400x400.jpg">
         </a>
         <br />
         <a href="https://twitter.com/mochikuan">Rose Kuan</a>
