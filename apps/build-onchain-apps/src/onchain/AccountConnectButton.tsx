@@ -1,7 +1,8 @@
-import { useAccount, useBalance, useDisconnect } from 'wagmi';
-import { Box, Button, Flex, Dialog } from '@radix-ui/themes';
+import { useAccount, useBalance, useDisconnect, useNetwork } from 'wagmi';
+import { Box, Button, Flex, Dialog, Text } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import useCurrentBlockNumber from '../hooks/useBlockNumber';
 import { getSlicedAddress } from './utils/address';
 import { getAccountBalance } from './utils/balance';
 import '@rainbow-me/rainbowkit/styles.css';
@@ -15,7 +16,8 @@ export function AccountConnectButton() {
     address,
   });
   const { disconnect } = useDisconnect();
-
+  const block = useCurrentBlockNumber();
+  const network = useNetwork();
   const handleDisconnectWallet = useCallback(() => {
     disconnect();
   }, [disconnect]);
@@ -89,6 +91,24 @@ export function AccountConnectButton() {
                       <Dialog.Description size="2" mb="4">
                         ~~~
                       </Dialog.Description>
+
+                      <Flex gap="3">
+                        <Text as="div" size="2" mb="1" weight="bold">
+                          Network:
+                        </Text>
+                        <Text as="div" size="2" mb="1" weight="regular">
+                          {network.chain?.name} ({network.chain?.id})
+                        </Text>
+                      </Flex>
+
+                      <Flex gap="3">
+                        <Text as="div" size="2" mb="1" weight="bold">
+                          Block Number:
+                        </Text>
+                        <Text as="div" size="2" mb="1" weight="regular">
+                          {block.isLoading ? 'Loading...' : block.blockNumber?.toString()}
+                        </Text>
+                      </Flex>
 
                       <Flex gap="3" mt="4" justify="end">
                         <Dialog.Close onClick={handleCopyAddress}>

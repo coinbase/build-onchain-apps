@@ -9,6 +9,7 @@
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
+    "check": "yarn format && yarn lint && yarn test && yarn test:coverage",
     "start": "next start",
     "stylelint": "stylelint '**/*.css'",
     "test": "jest .",
