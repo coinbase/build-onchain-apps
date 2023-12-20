@@ -21,5 +21,5 @@ between FE and BE).
 **Response**: JSON encoded block number
 
 ```json
-{"block":"13948678"}
+{ "block": "13948678" }
 ```

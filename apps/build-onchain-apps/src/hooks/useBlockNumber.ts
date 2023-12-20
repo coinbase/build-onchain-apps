@@ -27,7 +27,7 @@ const useCurrentBlockNumber = (refreshIntervalMs = 10000) => {
           throw new Error(`Error: ${response.status}`);
         }
 
-        const data: BlockNumberResponse = (await response.json()) as BlockNumberResponse;
+        const data = (await response.json()) as BlockNumberResponse;
         setBlockNumber(data.block);
       } catch (err) {
         // Handle error
