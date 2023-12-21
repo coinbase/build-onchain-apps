@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "check": "yarn format && yarn lint && yarn test && yarn test:coverage",
+    "check": "yarn format && yarn lint && yarn stylelint && yarn test && yarn test:coverage",
     "dev": "next dev",
     "format": "prettier --log-level warn --write .",
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
     "start": "next start",
-    "stylelint": "stylelint '**/*.css'",
+    "stylelint": "stylelint '**/*.css' --fix",
+    "stylelint:check": "stylelint '**/*.css'",
     "test": "jest .",
     "test:coverage": "jest . --coverage",
     "test:coverage:open": "yarn test:coverage && open coverage/lcov-report/index.html"
