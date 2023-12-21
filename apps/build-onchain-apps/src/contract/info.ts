@@ -9,7 +9,7 @@ type Contract = {
 
 export const CONTRACT_BUY_ME_COFFEE: Contract = {
   abi: BuyMeACoffeeABI,
-  address: '0xeeC0bD3B58293ff45004C7eFf02917Beef28257c',
+  address: '0x1784AAD01B4d05A8bC721DC8903dCbC9E0b20175',
 };
 
 // TODO: A future enhancement would be to support multiple mints, getting chain, abi, and

@@ -19,10 +19,10 @@ function Memos({ memos }: MemosProps) {
         .map((memo) => {
           return (
             <MemoCard
-              key={memo.timestamp.toString()}
-              name={memo.name}
+              key={memo.time.toString()}
+              userName={memo.userName}
               message={memo.message}
-              timestamp={memo.timestamp}
+              time={memo.time}
             />
           );
         })

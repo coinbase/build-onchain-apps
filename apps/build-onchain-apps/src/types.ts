@@ -1,5 +1,5 @@
 export type CoffeeMemo = {
-  name: string;
+  userName: string;
   message: string;
-  timestamp: bigint;
+  time: bigint;
 };
