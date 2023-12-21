@@ -1,4 +1,4 @@
-<img src='./docs/logo-v-0-12.png' width='800' alt='Build Onchain Apps'>
+<img src='./docs/logo-v-0-13.png' width='800' alt='Build Onchain Apps'>
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
@@ -194,8 +194,6 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <br />
         <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
       </td>
-    </tr>
-    <tr>
       <td align="center" valign="top">
         <a href="https://twitter.com/wespickett">
           <img width="80" height="80" src="https://github.com/wespickett.png?s=100">
@@ -203,6 +201,8 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <br />
         <a href="https://twitter.com/wespickett">Wesley Pickett</a>
       </td>
+    </tr>
+    <tr>
       <td align="center" valign="top">
         <a href="https://warpcast.com/cnasc">
           <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
@@ -217,7 +217,14 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <br />
         <a href="https://twitter.com/mochikuan">Rose Kuan</a>
       </td>
-     </tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/0xr0b_eth">
+          <img width="80" height="80" src="https://github.com/robpolak.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/0xr0b_eth">Rob Polak</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
