@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useContractRead } from 'wagmi';
-import { CONTRACT_CUSTOM_1155 } from '../contract/info';
+import { baseGoerli } from 'viem/chains';
+import { contract } from '../contract/ContractSpecification';
 import { ipfsToHTTP } from '../onchain/utils/ipfs';
 
 // A future enhancement would be to track error state from the contract read
@@ -34,8 +35,9 @@ function useCollectionMetadata(enabled: boolean) {
   // In this case the contract URI is already HTTPS. A production-ready
   // solution would check the protocol and transform if necessary.
   const { data: contractURI } = useContractRead({
-    address: CONTRACT_CUSTOM_1155.address,
-    abi: CONTRACT_CUSTOM_1155.abi,
+    // TODO: the chainId should be dynamic
+    address: contract.custom1155[baseGoerli.id].address,
+    abi: contract.custom1155.abi,
     functionName: 'uri',
     args: [BigInt(1)],
     enabled,
