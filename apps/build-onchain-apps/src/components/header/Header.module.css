@@ -1,0 +1,71 @@
+.HeaderRoot {
+  height: 120px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 0 0 0;
+}
+
+/* Faster transition when the header gains background (and slower when it loses it) */
+.HeaderRoot[data-scroll-state='scrolling-down'] .HeaderInner {
+  transition-duration: 30ms, 120ms;
+}
+
+.HeaderRoot:not(.ghost[data-scroll-state='at-top']) > .HeaderInner {
+  background-color: var(--color-background);
+  box-shadow: 0 1px var(--gray-a4);
+}
+
+.HeaderThemeToggleContainer {
+  display: flex;
+  align-items: center;
+}
+
+@media (width <= 519px) {
+  [data-mobile-menu-open='true'] .HeaderThemeToggleContainer {
+    display: none;
+  }
+}
+
+.MenuCircleImage {
+  width: 32px;
+  height: 32px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: linear-gradient(0deg, white 0%, white 100%);
+  border-radius: 50%;
+}
+
+.NavigationMenuRoot {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.NavigationMenuList {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  gap: 8px;
+  list-style: none;
+}
+
+.NavigationMenuLink {
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: var(--accent-5-contrast);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+}
+
+.active,
+.NavigationMenuLink:hover,
+.NavigationMenuLink:active {
+  background-color: var(--accent-5);
+}

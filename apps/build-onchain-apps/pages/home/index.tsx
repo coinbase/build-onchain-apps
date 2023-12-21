@@ -1,4 +1,4 @@
-import { Container, Section, Theme } from '@radix-ui/themes';
+import { Container, Section } from '@radix-ui/themes';
 import Header from '../../src/components/header/Header';
 import Home from '../../src/components/home/Home';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
@@ -11,16 +11,12 @@ export default function HomePage() {
         description="Build Onchain Applications with the best consumer experience in a few minutes."
         image="themes.png"
       />
-      <div>
-        <Theme radius="medium" scaling="100%">
-          <Header />
-        </Theme>
-        <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-          <Section>
-            <Home />
-          </Section>
-        </Container>
-      </div>
+      <Header />
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
+        <Section>
+          <Home />
+        </Section>
+      </Container>
     </>
   );
 }

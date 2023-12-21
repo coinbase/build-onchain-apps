@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Theme } from '@radix-ui/themes';
 import { classNames } from '../../utils/classNames';
-import styles from '../../styles/Header.module.css';
+import styles from './Header.module.css';
 import { DefaultNavbar } from './Navbar';
 import { MobileMenu } from './MobileMenu';
 import Menu from './Menu';
@@ -36,20 +35,18 @@ function Header({ ghost }: HeaderProps) {
   }, [ghost]);
 
   return (
-    <Theme asChild className="radix-themes-custom-fonts">
-      <div
-        data-scroll-state={scrollState}
-        className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
-      >
-        <MobileMenu>
-          <DefaultNavbar />
-        </MobileMenu>
+    <div
+      data-scroll-state={scrollState}
+      className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
+    >
+      <MobileMenu>
+        <DefaultNavbar />
+      </MobileMenu>
 
-        <div className={styles.HeaderInner}>
-          <Menu />
-        </div>
+      <div className="fixed z-10 inline-flex h-[72px] w-[1280px] items-center justify-between rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl">
+        <Menu />
       </div>
-    </Theme>
+    </div>
   );
 }
 
