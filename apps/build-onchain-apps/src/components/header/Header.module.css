@@ -1,9 +1,9 @@
 .HeaderRoot {
-  height: 120px;
   display: flex;
+  height: 120px;
   align-items: flex-start;
   justify-content: center;
-  padding: 32px 0 0 0;
+  padding: 32px 0 0;
 }
 
 /* Faster transition when the header gains background (and slower when it loses it) */
@@ -28,13 +28,13 @@
 }
 
 .MenuCircleImage {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 32px;
   height: 32px;
-  left: 0;
-  top: 0;
-  position: absolute;
-  background: linear-gradient(0deg, white 0%, white 100%);
   border-radius: 50%;
+  background: linear-gradient(0deg, white 0%, white 100%);
 }
 
 .NavigationMenuRoot {
