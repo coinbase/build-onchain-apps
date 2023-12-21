@@ -4,9 +4,8 @@ import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from
 
 import { parseEther } from 'viem';
 import { Card, Text, Flex, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
-import { CONTRACT_BUY_ME_COFFEE } from '../../contract/info';
-
-// TODO: Home and Buy Me a Coffee should be the same routes
+import { baseGoerli } from 'viem/chains';
+import { contract } from '../../contract/ContractSpecification';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
@@ -19,8 +18,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
-    address: CONTRACT_BUY_ME_COFFEE.address,
-    abi: CONTRACT_BUY_ME_COFFEE.abi,
+    // TODO: the chainId should be dynamic
+    address: contract.buyMeACoffee[baseGoerli.id].address,
+    abi: contract.buyMeACoffee.abi,
     functionName: 'buyCoffee',
     args: [name, message],
     enabled: name !== '' && message !== '',

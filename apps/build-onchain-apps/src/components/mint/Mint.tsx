@@ -2,7 +2,7 @@ import { Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
-import { CONTRACT_CUSTOM_1155 } from '../../contract/info';
+import { contract } from '../../contract/ContractSpecification';
 import useCollectionMetadata from '../../hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
@@ -19,8 +19,9 @@ function Mint() {
     useCollectionMetadata(onCorrectNetwork);
 
   const { config } = usePrepareContractWrite({
-    address: CONTRACT_CUSTOM_1155.address,
-    abi: CONTRACT_CUSTOM_1155.abi,
+    // TODO: the chainId should be dynamic
+    address: contract.custom1155[baseGoerli.id].address,
+    abi: contract.custom1155.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
     enabled: onCorrectNetwork,
