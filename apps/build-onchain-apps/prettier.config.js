@@ -2,6 +2,7 @@ module.exports = {
   arrowParens: 'always',
   bracketSameLine: false,
   jsxSingleQuote: false,
+  plugins: ['prettier-plugin-tailwindcss'],
   printWidth: 100,
   semi: true,
   singleQuote: true,

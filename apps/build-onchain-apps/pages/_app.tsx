@@ -1,5 +1,5 @@
 import '@radix-ui/themes/styles.css';
-import '../src/styles/global.css';
+import '../src/global.css';
 
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';

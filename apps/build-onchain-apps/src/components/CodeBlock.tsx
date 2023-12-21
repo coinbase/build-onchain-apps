@@ -1,4 +1,4 @@
-import styles from '../styles/CodeBlock.module.css';
+import styles from './CodeBlock.module.css';
 
 export default function CodeBlock({ children }: { children: React.ReactNode }) {
   return (

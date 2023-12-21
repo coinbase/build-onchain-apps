@@ -1,10 +1,9 @@
 import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
-import Image from 'next/image';
 import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
-import logo from '../../../public/logo.svg';
+import styles from './Header.module.css';
 import { DefaultNavbar } from './Navbar';
 import { useMobileMenuContext } from './MobileMenu';
 
@@ -17,9 +16,12 @@ function Menu() {
 
   return (
     <>
-      <Flex align="center" justify="center" position="absolute" top="0" bottom="0" left="0" pl="4">
-        <NextLink href="/" passHref>
-          <Image src={logo} alt="Onchain Coffee App" />
+      <div className="flex h-8 items-center justify-start gap-4">
+        <NextLink href="/" passHref className="relative h-8 w-8">
+          <div className={styles.MenuCircleImage} />
+        </NextLink>
+        <NextLink href="/" passHref className="text-center text-xl font-medium text-white">
+          BUILD ONCHAIN APPS
         </NextLink>
 
         <Flex display={{ sm: 'none' }} ml="4">
@@ -35,13 +37,10 @@ function Menu() {
             </IconButton>
           </Tooltip>
         </Flex>
-      </Flex>
+      </div>
 
-      <Flex align="center" justify="center" height="100%" display={{ initial: 'none', sm: 'flex' }}>
+      <div className="flex items-center justify-start gap-8">
         <DefaultNavbar />
-      </Flex>
-
-      <Flex align="center" gap="5" position="absolute" top="0" bottom="0" right="0" pr="4">
         <AccountConnectButton />
 
         <Tooltip className="radix-themes-custom-fonts" content="View GitHub">
@@ -55,7 +54,7 @@ function Menu() {
             </a>
           </IconButton>
         </Tooltip>
-      </Flex>
+      </div>
     </>
   );
 }

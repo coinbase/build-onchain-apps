@@ -9,7 +9,7 @@ import {
 import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
 import { classNames } from '../../utils/classNames';
 import useActiveLink from '../../hooks/useActiveLink';
-import styles from '../../styles/Navbar.module.css';
+import styles from './Header.module.css';
 
 export type NavbarLinkProps = Omit<NavigationMenuLinkProps, 'href'> &
   Pick<NextLinkProps, 'href' | 'as' | 'replace' | 'scroll' | 'prefetch' | 'shallow'>;
