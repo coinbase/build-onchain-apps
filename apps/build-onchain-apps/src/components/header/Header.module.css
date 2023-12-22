@@ -36,36 +36,3 @@
   border-radius: 50%;
   background: linear-gradient(0deg, white 0%, white 100%);
 }
-
-.NavigationMenuRoot {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.NavigationMenuList {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  gap: 8px;
-  list-style: none;
-}
-
-.NavigationMenuLink {
-  padding: 6px 8px;
-  border-radius: 4px;
-  color: var(--accent-5-contrast);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  outline: none;
-  text-decoration: none;
-  user-select: none;
-}
-
-.active,
-.NavigationMenuLink:hover,
-.NavigationMenuLink:active {
-  background-color: var(--accent-5);
-}

@@ -1,7 +1,6 @@
 import NextLink from 'next/link';
 import { classNames } from '../../utils/classNames';
 import useActiveLink from '../../hooks/useActiveLink';
-import styles from './Header.module.css';
 
 export function NavbarLink({
   href,
@@ -13,12 +12,14 @@ export function NavbarLink({
   children: React.ReactNode;
 }) {
   const active = useActiveLink({ href, as });
-
   return (
     <li>
       <NextLink
         href={href}
-        className={classNames(styles.NavigationMenuLink, active ? styles.active : '')}
+        className={classNames(
+          'px-[16px] py-[5px] text-center text-base font-normal text-white',
+          active ? 'rounded-[50px] bg-neutral-900 bg-opacity-90' : '',
+        )}
       >
         {children}
       </NextLink>
@@ -28,8 +29,7 @@ export function NavbarLink({
 
 function Navbar() {
   return (
-    <ul>
-      <NavbarLink href="/">Home</NavbarLink>
+    <ul className="flex items-center justify-start gap-8">
       <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
       <NavbarLink href="/mint">Mint</NavbarLink>
     </ul>
