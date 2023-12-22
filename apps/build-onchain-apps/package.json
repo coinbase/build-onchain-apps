@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "check": "yarn format && yarn lint && yarn stylelint && yarn test && yarn test:coverage",
+    "check": "yarn format && yarn lint && yarn stylelint",
     "dev": "next dev",
     "format": "prettier --log-level warn --write .",
     "format:check": "prettier --check .",

@@ -1,72 +1,56 @@
-import { Theme } from '@radix-ui/themes';
-import {
-  Root,
-  List,
-  Item,
-  Link,
-  type NavigationMenuLinkProps,
-} from '@radix-ui/react-navigation-menu';
-import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
+import NextLink from 'next/link';
+import { RemoveScroll } from 'react-remove-scroll';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { classNames } from '../../utils/classNames';
 import useActiveLink from '../../hooks/useActiveLink';
-import styles from './Header.module.css';
-
-export type NavbarLinkProps = Omit<NavigationMenuLinkProps, 'href'> &
-  Pick<NextLinkProps, 'href' | 'as' | 'replace' | 'scroll' | 'prefetch' | 'shallow'>;
 
 export function NavbarLink({
   href,
   as, // this is the NextLink `as` prop, not the `as` polymorphic prop pattern
-  replace,
-  scroll,
-  prefetch,
-  shallow,
   children,
-  ...props
-}: NavbarLinkProps) {
+  target,
+}: {
+  href: string;
+  as?: string;
+  children: React.ReactNode;
+  target?: string;
+}) {
   const active = useActiveLink({ href, as });
-
   return (
-    <Item>
-      <Link
-        asChild
-        className={classNames(styles.NavigationMenuLink, active ? styles.active : '')}
-        {...props}
+    <li>
+      <NextLink
+        href={href}
+        className={classNames(
+          'px-[16px] py-[5px] text-center text-base font-normal text-white',
+          active ? 'rounded-[50px] bg-neutral-900 bg-opacity-90' : '',
+        )}
+        target={target}
       >
-        <NextLink
-          href={href}
-          replace={replace}
-          scroll={scroll}
-          prefetch={prefetch}
-          shallow={shallow}
-        >
-          {children}
-        </NextLink>
-      </Link>
-    </Item>
+        {children}
+      </NextLink>
+    </li>
   );
 }
 
-export type NavbarProps = {
-  children: React.ReactElement<NavbarProps> | React.ReactElement<NavbarProps>[];
-};
-
-export function Navbar({ children }: NavbarProps) {
+function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
   return (
-    <Theme asChild className="radix-themes-custom-fonts">
-      <Root className={styles.NavigationMenuRoot}>
-        <List className={styles.NavigationMenuList}>{children}</List>
-      </Root>
-    </Theme>
+    <>
+      <ul className="hidden items-center justify-start gap-8 md:flex">
+        <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
+        <NavbarLink href="/mint">Mint</NavbarLink>
+        <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+          <GitHubLogoIcon width="16" height="16" />
+        </NavbarLink>
+      </ul>
+      {isMenuOpen && (
+        <div>
+          <RemoveScroll allowPinchZoom enabled>
+            Ciao
+          </RemoveScroll>
+        </div>
+      )}
+    </>
   );
 }
 
-export function DefaultNavbar() {
-  return (
-    <Navbar>
-      <NavbarLink href="/">Home</NavbarLink>
-      <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
-      <NavbarLink href="/mint">Mint</NavbarLink>
-    </Navbar>
-  );
-}
+export default Navbar;

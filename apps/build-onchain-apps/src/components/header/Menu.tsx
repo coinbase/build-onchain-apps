@@ -1,18 +1,18 @@
-import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
-import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { useState } from 'react';
+import { Flex, IconButton } from '@radix-ui/themes';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
 import styles from './Header.module.css';
-import { DefaultNavbar } from './Navbar';
-import { useMobileMenuContext } from './MobileMenu';
+import Navbar from './Navbar';
 
 function Menu() {
-  const mobileMenu = useMobileMenuContext();
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMobileMenuClick = useCallback(() => {
-    mobileMenu.setOpen((open) => !open);
-  }, [mobileMenu]);
+    setMenuOpen(!isMenuOpen);
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -25,35 +25,21 @@ function Menu() {
         </NextLink>
 
         <Flex display={{ sm: 'none' }} ml="4">
-          <Tooltip className="radix-themes-custom-fonts" content="Navigation">
-            <IconButton
-              size="3"
-              variant="ghost"
-              color="gray"
-              data-state={mobileMenu.open ? 'open' : 'closed'}
-              onClick={handleMobileMenuClick}
-            >
-              <HamburgerMenuIcon width="16" height="16" />
-            </IconButton>
-          </Tooltip>
+          <IconButton
+            size="3"
+            variant="ghost"
+            color="gray"
+            data-state={isMenuOpen ? 'open' : 'closed'}
+            onClick={handleMobileMenuClick}
+          >
+            <HamburgerMenuIcon width="16" height="16" />
+          </IconButton>
         </Flex>
       </div>
 
       <div className="flex items-center justify-start gap-8">
-        <DefaultNavbar />
+        <Navbar isMenuOpen={isMenuOpen} />
         <AccountConnectButton />
-
-        <Tooltip className="radix-themes-custom-fonts" content="View GitHub">
-          <IconButton asChild size="3" variant="ghost" color="gray">
-            <a
-              href="https://github.com/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps"
-              target="_blank"
-              aria-labelledby="View GitHub Button"
-            >
-              <GitHubLogoIcon width="16" height="16" />
-            </a>
-          </IconButton>
-        </Tooltip>
       </div>
     </>
   );
