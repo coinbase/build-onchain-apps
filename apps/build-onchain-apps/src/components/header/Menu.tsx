@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
 import styles from './Header.module.css';
-import { DefaultNavbar } from './Navbar';
+import Navbar from './Navbar';
 import { useMobileMenuContext } from './MobileMenu';
 
 function Menu() {
@@ -40,7 +40,7 @@ function Menu() {
       </div>
 
       <div className="flex items-center justify-start gap-8">
-        <DefaultNavbar />
+        <Navbar />
         <AccountConnectButton />
 
         <Tooltip className="radix-themes-custom-fonts" content="View GitHub">

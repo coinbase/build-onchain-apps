@@ -1,72 +1,39 @@
-import { Theme } from '@radix-ui/themes';
-import {
-  Root,
-  List,
-  Item,
-  Link,
-  type NavigationMenuLinkProps,
-} from '@radix-ui/react-navigation-menu';
-import NextLink, { type LinkProps as NextLinkProps } from 'next/link';
+import NextLink from 'next/link';
 import { classNames } from '../../utils/classNames';
 import useActiveLink from '../../hooks/useActiveLink';
 import styles from './Header.module.css';
 
-export type NavbarLinkProps = Omit<NavigationMenuLinkProps, 'href'> &
-  Pick<NextLinkProps, 'href' | 'as' | 'replace' | 'scroll' | 'prefetch' | 'shallow'>;
-
 export function NavbarLink({
   href,
   as, // this is the NextLink `as` prop, not the `as` polymorphic prop pattern
-  replace,
-  scroll,
-  prefetch,
-  shallow,
   children,
-  ...props
-}: NavbarLinkProps) {
+}: {
+  href: string;
+  as?: string;
+  children: React.ReactNode;
+}) {
   const active = useActiveLink({ href, as });
 
   return (
-    <Item>
-      <Link
-        asChild
+    <li>
+      <NextLink
+        href={href}
         className={classNames(styles.NavigationMenuLink, active ? styles.active : '')}
-        {...props}
       >
-        <NextLink
-          href={href}
-          replace={replace}
-          scroll={scroll}
-          prefetch={prefetch}
-          shallow={shallow}
-        >
-          {children}
-        </NextLink>
-      </Link>
-    </Item>
+        {children}
+      </NextLink>
+    </li>
   );
 }
 
-export type NavbarProps = {
-  children: React.ReactElement<NavbarProps> | React.ReactElement<NavbarProps>[];
-};
-
-export function Navbar({ children }: NavbarProps) {
+function Navbar() {
   return (
-    <Theme asChild className="radix-themes-custom-fonts">
-      <Root className={styles.NavigationMenuRoot}>
-        <List className={styles.NavigationMenuList}>{children}</List>
-      </Root>
-    </Theme>
-  );
-}
-
-export function DefaultNavbar() {
-  return (
-    <Navbar>
+    <ul>
       <NavbarLink href="/">Home</NavbarLink>
       <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
       <NavbarLink href="/mint">Mint</NavbarLink>
-    </Navbar>
+    </ul>
   );
 }
+
+export default Navbar;
