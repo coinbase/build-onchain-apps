@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react';
-import { Flex, Portal, Slot, Theme } from '@radix-ui/themes';
+import { Flex, Portal, Slot } from '@radix-ui/themes';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useMenuContext } from '../../providers/MobileMenuProvider';
 
@@ -18,7 +18,6 @@ export const MobileMenu = memo<MobileMenuProps>(function MobileMenu({ children }
 
   return (
     <Portal>
-      <Theme className="radix-themes-custom-fonts">
         <RemoveScroll as={Slot} allowPinchZoom enabled>
           <Flex
             position="fixed"
@@ -32,7 +31,6 @@ export const MobileMenu = memo<MobileMenuProps>(function MobileMenu({ children }
             {children}
           </Flex>
         </RemoveScroll>
-      </Theme>
     </Portal>
   );
 });

@@ -1,4 +1,4 @@
-import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
+import { Flex, IconButton } from '@radix-ui/themes';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
@@ -25,7 +25,6 @@ function Menu() {
         </NextLink>
 
         <Flex display={{ sm: 'none' }} ml="4">
-          <Tooltip className="radix-themes-custom-fonts" content="Navigation">
             <IconButton
               size="3"
               variant="ghost"
@@ -35,7 +34,6 @@ function Menu() {
             >
               <HamburgerMenuIcon width="16" height="16" />
             </IconButton>
-          </Tooltip>
         </Flex>
       </div>
 
