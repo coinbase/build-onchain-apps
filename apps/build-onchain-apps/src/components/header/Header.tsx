@@ -43,7 +43,7 @@ function Header({ ghost }: HeaderProps) {
         <DefaultNavbar />
       </MobileMenu>
 
-      <div className="fixed z-10 inline-flex h-[72px] w-[1280px] items-center justify-between rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl">
+      <div className="fixed z-10 inline-flex h-[72px]  w-screen xl:w-[1280px] items-center justify-between rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl">
         <Menu />
       </div>
     </div>
