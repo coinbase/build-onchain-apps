@@ -1,5 +1,5 @@
 import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
-import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
@@ -42,18 +42,6 @@ function Menu() {
       <div className="flex items-center justify-start gap-8">
         <Navbar />
         <AccountConnectButton />
-
-        <Tooltip className="radix-themes-custom-fonts" content="View GitHub">
-          <IconButton asChild size="3" variant="ghost" color="gray">
-            <a
-              href="https://github.com/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps"
-              target="_blank"
-              aria-labelledby="View GitHub Button"
-            >
-              <GitHubLogoIcon width="16" height="16" />
-            </a>
-          </IconButton>
-        </Tooltip>
       </div>
     </>
   );
