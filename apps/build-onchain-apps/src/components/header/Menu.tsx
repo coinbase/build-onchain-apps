@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Flex, IconButton } from '@radix-ui/themes';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -5,14 +6,13 @@ import { useCallback } from 'react';
 import { AccountConnectButton } from '../../onchain';
 import styles from './Header.module.css';
 import Navbar from './Navbar';
-import { useMobileMenuContext } from './MobileMenu';
 
 function Menu() {
-  const mobileMenu = useMobileMenuContext();
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMobileMenuClick = useCallback(() => {
-    mobileMenu.setOpen((open) => !open);
-  }, [mobileMenu]);
+    setMenuOpen(!isMenuOpen);
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -25,20 +25,20 @@ function Menu() {
         </NextLink>
 
         <Flex display={{ sm: 'none' }} ml="4">
-            <IconButton
-              size="3"
-              variant="ghost"
-              color="gray"
-              data-state={mobileMenu.open ? 'open' : 'closed'}
-              onClick={handleMobileMenuClick}
-            >
-              <HamburgerMenuIcon width="16" height="16" />
-            </IconButton>
+          <IconButton
+            size="3"
+            variant="ghost"
+            color="gray"
+            data-state={isMenuOpen ? 'open' : 'closed'}
+            onClick={handleMobileMenuClick}
+          >
+            <HamburgerMenuIcon width="16" height="16" />
+          </IconButton>
         </Flex>
       </div>
 
       <div className="flex items-center justify-start gap-8">
-        <Navbar />
+        <Navbar isMenuOpen={isMenuOpen} />
         <AccountConnectButton />
       </div>
     </>
