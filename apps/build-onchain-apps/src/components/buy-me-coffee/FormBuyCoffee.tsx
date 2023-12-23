@@ -20,7 +20,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const { config } = usePrepareContractWrite({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
-    functionName: 'buyTea',
+    functionName: 'buyCoffee',
     args: [name, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther('0.001'),
@@ -83,7 +83,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   }
 
   if (contract.status === 'deactivated') {
-    // TODO: indicate that this contract has been deactivated here
+    // TODO: indicate that this contract has been deactivated
   }
 
   return (
