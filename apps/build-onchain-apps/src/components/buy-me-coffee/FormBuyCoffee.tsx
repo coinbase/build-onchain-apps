@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
 
 import { parseEther } from 'viem';
-import { baseGoerli } from 'viem/chains';
-import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
-import { contract } from '../../contract/ContractSpecification';
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+import { useBuyMeACoffee } from '../../contract/ContractSpecification';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
@@ -14,14 +13,16 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
 
+  // Get the correct contract info for current network (if present)
+  const contract = useBuyMeACoffee();
+
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
-    // TODO: the chainId should be dynamic
-    address: contract.buyMeACoffee[baseGoerli.id].address,
-    abi: contract.buyMeACoffee.abi,
+    address: contract.status === 'ready' ? contract.address : undefined,
+    abi: contract.abi,
     functionName: 'buyCoffee',
     args: [name, message],
-    enabled: name !== '' && message !== '',
+    enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther('0.001'),
     onSuccess(data) {
       console.log('Success prepare buyCoffee', data);
@@ -72,6 +73,14 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     },
     [setMessage],
   );
+
+  if (contract.status === 'notConnected') {
+    // TODO: render not connected state here
+  }
+
+  if (contract.status === 'onUnsupportedNetwork') {
+    // TODO: render network switcher here
+  }
 
   return (
     <div className="flex flex-col justify-start">
