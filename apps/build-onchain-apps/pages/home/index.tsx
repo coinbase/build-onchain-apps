@@ -31,8 +31,11 @@ export default function HomePage() {
             </defs>
             <g className={styles.HomeHeaderWavesParallax}>
               <use xlinkHref="#boat-wave" x="48" y="0" fill="rgba(82, 156, 248, 0.9)" />
+              <use xlinkHref="#boat-wave" x="48" y="7" fill="rgba(82, 156, 248, 0.9)" />
               <use xlinkHref="#boat-wave" x="48" y="3" fill="rgba(82, 156, 248, 0.7)" />
+              <use xlinkHref="#boat-wave" x="48" y="7" fill="rgba(82, 156, 248, 0.7)" />
               <use xlinkHref="#boat-wave" x="48" y="5" fill="rgba(82, 156, 248, 0.5)" />
+              <use xlinkHref="#boat-wave" x="48" y="7" fill="rgba(82, 156, 248, 0.5)" />
               <use xlinkHref="#boat-wave" x="48" y="7" fill="rgba(82, 174, 255, 0.3)" />
             </g>
           </svg>

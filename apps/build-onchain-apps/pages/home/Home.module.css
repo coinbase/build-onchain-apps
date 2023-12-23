@@ -1,7 +1,6 @@
 .HomeHeader {
   --home-header-height: 465px;
-  display: flex;
-  width: 100vw;
+
   height: var(--home-header-height);
 }
 
@@ -15,10 +14,10 @@
 }
 
 .HomeHeaderWaves {
-  --home-header-waves-height: 65px;
-  display: flex;
-  align-items: flex-end;
+  --home-header-waves-height: 42px;
+
   position: relative;
+  margin-top: 239px;
   margin-bottom: var(--home-header-waves-height);
 }
 
