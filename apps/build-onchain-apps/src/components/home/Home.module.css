@@ -1,11 +1,12 @@
 .HomeHeader {
-  --home-header-height: 465px;
+  --home-header-height: 820px;
 
   height: var(--home-header-height);
 }
 
 .HomeHeaderGradient {
   position: absolute;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100vw;
@@ -13,11 +14,37 @@
   background: linear-gradient(180deg, #ff5800 0%, #cb59ab 100%, #ea36b8 100%);
 }
 
+.HomeHeaderHeadline {
+  margin-top: 85px;
+  color: white;
+  font-size: 92px;
+  font-weight: 400;
+  line-height: 85px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.HomeHeaderParagraph {
+  margin: 35px 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.HomeHeaderCta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
 .HomeHeaderWaves {
   --home-header-waves-height: 42px;
 
   position: relative;
-  margin-top: 239px;
+  margin-top: 4px;
   margin-bottom: var(--home-header-waves-height);
 }
 
