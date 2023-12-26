@@ -41,8 +41,9 @@ contract BuyMeACoffee {
    * @dev Function to buy a coffee
    * @param  userName The name of the user
    * @param  message The message of the user
+   * (Note: Using calldata for gas efficiency)
    */
-  function buyCoffee(string memory userName, string memory message) public payable {
+  function buyCoffee(string calldata userName, string calldata message) public payable {
     if (msg.value < price) {
       revert InsufficientFunds();
     }
