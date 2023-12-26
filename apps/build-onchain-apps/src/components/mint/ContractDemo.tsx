@@ -9,7 +9,7 @@ import SwitchNetwork from './SwitchNetwork';
 
 const EXPECTED_CHAIN = baseGoerli;
 
-function Mint() {
+export default function MintContractDemo() {
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
 
@@ -60,5 +60,3 @@ function Mint() {
     </Grid>
   );
 }
-
-export default Mint;

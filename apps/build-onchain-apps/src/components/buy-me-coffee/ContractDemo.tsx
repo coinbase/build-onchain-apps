@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { Box, Flex, Grid, Text } from '@radix-ui/themes';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
-import FormBuyCoffee from '../../components/buy-me-coffee/FormBuyCoffee';
-import Memos from '../../components/buy-me-coffee/Memos';
+import FormBuyCoffee from './FormBuyCoffee';
+import Memos from './Memos';
 
-export default function BuyMeCoffee() {
+export default function BuyMeCoffeeContractDemo() {
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
   const handleOncomplete = useCallback(() => {
