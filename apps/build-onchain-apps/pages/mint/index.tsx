@@ -1,4 +1,3 @@
-import { Container, Section } from '@radix-ui/themes';
 import dynamic from 'next/dynamic';
 import Header from '../../src/components/header/Header';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
@@ -6,10 +5,17 @@ import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 // Because the mint page relies so heavily on client-side state, without disabling SSR
 // for its internals we get annoying hydration errors. A future enhancement would be to
 // read token metadata through a provider that is available server-side.
-const Mint = dynamic(async () => import('../../src/components/mint/Mint').then((mod) => mod), {
-  ssr: false,
-});
+const MintContractDemo = dynamic(
+  async () => import('../../src/components/mint/ContractDemo').then((mod) => mod),
+  {
+    ssr: false,
+  },
+);
 
+/**
+ * Use the page component to wrap the components
+ * that you want to render on the page.
+ */
 export default function MintPage() {
   return (
     <>
@@ -19,11 +25,9 @@ export default function MintPage() {
         image="themes.png"
       />
       <Header />
-      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
-          <Mint />
-        </Section>
-      </Container>
+      <main className="container mx-auto flex flex-col">
+        <MintContractDemo />
+      </main>
     </>
   );
 }

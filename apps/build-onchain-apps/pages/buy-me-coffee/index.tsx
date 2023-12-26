@@ -1,8 +1,11 @@
-import { Container, Section } from '@radix-ui/themes';
-import BuyMeCoffee from '../../src/components/buy-me-coffee/BuyMeCoffee';
+import BuyMeCoffeeContractDemo from '../../src/components/buy-me-coffee/ContractDemo';
 import Header from '../../src/components/header/Header';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 
+/**
+ * Use the page component to wrap the components
+ * that you want to render on the page.
+ */
 export default function BuyMeCoffeePage() {
   return (
     <>
@@ -12,11 +15,9 @@ export default function BuyMeCoffeePage() {
         image="themes.png"
       />
       <Header />
-      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
-          <BuyMeCoffee />
-        </Section>
-      </Container>
+      <main className="container mx-auto flex flex-col">
+        <BuyMeCoffeeContractDemo />
+      </main>
     </>
   );
 }
