@@ -37,7 +37,7 @@
 .HomeHeaderCta {
   display: flex;
   justify-content: center;
-  margin-bottom: 35px;
+  margin: 16px 0 52px;
 }
 
 .HomeHeaderWaves {

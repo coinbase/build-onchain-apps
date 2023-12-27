@@ -1,7 +1,8 @@
 .CodeBlock {
   position: relative;
+  width: 100%;
   border-radius: 8px;
-  margin: 16px 0;
+  margin: 0;
   background-color: #161618;
   overflow-x: auto;
   transition: background-color 0.5s;
@@ -23,6 +24,7 @@
 .CodeBlockLang pre,
 .CodeBlockLang code {
   direction: ltr;
+  font-size: 15px;
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
@@ -51,7 +53,7 @@
   min-width: 100%;
   padding: 0 24px;
   color: var(--vp-code-block-color);
-  font-size: 0.875em;
+  font-size: 15px;
   line-height: 1.7;
   transition: rgb(235 235 245 / 60%);
 }
