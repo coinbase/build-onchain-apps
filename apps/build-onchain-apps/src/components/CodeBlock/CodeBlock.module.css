@@ -1,7 +1,8 @@
 .CodeBlock {
   position: relative;
+  width: 100%;
   border-radius: 8px;
-  margin: 16px 0;
+  margin: 0;
   background-color: #161618;
   overflow-x: auto;
   transition: background-color 0.5s;

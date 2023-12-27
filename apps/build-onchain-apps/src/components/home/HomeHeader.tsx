@@ -1,4 +1,4 @@
-import CodeBlock from '../CodeBlock';
+import CodeBlock from '../CodeBlock/CodeBlock';
 import Header from '../header/Header';
 import styles from './Home.module.css';
 
