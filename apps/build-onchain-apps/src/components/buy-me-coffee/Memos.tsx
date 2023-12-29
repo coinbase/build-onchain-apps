@@ -1,4 +1,3 @@
-import { Flex } from '@radix-ui/themes';
 import MemoCard from './MemoCard';
 import type { CoffeeMemo } from '../../types';
 
@@ -14,7 +13,7 @@ type MemosProps = {
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
   return (
-    <Flex direction="column" gap="3" width="100%">
+    <div className="flex flex-col gap-3">
       {memos
         .map((memo) => {
           return (
@@ -27,7 +26,7 @@ function Memos({ memos }: MemosProps) {
           );
         })
         .reverse()}
-    </Flex>
+    </div>
   );
 }
 

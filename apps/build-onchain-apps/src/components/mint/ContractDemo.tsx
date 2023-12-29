@@ -44,14 +44,16 @@ export default function MintContractDemo() {
     return <p>loading...</p>;
   }
   return (
-    <div className='grid grid-cols-2'>
-      <div className='flex flex-col items-center gap-5'>
+    <div className="grid grid-cols-2">
+      <div className="flex flex-col items-center gap-5">
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </div>
-      <div className='flex flex-col items-center gap-5'>
+      <div className="flex flex-col items-center gap-5">
         <p>{collectionName}</p>
         <p>{description}</p>
-        <button onClick={mint} type='button'>Mint for free (requires gas)</button>
+        <button onClick={mint} type="button">
+          Mint for free (requires gas)
+        </button>
       </div>
     </div>
   );

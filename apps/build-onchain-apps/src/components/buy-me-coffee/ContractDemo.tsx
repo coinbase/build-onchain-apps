@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { Box, Flex, Grid, Text } from '@radix-ui/themes';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
@@ -12,18 +11,16 @@ export default function BuyMeCoffeeContractDemo() {
   }, [refetchMemos]);
 
   return (
-    <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
-      <Box>
-        <Flex mb="5">
-          <Text size="8" weight="bold" mb="1">
-            Messages
-          </Text>
-        </Flex>
+    <div className="grid grid-cols-5">
+      <div className="col-span-3">
+        <div className="flex">
+          <h2>Messages</h2>
+        </div>
         {memos?.length > 0 && <Memos memos={memos} />}
-      </Box>
-      <Box position="relative" pt="9">
+      </div>
+      <div>
         <FormBuyCoffee onComplete={handleOncomplete} />
-      </Box>
-    </Grid>
+      </div>
+    </div>
   );
 }

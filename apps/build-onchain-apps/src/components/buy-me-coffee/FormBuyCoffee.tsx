@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 import { parseEther } from 'viem';
-import { Card, Text, Flex, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
+import { TextFieldInput, TextArea } from '@radix-ui/themes';
 import { baseGoerli } from 'viem/chains';
 import { contract } from '../../contract/ContractSpecification';
 
@@ -76,49 +76,35 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   );
 
   return (
-    <Box style={{ whiteSpace: 'nowrap' }}>
-      <Flex direction="column">
-        <Flex justify="center" position="relative">
-          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-            <Card size="4">
-              <Heading as="h3" size="6" trim="start" mb="5">
-                Buy Me A Coffee
-              </Heading>
+    <div className="flex flex-col">
+      <div className="flex items-center justify-items-center">
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <h3>Buy Me A Coffee</h3>
 
-              <Box mb="5">
-                <Text as="div" size="2" weight="medium" mb="2">
-                  Name
-                </Text>
-                <TextFieldInput
-                  placeholder="Enter your name"
-                  value={name}
-                  type="text"
-                  onChange={handleNameChange}
-                  required
-                />
-              </Box>
+          <p>Name</p>
+          <TextFieldInput
+            placeholder="Enter your name"
+            value={name}
+            type="text"
+            onChange={handleNameChange}
+            required
+          />
 
-              <Box mb="5" position="relative">
-                <Text as="div" size="2" weight="medium" mb="2">
-                  Message
-                </Text>
-                <TextArea
-                  value={message}
-                  placeholder="Enter your message…"
-                  onChange={handleMessageChange}
-                />
-              </Box>
+          <p>Message</p>
+          <TextArea
+            value={message}
+            placeholder="Enter your message…"
+            onChange={handleMessageChange}
+          />
 
-              <Flex mt="6" justify="end" gap="3">
-                <Button type="submit" disabled={loadingTransaction}>
-                  Send 1 Coffee for 0.001ETH
-                </Button>
-              </Flex>
-            </Card>
-          </form>
-        </Flex>
-      </Flex>
-    </Box>
+          <div className="flex">
+            <button type="submit" disabled={loadingTransaction}>
+              Send 1 Coffee for 0.001ETH
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

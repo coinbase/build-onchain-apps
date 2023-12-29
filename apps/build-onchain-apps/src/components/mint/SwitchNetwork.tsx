@@ -8,9 +8,11 @@ function SwitchNetwork() {
   const { switchNetwork } = useSwitchNetwork({ chainId: EXPECTED_CHAIN.id });
   const handleClick = useCallback(() => (switchNetwork ? switchNetwork() : null), [switchNetwork]);
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <p>Please switch to {EXPECTED_CHAIN.name}</p>
-      <button onClick={handleClick} type='button'>Switch Network</button>
+      <button onClick={handleClick} type="button">
+        Switch Network
+      </button>
     </div>
   );
 }
