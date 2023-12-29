@@ -1,9 +1,8 @@
-import { useAccount, useBalance, useDisconnect, useNetwork } from 'wagmi';
-import { Box, Button, Flex, Dialog, Text } from '@radix-ui/themes';
+import { useAccount, useDisconnect, useNetwork } from 'wagmi';
+import { Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { getSlicedAddress } from './utils/address';
-import { getAccountBalance } from './utils/balance';
 import '@rainbow-me/rainbowkit/styles.css';
 
 /**
@@ -11,9 +10,6 @@ import '@rainbow-me/rainbowkit/styles.css';
  */
 export function AccountConnectButton() {
   const { address } = useAccount();
-  const { data } = useBalance({
-    address,
-  });
   const { disconnect } = useDisconnect();
   const network = useNetwork();
   const handleDisconnectWallet = useCallback(() => {
@@ -33,7 +29,7 @@ export function AccountConnectButton() {
   }, [address]);
 
   return (
-    <Flex gap="8">
+    <div className="flex">
       <ConnectButton.Custom>
         {({ account, chain, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
           const ready = mounted && authenticationStatus !== 'loading';
@@ -57,16 +53,28 @@ export function AccountConnectButton() {
               {(() => {
                 if (!connected) {
                   return (
-                    <Button onClick={openConnectModal} type="button">
-                      Connect Wallet
-                    </Button>
+                    <button
+                      onClick={openConnectModal}
+                      type="button"
+                      className="inline-flex h-10 w-32 items-center justify-center gap-2.5 rounded-3xl bg-white px-4 py-2"
+                    >
+                      <span className="text-sm font-medium leading-normal text-black">
+                        Connect wallet
+                      </span>
+                    </button>
                   );
                 }
 
                 if (chain.unsupported) {
                   return (
-                    <button onClick={openChainModal} type="button">
-                      Wrong network
+                    <button
+                      onClick={openChainModal}
+                      type="button"
+                      className="inline-flex h-10 w-32 items-center justify-center gap-2.5 rounded-3xl bg-white px-4 py-2"
+                    >
+                      <span className="text-sm font-medium leading-normal text-black">
+                        Wrong network
+                      </span>
                     </button>
                   );
                 }
@@ -74,39 +82,39 @@ export function AccountConnectButton() {
                 return (
                   <Dialog.Root>
                     <Dialog.Trigger>
-                      <Flex gap="3" align="center" justify="center">
-                        <Box width="auto" display={{ initial: 'none', md: 'block' }}>
-                          <b>{getAccountBalance(data)}</b>
-                        </Box>
-                        <Box width="auto">
-                          <Button>{getSlicedAddress(address)}</Button>
-                        </Box>
-                      </Flex>
+                      <div className="flex">
+                        <div className="inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2">
+                          <div className="text-sm font-medium leading-normal text-black">
+                            {getSlicedAddress(address)}
+                          </div>
+                        </div>
+                      </div>
                     </Dialog.Trigger>
 
                     <Dialog.Content style={{ maxWidth: 450 }}>
-                      <Dialog.Title>{getSlicedAddress(address)}</Dialog.Title>
-                      <Dialog.Description size="2" mb="4">
-                        ~~~
-                      </Dialog.Description>
-
-                      <Flex gap="3">
-                        <Text as="div" size="2" mb="1" weight="bold">
-                          Network:
-                        </Text>
-                        <Text as="div" size="2" mb="1" weight="regular">
+                      <h4>{getSlicedAddress(address)}</h4>
+                      <div className="flex">
+                        <span className="text-bold">Network:</span>
+                        <span>
                           {network.chain?.name} ({network.chain?.id})
-                        </Text>
-                      </Flex>
-
-                      <Flex gap="3" mt="4" justify="end">
+                        </span>
+                      </div>
+                      <div className="flex">
                         <Dialog.Close onClick={handleCopyAddress}>
-                          <Button>Copy Address</Button>
+                          <div className="inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2">
+                            <div className="text-sm font-medium leading-normal text-black">
+                              Copy Address
+                            </div>
+                          </div>
                         </Dialog.Close>
                         <Dialog.Close onClick={handleDisconnectWallet}>
-                          <Button>Disconnect</Button>
+                          <div className="inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2">
+                            <div className="text-sm font-medium leading-normal text-black">
+                              Disconnect
+                            </div>
+                          </div>
                         </Dialog.Close>
-                      </Flex>
+                      </div>
                     </Dialog.Content>
                   </Dialog.Root>
                 );
@@ -115,6 +123,6 @@ export function AccountConnectButton() {
           );
         }}
       </ConnectButton.Custom>
-    </Flex>
+    </div>
   );
 }
