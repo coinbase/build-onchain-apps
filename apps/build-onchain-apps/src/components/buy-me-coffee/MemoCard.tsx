@@ -12,17 +12,13 @@ function MemoCard({ userName, message, time }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
   return (
     <div className="flex gap-3">
-      <div className="flex items-center justify-center gap-3">
-        B
-      </div>
+      <div className="flex items-center justify-center gap-3">B</div>
       <div className="flex grow flex-col gap-2">
         <div className="flex items-center justify-between">
           <p>{userName}</p>
           <p>{convertedTimestamp.toDateString()}</p>
         </div>
-        <p>
-          {message}
-        </p>
+        <p>{message}</p>
       </div>
     </div>
   );
