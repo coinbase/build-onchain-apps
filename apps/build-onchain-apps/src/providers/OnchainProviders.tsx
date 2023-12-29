@@ -5,7 +5,6 @@ import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit
 import {
   metaMaskWallet,
   rainbowWallet,
-  walletConnectWallet,
   braveWallet,
   coinbaseWallet,
   trustWallet,
@@ -39,7 +38,6 @@ const connectors = connectorsForWallets([
     wallets: [
       rainbowWallet({ projectId, chains }),
       metaMaskWallet({ chains, projectId }),
-      walletConnectWallet({ projectId, chains }),
       braveWallet({ chains }),
       trustWallet({ chains, projectId }),
     ],
