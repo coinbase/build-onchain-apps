@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Flex, IconButton } from '@radix-ui/themes';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
@@ -24,17 +23,15 @@ function Menu() {
           BUILD ONCHAIN APPS
         </NextLink>
 
-        <Flex display={{ sm: 'none' }} ml="4">
-          <IconButton
-            size="3"
-            variant="ghost"
-            color="gray"
+        <div className='flex justify-start ml-4 md:hidden'>
+          <button
+            type="button"
             data-state={isMenuOpen ? 'open' : 'closed'}
             onClick={handleMobileMenuClick}
           >
             <HamburgerMenuIcon width="16" height="16" />
-          </IconButton>
-        </Flex>
+          </button>
+        </div>
       </div>
 
       <div className="flex items-center justify-start gap-8">
