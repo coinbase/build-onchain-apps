@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 import { parseEther } from 'viem';
-import { Card, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
+import { Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
 import { baseGoerli } from 'viem/chains';
 import { contract } from '../../contract/ContractSpecification';
 
@@ -76,51 +76,49 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   );
 
   return (
-    <Box style={{ whiteSpace: 'nowrap' }}>
-      <div className="flex flex-col justify-start">
-        <div className="relative flex justify-center">
-          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-            <Card size="4">
-              <Heading as="h3" size="6" trim="start" mb="5">
-                Buy Me A Coffee
-              </Heading>
+    <div className="flex flex-col justify-start">
+      <div className="relative flex justify-center">
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <div className="rounded-xl border border-solid border-neutral-700 bg-neutral-900 p-8">
+            <Heading as="h3" size="6" trim="start" mb="5">
+              Buy Me A Coffee
+            </Heading>
 
-              <Box mb="5">
-                <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_name">
-                  Name
-                </label>
-                <TextFieldInput
-                  placeholder="Enter your name"
-                  value={name}
-                  type="text"
-                  onChange={handleNameChange}
-                  required
-                  id="buy_me_coffee_name"
-                />
-              </Box>
+            <div className="mb-5">
+              <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_name">
+                Name
+              </label>
+              <TextFieldInput
+                placeholder="Enter your name"
+                value={name}
+                type="text"
+                onChange={handleNameChange}
+                required
+                id="buy_me_coffee_name"
+              />
+            </div>
 
-              <Box mb="5" position="relative">
-                <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_message">
-                  Message
-                </label>
-                <TextArea
-                  value={message}
-                  placeholder="Enter your message…"
-                  onChange={handleMessageChange}
-                  id="buy_me_coffee_message"
-                />
-              </Box>
+            <div className="mb-5">
+              <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_message">
+                Message
+              </label>
+              <TextArea
+                value={message}
+                placeholder="Enter your message…"
+                onChange={handleMessageChange}
+                id="buy_me_coffee_message"
+              />
+            </div>
 
-              <div className="mt-6 flex justify-end gap-3">
-                <Button type="submit" disabled={loadingTransaction}>
-                  Send 1 Coffee for 0.001ETH
-                </Button>
-              </div>
-            </Card>
-          </form>
-        </div>
+            <div className="mt-6 flex justify-end gap-3">
+              <Button type="submit" disabled={loadingTransaction}>
+                Send 1 Coffee for 0.001ETH
+              </Button>
+            </div>
+          </div>
+        </form>
       </div>
-    </Box>
+    </div>
   );
 }
 

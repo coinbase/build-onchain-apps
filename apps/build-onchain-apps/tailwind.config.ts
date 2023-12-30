@@ -17,6 +17,14 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      gridTemplateColumns: {
+        // Coffee column grid
+        '2CoffeeLg': '1fr 380px',
+        '2CoffeeMd': '1fr 330px',
+
+        // Mint colum grid
+        '2mint': '420px 1fr',
+      },
     },
   },
   plugins: [],

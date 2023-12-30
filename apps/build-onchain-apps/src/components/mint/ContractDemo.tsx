@@ -1,4 +1,4 @@
-import { Flex, Grid, Code, Button } from '@radix-ui/themes';
+import { Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
@@ -46,17 +46,17 @@ export default function MintContractDemo() {
   }
 
   return (
-    <Grid columns={{ md: '420px 1fr' }} gap={{ md: '9' }}>
-      <Flex direction="column" align="center" gap="5">
+    <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
+      <div className="align-center flex flex-col justify-start gap-5">
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
-      </Flex>
-      <Flex direction="column" align="center" gap="5">
+      </div>
+      <div className="align-center flex flex-col justify-start gap-5">
         <p className="mb-1 text-xl font-bold">
           <Code color="crimson">{collectionName}</Code>
         </p>
         <p className="text-sm">{description}</p>
         <Button onClick={mint}>Mint for free (requires gas)</Button>
-      </Flex>
-    </Grid>
+      </div>
+    </div>
   );
 }
