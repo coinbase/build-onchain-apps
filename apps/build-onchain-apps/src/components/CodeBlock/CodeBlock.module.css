@@ -4,6 +4,7 @@
   border-radius: 8px;
   margin: 0;
   background-color: #161618;
+  color: var(--boat-color-text);
   overflow-x: auto;
   transition: background-color 0.5s;
 }

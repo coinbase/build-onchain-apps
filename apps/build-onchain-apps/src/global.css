@@ -26,7 +26,9 @@
 body {
   min-width: 320px;
   margin: 0;
-  color: var(--gray-12);
+  /* Using Important, till we remove Radix overrides */
+  background-color: var(--boat-color-background) !important;
+  color: var(--boat-color-text) !important;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
