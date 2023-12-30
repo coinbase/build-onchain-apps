@@ -26,6 +26,17 @@ export default function HomeHeader() {
         </div>
       </div>
       <div className={styles.HomeHeaderWaves}>
+        <div className={styles.homeBoatContainer}>
+          <div className={styles.homeBoatInnerContainer}>
+            <div className={styles.homeBoatLeftSail} />
+            <div className={styles.homeBoatLeftSail2} />
+            <div className={styles.homeBoatCenterSail} />
+            <div className={styles.homeBoatRightSail} />
+            <div className={styles.homeBoatTop} />
+            <div className={styles.homeBoatCenter} />
+            <div className={styles.homeBoatBottom} />
+          </div>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
