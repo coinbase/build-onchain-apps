@@ -1,4 +1,4 @@
-import { Card, Text, Quote, Avatar } from '@radix-ui/themes';
+import { Card, Quote, Avatar } from '@radix-ui/themes';
 import { convertBigIntTimestampToDate } from '../../utils/timestamp';
 import type { CoffeeMemo } from '../../types';
 
@@ -19,16 +19,14 @@ function MemoCard({ userName, message, time }: CoffeeMemo) {
         </div>
         <div className="grow-1 flex flex-col justify-start gap-2">
           <div className="flex items-center justify-between">
-            <Text as="div" size="2" weight="bold">
-              {userName}
-            </Text>
-            <Text as="div" size="2" color="gray">
+            <span className="mr-2 text-sm font-bold">{userName}</span>
+            <span className="text-sm font-normal text-gray-400">
               {convertedTimestamp.toDateString()}
-            </Text>
+            </span>
           </div>
-          <Text as="div" color="gray" size="2">
+          <p className="text-sm text-gray-400">
             <Quote>{message}</Quote>
-          </Text>
+          </p>
         </div>
       </div>
     </Card>

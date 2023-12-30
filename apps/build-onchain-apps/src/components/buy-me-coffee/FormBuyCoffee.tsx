@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 import { parseEther } from 'viem';
-import { Card, Text, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
+import { Card, Box, Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
 import { baseGoerli } from 'viem/chains';
 import { contract } from '../../contract/ContractSpecification';
 
@@ -86,26 +86,28 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
               </Heading>
 
               <Box mb="5">
-                <Text as="div" size="2" weight="medium" mb="2">
+                <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_name">
                   Name
-                </Text>
+                </label>
                 <TextFieldInput
                   placeholder="Enter your name"
                   value={name}
                   type="text"
                   onChange={handleNameChange}
                   required
+                  id="buy_me_coffee_name"
                 />
               </Box>
 
               <Box mb="5" position="relative">
-                <Text as="div" size="2" weight="medium" mb="2">
+                <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_message">
                   Message
-                </Text>
+                </label>
                 <TextArea
                   value={message}
                   placeholder="Enter your message…"
                   onChange={handleMessageChange}
+                  id="buy_me_coffee_message"
                 />
               </Box>
 

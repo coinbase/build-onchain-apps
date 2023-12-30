@@ -131,7 +131,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/extensions': 'off',
 
-    // yo
+    // We prefer sorting imports by groups
     'import/order': [
       'error',
       {
@@ -146,6 +146,18 @@ module.exports = {
           'type'
         ]
       }
-    ]
+    ],
+
+    // We prefer labels to be associated with inputs
+    'jsx-a11y/label-has-associated-control': ['error', {
+      'required': {
+        'some': ['nesting', 'id']
+      }
+    }],
+    'jsx-a11y/label-has-for': ['error', {
+      'required': {
+        'some': ['nesting', 'id']
+      }
+    }]
   },
 };
