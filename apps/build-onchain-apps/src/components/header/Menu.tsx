@@ -23,9 +23,10 @@ function Menu() {
           BUILD ONCHAIN APPS
         </NextLink>
 
-        <div className='flex justify-start ml-4 md:hidden'>
+        <div className="ml-4 flex justify-start md:hidden">
           <button
             type="button"
+            aria-label="Menu"
             data-state={isMenuOpen ? 'open' : 'closed'}
             onClick={handleMobileMenuClick}
           >
