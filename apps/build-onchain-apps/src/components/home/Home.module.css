@@ -1,5 +1,5 @@
 .HomeHeader {
-  --home-header-height: 795px;
+  --home-header-height: 738px;
 
   height: var(--home-header-height);
 }
@@ -15,7 +15,7 @@
 }
 
 .HomeHeaderHeadline {
-  margin-top: 85px;
+  margin-top: 45px;
   color: white;
   font-size: 92px;
   font-weight: 400;
@@ -41,7 +41,7 @@
 }
 
 .HomeHeaderWaves {
-  --home-header-waves-height: 32px;
+  --home-header-waves-height: 25px;
 
   position: relative;
   margin-top: 4px;
@@ -54,7 +54,7 @@
 }
 
 .HomeHeaderWavesParallax > use {
-  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 
 .HomeHeaderWavesParallax > use:nth-child(1),
@@ -85,5 +85,115 @@
 
   100% {
     transform: translate3d(85px, 0, 0);
+  }
+}
+
+.homeBoatContainer,
+.homeBoatLeftSail,
+.homeBoatLeftSail2,
+.homeBoatCenterSail,
+.homeBoatRightSail,
+.homeBoatTop,
+.homeBoatCenter,
+.homeBoatBottom {
+  position: absolute;
+}
+
+.homeBoatContainer {
+  position: absolute;
+  z-index: -1;
+  bottom: 38px;
+  left: 10%;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  animation: boat-rotate 20s ease-in-out infinite;
+  transform-origin: 2% 2%;
+}
+
+.homeBoatInnerContainer {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  inset: 0;
+}
+
+.homeBoatLeftSail {
+  top: 30px;
+  left: 0;
+  border-top: 150px solid transparent;
+  border-right: 65px solid rgb(128 196 190);
+}
+
+.homeBoatLeftSail2 {
+  top: 30px;
+  left: 35px;
+  border-top: 150px solid transparent;
+  border-right: 30px solid rgb(125 187 155);
+}
+
+.homeBoatCenterSail {
+  top: 20px;
+  left: 65px;
+  width: 3px;
+  height: 185px;
+  border-radius: 100%;
+  background: linear-gradient(278deg, #dbd6e8 0%, #ece7f7 100%),
+    linear-gradient(81deg, #9693a9 0%, rgb(150 147 169 / 0%) 100%);
+}
+
+.homeBoatRightSail {
+  top: 60px;
+  left: 70px;
+  border-top: 120px solid transparent;
+  border-left: 45px solid rgb(126 184 239);
+}
+
+.homeBoatTop {
+  top: 200px;
+  left: -15px;
+  width: 161px;
+  border-top: 18px solid rgb(9 10 93);
+  border-right: 14px solid transparent;
+  border-left: 13px solid transparent;
+}
+
+.homeBoatCenter {
+  top: 216px;
+  left: -3px;
+  width: 137px;
+  border-top: 16px solid rgb(34 61 144);
+  border-right: 11px solid transparent;
+  border-left: 11px solid transparent;
+}
+
+.homeBoatBottom {
+  top: 230px;
+  left: 3px;
+  width: 124px;
+  border-top: 6px solid rgb(93 124 195);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+
+@keyframes boat-rotate {
+  0% {
+    transform: rotate(3deg);
+  }
+
+  25% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+
+  75% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(3deg);
   }
 }
