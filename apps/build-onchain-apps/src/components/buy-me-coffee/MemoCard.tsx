@@ -1,4 +1,4 @@
-import { Card, Quote, Avatar } from '@radix-ui/themes';
+import { Quote, Avatar } from '@radix-ui/themes';
 import { convertBigIntTimestampToDate } from '../../utils/timestamp';
 import type { CoffeeMemo } from '../../types';
 
@@ -12,7 +12,7 @@ import type { CoffeeMemo } from '../../types';
 function MemoCard({ userName, message, time }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
   return (
-    <Card variant="surface">
+    <div className="rounded-xl border border-solid border-zinc-700 bg-zinc-900 p-3">
       <div className="flex justify-start gap-3">
         <div className="flex items-center justify-between gap-3">
           <Avatar size="3" radius="full" fallback="T" color="orange" />
@@ -29,7 +29,7 @@ function MemoCard({ userName, message, time }: CoffeeMemo) {
           </p>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
 
