@@ -1,4 +1,4 @@
-import { Flex, Grid, Text, Code, Button } from '@radix-ui/themes';
+import { Flex, Grid, Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
@@ -42,7 +42,7 @@ export default function MintContractDemo() {
 
   if (isLoading) {
     // A future enhancement would be a nicer spinner here.
-    return <Text size="5">loading...</Text>;
+    return <span className="text-xl">loading...</span>;
   }
 
   return (
@@ -51,10 +51,10 @@ export default function MintContractDemo() {
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </Flex>
       <Flex direction="column" align="center" gap="5">
-        <Text size="5" weight="bold" mb="1">
+        <p className="mb-1 text-xl font-bold">
           <Code color="crimson">{collectionName}</Code>
-        </Text>
-        <Text>{description}</Text>
+        </p>
+        <p className="text-sm">{description}</p>
         <Button onClick={mint}>Mint for free (requires gas)</Button>
       </Flex>
     </Grid>

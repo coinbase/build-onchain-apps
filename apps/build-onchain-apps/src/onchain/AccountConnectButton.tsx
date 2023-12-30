@@ -1,5 +1,5 @@
 import { useAccount, useDisconnect, useNetwork } from 'wagmi';
-import { Box, Button, Dialog, Text } from '@radix-ui/themes';
+import { Box, Button, Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { getSlicedAddress } from './utils/address';
@@ -83,12 +83,10 @@ export function AccountConnectButton() {
                     </Dialog.Description>
 
                     <div className="flex justify-start gap-3">
-                      <Text as="div" size="2" mb="1" weight="bold">
-                        Network:
-                      </Text>
-                      <Text as="div" size="2" mb="1" weight="regular">
+                      <span className="md-1 text-sm font-bold">Network:</span>
+                      <span className="font-regular md-1 text-sm">
                         {network.chain?.name} ({network.chain?.id})
-                      </Text>
+                      </span>
                     </div>
 
                     <div className="mt-4 flex justify-end gap-3">

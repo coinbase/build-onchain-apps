@@ -1,7 +1,5 @@
-import { Text } from '@radix-ui/themes';
-
 function NotConnected() {
-  return <Text size="5">Please connect your wallet to continue.</Text>;
+  return <span className="text-xl">Please connect your wallet to continue.</span>;
 }
 
 export default NotConnected;
