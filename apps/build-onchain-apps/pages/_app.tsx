@@ -1,4 +1,3 @@
-import '@radix-ui/themes/styles.css';
 import '../src/global.css';
 
 import Head from 'next/head';
