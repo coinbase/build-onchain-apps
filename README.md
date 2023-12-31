@@ -18,7 +18,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to e
 
 Building blocks out of the box 🧰 🧙 ✨
 
-- Web: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) 🟡
+- Web: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) 🟡
 - Onchain: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
 - Experiences: send, mint 🌁
 - Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/AccountConnectButton.tsx) 🎨

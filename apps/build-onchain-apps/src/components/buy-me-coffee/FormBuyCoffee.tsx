@@ -3,7 +3,6 @@ import React, { useState, useCallback } from 'react';
 import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 import { parseEther } from 'viem';
-import { TextFieldInput, TextArea } from '@radix-ui/themes';
 import { baseGoerli } from 'viem/chains';
 import { contract } from '../../contract/ContractSpecification';
 
@@ -83,28 +82,30 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             <h3 className="mb-5">Buy Me A Coffee</h3>
 
             <div className="mb-5">
-              <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_name">
-                Name
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
+                First name
               </label>
-              <TextFieldInput
-                placeholder="Enter your name"
-                value={name}
+              <input
                 type="text"
+                id="name"
+                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Enter your name"
                 onChange={handleNameChange}
                 required
-                id="buy_me_coffee_name"
               />
             </div>
 
             <div className="mb-5">
-              <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_message">
+              <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
                 Message
               </label>
-              <TextArea
+              <textarea
                 value={message}
-                placeholder="Enter your message…"
+                id="message"
+                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Enter your message..."
                 onChange={handleMessageChange}
-                id="buy_me_coffee_message"
+                required
               />
             </div>
 
