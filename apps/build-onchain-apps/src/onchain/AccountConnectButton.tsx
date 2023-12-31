@@ -1,5 +1,5 @@
 import { useAccount, useDisconnect, useNetwork } from 'wagmi';
-import { Button, Dialog } from '@radix-ui/themes';
+import { Dialog } from '@radix-ui/themes';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { getSlicedAddress } from './utils/address';
@@ -70,7 +70,7 @@ export function AccountConnectButton() {
                 <Dialog.Root>
                   <Dialog.Trigger>
                     <div className="flex items-center justify-center gap-3">
-                      <Button>{getSlicedAddress(address)}</Button>
+                      <button type="button">{getSlicedAddress(address)}</button>
                     </div>
                   </Dialog.Trigger>
 
@@ -89,10 +89,10 @@ export function AccountConnectButton() {
 
                     <div className="mt-4 flex justify-end gap-3">
                       <Dialog.Close onClick={handleCopyAddress}>
-                        <Button>Copy Address</Button>
+                        <button type="button">Copy Address</button>
                       </Dialog.Close>
                       <Dialog.Close onClick={handleDisconnectWallet}>
-                        <Button>Disconnect</Button>
+                        <button type="button">Disconnect</button>
                       </Dialog.Close>
                     </div>
                   </Dialog.Content>

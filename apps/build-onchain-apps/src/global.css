@@ -26,7 +26,8 @@
 body {
   min-width: 320px;
   margin: 0;
-  color: var(--gray-12);
+  background-color: var(--boat-color-background);
+  color: var(--boat-color-text);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
