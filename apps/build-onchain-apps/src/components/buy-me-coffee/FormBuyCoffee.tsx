@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 
 import { parseEther } from 'viem';
-import { Button, Heading, TextFieldInput, TextArea } from '@radix-ui/themes';
+import { TextFieldInput, TextArea } from '@radix-ui/themes';
 import { baseGoerli } from 'viem/chains';
 import { contract } from '../../contract/ContractSpecification';
 
@@ -80,9 +80,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
       <div className="relative flex justify-center">
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
           <div className="rounded-xl border border-solid border-neutral-700 bg-neutral-900 p-8">
-            <Heading as="h3" size="6" trim="start" mb="5">
-              Buy Me A Coffee
-            </Heading>
+            <h3 className="mb-5">Buy Me A Coffee</h3>
 
             <div className="mb-5">
               <label className="mb-2 text-sm font-medium" htmlFor="buy_me_coffee_name">
@@ -111,9 +109,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             </div>
 
             <div className="mt-6 flex justify-end gap-3">
-              <Button type="submit" disabled={loadingTransaction}>
+              <button type="submit" disabled={loadingTransaction}>
                 Send 1 Coffee for 0.001ETH
-              </Button>
+              </button>
             </div>
           </div>
         </form>

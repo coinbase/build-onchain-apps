@@ -1559,7 +1559,6 @@ __metadata:
     jest-extended: "npm:^4.0.2"
     next: "npm:13.5.6"
     next-pwa: "npm:5.6.0"
-    next-themes: "npm:^0.2.1"
     perfume.js: "npm:9.2.0"
     postcss: "npm:^8.4.32"
     prettier: "npm:3.0.3"
@@ -10652,17 +10651,6 @@ __metadata:
   peerDependencies:
     next: ">=9.0.0"
   checksum: efe34fc9eb5a422e6c31cdf64019c130a10f5f6d689ff7402ada98571724ba7ebab67550d3b169c40baade38c20229ec762e6d5f207eb064195b158cacb73b60
-  languageName: node
-  linkType: hard
-
-"next-themes@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "next-themes@npm:0.2.1"
-  peerDependencies:
-    next: "*"
-    react: "*"
-    react-dom: "*"
-  checksum: 979dec0a2de049ce7d1b5da835e7f7dc3b7ec83ba9e464348f497a52a6a6e5b5c395c97f071f66a63f50f22cce89fb6d19061ec7e75643b0eab215b21794bde7
   languageName: node
   linkType: hard
 
