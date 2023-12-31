@@ -1,4 +1,3 @@
-import { Code, Button } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
@@ -51,11 +50,11 @@ export default function MintContractDemo() {
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </div>
       <div className="align-center flex flex-col justify-start gap-5">
-        <p className="mb-1 text-xl font-bold">
-          <Code color="crimson">{collectionName}</Code>
-        </p>
+        <p className="mb-1 text-xl font-bold"> {collectionName}</p>
         <p className="text-sm">{description}</p>
-        <Button onClick={mint}>Mint for free (requires gas)</Button>
+        <button type="button" onClick={mint}>
+          Mint for free (requires gas)
+        </button>
       </div>
     </div>
   );

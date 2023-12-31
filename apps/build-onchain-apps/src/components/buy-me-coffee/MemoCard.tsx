@@ -1,4 +1,3 @@
-import { Quote, Avatar } from '@radix-ui/themes';
 import { convertBigIntTimestampToDate } from '../../utils/timestamp';
 import type { CoffeeMemo } from '../../types';
 
@@ -15,7 +14,13 @@ function MemoCard({ userName, message, time }: CoffeeMemo) {
     <div className="rounded-xl border border-solid border-zinc-700 bg-zinc-900 p-3">
       <div className="flex justify-start gap-3">
         <div className="flex items-center justify-between gap-3">
-          <Avatar size="3" radius="full" fallback="T" color="orange" />
+          <div className="relative inline-flex h-10 w-10">
+            <span className="flex h-full w-full items-center justify-center rounded-full bg-gray-800">
+              <span className="text-sm font-medium uppercase text-gray-700 dark:text-gray-400">
+                {userName[0]}
+              </span>
+            </span>
+          </div>
         </div>
         <div className="grow-1 flex flex-col justify-start gap-2">
           <div className="flex items-center justify-between">
@@ -25,7 +30,7 @@ function MemoCard({ userName, message, time }: CoffeeMemo) {
             </span>
           </div>
           <p className="text-sm text-gray-400">
-            <Quote>{message}</Quote>
+            <q className="italic">{message}</q>
           </p>
         </div>
       </div>
