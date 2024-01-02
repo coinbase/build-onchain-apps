@@ -20,9 +20,7 @@ export default function HomeHeader() {
           Build Onchain Apps Toolkit.
         </p>
         <div className={styles.HomeHeaderCta}>
-          <CodeBlock>
-            <span>$</span> <span>npx @coinbase/build-onchain-apps@latest create</span>
-          </CodeBlock>
+          <CodeBlock code="$ npx @coinbase/build-onchain-apps@latest create" />
         </div>
       </div>
       <div className={styles.HomeHeaderWaves}>
