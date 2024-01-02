@@ -28,6 +28,7 @@ body {
   margin: 0;
   background-color: var(--boat-color-background);
   color: var(--boat-color-text);
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
