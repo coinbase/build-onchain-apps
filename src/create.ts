@@ -71,6 +71,8 @@ export const createProject = async () => {
 
   if (isPackageJsonUpdated) {
     if (isGitInstalled()) {
+      console.log(chalk.green(`Initializing Git and Foundry... \n`));
+
       initGit(newAppDir);
     }
     displayFinalInstructions(newAppName);

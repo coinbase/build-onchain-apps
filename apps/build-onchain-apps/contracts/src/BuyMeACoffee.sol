@@ -6,10 +6,10 @@ pragma solidity ^0.8.13;
  * @dev Memo struct
  */
 struct Memo {
-  string userName;
-  string message;
-  uint256 time;
-  address userAddress;
+    string userName;
+    string message;
+    uint256 time;
+    address userAddress;
 }
 
 /**
@@ -17,121 +17,121 @@ struct Memo {
  * @dev BuyMeACoffee contract to accept donations and for our users to leave a memo for us
  */
 contract BuyMeACoffee {
-  address payable public owner;
-  uint256 public price;
-  Memo[] public memos;
+    address payable public owner;
+    uint256 public price;
+    Memo[] public memos;
 
-  error InsufficientFunds();
-  error InvalidArguments(string message);
-  error OnlyOwner();
+    error InsufficientFunds();
+    error InvalidArguments(string message);
+    error OnlyOwner();
 
-  event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-  event NewMemo(address indexed userAddress, uint256 time, string userName, string message);
+    event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
+    event NewMemo(address indexed userAddress, uint256 time, string userName, string message);
 
-  constructor() {
-    owner = payable(msg.sender);
-    price = 0.0001 ether;
-  }
-
-  /**
-   * WRITE FUNCTIONS *************
-   */
-
-  /**
-   * @dev Function to buy a coffee
-   * @param  userName The name of the user
-   * @param  message The message of the user
-   * (Note: Using calldata for gas efficiency)
-   */
-  function buyCoffee(string calldata userName, string calldata message) public payable {
-    if (msg.value < price) {
-      revert InsufficientFunds();
+    constructor() {
+        owner = payable(msg.sender);
+        price = 0.0001 ether;
     }
 
-    emit BuyMeACoffeeEvent(msg.sender, msg.value);
+    /**
+     * WRITE FUNCTIONS *************
+     */
 
-    if (bytes(userName).length == 0 && bytes(message).length == 0) {
-      revert InvalidArguments('Invalid userName or message');
+    /**
+     * @dev Function to buy a coffee
+     * @param  userName The name of the user
+     * @param  message The message of the user
+     * (Note: Using calldata for gas efficiency)
+     */
+    function buyCoffee(string calldata userName, string calldata message) public payable {
+        if (msg.value < price) {
+            revert InsufficientFunds();
+        }
+
+        emit BuyMeACoffeeEvent(msg.sender, msg.value);
+
+        if (bytes(userName).length == 0 && bytes(message).length == 0) {
+            revert InvalidArguments("Invalid userName or message");
+        }
+
+        memos.push(Memo(userName, message, block.timestamp, msg.sender));
+
+        emit NewMemo(msg.sender, block.timestamp, userName, message);
     }
 
-    memos.push(Memo(userName, message, block.timestamp, msg.sender));
+    /**
+     * @dev Function to remove a memo
+     * @param  index The index of the memo
+     */
+    function removeMemo(uint256 index) public {
+        if (index >= memos.length) {
+            revert InvalidArguments("Invalid index");
+        }
 
-    emit NewMemo(msg.sender, block.timestamp, userName, message);
-  }
+        Memo memory memo = memos[index];
 
-  /**
-   * @dev Function to remove a memo
-   * @param  index The index of the memo
-   */
-  function removeMemo(uint256 index) public {
-    if (index >= memos.length) {
-      revert InvalidArguments('Invalid index');
+        if (memo.userAddress != msg.sender || msg.sender != owner) {
+            revert InvalidArguments("Operation not allowed");
+        }
+        Memo memory indexMemo = memos[index];
+        memos[index] = memos[memos.length - 1];
+        memos[memos.length - 1] = indexMemo;
+        memos.pop();
     }
 
-    Memo memory memo = memos[index];
+    /**
+     * @dev Function to modify a memo
+     * @param  index The index of the memo
+     * @param  message The message of the memo
+     */
+    function modifyMemoMessage(uint256 index, string memory message) public {
+        if (index >= memos.length) {
+            revert InvalidArguments("Invalid index");
+        }
 
-    if (memo.userAddress != msg.sender || msg.sender != owner) {
-      revert InvalidArguments('Operation not allowed');
-    }
-    Memo memory indexMemo = memos[index];
-    memos[index] = memos[memos.length - 1];
-    memos[memos.length - 1] = indexMemo;
-    memos.pop();
-  }
+        Memo memory memo = memos[index];
 
-  /**
-   * @dev Function to modify a memo
-   * @param  index The index of the memo
-   * @param  message The message of the memo
-   */
-  function modifyMemoMessage(uint256 index, string memory message) public {
-    if (index >= memos.length) {
-      revert InvalidArguments('Invalid index');
+        if (memo.userAddress != msg.sender || msg.sender != owner) {
+            revert InvalidArguments("Operation not allowed");
+        }
+
+        memos[index].message = message;
     }
 
-    Memo memory memo = memos[index];
+    /**
+     * @dev Function to withdraw the balance
+     */
+    function withdrawTips() public {
+        if (msg.sender != owner) {
+            revert OnlyOwner();
+        }
 
-    if (memo.userAddress != msg.sender || msg.sender != owner) {
-      revert InvalidArguments('Operation not allowed');
+        if (address(this).balance == 0) {
+            revert InsufficientFunds();
+        }
+
+        (bool sent,) = owner.call{value: address(this).balance}("");
+        require(sent, "Failed to send Ether");
     }
 
-    memos[index].message = message;
-  }
+    /**
+     * READ FUNCTIONS *************
+     */
 
-  /**
-   * @dev Function to withdraw the balance
-   */
-  function withdrawTips() public {
-    if (msg.sender != owner) {
-      revert OnlyOwner();
+    /**
+     * @dev Function to get the memos
+     */
+    function getMemos() public view returns (Memo[] memory) {
+        return memos;
     }
 
-    if (address(this).balance == 0) {
-      revert InsufficientFunds();
-    }
+    /**
+     * @dev Recieve function to accept ether
+     */
+    receive() external payable {}
 
-    (bool sent, ) = owner.call{value: address(this).balance}('');
-    require(sent, 'Failed to send Ether');
-  }
-
-  /**
-   * READ FUNCTIONS *************
-   */
-
-  /**
-   * @dev Function to get the memos
-   */
-  function getMemos() public view returns (Memo[] memory) {
-    return memos;
-  }
-
-  /**
-   * @dev Recieve function to accept ether
-   */
-  receive() external payable {}
-
-  /**
-   * @dev Fallback function to accept ether
-   */
-  fallback() external payable {}
+    /**
+     * @dev Fallback function to accept ether
+     */
+    fallback() external payable {}
 }
