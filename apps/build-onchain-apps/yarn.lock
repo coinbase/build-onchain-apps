@@ -1564,6 +1564,7 @@ __metadata:
     react-remove-scroll: "npm:^2.5.7"
     scroll-into-view-if-needed: "npm:^3.1.0"
     shikiji: "npm:^0.9.17"
+    shikiji-core: "npm:^0.9.17"
     stylelint: "npm:^16.0.2"
     stylelint-config-idiomatic-order: "npm:^10.0.0"
     stylelint-config-standard: "npm:^35.0.0"
@@ -11174,7 +11175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shikiji-core@npm:0.9.17":
+"shikiji-core@npm:0.9.17, shikiji-core@npm:^0.9.17":
   version: 0.9.17
   resolution: "shikiji-core@npm:0.9.17"
   checksum: 461dcb908c1f7055756a4e9a0bcdcbac6303b424a055cfa6be01c82383fe2163169bf6e12723dc93a402da5d476a796c4a3e8dcf7ba66a90ad3dcd8718836967

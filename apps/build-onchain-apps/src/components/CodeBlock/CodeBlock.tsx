@@ -1,4 +1,7 @@
-import { getHighlighter } from 'shikiji';
+import { getHighlighterCore } from 'shikiji/core';
+import { getWasmInlined } from 'shikiji/wasm';
+import vitesseBlack from 'shikiji/themes/vitesse-black.mjs';
+import shellscriptLang from 'shikiji/langs/shellscript.mjs';
 import { useEffect, useState } from 'react';
 import isClient from '../../utils/isClient';
 import styles from './CodeBlock.module.css';
@@ -9,14 +12,15 @@ function Code({ code }: { code: string }) {
     if (!isClient() || !code) {
       return;
     }
-    getHighlighter({
-      themes: ['nord'],
-      langs: ['javascript'],
+    getHighlighterCore({
+      themes: [vitesseBlack],
+      langs: [shellscriptLang],
+      loadWasm: getWasmInlined,
     })
       .then((highlighter) => {
         const html = highlighter.codeToHtml(code, {
-          lang: 'javascript',
-          theme: 'nord',
+          lang: 'shellscript',
+          theme: 'vitesse-black',
         });
         setHtml(html);
       })

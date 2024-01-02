@@ -30,6 +30,7 @@
     "react-remove-scroll": "^2.5.7",
     "scroll-into-view-if-needed": "^3.1.0",
     "shikiji": "^0.9.17",
+    "shikiji-core": "^0.9.17",
     "viem": "1.19.15",
     "wagmi": "1.4.12",
     "workbox-webpack-plugin": "^7.0.0"

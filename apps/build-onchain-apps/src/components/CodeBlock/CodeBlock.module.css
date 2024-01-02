@@ -3,7 +3,7 @@
   width: 100%;
   border-radius: 8px;
   margin: 0;
-  background-color: #161618;
+  background-color: #000;
   overflow-x: auto;
   transition: background-color 0.5s;
 }
@@ -42,18 +42,8 @@
 .CodeBlockPre {
   position: relative;
   z-index: 1;
-  padding: 20px 0;
+  padding: 20px 24px;
   margin: 0;
   background: transparent;
   overflow-x: auto;
-}
-
-.CodeBlockCode {
-  width: fit-content;
-  min-width: 100%;
-  padding: 0 24px;
-  color: var(--vp-code-block-color);
-  font-size: 15px;
-  line-height: 1.7;
-  transition: rgb(235 235 245 / 60%);
 }
