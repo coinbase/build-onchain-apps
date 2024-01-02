@@ -1,5 +1,4 @@
-import { Chain } from 'viem/chains';
-import { getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
+import {getChainById} from '../../../src/utils/chainConfiguration';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -11,18 +10,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Get the Chain Id from the request
-    const chainId = req.query.chainId;
+    const chainId = req.query.chainId as string;
     if (!chainId) {
       return res.status(400).json({ error: 'chainid is required' });
     }
-
-    // Check if the chain is supported
-    const chains = getChainsForEnvironment();
-    const filteredChains = chains?.filter((c: Chain) => c.id === Number(chainId));
-    if (!filteredChains?.length) {
-      return res.status(400).json({ error: 'chainid not supported' });
+    const chain = getChainById(chainId);
+    if (!chain) {
+      return res.status(400).json({ error: 'chain not supported' });
     }
-    const chain = filteredChains[0];
     const provider = getRpcProviderForChain(chain);
     const block = await provider.getBlockNumber();
     return res.status(200).json({ block: block.toString() });

@@ -1,5 +1,5 @@
 import { baseGoerli } from 'viem/chains';
-import { getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
+import {getChainById, getChainsForEnvironment} from '../../../src/utils/chainConfiguration';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import handler from './currentBlockNumber';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -13,6 +13,8 @@ describe('/api/chain/blockNumber', () => {
   let mockProvider: { getBlockNumber: jest.Mock };
   const unknownChainId = '73264023';
   const getChainsMock = getChainsForEnvironment as jest.Mock;
+  const getChainByIdMock = getChainById as jest.Mock;
+
 
   beforeEach(() => {
     req = { query: {} };
@@ -35,12 +37,12 @@ describe('/api/chain/blockNumber', () => {
     req.query = { chainId: unknownChainId };
     await handler(req as NextApiRequest, res as NextApiResponse);
     expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith({ error: 'chainid not supported' });
+    expect(res.json).toHaveBeenCalledWith({ error: 'chain not supported' });
   });
 
   it('returns 200 with block number on valid chainId', async () => {
     const mockBlockNumber = 123456;
-    getChainsMock.mockReturnValue([{ id: baseGoerli.id }]);
+    getChainByIdMock.mockReturnValue([{ id: baseGoerli.id }]);
     mockProvider.getBlockNumber.mockResolvedValue(mockBlockNumber);
     req.query = { chainId: baseGoerli.id.toString() };
     await handler(req as NextApiRequest, res as NextApiResponse);
@@ -49,7 +51,7 @@ describe('/api/chain/blockNumber', () => {
   });
 
   it('returns 500 on internal server error', async () => {
-    getChainsMock.mockImplementation(() => {
+    getChainByIdMock.mockImplementation(() => {
       throw new Error('Test error');
     });
     req.query = { chainId: unknownChainId };
