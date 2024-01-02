@@ -15,6 +15,11 @@
   /* Build Onchain Apps shared variables */
   --boat-color-background: var(--palette-bg-black);
   --boat-color-text: var(--palette-bg-white);
+
+  /* Indicates that the element can be rendered using 
+   * the operating system dark color scheme. 
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme */
+  color-scheme: dark;
 }
 
 *,
