@@ -34,5 +34,12 @@ export const contract: ContractSpecification = {
     },
     // more chains for this contract go here
   },
+  signatureMint: {
+    abi: Custom1155ABI,
+    [baseGoerli.id]: {
+      chain: baseGoerli,
+      address: '0xBB955f815131818D62A220F70F5938daF812522d',
+    },
+  }
   // more contracts go here
 };

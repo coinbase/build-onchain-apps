@@ -15,3 +15,6 @@ docs/
 
 lib/*
 
+# Code Coverage
+lcov.info
+/report/*
