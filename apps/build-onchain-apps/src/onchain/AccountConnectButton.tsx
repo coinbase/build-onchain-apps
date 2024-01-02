@@ -38,8 +38,14 @@ export function AccountConnectButton() {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={openConnectModal} type="button">
-                    Connect Wallet
+                  <button
+                    onClick={openConnectModal}
+                    type="button"
+                    className="inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2"
+                  >
+                    <div className="text-sm font-medium leading-normal text-black">
+                      Connect wallet
+                    </div>
                   </button>
                 );
               }
