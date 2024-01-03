@@ -1,4 +1,4 @@
-<img src='./docs/logo-v-0-13.png' width='800' alt='Build Onchain Apps'>
+<img src='./docs/logo-v-0-14.png' width='800' alt='Build Onchain Apps'>
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
@@ -16,21 +16,16 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to e
 
 <br />
 
-Building blocks out of the box 🧰 🧙 ✨
+Save weeks of initial application setup and the hassle of integrating web3 components with web2 infrastructure. 🧰 🧙 ✨
 
-- Web: [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/) 🟡
-- Onchain: [Base](https://base.org/) + [RainbowKit](https://www.rainbowkit.com) + [wagmi](https://wagmi.sh/) + [Viem](https://viem.sh/) 🔵
-- Experiences: send, mint 🌁
-- Onchain UI components: [AccountConnectButton](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/src/onchain/AccountConnectButton.tsx) 🎨
-- Support EOA Wallet integration 👛
-- Linting and Prettier 💅
-- Tests Suite
-- Support Progressive Web Apps ⚡️
-- Foundry integration
-- Web Vitals analytics
-- _In-depth step by step documentation (Coming Soon)_
-- _Onchain UI components: Balances, Minting, Airdrop, etc..._
-- _We just started; stay tuned for more to come!!! ☕️_
+- Progressive Web App support using [Next.js](https://nextjs.org/)
+- Eth L2 support through [Base](https://base.org/)
+- Wallet connect integration with [RainbowKit](https://www.rainbowkit.com)
+- Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/)
+- Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/)
+- Easy maintenance with linting, formatting, and tests
+- Smart contract deployment with Foundry
+- Insights into Web Vitals performance metrics with Perfume.js
 
 <br >
 
@@ -79,7 +74,7 @@ foundryup
 
 Follow the instructions of foundryup to completely setup foundry
 
-#### Step 2.1: Build, test and format the sample contracts
+#### Step 5: Build, test and format the sample contracts
 
 ```bash
 cd contracts
