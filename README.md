@@ -1,4 +1,4 @@
-<img src='./docs/logo-v-0-14.png' width='800' alt='Build Onchain Apps'>
+<img src='./docs/logo-v-0-14.png' width='800' alt='Build Onchain Apps Toolkit'>
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
