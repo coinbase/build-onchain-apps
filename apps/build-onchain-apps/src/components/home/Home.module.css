@@ -1,5 +1,5 @@
 .HomeHeader {
-  --home-header-height: 738px;
+  --home-header-height: 734px;
 
   height: var(--home-header-height);
 }
