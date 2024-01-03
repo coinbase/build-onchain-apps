@@ -1,10 +1,13 @@
-import { getHighlighterCore } from 'shikiji/core';
-import { getWasmInlined } from 'shikiji/wasm';
-import vitesseBlack from 'shikiji/themes/vitesse-black.mjs';
-import shellscriptLang from 'shikiji/langs/shellscript.mjs';
-import { useEffect, useState } from 'react';
-import isClient from '../../utils/isClient';
+import * as React from 'react';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypePrettyCode from 'rehype-pretty-code';
 import styles from './CodeBlock.module.css';
+import isClient from '../../utils/isClient';
+import { useEffect, useState } from 'react';
+ 
 
 function Code({ code }: { code: string }) {
   const [innerHtml, setHtml] = useState('...');
@@ -12,24 +15,28 @@ function Code({ code }: { code: string }) {
     if (!isClient() || !code) {
       return;
     }
-    getHighlighterCore({
-      themes: [vitesseBlack],
-      langs: [shellscriptLang],
-      loadWasm: getWasmInlined,
-    })
-      .then((highlighter) => {
-        const html = highlighter.codeToHtml(code, {
-          lang: 'shellscript',
-          theme: 'vitesse-black',
-        });
-        setHtml(html);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    highlightCode(code).then((highlightedCode) => {
+      setHtml(highlightedCode);
+    }).catch((err) => {
+      console.error(err);
+    });
   }, [code]);
   // eslint-disable-next-line react/no-danger
   return <code dangerouslySetInnerHTML={{ __html: innerHtml }} />;
+}
+ 
+async function highlightCode(code: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrettyCode, {
+      keepBackground: false,
+      theme: 'vitesse-black',
+    })
+    .use(rehypeStringify)
+    .process(code);
+ 
+  return String(file);
 }
 
 export default function CodeBlock({ code }: { code: string }) {
