@@ -15,6 +15,11 @@
   /* Build Onchain Apps shared variables */
   --boat-color-background: var(--palette-bg-black);
   --boat-color-text: var(--palette-bg-white);
+
+  /* Indicates that the element can be rendered using 
+   * the operating system dark color scheme. 
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme */
+  color-scheme: dark;
 }
 
 *,
@@ -28,6 +33,7 @@ body {
   margin: 0;
   background-color: var(--boat-color-background);
   color: var(--boat-color-text);
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -49,7 +55,7 @@ pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
   font-feature-settings: normal;
-  font-size: 1em;
+  font-size: 14px;
   font-variation-settings: normal;
 }
 

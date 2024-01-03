@@ -47,13 +47,13 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### Step 1.1: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
+#### Step 2: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 ```
 
-#### Step 1.2: Install and Run your onchain app
+#### Step 3: Install and Run your onchain app
 
 ```bash
 # Install dependencies
@@ -68,7 +68,7 @@ yarn dev
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### Step 2: Kick start your contracts
+#### Step 4: Kick start your contracts
 
 ```bash
 # Install Foundry
@@ -91,7 +91,7 @@ forge install
 forge build
 ```
 
-#### Step 2.3: Deploy contracts to Base goerli
+#### Step 6: Deploy contracts to Base goerli
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
 
