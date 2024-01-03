@@ -2,6 +2,13 @@
 
 This project is built using Foundry. For more information, visit the docs [here](https://book.getfoundry.sh/)
 
+# Disclaimer 
+The provided Solidity contracts are intended solely for educational purposes and are
+not warranted for any specific use. They have not been audited and may contain vulnerabilities, hence should
+not be deployed in production environments. Users are advised to seek professional review and conduct a
+comprehensive security audit before any real-world application to mitigate risks of financial loss or other
+consequences. The author(s) disclaim all liability for any damages arising from the use of these contracts.
+Use at your own risk, acknowledging the inherent risks of smart contract technology on the blockchain.
 
 # Contents
 
