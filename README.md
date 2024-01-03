@@ -16,16 +16,16 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to e
 
 <br />
 
-Save weeks of initial application setup and the hassle of integrating web3 components with web2 infrastructure. 🧰 🧙 ✨
+Save weeks of initial dApp setup and the hassle of integrating web3 components with web2 infrastructure. 🧰 🧙 ✨
 
-- Progressive Web App support using [Next.js](https://nextjs.org/)
-- Eth L2 support through [Base](https://base.org/)
-- Wallet connect integration with [RainbowKit](https://www.rainbowkit.com)
-- Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/)
-- Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/)
-- Easy maintenance with linting, formatting, and tests
-- Smart contract deployment with Foundry
-- Insights into Web Vitals performance metrics with Perfume.js
+- Progressive Web App support using [Next.js](https://nextjs.org/) 🏗️
+- Eth L2 support through [Base](https://base.org/) 🔵
+- Wallet connect integration with [RainbowKit](https://www.rainbowkit.com) 🌈
+- Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/) 🚀
+- Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/) 💅
+- Easy maintenance with linting, formatting, and tests ✅
+- Smart contract deployment with Foundry ☁️
+- Insights into Web Vitals performance metrics with Perfume.js 📈
 
 <br >
 
