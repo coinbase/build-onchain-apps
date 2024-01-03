@@ -2,6 +2,9 @@ import CodeBlock from '../CodeBlock/CodeBlock';
 import Header from '../header/Header';
 import styles from './Home.module.css';
 
+const codeStep1 = `\`\`\`bash
+$ npx @coinbase/build-onchain-apps@latest create`;
+
 export default function HomeHeader() {
   return (
     <div className={styles.HomeHeader}>
@@ -20,7 +23,7 @@ export default function HomeHeader() {
           Build Onchain Apps Toolkit.
         </p>
         <div className={styles.HomeHeaderCta}>
-          <CodeBlock code="$ npx @coinbase/build-onchain-apps@latest create" />
+          <CodeBlock code={codeStep1} />
         </div>
       </div>
       <div className={styles.HomeHeaderWaves}>

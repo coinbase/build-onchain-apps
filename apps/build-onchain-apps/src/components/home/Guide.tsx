@@ -1,17 +1,22 @@
 import CodeBlock from '../CodeBlock/CodeBlock';
 
-const codeStep1 = `$ npx @coinbase/build-onchain-apps@latest create`;
-const codeStep2 = `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
-const codeStep3 = `# Install dependencies
+const codeStep1 = `\`\`\`bash
+$ npx @coinbase/build-onchain-apps@latest create`;
+const codeStep2 = `\`\`\`bash
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
+const codeStep3 = `\`\`\`bash
+# Install dependencies
 yarn
 
 # Run onchain app
 yarn dev`;
-const codeStep4 = `# Install Foundry
+const codeStep4 = `\`\`\`bash
+# Install Foundry
 
 curl -L https://foundry.paradigm.xyz | bash
 foundryup`;
-const codeStep5 = `cd contracts
+const codeStep5 = `\`\`\`bash
+cd contracts
 
 # Install dependencies
 forge install
@@ -24,7 +29,8 @@ forge test
 
 # Format
 forge fmt`;
-const codeStep6 = `# Create a .env file using the .env.example file provided in your contracts folder and add your private key.
+const codeStep6 = `\`\`\`bash
+# Create a .env file using the .env.example file provided in your contracts folder and add your private key.
 source .env
 
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url $\{RPC_URL\} --etherscan-api-key $\{BLOCK_EXPLORER_API_KEY\}
