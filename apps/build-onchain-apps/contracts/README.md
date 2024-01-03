@@ -2,6 +2,15 @@
 
 This project is built using Foundry. For more information, visit the docs [here](https://book.getfoundry.sh/)
 
+
+# Contents
+
+- [Introduction](#introduction)
+- [Project Layout](#project-layout)
+- [Usage](#usage)
+- [Deploying your own contract](#deploying-your-own-contract)
+- [Contributing](#contributing)
+
 ## Introduction
 
 This repository contains a sample `BuyMeACoffee.sol` contract which allows the user to buy the owner a coffee with `0.001 ether`. Along with that the user can send the owner a memo.
@@ -112,3 +121,28 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
 7. To extract the `abi` of your contract, you can go to `out/YOUR_CONTRACT.sol/YOUR_CONTRACT.json` and copy the value corresponding to the `abi` key
 
 
+## Contributing
+
+If you would like to contribute to contracts folder, follow the given steps for setup
+
+### Installation
+
+Install foundry using
+
+```shell
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+```
+Follow the instructions of foundryup to completely setup foundry
+
+### Install dependencies
+
+Run the following commands inside the contracts folder:
+
+```shell
+forge install foundry-rs/forge-std  --no-commit
+forge install Openzeppelin/openzeppelin-contracts  --no-commit
+forge build
+```
+
+You should be good to go :) Thank you for the support ❤️
