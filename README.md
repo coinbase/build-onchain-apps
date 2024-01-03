@@ -93,7 +93,7 @@ forge build
 
 #### Step 2.3: Deploy contracts to Base goerli
 
-Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex.
+Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
 
 Note: For Base Goerli, you dont need a block explorer api key and can just keep the placeholder text which is present in the `.env.example` file.
 
@@ -103,7 +103,7 @@ source .env
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
-<b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify your contract is now deployed </b>
+<b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
 For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/contracts/README.md)
 

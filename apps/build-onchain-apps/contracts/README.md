@@ -6,6 +6,8 @@ This project is built using Foundry. For more information, visit the docs [here]
 
 This repository contains a sample `BuyMeACoffee.sol` contract which allows the user to buy the owner a coffee with `0.001 ether`. Along with that the user can send the owner a memo.
 
+It also contains a sample implementation (`CustomERC1155.sol`) of ERC1155 using openzeppelin's [ERC1155 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/IERC1155.sol)
+
 ## Project Layout
 
 ```
@@ -77,7 +79,7 @@ source .env
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
-<b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify your contract is now deployed</b>
+<b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
 ![Deployment](./assets/deployment.png)
 
@@ -94,7 +96,7 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
 1. To deploy your own contract create a new `.sol` file inside the `contracts/src` folder, similar to `BuyMeACoffee.sol` 
 2. Format and build your contracts using `forge fmt` and `forge build` respectively.
 2. Write some tests by creating a test file inside `contracts/test` folder, similar to `BuyMeACoffee.t.sol`. Run the test using `forge test`
-4. Write a deployment script inside `contracts/script`, similar to BuyMeACoffee.sol
+4. Write a deployment script inside `contracts/script`, similar to `BuyMeACoffee.s.sol`
 5. Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
 6. Deploy your contract using the following commands:
 
