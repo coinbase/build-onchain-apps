@@ -1,5 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
+/**
+ * ----------------------------------------------------------------------------------------------------------------
+ * ---------██████╗ ██╗   ██╗██╗██╗     ██████╗        ██████╗ ███╗   ██╗ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗---------
+ * ---------██╔══██╗██║   ██║██║██║     ██╔══██╗      ██╔═══██╗████╗  ██║██╔════╝██║  ██║██╔══██╗██║████╗  ██║---------
+ * ---------██████╔╝██║   ██║██║██║     ██║  ██║█████╗██║   ██║██╔██╗ ██║██║     ███████║███████║██║██╔██╗ ██║---------
+ * ---------██╔══██╗██║   ██║██║██║     ██║  ██║╚════╝██║   ██║██║╚██╗██║██║     ██╔══██║██╔══██║██║██║╚██╗██║---------
+ * ---------██████╔╝╚██████╔╝██║███████╗██████╔╝      ╚██████╔╝██║ ╚████║╚██████╗██║  ██║██║  ██║██║██║ ╚████║---------
+ * ---------╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝        ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝---------
+ * ----------------------------------------------------------------------------------------------------------------
+ * https://github.com/coinbase/build-onchain-apps
+ */
+
 
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
@@ -21,14 +33,14 @@ contract SignatureMintERC721 is ERC721 {
     using ECDSA for bytes32;
     using MessageHashUtils for bytes32;
 
-    // Contract Params
-    uint256 public paidMintCost = 0.0001 ether;
-    address public freeMintSigner; // Wallet Address for the authorized wallet to distribute free mints.
-    uint256 public currentId = 0; // Current NFT id
+    // Contract Params, can make these configuable via constructor if desired.
+    uint256 public constant paidMintCost = 0.0001 ether;
+    address public immutable freeMintSigner; // Wallet Address for the authorized wallet to distribute free mints.
+    uint256 public currentId; // Current NFT id
     mapping(address => uint256) public usedFreeMints; // Mapping to store free mints
 
     // Setup contract Metadata
-    string public imageUri = "ipfs://QmQRzw5MtNQcdjg9rZ8MYugAz6WjaBdvsuNShKTLYNJdj7/coffee_dog.png";
+    string public constant imageUri = "ipfs://QmQRzw5MtNQcdjg9rZ8MYugAz6WjaBdvsuNShKTLYNJdj7/coffee_dog.png";
     NFTUtilities.CollectionMetadata public metadata =
         NFTUtilities.CollectionMetadata("CoffeeDog", "Buy a dog a coffee", "CDOG", imageUri, "");
 
@@ -45,7 +57,7 @@ contract SignatureMintERC721 is ERC721 {
      * @param  signature that authorizes this transaction to mint for free.
      */
     function freeMint(address account, bytes memory signature) external {
-        require(this.verifySignature(account, signature) == true, "Unable to verify Signature");
+        require(this.verifySignature(account, signature), "Unable to verify Signature");
 
         // Check if the free mint has already been used (1 per wallet)
         require(usedFreeMints[account] == 0, "Free mint already used");
@@ -85,7 +97,7 @@ contract SignatureMintERC721 is ERC721 {
     }
 
     function tokenURI(uint256 tokenId) public view override(ERC721) returns (string memory) {
-        require(tokenId <= currentId, "Token doesnt exist");
+        require(tokenId <= currentId && currentId > 0, "Token doesnt exist");
         return getOpenEditionUri(tokenId);
     }
 

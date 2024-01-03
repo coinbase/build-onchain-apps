@@ -74,8 +74,6 @@ contract SignatureMintERC721Test is Test {
         vm.stopPrank();
     }
 
-
-
     function testPaidMint() public {
         vm.startPrank(minter);
         assertEq(signatureMintERC721.balanceOf(minter), 0);
@@ -101,6 +99,14 @@ contract SignatureMintERC721Test is Test {
         vm.startPrank(minter);
         vm.expectRevert();
         signatureMintERC721.mint{value: 0.000001 ether}(minter);
+        assertEq(signatureMintERC721.balanceOf(minter), 0);
+        vm.stopPrank();
+    }
+
+    function testNoMintsGetToken() public {
+        vm.startPrank(minter);
+        vm.expectRevert(bytes("Token doesnt exist"));
+        signatureMintERC721.tokenURI(0);
         assertEq(signatureMintERC721.balanceOf(minter), 0);
         vm.stopPrank();
     }
