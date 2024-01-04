@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { baseGoerli } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
-import { contract } from '../../contract/ContractSpecification';
+import { useCustom1155Contract } from '../../onchain/hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
@@ -12,18 +12,19 @@ export default function MintContractDemo() {
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
 
+  const contract = useCustom1155Contract();
+
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
-  const chainContract = contract.custom1155[baseGoerli.id];
   const { collectionName, description, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
-    chainContract.address,
-    contract.custom1155.abi,
+    contract.status === 'ready' ? contract.address : undefined,
+    contract.abi,
   );
 
   const { config } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
-    address: chainContract.address,
-    abi: contract.custom1155.abi,
+    address: contract.status === 'ready' ? contract.address : undefined,
+    abi: contract.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
     enabled: onCorrectNetwork,
@@ -48,7 +49,7 @@ export default function MintContractDemo() {
   }
 
   return (
-    <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
+    <div className="md:grid-cols-2mint grid grid-cols-1 items-stretch justify-start md:gap-9">
       <div className="align-center flex flex-col justify-start gap-5">
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </div>

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useContractRead } from 'wagmi';
-import { useBuyMeACoffee } from '../contract/ContractSpecification';
+import { useBuyMeACoffeeContract } from '../onchain/hooks/contracts';
 import { markStep } from '../utils/analytics';
 
 import type { CoffeeMemo } from '../types';
@@ -19,7 +19,7 @@ function useOnchainCoffeeMemos() {
     setMemos(newMemos);
   }, []);
 
-  const contract = useBuyMeACoffee();
+  const contract = useBuyMeACoffeeContract();
 
   // Below is a very basic example of how to call a read-only function on a contract (with no arguments).
   // The BuyMeACoffee-Contracts contract  https://github.com/alchemyplatform/RTW3-Week2-BuyMeACoffee-Contracts

@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
-import { useBuyMeACoffee } from '../../contract/ContractSpecification';
+import { useBuyMeACoffeeContract } from '../../onchain/hooks/contracts';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
@@ -14,7 +14,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const [message, setMessage] = useState('');
 
   // Get the correct contract info for current network (if present)
-  const contract = useBuyMeACoffee();
+  const contract = useBuyMeACoffeeContract();
 
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
@@ -74,6 +74,8 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     [setMessage],
   );
 
+  const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
+
   if (contract.status === 'notConnected') {
     // TODO: render not connected state here
   }
@@ -85,6 +87,31 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   if (contract.status === 'deactivated') {
     // TODO: indicate that this contract has been deactivated
   }
+
+  const submitButton = useMemo(() => {
+    if (contract.status === 'notConnected') {
+      return <span>Please connect your wallet to continue.</span>;
+    }
+
+    if (contract.status === 'onUnsupportedNetwork') {
+      return (
+        <span>
+          Please connect to one of the supported networks to continue:{' '}
+          {contract.supportedChains.map((c) => c.name).join(', ')}
+        </span>
+      );
+    }
+
+    if (contract.status === 'deactivated') {
+      return <span>This contract has been deactivated on this chain.</span>;
+    }
+
+    return (
+      <button type="submit" disabled={areInputsDisabled}>
+        Send 1 Coffee for 0.001ETH
+      </button>
+    );
+  }, [areInputsDisabled, contract.status, contract.supportedChains]);
 
   return (
     <div className="flex flex-col justify-start">
@@ -103,6 +130,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
                 className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Enter your name"
                 onChange={handleNameChange}
+                disabled={areInputsDisabled}
                 required
               />
             </div>
@@ -117,15 +145,12 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
                 className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Enter your message..."
                 onChange={handleMessageChange}
+                disabled={areInputsDisabled}
                 required
               />
             </div>
 
-            <div className="mt-6 flex justify-end gap-3">
-              <button type="submit" disabled={loadingTransaction}>
-                Send 1 Coffee for 0.001ETH
-              </button>
-            </div>
+            <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
           </div>
         </form>
       </div>

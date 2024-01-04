@@ -1,9 +1,9 @@
 import { Abi, type Chain } from 'viem';
 import { baseGoerli, baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
-import BuyMeACoffeeABI from './BuyMeACoffee';
-import Custom1155ABI from './Custom1155';
-import SignatureMint721 from './SignatureMint721';
+import BuyMeACoffeeABI from '../../contract/BuyMeACoffee';
+import Custom1155ABI from '../../contract/Custom1155';
+import SignatureMint721ABI from '../../contract/SignatureMint721';
 
 type ContractInstance = {
   chain: Chain;
@@ -11,11 +11,12 @@ type ContractInstance = {
   deactivated?: boolean;
 };
 
-type UseContractReturn<T extends Abi> =
-  | { abi: T; address: `0x${string}`; status: 'ready' }
-  | { abi: T; status: 'onUnsupportedNetwork' }
-  | { abi: T; status: 'notConnected' }
-  | { abi: T; status: 'deactivated' };
+type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
+  | { address: `0x${string}`; status: 'ready' }
+  | { status: 'onUnsupportedNetwork' }
+  | { status: 'notConnected' }
+  | { status: 'deactivated' }
+);
 
 type Spec<T extends Abi> = {
   abi: T;
@@ -25,42 +26,47 @@ type Spec<T extends Abi> = {
 export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   function useContract(): UseContractReturn<typeof abi> {
     const { chain } = useNetwork();
+    const supportedChains = Object.values(spec).map((s) => s.chain);
 
     if (!chain) {
-      return { abi, status: 'notConnected' };
+      return { abi, status: 'notConnected', supportedChains };
     }
 
     if (chain.id in spec) {
       if (spec[chain.id].deactivated) {
-        return { abi, status: 'deactivated' };
+        return { abi, status: 'deactivated', supportedChains };
       }
 
       return {
         abi,
         address: spec[chain.id].address,
         status: 'ready',
+        supportedChains,
       };
     }
 
     return {
       abi,
       status: 'onUnsupportedNetwork',
+      supportedChains,
     };
   }
 
   return useContract;
 }
 
-export const useBuyMeACoffee = generateContractHook({
+export const useBuyMeACoffeeContract = generateContractHook({
   abi: BuyMeACoffeeABI,
   [baseGoerli.id]: {
+    // TODO: this can be derived from the id which is the key of this object.
+    // We can reduce boilerplate by doing so, but may make it less flexible.
     chain: baseGoerli,
     address: '0x1784AAD01B4d05A8bC721DC8903dCbC9E0b20175',
   },
   // ... more chains for this contract go here
 });
 
-export const useCustom1155 = generateContractHook({
+export const useCustom1155Contract = generateContractHook({
   abi: Custom1155ABI,
   [baseGoerli.id]: {
     chain: baseGoerli,
@@ -70,7 +76,7 @@ export const useCustom1155 = generateContractHook({
 });
 
 export const useSignatureMint721 = generateContractHook({
-  abi: SignatureMint721,
+  abi: SignatureMint721ABI,
   [baseGoerli.id]: {
     chain: baseGoerli,
     address: '0x22b03779693E4fB8bF03Ecc6b7480701dBA6Fb77',
