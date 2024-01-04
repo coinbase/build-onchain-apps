@@ -21,7 +21,6 @@ export function getChainsForEnvironment(env?: Environment): Chain[] | undefined 
   return supportedChains.get(env);
 }
 
-
 export function getChainById(chainId: string) {
   const chains = getChainsForEnvironment();
   return chains?.find((c: Chain) => c.id === Number(chainId)) ?? null;

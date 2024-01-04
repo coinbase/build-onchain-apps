@@ -1,5 +1,5 @@
 import { baseGoerli } from 'viem/chains';
-import {getChainById, getChainsForEnvironment} from '../../../src/utils/chainConfiguration';
+import { getChainById, getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import handler from './currentBlockNumber';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -14,7 +14,6 @@ describe('/api/chain/blockNumber', () => {
   const unknownChainId = '73264023';
   const getChainsMock = getChainsForEnvironment as jest.Mock;
   const getChainByIdMock = getChainById as jest.Mock;
-
 
   beforeEach(() => {
     req = { query: {} };
