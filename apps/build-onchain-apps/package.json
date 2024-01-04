@@ -46,6 +46,7 @@
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/babel__preset-env": "^7",
     "@types/identity-obj-proxy": "^3",
     "@types/jest": "^29.5.10",
