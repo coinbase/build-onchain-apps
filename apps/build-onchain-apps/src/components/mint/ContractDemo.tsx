@@ -9,7 +9,7 @@ import SwitchNetwork from './SwitchNetwork';
 const EXPECTED_CHAIN = baseGoerli;
 
 export default function MintContractDemo() {
-  const { isConnected, address } = useAccount();
+  const { address } = useAccount();
   const { chain } = useNetwork();
 
   const contract = useCustom1155Contract();
@@ -22,7 +22,6 @@ export default function MintContractDemo() {
   );
 
   const { config } = usePrepareContractWrite({
-    // TODO: the chainId should be dynamic
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'mint',
@@ -35,11 +34,11 @@ export default function MintContractDemo() {
   // status in the UI.
   const { write: mint } = useContractWrite(config);
 
-  if (!isConnected) {
+  if (contract.status === 'notConnected') {
     return <NotConnected />;
   }
 
-  if (!onCorrectNetwork) {
+  if (contract.status === 'onUnsupportedNetwork') {
     return <SwitchNetwork />;
   }
 
