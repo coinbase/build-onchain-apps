@@ -76,18 +76,6 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
 
-  if (contract.status === 'notConnected') {
-    // TODO: render not connected state here
-  }
-
-  if (contract.status === 'onUnsupportedNetwork') {
-    // TODO: render network switcher here
-  }
-
-  if (contract.status === 'deactivated') {
-    // TODO: indicate that this contract has been deactivated
-  }
-
   const submitButton = useMemo(() => {
     if (contract.status === 'notConnected') {
       return <span>Please connect your wallet to continue.</span>;
