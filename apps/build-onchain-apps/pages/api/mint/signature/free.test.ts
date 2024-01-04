@@ -1,14 +1,14 @@
-import { privateKeyToAccount } from "viem/accounts";
-import {NextApiRequest, NextApiResponse} from "next";
-import {baseGoerli} from "viem/chains";
-import {getChainById} from "../../../../src/utils/chainConfiguration";
+import { privateKeyToAccount } from 'viem/accounts';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { baseGoerli } from 'viem/chains';
+import { getChainById } from '../../../../src/utils/chainConfiguration';
 import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
 import handler from './free';
 
 // Mock the external dependencies
 jest.mock('../../../../src/utils/chainConfiguration');
 jest.mock('../../../../src/utils/configuration');
-jest.mock("viem/accounts");
+jest.mock('viem/accounts');
 
 describe('/api/mint/signature/free handler', () => {
   let req: Partial<NextApiRequest>;
@@ -20,8 +20,8 @@ describe('/api/mint/signature/free handler', () => {
     req = {
       query: {
         chainId: 'testChainId',
-        wallet: 'testWallet'
-      }
+        wallet: 'testWallet',
+      },
     };
     res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
     getChainByIdMock.mockReturnValue([{ id: baseGoerli.id }]);
@@ -46,7 +46,7 @@ describe('/api/mint/signature/free handler', () => {
   });
 
   it('returns 400 if signing key is missing', async () => {
-    (getSignatureMintPrivateKey as jest.Mock).mockReturnValue("");
+    (getSignatureMintPrivateKey as jest.Mock).mockReturnValue('');
     await handler(req as NextApiRequest, res as NextApiResponse);
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith({ error: 'walletSigningKey is required' });

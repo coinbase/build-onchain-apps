@@ -18,12 +18,11 @@ export function getCurrentEnvironment(): Environment {
   return releaseStageValue ?? Environment.localhost;
 }
 
-
 export function getSignatureMintPrivateKey(): string {
   let key: string | undefined = process.env[EnvironmentKeys.signatureMintPrivateKey];
 
   if (!key) {
-    key = "";
+    key = '';
   }
 
   return key;

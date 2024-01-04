@@ -1,10 +1,9 @@
-import {privateKeyToAccount} from "viem/accounts";
-import {Hex} from "viem";
-import {SignableMessage} from "viem/types/misc";
-import {getSignatureMintPrivateKey} from "../../../../src/utils/configuration";
-import {getChainById} from '../../../../src/utils/chainConfiguration';
+import { privateKeyToAccount } from 'viem/accounts';
+import { Hex } from 'viem';
+import { SignableMessage } from 'viem/types/misc';
+import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
+import { getChainById } from '../../../../src/utils/chainConfiguration';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
 
 /**
  * Handler for the /api/mint/signature/free
@@ -45,12 +44,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
      */
     const account = privateKeyToAccount(walletSigningKey as Hex);
     const messageToSign: SignableMessage = `Free Mint: ${freeMintWallet.toLowerCase()}`;
-    const signedMessage = await account.signMessage({message:messageToSign});
+    const signedMessage = await account.signMessage({ message: messageToSign });
     const response = {
       signature: signedMessage,
-    }
+    };
     res.status(200).json(response);
-
   } catch (error) {
     console.error('Error fetching chains:', error);
     res.status(500).json({ error: 'Internal server error' });
