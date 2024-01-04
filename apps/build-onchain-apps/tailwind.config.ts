@@ -30,6 +30,9 @@ const config: Config = {
         '2mint': '420px 1fr',
       },
     },
+    fontFamily: {
+      robotoMono: ['"Roboto Mono", sans-serif'],
+    },
   },
   plugins: [],
 };

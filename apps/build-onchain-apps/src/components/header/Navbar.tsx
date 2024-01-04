@@ -1,7 +1,7 @@
 import NextLink from 'next/link';
 import { RemoveScroll } from 'react-remove-scroll';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { classNames } from '../../utils/classNames';
+import { clsx } from 'clsx';
 import useActiveLink from '../../hooks/useActiveLink';
 
 export function NavbarLink({
@@ -20,8 +20,8 @@ export function NavbarLink({
     <li>
       <NextLink
         href={href}
-        className={classNames(
-          'px-[16px] py-[5px] text-center text-base font-normal text-white',
+        className={clsx(
+          'px-[16px] py-[5px] text-center font-robotoMono text-base font-normal text-white',
           active ? 'rounded-[50px] bg-neutral-900 bg-opacity-90' : '',
         )}
         target={target}
@@ -36,11 +36,11 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
   return (
     <>
       <ul className="hidden items-center justify-start gap-8 md:flex">
-        <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
-        <NavbarLink href="/mint">Mint</NavbarLink>
         <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
           <GitHubLogoIcon width="16" height="16" />
         </NavbarLink>
+        <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
+        <NavbarLink href="/mint">Mint</NavbarLink>
       </ul>
       {isMenuOpen && (
         <div>
