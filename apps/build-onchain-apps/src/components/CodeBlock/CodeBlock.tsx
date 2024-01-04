@@ -12,20 +12,19 @@ function Code({ code }: { code: string }) {
     if (!isClient() || !code) {
       return;
     }
-     
+
     getHighlighterCore({
       themes: [vitesseBlack],
       langs: [shellscriptLang],
-       
+
       loadWasm: getWasmInlined,
     })
       .then((highlighter) => {
-         
         const html = highlighter.codeToHtml(code, {
           lang: 'shellscript',
           theme: 'vitesse-black',
         });
-         
+
         setHtml(html);
       })
       .catch((err) => {
