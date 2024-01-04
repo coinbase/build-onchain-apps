@@ -2,6 +2,13 @@
 
 This project is built using Foundry. For more information, visit the docs [here](https://book.getfoundry.sh/)
 
+# Disclaimer 
+The provided Solidity contracts are intended solely for educational purposes and are
+not warranted for any specific use. They have not been audited and may contain vulnerabilities, hence should
+not be deployed in production environments. Users are advised to seek professional review and conduct a
+comprehensive security audit before any real-world application to mitigate risks of financial loss or other
+consequences. The author(s) disclaim all liability for any damages arising from the use of these contracts.
+Use at your own risk, acknowledging the inherent risks of smart contract technology on the blockchain.
 
 # Contents
 
@@ -13,14 +20,35 @@ This project is built using Foundry. For more information, visit the docs [here]
 
 ## Introduction
 
-This repository contains a sample `BuyMeACoffee.sol` contract which allows the user to buy the owner a coffee with `0.001 ether`. Along with that the user can send the owner a memo.
+### Contracts
 
+#### BuyMeACoffee
+ This repository contains a sample `BuyMeACoffee.sol` contract which allows the user to buy the owner a coffee with `0.001 ether`. Along with that the user can send the owner a memo.
+
+#### CustomERC1155
 It also contains a sample implementation (`CustomERC1155.sol`) of ERC1155 using openzeppelin's [ERC1155 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/IERC1155.sol)
 
-## Project Layout
+#### SignatureMintERC721
+Contract that allows a user to mint a ERC721 for free with a cryptographically signed message.  This is useful for mints where you want to allow users to mint for free based on a signature from
+your backend API.  This is an alternative approach to a merkel tree which is fully on-chain. [ERC721 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol).  
+Also makes use of the following helper libraries for signature verification:
+1. [OpenZeppelin MessageHashUtils](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/MessageHashUtils.sol) - Used to mimic web3 signatures.
+2. [OpenZeppelin ECDSA](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/ECDSA.sol) - Used to validate signatures are authentic.
 
+For this contract to work, you need to create a wallet which will act as the signer, you can do this in your
+favorite EOA wallet or code:
+```js
+const wallet = ethers.Wallet.createRandom();
+console.log(wallet.privateKey);
+console.log(wallet.address);
 ```
 
+That wallet address needs to be imported as an environment parameter in the contracts project.  This is needed
+because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0xAddress`
+
+
+### Project Layout
+```
 .
 ├── foundry.toml
 ├── script
@@ -61,19 +89,26 @@ forge install
 ### Build
 
 ```shell
-$ forge build
+forge build
 ```
 
 ### Test
 
 ```shell
-$ forge test
+forge test
+```
+
+### Coverage
+You will need to install [genhtml](https://github.com/linux-test-project/lcov) to generate html reports (`brew install lcov` for osx).
+
+```shell
+forge coverage --report lcov && genhtml -o report --branch-coverage lcov.info
 ```
 
 ### Format
 
 ```shell
-$ forge fmt
+forge fmt
 ```
 
 ### Deploy to Base Goerli
@@ -86,6 +121,7 @@ Note: For Base Goerli, you dont need a block explorer api key and can just keep 
 source .env
 
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
