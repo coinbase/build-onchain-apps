@@ -19,7 +19,11 @@ function Menu() {
         <NextLink href="/" passHref className="relative h-8 w-8">
           <div className={styles.MenuCircleImage} />
         </NextLink>
-        <NextLink href="/" passHref className="text-center text-xl font-medium text-white">
+        <NextLink
+          href="/"
+          passHref
+          className="text-center font-robotoMono text-xl font-medium text-white"
+        >
           BUILD ONCHAIN APPS
         </NextLink>
 

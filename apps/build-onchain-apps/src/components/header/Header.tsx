@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { classNames } from '../../utils/classNames';
+import { clsx } from 'clsx';
 import styles from './Header.module.css';
 import Menu from './Menu';
 
@@ -35,7 +35,7 @@ function Header({ ghost }: HeaderProps) {
   return (
     <div
       data-scroll-state={scrollState}
-      className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
+      className={clsx(styles.HeaderRoot, ghost ? styles.ghost : '')}
     >
       <div className="fixed z-10 inline-flex h-[72px]  w-screen items-center justify-between rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl xl:w-[1280px]">
         <Menu />

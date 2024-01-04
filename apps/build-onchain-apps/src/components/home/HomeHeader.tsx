@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import Header from '../header/Header';
 import styles from './Home.module.css';
@@ -8,7 +9,7 @@ export default function HomeHeader() {
       <div className={styles.HomeHeaderGradient} />
       <Header />
       <div className="flex flex-col items-center justify-center">
-        <h1 className={styles.HomeHeaderHeadline}>
+        <h1 className={clsx(styles.HomeHeaderHeadline, 'font-robotoMono')}>
           BUILD
           <br />
           ONCHAIN
