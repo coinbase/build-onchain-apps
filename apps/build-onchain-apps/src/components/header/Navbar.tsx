@@ -8,16 +8,14 @@ import useActiveLink from '../../hooks/useActiveLink';
 
 export function NavbarLink({
   href,
-  as, // this is the NextLink `as` prop, not the `as` polymorphic prop pattern
   children,
   target,
 }: {
   href: string;
-  as?: string;
   children: React.ReactNode;
   target?: string;
 }) {
-  const active = useActiveLink({ href, as });
+  const active = useActiveLink({ href });
   return (
     <NextLink
       href={href}
@@ -32,16 +30,27 @@ export function NavbarLink({
   );
 }
 
-const ListItem = forwardRef(function ListItem({ children, title, target, href }, ref) { 
+const ListItem = forwardRef(function ListItem(
+  {
+    children,
+    target,
+    href,
+  }: {
+    href: string;
+    children: React.ReactNode;
+    target?: string;
+  },
+  ref: React.Ref<HTMLAnchorElement>,
+) {
   return (
-  <li>
-    <NavigationMenu.Link asChild>
-      <a href={href} className={clsx('ListItemLink')} ref={ref} target={target}>
-        <div className="ListItemHeading">{title}</div>
-        <p className="ListItemText">{children}</p>
-      </a>
-    </NavigationMenu.Link>
-  </li>)
+    <li>
+      <NavigationMenu.Link asChild>
+        <a href={href} className={clsx('ListItemLink')} ref={ref} target={target}>
+          {children}
+        </a>
+      </NavigationMenu.Link>
+    </li>
+  );
 });
 
 function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
@@ -68,17 +77,15 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
                 Learn
               </NavigationMenu.Trigger>
               <NavigationMenu.Content
-                className={clsx(
-                  'absolute left-0 top-0 w-auto rounded-lg',
-                  'radix-motion-from-start:animate-enter-from-left',
-                  'radix-motion-from-end:animate-enter-from-right',
-                  'radix-motion-to-start:animate-exit-to-left',
-                  'radix-motion-to-end:animate-exit-to-right',
-                )}
+                className={clsx('[animation-duration:250ms] [animation-timing-function:ease]')}
               >
-                <ul className="List one">
-                  <ListItem title="Introduction" href="/primitives/docs/overview/introduction">
-                    Build high-quality, accessible design systems and web apps.
+                <ul
+                  className={clsx(
+                    'm-0 grid grid-cols-[0.75fr_1fr] gap-x-[10px] p-[22px] [list-style:none]',
+                  )}
+                >
+                  <ListItem href="/buy-me-coffee">
+                    Buy My Coffee
                   </ListItem>
                 </ul>
               </NavigationMenu.Content>
@@ -88,8 +95,6 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
               className={clsx(
                 'z-10',
                 'top-[100%] flex h-2 items-end justify-center overflow-hidden',
-                'radix-state-visible:animate-fade-in',
-                'radix-state-hidden:animate-fade-out',
                 'transition-[width_transform] duration-[250ms] ease-[ease]',
               )}
             >
@@ -98,7 +103,9 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
           </NavigationMenu.List>
 
           <div className={clsx('absolute flex justify-center', 'left-[-20%] top-[100%] w-[140%]')}>
-            <NavigationMenu.Viewport className={clsx('relative bg-gray-800')} />
+            <NavigationMenu.Viewport
+              className={clsx('relative mt-2 rounded-md bg-gray-800 shadow-lg')}
+            />
           </div>
         </NavigationMenu.Root>
       </ul>
