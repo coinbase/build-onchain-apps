@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import {renderHook} from "@testing-library/react";
-import {act} from "react-dom/test-utils";
-import {useDebounce} from "./useDebounce";
+import { renderHook } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import { useDebounce } from './useDebounce';
 
 describe('useDebounce', () => {
   jest.useFakeTimers();
@@ -15,18 +15,14 @@ describe('useDebounce', () => {
     expect(result.current).toBe(initialValue);
   });
 
-
-  it("debounces", async () => {
-    const initialValue = "init";
+  it('debounces', async () => {
+    const initialValue = 'init';
     const delay = 1;
-    const { rerender, result } = renderHook(
-      ({ value }) => useDebounce(value, delay),
-      {
-        initialProps: { value: initialValue },
-      }
-    );
+    const { rerender, result } = renderHook(({ value }) => useDebounce(value, delay), {
+      initialProps: { value: initialValue },
+    });
 
-    const updatedValue = "updatedValue";
+    const updatedValue = 'updatedValue';
     act(() => rerender({ value: updatedValue }));
     expect(result.current).toBe(initialValue);
     act(() => {

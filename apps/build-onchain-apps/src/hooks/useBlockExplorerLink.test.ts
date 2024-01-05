@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import {useNetwork} from 'wagmi';
-import {Chain} from 'viem/chains';
-import {renderHook} from '@testing-library/react';
-import useBlockExplorerLink, {HashType} from './useBlockExplorerLink';
+import { useNetwork } from 'wagmi';
+import { Chain } from 'viem/chains';
+import { renderHook } from '@testing-library/react';
+import useBlockExplorerLink, { HashType } from './useBlockExplorerLink';
 
 jest.mock('wagmi', () => ({
   useNetwork: jest.fn(),
@@ -20,7 +20,9 @@ describe('useBlockExplorerLink', () => {
     };
     const mockHash = '0xMockHash';
     (useNetwork as jest.Mock).mockReturnValue({ chain: mockChain });
-    const { result } = renderHook(() => useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Address));
+    const { result } = renderHook(() =>
+      useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Address),
+    );
     expect(result.current).toBe('https://etherscan.io/address/0xMockHash');
   });
 
@@ -32,7 +34,9 @@ describe('useBlockExplorerLink', () => {
     };
     const mockHash = '0xMockHash';
     (useNetwork as jest.Mock).mockReturnValue({ chain: mockChain });
-    const { result } = renderHook(() => useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Transaction));
+    const { result } = renderHook(() =>
+      useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Transaction),
+    );
     expect(result.current).toBe('https://etherscan.io/tx/0xMockHash');
   });
 });

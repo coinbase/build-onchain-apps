@@ -66,13 +66,13 @@ export default function SignatureMintDemo() {
         `/api/mint/signature/free?chainId=${chain?.id}&wallet=${address}`,
       );
       if (!response.ok) {
-        setSigFailure(true)
+        setSigFailure(true);
         return console.error(response);
       }
       const result = (await response.json()) as { signature: string };
       setSignature(result.signature);
     } catch (err) {
-      setSigFailure(true)
+      setSigFailure(true);
       console.error(err);
     }
   }, [chain, address]);
@@ -151,50 +151,51 @@ export default function SignatureMintDemo() {
             understanding signature validation in Web3, and deploying secure, efficient smart
             contracts on the Ethereum blockchain.
             {sigFailure && (
-              <p className="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg" role="alert">
-                <span className="font-medium">Warning!</span> There was a problem with the signature.  Please follow
-                the steps below and ensure SIGNATURE_MINT_SIGNER is set in the environment file.
+              <p className="mb-4 rounded-lg bg-yellow-100 p-4 text-sm text-yellow-700" role="alert">
+                <span className="font-medium">Warning!</span> There was a problem with the
+                signature. Please follow the steps below and ensure SIGNATURE_MINT_SIGNER is set in
+                the environment file.
               </p>
             )}
             {!sigFailure && (
-                <p className="text-sm">
-                  {!usedFreeMint && signature.length && (
-                    <button
-                      type="button"
-                      onClick={freeMint}
-                      className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                    >
-                      Mint NFT Free
-                    </button>
-                  )}
-                  {usedFreeMint && (
-                    <button
-                      type="button"
-                      disabled
-                      className="focus:shadow-outline rounded bg-gray-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out focus:outline-none"
-                    >
-                      Freemint Used
-                    </button>
-                  )}
+              <p className="text-sm">
+                {!usedFreeMint && signature.length && (
                   <button
                     type="button"
-                    onClick={paidMint}
-                    className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                    onClick={freeMint}
+                    className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
                   >
-                    Paid Mint
+                    Mint NFT Free
                   </button>
-                  {explorerLink && (
-                    <a
-                      href={explorerLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="focus:shadow-outline ml-3 inline-block rounded bg-blue-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none"
-                    >
-                      {' '}
-                      View Contract
-                    </a>
-                  )}
-                </p>
+                )}
+                {usedFreeMint && (
+                  <button
+                    type="button"
+                    disabled
+                    className="focus:shadow-outline rounded bg-gray-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out focus:outline-none"
+                  >
+                    Freemint Used
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={paidMint}
+                  className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                >
+                  Paid Mint
+                </button>
+                {explorerLink && (
+                  <a
+                    href={explorerLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus:shadow-outline ml-3 inline-block rounded bg-blue-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none"
+                  >
+                    {' '}
+                    View Contract
+                  </a>
+                )}
+              </p>
             )}
           </p>
         </div>
