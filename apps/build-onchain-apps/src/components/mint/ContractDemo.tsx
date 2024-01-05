@@ -13,13 +13,16 @@ export default function MintContractDemo() {
   const { chain } = useNetwork();
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
-
-  const { collectionName, description, imageAddress, isLoading } =
-    useCollectionMetadata(onCorrectNetwork);
+  const chainContract = contract.custom1155[baseGoerli.id];
+  const { collectionName, description, imageAddress, isLoading } = useCollectionMetadata(
+    onCorrectNetwork,
+    chainContract.address,
+    contract.custom1155.abi,
+  );
 
   const { config } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
-    address: contract.custom1155[baseGoerli.id].address,
+    address: chainContract.address,
     abi: contract.custom1155.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,

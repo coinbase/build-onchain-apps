@@ -39,6 +39,7 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
         <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
           <GitHubLogoIcon width="16" height="16" />
         </NavbarLink>
+        <NavbarLink href="/signature-mint">Signature Mint</NavbarLink>
         <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
         <NavbarLink href="/mint">Mint</NavbarLink>
       </ul>
