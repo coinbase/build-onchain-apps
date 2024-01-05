@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useCallback } from 'react';
-import { AccountConnectButton } from '../../onchain';
+import { AccountConnectButton } from '../../../onchainKit';
 import styles from './Header.module.css';
 import Navbar from './Navbar';
 

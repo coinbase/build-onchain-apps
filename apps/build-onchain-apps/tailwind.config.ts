@@ -4,7 +4,7 @@ const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/onchain/**/*.{js,ts,jsx,tsx,mdx}',
+    './onchainKit/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     container: {

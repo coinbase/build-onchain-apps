@@ -10,10 +10,10 @@ import { baseGoerli, Chain } from 'viem/chains';
 import { parseEther } from 'viem';
 import { useCallback, useEffect, useState } from 'react';
 import { contract } from '../../contract/ContractSpecification';
-import useCollectionMetadata from '../../hooks/useCollectionMetadata';
+import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import { useDebounce } from '../../hooks/useDebounce';
-import useBlockExplorerLink from '../../hooks/useBlockExplorerLink';
+import useBlockExplorerLink from '../../../onchainKit/hooks/useBlockExplorerLink';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
