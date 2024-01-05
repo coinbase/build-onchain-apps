@@ -5,7 +5,7 @@
 import { useNetwork } from 'wagmi';
 import { Chain } from 'viem/chains';
 import { renderHook } from '@testing-library/react';
-import useBlockExplorerLink, { HashType } from '../../onchainKit/hooks/useBlockExplorerLink';
+import useBlockExplorerLink, { HashType } from './useBlockExplorerLink';
 
 jest.mock('wagmi', () => ({
   useNetwork: jest.fn(),

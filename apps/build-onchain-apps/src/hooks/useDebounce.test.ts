@@ -3,7 +3,7 @@
  */
 import { renderHook } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { useDebounce } from '../../src/hooks/useDebounce';
+import { useDebounce } from './useDebounce';
 
 describe('useDebounce', () => {
   jest.useFakeTimers();
