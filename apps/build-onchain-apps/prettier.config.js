@@ -7,6 +7,7 @@ module.exports = {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
+  tailwindFunctions: ['clsx'],
   trailingComma: 'all',
   useTabs: false,
   overrides: [

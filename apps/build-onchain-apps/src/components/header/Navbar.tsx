@@ -1,36 +1,60 @@
+import { clsx } from 'clsx';
 import NextLink from 'next/link';
+import { forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { clsx } from 'clsx';
-import useActiveLink from '../../hooks/useActiveLink';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
 export function NavbarLink({
   href,
-  as, // this is the NextLink `as` prop, not the `as` polymorphic prop pattern
   children,
   target,
 }: {
   href: string;
-  as?: string;
   children: React.ReactNode;
   target?: string;
 }) {
-  const active = useActiveLink({ href, as });
   return (
-    <li>
-      <NextLink
-        href={href}
-        className={clsx(
-          'px-[16px] py-[5px] text-center font-robotoMono text-base font-normal text-white',
-          active ? 'rounded-[50px] bg-neutral-900 bg-opacity-90' : '',
-        )}
-        target={target}
-      >
-        {children}
-      </NextLink>
-    </li>
+    <NextLink
+      href={href}
+      className={clsx(
+        'px-[16px] py-[5px]',
+        'text-center font-robotoMono text-base font-normal text-white',
+      )}
+      target={target}
+    >
+      {children}
+    </NextLink>
   );
 }
+
+const ListItem = forwardRef(function ListItem(
+  {
+    children,
+    target,
+    href,
+  }: {
+    href: string;
+    children: React.ReactNode;
+    target?: string;
+  },
+  ref: React.Ref<HTMLAnchorElement>,
+) {
+  return (
+    <div className="inline-flex items-center justify-start gap-8">
+      <NavigationMenu.Link asChild className="flex items-center justify-start gap-1">
+        <a
+          href={href}
+          className={clsx('text-center font-robotoMono text-base font-normal text-white')}
+          ref={ref}
+          target={target}
+        >
+          {children}
+        </a>
+      </NavigationMenu.Link>
+    </div>
+  );
+});
 
 function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
   return (
@@ -39,9 +63,34 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
         <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
           <GitHubLogoIcon width="16" height="16" />
         </NavbarLink>
-        <NavbarLink href="/signature-mint">Signature Mint</NavbarLink>
-        <NavbarLink href="/buy-me-coffee">Buy My Coffee</NavbarLink>
-        <NavbarLink href="/mint">Mint</NavbarLink>
+        <NavbarLink href="/#get-started">Get Started</NavbarLink>
+        <NavigationMenu.Root className="relative">
+          <NavigationMenu.List className={clsx('flex flex-row space-x-2 p-2')}>
+            <NavigationMenu.Item>
+              <NavigationMenu.Trigger
+                className={clsx(
+                  'px-[16px] py-[5px]',
+                  'text-center font-robotoMono text-base font-normal text-white',
+                )}
+              >
+                Experiences
+              </NavigationMenu.Trigger>
+              <NavigationMenu.Content
+                className={clsx(
+                  'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
+                  'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                )}
+              >
+                <ListItem href="/buy-me-coffee">Buy My Coffee</ListItem>
+                <ListItem href="/mint">Mint NFT</ListItem>
+                <ListItem href="/signature-mint">Signature Mint</ListItem>
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+          </NavigationMenu.List>
+          <NavigationMenu.Viewport
+            className={clsx('absolute flex justify-center', 'left-[-20%] top-[100%] w-[140%]')}
+          />
+        </NavigationMenu.Root>
       </ul>
       {isMenuOpen && (
         <div>
