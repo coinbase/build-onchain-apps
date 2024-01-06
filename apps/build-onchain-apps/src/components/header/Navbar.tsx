@@ -77,7 +77,7 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
               </NavigationMenu.Trigger>
               <NavigationMenu.Content
                 className={clsx(
-                  'inline-flex h-38 w-48 flex-col items-start justify-start gap-6',
+                  'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
                   'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                 )}
               >
