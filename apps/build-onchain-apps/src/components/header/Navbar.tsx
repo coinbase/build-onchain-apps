@@ -1,9 +1,10 @@
 import { forwardRef } from 'react';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { ChevronDownIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
 import isClient from '../../utils/isClient';
+import styles from './Header.module.css';
 
 let originSite = '';
 if (isClient()) {
@@ -74,9 +75,19 @@ function Navbar() {
           <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
             <NavigationMenu.Item>
               <NavigationMenu.Trigger
-                className={clsx('text-center font-robotoMono text-base font-normal text-white')}
+                className={clsx(
+                  styles.NavigationMenuTrigger,
+                  'flex items-center justify-start gap-1',
+                )}
               >
-                Experiences
+                <span className="text-center font-robotoMono text-base font-normal text-white">
+                  Experiences
+                </span>
+                <ChevronDownIcon
+                  className={clsx('transform transition duration-200 ease-in-out')}
+                  width="16"
+                  height="16"
+                />
               </NavigationMenu.Trigger>
               <NavigationMenu.Content
                 className={clsx(
