@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { useContractRead } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
+import { useContractRead } from 'wagmi';
 import { contract } from '../contract/ContractSpecification';
 import { markStep } from '../utils/analytics';
 

@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
 
-import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
-
 import { parseEther } from 'viem';
 import { baseGoerli } from 'viem/chains';
+import { useWaitForTransaction, usePrepareContractWrite, useContractWrite } from 'wagmi';
 import { contract } from '../../contract/ContractSpecification';
 
 type FormBuyCoffeeProps = {

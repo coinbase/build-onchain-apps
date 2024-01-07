@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { baseGoerli } from 'viem/chains';
-import { contract } from '../../contract/ContractSpecification';
+import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
+import { contract } from '../../contract/ContractSpecification';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 

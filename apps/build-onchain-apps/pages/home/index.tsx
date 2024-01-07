@@ -1,7 +1,7 @@
+import Guide from '../../src/components/home/Guide';
+import HomeHeader from '../../src/components/home/HomeHeader';
 import WhyUseIt from '../../src/components/home/WhyUseIt';
 import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
-import HomeHeader from '../../src/components/home/HomeHeader';
-import Guide from '../../src/components/home/Guide';
 
 /**
  * Use the page component to wrap the components

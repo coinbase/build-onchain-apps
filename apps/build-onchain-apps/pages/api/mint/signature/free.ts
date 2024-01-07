@@ -1,8 +1,8 @@
-import { privateKeyToAccount } from 'viem/accounts';
 import { Hex } from 'viem';
+import { privateKeyToAccount } from 'viem/accounts';
 import { SignableMessage } from 'viem/types/misc';
-import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
 import { getChainById } from '../../../../src/utils/chainConfiguration';
+import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /**

@@ -1,6 +1,6 @@
 import { baseGoerli, base } from 'viem/chains';
-import { Environment } from './environment';
 import { getChainsForEnvironment } from './chainConfiguration';
+import { Environment } from './environment';
 
 describe('getCurrentEnvironment', () => {
   it('should return testnet for localhost', () => {

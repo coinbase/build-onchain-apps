@@ -1,6 +1,6 @@
 import { baseGoerli } from 'viem/chains';
-import { contract } from './ContractSpecification';
 import BuyMeACoffeeABI from './BuyMeACoffee';
+import { contract } from './ContractSpecification';
 import Custom1155ABI from './Custom1155';
 
 describe('ContractSpecification', () => {
