@@ -33,7 +33,9 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 export default function Guide() {
   return (
     <>
-      <h3 className="mb-6 text-4xl font-medium text-white">Getting started</h3>
+      <h3 className="mb-6 text-4xl font-medium text-white" id="get-started">
+        Getting started
+      </h3>
       <div className="h-px bg-white" />
       <section className="mt-10 flex flex-col">
         <h4 className="text-xl font-normal text-white">Step 1</h4>

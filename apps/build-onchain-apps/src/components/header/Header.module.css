@@ -36,3 +36,7 @@
   border-radius: 50%;
   background: linear-gradient(0deg, white 0%, white 100%);
 }
+
+.NavigationMenuTrigger[data-state='open'] svg {
+  transform: rotate(-180deg);
+}

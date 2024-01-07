@@ -1,8 +1,8 @@
-import { useAccount, useDisconnect } from 'wagmi';
 import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { getSlicedAddress } from './utils/address';
+import { useAccount, useDisconnect } from 'wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
+import { OnchainAvatar } from './components/OnchainAvatar';
 
 /**
  * TODO Docs
@@ -61,7 +61,7 @@ export function AccountConnectButton() {
               return (
                 <div className="flex items-center justify-center gap-3">
                   <button type="button" onClick={handleDisconnectWallet}>
-                    {getSlicedAddress(address)}
+                    <OnchainAvatar address={address} />
                   </button>
                 </div>
               );

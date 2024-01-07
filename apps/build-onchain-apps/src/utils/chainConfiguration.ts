@@ -1,13 +1,16 @@
-import { baseGoerli, Chain, base } from 'viem/chains';
+import { baseGoerli, baseSepolia, Chain, base, sepolia, mainnet } from 'viem/chains';
 import { getCurrentEnvironment } from './configuration';
 import { Environment } from './environment';
 
-// The list of supported Chains for a given environment (e.g. Dev should only have testnet)
+// Note: To access ENS Mainnet info, make sure to keep Mainnet
+// in the list of chains supported by the current environment.
+
+// The list of supported Chains for a given environment
 export const supportedChains = new Map<Environment, Chain[]>([
-  [Environment.localhost, [baseGoerli]],
-  [Environment.development, [baseGoerli]],
-  [Environment.staging, [base]],
-  [Environment.production, [base]],
+  [Environment.localhost, [baseGoerli, baseSepolia, sepolia, mainnet]],
+  [Environment.development, [baseGoerli, baseSepolia, sepolia, mainnet]],
+  [Environment.staging, [base, mainnet]],
+  [Environment.production, [base, mainnet]],
 ]);
 
 /**
