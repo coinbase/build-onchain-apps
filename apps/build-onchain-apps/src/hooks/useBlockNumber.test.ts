@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { useNetwork } from 'wagmi';
 import { renderHook, waitFor } from '@testing-library/react';
+import { useNetwork } from 'wagmi';
 import useCurrentBlockNumber from './useBlockNumber';
 
 jest.mock('wagmi', () => ({

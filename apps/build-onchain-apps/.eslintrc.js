@@ -135,6 +135,10 @@ module.exports = {
     'import/order': [
       'error',
       {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
         'groups': [
           'builtin',
           'external',
@@ -144,7 +148,15 @@ module.exports = {
           'index',
           'object',
           'type'
-        ]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
       }
     ],
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { type LinkProps as NextLinkProps } from 'next/link';
+import { useRouter } from 'next/router';
 
 function useActiveLink(props: Pick<NextLinkProps, 'href' | 'as'>) {
   const { asPath, isReady } = useRouter();

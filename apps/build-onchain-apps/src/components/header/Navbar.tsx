@@ -1,9 +1,8 @@
-import { clsx } from 'clsx';
-import NextLink from 'next/link';
 import { forwardRef } from 'react';
-import { RemoveScroll } from 'react-remove-scroll';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import { clsx } from 'clsx';
+import NextLink from 'next/link';
 
 export function NavbarLink({
   href,
@@ -56,14 +55,18 @@ const ListItem = forwardRef(function ListItem(
   );
 });
 
-function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
+function Navbar() {
   return (
-    <>
-      <ul className="hidden items-center justify-start gap-8 md:flex">
+    <ul className="hidden items-center justify-start gap-8 md:flex">
+      <li>
         <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
           <GitHubLogoIcon width="16" height="16" />
         </NavbarLink>
+      </li>
+      <li>
         <NavbarLink href="/#get-started">Get Started</NavbarLink>
+      </li>
+      <li>
         <NavigationMenu.Root className="relative">
           <NavigationMenu.List className={clsx('flex flex-row space-x-2 p-2')}>
             <NavigationMenu.Item>
@@ -91,15 +94,8 @@ function Navbar({ isMenuOpen = false }: { isMenuOpen?: boolean }) {
             className={clsx('absolute flex justify-center', 'left-[-20%] top-[100%] w-[140%]')}
           />
         </NavigationMenu.Root>
-      </ul>
-      {isMenuOpen && (
-        <div>
-          <RemoveScroll allowPinchZoom enabled>
-            Ciao
-          </RemoveScroll>
-        </div>
-      )}
-    </>
+      </li>
+    </ul>
   );
 }
 

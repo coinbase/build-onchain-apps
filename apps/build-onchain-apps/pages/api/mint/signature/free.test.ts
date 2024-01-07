@@ -1,5 +1,5 @@
-import { privateKeyToAccount } from 'viem/accounts';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { privateKeyToAccount } from 'viem/accounts';
 import { baseGoerli } from 'viem/chains';
 import { getChainById } from '../../../../src/utils/chainConfiguration';
 import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';

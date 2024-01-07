@@ -1,6 +1,4 @@
 import React, { ReactNode } from 'react';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
 import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   metaMaskWallet,
@@ -9,6 +7,8 @@ import {
   coinbaseWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
 import { getChainsForEnvironment } from '../utils/chainConfiguration';
 
 type Props = { children: ReactNode };

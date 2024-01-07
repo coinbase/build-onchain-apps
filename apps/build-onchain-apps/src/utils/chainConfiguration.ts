@@ -1,6 +1,6 @@
 import { baseGoerli, Chain, base } from 'viem/chains';
-import { Environment } from './environment';
 import { getCurrentEnvironment } from './configuration';
+import { Environment } from './environment';
 
 // The list of supported Chains for a given environment (e.g. Dev should only have testnet)
 export const supportedChains = new Map<Environment, Chain[]>([
