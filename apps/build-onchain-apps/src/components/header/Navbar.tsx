@@ -3,6 +3,12 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
+import isClient from '../../utils/isClient';
+
+let originSite = '';
+if (isClient()) {
+  originSite = window.location.origin;
+}
 
 export function NavbarLink({
   href,
@@ -16,10 +22,7 @@ export function NavbarLink({
   return (
     <NextLink
       href={href}
-      className={clsx(
-        'px-[16px] py-[5px]',
-        'text-center font-robotoMono text-base font-normal text-white',
-      )}
+      className={clsx('px-0', 'text-center font-robotoMono text-base font-normal text-white')}
       target={target}
     >
       {children}
@@ -58,23 +61,20 @@ const ListItem = forwardRef(function ListItem(
 function Navbar() {
   return (
     <ul className="hidden items-center justify-start gap-8 md:flex">
-      <li>
+      <li className="flex">
         <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-          <GitHubLogoIcon width="16" height="16" />
+          <GitHubLogoIcon width="24" height="24" />
         </NavbarLink>
       </li>
-      <li>
-        <NavbarLink href="/#get-started">Get Started</NavbarLink>
+      <li className="flex">
+        <NavbarLink href={`${originSite}/#get-started`}>Get Started</NavbarLink>
       </li>
-      <li>
+      <li className="flex">
         <NavigationMenu.Root className="relative">
-          <NavigationMenu.List className={clsx('flex flex-row space-x-2 p-2')}>
+          <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
             <NavigationMenu.Item>
               <NavigationMenu.Trigger
-                className={clsx(
-                  'px-[16px] py-[5px]',
-                  'text-center font-robotoMono text-base font-normal text-white',
-                )}
+                className={clsx('text-center font-robotoMono text-base font-normal text-white')}
               >
                 Experiences
               </NavigationMenu.Trigger>
