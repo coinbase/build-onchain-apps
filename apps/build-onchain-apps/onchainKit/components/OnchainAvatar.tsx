@@ -20,8 +20,17 @@ export function OnchainAvatar({ address }: OnchainAvatarProps) {
     name: ensName,
     enabled: Boolean(ensName),
     chainId: 1,
+    cacheTime: 60_000,
   });
-  console.log('ensAvatar', address, ensName, ensAvatar);
+  if (!ensName || !ensAvatar) {
+    // TODO add message that explain this issue
+    // https://github.com/wevm/wagmi/issues/554
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16">
+        <circle fill="blue" cx="16" cy="16" r="16" />
+      </svg>
+    );
+  }
   return (
     <img
       className="h-8 w-8 rounded-full"
@@ -29,7 +38,7 @@ export function OnchainAvatar({ address }: OnchainAvatarProps) {
       width="16"
       height="16"
       decoding="async"
-      src="https://via.placeholder.com/16x16"
+      src={ensAvatar}
     />
   );
 }
