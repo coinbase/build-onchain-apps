@@ -26,17 +26,17 @@ export function OnchainAvatar({ address }: OnchainAvatarProps) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16">
+      <svg xmlns="http://www.w3.org/2000/svg" height="32" width="32">
         <circle fill="blue" cx="16" cy="16" r="16" />
       </svg>
     );
   }
   return (
     <img
-      className="h-8 w-8 rounded-full"
+      className="rounded-full"
       loading="lazy"
-      width="16"
-      height="16"
+      width="32"
+      height="32"
       decoding="async"
       src={ensAvatar}
     />
