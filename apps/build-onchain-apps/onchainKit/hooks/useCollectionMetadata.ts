@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Address, useContractRead } from 'wagmi';
 import { Abi } from 'abitype';
+import { Address, useContractRead } from 'wagmi';
 import { ipfsToHTTP } from '../utils/ipfs';
 
 /**
@@ -53,7 +53,7 @@ function tryParseMetadataJson(str: string): CollectionMetadataResult | undefined
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
  * @returns CollectionMetadataResult
  */
-function useCollectionMetadata(enabled: boolean, address: Address, abi: Abi) {
+function useCollectionMetadata(enabled: boolean, address: Address | undefined, abi: Abi) {
   const [result, setResult] = useState<CollectionMetadataResult>({
     collectionName: null,
     description: null,

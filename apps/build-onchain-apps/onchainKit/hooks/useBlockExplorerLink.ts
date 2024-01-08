@@ -11,7 +11,11 @@ export enum HashType {
  * @param {string} hash - The contract or transaction hash.
  * @returns {string} - The URL to the Etherscan page for the given hash.
  */
-function useBlockExplorerLink(chain: Chain, hash: string, type: HashType = HashType.Address) {
+function useBlockExplorerLink(
+  chain: Chain,
+  hash: string | undefined,
+  type: HashType = HashType.Address,
+) {
   const [link, setLink] = useState('');
 
   useEffect(() => {

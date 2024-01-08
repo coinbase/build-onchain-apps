@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { baseGoerli } from 'viem/chains';
 import { useSwitchNetwork } from 'wagmi';
 
+// TODO: use supported contracts from hook to populate selector
 const EXPECTED_CHAIN = baseGoerli;
 
 function SwitchNetwork() {
