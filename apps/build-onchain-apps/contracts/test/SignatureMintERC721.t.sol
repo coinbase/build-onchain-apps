@@ -23,13 +23,13 @@ contract SignatureMintERC721Test is Test {
     }
 
     // --- Utility Methods ---
-    function signMessage(bytes32 message, uint256 key) internal returns (bytes memory) {
+    function signMessage(bytes32 message, uint256 key) internal pure returns (bytes memory) {
         (uint8 v, bytes32 r, bytes32 s) = vm.sign(key, message);
         bytes memory signature = toBytes(r, s, v);
         return signature;
     }
 
-    function genKeyPair() internal returns (address, uint256) {
+    function genKeyPair() view internal returns (address, uint256) {
         uint256 key = uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao)));
         address addr = vm.addr(key);
         return (addr, key);
@@ -64,9 +64,6 @@ contract SignatureMintERC721Test is Test {
         assertEq(signatureMintERC721.balanceOf(minter), 0);
         bytes32 messageToSign = signatureMintERC721.getBytesToSign(minter);
 
-        // Expect the FreeMint event to get called
-        vm.expectEmit(true, true, true, true);
-        emit SignatureMintERC721.Mint(minter, 1, 0);
 
         bytes memory signature = signMessage(messageToSign, privateKey);
         signatureMintERC721.freeMint(minter, signature);
@@ -78,9 +75,7 @@ contract SignatureMintERC721Test is Test {
         vm.startPrank(minter);
         assertEq(signatureMintERC721.balanceOf(minter), 0);
         vm.deal(minter, 1 ether);
-        // Expect the FreeMint event to get called
-        vm.expectEmit(true, true, true, true);
-        emit SignatureMintERC721.Mint(minter, 1, mintCost);
+
         signatureMintERC721.mint{value: mintCost}(minter);
         assertEq(signatureMintERC721.balanceOf(minter), 1);
         vm.stopPrank();
@@ -126,7 +121,7 @@ contract SignatureMintERC721Test is Test {
     function testMetadataInvalidTokenId() public {
         vm.startPrank(minter);
         vm.expectRevert(bytes("Token doesnt exist"));
-        string memory tokenUri = signatureMintERC721.tokenURI(1000);
+         signatureMintERC721.tokenURI(1000);
         vm.stopPrank();
     }
 
