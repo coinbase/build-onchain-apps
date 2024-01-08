@@ -1,27 +1,41 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import { Address as AddressType, isAddress } from 'viem';
-import { useEnsAvatar, useEnsName } from 'wagmi';
+import { createPublicClient, http } from 'viem';
+import { mainnet } from 'viem/chains';
+import type { Address, GetEnsNameReturnType } from 'viem';
 
 type OnchainAvatarProps = {
-  address?: AddressType;
+  address?: Address;
+};
+
+export const publicClient = createPublicClient({
+  chain: mainnet,
+  transport: http(),
+});
+
+const fetchENSName = async (address?: Address) => {
+  let ensName: GetEnsNameReturnType = '';
+  if (!address) {
+    return undefined;
+  }
+  try {
+    ensName = await publicClient.getEnsName({
+      address,
+    });
+  } catch (err) {
+    return undefined;
+  }
+  return ensName;
 };
 
 /**
  * TODO Docs
  */
 export function OnchainAvatar({ address }: OnchainAvatarProps) {
-  const { data: ensName } = useEnsName({
-    address,
-    enabled: isAddress(address ?? ''),
-    chainId: 1,
-  });
-  const { data: ensAvatar } = useEnsAvatar({
-    name: ensName,
-    enabled: Boolean(ensName),
-    chainId: 1,
-    cacheTime: 60_000,
-  });
+  const ensName = '';
+  const ensAvatar = '';
+  console.log('address', address);
+  console.log('ensName', fetchENSName(address));
   if (!ensName || !ensAvatar) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554
