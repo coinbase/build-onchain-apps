@@ -7,11 +7,11 @@ import Navbar from './Navbar';
 import { NavbarMobile } from './NavbarMobile';
 
 function Menu() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileMenuClick = useCallback(() => {
-    setMenuOpen(!isMenuOpen);
-  }, [isMenuOpen]);
+    setMobileMenuOpen(!isMobileMenuOpen);
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -31,7 +31,7 @@ function Menu() {
           <button
             type="button"
             aria-label="Menu"
-            data-state={isMenuOpen ? 'open' : 'closed'}
+            data-state={isMobileMenuOpen ? 'open' : 'closed'}
             onClick={handleMobileMenuClick}
           >
             <HamburgerMenuIcon width="16" height="16" />
@@ -40,7 +40,7 @@ function Menu() {
       </div>
 
       <div className="flex items-center justify-start gap-8">
-        {isMenuOpen ? <NavbarMobile /> : <Navbar />}
+        {isMobileMenuOpen ? <NavbarMobile /> : <Navbar />}
         <AccountConnectButton />
       </div>
     </>

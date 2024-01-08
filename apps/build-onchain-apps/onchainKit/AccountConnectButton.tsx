@@ -59,8 +59,8 @@ export function AccountConnectButton() {
               }
 
               return (
-                <div className="flex items-center justify-center gap-3">
-                  <button type="button" onClick={handleDisconnectWallet}>
+                <div className="flex h-8 w-8 items-center justify-center">
+                  <button type="button" aria-label="Disconnect" onClick={handleDisconnectWallet}>
                     <OnchainAvatar address={address} />
                   </button>
                 </div>
