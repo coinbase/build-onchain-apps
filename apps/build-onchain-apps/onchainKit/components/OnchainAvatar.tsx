@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
 import { createPublicClient, http } from 'viem';
 import { mainnet } from 'viem/chains';
 import type { Address, GetEnsNameReturnType } from 'viem';
@@ -13,29 +14,42 @@ export const publicClient = createPublicClient({
   transport: http(),
 });
 
-const fetchENSName = async (address?: Address) => {
-  let ensName: GetEnsNameReturnType = '';
-  if (!address) {
-    return undefined;
-  }
-  try {
-    ensName = await publicClient.getEnsName({
-      address,
-    });
-  } catch (err) {
-    return undefined;
-  }
-  return ensName;
+const useEnsName = (address?: Address) => {
+  const [ensName, setEnsName] = useState<GetEnsNameReturnType | null>(null);
+
+  useEffect(() => {
+    if (!address) return;
+
+    const fetchENSName = async () => {
+      try {
+        return await publicClient.getEnsName({
+          address,
+        });
+      } catch (err) {
+        return null;
+      }
+    };
+
+    fetchENSName()
+      .then((name) => {
+        setEnsName(name);
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+  }, [address]);
+
+  return { ensName };
 };
 
 /**
  * TODO Docs
  */
 export function OnchainAvatar({ address }: OnchainAvatarProps) {
-  const ensName = '';
   const ensAvatar = '';
+  const ensName = useEnsName(address);
   console.log('address', address);
-  console.log('ensName', fetchENSName(address));
+  console.log('ensName', ensName);
   if (!ensName || !ensAvatar) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554
