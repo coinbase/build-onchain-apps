@@ -12,7 +12,7 @@ import {
 import useBlockExplorerLink from '../../../onchainKit/hooks/useBlockExplorerLink';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
 import { useDebounce } from '../../hooks/useDebounce';
-import { useSignatureMint721 } from '../../onchain/hooks/contracts';
+import { useSignatureMint721 } from '../../hooks/contracts';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';

@@ -5,7 +5,7 @@
 import { renderHook } from '@testing-library/react';
 import { baseGoerli, baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
-import BuyMeACoffeeABI from '../../contract/BuyMeACoffee';
+import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import { generateContractHook } from './contracts';
 
 jest.mock('wagmi', () => ({

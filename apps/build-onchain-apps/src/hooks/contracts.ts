@@ -1,9 +1,9 @@
 import { Abi, type Chain } from 'viem';
 import { baseGoerli, baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
-import BuyMeACoffeeABI from '../../contract/BuyMeACoffee';
-import Custom1155ABI from '../../contract/Custom1155';
-import SignatureMint721ABI from '../../contract/SignatureMint721';
+import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
+import Custom1155ABI from '../contract/Custom1155';
+import SignatureMint721ABI from '../contract/SignatureMint721';
 
 type ContractInstance = {
   chain: Chain;

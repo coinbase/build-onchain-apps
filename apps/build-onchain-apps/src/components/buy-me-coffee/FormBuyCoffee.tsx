@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
-import { useBuyMeACoffeeContract } from '../../onchain/hooks/contracts';
+import { useBuyMeACoffeeContract } from '../../hooks/contracts';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
