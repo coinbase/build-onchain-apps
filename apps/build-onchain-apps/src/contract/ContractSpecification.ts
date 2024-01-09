@@ -25,6 +25,10 @@ export const contract: ContractSpecification = {
       chain: baseGoerli,
       address: '0x1784AAD01B4d05A8bC721DC8903dCbC9E0b20175',
     },
+    [baseSepolia.id]: {
+      chain: baseSepolia,
+      address: '0x839b0012eB39aA148b9d09BA533991aEF308041c'
+    }
     // more chains for this contract go here
   },
   custom1155: {
