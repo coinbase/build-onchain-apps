@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from 'react';
 import BuyMeCoffeeContractDemo from '../../src/components/buy-me-coffee/ContractDemo';

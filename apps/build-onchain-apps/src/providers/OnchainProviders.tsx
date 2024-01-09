@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { ReactNode } from 'react';
 import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';

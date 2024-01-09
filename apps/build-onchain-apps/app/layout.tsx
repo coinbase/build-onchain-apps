@@ -7,12 +7,12 @@ import type { Metadata } from 'next';
 
 const roboto = Roboto_Mono({
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
 });
 
 export const viewport = {
@@ -28,18 +28,11 @@ export const metadata: Metadata = {
 // so we can track page views and early events
 initAnalytics();
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.className} ${inter.className}`}>
       <body>
-        <OnchainProviders>
-          {children}
-        </OnchainProviders>
+        <OnchainProviders>{children}</OnchainProviders>
       </body>
     </html>
   );

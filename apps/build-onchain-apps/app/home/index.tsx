@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import Guide from '../../src/components/home/Guide';
 import HomeHeader from '../../src/components/home/HomeHeader';
 import WhyUseIt from '../../src/components/home/WhyUseIt';
@@ -14,7 +14,7 @@ export default function HomePage() {
       <main className="container mx-auto flex flex-col py-12">
         <WhyUseIt />
         <Guide />
-      </main> 
+      </main>
     </>
   );
 }

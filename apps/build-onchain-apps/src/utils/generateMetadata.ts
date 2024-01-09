@@ -23,7 +23,7 @@ export const generateMetadata = ({
       url: `${url}${pathname ?? ''}`,
       title,
       description,
-      images: i.map(img => `${url}/social/${img}`),
-    }
-  }
+      images: i.map((img) => `${url}/social/${img}`),
+    },
+  };
 };

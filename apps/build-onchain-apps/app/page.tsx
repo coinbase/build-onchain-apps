@@ -5,7 +5,7 @@ export const metadata = generateMetadata({
   title: 'Build Onchain Apps Toolkit',
   description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
   images: 'themes.png',
-  pathname: ''
+  pathname: '',
 });
 
 export default function Page() {
