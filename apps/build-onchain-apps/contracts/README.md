@@ -157,7 +157,7 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
    forge script script/YOUR_SCRIPT.s.sol:YOUR_SCRIPT --broadcast --rpc-url ${RPC_URL}
    ```
 
-   You can change the `RPC_URL`  based on the chain you are deploying too, these can be changed in the .env file.
+   You can change the `RPC_URL` based on the chain you are deploying too, these can be changed in the .env file.
    <br/>
 
 7. To extract the `abi` of your contract, you can go to `out/YOUR_CONTRACT.sol/YOUR_CONTRACT.json` and copy the value corresponding to the `abi` key

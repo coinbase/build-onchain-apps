@@ -8,14 +8,14 @@ import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
  * that you want to render on the page.
  */
 export default function BuyMeCoffeePage() {
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   //  Fix hydration issues
-  if (!isMounted) return null
+  if (!isMounted) return null;
 
   return (
     <>
