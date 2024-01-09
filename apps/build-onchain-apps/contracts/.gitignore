@@ -13,7 +13,6 @@ docs/
 # Dotenv file
 .env
 
-lib/*
 
 # Code Coverage
 lcov.info
