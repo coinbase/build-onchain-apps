@@ -63,10 +63,10 @@ export const useBuyMeACoffeeContract = generateContractHook({
     chain: baseGoerli,
     address: '0x1784AAD01B4d05A8bC721DC8903dCbC9E0b20175',
   },
-    [baseSepolia.id]: {
-      chain: baseSepolia,
-      address: '0x839b0012eB39aA148b9d09BA533991aEF308041c'
-    }
+  [baseSepolia.id]: {
+    chain: baseSepolia,
+    address: '0x839b0012eB39aA148b9d09BA533991aEF308041c',
+  },
 
   // ... more chains for this contract go here
 });
@@ -79,8 +79,8 @@ export const useCustom1155Contract = generateContractHook({
   },
   [baseSepolia.id]: {
     chain: baseSepolia,
-    address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C'
-  }
+    address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
+  },
   // more chains for this contract go here
 });
 
