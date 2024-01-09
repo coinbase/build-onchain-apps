@@ -34,7 +34,7 @@ It also contains a sample implementation (`CustomERC1155.sol`) of ERC1155 using 
 #### SignatureMintERC721
 
 Contract that allows a user to mint a ERC721 for free with a cryptographically signed message. This is useful for mints where you want to allow users to mint for free based on a signature from
-your backend API. This is an alternative approach to a merkel tree which is fully on-chain. [ERC721 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol).  
+your backend API. This is an alternative approach to a merkel tree which is fully on-chain. [ERC721 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol).
 Also makes use of the following helper libraries for signature verification:
 
 1. [OpenZeppelin MessageHashUtils](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/MessageHashUtils.sol) - Used to mimic web3 signatures.
@@ -119,17 +119,15 @@ forge coverage --report lcov && genhtml -o report --branch-coverage lcov.info
 forge fmt
 ```
 
-### Deploy to Base Goerli
+### Deploy to Base Sepolia
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex.
-
-Note: For Base Goerli, you dont need a block explorer api key and can just keep the placeholder text which is present in the `.env.example` file.
 
 ```bash
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --rpc-url ${RPC_URL}
+forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast  --rpc-url ${RPC_URL}
 ```
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
@@ -138,7 +136,7 @@ forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadc
 
 ![Verified](./assets/verified.png)
 
-Forge runs your solidity script. In that script it tries to broadcast the transaction. It writes it back into the broadcast folder in a run-latest.json file. **It will also automatically verify your contract on Goerli BaseScan**. Learn more about scripting from [here](https://book.getfoundry.sh/tutorials/solidity-scripting)
+Forge runs your solidity script. In that script it tries to broadcast the transaction. It writes it back into the broadcast folder in a run-latest.json file.
 
 ### ABI
 
@@ -156,12 +154,11 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
    ```bash
    source .env
 
-   forge script script/YOUR_SCRIPT.s.sol:YOUR_SCRIPT --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+   forge script script/YOUR_SCRIPT.s.sol:YOUR_SCRIPT --broadcast --rpc-url ${RPC_URL}
    ```
 
-   You can change the `RPC_URL` and `BLOCK_EXPLORER_API_KEY` based on the chain you are deploying too, these can be changed in the .env file.
+   You can change the `RPC_URL`  based on the chain you are deploying too, these can be changed in the .env file.
    <br/>
-   <b>Note: For Base Goerli, you dont need a block explorer api key and can just keep the placeholder text which is present in the `.env.example` file.</b>
 
 7. To extract the `abi` of your contract, you can go to `out/YOUR_CONTRACT.sol/YOUR_CONTRACT.json` and copy the value corresponding to the `abi` key
 

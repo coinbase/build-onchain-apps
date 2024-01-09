@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { baseGoerli } from 'viem/chains';
+import {  baseSepolia } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
-const EXPECTED_CHAIN = baseGoerli;
+const EXPECTED_CHAIN = baseSepolia;
 
 export default function MintContractDemo() {
   const { address } = useAccount();

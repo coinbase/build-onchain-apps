@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
-import { baseGoerli } from 'viem/chains';
+import {  baseSepolia } from 'viem/chains';
 import { useSwitchNetwork } from 'wagmi';
 
 // TODO: use supported contracts from hook to populate selector
-const EXPECTED_CHAIN = baseGoerli;
+const EXPECTED_CHAIN = baseSepolia;
 
 function SwitchNetwork() {
   const { switchNetwork } = useSwitchNetwork({ chainId: EXPECTED_CHAIN.id });

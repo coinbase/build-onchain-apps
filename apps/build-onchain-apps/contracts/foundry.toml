@@ -7,7 +7,5 @@ fs_permissions = [{ access = "read", path = "./"}]
 [rpc_endpoints]
 "${NETWORK}"="${RPC_URl}"
 
-[etherscan]
-"${NETWORK}"={key="${BLOCK_EXPLORER_API_KEY}"}
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
