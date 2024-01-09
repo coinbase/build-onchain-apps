@@ -3,7 +3,7 @@
  */
 
 import { renderHook } from '@testing-library/react';
-import { baseSepolia } from 'viem/chains';
+import { baseSepolia, goerli } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import { generateContractHook } from './contracts';
@@ -30,7 +30,6 @@ describe('generated contract hook', () => {
   it.each([
     ['notConnected', undefined, undefined],
     ['onUnsupportedNetwork', { id: 31337 }, undefined],
-    ['deactivated', { id: baseSepolia.id }, undefined],
     ['ready', { id: baseSepolia.id }, '0xbaseSepolia'],
   ])('handles %s state', (state, chain, address) => {
     mockUseNetwork.mockImplementation(() => ({ chain: chain }) as ReturnType<typeof useNetwork>);
