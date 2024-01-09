@@ -3,7 +3,7 @@
  */
 
 import { renderHook } from '@testing-library/react';
-import { baseGoerli, baseSepolia } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import { generateContractHook } from './contracts';
@@ -17,14 +17,9 @@ const mockUseNetwork = useNetwork as jest.MockedFunction<typeof useNetwork>;
 
 const useTestContract = generateContractHook({
   abi: BuyMeACoffeeABI,
-  [baseGoerli.id]: {
-    chain: baseGoerli,
-    address: '0xbasegoerli',
-  },
   [baseSepolia.id]: {
     chain: baseSepolia,
-    address: '0xbasesepolia',
-    deactivated: true,
+    address: '0xbaseSepolia',
   },
 });
 
@@ -35,8 +30,7 @@ describe('generated contract hook', () => {
   it.each([
     ['notConnected', undefined, undefined],
     ['onUnsupportedNetwork', { id: 31337 }, undefined],
-    ['deactivated', { id: baseSepolia.id }, undefined],
-    ['ready', { id: baseGoerli.id }, '0xbasegoerli'],
+    ['ready', { id: baseSepolia.id }, '0xbaseSepolia'],
   ])('handles %s state', (state, chain, address) => {
     mockUseNetwork.mockImplementation(() => ({ chain: chain }) as ReturnType<typeof useNetwork>);
     const {
@@ -44,7 +38,7 @@ describe('generated contract hook', () => {
     } = renderHook(() => useTestContract());
     expect(current.status).toBe(state);
     expect(current.abi).toEqual(BuyMeACoffeeABI);
-    expect(current.supportedChains).toEqual([baseGoerli, baseSepolia]);
+    expect(current.supportedChains).toEqual([baseSepolia]);
     if (address) {
       expect(current).toEqual(expect.objectContaining({ address }));
     } else {

@@ -1,5 +1,5 @@
 import { Abi, type Chain } from 'viem';
-import { baseGoerli, baseSepolia } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import Custom1155ABI from '../contract/Custom1155';
@@ -57,12 +57,6 @@ export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
 
 export const useBuyMeACoffeeContract = generateContractHook({
   abi: BuyMeACoffeeABI,
-  [baseGoerli.id]: {
-    // TODO: this can be derived from the id which is the key of this object.
-    // We can reduce boilerplate by doing so, but may make it less flexible.
-    chain: baseGoerli,
-    address: '0x1784AAD01B4d05A8bC721DC8903dCbC9E0b20175',
-  },
   [baseSepolia.id]: {
     chain: baseSepolia,
     address: '0x839b0012eB39aA148b9d09BA533991aEF308041c',
@@ -73,10 +67,6 @@ export const useBuyMeACoffeeContract = generateContractHook({
 
 export const useCustom1155Contract = generateContractHook({
   abi: Custom1155ABI,
-  [baseGoerli.id]: {
-    chain: baseGoerli,
-    address: '0xBB955f815131818D62A220F70F5938daF812522d',
-  },
   [baseSepolia.id]: {
     chain: baseSepolia,
     address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
@@ -86,10 +76,6 @@ export const useCustom1155Contract = generateContractHook({
 
 export const useSignatureMint721 = generateContractHook({
   abi: SignatureMint721ABI,
-  [baseGoerli.id]: {
-    chain: baseGoerli,
-    address: '0x22b03779693E4fB8bF03Ecc6b7480701dBA6Fb77',
-  },
   [baseSepolia.id]: {
     chain: baseSepolia,
     address: '0x8d5acddd5e1ad1c624d84ff2e0455dd39fdb139e\n',

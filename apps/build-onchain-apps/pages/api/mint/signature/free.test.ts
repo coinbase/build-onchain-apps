@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { privateKeyToAccount } from 'viem/accounts';
-import { baseGoerli } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import { getChainById } from '../../../../src/utils/chainConfiguration';
 import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
 import handler from './free';
@@ -24,7 +24,7 @@ describe('/api/mint/signature/free handler', () => {
       },
     };
     res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
-    getChainByIdMock.mockReturnValue([{ id: baseGoerli.id }]);
+    getChainByIdMock.mockReturnValue([{ id: baseSepolia.id }]);
     (getSignatureMintPrivateKey as jest.Mock).mockReturnValue('mockPrivateKey');
 
     const mockAccount = { signMessage: jest.fn().mockResolvedValue('mockSignature') };

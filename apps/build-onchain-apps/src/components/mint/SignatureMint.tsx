@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { parseEther } from 'viem';
-import { baseGoerli, Chain } from 'viem/chains';
+import { baseSepolia, Chain } from 'viem/chains';
 import {
   useAccount,
   useContractRead,
@@ -17,7 +17,7 @@ import CodeBlock from '../CodeBlock/CodeBlock';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
-const EXPECTED_CHAIN = baseGoerli;
+const EXPECTED_CHAIN = baseSepolia;
 
 /**
  * Use constants for codeblocks until the component will respect newlines.
