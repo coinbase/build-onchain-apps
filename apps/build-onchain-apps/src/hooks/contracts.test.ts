@@ -3,7 +3,7 @@
  */
 
 import { renderHook } from '@testing-library/react';
-import { baseSepolia, goerli } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import { generateContractHook } from './contracts';
