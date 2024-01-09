@@ -39,7 +39,7 @@ describe('generated contract hook', () => {
     } = renderHook(() => useTestContract());
     expect(current.status).toBe(state);
     expect(current.abi).toEqual(BuyMeACoffeeABI);
-    expect(current.supportedChains).toEqual([baseSepolia, baseSepolia]);
+    expect(current.supportedChains).toEqual([baseSepolia]);
     if (address) {
       expect(current).toEqual(expect.objectContaining({ address }));
     } else {
