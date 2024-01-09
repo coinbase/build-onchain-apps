@@ -2,28 +2,28 @@ import Image from 'next/image';
 import { baseGoerli } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
-import { contract } from '../../contract/ContractSpecification';
+import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
 const EXPECTED_CHAIN = baseGoerli;
 
 export default function MintContractDemo() {
-  const { isConnected, address } = useAccount();
+  const { address } = useAccount();
   const { chain } = useNetwork();
 
+  const contract = useCustom1155Contract();
+
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
-  const chainContract = contract.custom1155[baseGoerli.id];
   const { collectionName, description, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
-    chainContract.address,
-    contract.custom1155.abi,
+    contract.status === 'ready' ? contract.address : undefined,
+    contract.abi,
   );
 
   const { config } = usePrepareContractWrite({
-    // TODO: the chainId should be dynamic
-    address: chainContract.address,
-    abi: contract.custom1155.abi,
+    address: contract.status === 'ready' ? contract.address : undefined,
+    abi: contract.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
     enabled: onCorrectNetwork,
@@ -34,11 +34,11 @@ export default function MintContractDemo() {
   // status in the UI.
   const { write: mint } = useContractWrite(config);
 
-  if (!isConnected) {
+  if (contract.status === 'notConnected') {
     return <NotConnected />;
   }
 
-  if (!onCorrectNetwork) {
+  if (contract.status === 'onUnsupportedNetwork') {
     return <SwitchNetwork />;
   }
 
