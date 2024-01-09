@@ -48,7 +48,7 @@ export default function MintContractDemo() {
   }
 
   return (
-    <div className="md:grid-cols-2mint grid grid-cols-1 items-stretch justify-start md:gap-9">
+    <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
       <div className="align-center flex flex-col justify-start gap-5">
         <Image src={imageAddress} alt={collectionName} width="300" height="300" />
       </div>

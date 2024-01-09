@@ -11,8 +11,8 @@ import {
 } from 'wagmi';
 import useBlockExplorerLink from '../../../onchainKit/hooks/useBlockExplorerLink';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
-import { useDebounce } from '../../hooks/useDebounce';
 import { useSignatureMint721 } from '../../hooks/contracts';
+import { useDebounce } from '../../hooks/useDebounce';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
@@ -138,7 +138,7 @@ export default function SignatureMintDemo() {
   return (
     <>
       <h3 className="mb-6 text-4xl font-medium text-white">Signature Mint Contract</h3>
-      <div className="md:grid-cols-2mint grid grid-cols-1 items-stretch justify-start md:gap-9">
+      <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
         <div className="align-center flex flex-col justify-start gap-5">
           <Image src={imageAddress} alt={collectionName} width="300" height="300" />
         </div>

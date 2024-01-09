@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useContractRead } from 'wagmi';
-import { useBuyMeACoffeeContract } from './contracts';
 import { markStep } from '../utils/analytics';
+import { useBuyMeACoffeeContract } from './contracts';
 
 import type { CoffeeMemo } from '../types';
 
