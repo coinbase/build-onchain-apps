@@ -11,10 +11,6 @@ import {
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 import { initGit, isGitInstalled } from './utils/git';
 
-// Default location for all onchain applications
-const APPS_DIR = 'apps/';
-const MAIN_APP_NAME = 'build-onchain-apps';
-
 /**
  * Responsible for copying the
  * onchain app and create new project.
@@ -33,6 +29,11 @@ export const createProject = async () => {
         'It is likely you do not have write permissions for this folder.'
       )
     );
+    process.exit(1);
+  }
+
+  if (!isGitInstalled()) {
+    console.error(chalk.white('Please install git and then continue'));
     process.exit(1);
   }
 
@@ -55,7 +56,7 @@ export const createProject = async () => {
   ]);
 
   const newAppName = newAppNameAnswer.newAppName;
-  const newAppDir = getProjectDir(APPS_DIR + newAppName);
+  const newAppDir = getProjectDir(newAppName);
 
   if (fs.existsSync(newAppDir)) {
     console.error(chalk.red('A directory with the App name already exists.'));
@@ -63,18 +64,16 @@ export const createProject = async () => {
     process.exit(1);
   }
 
-  fs.cpSync(getAppDir(MAIN_APP_NAME), newAppDir, {
+  fs.cpSync(getAppDir(), newAppDir, {
     recursive: true,
   });
 
   const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
 
   if (isPackageJsonUpdated) {
-    if (isGitInstalled()) {
-      console.log(chalk.green(`Initializing Git and Foundry... \n`));
+    console.log(chalk.green(`Initializing Git and Foundry... \n`));
 
-      initGit(newAppDir);
-    }
+    initGit(newAppDir);
     displayFinalInstructions(newAppName);
   }
 
