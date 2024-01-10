@@ -32,6 +32,14 @@ html {
   scroll-behavior: smooth;
 }
 
+html .font-robotoMono {
+  font-family: var(--font-roboto-mono);
+}
+
+html .font-inter {
+  font-family: var(--font-inter);
+}
+
 body {
   min-width: 320px;
   margin: 0;
