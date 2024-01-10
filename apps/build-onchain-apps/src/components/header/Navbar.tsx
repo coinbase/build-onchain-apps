@@ -3,13 +3,7 @@ import { ChevronDownIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
-import isClient from '../../utils/isClient';
 import styles from './Header.module.css';
-
-let originSite = '';
-if (isClient()) {
-  originSite = window.location.origin;
-}
 
 export function NavbarLink({
   href,
@@ -23,7 +17,7 @@ export function NavbarLink({
   return (
     <NextLink
       href={href}
-      className={clsx('px-0', 'text-center font-robotoMono text-base font-normal text-white')}
+      className={clsx('px-0', 'font-robotoMono text-center text-base font-normal text-white')}
       target={target}
     >
       {children}
@@ -68,7 +62,7 @@ function Navbar() {
         </NavbarLink>
       </li>
       <li className="flex">
-        <NavbarLink href={`${originSite}/#get-started`}>Get Started</NavbarLink>
+        <NavbarLink href="/#get-started">Get Started</NavbarLink>
       </li>
       <li className="flex">
         <NavigationMenu.Root className="relative">
@@ -80,7 +74,7 @@ function Navbar() {
                   'flex items-center justify-start gap-1',
                 )}
               >
-                <span className="text-center font-robotoMono text-base font-normal text-white">
+                <span className="font-robotoMono text-center text-base font-normal text-white">
                   Experiences
                 </span>
                 <ChevronDownIcon
@@ -95,7 +89,7 @@ function Navbar() {
                   'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                 )}
               >
-                <ListItem href="/buy-me-coffee">Buy My Coffee</ListItem>
+                <ListItem href="/buy-me-coffee">Buy Me Coffee</ListItem>
                 <ListItem href="/mint">Mint NFT</ListItem>
                 <ListItem href="/signature-mint">Signature Mint</ListItem>
               </NavigationMenu.Content>

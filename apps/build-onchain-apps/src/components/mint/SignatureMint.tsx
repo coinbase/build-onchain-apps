@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { parseEther } from 'viem';
-import { baseGoerli, Chain } from 'viem/chains';
+import { baseSepolia, Chain } from 'viem/chains';
 import {
   useAccount,
   useContractRead,
@@ -11,13 +11,13 @@ import {
 } from 'wagmi';
 import useBlockExplorerLink from '../../../onchainKit/hooks/useBlockExplorerLink';
 import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
-import { contract } from '../../contract/ContractSpecification';
+import { useSignatureMint721 } from '../../hooks/contracts';
 import { useDebounce } from '../../hooks/useDebounce';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
 
-const EXPECTED_CHAIN = baseGoerli;
+const EXPECTED_CHAIN = baseSepolia;
 
 /**
  * Use constants for codeblocks until the component will respect newlines.
@@ -41,20 +41,21 @@ export default function SignatureMintDemo() {
   const [sigFailure, setSigFailure] = useState(false);
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
+  const contract = useSignatureMint721();
   /**
    * Per Wagmi, we should debounce dynamic parameters
    * https://wagmi.sh/examples/contract-write-dynamic
    */
   const debouncedSigValue = useDebounce<string>(signature, 500);
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
-  const contractAddress = contract.signatureMint721[baseGoerli.id].address;
+  const contractAddress = contract.status === 'ready' ? contract.address : undefined;
   const explorerLink = useBlockExplorerLink(chain as Chain, contractAddress);
   const [usedFreeMint, setUsedFreeMint] = useState(false);
 
   const { collectionName, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
     contractAddress,
-    contract.signatureMint721.abi,
+    contract.abi,
   );
 
   /**
@@ -88,8 +89,8 @@ export default function SignatureMintDemo() {
    */
   const { config: freeMintConfig } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
-    address: contract.signatureMint721[baseGoerli.id].address,
-    abi: contract.signatureMint721.abi,
+    address: contractAddress,
+    abi: contract.abi,
     functionName: 'freeMint',
     args: address ? [address, debouncedSigValue] : undefined,
     enabled: signature.length > 0,
@@ -101,8 +102,8 @@ export default function SignatureMintDemo() {
    */
   const { config: paidMintConfig } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
-    address: contract.signatureMint721[baseGoerli.id].address,
-    abi: contract.signatureMint721.abi,
+    address: contractAddress,
+    abi: contract.abi,
     functionName: 'mint',
     args: [address],
     value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
@@ -111,8 +112,8 @@ export default function SignatureMintDemo() {
 
   const usedFreeMintResponse = useContractRead({
     // TODO: the chainId should be dynamic
-    address: contract.signatureMint721[baseGoerli.id].address,
-    abi: contract.signatureMint721.abi,
+    address: contractAddress,
+    abi: contract.abi,
     functionName: 'usedFreeMints',
     args: [address],
     enabled: (address?.length ?? 0) > 0,

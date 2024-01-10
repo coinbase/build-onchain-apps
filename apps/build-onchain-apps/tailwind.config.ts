@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './onchainKit/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -29,9 +29,6 @@ const config: Config = {
         // Mint colum grid
         '2mint': '420px 1fr',
       },
-    },
-    fontFamily: {
-      robotoMono: ['"Roboto Mono", sans-serif'],
     },
   },
   plugins: [],

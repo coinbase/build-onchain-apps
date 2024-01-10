@@ -8,7 +8,5 @@ solc="0.8.20"
 [rpc_endpoints]
 "${NETWORK}"="${RPC_URl}"
 
-[etherscan]
-"${NETWORK}"={key="${BLOCK_EXPLORER_API_KEY}"}
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

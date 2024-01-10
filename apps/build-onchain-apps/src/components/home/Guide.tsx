@@ -27,7 +27,7 @@ forge fmt`;
 const codeStep6 = `# Create a .env file using the .env.example file provided in your contracts folder and add your private key.
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url $\{RPC_URL\} --etherscan-api-key $\{BLOCK_EXPLORER_API_KEY\}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --rpc-url $\{RPC_URL\}
 `;
 
 export default function Guide() {
@@ -72,7 +72,7 @@ export default function Guide() {
       </section>
       <section className="mt-8 flex flex-col">
         <h4 className="text-xl font-normal text-white">Step 6</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">Deploy contracts to Base goerli</p>
+        <p className="my-4 text-base font-normal text-zinc-400">Deploy contracts to Base Sepolia</p>
         <CodeBlock code={codeStep6} />
       </section>
     </>

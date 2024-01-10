@@ -7,7 +7,7 @@
 **Response**: JSON encoded viem chain object
 
 ```json
-[{"id":5,"network":"goerli","name":"Goerli"]
+[{"id":5,"network":"sepolia","name":"Sepolia"]
 ```
 
 ## Current Block Number /api/chain/blockNumber?chainId=5

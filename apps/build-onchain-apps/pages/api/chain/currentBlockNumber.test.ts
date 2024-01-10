@@ -1,4 +1,4 @@
-import { baseGoerli } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import { getChainById, getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import handler from './currentBlockNumber';
@@ -41,9 +41,9 @@ describe('/api/chain/blockNumber', () => {
 
   it('returns 200 with block number on valid chainId', async () => {
     const mockBlockNumber = 123456;
-    getChainByIdMock.mockReturnValue([{ id: baseGoerli.id }]);
+    getChainByIdMock.mockReturnValue([{ id: baseSepolia.id }]);
     mockProvider.getBlockNumber.mockResolvedValue(mockBlockNumber);
-    req.query = { chainId: baseGoerli.id.toString() };
+    req.query = { chainId: baseSepolia.id.toString() };
     await handler(req as NextApiRequest, res as NextApiResponse);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ block: mockBlockNumber.toString() });

@@ -1,6 +1,7 @@
+'use client';
+
 import dynamic from 'next/dynamic';
 import Header from '../../src/components/header/Header';
-import { TitleAndMetaTags } from '../../src/components/TitleAndMetaTags';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
 // for its internals we get annoying hydration errors. A future enhancement would be to
@@ -19,11 +20,6 @@ const MintContractDemo = dynamic(
 export default function MintPage() {
   return (
     <>
-      <TitleAndMetaTags
-        title="Build Onchain Apps - Mint"
-        description="Build Onchain Applications with the best consumer experience in a few minutes."
-        image="themes.png"
-      />
       <Header />
       <main className="container mx-auto flex flex-col">
         <MintContractDemo />
