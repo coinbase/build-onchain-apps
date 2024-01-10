@@ -119,10 +119,10 @@ forge coverage --report lcov && genhtml -o report --branch-coverage lcov.info
 forge fmt
 ```
 
-### Deploy to Base Sepolia
+### Deploy and verify contracts to Base Sepolia
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex.
-Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account
+Note: In order to verify your smart contract on Basescan, you need an API key. You can get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account.
 
 ```bash
 source .env

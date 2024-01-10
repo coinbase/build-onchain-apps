@@ -3,7 +3,7 @@ src = "src"
 out = "out"
 libs = ["lib"]
 fs_permissions = [{ access = "read", path = "./"}]
-solc="0.8.20"
+solc="0.8.23"
 
 [rpc_endpoints]
 "${NETWORK}"="${RPC_URl}"

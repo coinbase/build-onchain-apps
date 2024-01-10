@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.23;
 /**
  * ----------------------------------------------------------------------------------------------------------------
  * ---------██████╗ ██╗   ██╗██╗██╗     ██████╗        ██████╗ ███╗   ██╗ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗-----
@@ -53,7 +53,7 @@ contract SignatureMintERC721 is ERC721 {
         NFTUtilities.CollectionMetadata("CoffeeDog", "Buy a dog a coffee", "CDOG", imageUri, "");
 
     // Events
-    event Mint(address indexed buyer, uint256 tokenId, uint256 cost);
+    event  Mint(address indexed buyer, uint256 tokenId, uint256 cost);
 
     constructor(address signer) ERC721(metadata.name, metadata.symbol) {
         freeMintSigner = signer;
