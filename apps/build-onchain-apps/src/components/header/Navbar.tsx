@@ -89,7 +89,7 @@ function Navbar() {
                   'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                 )}
               >
-                <ListItem href="/buy-me-coffee">Buy My Coffee</ListItem>
+                <ListItem href="/buy-me-coffee">Buy Me Coffee</ListItem>
                 <ListItem href="/mint">Mint NFT</ListItem>
                 <ListItem href="/signature-mint">Signature Mint</ListItem>
               </NavigationMenu.Content>
