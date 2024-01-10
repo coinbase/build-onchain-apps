@@ -17,7 +17,7 @@ export function NavbarLink({
   return (
     <NextLink
       href={href}
-      className={clsx('px-0', 'text-center font-robotoMono text-base font-normal text-white')}
+      className={clsx('px-0', 'font-robotoMono text-center text-base font-normal text-white')}
       target={target}
     >
       {children}
@@ -74,7 +74,7 @@ function Navbar() {
                   'flex items-center justify-start gap-1',
                 )}
               >
-                <span className="text-center font-robotoMono text-base font-normal text-white">
+                <span className="font-robotoMono text-center text-base font-normal text-white">
                   Experiences
                 </span>
                 <ChevronDownIcon

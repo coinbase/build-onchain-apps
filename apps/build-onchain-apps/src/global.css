@@ -33,7 +33,7 @@ html {
 }
 
 html .font-robotoMono {
-  font-family: var(--font-robotoMono);
+  font-family: var(--font-roboto-mono);
 }
 
 html .font-inter {
