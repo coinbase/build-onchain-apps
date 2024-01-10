@@ -27,8 +27,8 @@ export const contract: ContractSpecification = {
     },
     [baseSepolia.id]: {
       chain: baseSepolia,
-      address: '0x839b0012eB39aA148b9d09BA533991aEF308041c'
-    }
+      address: '0x839b0012eB39aA148b9d09BA533991aEF308041c',
+    },
     // more chains for this contract go here
   },
   custom1155: {

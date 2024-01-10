@@ -89,13 +89,13 @@ forge build
 #### Step 6: Deploy contracts to Base Sepolia
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
-
+Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account
 
 ```bash
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast  --rpc-url ${RPC_URL}
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast  --rpc-url ${RPC_URL}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
