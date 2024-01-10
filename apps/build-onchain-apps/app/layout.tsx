@@ -1,9 +1,21 @@
 import '../src/global.css';
 
+import { Roboto_Mono, Inter } from 'next/font/google';
 import OnchainProviders from '../src/providers/OnchainProviders';
 import { initAnalytics } from '../src/utils/analytics';
-import IncludeGoogleFonts from './includeGoogleFonts';
 import type { Metadata } from 'next';
+
+const roboto = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-robotoMono'
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
 export const viewport = {
   width: 'device-width',
@@ -20,8 +32,7 @@ initAnalytics();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <IncludeGoogleFonts />
+    <html lang="en" className={`${roboto.variable} ${inter.variable}`}>
       <body>
         <OnchainProviders>{children}</OnchainProviders>
       </body>
