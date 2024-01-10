@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 // so we can track page views and early events
 initAnalytics();
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {  
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-    <IncludeGoogleFonts />
+      <IncludeGoogleFonts />
       <body>
         <OnchainProviders>{children}</OnchainProviders>
       </body>
