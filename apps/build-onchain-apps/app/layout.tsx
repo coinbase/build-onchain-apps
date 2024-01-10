@@ -1,19 +1,9 @@
 import '../src/global.css';
 
-import { Roboto_Mono, Inter } from 'next/font/google';
 import OnchainProviders from '../src/providers/OnchainProviders';
 import { initAnalytics } from '../src/utils/analytics';
+import IncludeGoogleFonts from './includeGoogleFonts';
 import type { Metadata } from 'next';
-
-const roboto = Roboto_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export const viewport = {
   width: 'device-width',
@@ -28,9 +18,10 @@ export const metadata: Metadata = {
 // so we can track page views and early events
 initAnalytics();
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {  
   return (
-    <html lang="en" className={`${roboto.className} ${inter.className}`}>
+    <html lang="en">
+    <IncludeGoogleFonts />
       <body>
         <OnchainProviders>{children}</OnchainProviders>
       </body>
