@@ -182,8 +182,7 @@ Follow the instructions of foundryup to completely setup foundry
 Run the following commands inside the contracts folder:
 
 ```shell
-forge install foundry-rs/forge-std  --no-commit
-forge install Openzeppelin/openzeppelin-contracts  --no-commit
+forge install
 forge build
 ```
 
