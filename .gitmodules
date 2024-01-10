@@ -3,4 +3,4 @@
 	url = https://github.com/foundry-rs/forge-std
 [submodule "apps/build-onchain-apps/contracts/lib/openzeppelin-contracts"]
 	path = apps/build-onchain-apps/contracts/lib/openzeppelin-contracts
-	url =  https://github.com/Openzeppelin/openzeppelin-contracts
+	url = https://github.com/Openzeppelin/openzeppelin-contracts

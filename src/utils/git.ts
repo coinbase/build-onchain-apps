@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { removeDownloadedApps } from './apps';
 
 export function isGitInstalled() {
   try {
@@ -12,6 +13,9 @@ export function isGitInstalled() {
 export function initGit(appDir: string) {
   try {
     execSync('git init', { cwd: appDir, stdio: 'ignore' });
+    removeDownloadedApps(appDir + '/contracts/lib/openzeppelin-contracts');
+    removeDownloadedApps(appDir + '/contracts/lib/forge-std');
+
     execSync(
       'git submodule add https://github.com/openzeppelin/openzeppelin-contracts contracts/lib/openzeppelin-contracts',
       {
