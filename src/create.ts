@@ -7,6 +7,7 @@ import {
   updatePackageJson,
   displayFinalInstructions,
   removeDownloadedApps,
+  APPS_ENGINE_DIR,
 } from './utils/apps';
 import { isRootDirWriteable, getProjectDir } from './utils/dir';
 import { initGit, isGitInstalled } from './utils/git';
@@ -60,7 +61,7 @@ export const createProject = async () => {
 
   if (fs.existsSync(newAppDir)) {
     console.error(chalk.red('A directory with the App name already exists.'));
-    removeDownloadedApps();
+    removeDownloadedApps(APPS_ENGINE_DIR);
     process.exit(1);
   }
 
@@ -72,10 +73,12 @@ export const createProject = async () => {
 
   if (isPackageJsonUpdated) {
     console.log(chalk.green(`Initializing Git and Foundry... \n`));
-
-    initGit(newAppDir);
-    displayFinalInstructions(newAppName);
   }
+  if (!initGit(newAppDir)) {
+    console.error(chalk.white('Error initializing Git and Foundry'));
+    process.exit(1);
+  }
+  displayFinalInstructions(newAppName);
 
-  removeDownloadedApps();
+  removeDownloadedApps(APPS_ENGINE_DIR);
 };

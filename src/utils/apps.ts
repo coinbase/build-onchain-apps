@@ -9,9 +9,9 @@ export const APPS_ENGINE_DIR = `temp-build-onchain-apps`;
 
 export async function downloadAndExtractApps(): Promise<void> {
   // ensure the apps directory exists
-  removeDownloadedApps();
+  removeDownloadedApps(APPS_ENGINE_DIR);
   execSync(
-    'git clone https://github.com/coinbase/build-onchain-apps.git temp-build-onchain-apps',
+    'git clone  https://github.com/coinbase/build-onchain-apps.git temp-build-onchain-apps',
     {
       stdio: 'ignore',
     }
@@ -22,9 +22,9 @@ export const getAppDir = () => {
   return APPS_ENGINE_DIR + '/apps/build-onchain-apps';
 };
 
-export async function removeDownloadedApps() {
+export async function removeDownloadedApps(app: string) {
   try {
-    await rimraf.sync(APPS_ENGINE_DIR);
+    await rimraf.sync(app);
   } catch (e) {
     console.error('Error while removing directories:', e);
   }
