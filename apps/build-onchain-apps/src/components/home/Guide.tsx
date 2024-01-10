@@ -24,10 +24,10 @@ forge test
 
 # Format
 forge fmt`;
-const codeStep6 = `# Create a .env file using the .env.example file provided in your contracts folder and add your private key.
-source .env
+const codeStep6 = `# Create a .env file using the .env.example file provided in your contracts folder and add your private key. Make sure to add a 0x in front of your key to convert it to a hex.
+Note: Get an API key from basescan.org for Base Sepolia by creating an account
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --rpc-url $\{RPC_URL\}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url $\{RPC_URL\} --etherscan-api-key $\{BLOCK_EXPLORER_API_KEY\}
 `;
 
 export default function Guide() {

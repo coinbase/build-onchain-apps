@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity 0.8.23;
 
 /**
  * @title Memos
@@ -130,8 +130,4 @@ contract BuyMeACoffee {
      */
     receive() external payable {}
 
-    /**
-     * @dev Fallback function to accept ether
-     */
-    fallback() external payable {}
 }

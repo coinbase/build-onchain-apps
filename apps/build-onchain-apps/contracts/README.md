@@ -119,15 +119,16 @@ forge coverage --report lcov && genhtml -o report --branch-coverage lcov.info
 forge fmt
 ```
 
-### Deploy to Base Sepolia
+### Deploy and verify contracts to Base Sepolia
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex.
+Note: In order to verify your smart contract on Basescan, you need an API key. You can get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account.
 
 ```bash
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --rpc-url ${RPC_URL}
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast  --rpc-url ${RPC_URL}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
@@ -154,7 +155,7 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
    ```bash
    source .env
 
-   forge script script/YOUR_SCRIPT.s.sol:YOUR_SCRIPT --broadcast --rpc-url ${RPC_URL}
+   forge script script/YOUR_SCRIPT.s.sol:YOUR_SCRIPT --broadcast --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
    ```
 
    You can change the `RPC_URL` based on the chain you are deploying too, these can be changed in the .env file.
