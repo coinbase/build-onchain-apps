@@ -137,7 +137,7 @@ export default function SignatureMintDemo() {
 
   return (
     <>
-      <h3 className="mb-6 text-4xl font-medium text-white">Signature Mint Contract</h3>
+      <h3 className="text-white mb-6 text-4xl font-medium">Signature Mint Contract</h3>
       <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
         <div className="align-center flex flex-col justify-start gap-5">
           <Image src={imageAddress} alt={collectionName} width="300" height="300" />
@@ -152,7 +152,7 @@ export default function SignatureMintDemo() {
             understanding signature validation in Web3, and deploying secure, efficient smart
             contracts on the Ethereum blockchain.
             {sigFailure && (
-              <p className="mb-4 rounded-lg bg-yellow-100 p-4 text-sm text-yellow-700" role="alert">
+              <p className="bg-yellow-100 text-yellow-700 mb-4 rounded-lg p-4 text-sm" role="alert">
                 <span className="font-medium">Warning!</span> There was a problem with the
                 signature. Please follow the steps below and ensure SIGNATURE_MINT_SIGNER is set in
                 the environment file.
@@ -164,7 +164,7 @@ export default function SignatureMintDemo() {
                   <button
                     type="button"
                     onClick={freeMint}
-                    className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                    className="focus:shadow-outline bg-green-500 text-white hover:bg-green-600 rounded px-4 py-2 font-bold transition duration-300 ease-in-out focus:outline-none"
                   >
                     Mint NFT Free
                   </button>
@@ -173,7 +173,7 @@ export default function SignatureMintDemo() {
                   <button
                     type="button"
                     disabled
-                    className="focus:shadow-outline rounded bg-gray-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out focus:outline-none"
+                    className="focus:shadow-outline bg-gray-500 text-white rounded px-4 py-2 font-bold transition duration-300 ease-in-out focus:outline-none"
                   >
                     Freemint Used
                   </button>
@@ -181,7 +181,7 @@ export default function SignatureMintDemo() {
                 <button
                   type="button"
                   onClick={paidMint}
-                  className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                  className="focus:shadow-outline bg-green-500 text-white hover:bg-green-600 ml-3 rounded px-4 py-2 font-bold transition duration-300 ease-in-out focus:outline-none"
                 >
                   Paid Mint
                 </button>
@@ -190,7 +190,7 @@ export default function SignatureMintDemo() {
                     href={explorerLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="focus:shadow-outline ml-3 inline-block rounded bg-blue-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none"
+                    className="focus:shadow-outline bg-blue-500 text-white hover:bg-blue-600 ml-3 inline-block rounded px-4 py-2 font-bold transition duration-300 ease-in-out focus:outline-none"
                   >
                     {' '}
                     View Contract
@@ -202,11 +202,11 @@ export default function SignatureMintDemo() {
         </div>
       </div>
 
-      <h3 className="mb-6 mt-6 text-4xl font-medium text-white">Getting started</h3>
-      <div className="h-px bg-white" />
+      <h3 className="text-white mb-6 mt-6 text-4xl font-medium">Getting started</h3>
+      <div className="bg-white h-px" />
       <section className="mb-6 mt-10 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 1 : Create Signer</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">
+        <h4 className="text-white text-xl font-normal">Step 1 : Create Signer</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">
           1. Create a wallet that will act as your signer on your backend. You can use wallets like
           Coinbase, Metamask assuming you can export the private key. As a best practice avoid
           reusing private keys for multiple thing & do not store funds in this wallet. Also, you can
@@ -215,8 +215,8 @@ export default function SignatureMintDemo() {
         <CodeBlock code={codeBlock1} />
         2. Next add that wallet to the contracts project environment file
         <CodeBlock code={codeBlock2} />
-        <h4 className="mb-6 mt-6 text-xl font-normal text-white">Step 2 : Deploy Contract</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">
+        <h4 className="text-white mb-6 mt-6 text-xl font-normal">Step 2 : Deploy Contract</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">
           Deploy the contract to base-sepolia
         </p>
         <CodeBlock
@@ -224,10 +224,10 @@ export default function SignatureMintDemo() {
           forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
         "
         />
-        <h4 className="mb-6 mt-6 text-xl font-normal text-white">
+        <h4 className="text-white mb-6 mt-6 text-xl font-normal">
           Step 3 : Add Private Key to backend
         </h4>
-        <p className="my-4 text-base font-normal text-zinc-400">
+        <p className="text-zinc-400 my-4 text-base font-normal">
           Add your private key to the API backend so you can generate minting signatures.
         </p>
         <CodeBlock code={codeBlock3} />

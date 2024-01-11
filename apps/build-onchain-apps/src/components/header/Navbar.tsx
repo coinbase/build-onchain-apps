@@ -17,7 +17,7 @@ export function NavbarLink({
   return (
     <NextLink
       href={href}
-      className={clsx('px-0', 'font-robotoMono text-center text-base font-normal text-white')}
+      className={clsx('px-0', 'font-robotoMono text-white text-center text-base font-normal')}
       target={target}
     >
       {children}
@@ -42,7 +42,7 @@ const ListItem = forwardRef(function ListItem(
       <NavigationMenu.Link asChild className="flex items-center justify-start gap-1">
         <a
           href={href}
-          className={clsx('font-robotoMono text-base font-normal text-white')}
+          className={clsx('font-robotoMono text-white text-base font-normal')}
           ref={ref}
           target={target}
         >
@@ -74,7 +74,7 @@ function Navbar() {
                   'flex items-center justify-start gap-1',
                 )}
               >
-                <span className="font-robotoMono text-center text-base font-normal text-white">
+                <span className="font-robotoMono text-white text-center text-base font-normal">
                   Experiences
                 </span>
                 <ChevronDownIcon
@@ -86,7 +86,7 @@ function Navbar() {
               <NavigationMenu.Content
                 className={clsx(
                   'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
-                  'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                  'bg-neutral-900 rounded-lg bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                 )}
               >
                 <ListItem href="/buy-me-coffee">Buy Me Coffee</ListItem>

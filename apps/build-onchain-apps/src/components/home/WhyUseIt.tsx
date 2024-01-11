@@ -1,7 +1,7 @@
 export default function HomeMain() {
   return (
     <div className="mb-28">
-      <h2 className="text-xl font-medium text-white md:text-2xl lg:text-4xl">
+      <h2 className="text-white text-xl font-medium md:text-2xl lg:text-4xl">
         Our toolkit takes an opinionated approach to
         <br />
         streamlining and automating early decisions you
