@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import BuyMeCoffeeContractDemo from '../../src/components/buy-me-coffee/ContractDemo';
+import Footer from '../../src/components/footer/Footer';
 import Header from '../../src/components/header/Header';
 
 /**
@@ -24,6 +25,7 @@ export default function BuyMeCoffeePage() {
       <main className="container mx-auto flex flex-col">
         <BuyMeCoffeeContractDemo />
       </main>
+      <Footer />
     </>
   );
 }
