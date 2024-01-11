@@ -1,3 +1,5 @@
+'use client';
+
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { NavbarLink } from '../header/Navbar';

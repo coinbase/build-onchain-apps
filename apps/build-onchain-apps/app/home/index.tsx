@@ -1,5 +1,4 @@
 'use client';
-import Footer from '../../src/components/footer/Footer';
 import Guide from '../../src/components/home/Guide';
 import HomeHeader from '../../src/components/home/HomeHeader';
 import WhyUseIt from '../../src/components/home/WhyUseIt';
@@ -16,7 +15,6 @@ export default function HomePage() {
         <WhyUseIt />
         <Guide />
       </main>
-      <Footer />
     </>
   );
 }
