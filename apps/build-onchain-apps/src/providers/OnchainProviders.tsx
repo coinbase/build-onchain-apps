@@ -62,7 +62,9 @@ const wagmiConfig = createConfig({
 function OnchainProviders({ children }: Props) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      <RainbowKitProvider chains={chains} theme={null}>
+        {children}
+      </RainbowKitProvider>
     </WagmiConfig>
   );
 }

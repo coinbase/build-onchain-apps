@@ -29,6 +29,7 @@
 }
 
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -42,6 +43,7 @@ html .font-inter {
 
 body {
   min-width: 320px;
+  height: 100%;
   margin: 0;
   background-color: var(--boat-color-background);
   color: var(--boat-color-text);

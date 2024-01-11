@@ -1,6 +1,7 @@
 import '../src/global.css';
 
 import { Roboto_Mono, Inter } from 'next/font/google';
+import Footer from '../src/components/footer/Footer';
 import OnchainProviders from '../src/providers/OnchainProviders';
 import { initAnalytics } from '../src/utils/analytics';
 import type { Metadata } from 'next';
@@ -33,8 +34,9 @@ initAnalytics();
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.variable} ${inter.variable}`}>
-      <body>
+      <body className="flex flex-1 flex-col">
         <OnchainProviders>{children}</OnchainProviders>
+        <Footer />
       </body>
     </html>
   );

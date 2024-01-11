@@ -33,18 +33,18 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 export default function Guide() {
   return (
     <>
-      <h3 className="mb-6 text-4xl font-medium text-white" id="get-started">
+      <h3 className="text-white mb-6 text-4xl font-medium" id="get-started">
         Getting started
       </h3>
-      <div className="h-px bg-white" />
+      <div className="bg-white h-px" />
       <section className="mt-10 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 1</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">Kick off your onchain app</p>
+        <h4 className="text-white text-xl font-normal">Step 1</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">Kick off your onchain app</p>
         <CodeBlock code={codeStep1} />
       </section>
       <section className="mt-8 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 2</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">
+        <h4 className="text-white text-xl font-normal">Step 2</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">
           Obtain Wallet Connect Project ID from{' '}
           <a href="https://walletconnect.com/" target="_blank">
             walletconnect.com
@@ -54,25 +54,25 @@ export default function Guide() {
         <CodeBlock code={codeStep2} />
       </section>
       <section className="mt-8 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 3</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">Install and Run your onchain app</p>
+        <h4 className="text-white text-xl font-normal">Step 3</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">Install and Run your onchain app</p>
         <CodeBlock code={codeStep3} />
       </section>
       <section className="mt-8 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 4</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">Kick start your contracts</p>
+        <h4 className="text-white text-xl font-normal">Step 4</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">Kick start your contracts</p>
         <CodeBlock code={codeStep4} />
       </section>
       <section className="mt-8 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 5</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">
+        <h4 className="text-white text-xl font-normal">Step 5</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">
           Build, test and format the sample contracts
         </p>
         <CodeBlock code={codeStep5} />
       </section>
       <section className="mt-8 flex flex-col">
-        <h4 className="text-xl font-normal text-white">Step 6</h4>
-        <p className="my-4 text-base font-normal text-zinc-400">Deploy contracts to Base Sepolia</p>
+        <h4 className="text-white text-xl font-normal">Step 6</h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">Deploy contracts to Base Sepolia</p>
         <CodeBlock code={codeStep6} />
       </section>
     </>
