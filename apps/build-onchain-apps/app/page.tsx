@@ -9,7 +9,7 @@ export const metadata = generateMetadata({
 });
 
 /**
- * Page components are a server component, which imports the Home component, which is a client component and has 'use client' at the top of its file.
+ * Server component, which imports the Home component (client component that has 'use client' in it)
  * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
  * https://nextjs.org/docs/app/building-your-application/rendering/client-components
  */
