@@ -4,7 +4,7 @@ import { NavbarLink } from '../header/Navbar';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-1 flex-col bg-red-300">
+    <footer className="flex flex-1 flex-col justify-end">
       <div className="h-[22rem] bg-[#141519] py-12">
         <div className="container mx-auto flex w-full justify-between">
           <div className="flex flex-col">
