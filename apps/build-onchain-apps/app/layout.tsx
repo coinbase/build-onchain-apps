@@ -31,6 +31,9 @@ export const metadata: Metadata = {
 // so we can track page views and early events
 initAnalytics();
 
+/** Root layout to define the structure of every page
+ * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.variable} ${inter.variable}`}>
