@@ -16,6 +16,12 @@ const config: Config = {
         xl: '1280px',
       },
     },
+    colors: {
+      gray: {
+        '200': '#8a919e',
+        '600': '#141519',
+      },
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
