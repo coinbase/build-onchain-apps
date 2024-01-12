@@ -7,7 +7,7 @@ import { NavbarLink } from '../header/Navbar';
 export default function Footer() {
   return (
     <footer className="flex flex-1 flex-col justify-end">
-      <div className="bg-boat-footer-dark-gray h-96 py-12">
+      <div className="h-96 bg-boat-footer-dark-gray py-12">
         <div className="container mx-auto flex w-full justify-between">
           <div className="flex flex-col">
             <div className="flex h-8 items-center justify-start gap-4">
@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center">
-              <p className="text-boat-footer-light-gray text-base font-normal leading-7">
+              <p className="text-base font-normal leading-7 text-boat-footer-light-gray">
                 This project is licensed under the MIT License - see the{' '}
                 <NextLink
                   href="https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE.md"

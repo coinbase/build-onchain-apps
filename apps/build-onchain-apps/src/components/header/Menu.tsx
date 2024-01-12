@@ -22,7 +22,7 @@ function Menu() {
         <NextLink
           href="/"
           passHref
-          className="font-robotoMono text-white text-center text-xl font-medium"
+          className="font-robotoMono text-center text-xl font-medium text-white"
         >
           BUILD ONCHAIN APPS
         </NextLink>
