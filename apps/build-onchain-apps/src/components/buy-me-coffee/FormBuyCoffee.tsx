@@ -105,17 +105,17 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     <div className="flex flex-col justify-start">
       <div className="relative flex justify-center">
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <div className="border-neutral-700 bg-neutral-900 rounded-xl border border-solid p-8">
+          <div className="rounded-xl border border-solid border-neutral-700 bg-neutral-900 p-8">
             <h3 className="mb-5">Buy Me A Coffee</h3>
 
             <div className="mb-5">
-              <label htmlFor="name" className="text-white mb-2 block text-sm font-medium">
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
                 First name
               </label>
               <input
                 type="text"
                 id="name"
-                className="bg-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 block w-full rounded-lg border border-gray-600 p-2 text-sm"
+                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Enter your name"
                 onChange={handleNameChange}
                 disabled={areInputsDisabled}
@@ -124,13 +124,13 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             </div>
 
             <div className="mb-5">
-              <label htmlFor="message" className="text-white mb-2 block text-sm font-medium">
+              <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
                 Message
               </label>
               <textarea
                 value={message}
                 id="message"
-                className="bg-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 block w-full rounded-lg border border-gray-600 p-2 text-sm"
+                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Enter your message..."
                 onChange={handleMessageChange}
                 disabled={areInputsDisabled}

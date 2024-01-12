@@ -41,9 +41,9 @@ export function AccountConnectButton() {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="bg-white inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl px-4 py-2"
+                    className="inline-flex h-10 w-36 items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2"
                   >
-                    <div className="text-black text-sm font-medium leading-normal">
+                    <div className="text-sm font-medium leading-normal text-black">
                       Connect wallet
                     </div>
                   </button>
