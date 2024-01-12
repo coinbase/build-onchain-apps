@@ -36,6 +36,8 @@ const codeBlock3 = `# Edit the .env file and add the following key:
 SIGNATURE_MINT_SIGNER="WalletAddressFromAbove"
 `;
 
+const codeBlock4 = `curl 'http://localhost:3000/api/mint/signature/free?chainId=84532&wallet=0xWALLET_ADDRESS'`;
+
 export default function SignatureMintDemo() {
   const [signature, setSignature] = useState('');
   const [sigFailure, setSigFailure] = useState(false);
@@ -117,6 +119,9 @@ export default function SignatureMintDemo() {
     functionName: 'usedFreeMints',
     args: [address],
     enabled: (address?.length ?? 0) > 0,
+    watch: true, // Watch for changes in the data and update the state if they use their free mint
+    cacheTime: 0,
+    staleTime: 0,
   });
   useEffect(() => {
     setUsedFreeMint(usedFreeMintResponse.data as boolean);
@@ -136,7 +141,7 @@ export default function SignatureMintDemo() {
   }
 
   return (
-    <>
+    <div>
       <h3 className="text-white mb-6 text-4xl font-medium">Signature Mint Contract</h3>
       <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
         <div className="align-center flex flex-col justify-start gap-5">
@@ -210,18 +215,17 @@ export default function SignatureMintDemo() {
           1. Create a wallet that will act as your signer on your backend. You can use wallets like
           Coinbase, Metamask assuming you can export the private key. As a best practice avoid
           reusing private keys for multiple thing & do not store funds in this wallet. Also, you can
-          use popular library like Ethers to
+          use popular library like Ethers to generate a wallet:
         </p>
         <CodeBlock code={codeBlock1} />
         2. Next add that wallet to the contracts project environment file
         <CodeBlock code={codeBlock2} />
         <h4 className="text-white mb-6 mt-6 text-xl font-normal">Step 2 : Deploy Contract</h4>
-        <p className="text-zinc-400 my-4 text-base font-normal">
-          Deploy the contract to base-sepolia
-        </p>
+        <p className="text-zinc-400 my-4 text-base font-normal">Deploy the contract to testnet:</p>
         <CodeBlock
           code="
-          forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+          forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url
+          ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
         "
         />
         <h4 className="text-white mb-6 mt-6 text-xl font-normal">
@@ -231,7 +235,16 @@ export default function SignatureMintDemo() {
           Add your private key to the API backend so you can generate minting signatures.
         </p>
         <CodeBlock code={codeBlock3} />
+        <h4 className="text-white mb-6 mt-6 text-xl font-normal">
+          Step 4 : Call the backend to get your signature
+        </h4>
+        <p className="text-zinc-400 my-4 text-base font-normal">
+          After you add your key to the backend you can call an API route to generate a signature
+          for a specified wallet. That signature can be used to mint a NFT for free against the
+          contract.
+        </p>
+        <CodeBlock code={codeBlock4} />
       </section>
-    </>
+    </div>
   );
 }
