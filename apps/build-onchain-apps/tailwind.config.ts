@@ -16,12 +16,6 @@ const config: Config = {
         xl: '1280px',
       },
     },
-    colors: {
-      gray: {
-        '200': '#8a919e',
-        '600': '#141519',
-      },
-    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -34,6 +28,10 @@ const config: Config = {
 
         // Mint colum grid
         '2mint': '420px 1fr',
+      },
+      colors: {
+        'boat-footer-dark-gray': '#141519',
+        'boat-footer-light-gray': '#8a919e',
       },
     },
   },

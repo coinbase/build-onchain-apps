@@ -7,7 +7,7 @@ import { NavbarLink } from '../header/Navbar';
 export default function Footer() {
   return (
     <footer className="flex flex-1 flex-col justify-end">
-      <div className="h-96 bg-gray-600 py-12">
+      <div className="bg-boat-footer-dark-gray h-96 py-12">
         <div className="container mx-auto flex w-full justify-between">
           <div className="flex flex-col">
             <div className="flex h-8 items-center justify-start gap-4">
@@ -46,14 +46,14 @@ export default function Footer() {
               <NextLink
                 href="/"
                 passHref
-                className="font-robotoMono text-white text-center text-xl font-medium"
+                className="font-robotoMono text-center text-xl font-medium text-white"
               >
                 BUILD ONCHAIN APPS
               </NextLink>
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center">
-              <p className="text-base font-normal leading-7 text-gray-200">
+              <p className="text-boat-footer-light-gray text-base font-normal leading-7">
                 This project is licensed under the MIT License - see the{' '}
                 <NextLink
                   href="https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE.md"
