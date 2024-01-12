@@ -78,7 +78,7 @@ export const useSignatureMint721 = generateContractHook({
   abi: SignatureMint721ABI,
   [baseSepolia.id]: {
     chain: baseSepolia,
-    address: '0x8d5acddd5e1ad1c624d84ff2e0455dd39fdb139e\n',
+    address: '0x8d5acddd5e1ad1c624d84ff2e0455dd39fdb139e',
   },
   // more chains for this contract go here
 });

@@ -21,7 +21,7 @@ export default function MintPage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto flex flex-col">
+      <main className="container mx-auto mt-32 flex flex-col">
         <SignatureMint />
       </main>
     </>
