@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "rm -rf .next && next build",
     "check": "yarn format && yarn lint && yarn stylelint",
     "dev": "next dev",
     "format": "prettier --log-level warn --write .",

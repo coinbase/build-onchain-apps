@@ -23,6 +23,9 @@ type Spec<T extends Abi> = {
   [chainId: number]: ContractInstance;
 };
 
+/**
+ * Generates a hook that returns contract data based on the current network.
+ */
 export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   function useContract(): UseContractReturn<typeof abi> {
     const { chain } = useNetwork();
@@ -55,6 +58,9 @@ export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   return useContract;
 }
 
+/**
+ * Returns contract data for the BuyMeACoffee contract.
+ */
 export const useBuyMeACoffeeContract = generateContractHook({
   abi: BuyMeACoffeeABI,
   [baseSepolia.id]: {
@@ -65,6 +71,9 @@ export const useBuyMeACoffeeContract = generateContractHook({
   // ... more chains for this contract go here
 });
 
+/**
+ * Returns contract data for the Custom1155 contract.
+ */
 export const useCustom1155Contract = generateContractHook({
   abi: Custom1155ABI,
   [baseSepolia.id]: {
@@ -74,6 +83,9 @@ export const useCustom1155Contract = generateContractHook({
   // more chains for this contract go here
 });
 
+/**
+ * Returns contract data for the SignatureMint721 contract.
+ */
 export const useSignatureMint721 = generateContractHook({
   abi: SignatureMint721ABI,
   [baseSepolia.id]: {
