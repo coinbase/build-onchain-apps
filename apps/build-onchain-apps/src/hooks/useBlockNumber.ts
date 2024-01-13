@@ -4,6 +4,7 @@ import { useNetwork } from 'wagmi';
 type BlockNumberResponse = {
   block: number;
 };
+
 const useCurrentBlockNumber = (refreshIntervalMs = 10000) => {
   const [blockNumber, setBlockNumber] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
