@@ -6,6 +6,7 @@ import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
   address?: Address;
+  props?: React.ImgHTMLAttributes<HTMLImageElement>;
 };
 
 /**
@@ -13,7 +14,7 @@ type OnchainAvatarProps = {
  * It uses ENS to get the avatar.
  * If the address is not an ENS name, it will render a blue circle.
  */
-export function OnchainAvatar({ address }: OnchainAvatarProps) {
+export function OnchainAvatar({ address, props }: OnchainAvatarProps) {
   const { ensName } = useEnsName(address);
   const { ensAvatar } = useEnsAvatar(ensName);
   if (!ensName || !ensAvatar) {
@@ -33,6 +34,8 @@ export function OnchainAvatar({ address }: OnchainAvatarProps) {
       height="32"
       decoding="async"
       src={ensAvatar}
+      alt={ensName}
+      {...props}
     />
   );
 }
