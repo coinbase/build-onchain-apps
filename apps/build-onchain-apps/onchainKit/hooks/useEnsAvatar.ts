@@ -5,7 +5,7 @@ import { publicClient } from '../store/client';
 /**
  * Fetches the ENS name for a given address.
  */
-const useEnsAvatar = (ensName?: GetEnsNameReturnType) => {
+export const useEnsAvatar = (ensName?: GetEnsNameReturnType) => {
   const [ensAvatar, setEnsAvatar] = useState<GetEnsAvatarReturnType | null>(null);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const useEnsAvatar = (ensName?: GetEnsNameReturnType) => {
 
   return { ensAvatar };
 };
-
-export default useEnsAvatar;
