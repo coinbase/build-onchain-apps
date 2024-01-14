@@ -139,7 +139,7 @@
   height: 185px;
   border-radius: 100%;
   background: linear-gradient(278deg, #dbd6e8 0%, #ece7f7 100%),
-    linear-gradient(81deg, #9693a9 0%, rgb(150 147 169 / 0%) 100%);
+    linear-gradient(81deg, #9693a9 0%, rgb(150 147 169 / 0) 100%);
 }
 
 .homeBoatRightSail {
