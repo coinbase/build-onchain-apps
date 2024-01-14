@@ -1,4 +1,4 @@
-import { getChainById } from '../../../src/utils/chainConfiguration';
+import { getChainById } from '../../../src/store/supportedChains';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import type { NextApiRequest, NextApiResponse } from 'next';
 

@@ -1,4 +1,4 @@
-import { getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
+import { getChainsForEnvironment } from '../../../src/store/supportedChains';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /**

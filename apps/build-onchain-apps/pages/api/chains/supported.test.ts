@@ -1,14 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
-import { getCurrentEnvironment } from '../../../src/utils/configuration';
+import { getCurrentEnvironment } from '../../../src/store/environment';
+import { getChainsForEnvironment } from '../../../src/store/supportedChains';
 import handler from './supported';
 
-jest.mock('../../../src/utils/chainConfiguration', () => ({
-  getChainsForEnvironment: jest.fn(),
+jest.mock('../../../src/store/environment', () => ({
+  getCurrentEnvironment: jest.fn(),
 }));
 
-jest.mock('../../../src/utils/configuration', () => ({
-  getCurrentEnvironment: jest.fn(),
+jest.mock('../../../src/store/supportedChains', () => ({
+  getChainsForEnvironment: jest.fn(),
 }));
 
 describe('/api/yourApiEndpoint handler', () => {

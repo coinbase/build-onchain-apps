@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { privateKeyToAccount } from 'viem/accounts';
 import { baseSepolia } from 'viem/chains';
-import { getChainById } from '../../../../src/utils/chainConfiguration';
-import { getSignatureMintPrivateKey } from '../../../../src/utils/configuration';
+import { getSignatureMintPrivateKey } from '../../../../src/store/environment';
+import { getChainById } from '../../../../src/store/supportedChains';
 import handler from './free';
 
 // Mock the external dependencies
-jest.mock('../../../../src/utils/chainConfiguration');
-jest.mock('../../../../src/utils/configuration');
+jest.mock('../../../../src/store/environment');
+jest.mock('../../../../src/store/supportedChains');
 jest.mock('viem/accounts');
 
 describe('/api/mint/signature/free handler', () => {
