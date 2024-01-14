@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
-import { createPublicClient, http } from 'viem';
-import { mainnet } from 'viem/chains';
+import { publicClient } from '../store/client';
 import type { Address, GetEnsNameReturnType } from 'viem';
-
-const publicClient = createPublicClient({
-  chain: mainnet,
-  transport: http(),
-});
 
 /**
  * Fetches the ENS name for a given address.

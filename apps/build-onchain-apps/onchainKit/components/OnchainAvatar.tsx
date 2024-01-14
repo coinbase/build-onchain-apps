@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import useEnsAvatar from '../hooks/useEnsAvatar';
 import useEnsName from '../hooks/useEnsName';
 import type { Address } from 'viem';
 
@@ -13,10 +14,8 @@ type OnchainAvatarProps = {
  * If the address is not an ENS name, it will render a blue circle.
  */
 export function OnchainAvatar({ address }: OnchainAvatarProps) {
-  const ensAvatar = '';
-  const ensName = useEnsName(address);
-  console.log('address', address);
-  console.log('ensName', ensName);
+  const { ensName } = useEnsName(address);
+  const { ensAvatar } = useEnsAvatar(ensName);
   if (!ensName || !ensAvatar) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554
