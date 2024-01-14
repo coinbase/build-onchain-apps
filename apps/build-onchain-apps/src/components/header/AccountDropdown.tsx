@@ -27,7 +27,7 @@ export function AccountDropdown() {
           align="end"
           sideOffset={40}
           className={clsx(
-            'inline-flex h-42 w-60 flex-col items-start justify-start gap-4',
+            'h-42 inline-flex w-60 flex-col items-start justify-start gap-4',
             'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
           )}
         >
@@ -54,7 +54,9 @@ export function AccountDropdown() {
             className="inline-flex items-center justify-between self-stretch"
             onClick={handleDisconnectWallet}
           >
-            <span className="font-inter w-32 text-base font-medium text-left text-white">Log out</span>
+            <span className="font-inter w-32 text-left text-base font-medium text-white">
+              Log out
+            </span>
             <ExitIcon className="relative h-4 w-4" />
           </button>
         </DropdownMenu.Content>
