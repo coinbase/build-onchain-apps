@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import useEnsAvatar from '../hooks/useEnsAvatar';
-import useEnsName from '../hooks/useEnsName';
+import { useEnsAvatar } from '../hooks/useEnsAvatar';
+import { useEnsName } from '../hooks/useEnsName';
 import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
   address?: Address;
+  className?: string;
+  props?: React.ImgHTMLAttributes<HTMLImageElement>;
 };
 
 /**
@@ -13,7 +15,7 @@ type OnchainAvatarProps = {
  * It uses ENS to get the avatar.
  * If the address is not an ENS name, it will render a blue circle.
  */
-export function OnchainAvatar({ address }: OnchainAvatarProps) {
+export function OnchainAvatar({ address, className, props }: OnchainAvatarProps) {
   const { ensName } = useEnsName(address);
   const { ensAvatar } = useEnsAvatar(ensName);
   if (!ensName || !ensAvatar) {
@@ -27,12 +29,14 @@ export function OnchainAvatar({ address }: OnchainAvatarProps) {
   }
   return (
     <img
-      className="rounded-full"
+      className={className ?? 'rounded-full'}
       loading="lazy"
       width="32"
       height="32"
       decoding="async"
       src={ensAvatar}
+      alt={ensName}
+      {...props}
     />
   );
 }

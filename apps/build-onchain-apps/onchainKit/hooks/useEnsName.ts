@@ -5,7 +5,7 @@ import type { Address, GetEnsNameReturnType } from 'viem';
 /**
  * Fetches the ENS name for a given address.
  */
-const useEnsName = (address?: Address) => {
+export const useEnsName = (address?: Address) => {
   const [ensName, setEnsName] = useState<GetEnsNameReturnType | null>(null);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const useEnsName = (address?: Address) => {
 
   return { ensName };
 };
-
-export default useEnsName;

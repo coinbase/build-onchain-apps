@@ -9,8 +9,7 @@ import {
   useNetwork,
   usePrepareContractWrite,
 } from 'wagmi';
-import useBlockExplorerLink from '../../../onchainKit/hooks/useBlockExplorerLink';
-import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
+import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
 import { useSignatureMint721 } from '../../hooks/contracts';
 import { useDebounce } from '../../hooks/useDebounce';
 import CodeBlock from '../CodeBlock/CodeBlock';

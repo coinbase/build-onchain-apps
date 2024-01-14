@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { baseSepolia } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
-import useCollectionMetadata from '../../../onchainKit/hooks/useCollectionMetadata';
+import { useCollectionMetadata } from '../../../onchainKit';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';

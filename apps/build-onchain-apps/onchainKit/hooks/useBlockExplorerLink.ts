@@ -11,7 +11,7 @@ export enum HashType {
  * @param {string} hash - The contract or transaction hash.
  * @returns {string} - The URL to the Etherscan page for the given hash.
  */
-function useBlockExplorerLink(
+export function useBlockExplorerLink(
   chain: Chain,
   hash: string | undefined,
   type: HashType = HashType.Address,
@@ -27,5 +27,3 @@ function useBlockExplorerLink(
 
   return link;
 }
-
-export default useBlockExplorerLink;

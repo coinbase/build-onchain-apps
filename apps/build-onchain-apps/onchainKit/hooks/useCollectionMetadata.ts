@@ -53,7 +53,7 @@ function tryParseMetadataJson(str: string): CollectionMetadataResult | undefined
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
  * @returns CollectionMetadataResult
  */
-function useCollectionMetadata(enabled: boolean, address: Address | undefined, abi: Abi) {
+export function useCollectionMetadata(enabled: boolean, address: Address | undefined, abi: Abi) {
   const [result, setResult] = useState<CollectionMetadataResult>({
     collectionName: null,
     description: null,
@@ -111,5 +111,3 @@ function useCollectionMetadata(enabled: boolean, address: Address | undefined, a
 
   return result;
 }
-
-export default useCollectionMetadata;
