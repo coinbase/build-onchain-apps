@@ -1,10 +1,10 @@
 import { baseSepolia } from 'viem/chains';
-import { getChainById, getChainsForEnvironment } from '../../../src/utils/chainConfiguration';
+import { getChainById, getChainsForEnvironment } from '../../../src/store/supportedChains';
 import { getRpcProviderForChain } from '../../../src/utils/provider';
 import handler from './currentBlockNumber';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-jest.mock('../../../src/utils/chainConfiguration');
+jest.mock('../../../src/store/supportedChains');
 jest.mock('../../../src/utils/provider');
 
 describe('/api/chain/blockNumber', () => {

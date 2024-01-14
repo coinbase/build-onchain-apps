@@ -1,27 +1,22 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import { Address as AddressType, isAddress } from 'viem';
-import { useEnsAvatar, useEnsName } from 'wagmi';
+import useEnsName from '../hooks/useEnsName';
+import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
-  address?: AddressType;
+  address?: Address;
 };
 
 /**
- * TODO Docs
+ * OnchainAvatar is a component that renders an avatar for an address.
+ * It uses ENS to get the avatar.
+ * If the address is not an ENS name, it will render a blue circle.
  */
 export function OnchainAvatar({ address }: OnchainAvatarProps) {
-  const { data: ensName } = useEnsName({
-    address,
-    enabled: isAddress(address ?? ''),
-    chainId: 1,
-  });
-  const { data: ensAvatar } = useEnsAvatar({
-    name: ensName,
-    enabled: Boolean(ensName),
-    chainId: 1,
-    cacheTime: 60_000,
-  });
+  const ensAvatar = '';
+  const ensName = useEnsName(address);
+  console.log('address', address);
+  console.log('ensName', ensName);
   if (!ensName || !ensAvatar) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554

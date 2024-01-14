@@ -1,4 +1,14 @@
-import { Environment } from './environment';
+/**
+ * Where is this application currently running?
+ * This will be used to drive configurations for the application
+ * based on the environment.
+ */
+export enum Environment {
+  localhost = 'localhost', // Local Environment
+  development = 'development', // Development & Testing Environment
+  staging = 'staging', // Staging Environment which should mimic production
+  production = 'production', // Production Environment
+}
 
 export enum EnvironmentKeys {
   environment = 'ENVIRONMENT',
