@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
-import { AccountConnectButton } from '../../../onchainKit';
+import AccountConnect from './AccountConnect';
 import styles from './Header.module.css';
 import Navbar from './Navbar';
 import { NavbarMobile } from './NavbarMobile';
@@ -41,7 +41,7 @@ function Menu() {
 
       <div className="flex items-center justify-start gap-8">
         {isMobileMenuOpen ? <NavbarMobile /> : <Navbar />}
-        <AccountConnectButton />
+        <AccountConnect />
       </div>
     </>
   );

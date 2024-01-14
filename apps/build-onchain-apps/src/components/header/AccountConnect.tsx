@@ -1,19 +1,14 @@
-import { useCallback } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useDisconnect } from 'wagmi';
 import '@rainbow-me/rainbowkit/styles.css';
-import { OnchainAvatar } from './components/OnchainAvatar';
+import { AccountDropdown } from './AccountDropdown';
 
 /**
- * TODO Docs
+ * AccountConnect
+ *  - Connects to the wallet
+ *  - Disconnects from the wallet
+ *  - Displays the wallet network
  */
-export function AccountConnectButton() {
-  const { address } = useAccount();
-  const { disconnect } = useDisconnect();
-  const handleDisconnectWallet = useCallback(() => {
-    disconnect();
-  }, [disconnect]);
-
+function AccountConnect() {
   return (
     <ConnectButton.Custom>
       {({ account, chain, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
@@ -58,13 +53,7 @@ export function AccountConnectButton() {
                 );
               }
 
-              return (
-                <div className="flex h-8 w-8 items-center justify-center">
-                  <button type="button" aria-label="Disconnect" onClick={handleDisconnectWallet}>
-                    <OnchainAvatar address={address} />
-                  </button>
-                </div>
-              );
+              return <AccountDropdown />;
             })()}
           </div>
         );
@@ -72,3 +61,5 @@ export function AccountConnectButton() {
     </ConnectButton.Custom>
   );
 }
+
+export default AccountConnect;
