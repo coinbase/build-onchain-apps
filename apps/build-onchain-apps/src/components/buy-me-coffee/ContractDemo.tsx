@@ -11,7 +11,7 @@ export default function BuyMeCoffeeContractDemo() {
   }, [refetchMemos]);
 
   return (
-    <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg">
+    <div className="mt-10 grid grid-cols-1 items-stretch justify-start md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg">
       <div>
         <div className="mb-6 flex justify-start">
           <h2 className="mb-1 text-4xl font-bold">Messages</h2>

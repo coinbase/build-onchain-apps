@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Disclaimer from '../../src/components/disclaimer/Disclaimer';
 import Header from '../../src/components/header/Header';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
@@ -21,7 +22,8 @@ export default function MintPage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto mt-32 flex flex-col">
+      <main className="container mx-auto flex flex-col">
+        <Disclaimer pageName="Signature Mint" />
         <SignatureMint />
       </main>
     </>

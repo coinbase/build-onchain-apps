@@ -141,7 +141,7 @@ export default function SignatureMintDemo() {
 
   return (
     <div>
-      <h3 className="mb-6 text-4xl font-medium text-white">Signature Mint Contract</h3>
+      <h3 className="mb-6 mt-10 text-4xl font-medium text-white">Signature Mint Contract</h3>
       <div className="grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
         <div className="align-center flex flex-col justify-start gap-5">
           <Image src={imageAddress} alt={collectionName} width="300" height="300" />
