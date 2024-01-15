@@ -23,7 +23,7 @@ export default function BuyMeCoffeePage() {
     <>
       <Header />
       <main className="container mx-auto flex flex-col px-8">
-        <Disclaimer />
+        <Disclaimer pageName="Buy Me A Coffee" />
 
         <BuyMeCoffeeContractDemo />
       </main>
