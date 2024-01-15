@@ -22,7 +22,7 @@ export default function BuyMeCoffeePage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto flex flex-col">
+      <main className="container mx-auto flex flex-col px-8">
         <Disclaimer />
 
         <BuyMeCoffeeContractDemo />
