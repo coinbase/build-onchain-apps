@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import BuyMeCoffeeContractDemo from '../../src/components/buy-me-coffee/ContractDemo';
+import Disclaimer from '../../src/components/disclaimer/Disclaimer';
 import Header from '../../src/components/header/Header';
 
 /**
@@ -22,6 +23,8 @@ export default function BuyMeCoffeePage() {
     <>
       <Header />
       <main className="container mx-auto flex flex-col">
+       <Disclaimer />
+
         <BuyMeCoffeeContractDemo />
       </main>
     </>
