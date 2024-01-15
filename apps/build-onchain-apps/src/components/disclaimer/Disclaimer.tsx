@@ -19,15 +19,14 @@ export default function Disclaimer() {
           </div>
         </div>
       </div>
-      <a href='https://github.com/coinbase/build-onchain-apps' target='_blank'>
-      <button
-        type="submit"
-        className="flex shrink-0 cursor-pointer items-center justify-end rounded-3xl bg-white px-4 py-2 text-sm text-black"
-      >
-        View repo
-      </button>
+      <a href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+        <button
+          type="submit"
+          className="flex shrink-0 cursor-pointer items-center justify-end rounded-3xl bg-white px-4 py-2 text-sm text-black"
+        >
+          View repo
+        </button>
       </a>
-
     </div>
   );
 }
