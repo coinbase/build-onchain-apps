@@ -1,7 +1,7 @@
 'use client';
-import Guide from '../../src/components/home/Guide';
-import HomeHeader from '../../src/components/home/HomeHeader';
-import WhyUseIt from '../../src/components/home/WhyUseIt';
+import Guide from '../../src/pages/home/Guide';
+import HomeHeader from '../../src/pages/home/HomeHeader';
+import WhyUseIt from '../../src/pages/home/WhyUseIt';
 
 /**
  * Use the page component to wrap the components
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHeader />
-      <main className="container mx-auto flex flex-col py-12">
+      <main className="container mx-auto flex flex-col px-8 py-28">
         <WhyUseIt />
         <Guide />
       </main>

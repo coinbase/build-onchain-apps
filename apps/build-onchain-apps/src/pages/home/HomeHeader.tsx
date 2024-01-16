@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
-import CodeBlock from '../CodeBlock/CodeBlock';
-import Header from '../header/Header';
+import CodeBlock from '../../components/code-block/CodeBlock';
+import Header from '../../components/header/Header';
 import styles from './Home.module.css';
 
 export default function HomeHeader() {
