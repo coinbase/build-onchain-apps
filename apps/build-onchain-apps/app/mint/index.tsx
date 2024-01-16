@@ -1,14 +1,15 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Disclaimer from '../../src/components/disclaimer/Disclaimer';
+import Banner from '../../src/components/banner/banner';
 import Header from '../../src/components/header/Header';
+import Guide from '../../src/pages/mint/Guide';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
 // for its internals we get annoying hydration errors. A future enhancement would be to
 // read token metadata through a provider that is available server-side.
 const MintContractDemo = dynamic(
-  async () => import('../../src/components/mint/ContractDemo').then((mod) => mod),
+  async () => import('../../src/pages/mint/ContractDemo').then((mod) => mod),
   {
     ssr: false,
   },
@@ -22,9 +23,10 @@ export default function MintPage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto flex flex-col">
-        <Disclaimer pageName="Mint NFT" />
+      <main className="container mx-auto flex flex-col px-8 py-6">
+        <Banner pageName="Mint NFT" pageUrl="mint" />
         <MintContractDemo />
+        <Guide />
       </main>
     </>
   );

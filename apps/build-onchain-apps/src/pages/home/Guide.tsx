@@ -1,4 +1,4 @@
-import CodeBlock from '../CodeBlock/CodeBlock';
+import CodeBlock from '../../components/code-block/CodeBlock';
 
 const codeStep1 = `$ npx @coinbase/build-onchain-apps@latest create`;
 const codeStep2 = `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
