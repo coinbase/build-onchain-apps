@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="flex flex-1 flex-col justify-end">
       <div className="h-96 bg-boat-footer-dark-gray py-12">
-        <div className="container mx-auto flex w-full justify-between">
+        <div className="container mx-auto flex w-full justify-between px-8">
           <div className="flex flex-col">
             <div className="flex h-8 items-center justify-start gap-4">
               <NextLink href="/" passHref className="relative h-8 w-8">
