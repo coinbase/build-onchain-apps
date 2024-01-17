@@ -19,7 +19,7 @@ export async function downloadAndExtractApps(): Promise<void> {
 }
 
 export const getAppDir = () => {
-  return APPS_ENGINE_DIR + '/apps/build-onchain-apps';
+  return APPS_ENGINE_DIR + '/template';
 };
 
 export async function removeDownloadedApps(app: string) {

@@ -1,4 +1,4 @@
-# Build Onchain Apps site
+# Build Onchain Apps Toolkit demo site
 
 ## Getting Started
 
