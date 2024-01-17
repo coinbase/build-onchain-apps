@@ -26,7 +26,7 @@ export const viewport = {
 export const metadata: Metadata = {
   manifest: '/manifest.json',
   other: {
-    boat: '0.15.0',
+    boat: '0.16.0',
   },
 };
 
