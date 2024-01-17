@@ -19,24 +19,24 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: App Install dependencies
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         run: npm install
       - name: App Lint Check
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         # When fails, please run "npm run lint" to your code
         run: npm run lint
       - name: App Stylelint
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         run: npm run stylelint
       - name: App Format Check
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         run: npm run format:check
       - name: App Test Check
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         # When fails, please check your tests
         run: npm run test
       - name: App Test Build
-        working-directory: ./apps/build-onchain-apps
+        working-directory: ./template
         # When fails, please check your build
         run: | 
           cp .env.local.default .env.local

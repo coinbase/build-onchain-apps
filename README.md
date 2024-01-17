@@ -100,7 +100,7 @@ forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadc
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
-For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/contracts/README.md)
+For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
 #### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
 
@@ -108,7 +108,7 @@ For more information on contracts, visit [here](https://github.com/coinbase/buil
 
 ## For a Live demo use
 
-- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps)
+- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template)
 
 <br>
 
