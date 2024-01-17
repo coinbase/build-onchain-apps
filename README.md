@@ -133,7 +133,7 @@ git clone https://github.com/coinbase/build-onchain-apps.git
 
 ```bash
 # Go to main application
-cd apps/build-onchain-apps
+cd template
 
 # Install and run latest template
 yarn
