@@ -202,6 +202,13 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
     </tr>
     <tr>
       <td align="center" valign="top">
+        <a href="https://twitter.com/renanmav">
+          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/renanmav">Renan Machado</a>
+      </td>
+      <td align="center" valign="top">
         <a href="https://warpcast.com/cnasc">
           <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
         </a>
