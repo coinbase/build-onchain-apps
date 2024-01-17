@@ -1,4 +1,4 @@
-<img src='./docs/logo-v-0-15.png' width='800' alt='Build Onchain Apps Toolkit'>
+<img src='./docs/logo-v-0-16.png' width='800' alt='Build Onchain Apps Toolkit'>
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
@@ -201,6 +201,13 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
       </td>
     </tr>
     <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/renanmav">
+          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/renanmav">Renan Machado</a>
+      </td>
       <td align="center" valign="top">
         <a href="https://warpcast.com/cnasc">
           <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
