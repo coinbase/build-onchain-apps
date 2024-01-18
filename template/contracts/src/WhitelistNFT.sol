@@ -60,9 +60,11 @@ contract WhitelistNFT is ERC721A, Ownable2Step {
      * @param _whitelistRoot Merkle root of the whitelist
      * @param _maxSupply Maximum supply of the NFT
      * @param _price Price of the NFT
+     * @param _whitelistPrice Price of the whitelist NFT
      * @param _whitelistOpen Timestamp of when the whitelist opens
      * @param _whitelistClose Timestamp of when the whitelist closes
      * @param _maxWhitelistMint Max whitelist mint
+     * @param _maxPublicMint Max public mint
      * @param _uri Base URI of the NFT
      */
     constructor(

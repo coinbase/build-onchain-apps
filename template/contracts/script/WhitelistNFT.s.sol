@@ -23,7 +23,7 @@ contract WhitelistNFTScript is Script {
             1705601495, // whitelistClose timestamp
             1, // maxWhitelistMint
             5, // maxPublicMint
-            "ipfs://your-ipfs-hash/" // baseURI
+            "ipfs://your-ipfs-hash/" // baseURI - this should be YOUR IPFS HASH!
         );
         vm.stopBroadcast();
         console2.log("WhitelistNFT address: ", address(whitelistNFT));
