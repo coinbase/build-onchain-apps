@@ -13,17 +13,17 @@ contract WhitelistNFTScript is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         WhitelistNFT whitelistNFT = new WhitelistNFT(
-            "NAME",
-            "TICKER",
-            0x000,
-            10000,
-            0.02 ether,
-            0.01 ether,
-            1705597895,
-            1705601495,
-            1,
-            5,
-            "ipfs://your-ipfs-hash/"
+            "NAME", // name
+            "TICKER", // ticker
+            0x000, // whitelistRoot
+            10000, // maxSupply
+            0.02 ether, // price of public mint
+            0.01 ether, // price of whitelist mint
+            1705597895, // whitelistOpen timestamp
+            1705601495, // whitelistClose timestamp
+            1, // maxWhitelistMint
+            5, // maxPublicMint
+            "ipfs://your-ipfs-hash/" // baseURI
         );
         vm.stopBroadcast();
         console2.log("WhitelistNFT address: ", address(whitelistNFT));
