@@ -102,12 +102,23 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   }, [areInputsDisabled, contract.status, contract.supportedChains]);
 
   return (
-    <div className="flex flex-col justify-start">
-      <div className="relative flex justify-center">
+    <div className="inline-flex flex-col items-start gap-[32px]">
+      <div className="relative inline-flex flex-[0_0_auto] flex-col items-start gap-[16px]">
+        <div className="relative inline-flex flex-[0_0_auto] items-center justify-center gap-[16px]">
+          <div className="relative inline-flex flex-[0_0_auto] items-start gap-[8px]">
+            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
+              Buy
+            </div>
+            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
+              Me
+            </div>
+            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
+              a coffee!
+            </div>
+          </div>
+        </div>
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <div className="rounded-xl border border-solid border-neutral-700 bg-neutral-900 p-8">
-            <h3 className="mb-5">Buy Me A Coffee</h3>
-
+          <div>
             <div className="mb-5">
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
                 First name
