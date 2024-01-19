@@ -108,6 +108,11 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
     function allowlistMint(bytes32[] calldata _proof, uint256 _amount) external payable whenLive {
         if (block.timestamp < allowlistOpen) revert AllowlistNotLive();
         if (block.timestamp > allowlistClose) revert AllowlistNotLive();
+        // _numberMinted is shared between allowlist and public mint
+        // depending on your maxAllowlistMint and maxPublicMint, an address may
+        // not be able to participate in publicMint if they have participated in allowlistMint
+        // example: maxAllowlistMint = 2, maxPublicMint = 1 -> an address can only mint 2 via allowlist
+        // example: maxAllowlistMint = 1, maxPublicMint = 2 -> an address can mint 1 via allowlist and 1 via public
         uint256 minted = _numberMinted(msg.sender) + _amount;
         if (minted > maxAllowlistMint) revert MintExceeded();
         if (_totalMinted() + _amount > MAX_SUPPLY) revert SupplyExceeded();
@@ -125,6 +130,11 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
      */
     function publicMint(uint256 _amount) external payable whenLive {
         if (block.timestamp < allowlistClose) revert PublicMintNotLive();
+        // _numberMinted is shared between allowlist and public mint
+        // depending on your maxAllowlistMint and maxPublicMint, an address may
+        // not be able to participate in publicMint if they have participated in allowlistMint
+        // example: maxAllowlistMint = 2, maxPublicMint = 1 -> an address can only mint 2 via allowlist
+        // example: maxAllowlistMint = 1, maxPublicMint = 2 -> an address can mint 1 via allowlist and 1 via public
         uint256 minted = _numberMinted(msg.sender) + _amount;
         if (minted > maxPublicMint) revert MintExceeded();
         if (_totalMinted() + _amount > MAX_SUPPLY) revert SupplyExceeded();
