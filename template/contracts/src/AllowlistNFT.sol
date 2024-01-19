@@ -53,6 +53,12 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
     error InvalidAllowlistWindow();
     error TokenDoesNotExist();
 
+    // modifiers
+    modifier whenLive() {
+        if (!live) revert MintNotLive();
+        _;
+    }
+
     /**
      * @dev Constructor
      * @param _name Name of the NFT
@@ -80,6 +86,9 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
         uint64 _maxPublicMint,
         string memory _uri
     ) ERC721A(_name, _ticker) Ownable(msg.sender) {
+        if (_allowlistOpen > _allowlistClose) revert InvalidAllowlistWindow();
+        if (_allowlistOpen == 0) revert InvalidAllowlistWindow();
+
         allowlistRoot = _allowlistRoot;
         MAX_SUPPLY = _maxSupply;
         price = _price;
@@ -96,8 +105,7 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
      * @param _proof Merkle proof of the address
      * @param _amount Amount of NFTs to mint
      */
-    function allowlistMint(bytes32[] calldata _proof, uint256 _amount) external payable {
-        if (!live) revert MintNotLive();
+    function allowlistMint(bytes32[] calldata _proof, uint256 _amount) external payable whenLive {
         if (block.timestamp < allowlistOpen) revert AllowlistNotLive();
         if (block.timestamp > allowlistClose) revert AllowlistNotLive();
         uint256 minted = _numberMinted(msg.sender) + _amount;
@@ -115,8 +123,7 @@ contract AllowlistNFT is ERC721A, Ownable2Step {
      * @dev Function to mint NFTs from the public mint
      * @param _amount Amount of NFTs to mint
      */
-    function publicMint(uint256 _amount) external payable {
-        if (!live) revert MintNotLive();
+    function publicMint(uint256 _amount) external payable whenLive {
         if (block.timestamp < allowlistClose) revert PublicMintNotLive();
         uint256 minted = _numberMinted(msg.sender) + _amount;
         if (minted > maxPublicMint) revert MintExceeded();
