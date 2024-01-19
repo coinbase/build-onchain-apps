@@ -71,7 +71,7 @@ A deploy script `AllowlistNFT.s.sol` is provided. Please be sure to update all o
 6. `allowlistPrice`: The price of a allowlist mint.
 7. `allowlistOpen`: The timestamp in which allowlist mint begins.
 8. `allowlistClose`: The timestamp in which allowlist mint ends. Note: Public mint will begin immediately after `allowlistClose`.
-9. `maxPublicMint`: The maximum number of NFTs a allowlisted address can allowlist mint.
+9. `maxAllowlistMint`: The maximum number of NFTs a allowlisted address can allowlist mint.
 10. `maxPublicMint`: The maximum number of NFTs an address can public mint.
 11. `uri`: The base URI of your NFT. This is your IPFS hash.
 
