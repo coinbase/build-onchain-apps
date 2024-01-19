@@ -26,87 +26,87 @@ import "@solady/src/utils/MerkleProofLib.sol";
 import {LibString} from "@solady/src/utils/LibString.sol";
 
 /**
- * @title WhitelistNFT
- * @dev contract that allows a user to mint ERC721s from a whitelist or public mint.
+ * @title AllowlistNFT
+ * @dev contract that allows a user to mint ERC721s from a allowlist or public mint.
  * @author Pop Punk (@PopPunkOnChain)
  */
-contract WhitelistNFT is ERC721A, Ownable2Step {
-    bytes32 public whitelistRoot;
+contract AllowlistNFT is ERC721A, Ownable2Step {
+    bytes32 public allowlistRoot;
     uint256 public immutable MAX_SUPPLY;
     uint120 public price;
-    uint120 public whitelistPrice;
+    uint120 public allowlistPrice;
     bool public live;
-    uint64 public maxWhitelistMint;
+    uint64 public maxAllowlistMint;
     uint64 public maxPublicMint;
-    uint64 public whitelistOpen;
-    uint64 public whitelistClose;
+    uint64 public allowlistOpen;
+    uint64 public allowlistClose;
     string private _baseURIString;
 
     // errors
     error MintNotLive();
-    error WhitelistNotLive();
+    error AllowlistNotLive();
     error MintExceeded();
     error PublicMintNotLive();
-    error WhitelistMintUnauthorized();
+    error AllowlistMintUnauthorized();
     error SupplyExceeded();
     error InsufficientPayment();
-    error InvalidWhitelistWindow();
+    error InvalidAllowlistWindow();
     error TokenDoesNotExist();
 
     /**
      * @dev Constructor
      * @param _name Name of the NFT
      * @param _ticker Ticker of the NFT
-     * @param _whitelistRoot Merkle root of the whitelist
+     * @param _allowlistRoot Merkle root of the allowlist
      * @param _maxSupply Maximum supply of the NFT
      * @param _price Price of the NFT
-     * @param _whitelistPrice Price of the whitelist NFT
-     * @param _whitelistOpen Timestamp of when the whitelist opens
-     * @param _whitelistClose Timestamp of when the whitelist closes
-     * @param _maxWhitelistMint Max whitelist mint
+     * @param _allowlistPrice Price of the allowlist NFT
+     * @param _allowlistOpen Timestamp of when the allowlist opens
+     * @param _allowlistClose Timestamp of when the allowlist closes
+     * @param _maxAllowlistMint Max allowlist mint
      * @param _maxPublicMint Max public mint
      * @param _uri Base URI of the NFT
      */
     constructor(
         string memory _name,
         string memory _ticker,
-        bytes32 _whitelistRoot,
+        bytes32 _allowlistRoot,
         uint256 _maxSupply,
         uint120 _price,
-        uint120 _whitelistPrice,
-        uint64 _whitelistOpen,
-        uint64 _whitelistClose,
-        uint64 _maxWhitelistMint,
+        uint120 _allowlistPrice,
+        uint64 _allowlistOpen,
+        uint64 _allowlistClose,
+        uint64 _maxAllowlistMint,
         uint64 _maxPublicMint,
         string memory _uri
     ) ERC721A(_name, _ticker) Ownable(msg.sender) {
-        whitelistRoot = _whitelistRoot;
+        allowlistRoot = _allowlistRoot;
         MAX_SUPPLY = _maxSupply;
         price = _price;
-        whitelistPrice = _whitelistPrice;
-        whitelistOpen = _whitelistOpen;
-        whitelistClose = _whitelistClose;
+        allowlistPrice = _allowlistPrice;
+        allowlistOpen = _allowlistOpen;
+        allowlistClose = _allowlistClose;
         _baseURIString = _uri;
-        maxWhitelistMint = _maxWhitelistMint;
+        maxAllowlistMint = _maxAllowlistMint;
         maxPublicMint = _maxPublicMint;
     }
 
     /**
-     * @dev Function to mint NFTs from the whitelist
+     * @dev Function to mint NFTs from the allowlist
      * @param _proof Merkle proof of the address
      * @param _amount Amount of NFTs to mint
      */
-    function whitelistMint(bytes32[] calldata _proof, uint256 _amount) external payable {
+    function allowlistMint(bytes32[] calldata _proof, uint256 _amount) external payable {
         if (!live) revert MintNotLive();
-        if (block.timestamp < whitelistOpen) revert WhitelistNotLive();
-        if (block.timestamp > whitelistClose) revert WhitelistNotLive();
+        if (block.timestamp < allowlistOpen) revert AllowlistNotLive();
+        if (block.timestamp > allowlistClose) revert AllowlistNotLive();
         uint256 minted = _numberMinted(msg.sender) + _amount;
-        if (minted > maxWhitelistMint) revert MintExceeded();
+        if (minted > maxAllowlistMint) revert MintExceeded();
         if (_totalMinted() + _amount > MAX_SUPPLY) revert SupplyExceeded();
-        if (!MerkleProofLib.verifyCalldata(_proof, whitelistRoot, keccak256(abi.encodePacked(msg.sender)))) {
-            revert WhitelistMintUnauthorized();
+        if (!MerkleProofLib.verifyCalldata(_proof, allowlistRoot, keccak256(abi.encodePacked(msg.sender)))) {
+            revert AllowlistMintUnauthorized();
         }
-        if (msg.value != _amount * whitelistPrice) revert InsufficientPayment();
+        if (msg.value != _amount * allowlistPrice) revert InsufficientPayment();
 
         _mint(msg.sender, _amount);
     }
@@ -117,7 +117,7 @@ contract WhitelistNFT is ERC721A, Ownable2Step {
      */
     function publicMint(uint256 _amount) external payable {
         if (!live) revert MintNotLive();
-        if (block.timestamp < whitelistClose) revert PublicMintNotLive();
+        if (block.timestamp < allowlistClose) revert PublicMintNotLive();
         uint256 minted = _numberMinted(msg.sender) + _amount;
         if (minted > maxPublicMint) revert MintExceeded();
         if (_totalMinted() + _amount > MAX_SUPPLY) revert SupplyExceeded();
@@ -130,11 +130,11 @@ contract WhitelistNFT is ERC721A, Ownable2Step {
      * @dev Function to set the prices of each NFT
      * @dev Only the owner can call this function
      * @param _price Price of each NFT
-     * @param _whitelistPrice Price of each whitelist NFT
+     * @param _allowlistPrice Price of each allowlist NFT
      */
-    function setPrices(uint120 _price, uint120 _whitelistPrice) external onlyOwner {
+    function setPrices(uint120 _price, uint120 _allowlistPrice) external onlyOwner {
         price = _price;
-        whitelistPrice = _whitelistPrice;
+        allowlistPrice = _allowlistPrice;
     }
 
     /**
@@ -145,33 +145,33 @@ contract WhitelistNFT is ERC721A, Ownable2Step {
     }
 
     /**
-     * @dev Function to set the whitelist root
-     * @param _whitelistRoot Merkle root of the whitelist
+     * @dev Function to set the allowlist root
+     * @param _allowlistRoot Merkle root of the allowlist
      */
-    function setWhitelistRoot(bytes32 _whitelistRoot) external onlyOwner {
-        whitelistRoot = _whitelistRoot;
+    function setAllowlistRoot(bytes32 _allowlistRoot) external onlyOwner {
+        allowlistRoot = _allowlistRoot;
     }
 
     /**
-     * @dev Function to set the whitelist minting window
-     * @param _whitelistOpen Timestamp of when the whitelist opens
-     * @param _whitelistClose Timestamp of when the whitelist closes
+     * @dev Function to set the allowlist minting window
+     * @param _allowlistOpen Timestamp of when the allowlist opens
+     * @param _allowlistClose Timestamp of when the allowlist closes
      */
-    function setWhitelistMintWindow(uint64 _whitelistOpen, uint64 _whitelistClose) external onlyOwner {
-        if (_whitelistOpen > _whitelistClose) revert InvalidWhitelistWindow();
-        if (_whitelistOpen == 0) revert InvalidWhitelistWindow();
+    function setAllowlistMintWindow(uint64 _allowlistOpen, uint64 _allowlistClose) external onlyOwner {
+        if (_allowlistOpen > _allowlistClose) revert InvalidAllowlistWindow();
+        if (_allowlistOpen == 0) revert InvalidAllowlistWindow();
 
-        whitelistOpen = _whitelistOpen;
-        whitelistClose = _whitelistClose;
+        allowlistOpen = _allowlistOpen;
+        allowlistClose = _allowlistClose;
     }
 
     /**
-     * @dev Function to set the max whitelist mint
-     * @param _maxWhitelistMint Max whitelist mint
+     * @dev Function to set the max allowlist mint
+     * @param _maxAllowlistMint Max allowlist mint
      * @param _maxPublcMint Max public mint
      */
-    function setMaxMints(uint64 _maxWhitelistMint, uint64 _maxPublcMint) external onlyOwner {
-        maxWhitelistMint = _maxWhitelistMint;
+    function setMaxMints(uint64 _maxAllowlistMint, uint64 _maxPublcMint) external onlyOwner {
+        maxAllowlistMint = _maxAllowlistMint;
         maxPublicMint = _maxPublcMint;
     }
 
