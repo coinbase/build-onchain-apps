@@ -133,6 +133,15 @@ forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadc
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
+### Deploy your contracts to local node
+
+You can deploy your contracts to local node for faster testing as follows:
+
+```
+make local-node
+```
+
+
 ![Deployment](./assets/deployment.png)
 
 ![Verified](./assets/verified.png)
