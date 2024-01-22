@@ -31,7 +31,7 @@ const backgroundColors = [
 ];
 
 /**
- * Maps a string to one of the predefined background colors.
+ * Maps a string to one of the predefined background color.
  *
  * The function computes a hash from the string and uses it to select
  * a color from the predefined set.
