@@ -2,9 +2,8 @@
 pragma solidity 0.8.23;
 
 import {Test, console2} from "forge-std/Test.sol";
-import {SignatureMintERC721, InsufficientFunds} from  "../src/SignatureMintERC721.sol"  ;
+import {SignatureMintERC721, InsufficientFunds} from "../src/SignatureMintERC721.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-
 
 contract SignatureMintERC721Test is Test {
     SignatureMintERC721 public signatureMintERC721;
@@ -14,7 +13,6 @@ contract SignatureMintERC721Test is Test {
     uint256 private privateKey;
     uint256 private mintCost = 0.0001 ether;
     bytes32 private insufficientFundsSignature = keccak256("InsufficientFunds()");
-
 
     function setUp() public {
         (signer, privateKey) = genKeyPair();
@@ -64,7 +62,7 @@ contract SignatureMintERC721Test is Test {
         assertEq(signatureMintERC721.balanceOf(minter), 0);
         bytes32 messageToSign = signatureMintERC721.getBytesToSign(minter);
 
-          // Expect the FreeMint event to get called
+        // Expect the FreeMint event to get called
         vm.expectEmit(true, true, true, true);
         emit SignatureMintERC721.Mint(minter, 1, 0);
         bytes memory signature = signMessage(messageToSign, privateKey);
@@ -78,7 +76,7 @@ contract SignatureMintERC721Test is Test {
         assertEq(signatureMintERC721.balanceOf(minter), 0);
         vm.deal(minter, 1 ether);
 
-         // Expect the FreeMint event to get called
+        // Expect the FreeMint event to get called
         vm.expectEmit(true, true, true, true);
         emit SignatureMintERC721.Mint(minter, 1, mintCost);
         signatureMintERC721.mint{value: mintCost}(minter);
@@ -126,7 +124,7 @@ contract SignatureMintERC721Test is Test {
     function testMetadataInvalidTokenId() public {
         vm.startPrank(minter);
         vm.expectRevert(bytes("Token doesnt exist"));
-         signatureMintERC721.tokenURI(1000);
+        signatureMintERC721.tokenURI(1000);
         vm.stopPrank();
     }
 
