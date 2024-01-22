@@ -18,7 +18,7 @@ Use at your own risk, acknowledging the inherent risks of smart contract technol
     - [BuyMeACoffee](#buymeacoffee)
     - [CustomERC1155](#customerc1155)
     - [SignatureMintERC721](#signatureminterc721)
-    - [AllolistNFT](#allowlistnft)
+    - [AllowlistNFT](#allowlistnft)
 - [Project Layout](#project-layout)
 - [Usage](#usage)
 - [Deploying your own contract](#deploying-your-own-contract)
