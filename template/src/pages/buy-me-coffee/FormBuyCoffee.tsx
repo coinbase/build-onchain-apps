@@ -102,58 +102,40 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   }, [areInputsDisabled, contract.status, contract.supportedChains]);
 
   return (
-    <div className="inline-flex flex-col items-start gap-[32px]">
-      <div className="relative inline-flex flex-[0_0_auto] flex-col items-start gap-[16px]">
-        <div className="relative inline-flex flex-[0_0_auto] items-center justify-center gap-[16px]">
-          <div className="relative inline-flex flex-[0_0_auto] items-start gap-[8px]">
-            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
-              Buy
-            </div>
-            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
-              Me
-            </div>
-            <div className="relative mt-[-1.00px] w-fit text-[24px] font-semibold leading-[normal] tracking-[0] text-white [font-family:'Inter-SemiBold',Helvetica]">
-              a coffee!
-            </div>
-          </div>
+    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+      <div>
+        <div className="mb-5">
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
+            First name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+            placeholder="Enter your name"
+            onChange={handleNameChange}
+            disabled={areInputsDisabled}
+            required
+          />
         </div>
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <div>
-            <div className="mb-5">
-              <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-                First name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Enter your name"
-                onChange={handleNameChange}
-                disabled={areInputsDisabled}
-                required
-              />
-            </div>
 
-            <div className="mb-5">
-              <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
-                Message
-              </label>
-              <textarea
-                value={message}
-                id="message"
-                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Enter your message..."
-                onChange={handleMessageChange}
-                disabled={areInputsDisabled}
-                required
-              />
-            </div>
-
-            <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
-          </div>
-        </form>
+        <div className="mb-5">
+          <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
+            Message
+          </label>
+          <textarea
+            value={message}
+            id="message"
+            className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+            placeholder="Enter your message..."
+            onChange={handleMessageChange}
+            disabled={areInputsDisabled}
+            required
+          />
+        </div>
+        <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
       </div>
-    </div>
+    </form>
   );
 }
 

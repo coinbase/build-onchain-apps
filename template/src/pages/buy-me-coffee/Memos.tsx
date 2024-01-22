@@ -13,7 +13,7 @@ type MemosProps = {
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
   return (
-    <div className="flex flex-col items-center gap-[16px]">
+    <div className="flex w-full flex-col items-center gap-10">
       {memos
         .map((memo) => {
           return (

@@ -16,15 +16,15 @@
   /* Build Onchain Apps shared variables */
   --boat-color-background: var(--palette-bg-black);
   --boat-color-text: var(--palette-bg-white);
-  --boat-color-blue-40: rgba(19, 84, 225, 1);
-  --boat-color-green-40: rgba(11, 133, 82, 1);
-  --boat-color-palette-backgroundalternate: rgba(20, 21, 25, 1);
-  --boat-color-palette-foreground: rgba(255, 255, 255, 1);
-  --boat-color-palette-foregroundmuted: rgba(138, 145, 158, 1);
-  --boat-color-palette-line: rgba(138, 145, 158, 0.2);
-  --boat-color-pink-50: rgba(208, 88, 193, 1);
-  --boat-color-purple-60: rgba(179, 136, 245, 1);
-  --boat-color-yellow-60: rgba(233, 179, 0, 1);
+  --boat-color-blue-40: #1354e1;
+  --boat-color-green-40: #0b8552;
+  --boat-color-palette-backgroundalternate: #141519;
+  --boat-color-palette-foreground: #fff;
+  --boat-color-palette-foregroundmuted: #8a919e;
+  --boat-color-palette-line: #8a919e33;
+  --boat-color-pink-50: #d058c1;
+  --boat-color-purple-60: #b388f5;
+  --boat-color-yellow-60: #e9b300;
 
   /* Indicates that the element can be rendered using 
    * the operating system dark color scheme. 
