@@ -57,6 +57,7 @@ because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0x
 Contract that allows a user to mint a ERC721A either from a allowlist or from a public mint. This is useful for mints where you want to allow specified users to have early access and (optionally) a lower mint price. After your defined allowlist window ends, the public mint will begin immediately. This contract uses [ERC721A](https://github.com/chiru-labs/ERC721A) as base to allow for more efficient minting of multiple NFTs in a single transaction.
 
 It also makes use of the following utility libraries for allowlist proof verification:
+
 1. [solady MerkleProofLib](https://github.com/Vectorized/solady/blob/main/src/utils/MerkleProofLib.sol): To verify proofs when minting.
 2. [murky](https://github.com/dmfxyz/murky): To easily generate merkle roots and proofs in unit tests.
 
