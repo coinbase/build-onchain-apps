@@ -52,6 +52,29 @@ console.log(wallet.address);
 That wallet address needs to be imported as an environment parameter in the contracts project. This is needed
 because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0xAddress`
 
+#### AllowlistNFT
+
+Contract that allows a user to mint a ERC721A either from a allowlist or from a public mint. This is useful for mints where you want to allow specified users to have early access and (optionally) a lower mint price. After your defined allowlist window ends, the public mint will begin immediately. This contract uses [ERC721A](https://github.com/chiru-labs/ERC721A) as base to allow for more efficient minting of multiple NFTs in a single transaction.
+
+It also makes use of the following utility libraries for allowlist proof verification:
+1. [solady MerkleProofLib](https://github.com/Vectorized/solady/blob/main/src/utils/MerkleProofLib.sol): To verify proofs when minting.
+2. [murky](https://github.com/dmfxyz/murky): To easily generate merkle roots and proofs in unit tests.
+
+Deploy Instructions:
+A deploy script `AllowlistNFT.s.sol` is provided. Please be sure to update all of the constructor arguments before deploying:
+
+1. `name`: The name of your NFT collection.
+2. `ticker`: The ticker of your NFT collection.
+3. `allowlistRoot`: The allowlist root generated for your allowlisted addresses. For information on generating merkle roots for allowlists, you can read about this in-depth guide [here](https://medium.com/@ItsCuzzo/using-merkle-trees-for-nft-allowlists-523b58ada3f9)
+4. `maxSupply`: The maximum number of NFTs in your collection.
+5. `price`: The price of a public mint.
+6. `allowlistPrice`: The price of a allowlist mint.
+7. `allowlistOpen`: The timestamp in which allowlist mint begins.
+8. `allowlistClose`: The timestamp in which allowlist mint ends. Note: Public mint will begin immediately after `allowlistClose`.
+9. `maxAllowlistMint`: The maximum number of NFTs a allowlisted address can allowlist mint.
+10. `maxPublicMint`: The maximum number of NFTs an address can public mint.
+11. `uri`: The base URI of your NFT. This is your IPFS hash.
+
 ### Project Layout
 
 ```
@@ -60,12 +83,15 @@ because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0x
 ├── script
 │   └── BuyMeACoffee.s.sol
 │   └── CustomERC155.s.sol
+│   └── AllowlistNFT.s.sol
 ├── src
 │   └── BuyMeACoffee.sol
 │    └── CustomERC155.sol
+│   └── AllowlistNFT.sol
 └── test
     └── BuyMeACoffee.t.sol
     └── CustomERC155.t.sol
+    └── AllowlistNFT.t.sol
 
 ```
 
