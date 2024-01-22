@@ -14,11 +14,11 @@ Use at your own risk, acknowledging the inherent risks of smart contract technol
 # Contents
 
 - [Introduction](#introduction)
-    - [Contracts](#contracts)
-        - [BuyMeACoffee](#buymeacoffee)
-        - [CustomERC1155](#customerc1155)
-        - [SignatureMintERC721](#signatureminterc721)
-        - [AllolistNFT](#allowlistnft)
+  - [Contracts](#contracts)
+    - [BuyMeACoffee](#buymeacoffee)
+    - [CustomERC1155](#customerc1155)
+    - [SignatureMintERC721](#signatureminterc721)
+    - [AllolistNFT](#allowlistnft)
 - [Project Layout](#project-layout)
 - [Usage](#usage)
 - [Deploying your own contract](#deploying-your-own-contract)
@@ -63,6 +63,7 @@ because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0x
 Contract that allows a user to mint a ERC721A either from a allowlist or from a public mint. This is useful for mints where you want to allow specified users to have early access and (optionally) a lower mint price. After your defined allowlist window ends, the public mint will begin immediately. This contract uses [ERC721A](https://github.com/chiru-labs/ERC721A) as base to allow for more efficient minting of multiple NFTs in a single transaction.
 
 It also makes use of the following utility libraries for allowlist proof verification:
+
 1. [solady MerkleProofLib](https://github.com/Vectorized/solady/blob/main/src/utils/MerkleProofLib.sol): To verify proofs when minting.
 2. [murky](https://github.com/dmfxyz/murky): To easily generate merkle roots and proofs in unit tests.
 
@@ -165,7 +166,6 @@ forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadc
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
-
 ![Deployment](./assets/deployment.png)
 
 ![Verified](./assets/verified.png)
@@ -175,7 +175,6 @@ Forge runs your solidity script. In that script it tries to broadcast the transa
 ### ABI
 
 To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMeACoffee.json` and copy the value corresponding to the `abi` key
-
 
 ## Deploying your own contract
 
@@ -197,7 +196,7 @@ To extract the `abi` of your contract, you can go to `out/BuyMeACoffee.sol/BuyMe
 
 7. To extract the `abi` of your contract, you can go to `out/YOUR_CONTRACT.sol/YOUR_CONTRACT.json` and copy the value corresponding to the `abi` key
 
-##  Deploy to local node
+## Deploy to local node
 
 Initially, building on a local node can offer numerous benefits, including:
 
@@ -211,24 +210,25 @@ You can deploy your contracts to local node for faster testing as follows:
 ```bash
 make local-node
 ```
+
 ![anvil](./assets/anvil.png)
 
 To deploy the contract:
 
 - Make sure to delete the following lines from `foundry.toml` because locally we dont have a block explorer
-    ```
-    [etherscan]
-    "${NETWORK}"={key="${BLOCK_EXPLORER_API_KEY}"}
-    ```
 
--  Create a `.env` file using the `.env.example` file provided in your contracts folder and add one the private keys printed on your terminal when you ran `make local-node`. Also update the `RPC_URL` to `http://127.0.0.1:8545`, this will make sure your contracts are deployed locally
+  ```
+  [etherscan]
+  "${NETWORK}"={key="${BLOCK_EXPLORER_API_KEY}"}
+  ```
 
+- Create a `.env` file using the `.env.example` file provided in your contracts folder and add one the private keys printed on your terminal when you ran `make local-node`. Also update the `RPC_URL` to `http://127.0.0.1:8545`, this will make sure your contracts are deployed locally
 
 - Deploy the sample contract using:
-    ```
-    source .env
-    forge script script/LocalContract.s.sol:LocalContractScript  --broadcast --rpc-url ${RPC_URL}
-    ```
+  ```
+  source .env
+  forge script script/LocalContract.s.sol:LocalContractScript  --broadcast --rpc-url ${RPC_URL}
+  ```
 
 ![local-deployment](./assets/local-deployment.png)
 
