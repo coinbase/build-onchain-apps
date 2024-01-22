@@ -44,6 +44,7 @@ contract LocalBuyMeACoffeeContract {
 
         emit BuyMeACoffeeEvent(msg.sender, msg.value);
 
+        // Can add console logs when deploying to local node
         console2.log("Buy me a coffee event was emitted");
 
         if (bytes(userName).length == 0 && bytes(message).length == 0) {
