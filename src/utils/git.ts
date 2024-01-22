@@ -28,6 +28,24 @@ export function initGit(appDir: string) {
         cwd: appDir,
       }
     );
+    execSync(
+      'git submodule add https://github.com/chiru-labs/ERC721A contracts/lib/ERC721A',
+      {
+        cwd: appDir,
+      }
+    );
+    execSync(
+      'git submodule add https://github.com/vectorized/solady contracts/lib/solady',
+      {
+        cwd: appDir,
+      }
+    );
+    execSync(
+      'git submodule add https://github.com/dmfxyz/murky contracts/lib/murky',
+      {
+        cwd: appDir,
+      }
+    );
     return true;
   } catch (e) {
     return false;

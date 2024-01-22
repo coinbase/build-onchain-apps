@@ -1,4 +1,4 @@
-<img src='./docs/logo-v-0-15.png' width='800' alt='Build Onchain Apps Toolkit'>
+<img src='./docs/logo-v-0-16.png' width='800' alt='Build Onchain Apps Toolkit'>
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
@@ -100,7 +100,7 @@ forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadc
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
 
-For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/apps/build-onchain-apps/contracts/README.md)
+For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
 #### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
 
@@ -108,7 +108,7 @@ For more information on contracts, visit [here](https://github.com/coinbase/buil
 
 ## For a Live demo use
 
-- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/apps/build-onchain-apps)
+- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template)
 
 <br>
 
@@ -133,7 +133,7 @@ git clone https://github.com/coinbase/build-onchain-apps.git
 
 ```bash
 # Go to main application
-cd apps/build-onchain-apps
+cd template
 
 # Install and run latest template
 yarn
@@ -201,6 +201,13 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
       </td>
     </tr>
     <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/renanmav">
+          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/renanmav">Renan Machado</a>
+      </td>
       <td align="center" valign="top">
         <a href="https://warpcast.com/cnasc">
           <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
