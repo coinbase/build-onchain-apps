@@ -1,17 +1,22 @@
 import CodeBlock from '../../components/code-block/CodeBlock';
 
-const codeStep1 = `$ npx @coinbase/build-onchain-apps@latest create`;
-const codeStep2 = `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
-const codeStep3 = `# Install dependencies
+const codeStep1 = `\`\`\`bash
+$ npx @coinbase/build-onchain-apps@latest create`;
+const codeStep2 = `\`\`\`bash
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
+const codeStep3 = `\`\`\`bash
+# Install dependencies
 yarn
 
 # Run onchain app
 yarn dev`;
-const codeStep4 = `# Install Foundry
+const codeStep4 = `\`\`\`bash
+# Install Foundry
 
 curl -L https://foundry.paradigm.xyz | bash
 foundryup`;
-const codeStep5 = `cd contracts
+const codeStep5 = `\`\`\`bash
+cd contracts
 
 # Install dependencies
 forge install
@@ -24,7 +29,8 @@ forge test
 
 # Format
 forge fmt`;
-const codeStep6 = `# Create a .env file using the .env.example file provided in your contracts folder and add your private key. Make sure to add a 0x in front of your key to convert it to a hex.
+const codeStep6 = `\`\`\`bash
+# Create a .env file using the .env.example file provided in your contracts folder and add your private key. Make sure to add a 0x in front of your key to convert it to a hex.
 Note: Get an API key from basescan.org for Base Sepolia by creating an account
 
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url $\{RPC_URL\} --etherscan-api-key $\{BLOCK_EXPLORER_API_KEY\}
@@ -33,7 +39,7 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 export default function Guide() {
   return (
     <>
-      <h3 className="mb-6 text-4xl font-medium text-white" id="get-started">
+      <h3 className="mt-8 text-4xl font-medium text-white" id="get-started">
         Getting started
       </h3>
       <div className="h-px bg-white" />
@@ -48,7 +54,7 @@ export default function Guide() {
           Obtain Wallet Connect Project ID from{' '}
           <a href="https://walletconnect.com/" target="_blank">
             walletconnect.com
-          </a>
+          </a>{' '}
           and assign to the .env.local file
         </p>
         <CodeBlock code={codeStep2} />
