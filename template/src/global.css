@@ -16,15 +16,6 @@
   /* Build Onchain Apps shared variables */
   --boat-color-background: var(--palette-bg-black);
   --boat-color-text: var(--palette-bg-white);
-  --boat-color-blue-40: #1354e1;
-  --boat-color-green-40: #0b8552;
-  --boat-color-palette-backgroundalternate: #141519;
-  --boat-color-palette-foreground: #fff;
-  --boat-color-palette-foregroundmuted: #8a919e;
-  --boat-color-palette-line: #8a919e33;
-  --boat-color-pink-50: #d058c1;
-  --boat-color-purple-60: #b388f5;
-  --boat-color-yellow-60: #e9b300;
 
   /* Indicates that the element can be rendered using 
    * the operating system dark color scheme. 
