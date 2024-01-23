@@ -11,10 +11,8 @@ export function useMediaQuery(query: string) {
     const listener = () => {
       setMatches(media.matches);
     };
-    // The signature '(callback: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void' of 'media.addListener' is deprecated.ts(6387)
-    // lib.dom.d.ts(15085, 8): The declaration was marked as deprecated here.
-    media.addListener(listener);
-    return () => media.removeListener(listener);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
   }, [matches, query]);
 
   return matches;
