@@ -37,13 +37,15 @@ function Header({ ghost }: HeaderProps) {
       data-scroll-state={scrollState}
       className={clsx(styles.HeaderRoot, ghost ? styles.ghost : '')}
     >
-      <div
-        className={clsx(
-          'container fixed z-10 mx-auto inline-flex h-[72px] w-screen items-center justify-between',
-          'rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl xl:w-[1280px]',
-        )}
-      >
-        <Menu />
+      <div className="container fixed z-10 h-[72px] px-8">
+        <div
+          className={clsx(
+            'flex flex-1 flex-grow items-center justify-between',
+            'rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl xl:w-[1280px]',
+          )}
+        >
+          <Menu />
+        </div>
       </div>
     </div>
   );

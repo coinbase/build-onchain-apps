@@ -22,6 +22,10 @@
   line-height: 85px;
   text-align: center;
   word-wrap: break-word;
+
+  @media (width <= 768px) {
+    font-size: 64px;
+  }
 }
 
 .HomeHeaderParagraph {
@@ -32,12 +36,21 @@
   line-height: 24px;
   text-align: center;
   word-wrap: break-word;
+
+  @media (width <= 768px) {
+    padding: 0 20px;
+    font-size: 18px;
+  }
 }
 
 .HomeHeaderCta {
   display: flex;
   justify-content: center;
   margin: 16px 0 52px;
+
+  @media (width <= 768px) {
+    width: 80%;
+  }
 }
 
 .HomeHeaderWaves {
