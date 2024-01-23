@@ -50,6 +50,11 @@
   display: flex;
   justify-content: center;
   margin: 16px 0 52px;
+
+  /* stylelint-disable-next-line media-feature-range-notation */
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 }
 
 .HomeHeaderWaves {

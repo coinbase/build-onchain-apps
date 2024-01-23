@@ -46,7 +46,6 @@ export default function CodeBlock({ code, language = 'sh' }: { code: string; lan
       <span className={styles.CodeBlockLang}>{language}</span>
       <pre className={styles.CodeBlockPre}>
         <Code code={code} />
-        {/* <p>code</p> */}
       </pre>
     </div>
   );

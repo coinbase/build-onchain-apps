@@ -34,7 +34,7 @@ function Menu() {
           {MenuTitle}
         </NextLink>
 
-        <div className="ml-4 flex justify-start md:hidden">
+        <div className="flex justify-start md:hidden">
           <button
             type="button"
             aria-label="Menu"
