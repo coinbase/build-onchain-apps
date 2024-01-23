@@ -23,9 +23,7 @@
   text-align: center;
   word-wrap: break-word;
 
-  /* Expected "context" media feature range notation (media-feature-range-notation)Stylelintmedia-feature-range-notation */
-  /* stylelint-disable-next-line media-feature-range-notation */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     font-size: 64px;
   }
 }
@@ -39,8 +37,7 @@
   text-align: center;
   word-wrap: break-word;
 
-  /* stylelint-disable-next-line media-feature-range-notation */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: 0 20px;
     font-size: 18px;
   }
@@ -51,8 +48,7 @@
   justify-content: center;
   margin: 16px 0 52px;
 
-  /* stylelint-disable-next-line media-feature-range-notation */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     width: 80%;
   }
 }

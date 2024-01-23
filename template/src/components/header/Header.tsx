@@ -38,7 +38,6 @@ function Header({ ghost }: HeaderProps) {
       className={clsx(styles.HeaderRoot, ghost ? styles.ghost : '')}
     >
       <div className="container fixed z-10 h-[72px] px-8">
-        {/** maybe have a CSS variable for this px-8 ^ */}
         <div
           className={clsx(
             'flex flex-1 flex-grow items-center justify-between',
