@@ -138,8 +138,8 @@ export default function SignatureMintDemo() {
             {sigFailure && (
               <p className="mb-4 rounded-lg bg-yellow-100 p-4 text-sm text-yellow-700" role="alert">
                 <span className="font-medium">Warning!</span> There was a problem with the
-                signature. Please follow the steps below and ensure SIGNATURE_MINT_SIGNER is set in
-                the environment file.
+                signature. Please follow the steps below and ensure SIGNATURE_MINT_PRIVATE_KEY is
+                set in the environment file.
               </p>
             )}
             {!sigFailure && (
