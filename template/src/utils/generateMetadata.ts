@@ -8,6 +8,11 @@ type MetaTagsProps = {
   pathname: string;
 };
 
+const deployUrl = process.env.BOAT_DEPLOY_URL ?? process.env.VERCEL_URL;
+const defaultUrl = deployUrl
+  ? `https://${deployUrl}`
+  : `http://localhost:${process.env.PORT ?? 3000}`;
+
 export const generateMetadata = ({
   title = 'Build Onchain Apps',
   description = 'The easier way to build onchain apps.',
@@ -17,6 +22,7 @@ export const generateMetadata = ({
 }: MetaTagsProps): Metadata => {
   const i = Array.isArray(images) ? images : [images];
   return {
+    metadataBase: new URL(defaultUrl),
     title,
     description,
     openGraph: {
