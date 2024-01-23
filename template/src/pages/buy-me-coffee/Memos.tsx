@@ -13,7 +13,7 @@ type MemosProps = {
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
   return (
-    <div className="flex w-full flex-col items-center gap-10">
+    <ul className="flex w-full flex-col items-center gap-10">
       {memos
         .map((memo) => {
           return (
@@ -21,12 +21,13 @@ function Memos({ memos }: MemosProps) {
               key={memo.time.toString()}
               userName={memo.userName}
               message={memo.message}
+              userAddress={memo.userAddress}
               time={memo.time}
             />
           );
         })
         .reverse()}
-    </div>
+    </ul>
   );
 }
 

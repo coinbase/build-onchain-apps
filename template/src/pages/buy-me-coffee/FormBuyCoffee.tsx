@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
+import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../hooks/contracts';
@@ -102,7 +103,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   }, [areInputsDisabled, contract.status, contract.supportedChains]);
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+    <form onSubmit={handleSubmit} className="w-full">
       <div>
         <div className="mb-5">
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
@@ -111,7 +112,10 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
           <input
             type="text"
             id="name"
-            className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+            className={clsx([
+              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+            ])}
             placeholder="Enter your name"
             onChange={handleNameChange}
             disabled={areInputsDisabled}
@@ -126,7 +130,10 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
           <textarea
             value={message}
             id="message"
-            className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+            className={clsx([
+              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+            ])}
             placeholder="Enter your message..."
             onChange={handleMessageChange}
             disabled={areInputsDisabled}

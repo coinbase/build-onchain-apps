@@ -1,4 +1,5 @@
-import Avatar from '../../components/Avatar';
+import { clsx } from 'clsx';
+import { OnchainAvatar } from '../../../onchainKit';
 import { convertBigIntTimestampToDate } from '../../utils/timestamp';
 import type { CoffeeMemo } from '../../types';
 
@@ -9,36 +10,44 @@ import type { CoffeeMemo } from '../../types';
  * @param message Message sent by the person.
  * @param timestamp Timestamp of the memo.
  */
-function MemoCard({ userName, message, time }: CoffeeMemo) {
+function MemoCard({ userName, message, userAddress, time }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
   return (
-    <div className="flex w-full flex-col items-start gap-4">
+    <li className="flex w-full flex-col items-start gap-4">
       <div className="flex items-center justify-between self-stretch">
         <div className="flex items-center gap-3">
-          <Avatar name={userName} />
+          <OnchainAvatar address={userAddress} />
           <div className="flex items-start gap-1">
-            <div className="flex items-center gap-2">
-              <div className="text-3 text-bold w-fit whitespace-nowrap font-bold text-boat-color-palette-foreground">
-                {userName}
-              </div>
-            </div>
-            <div className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+            <span className="text-3 text-bold w-fit whitespace-nowrap font-bold text-boat-color-palette-foreground">
+              {userName}
+            </span>
+            <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
               bought 1 coffee
-            </div>
+            </span>
           </div>
         </div>
-        <div className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+        <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
           {convertedTimestamp.toDateString()}
-        </div>
+        </span>
       </div>
-      <div className="flex w-full items-center rounded-2xl border-2 border-solid border-[color:var(--boat-color-foregroundMuted,#8A919E)] p-6 backdrop-blur-[20px]">
-        <div className="flex w-[0px] shrink grow items-start gap-1">
-          <p className="truncate whitespace-nowrap text-wrap text-base font-normal not-italic leading-6 text-boat-color-palette-foreground">
+      <div
+        className={clsx([
+          'flex w-full items-center rounded-2xl border-2',
+          'border-solid border-[color:var(--boat-color-foregroundMuted,#8A919E)] p-6 backdrop-blur-[20px]',
+        ])}
+      >
+        <p className="flex w-[0px] shrink grow items-start gap-1">
+          <span
+            className={clsx([
+              'truncate whitespace-nowrap text-wrap text-base ',
+              'font-normal not-italic leading-6 text-boat-color-palette-foreground',
+            ])}
+          >
             {message}
-          </p>
-        </div>
+          </span>
+        </p>
       </div>
-    </div>
+    </li>
   );
 }
 
