@@ -31,6 +31,7 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
+    "contracts",
     "node_modules"
   ]
 }
