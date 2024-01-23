@@ -43,8 +43,6 @@ html .font-inter {
 }
 
 body {
-  /* A-HA FOUND YA! ψ( ` ∇ ´ )ψ */
-  /* min-width: 320px;  */
   height: 100%;
   margin: 0;
   background-color: var(--boat-color-background);
