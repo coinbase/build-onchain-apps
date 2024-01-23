@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
@@ -11,16 +12,30 @@ export default function BuyMeCoffeeContractDemo() {
   }, [refetchMemos]);
 
   return (
-    <div className="mt-10 grid grid-cols-1 items-stretch justify-start md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg">
-      <div>
-        <div className="mb-6 flex justify-start">
-          <h2 className="mb-1 text-4xl font-bold">Messages</h2>
-        </div>
+    <div
+      className={clsx([
+        'mb-16 mt-10 grid grid-cols-1 items-stretch justify-start',
+        'md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg',
+      ])}
+    >
+      <section
+        className={clsx([
+          'rounded-3xl border border-solid border-boat-color-palette-line',
+          'bg-boat-color-palette-backgroundalternate p-10',
+        ])}
+      >
+        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
         {memos?.length > 0 && <Memos memos={memos} />}
-      </div>
-      <div className="pt-9">
+      </section>
+      <aside
+        className={clsx([
+          'rounded-3xl border border-solid border-boat-color-palette-line',
+          'bg-boat-color-palette-backgroundalternate p-10',
+        ])}
+      >
+        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Buy Me a Coffee!</h2>
         <FormBuyCoffee onComplete={handleOncomplete} />
-      </div>
+      </aside>
     </div>
   );
 }

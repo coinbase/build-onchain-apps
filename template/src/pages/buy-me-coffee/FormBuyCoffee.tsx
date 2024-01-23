@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
+import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../hooks/contracts';
@@ -102,47 +103,46 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   }, [areInputsDisabled, contract.status, contract.supportedChains]);
 
   return (
-    <div className="flex flex-col justify-start">
-      <div className="relative flex justify-center">
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <div className="rounded-xl border border-solid border-neutral-700 bg-neutral-900 p-8">
-            <h3 className="mb-5">Buy Me A Coffee</h3>
+    <form onSubmit={handleSubmit} className="w-full">
+      <div>
+        <div className="mb-5">
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
+            First name
+          </label>
+          <input
+            type="text"
+            id="name"
+            className={clsx([
+              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+            ])}
+            placeholder="Enter your name"
+            onChange={handleNameChange}
+            disabled={areInputsDisabled}
+            required
+          />
+        </div>
 
-            <div className="mb-5">
-              <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-                First name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Enter your name"
-                onChange={handleNameChange}
-                disabled={areInputsDisabled}
-                required
-              />
-            </div>
-
-            <div className="mb-5">
-              <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
-                Message
-              </label>
-              <textarea
-                value={message}
-                id="message"
-                className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Enter your message..."
-                onChange={handleMessageChange}
-                disabled={areInputsDisabled}
-                required
-              />
-            </div>
-
-            <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
-          </div>
-        </form>
+        <div className="mb-5">
+          <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
+            Message
+          </label>
+          <textarea
+            value={message}
+            id="message"
+            className={clsx([
+              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+            ])}
+            placeholder="Enter your message..."
+            onChange={handleMessageChange}
+            disabled={areInputsDisabled}
+            required
+          />
+        </div>
+        <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
       </div>
-    </div>
+    </form>
   );
 }
 
