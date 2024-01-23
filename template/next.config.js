@@ -15,6 +15,7 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = withPWA({
   reactStrictMode: true,
+  exclude: ['./contracts'],
   images: {
     remotePatterns: [
       {
