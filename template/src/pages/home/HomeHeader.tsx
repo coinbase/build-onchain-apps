@@ -7,6 +7,7 @@ const codeStep1 = `\`\`\`bash
 $ npx @coinbase/build-onchain-apps@latest create`;
 
 export default function HomeHeader() {
+  // return null;
   return (
     <div className={styles.HomeHeader}>
       <div className={styles.HomeHeaderGradient} />

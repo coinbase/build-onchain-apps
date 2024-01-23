@@ -1,6 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
+// todo: relative paths? ../../../../../../
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import AccountConnect from './AccountConnect';
 import styles from './Header.module.css';
 import Navbar from './Navbar';
@@ -8,10 +10,15 @@ import { NavbarMobile } from './NavbarMobile';
 
 function Menu() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
   const handleMobileMenuClick = useCallback(() => {
     setMobileMenuOpen(!isMobileMenuOpen);
   }, [isMobileMenuOpen]);
+
+  const MenuTitle = useMemo(() => {
+    return isSmallScreen ? 'BOAT' : 'BUILD ONCHAIN APPS';
+  }, [isSmallScreen]);
 
   return (
     <>
@@ -24,7 +31,7 @@ function Menu() {
           passHref
           className="font-robotoMono text-center text-xl font-medium text-white"
         >
-          BUILD ONCHAIN APPS
+          {MenuTitle}
         </NextLink>
 
         <div className="ml-4 flex justify-start md:hidden">

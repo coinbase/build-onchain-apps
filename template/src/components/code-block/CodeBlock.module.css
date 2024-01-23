@@ -1,6 +1,6 @@
 .CodeBlock {
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   border-radius: 8px;
   margin: 0;
   background-color: #24292e;
@@ -42,7 +42,7 @@
 .CodeBlockPre {
   position: relative;
   z-index: 1;
-  padding: 20px 24px;
+  padding: 20px 10px;
   margin: 0;
   background: transparent;
   overflow-x: auto;
