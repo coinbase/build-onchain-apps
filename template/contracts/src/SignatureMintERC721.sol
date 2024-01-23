@@ -20,7 +20,6 @@ pragma solidity 0.8.23;
  *
  */
 
-
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
@@ -53,7 +52,7 @@ contract SignatureMintERC721 is ERC721 {
         NFTUtilities.CollectionMetadata("CoffeeDog", "Buy a dog a coffee", "CDOG", imageUri, "");
 
     // Events
-    event  Mint(address indexed buyer, uint256 tokenId, uint256 cost);
+    event Mint(address indexed buyer, uint256 tokenId, uint256 cost);
 
     constructor(address signer) ERC721(metadata.name, metadata.symbol) {
         freeMintSigner = signer;

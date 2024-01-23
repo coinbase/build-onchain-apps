@@ -148,5 +148,4 @@ contract BuyMeACoffee {
      * @dev Recieve function to accept ether
      */
     receive() external payable {}
-
 }
