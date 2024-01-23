@@ -62,14 +62,7 @@ const wagmiConfig = createConfig({
 function OnchainProviders({ children }: Props) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        // setting to null to get rid of the data-rk div, it messes up styling and responsiveness
-        // read more on https://github.com/rainbow-me/rainbowkit/issues/1546#issuecomment-1750799517
-        theme={null}
-      >
-        {children}
-      </RainbowKitProvider>
+      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
     </WagmiConfig>
   );
 }
