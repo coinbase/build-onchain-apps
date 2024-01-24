@@ -14,7 +14,7 @@ SIGNATURE_MINT_SIGNER="WalletAddressFromAbove"
         `;
 
 const codeBlock3 = `# Edit the .env file and add the following key:
-SIGNATURE_MINT_SIGNER="WalletAddressFromAbove"
+SIGNATURE_MINT_PRIVATE_KEY="WalletPrivateKey"
 `;
 
 const codeBlock4 = `curl 'http://localhost:3000/api/mint/signature/free?chainId=84532&wallet=0xWALLET_ADDRESS'`;
@@ -48,7 +48,7 @@ export default function Guide() {
         "
         />
         <h4 className="mb-6 mt-6 text-xl font-normal text-white">
-          Step 3 : Add Private Key to backend
+          Step 3 : Add Private Key to frontend project
         </h4>
         <p className="my-4 text-base font-normal text-zinc-400">
           Add your private key to the API backend so you can generate minting signatures.

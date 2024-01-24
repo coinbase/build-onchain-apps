@@ -1,28 +1,29 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { Hex } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { SignableMessage } from 'viem/types/misc';
-import { getSignatureMintPrivateKey } from '../../../../src/store/environment';
-import { getChainById } from '../../../../src/store/supportedChains';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { getSignatureMintPrivateKey } from '../../../../../src/store/environment';
+import { getChainById } from '../../../../../src/store/supportedChains';
 
 /**
  * Handler for the /api/mint/signature/free
  * @param req
  * @param res
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest): Promise<Response> {
   try {
-    const chainId = req.query.chainId as string;
-    const freeMintWallet = req.query.wallet as string;
+    const query = req.nextUrl.searchParams;
+    const chainId = query.get('chainId');
+    const freeMintWallet = query.get('wallet');
     if (!chainId) {
-      return res.status(400).json({ error: 'chainid is required' });
+      return NextResponse.json({ error: 'chainid is required' }, { status: 400 });
     }
     const chain = getChainById(chainId);
     if (!chain) {
-      return res.status(400).json({ error: 'chainid not supported' });
+      return NextResponse.json({ error: 'chainid not supported' }, { status: 400 });
     }
     if (!freeMintWallet) {
-      return res.status(400).json({ error: 'wallet is required' });
+      return NextResponse.json({ error: 'wallet is required' }, { status: 400 });
     }
 
     /**
@@ -34,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
      */
     const walletSigningKey = getSignatureMintPrivateKey();
     if (!walletSigningKey) {
-      return res.status(400).json({ error: 'walletSigningKey is required' });
+      return NextResponse.json({ error: 'walletSigningKey is required' }, { status: 400 });
     }
 
     /**
@@ -48,9 +49,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const response = {
       signature: signedMessage,
     };
-    res.status(200).json(response);
+    return NextResponse.json(response, { status: 200 });
   } catch (error) {
     console.error('Error fetching chains:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return NextResponse.json({}, { status: 500, statusText: 'Internal Server Error' });
   }
 }
+
+export const dynamic = 'force-dynamic';
