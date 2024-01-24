@@ -6,9 +6,9 @@ fs_permissions = [{ access = "read", path = "./"}]
 solc="0.8.23"
 
 [rpc_endpoints]
-"${NETWORK}"="${RPC_URL}"
+base_sepolia="${RPC_URL}"
 
 [etherscan]
-"${NETWORK}"={key="${BLOCK_EXPLORER_API_KEY}",url="${BLOCK_EXPLORER}"}
+base_sepolia={key="${BLOCK_EXPLORER_API_KEY}",url="${BLOCK_EXPLORER}"}
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
