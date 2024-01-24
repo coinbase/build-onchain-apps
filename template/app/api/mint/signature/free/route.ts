@@ -55,3 +55,5 @@ export async function GET(req: NextRequest): Promise<Response> {
     return NextResponse.json({}, { status: 500, statusText: 'Internal Server Error' });
   }
 }
+
+export const dynamic = 'force-dynamic';
