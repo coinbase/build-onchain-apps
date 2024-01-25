@@ -41,7 +41,7 @@ const ListItem = forwardRef(function ListItem(
       <NavigationMenu.Link asChild className="flex items-center justify-start gap-1">
         <a
           href={href}
-          className={clsx('font-robotoMono text-base font-normal text-white')}
+          className={clsx('font-robotoMono text-base font-normal text-white no-underline')}
           ref={ref}
           target={target}
         >
