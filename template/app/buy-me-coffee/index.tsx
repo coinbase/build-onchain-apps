@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import Banner from '../../src/components/banner/banner';
 import Header from '../../src/components/header/Header';
-import BuyMeCoffeeContractDemo from '../../src/pages/buy-me-coffee/ContractDemo';
-import Guide from '../../src/pages/buy-me-coffee/Guide';
+import BuyMeCoffeeContractDemo from '../../src/pageComponents/buy-me-coffee/ContractDemo';
+import Guide from '../../src/pageComponents/buy-me-coffee/Guide';
 
 /**
  * Use the page component to wrap the components
