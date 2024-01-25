@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { StorageInterface, ActionFunction, ActionResponse, ActionKey } from '../types';
 
 /**
@@ -17,23 +16,32 @@ export function useOnchainActionWithCache(
   useEffect(() => {
     let isSubscribed = true;
 
-    const checkAndFetchData = async () => {
+    const callAction = async () => {
       try {
-        const cachedData = await storageService.getData(actionKey);
+        let fetchedData;
+        // Use cache only if actionKey is not empty
+        if (actionKey) {
+          fetchedData = await storageService.getData(actionKey);
+        }
 
-        if (cachedData && isSubscribed) {
-          setData(cachedData);
-        } else {
-          const fetchedData = await action();
-          await storageService.setData(actionKey, fetchedData);
-          if (isSubscribed) setData(fetchedData);
+        // If no cached data or actionKey is empty, fetch new data
+        if (!fetchedData) {
+          fetchedData = await action();
+          // Cache the data only if actionKey is not empty
+          if (actionKey) {
+            await storageService.setData(actionKey, fetchedData);
+          }
+        }
+
+        if (isSubscribed) {
+          setData(fetchedData);
         }
       } catch (error) {
-        console.error('Error fetching ENS data:', error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    void checkAndFetchData();
+    void callAction();
 
     return () => {
       isSubscribed = false;
