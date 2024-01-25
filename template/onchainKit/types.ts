@@ -1,5 +1,3 @@
-import { GetEnsAvatarReturnType, GetEnsNameReturnType } from 'viem/ens';
-
 export type WagmiFetchBalanceResult = {
   decimals: number;
   formatted: string;
@@ -7,13 +5,14 @@ export type WagmiFetchBalanceResult = {
   value: bigint;
 };
 
+export type StorageValue = string | null | undefined;
+
 export type StorageInterface = {
-  getData: (key: string) => Promise<string | null | undefined>;
-  setData: (key: string, value: string | null | undefined) => Promise<void>;
+  getData: (key: string) => Promise<StorageValue>;
+  setData: (key: string, value: StorageValue) => Promise<void>;
 };
 
-export type ActionResponse = GetEnsNameReturnType | GetEnsAvatarReturnType | undefined;
-
-export type ActionFunction = () => Promise<ActionResponse>;
+export type ActionFunction<T> = () => Promise<T>;
 
 export type ActionKey = string;
+

@@ -5,7 +5,7 @@ import { useEnsName } from '../hooks/useEnsName';
 import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
-  address?: Address;
+  address: Address;
   className?: string;
   props?: React.ImgHTMLAttributes<HTMLImageElement>;
 };
@@ -18,6 +18,7 @@ type OnchainAvatarProps = {
 export function OnchainAvatar({ address, className, props }: OnchainAvatarProps) {
   const { ensName } = useEnsName(address);
   const { ensAvatar } = useEnsAvatar(ensName);
+
   if (!ensName || !ensAvatar) {
     // TODO add message that explain this issue
     // https://github.com/wevm/wagmi/issues/554

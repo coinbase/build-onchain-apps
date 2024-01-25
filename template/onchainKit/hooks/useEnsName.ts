@@ -1,16 +1,14 @@
 import { publicClient } from '../store/client';
 import { inMemoryStorageService } from '../store/storageServices';
-import { ActionResponse } from '../types';
 import { useOnchainActionWithCache } from './useOnchainActionWithCache';
-import type { Address } from 'viem';
-
-export const ensNameAction = (address: Address) => async (): Promise<ActionResponse> => {
+import type { Address, GetEnsNameReturnType } from 'viem';
+export const ensNameAction = (address: Address) => async (): Promise<GetEnsNameReturnType> => {
   try {
     return await publicClient.getEnsName({
       address,
     });
   } catch (err) {
-    return undefined;
+    return null;
   }
 };
 
