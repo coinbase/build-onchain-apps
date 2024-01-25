@@ -3,7 +3,7 @@ import { inMemoryStorageService } from '../store/storageServices';
 import { useOnchainActionWithCache } from './useOnchainActionWithCache';
 import type { Address, GetEnsNameReturnType } from 'viem';
 export const ensNameAction = (address?: Address) => async (): Promise<GetEnsNameReturnType> => {
-  if(!address) return null;
+  if (!address) return null;
   try {
     return await publicClient.getEnsName({
       address,
