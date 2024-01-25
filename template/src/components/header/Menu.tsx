@@ -22,7 +22,7 @@ function Menu() {
     <>
       <div className="flex h-8 items-center justify-start gap-4">
         <NextLink href="/" passHref className="relative h-8 w-8">
-          <div className="absolute size-0 rounded-full bg-white" />
+          <div className="absolute size-8 rounded-full bg-white" />
         </NextLink>
         <div className="flex justify-start md:hidden">
           <button
