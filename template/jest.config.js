@@ -3,9 +3,9 @@ const createJestConfig = nextJest({
   dir: './',
 });
 const customJestConfig = {
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/onchain/**/index.ts', '!**/node_modules/**'],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', 'src/onchainKit/**/index.ts', '!**/node_modules/**'],
   coverageReporters: ['clover', 'json', 'lcov', 'text'],
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>/src', '<rootDir>/onchainKit'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 const asyncConfig = createJestConfig(customJestConfig);
