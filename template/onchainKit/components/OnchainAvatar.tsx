@@ -5,7 +5,7 @@ import { useEnsName } from '../hooks/useEnsName';
 import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
-  address: Address;
+  address?: Address;
   className?: string;
   props?: React.ImgHTMLAttributes<HTMLImageElement>;
 };
