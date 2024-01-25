@@ -1,7 +1,12 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  RainbowKitProvider,
+  connectorsForWallets,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
 import {
   metaMaskWallet,
   rainbowWallet,
@@ -62,7 +67,15 @@ const wagmiConfig = createConfig({
 function OnchainProviders({ children }: Props) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      <RainbowKitProvider
+        chains={chains}
+        theme={{
+          lightMode: lightTheme(),
+          darkMode: darkTheme(),
+        }}
+      >
+        {children}
+      </RainbowKitProvider>
     </WagmiConfig>
   );
 }
