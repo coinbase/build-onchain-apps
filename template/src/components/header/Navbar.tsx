@@ -67,9 +67,7 @@ function Navbar() {
         <NavigationMenu.Root className="relative">
           <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger
-                className="groupflex items-center justify-start gap-1"
-              >
+              <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
                 <span className="font-robotoMono text-center text-base font-normal text-white">
                   Experiences
                 </span>

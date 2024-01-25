@@ -32,10 +32,7 @@ function Header({ ghost }: HeaderProps) {
   }, [ghost]);
 
   return (
-    <div
-      data-scroll-state={scrollState}
-      className="flex h-[120px] justify-center pt-8"
-    >
+    <div data-scroll-state={scrollState} className="flex h-[120px] justify-center pt-8">
       <div className="container fixed z-10 h-[72px] px-8">
         <div
           className={clsx(
