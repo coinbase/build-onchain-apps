@@ -61,6 +61,6 @@ describe('ensAvatarAction Function', () => {
     const action = ensAvatarAction('');
     const avatar = await action();
 
-    expect(avatar).toBeUndefined();
+    expect(avatar).toBeNull();
   });
 });
