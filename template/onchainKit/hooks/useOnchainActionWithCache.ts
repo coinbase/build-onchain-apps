@@ -30,7 +30,7 @@ export function useOnchainActionWithCache<T>(
 
       // If no cached data or actionKey is empty, fetch new data
       if (!fetchedData) {
-        fetchedData = await action() as ExtractStorageValue<T>;
+        fetchedData = (await action()) as ExtractStorageValue<T>;
         // Cache the data only if actionKey is not empty
         if (actionKey) {
           await storageService.setData(actionKey, fetchedData);
