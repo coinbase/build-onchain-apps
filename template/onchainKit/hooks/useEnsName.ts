@@ -4,8 +4,7 @@ import { ActionResponse } from '../types';
 import { useOnchainActionWithCache } from './useOnchainActionWithCache';
 import type { Address } from 'viem';
 
-const ensNameAction = (address?: Address) => async (): Promise<ActionResponse> => {
-  if (!address) return undefined;
+export const ensNameAction = (address: Address) => async (): Promise<ActionResponse> => {
   try {
     return await publicClient.getEnsName({
       address,
@@ -19,7 +18,7 @@ const ensNameAction = (address?: Address) => async (): Promise<ActionResponse> =
  * Fetches the ENS name for a given address.
  */
 export const useEnsName = (address: Address) => {
-  const ensActionKey = address ?? '';
+  const ensActionKey = `ens-name-${address}`;
   const ensName = useOnchainActionWithCache(
     ensNameAction(address),
     ensActionKey,

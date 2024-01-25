@@ -4,21 +4,22 @@ import { inMemoryStorageService } from '../store/storageServices';
 import { ActionResponse } from '../types';
 import { useOnchainActionWithCache } from './useOnchainActionWithCache';
 
-const ensAvatarAction = (ensName: GetEnsNameReturnType) => async (): Promise<ActionResponse> => {
-  if (!ensName) return undefined;
-  try {
-    return await publicClient.getEnsAvatar({
-      name: normalize(ensName),
-    });
-  } catch (err) {
-    return undefined;
-  }
-};
+export const ensAvatarAction =
+  (ensName: GetEnsNameReturnType) => async (): Promise<ActionResponse> => {
+    if (!ensName) return undefined;
+    try {
+      return await publicClient.getEnsAvatar({
+        name: normalize(ensName),
+      });
+    } catch (err) {
+      return undefined;
+    }
+  };
 /**
  * Fetches the ENS name for a given address.
  */
 export const useEnsAvatar = (ensName: GetEnsNameReturnType) => {
-  const ensActionKey = ensName ?? '';
+  const ensActionKey = `ens-avatar-${ensName}` ?? '';
   const ensAvatar = useOnchainActionWithCache(
     ensAvatarAction(ensName),
     ensActionKey,

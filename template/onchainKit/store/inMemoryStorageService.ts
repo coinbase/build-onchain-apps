@@ -22,7 +22,11 @@ export class InMemoryStorageService implements StorageInterface {
     if (value === null) {
       this.storage.delete(key);
     } else {
-      this.storage.set(key, value);
+      try {
+        this.storage.set(key, value);
+      } catch (error) {
+        console.error('error when setting data in storage', error);
+      }
     }
   }
 }
