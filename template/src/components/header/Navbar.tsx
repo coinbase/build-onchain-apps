@@ -3,7 +3,6 @@ import { ChevronDownIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
-import styles from './Header.module.css';
 
 export function NavbarLink({
   href,
@@ -17,7 +16,7 @@ export function NavbarLink({
   return (
     <NextLink
       href={href}
-      className={clsx('px-0', 'font-robotoMono text-center text-base font-normal text-white')}
+      className="font-robotoMono px-0 text-center text-base font-normal text-white no-underline"
       target={target}
     >
       {children}
@@ -69,16 +68,13 @@ function Navbar() {
           <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
             <NavigationMenu.Item>
               <NavigationMenu.Trigger
-                className={clsx(
-                  styles.NavigationMenuTrigger,
-                  'flex items-center justify-start gap-1',
-                )}
+                className="groupflex items-center justify-start gap-1"
               >
                 <span className="font-robotoMono text-center text-base font-normal text-white">
                   Experiences
                 </span>
                 <ChevronDownIcon
-                  className={clsx('transform transition duration-200 ease-in-out')}
+                  className="group-data-[state=open] rotate-180 transform transition duration-200 ease-in-out"
                   width="16"
                   height="16"
                 />
