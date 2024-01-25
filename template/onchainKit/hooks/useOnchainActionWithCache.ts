@@ -8,9 +8,9 @@ import { StorageInterface, ActionFunction, ActionResponse, ActionKey } from '../
  */
 
 export function useOnchainActionWithCache(
-  action: ActionFunction, 
-  actionKey: ActionKey, 
-  storageService: StorageInterface
+  action: ActionFunction,
+  actionKey: ActionKey,
+  storageService: StorageInterface,
 ) {
   const [data, setData] = useState<ActionResponse>(undefined);
 
@@ -41,4 +41,4 @@ export function useOnchainActionWithCache(
   }, [storageService, actionKey, action]);
 
   return data;
-};
+}

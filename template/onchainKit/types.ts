@@ -10,8 +10,7 @@ export type WagmiFetchBalanceResult = {
 export type StorageInterface = {
   getData: (key: string) => Promise<string | null | undefined>;
   setData: (key: string, value: string | null | undefined) => Promise<void>;
-}
-
+};
 
 export type ActionResponse = GetEnsNameReturnType | GetEnsAvatarReturnType | undefined;
 

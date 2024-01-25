@@ -1,6 +1,6 @@
 import { GetEnsNameReturnType, normalize } from 'viem/ens';
 import { publicClient } from '../store/client';
-import { inMemoryStorageService } from '../store/storageServices'; 
+import { inMemoryStorageService } from '../store/storageServices';
 import { ActionResponse } from '../types';
 import { useOnchainActionWithCache } from './useOnchainActionWithCache';
 
@@ -18,7 +18,11 @@ const ensAvatarAction = (ensName: GetEnsNameReturnType) => async (): Promise<Act
  * Fetches the ENS name for a given address.
  */
 export const useEnsAvatar = (ensName: GetEnsNameReturnType) => {
-  const ensActionKey =  ensName ?? '';
-  const ensAvatar = useOnchainActionWithCache(ensAvatarAction(ensName), ensActionKey, inMemoryStorageService);
+  const ensActionKey = ensName ?? '';
+  const ensAvatar = useOnchainActionWithCache(
+    ensAvatarAction(ensName),
+    ensActionKey,
+    inMemoryStorageService,
+  );
   return { ensAvatar };
 };
