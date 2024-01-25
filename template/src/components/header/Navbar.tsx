@@ -72,7 +72,7 @@ function Navbar() {
                   Experiences
                 </span>
                 <ChevronDownIcon
-                  className="group-data-[state=open] rotate-180 transform transition duration-200 ease-in-out"
+                  className="group-data-[state=open]:rotate-180 transform transition duration-200 ease-in-out"
                   width="16"
                   height="16"
                 />
