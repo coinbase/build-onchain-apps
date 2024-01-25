@@ -10,7 +10,12 @@ export class InMemoryStorageService implements StorageInterface {
     }
 
     async getData(key: string): Promise<string | null | undefined > {
-        return this.storage.has(key) ? this.storage.get(key) : null;
+        try {
+            return this.storage.has(key) ? this.storage.get(key) : null;
+        } catch (error) {
+            console.error('error reading data from storage', error);
+            return null;            
+        }
     }
 
     async setData(key: string, value: string | null | undefined): Promise<void> {

@@ -1,10 +1,12 @@
 import { publicClient } from '../store/client';
 import { inMemoryStorageService } from '../store/storageServices';
-import { useEnsData } from './useEnsData';
+import { ActionResponse } from '../types';
+import { useOnchainActionWithCache } from './useOnchainActionWithCache';
 import type { Address } from 'viem';
 
 
-const fetchENSName = async (address?: Address) => {
+
+const ensNameAction = (address?: Address) => async (): Promise<ActionResponse> => {
   if(!address) return undefined;
   try {
     return await publicClient.getEnsName({
@@ -18,7 +20,8 @@ const fetchENSName = async (address?: Address) => {
 /**
  * Fetches the ENS name for a given address.
  */
-export const useEnsName = (address?: Address) => {
-  const ensName = useEnsData(fetchENSName, [address], inMemoryStorageService);
+export const useEnsName = (address: Address) => {
+  const ensActionKey =  address ?? '';
+  const ensName = useOnchainActionWithCache(ensNameAction(address), ensActionKey, inMemoryStorageService);
   return { ensName };
 };
