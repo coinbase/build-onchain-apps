@@ -10,7 +10,7 @@ type FormBuyCoffeeProps = {
   onComplete: () => void;
 };
 
-const BUY_COFFEE_AMOUNT_RAW = '0.5';
+const BUY_COFFEE_AMOUNT_RAW = '0.0001';
 const BUY_COFFEE_AMOUNT = parseEther(BUY_COFFEE_AMOUNT_RAW);
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
