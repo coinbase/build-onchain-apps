@@ -23,7 +23,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to e
 - Easy maintenance with linting, formatting, and tests ✅
 - Insights into Web Vitals performance metrics with Perfume.js 📈
 - Smart contract deployment with Foundry ☁️
-- Support for a local testnet node for testing smart contracts using [Anvil](https://book.getfoundry.sh/reference/anvil/).
+- Support for a local testnet node for testing smart contracts using [Anvil](https://book.getfoundry.sh/reference/anvil/). 🧪 
 
 <br >
 
