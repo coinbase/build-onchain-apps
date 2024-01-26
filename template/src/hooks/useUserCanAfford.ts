@@ -7,10 +7,12 @@ import { useAccount, useBalance } from 'wagmi';
  * @param amount amount to check if user can afford
  * @returns {boolean}
  */
-export function useAddressCanAfford(address: number, amount: bigint) {
+export function useAddressCanAfford(address: `0x${string}`, amount: bigint) {
   const result = useBalance({
     address,
   });
+
+  if (!result.data) return false;
 
   return amount <= result.data.value;
 }
@@ -25,5 +27,5 @@ export function useAddressCanAfford(address: number, amount: bigint) {
 export function useLoggedInUserCanAfford(amount: bigint) {
   const account = useAccount();
 
-  return useAddressCanAfford(account.address, amount);
+  return useAddressCanAfford(account.address as `0x${string}`, amount);
 }

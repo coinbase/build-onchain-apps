@@ -115,7 +115,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
         Send 1 Coffee for 0.001ETH
       </button>
     );
-  }, [areInputsDisabled, contract.status, contract.supportedChains]);
+  }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
