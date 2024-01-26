@@ -4,10 +4,14 @@ import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../hooks/contracts';
+import { useLoggedInUserCanAfford } from '../../hooks/useUserCanAfford';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
 };
+
+const BUY_COFFEE_AMOUNT_RAW = '0.0001';
+const BUY_COFFEE_AMOUNT = parseEther(BUY_COFFEE_AMOUNT_RAW);
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Component state
@@ -17,6 +21,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Get the correct contract info for current network (if present)
   const contract = useBuyMeACoffeeContract();
 
+  // Calculate if the user can afford to buy coffee
+  const canAfford = useLoggedInUserCanAfford(BUY_COFFEE_AMOUNT);
+
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
     address: contract.status === 'ready' ? contract.address : undefined,
@@ -24,7 +31,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     functionName: 'buyCoffee',
     args: [name, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
-    value: parseEther('0.001'),
+    value: BUY_COFFEE_AMOUNT,
     onSuccess(data) {
       console.log('Success prepare buyCoffee', data);
     },
@@ -78,6 +85,14 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
 
   const submitButton = useMemo(() => {
+    if (!canAfford) {
+      return (
+        <span>
+          You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.
+        </span>
+      );
+    }
+
     if (contract.status === 'notConnected') {
       return <span>Please connect your wallet to continue.</span>;
     }
@@ -100,7 +115,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
         Send 1 Coffee for 0.001ETH
       </button>
     );
-  }, [areInputsDisabled, contract.status, contract.supportedChains]);
+  }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
