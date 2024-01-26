@@ -31,7 +31,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     functionName: 'buyCoffee',
     args: [name, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
-    value: parseEther('0.001'),
+    value: BUY_COFFEE_AMOUNT,
     onSuccess(data) {
       console.log('Success prepare buyCoffee', data);
     },
