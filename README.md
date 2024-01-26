@@ -8,28 +8,28 @@
 
 <br />
 
-**Build Onchain Apps Toolkit** takes an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
+**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial dApp setup and the hassle of integrating web3 components with web2 infrastructure. 🌊
 
-The generated onchain app aims to provide everything you need to run a web product, along with additional tools, documentation, and tricks for building onchain.
+We do this by taking an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
 
 Whether you're a hackathon participant or an ambitious entrepreneur looking to establish the next successful company, this toolkit is designed with you in mind. 💙
 
-<br />
-
-Save weeks of initial dApp setup and the hassle of integrating web3 components with web2 infrastructure. 🧰 🧙 ✨
-
+**Out of the box** 🧰 🧙 ✨
 - Progressive Web App support using [Next.js](https://nextjs.org/) 🏗️
 - Eth L2 support through [Base](https://base.org/) 🔵
 - Wallet connect integration with [RainbowKit](https://www.rainbowkit.com) 🌈
 - Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/) 🚀
 - Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/) 💅
 - Easy maintenance with linting, formatting, and tests ✅
-- Smart contract deployment with Foundry ☁️
 - Insights into Web Vitals performance metrics with Perfume.js 📈
+- Smart contract deployment with Foundry ☁️
+- Support for a local testnet node for testing smart contracts using [Anvil](https://book.getfoundry.sh/reference/anvil/).
 
 <br >
 
 ## Getting Started
+To get started building with BOAT, follow this step-by-step guide. You'll be able to explore the pre-configured contracts and experiment with them.
+
 
 #### Step 1: Kick off your onchain app
 
@@ -42,7 +42,8 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps Toolkit'>
 </p>
 
-#### Step 2: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
+#### Step 2: Set Wallet Connect Project ID
+Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file. We leverage WalletConnect to allow end-users to connect their wallets to your site.
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
@@ -51,6 +52,9 @@ NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 #### Step 3: Install and Run your onchain app
 
 ```bash
+# cd into your new project folder
+cd [app-name]
+
 # Install dependencies
 yarn
 
@@ -63,7 +67,12 @@ yarn dev
   width='800' alt='Build Onchain Apps'>
 </p>
 
-#### Step 4: Kick start your contracts
+#### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
+
+<br >
+
+## Deploy your own contracts
+#### Step 1: Kick start your contracts
 
 ```bash
 # Install Foundry
@@ -74,7 +83,7 @@ foundryup
 
 Follow the instructions of foundryup to completely setup foundry
 
-#### Step 5: Build, test and format the sample contracts
+#### Step 2: Build, test and format the sample contracts
 
 ```bash
 cd contracts
@@ -86,7 +95,7 @@ forge install
 forge build
 ```
 
-#### Step 6: Deploy contracts to Base Sepolia
+#### Step 3: Deploy contracts to Base Sepolia
 
 Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
 Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account
@@ -98,11 +107,11 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
 ```
 
-<b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>
+**Note**: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not.
 
 For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
-#### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
+
 
 <br>
 
@@ -112,7 +121,14 @@ For more information on contracts, visit [here](https://github.com/coinbase/buil
 
 <br>
 
-## Contributing ☕️ 🔵
+## Do you need gas for Base Sepolia? 🔵
+
+Learn how you can obtain free testnet funds here: https://docs.base.org/tools/network-faucets/.
+
+
+<br>
+
+## Contributing ☕️ 
 
 Read below to learn how you can take part in improving Build Onchain Apps Toolkit.
 
