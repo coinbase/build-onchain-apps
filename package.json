@@ -16,6 +16,7 @@
     "format": "nx format",
     "format:check": "nx format:check",
     "lint": "nx lint",
+    "typecheck": "nx typecheck",
     "release:check": "changeset status --verbose --since=origin/main",
     "release:publish": "yarn install && yarn build && changeset publish",
     "release:version": "changeset version && yarn install --immutable"

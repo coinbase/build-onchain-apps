@@ -10,6 +10,7 @@
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
+    "typecheck": "tsc --noEmit",
     "start": "next start",
     "stylelint": "stylelint '**/*.css' --fix",
     "stylelint:check": "stylelint '**/*.css'",

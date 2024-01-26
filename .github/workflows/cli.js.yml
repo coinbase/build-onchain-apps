@@ -27,3 +27,9 @@ jobs:
       - name: CLI Lint Check
         # When fails, please run "npm run lint" to your code
         run: npm run lint
+      - name: CLI Typescript Check
+        # When fails, please run "npm run typecheck" to your code
+        run: npm run typecheck
+      - name: CLI Format Check
+        # When fails, please run "npm run format" to your code
+        run: npm run format:check

@@ -31,6 +31,9 @@ jobs:
       - name: App Format Check
         working-directory: ./template
         run: npm run format:check
+      - name: App Typescript Check
+        working-directory: ./template
+        run: npm run typecheck
       - name: App Test Check
         working-directory: ./template
         # When fails, please check your tests

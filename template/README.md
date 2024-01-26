@@ -28,4 +28,7 @@ yarn format
 
 # Lint fix
 yarn lint
+
+# Typecheck fix
+yarn typecheck
 ```
