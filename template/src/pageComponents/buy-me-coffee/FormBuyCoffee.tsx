@@ -2,12 +2,22 @@ import React, { useState, useCallback, useMemo } from 'react';
 
 import clsx from 'clsx';
 import { parseEther } from 'viem';
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+import {
+  useAccount,
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../hooks/contracts';
+import { useBalance } from 'wagmi';
+import { useLoggedInUserCanAfford } from '../../hooks/useUserCanAfford';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
 };
+
+const BUY_COFFEE_AMOUNT_RAW = '0.5';
+const BUY_COFFEE_AMOUNT = parseEther('0.5');
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Component state
@@ -16,6 +26,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   // Get the correct contract info for current network (if present)
   const contract = useBuyMeACoffeeContract();
+
+  // Calculate if the user can afford to buy coffee
+  const canAfford = useLoggedInUserCanAfford(BUY_COFFEE_AMOUNT);
 
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
@@ -78,6 +91,14 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
 
   const submitButton = useMemo(() => {
+    if (!canAfford) {
+      return (
+        <span>
+          You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.
+        </span>
+      );
+    }
+
     if (contract.status === 'notConnected') {
       return <span>Please connect your wallet to continue.</span>;
     }
