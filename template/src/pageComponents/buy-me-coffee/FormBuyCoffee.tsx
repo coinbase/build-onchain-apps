@@ -2,14 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 
 import clsx from 'clsx';
 import { parseEther } from 'viem';
-import {
-  useAccount,
-  useContractWrite,
-  usePrepareContractWrite,
-  useWaitForTransaction,
-} from 'wagmi';
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../hooks/contracts';
-import { useBalance } from 'wagmi';
 import { useLoggedInUserCanAfford } from '../../hooks/useUserCanAfford';
 
 type FormBuyCoffeeProps = {
