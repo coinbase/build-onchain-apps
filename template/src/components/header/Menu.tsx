@@ -3,7 +3,6 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import AccountConnect from './AccountConnect';
-import styles from './Header.module.css';
 import Navbar from './Navbar';
 import { NavbarMobile } from './NavbarMobile';
 
@@ -23,7 +22,7 @@ function Menu() {
     <>
       <div className="flex h-8 items-center justify-start gap-4">
         <NextLink href="/" passHref className="relative h-8 w-8">
-          <div className={styles.MenuCircleImage} />
+          <div className="absolute size-8 rounded-full bg-white" />
         </NextLink>
         <div className="flex justify-start md:hidden">
           <button
@@ -38,7 +37,7 @@ function Menu() {
         <NextLink
           href="/"
           passHref
-          className="font-robotoMono text-center text-xl font-medium text-white"
+          className="font-robotoMono text-center text-xl font-medium text-white no-underline"
         >
           {MenuTitle}
         </NextLink>
