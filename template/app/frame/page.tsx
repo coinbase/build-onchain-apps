@@ -1,4 +1,4 @@
-import { generateFrameNextMetadata } from '../../onchainKit/core';
+import { generateFrameNextMetadata } from '@coinbase/onchainkit';
 import { generateMetadata } from '../../src/utils/generateMetadata';
 import FramePage from '.';
 
