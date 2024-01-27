@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
-import { getSlicedAddress } from '../utils/address';
+import { getSlicedAddress } from '../core/address';
 import type { Address } from 'viem';
 
 type OnchainAvatarProps = {
