@@ -23,7 +23,6 @@ export const generateMetadata = ({
   pathname,
 }: MetaTagsProps): Metadata => {
   const i = Array.isArray(images) ? images : [images];
-  console.log('frame', frame);
   return {
     metadataBase: new URL(defaultUrl),
     title,
