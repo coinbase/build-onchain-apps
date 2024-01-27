@@ -3,13 +3,7 @@ import type { Metadata } from 'next';
 type MetaTagsProps = {
   title: string;
   description: string;
-  frame?:
-    | {
-        image: string;
-        button: string;
-        post_url: string;
-      }
-    | Record<string, never>;
+  frame?: Record<string, string> | Record<string, never>;
   images: string | string[];
   url?: string;
   pathname: string;

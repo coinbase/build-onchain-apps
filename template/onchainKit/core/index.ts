@@ -1,0 +1,1 @@
+export { generateFrameMetadata } from './generateFrameMetadata';
