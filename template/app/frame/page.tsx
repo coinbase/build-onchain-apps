@@ -9,8 +9,8 @@ export const metadata = generateMetadata({
   frame: {
     image: 'https://build-onchain-apps.vercel.app/release/v-0-17.png',
     button: 'boat',
-    post_url: 'post_url_test'
-  }
+    post_url: 'post_url_test',
+  },
 });
 
 /**
