@@ -6,6 +6,11 @@ export const metadata = generateMetadata({
   description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
   images: 'themes.png',
   pathname: 'frame',
+  frame: {
+    image: 'https://build-onchain-apps.vercel.app/release/v-0-17.png',
+    button: 'boat',
+    post_url: 'post_url_test'
+  }
 });
 
 /**

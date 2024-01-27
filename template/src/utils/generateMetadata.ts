@@ -3,6 +3,11 @@ import type { Metadata } from 'next';
 type MetaTagsProps = {
   title: string;
   description: string;
+  frame?: {
+    image: string,
+    button: string,
+    post_url: string,
+  } | Record<string, never>;
   images: string | string[];
   url?: string;
   pathname: string;
@@ -16,6 +21,7 @@ const defaultUrl = deployUrl
 export const generateMetadata = ({
   title = 'Build Onchain Apps',
   description = 'The easier way to build onchain apps.',
+  frame = {},
   images,
   url = 'https://github.com/coinbase/build-onchain-apps',
   pathname,
@@ -31,5 +37,8 @@ export const generateMetadata = ({
       description,
       images: i.map((img) => `${url}/social/${img}`),
     },
+    other: {
+      ...frame,
+    }
   };
 };
