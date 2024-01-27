@@ -1,4 +1,4 @@
-import { generateFrameMetadata } from '../../onchainKit/core';
+import { generateFrameNextMetadata } from '../../onchainKit/core';
 import { generateMetadata } from '../../src/utils/generateMetadata';
 import FramePage from '.';
 
@@ -7,7 +7,11 @@ export const metadata = generateMetadata({
   description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
   images: 'themes.png',
   pathname: 'frame',
-  frame: generateFrameMetadata(),
+  frame: generateFrameNextMetadata({
+    buttons: ['boat'],
+    image: 'https://build-onchain-apps.vercel.app/release/v-0-17.png',
+    post_url: 'post_url_test',
+  }),
 });
 
 /**

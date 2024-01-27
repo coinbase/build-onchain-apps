@@ -1,1 +1,1 @@
-export { generateFrameMetadata } from './generateFrameMetadata';
+export { generateFrameNextMetadata } from './generateFrameNextMetadata';
