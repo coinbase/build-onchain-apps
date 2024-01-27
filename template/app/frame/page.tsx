@@ -10,7 +10,7 @@ export const metadata = generateMetadata({
   frame: generateFrameNextMetadata({
     buttons: ['boat'],
     image: 'https://build-onchain-apps.vercel.app/release/v-0-17.png',
-    post_url: 'post_url_test',
+    post_url: 'https://build-onchain-apps.vercel.app/api/frame',
   }),
 });
 
