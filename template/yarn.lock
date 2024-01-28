@@ -1519,7 +1519,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.5"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@coinbase/onchainkit": "npm:0.1.5"
+    "@coinbase/onchainkit": "npm:0.1.6"
     "@coinbase/wallet-sdk": "npm:^3.9.1"
     "@farcaster/hub-nodejs": "npm:^0.10.21"
     "@jest/globals": "npm:^29.7.0"
@@ -1544,9 +1544,7 @@ __metadata:
     abitype: "npm:^0.10.3"
     autoprefixer: "npm:^10.4.16"
     babel-jest: "npm:^29.7.0"
-    bufferutil: "npm:^4.0.8"
     clsx: "npm:^2.1.0"
-    encoding: "npm:^0.1.13"
     eslint: "npm:^8.27.0"
     eslint-config-airbnb: "npm:19.0.4"
     eslint-config-airbnb-typescript: "npm:17.0.0"
@@ -1596,16 +1594,15 @@ __metadata:
     ts-jest: "npm:^29.1.1"
     typescript: "npm:~5.3.3"
     unified: "npm:^11.0.4"
-    utf-8-validate: "npm:^6.0.3"
     viem: "npm:1.21.4"
     wagmi: "npm:1.4.13"
     workbox-webpack-plugin: "npm:^7.0.0"
   languageName: unknown
   linkType: soft
 
-"@coinbase/onchainkit@npm:0.1.5":
-  version: 0.1.5
-  resolution: "@coinbase/onchainkit@npm:0.1.5"
+"@coinbase/onchainkit@npm:0.1.6":
+  version: 0.1.6
+  resolution: "@coinbase/onchainkit@npm:0.1.6"
   dependencies:
     "@ethersproject/abstract-signer": "npm:^5.7.0"
     "@farcaster/fishery": "npm:^2.2.3"
@@ -1613,7 +1610,7 @@ __metadata:
     ethers: "npm:^6.10.0"
     react: "npm:^18"
     viem: "npm:^2.5.0"
-  checksum: fc10a089e068dcff8da17c2a0be62d2069522506b0a8cdb742d626edb4d6ed09db7aff242d802d8aa258a86eef748fa0dca750a85ef032752ff63d07e49e9029
+  checksum: 4896477c60ba494120b0f1e66e7a33d16ea9d61f8c4a5eb0437f9dd70e1e4cce9f423f2cc39913c4b56f1807cfb3deb4546cd218a77317a3a64017f929ac8257
   languageName: node
   linkType: hard
 
@@ -6025,7 +6022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bufferutil@npm:^4.0.1, bufferutil@npm:^4.0.8":
+"bufferutil@npm:^4.0.1":
   version: 4.0.8
   resolution: "bufferutil@npm:4.0.8"
   dependencies:
@@ -14781,16 +14778,6 @@ __metadata:
     node-gyp: "npm:latest"
     node-gyp-build: "npm:^4.3.0"
   checksum: 23cd6adc29e6901aa37ff97ce4b81be9238d0023c5e217515b34792f3c3edb01470c3bd6b264096dd73d0b01a1690b57468de3a24167dd83004ff71c51cc025f
-  languageName: node
-  linkType: hard
-
-"utf-8-validate@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "utf-8-validate@npm:6.0.3"
-  dependencies:
-    node-gyp: "npm:latest"
-    node-gyp-build: "npm:^4.3.0"
-  checksum: 2ca08b07f4070540b33ff15f3f0632fa30baaee8a766fff993be47b4829b4fb30fd36fdf1270336324d03f65e0936c4608ee719d862230d75311751dcfe27a83
   languageName: node
   linkType: hard
 
