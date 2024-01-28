@@ -17,9 +17,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       <head>
         <title>BOAT</title>
         <meta name="fc:frame" content="vNext">
-        <meta name="fc:frame:image" content="https://build-onchain-apps.vercel.app/release/v-0-16.png">
+        <meta name="fc:frame:image" content="https://build-onchain-apps.vercel.app/release/v-0-17.png">
         <meta name="fc:frame:post_url" content="post_url_test">
-        <meta name="fc:frame:button:1" content="${signer}">
+        <meta name="fc:frame:button:1" content="🌲 ${signer} 🌲">
       </head>
       <body>
         <p>BOAT Text</p>
