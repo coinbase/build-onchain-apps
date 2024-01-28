@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUB_URL = 'nemes.farcaster.xyz:2283';
 
-export function getHubClient(): HubRpcClient {
+function getHubClient(): HubRpcClient {
   return getSSLHubRpcClient(HUB_URL);
 }
 
