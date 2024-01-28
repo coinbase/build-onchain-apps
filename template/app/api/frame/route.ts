@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { HubRpcClient, Message, getSSLHubRpcClient } from '@farcaster/hub-nodejs';
+import { NextRequest, NextResponse } from 'next/server';
 
 const HUB_URL = 'nemes.farcaster.xyz:2283';
 
@@ -72,7 +72,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       <head>
         <title>BOAT</title>
         <meta name="fc:frame" content="vNext">
-        <meta name="fc:frame:image" content="https://build-onchain-apps.vercel.app/release/v-0-17.png">
+        <meta name="fc:frame:image" content="https://build-onchain-apps.vercel.app/release/v-0-16.png">
         <meta name="fc:frame:post_url" content="post_url_test">
         <meta name="fc:frame:button:1" content="${signer}">
       </head>

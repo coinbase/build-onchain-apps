@@ -9,7 +9,7 @@ export const metadata = generateMetadata({
   pathname: 'frame',
   frame: getFrameMetadata({
     buttons: ['boat'],
-    image: 'https://build-onchain-apps.vercel.app/release/v-0-16.png',
+    image: 'https://build-onchain-apps.vercel.app/release/v-0-15.png',
     post_url: 'https://build-onchain-apps.vercel.app/api/frame',
   }),
 });
