@@ -2,13 +2,13 @@
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
-> Accelerate your web3 creativity with the Build Onchain Apps Toolkit. ☕️
+> Accelerate your onchain creativity with the Build Onchain Apps Toolkit. ☕️
 
 [![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
 <br />
 
-**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial dApp setup and the hassle of integrating web3 components with web2 infrastructure. 🌊
+**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial dApp setup and the hassle of integrating onchain components with web2 infrastructure. 🌊
 
 We do this by taking an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
 
