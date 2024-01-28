@@ -1,5 +1,4 @@
 import { HubRpcClient, Message, getSSLHubRpcClient } from '@farcaster/hub-nodejs';
-import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -17,9 +16,10 @@ async function getAddrByFid(fid: number) {
     url: `https://api.neynar.com/v2/farcaster/user/bulk?fids=${fid}`,
     headers: { accept: 'application/json', api_key: 'NEYNAR_API_DOCS' },
   };
-  const resp = await axios.get(options.url, { headers: options.headers });
-  if (resp.data?.users) {
-    const userVerifications = resp.data.users[0] as FidResponse;
+  const resp = await fetch(options.url, { headers: options.headers });
+  const responseBody = await resp.json(); // Parse the response body as JSON
+  if (responseBody.users) {
+    const userVerifications = responseBody.users[0] as FidResponse;
     if (userVerifications.verifications) {
       return userVerifications.verifications[0];
     }
