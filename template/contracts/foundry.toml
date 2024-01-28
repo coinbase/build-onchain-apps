@@ -1,14 +1,19 @@
 [profile.default]
 src = "src"
 out = "out"
+test = "test"
 libs = ["lib"]
-fs_permissions = [{ access = "read", path = "./"}]
-solc="0.8.23"
+fs_permissions = [{ access = "read", path = "./" }]
+solc = "0.8.23"
 
 [rpc_endpoints]
-base_sepolia="${RPC_URL}"
+base = "https://mainnet.base.org"
+base_sepolia = "https://sepolia.base.org"
+base_goerli = "https://goerli.base.org"
 
 [etherscan]
-base_sepolia={key="${BLOCK_EXPLORER_API_KEY}",url="${BLOCK_EXPLORER}"}
+base = { key = "${BLOCK_EXPLORER_API_KEY}" }
+base_sepolia = { key = "${BLOCK_EXPLORER_API_KEY}" }
+base_goerli = { key = "${BLOCK_EXPLORER_API_KEY}" }
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
