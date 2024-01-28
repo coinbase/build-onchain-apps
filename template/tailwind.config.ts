@@ -21,6 +21,7 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-2': 'linear-gradient(270deg, #f55925 0%, #D75986 100%)',
       },
       gridTemplateColumns: {
         // Coffee column grid
@@ -42,6 +43,7 @@ const config: Config = {
         'boat-color-pink-50': '#d058c1',
         'boat-color-purple-60': '#b388f5',
         'boat-color-yellow-60': '#e9b300',
+        'boat-color-orange': '#f55925',
       },
     },
   },

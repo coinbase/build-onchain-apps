@@ -12,6 +12,7 @@ type FormBuyCoffeeProps = {
 
 const BUY_COFFEE_AMOUNT_RAW = '0.0001';
 const BUY_COFFEE_AMOUNT = parseEther(BUY_COFFEE_AMOUNT_RAW);
+const NUMBER_OF_COFFEES = [1, 2, 3, 4, 10];
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Component state
@@ -119,6 +120,20 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
+      <div>
+        {NUMBER_OF_COFFEES.map((numCoffee) => {
+          return (
+            <button
+              key={`num-coffee-btn-${numCoffee}`}
+              type="button"
+              className={clsx('border-boat-color-orange h-[40px] w-[40px] rounded border')}
+            >
+              {numCoffee}
+            </button>
+          );
+        })}
+      </div>
+
       <div>
         <div className="mb-5">
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
