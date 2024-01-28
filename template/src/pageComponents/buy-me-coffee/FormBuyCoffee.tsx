@@ -12,12 +12,13 @@ type FormBuyCoffeeProps = {
 
 const BUY_COFFEE_AMOUNT_RAW = '0.0001';
 const BUY_COFFEE_AMOUNT = parseEther(BUY_COFFEE_AMOUNT_RAW);
-const NUMBER_OF_COFFEES = [1, 2, 3, 4, 10];
+const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Component state
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const [coffeesSelected, setCoffeesSelected] = useState(1);
 
   // Get the correct contract info for current network (if present)
   const contract = useBuyMeACoffeeContract();
@@ -120,24 +121,35 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div>
-        {NUMBER_OF_COFFEES.map((numCoffee) => {
-          return (
-            <button
-              key={`num-coffee-btn-${numCoffee}`}
-              type="button"
-              className={clsx('border-boat-color-orange h-[40px] w-[40px] rounded border')}
-            >
-              {numCoffee}
-            </button>
-          );
-        })}
+      <div className="my-4 flex items-center gap-4">
+        <div className="text-4xl">☕</div>
+        <div className="font-sans text-xl">X</div>
+        <div className="flex gap-3">
+          {NUMBER_OF_COFFEES.map((numCoffee) => {
+            return (
+              <button
+                key={`num-coffee-btn-${numCoffee}`}
+                type="button"
+                className={clsx(
+                  `${
+                    coffeesSelected === numCoffee
+                      ? 'bg-gradient-2'
+                      : 'border-boat-color-orange border'
+                  } block h-[40px] w-[40px] rounded`,
+                )}
+                onClick={() => setCoffeesSelected(numCoffee)}
+              >
+                {numCoffee}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div>
         <div className="mb-5">
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-            First name
+            Name
           </label>
           <input
             type="text"
