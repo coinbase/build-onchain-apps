@@ -58,7 +58,7 @@ async function getFrameAccountAddress(
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  let signer = '';
+  let signer: string | undefined = '';
   try {
     const body: { trustedData?: { messageBytes?: string } } = await req.json();
     signer = await getFrameAccountAddress(body, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
