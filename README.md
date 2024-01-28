@@ -8,15 +8,15 @@
 
 <br />
 
-**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial dApp setup and the hassle of integrating onchain components with web2 infrastructure. 🌊
+**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial onchain app setup and eliminate the hassle of integrating onchain components with web2 infrastructure. 🌊
 
-We do this by taking an opinionated approach to streamlining and automating early decisions you must make when building your consumer product.
+We do this by taking an opinionated approach to streamlining early decisions you must make when building an onchain app.
 
-Whether you're a hackathon participant or an ambitious entrepreneur looking to establish the next successful company, this toolkit is designed with you in mind. 💙
+Whether you're a hackathon participant or an ambitious entrepreneur looking to build the next big thing, this toolkit is designed with you in mind. 💙
 
 **Out of the box** 🧰 🧙 ✨
 - Progressive Web App support using [Next.js](https://nextjs.org/) 🏗️
-- Eth L2 support through [Base](https://base.org/) 🔵
+- Ethereum L2 support through [Base](https://base.org/) 🔵
 - Wallet connect integration with [RainbowKit](https://www.rainbowkit.com) 🌈
 - Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/) 🚀
 - Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/) 💅
