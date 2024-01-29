@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 
 import clsx from 'clsx';
 import { parseEther } from 'viem';
@@ -10,8 +10,7 @@ type FormBuyCoffeeProps = {
   onComplete: () => void;
 };
 
-const BUY_COFFEE_AMOUNT_RAW = '0.0001';
-const BUY_COFFEE_AMOUNT = parseEther(BUY_COFFEE_AMOUNT_RAW);
+const BUY_COFFEE_AMOUNT_RAW = 0.0001;
 const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
@@ -20,21 +19,26 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
   const [coffeesSelected, setCoffeesSelected] = useState(1);
+  const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
+
+  useEffect(() => {
+    setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * coffeesSelected);
+  }, [coffeesSelected]);
 
   // Get the correct contract info for current network (if present)
   const contract = useBuyMeACoffeeContract();
 
   // Calculate if the user can afford to buy coffee
-  const canAfford = useLoggedInUserCanAfford(BUY_COFFEE_AMOUNT);
+  const canAfford = useLoggedInUserCanAfford(parseEther(String(buyCoffeeAmount)));
 
   // Wagmi Write call
   const { config } = usePrepareContractWrite({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
-    args: [name, twitterHandle, message],
+    args: [name, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
-    value: BUY_COFFEE_AMOUNT,
+    value: parseEther(String(buyCoffeeAmount)),
     onSuccess(data) {
       console.log('Success prepare buyCoffee', data);
     },
@@ -126,18 +130,25 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
         className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
         disabled={areInputsDisabled}
       >
-        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for {BUY_COFFEE_AMOUNT_RAW}{' '}
-        ETH
+        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for{' '}
+        {String(buyCoffeeAmount.toFixed(4))} ETH
       </button>
     );
-  }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford, coffeesSelected]);
+  }, [
+    areInputsDisabled,
+    contract.status,
+    contract.supportedChains,
+    canAfford,
+    coffeesSelected,
+    buyCoffeeAmount,
+  ]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="my-4 items-center lg:flex lg:gap-4">
         <div className="text-center text-4xl lg:text-left">☕</div>
         <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
-        <div className="flex gap-3">
+        <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
           {NUMBER_OF_COFFEES.map((numCoffee) => {
             return (
               <button
