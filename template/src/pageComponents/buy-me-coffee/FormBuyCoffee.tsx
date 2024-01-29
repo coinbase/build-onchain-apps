@@ -36,7 +36,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
-    args: [name, message],
+    args: [name, twitterHandle, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther(String(buyCoffeeAmount)),
     onSuccess(data) {
