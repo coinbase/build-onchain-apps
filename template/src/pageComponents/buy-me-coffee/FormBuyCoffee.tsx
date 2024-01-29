@@ -122,7 +122,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
     return (
       <button type="submit" disabled={areInputsDisabled}>
-        Send 1 Coffee for 0.001ETH
+        Send {coffeesSelected} Coffee for {BUY_COFFEE_AMOUNT_RAW} ETH
       </button>
     );
   }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford]);
@@ -208,7 +208,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             required
           />
         </div>
-        <div className="mt-6 flex justify-end gap-3">{submitButton}</div>
+        <div className="w-full rounded-full bg-white py-4 text-center text-sm text-black">
+          {submitButton}
+        </div>
       </div>
     </form>
   );
