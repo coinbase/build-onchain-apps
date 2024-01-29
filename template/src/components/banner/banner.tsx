@@ -11,21 +11,21 @@ export default function Banner({ pageName, pageUrl }: BannerProps) {
   return (
     <section
       className={clsx(
-        'inline-flex h-32 items-center justify-between p-6 md:flex-row',
+        'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
         'rounded-lg border border-zinc-400 border-opacity-20 bg-neutral-900',
       )}
     >
-      <div className="flex grow items-start justify-start gap-6">
-        <div className="flex h-12 w-12 items-center justify-center">
+      <div className="flex items-start justify-start gap-2 md:gap-6">
+        <div className="flex h-6 w-6 shrink-0 items-center justify-center md:h-12 md:w-12">
           <Image
             src="/hammerandpick.svg"
             width={10}
             height={10}
             alt="hammerandpick"
-            className="h-12 w-12"
+            className="h-6 w-6 md:h-12 md:w-12"
           />
         </div>
-        <div className="inline-flex grow flex-col items-start justify-start gap-2">
+        <div className="inline-flex flex-col items-start justify-start gap-2">
           <h1 className="font-inter text-base font-semibold leading-normal text-white">
             Step into the {pageName} experience.
           </h1>
@@ -36,11 +36,11 @@ export default function Banner({ pageName, pageUrl }: BannerProps) {
           </div>
         </div>
       </div>
-      <div className="flex basis-1/3 items-center justify-end gap-2.5">
+      <div className="flex w-full min-w-36 items-center justify-end md:w-fit">
         <NextLink
           href={`/${pageUrl}#guide`}
           className={clsx(
-            'font-inter w-38 rounded-3xl bg-white px-4 py-2',
+            'font-inter w-full rounded-3xl bg-white px-4 py-2',
             'text-center text-sm font-medium leading-normal text-black',
           )}
         >
