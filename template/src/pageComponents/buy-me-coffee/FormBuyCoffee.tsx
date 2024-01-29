@@ -125,13 +125,13 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
         Send {coffeesSelected} Coffee for {BUY_COFFEE_AMOUNT_RAW} ETH
       </button>
     );
-  }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford]);
+  }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford, coffeesSelected]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="my-4 items-center lg:flex lg:gap-4">
         <div className="text-center text-4xl lg:text-left">☕</div>
-        <div className="my-4 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+        <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
         <div className="flex gap-3">
           {NUMBER_OF_COFFEES.map((numCoffee) => {
             return (
