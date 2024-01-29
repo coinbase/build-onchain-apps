@@ -54,11 +54,13 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     onSuccess() {
       onComplete();
       setName('');
+      setTwitterHandle('');
       setMessage('');
     },
     onError() {
       onComplete();
       setName('');
+      setTwitterHandle('');
       setMessage('');
     },
   });
