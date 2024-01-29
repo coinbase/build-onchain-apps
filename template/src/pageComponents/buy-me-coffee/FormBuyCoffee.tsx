@@ -100,15 +100,15 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
 
-  const submitButton = useMemo(() => {
+  const submitButtonContent = useMemo(() => {
+    if (contract.status === 'notConnected') {
+      return <>Please connect your wallet to continue.</>;
+    }
+
     if (!canAfford) {
       return (
         <>You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.</>
       );
-    }
-
-    if (contract.status === 'notConnected') {
-      return <>Please connect your wallet to continue.</>;
     }
 
     if (contract.status === 'onUnsupportedNetwork') {
@@ -125,23 +125,24 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     }
 
     return (
+      <>
+        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for{' '}
+        {String(buyCoffeeAmount.toFixed(4))} ETH
+      </>
+    );
+  }, [canAfford, contract.status, contract.supportedChains, buyCoffeeAmount, coffeesSelected]);
+
+  const submitButton = useMemo(() => {
+    return (
       <button
         type="submit"
         className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
         disabled={areInputsDisabled}
       >
-        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for{' '}
-        {String(buyCoffeeAmount.toFixed(4))} ETH
+        {submitButtonContent}
       </button>
     );
-  }, [
-    areInputsDisabled,
-    contract.status,
-    contract.supportedChains,
-    canAfford,
-    coffeesSelected,
-    buyCoffeeAmount,
-  ]);
+  }, [areInputsDisabled, submitButtonContent]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
