@@ -34,6 +34,7 @@ const config: Config = {
       colors: {
         'boat-footer-dark-gray': '#141519',
         'boat-footer-light-gray': '#8a919e',
+        'boat-color-gray-900': '#191918',
         'boat-color-blue-40': '#1354e1',
         'boat-color-green-40': '#0b8552',
         'boat-color-palette-backgroundalternate': '#141519',

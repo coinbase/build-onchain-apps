@@ -17,6 +17,7 @@ const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   // Component state
   const [name, setName] = useState('');
+  const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
   const [coffeesSelected, setCoffeesSelected] = useState(1);
 
@@ -31,7 +32,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
-    args: [name, message],
+    args: [name, twitterHandle, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: BUY_COFFEE_AMOUNT,
     onSuccess(data) {
@@ -75,6 +76,13 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
       setName(event.target.value);
     },
     [setName],
+  );
+
+  const handleTwitterHandleChange = useCallback(
+    (event: { target: { value: React.SetStateAction<string> } }) => {
+      setTwitterHandle(event.target.value);
+    },
+    [setTwitterHandle],
   );
 
   const handleMessageChange = useCallback(
@@ -121,9 +129,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="my-4 flex items-center gap-4">
-        <div className="text-4xl">☕</div>
-        <div className="font-sans text-xl">X</div>
+      <div className="my-4 items-center lg:flex lg:gap-4">
+        <div className="text-center text-4xl lg:text-left">☕</div>
+        <div className="my-4 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
         <div className="flex gap-3">
           {NUMBER_OF_COFFEES.map((numCoffee) => {
             return (
@@ -135,7 +143,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
                     coffeesSelected === numCoffee
                       ? 'bg-gradient-2'
                       : 'border-boat-color-orange border'
-                  } block h-[40px] w-[40px] rounded`,
+                  } block h-[40px] w-full rounded lg:w-[40px]`,
                 )}
                 onClick={() => setCoffeesSelected(numCoffee)}
               >
@@ -155,11 +163,29 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             type="text"
             id="name"
             className={clsx([
-              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
-            placeholder="Enter your name"
+            placeholder="Name"
             onChange={handleNameChange}
+            disabled={areInputsDisabled}
+            required
+          />
+        </div>
+
+        <div className="mb-5">
+          <label htmlFor="twitterHandle" className="mb-2 block text-sm font-medium text-white">
+            Twitter handle (Optional)
+          </label>
+          <input
+            type="text"
+            id="twitterHandle"
+            className={clsx([
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
+              'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+            ])}
+            placeholder="@"
+            onChange={handleTwitterHandleChange}
             disabled={areInputsDisabled}
             required
           />
@@ -173,10 +199,10 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             value={message}
             id="message"
             className={clsx([
-              'block w-full rounded-lg border border-gray-600 bg-gray-700',
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
-            placeholder="Enter your message..."
+            placeholder="Say something"
             onChange={handleMessageChange}
             disabled={areInputsDisabled}
             required
