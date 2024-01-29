@@ -160,7 +160,7 @@ Note: In order to verify your smart contract on Basescan, you need an API key. Y
 ```bash
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia 
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
 forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url base_sepolia
 ```
 
