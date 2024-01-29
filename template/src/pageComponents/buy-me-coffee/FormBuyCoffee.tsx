@@ -99,31 +99,33 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
   const submitButton = useMemo(() => {
     if (!canAfford) {
       return (
-        <span>
-          You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.
-        </span>
+        <>You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.</>
       );
     }
 
     if (contract.status === 'notConnected') {
-      return <span>Please connect your wallet to continue.</span>;
+      return <>Please connect your wallet to continue.</>;
     }
 
     if (contract.status === 'onUnsupportedNetwork') {
       return (
-        <span>
+        <>
           Please connect to one of the supported networks to continue:{' '}
           {contract.supportedChains.map((c) => c.name).join(', ')}
-        </span>
+        </>
       );
     }
 
     if (contract.status === 'deactivated') {
-      return <span>This contract has been deactivated on this chain.</span>;
+      return <>This contract has been deactivated on this chain.</>;
     }
 
     return (
-      <button type="submit" disabled={areInputsDisabled}>
+      <button
+        type="submit"
+        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
+        disabled={areInputsDisabled}
+      >
         Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for {BUY_COFFEE_AMOUNT_RAW}{' '}
         ETH
       </button>
@@ -210,9 +212,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             required
           />
         </div>
-        <div className="w-full rounded-full bg-white py-4 text-center text-sm text-black">
-          {submitButton}
-        </div>
+        {submitButton}
       </div>
     </form>
   );
