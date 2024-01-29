@@ -122,7 +122,8 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
 
     return (
       <button type="submit" disabled={areInputsDisabled}>
-        Send {coffeesSelected} Coffee for {BUY_COFFEE_AMOUNT_RAW} ETH
+        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for {BUY_COFFEE_AMOUNT_RAW}{' '}
+        ETH
       </button>
     );
   }, [areInputsDisabled, contract.status, contract.supportedChains, canAfford, coffeesSelected]);
@@ -187,7 +188,6 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             placeholder="@"
             onChange={handleTwitterHandleChange}
             disabled={areInputsDisabled}
-            required
           />
         </div>
 
