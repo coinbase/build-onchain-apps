@@ -12,7 +12,6 @@ type MemosProps = {
  */
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
-  console.log(memos, 'MEMOS');
   return (
     <ul className="flex w-full flex-col items-center gap-10">
       {memos
