@@ -1,8 +1,9 @@
+import { TransactionSteps } from '../../ContractDemo';
 import FormBuyCoffee from './FormBuyCoffee';
 
 type BuyCoffeeFormStepProps = {
   onComplete: () => void;
-  setTransactionStep: React.Dispatch<React.SetStateAction<string | null>>;
+  setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
   numCoffees: number;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
 };

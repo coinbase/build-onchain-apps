@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
+import { TransactionSteps } from '../../ContractDemo';
 
 type TransactionCompleteStepProps = {
   numCoffees: number;
-  setTransactionStep: React.Dispatch<React.SetStateAction<string | null>>;
+  setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
 };
 
 export default function TransactionCompleteStep({

@@ -5,10 +5,11 @@ import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
 import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
+import { TransactionSteps } from '../../ContractDemo';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
-  setTransactionStep: React.Dispatch<React.SetStateAction<string | null>>;
+  setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
   numCoffees: number;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -56,7 +57,7 @@ function FormBuyCoffee({
     ...config,
     onSuccess(data) {
       console.log('Success write buyCoffee', data);
-      setTransactionStep('TRANSACTION_COMPLETE');
+      setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE);
       onComplete();
     },
     onError() {
@@ -85,7 +86,7 @@ function FormBuyCoffee({
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
       buyMeACoffee?.();
-      setTransactionStep('START_TRANSACTION');
+      setTransactionStep(TransactionSteps.START_TRANSACTION);
     },
     [buyMeACoffee, setTransactionStep],
   );

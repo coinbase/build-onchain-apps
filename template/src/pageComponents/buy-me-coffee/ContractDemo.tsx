@@ -6,8 +6,13 @@ import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
 import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
 import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
 
+export enum TransactionSteps {
+  START_TRANSACTION,
+  TRANSACTION_COMPLETE,
+}
+
 export default function BuyMeCoffeeContractDemo() {
-  const [transactionStep, setTransactionStep] = useState<string | null>(null);
+  const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
 
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
@@ -17,11 +22,11 @@ export default function BuyMeCoffeeContractDemo() {
   }, [refetchMemos]);
 
   const asideContent = useMemo(() => {
-    if (transactionStep === 'START_TRANSACTION') {
+    if (transactionStep === TransactionSteps.START_TRANSACTION) {
       return <StartTransactionStep />;
     }
 
-    if (transactionStep === 'TRANSACTION_COMPLETE') {
+    if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE) {
       return (
         <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
       );
