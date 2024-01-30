@@ -50,9 +50,12 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
     ...config,
     onSuccess(data) {
       console.log('Success write buyCoffee', data);
+      setTransactionStep('TRANSACTION_COMPLETE');
+      onComplete();
     },
     onError() {
       setTransactionStep(null);
+      onComplete();
     },
   });
 
@@ -60,14 +63,11 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
     hash: dataBuyMeACoffee?.hash,
     enabled: !!dataBuyMeACoffee,
     onSuccess() {
-      onComplete();
       setName('');
       setTwitterHandle('');
       setMessage('');
-      setTransactionStep('TRANSACTION_COMPLETE');
     },
     onError() {
-      onComplete();
       setName('');
       setTwitterHandle('');
       setMessage('');
@@ -166,7 +166,7 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
                   `${
                     coffeesSelected === numCoffee
                       ? 'bg-gradient-2'
-                      : 'border-boat-color-orange border'
+                      : 'border border-boat-color-orange'
                   } block h-[40px] w-full rounded lg:w-[40px]`,
                 )}
                 // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
@@ -188,7 +188,7 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
             type="text"
             id="name"
             className={clsx([
-              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
+              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="Name"
@@ -206,7 +206,7 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
             type="text"
             id="twitterHandle"
             className={clsx([
-              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
+              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="@"
@@ -223,7 +223,7 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
             value={message}
             id="message"
             className={clsx([
-              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
+              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="Say something"
