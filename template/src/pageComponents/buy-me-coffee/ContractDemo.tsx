@@ -1,15 +1,31 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
-import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
+import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
 
 export default function BuyMeCoffeeContractDemo() {
+  const [transactionStep, setTransactionStep] = useState<string | null>(null);
+
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
   const handleOncomplete = useCallback(() => {
     void refetchMemos();
   }, [refetchMemos]);
+
+  const asideContent = useMemo(() => {
+    if (transactionStep === 'START_TRANSACTION') {
+      return <>Coffee brewing...</>;
+    }
+
+    if (transactionStep === 'TRANSACTION_COMPLETE') {
+      return <>You bought a coffee!</>;
+    }
+
+    return (
+      <BuyCoffeeFormStep onComplete={handleOncomplete} setTransactionStep={setTransactionStep} />
+    );
+  }, [transactionStep, handleOncomplete]);
 
   return (
     <div
@@ -33,10 +49,7 @@ export default function BuyMeCoffeeContractDemo() {
           'mt-10 bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
         ])}
       >
-        <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
-          Buy Me a Coffee!
-        </h2>
-        <FormBuyCoffee onComplete={handleOncomplete} />
+        {asideContent}
       </aside>
     </div>
   );

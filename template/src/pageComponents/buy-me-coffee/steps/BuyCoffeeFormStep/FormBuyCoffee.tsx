@@ -3,17 +3,18 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
-import { useBuyMeACoffeeContract } from '../../hooks/contracts';
-import { useLoggedInUserCanAfford } from '../../hooks/useUserCanAfford';
+import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
+import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
 
 type FormBuyCoffeeProps = {
   onComplete: () => void;
+  setTransactionStep: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 const BUY_COFFEE_AMOUNT_RAW = 0.0001;
 const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
-function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
+function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
   // Component state
   const [name, setName] = useState('');
   const [twitterHandle, setTwitterHandle] = useState('');
@@ -50,6 +51,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     onSuccess(data) {
       console.log('Success write buyCoffee', data);
     },
+    onError() {
+      setTransactionStep(null);
+    },
   });
 
   const { isLoading: loadingTransaction } = useWaitForTransaction({
@@ -60,12 +64,14 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
       setName('');
       setTwitterHandle('');
       setMessage('');
+      setTransactionStep('TRANSACTION_COMPLETE');
     },
     onError() {
       onComplete();
       setName('');
       setTwitterHandle('');
       setMessage('');
+      setTransactionStep(null);
     },
   });
 
@@ -73,8 +79,9 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
       buyMeACoffee?.();
+      setTransactionStep('START_TRANSACTION');
     },
-    [buyMeACoffee],
+    [buyMeACoffee, setTransactionStep],
   );
 
   const handleNameChange = useCallback(
@@ -159,7 +166,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
                   `${
                     coffeesSelected === numCoffee
                       ? 'bg-gradient-2'
-                      : 'border border-boat-color-orange'
+                      : 'border-boat-color-orange border'
                   } block h-[40px] w-full rounded lg:w-[40px]`,
                 )}
                 // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
@@ -181,7 +188,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             type="text"
             id="name"
             className={clsx([
-              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="Name"
@@ -199,7 +206,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             type="text"
             id="twitterHandle"
             className={clsx([
-              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="@"
@@ -216,7 +223,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
             value={message}
             id="message"
             className={clsx([
-              'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+              'bg-boat-color-gray-900 block w-full rounded-lg border border-gray-600',
               'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
             ])}
             placeholder="Say something"
