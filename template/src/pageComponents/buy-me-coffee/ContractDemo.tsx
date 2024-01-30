@@ -21,7 +21,7 @@ export default function BuyMeCoffeeContractDemo() {
     }
 
     if (transactionStep === 'TRANSACTION_COMPLETE') {
-      return <TransactionCompleteStep numCoffees={1} />;
+      return <TransactionCompleteStep numCoffees={1} setTransactionStep={setTransactionStep} />;
     }
 
     return (
