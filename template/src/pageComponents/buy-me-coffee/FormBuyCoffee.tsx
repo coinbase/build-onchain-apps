@@ -162,6 +162,7 @@ function FormBuyCoffee({ onComplete }: FormBuyCoffeeProps) {
                       : 'border-boat-color-orange border'
                   } block h-[40px] w-full rounded lg:w-[40px]`,
                 )}
+                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
                 onClick={() => setCoffeesSelected(numCoffee)}
               >
                 {numCoffee}
