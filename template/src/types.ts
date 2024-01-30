@@ -5,4 +5,5 @@ export type CoffeeMemo = {
   message: string;
   userAddress: Address;
   time: bigint;
+  twitterHandle?: string;
 };
