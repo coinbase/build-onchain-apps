@@ -23,7 +23,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 - Easy maintenance with linting, formatting, and tests ✅
 - Insights into Web Vitals performance metrics with Perfume.js 📈
 - Smart contract deployment with Foundry ☁️
-- Support for a local testnet node for testing smart contracts using [Anvil](https://book.getfoundry.sh/reference/anvil/). 🧪 
+- Support for a local testnet node for testing smart contracts using [Anvil](https://book.getfoundry.sh/reference/anvil/). 🧪
 
 <br >
 
@@ -103,8 +103,8 @@ Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by crea
 ```bash
 source .env
 
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
+forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url base_sepolia
 ```
 
 **Note**: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not.
@@ -128,7 +128,7 @@ Learn how you can obtain free testnet funds here: https://docs.base.org/tools/ne
 
 <br>
 
-## Contributing ☕️ 
+## Contributing ☕️
 
 Read below to learn how you can take part in improving Build Onchain Apps Toolkit.
 
