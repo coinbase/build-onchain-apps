@@ -53,13 +53,10 @@ export default function BuyMeCoffeeContractDemo() {
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
         {memos?.length > 0 && <Memos memos={memos} />}
       </section>
-      <aside
-        className={clsx([
-          'rounded-3xl border border-solid border-boat-color-palette-line',
-          'mt-10 bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
-        ])}
-      >
-        {asideContent}
+      <aside>
+        <div className="mt-10 rounded-3xl border border-solid border-boat-color-palette-line bg-boat-color-palette-backgroundalternate p-10 md:mt-0">
+          {asideContent}
+        </div>
       </aside>
     </div>
   );
