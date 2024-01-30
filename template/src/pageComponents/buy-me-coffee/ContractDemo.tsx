@@ -8,6 +8,7 @@ import TransactionCompleteStep from './steps/TransactionCompleteStep/Transaction
 
 export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<string | null>(null);
+  const [numCoffees, setNumCoffees] = useState(1);
 
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
@@ -21,13 +22,20 @@ export default function BuyMeCoffeeContractDemo() {
     }
 
     if (transactionStep === 'TRANSACTION_COMPLETE') {
-      return <TransactionCompleteStep numCoffees={1} setTransactionStep={setTransactionStep} />;
+      return (
+        <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
+      );
     }
 
     return (
-      <BuyCoffeeFormStep onComplete={handleOncomplete} setTransactionStep={setTransactionStep} />
+      <BuyCoffeeFormStep
+        onComplete={handleOncomplete}
+        setTransactionStep={setTransactionStep}
+        numCoffees={numCoffees}
+        setNumCoffees={setNumCoffees}
+      />
     );
-  }, [transactionStep, handleOncomplete]);
+  }, [transactionStep, handleOncomplete, numCoffees]);
 
   return (
     <div

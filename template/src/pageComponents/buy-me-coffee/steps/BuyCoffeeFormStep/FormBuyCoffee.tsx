@@ -9,22 +9,28 @@ import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
 type FormBuyCoffeeProps = {
   onComplete: () => void;
   setTransactionStep: React.Dispatch<React.SetStateAction<string | null>>;
+  numCoffees: number;
+  setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const BUY_COFFEE_AMOUNT_RAW = 0.0001;
 const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
-function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
+function FormBuyCoffee({
+  onComplete,
+  setTransactionStep,
+  numCoffees,
+  setNumCoffees,
+}: FormBuyCoffeeProps) {
   // Component state
   const [name, setName] = useState('');
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
-  const [coffeesSelected, setCoffeesSelected] = useState(1);
   const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
 
   useEffect(() => {
-    setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * coffeesSelected);
-  }, [coffeesSelected]);
+    setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * numCoffees);
+  }, [numCoffees]);
 
   // Get the correct contract info for current network (if present)
   const contract = useBuyMeACoffeeContract();
@@ -37,7 +43,7 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
-    args: [BigInt(coffeesSelected), name, twitterHandle, message],
+    args: [BigInt(numCoffees), name, twitterHandle, message],
     enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther(String(buyCoffeeAmount)),
     onSuccess(data) {
@@ -133,11 +139,11 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
 
     return (
       <>
-        Send {coffeesSelected} coffee{coffeesSelected > 1 ? 's' : null} for{' '}
+        Send {numCoffees} coffee{numCoffees > 1 ? 's' : null} for{' '}
         {String(buyCoffeeAmount.toFixed(4))} ETH
       </>
     );
-  }, [canAfford, contract.status, contract.supportedChains, buyCoffeeAmount, coffeesSelected]);
+  }, [canAfford, contract.status, contract.supportedChains, buyCoffeeAmount, numCoffees]);
 
   const submitButton = useMemo(() => {
     return (
@@ -157,22 +163,22 @@ function FormBuyCoffee({ onComplete, setTransactionStep }: FormBuyCoffeeProps) {
         <div className="text-center text-4xl lg:text-left">☕</div>
         <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
         <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-          {NUMBER_OF_COFFEES.map((numCoffee) => {
+          {NUMBER_OF_COFFEES.map((numberCoffee) => {
             return (
               <button
-                key={`num-coffee-btn-${numCoffee}`}
+                key={`num-coffee-btn-${numberCoffee}`}
                 type="button"
                 className={clsx(
                   `${
-                    coffeesSelected === numCoffee
+                    numCoffees === numberCoffee
                       ? 'bg-gradient-2'
                       : 'border border-boat-color-orange'
                   } block h-[40px] w-full rounded lg:w-[40px]`,
                 )}
                 // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                onClick={() => setCoffeesSelected(numCoffee)}
+                onClick={() => setNumCoffees(numberCoffee)}
               >
-                {numCoffee}
+                {numberCoffee}
               </button>
             );
           })}
