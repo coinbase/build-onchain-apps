@@ -2,12 +2,13 @@
  * @jest-environment jsdom
  */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import NotConnected from './NotConnected';
 
 describe('NotConnected', () => {
   it('should render', () => {
     // Render the NotConnected component
     render(<NotConnected />);
+    expect(screen.getByText('Please connect your wallet to continue.')).toBeInTheDocument();
   });
 });
