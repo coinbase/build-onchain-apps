@@ -25,6 +25,7 @@ pragma solidity 0.8.23;
  * @dev Memo struct
  */
 struct Memo {
+    int numCoffees;
     string userName;
     string twitterHandle;
     string message;
@@ -46,7 +47,7 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(address indexed userAddress, uint256 time, string userName, string twitterHandle, string message);
+    event NewMemo(address indexed userAddress, uint256 time, int numCoffees, string userName, string twitterHandle, string message);
 
     constructor() {
         owner = payable(msg.sender);
@@ -64,7 +65,7 @@ contract BuyMeACoffee {
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(string calldata userName, string calldata twitterHandle, string calldata message) public payable {
+    function buyCoffee(int numCoffees, string calldata userName, string calldata twitterHandle, string calldata message) public payable {
         if (msg.value < price) {
             revert InsufficientFunds();
         }
@@ -75,9 +76,9 @@ contract BuyMeACoffee {
             revert InvalidArguments("Invalid userName or message");
         }
 
-        memos.push(Memo(userName, twitterHandle, message, block.timestamp, msg.sender));
+        memos.push(Memo(numCoffees, userName, twitterHandle, message, block.timestamp, msg.sender));
 
-        emit NewMemo(msg.sender, block.timestamp, userName, twitterHandle, message);
+        emit NewMemo(msg.sender, block.timestamp, numCoffees, userName, twitterHandle, message);
     }
 
     /**

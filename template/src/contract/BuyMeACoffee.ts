@@ -25,6 +25,7 @@ const abi = [
     inputs: [
       { indexed: true, internalType: 'address', name: 'userAddress', type: 'address' },
       { indexed: false, internalType: 'uint256', name: 'time', type: 'uint256' },
+      { indexed: false, internalType: 'int256', name: 'numCoffees', type: 'int256' },
       { indexed: false, internalType: 'string', name: 'userName', type: 'string' },
       { indexed: false, internalType: 'string', name: 'twitterHandle', type: 'string' },
       { indexed: false, internalType: 'string', name: 'message', type: 'string' },
@@ -34,6 +35,7 @@ const abi = [
   },
   {
     inputs: [
+      { internalType: 'int256', name: 'numCoffees', type: 'int256' },
       { internalType: 'string', name: 'userName', type: 'string' },
       { internalType: 'string', name: 'twitterHandle', type: 'string' },
       { internalType: 'string', name: 'message', type: 'string' },
@@ -49,6 +51,7 @@ const abi = [
     outputs: [
       {
         components: [
+          { internalType: 'int256', name: 'numCoffees', type: 'int256' },
           { internalType: 'string', name: 'userName', type: 'string' },
           { internalType: 'string', name: 'twitterHandle', type: 'string' },
           { internalType: 'string', name: 'message', type: 'string' },
@@ -67,6 +70,7 @@ const abi = [
     inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'memos',
     outputs: [
+      { internalType: 'int256', name: 'numCoffees', type: 'int256' },
       { internalType: 'string', name: 'userName', type: 'string' },
       { internalType: 'string', name: 'twitterHandle', type: 'string' },
       { internalType: 'string', name: 'message', type: 'string' },

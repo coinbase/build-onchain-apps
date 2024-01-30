@@ -19,7 +19,9 @@ function Memos({ memos }: MemosProps) {
           return (
             <MemoCard
               key={memo.time.toString()}
+              numCoffees={memo.numCoffees}
               userName={memo.userName}
+              twitterHandle={memo.twitterHandle}
               message={memo.message}
               userAddress={memo.userAddress}
               time={memo.time}

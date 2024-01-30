@@ -1,15 +1,46 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
-import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
+import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
+import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
+import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
+
+export enum TransactionSteps {
+  START_TRANSACTION,
+  TRANSACTION_COMPLETE,
+}
 
 export default function BuyMeCoffeeContractDemo() {
+  const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
+  const [numCoffees, setNumCoffees] = useState(1);
+
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
   const handleOncomplete = useCallback(() => {
     void refetchMemos();
   }, [refetchMemos]);
+
+  const asideContent = useMemo(() => {
+    if (transactionStep === TransactionSteps.START_TRANSACTION) {
+      return <StartTransactionStep />;
+    }
+
+    if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE) {
+      return (
+        <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
+      );
+    }
+
+    return (
+      <BuyCoffeeFormStep
+        onComplete={handleOncomplete}
+        setTransactionStep={setTransactionStep}
+        numCoffees={numCoffees}
+        setNumCoffees={setNumCoffees}
+      />
+    );
+  }, [transactionStep, handleOncomplete, numCoffees]);
 
   return (
     <div
@@ -27,16 +58,15 @@ export default function BuyMeCoffeeContractDemo() {
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
         {memos?.length > 0 && <Memos memos={memos} />}
       </section>
-      <aside
-        className={clsx([
-          'rounded-3xl border border-solid border-boat-color-palette-line',
-          'mt-10 bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
-        ])}
-      >
-        <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
-          Buy Me a Coffee!
-        </h2>
-        <FormBuyCoffee onComplete={handleOncomplete} />
+      <aside>
+        <div
+          className={clsx([
+            'mt-10 rounded-3xl border border-solid border-boat-color-palette-line',
+            'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
+          ])}
+        >
+          {asideContent}
+        </div>
       </aside>
     </div>
   );
