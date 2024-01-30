@@ -1,5 +1,4 @@
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SymbolIcon } from '@radix-ui/react-icons';
 
 export default function StartTransactionStep() {
   return (
@@ -14,9 +13,12 @@ export default function StartTransactionStep() {
         Please confirm transaction in your wallet
       </div>
 
-      <button type="submit" className="block w-full rounded-full bg-black py-4 text-center text-sm">
+      <button
+        type="submit"
+        className="flex w-full items-center justify-center rounded-full bg-black py-4 text-sm"
+      >
         <span className="mr-2">
-          <FontAwesomeIcon icon={faCircleNotch} spin />
+          <SymbolIcon width={15} height={15} />
         </span>
         <span>Transaction pending</span>
       </button>
