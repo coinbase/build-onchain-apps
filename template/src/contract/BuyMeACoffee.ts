@@ -26,15 +26,16 @@ const abi = [
       { indexed: true, internalType: 'address', name: 'userAddress', type: 'address' },
       { indexed: false, internalType: 'uint256', name: 'time', type: 'uint256' },
       { indexed: false, internalType: 'string', name: 'userName', type: 'string' },
+      { indexed: false, internalType: 'string', name: 'twitterHandle', type: 'string' },
       { indexed: false, internalType: 'string', name: 'message', type: 'string' },
     ],
     name: 'NewMemo',
     type: 'event',
   },
-  { stateMutability: 'payable', type: 'fallback' },
   {
     inputs: [
       { internalType: 'string', name: 'userName', type: 'string' },
+      { internalType: 'string', name: 'twitterHandle', type: 'string' },
       { internalType: 'string', name: 'message', type: 'string' },
     ],
     name: 'buyCoffee',
@@ -49,6 +50,7 @@ const abi = [
       {
         components: [
           { internalType: 'string', name: 'userName', type: 'string' },
+          { internalType: 'string', name: 'twitterHandle', type: 'string' },
           { internalType: 'string', name: 'message', type: 'string' },
           { internalType: 'uint256', name: 'time', type: 'uint256' },
           { internalType: 'address', name: 'userAddress', type: 'address' },
@@ -66,6 +68,7 @@ const abi = [
     name: 'memos',
     outputs: [
       { internalType: 'string', name: 'userName', type: 'string' },
+      { internalType: 'string', name: 'twitterHandle', type: 'string' },
       { internalType: 'string', name: 'message', type: 'string' },
       { internalType: 'uint256', name: 'time', type: 'uint256' },
       { internalType: 'address', name: 'userAddress', type: 'address' },

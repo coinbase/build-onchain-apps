@@ -7,11 +7,12 @@ import {BuyMeACoffee, Memo} from "../src/BuyMeACoffee.sol";
 contract BuyMeACoffeeTest is Test {
     BuyMeACoffee public buyMeACoffee;
     string userName = "user";
+    string twitterHandle = "testHandle";
     string message = "message";
 
     function setUp() public {
         buyMeACoffee = new BuyMeACoffee();
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(userName, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(userName, twitterHandle, message);
     }
 
     function testGetMemos() public {
@@ -23,7 +24,7 @@ contract BuyMeACoffeeTest is Test {
 
     function testRemoveMemo() public {
         assertEq(buyMeACoffee.getMemos().length, 1);
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}("test", "testMessage");
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}("test", "testHandle", "testMessage");
         buyMeACoffee.removeMemo(0);
         assertEq(buyMeACoffee.getMemos()[0].userName, "test");
     }

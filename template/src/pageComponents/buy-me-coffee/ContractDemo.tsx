@@ -30,10 +30,12 @@ export default function BuyMeCoffeeContractDemo() {
       <aside
         className={clsx([
           'rounded-3xl border border-solid border-boat-color-palette-line',
-          'bg-boat-color-palette-backgroundalternate p-10',
+          'mt-10 bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
         ])}
       >
-        <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Buy Me a Coffee!</h2>
+        <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
+          Buy Me a Coffee!
+        </h2>
         <FormBuyCoffee onComplete={handleOncomplete} />
       </aside>
     </div>
