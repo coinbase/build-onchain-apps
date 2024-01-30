@@ -59,7 +59,12 @@ export default function BuyMeCoffeeContractDemo() {
         {memos?.length > 0 && <Memos memos={memos} />}
       </section>
       <aside>
-        <div className="mt-10 rounded-3xl border border-solid border-boat-color-palette-line bg-boat-color-palette-backgroundalternate p-10 md:mt-0">
+        <div
+          className={clsx([
+            'mt-10 rounded-3xl border border-solid border-boat-color-palette-line',
+            'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
+          ])}
+        >
           {asideContent}
         </div>
       </aside>
