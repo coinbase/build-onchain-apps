@@ -17,7 +17,7 @@ function MemoCard({ numCoffees, userName, twitterHandle, message, userAddress, t
 
   return (
     <li className="flex w-full flex-col items-start gap-4">
-      <div className="flex items-center justify-between self-stretch">
+      <div className="items-center justify-between self-stretch lg:flex">
         <div className="flex items-center gap-3">
           <OnchainAvatar address={userAddress} />
           <div className="flex items-start gap-1">
@@ -30,9 +30,9 @@ function MemoCard({ numCoffees, userName, twitterHandle, message, userAddress, t
             </span>
           </div>
         </div>
-        <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+        <div className="text-3 ml-[43px] w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
           {convertedTimestamp.toDateString()}
-        </span>
+        </div>
       </div>
       <div
         className={clsx([
