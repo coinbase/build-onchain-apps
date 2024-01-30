@@ -1,14 +1,14 @@
 'use client';
 
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, ArrowTopRightIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { NavbarLink } from '../header/Navbar';
 
 export default function Footer() {
   return (
     <footer className="flex flex-1 flex-col justify-end">
-      <div className="h-96 bg-boat-footer-dark-gray py-12">
-        <div className="container mx-auto flex w-full justify-between px-8">
+      <div className="flex min-h-96 flex-col justify-between gap-16 bg-boat-footer-dark-gray py-12">
+        <div className="container mx-auto flex w-full flex-col justify-between gap-16 px-8 md:flex-row">
           <div className="flex flex-col">
             <div className="flex h-8 items-center justify-start gap-4">
               <NextLink href="/" passHref className="relative h-8 w-8">
@@ -67,11 +67,27 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex items-start justify-center">
-            <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-              <GitHubLogoIcon width="24" height="24" />
+          <div className="font-robotoMono flex flex-col items-start justify-center gap-4 text-center text-xl font-medium text-white">
+            EXPERIENCES
+            <NavbarLink href="/buy-me-coffee">
+              <span className="flex items-center gap-1 px-2">
+                Buy Me Coffee <ArrowTopRightIcon width="16" height="16" />
+              </span>
+            </NavbarLink>
+            <NavbarLink href="/mint">
+              <span className="flex items-center gap-1 px-2">
+                Mint NFT <ArrowTopRightIcon width="16" height="16" />
+              </span>
             </NavbarLink>
           </div>
+        </div>
+
+        <div className="container mx-auto flex w-full gap-8 px-8 text-base font-normal leading-7">
+          <span>Docs</span>
+          <span>Support Us</span>
+          <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+            <GitHubLogoIcon width="24" height="24" />
+          </NavbarLink>
         </div>
       </div>
     </footer>
