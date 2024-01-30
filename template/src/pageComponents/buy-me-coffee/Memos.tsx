@@ -20,6 +20,7 @@ function Memos({ memos }: MemosProps) {
             <MemoCard
               key={memo.time.toString()}
               userName={memo.userName}
+              twitterHandle={memo.twitterHandle}
               message={memo.message}
               userAddress={memo.userAddress}
               time={memo.time}

@@ -21,7 +21,7 @@ function MemoCard({ userName, twitterHandle, message, userAddress, time }: Coffe
           <div className="flex items-start gap-1">
             <span className="text-3 text-bold w-fit whitespace-nowrap font-bold text-boat-color-palette-foreground">
               {userName}
-              {twitterHandle ? `(${twitterHandle})` : null}
+              {twitterHandle ? ` (@${twitterHandle})` : null}
             </span>
             <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
               bought 1 coffee
