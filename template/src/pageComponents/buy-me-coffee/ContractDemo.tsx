@@ -3,6 +3,8 @@ import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
+import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
+import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
 
 export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<string | null>(null);
@@ -15,11 +17,11 @@ export default function BuyMeCoffeeContractDemo() {
 
   const asideContent = useMemo(() => {
     if (transactionStep === 'START_TRANSACTION') {
-      return <>Coffee brewing...</>;
+      return <StartTransactionStep />;
     }
 
     if (transactionStep === 'TRANSACTION_COMPLETE') {
-      return <>You bought a coffee!</>;
+      return <TransactionCompleteStep numCoffees={1} />;
     }
 
     return (
