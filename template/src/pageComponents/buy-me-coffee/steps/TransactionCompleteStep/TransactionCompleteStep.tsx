@@ -22,7 +22,7 @@ export default function TransactionCompleteStep({
       <div className="text-center text-6xl">🎁</div>
 
       <div className="my-4 text-center text-sm text-gray-400">
-        Thank you for supporting this user on their endeavor
+        Thank you for supporting this endeavor!
       </div>
 
       <button
