@@ -6,13 +6,14 @@ import {BuyMeACoffee, Memo} from "../src/BuyMeACoffee.sol";
 
 contract BuyMeACoffeeTest is Test {
     BuyMeACoffee public buyMeACoffee;
+    int numCoffees = 1;
     string userName = "user";
     string twitterHandle = "testHandle";
     string message = "message";
 
     function setUp() public {
         buyMeACoffee = new BuyMeACoffee();
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
     }
 
     function testGetMemos() public {
@@ -24,7 +25,7 @@ contract BuyMeACoffeeTest is Test {
 
     function testRemoveMemo() public {
         assertEq(buyMeACoffee.getMemos().length, 1);
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}("test", "testHandle", "testMessage");
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(1, "test", "testHandle", "testMessage");
         buyMeACoffee.removeMemo(0);
         assertEq(buyMeACoffee.getMemos()[0].userName, "test");
     }
