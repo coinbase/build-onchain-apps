@@ -12,6 +12,7 @@ type MemosProps = {
  */
 function Memos({ memos }: MemosProps) {
   if (!memos) return null;
+  console.log(memos, 'MEMOS');
   return (
     <ul className="flex w-full flex-col items-center gap-10">
       {memos
@@ -19,6 +20,7 @@ function Memos({ memos }: MemosProps) {
           return (
             <MemoCard
               key={memo.time.toString()}
+              numCoffees={memo.numCoffees}
               userName={memo.userName}
               twitterHandle={memo.twitterHandle}
               message={memo.message}

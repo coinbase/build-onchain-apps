@@ -11,8 +11,10 @@ import type { CoffeeMemo } from '../../types';
  * @param message Message sent by the person.
  * @param timestamp Timestamp of the memo.
  */
-function MemoCard({ userName, twitterHandle, message, userAddress, time }: CoffeeMemo) {
+function MemoCard({ numCoffees, userName, twitterHandle, message, userAddress, time }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
+  const numCoffeesInt = Number(numCoffees);
+
   return (
     <li className="flex w-full flex-col items-start gap-4">
       <div className="flex items-center justify-between self-stretch">
@@ -24,7 +26,7 @@ function MemoCard({ userName, twitterHandle, message, userAddress, time }: Coffe
               {twitterHandle ? ` (@${twitterHandle})` : null}
             </span>
             <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
-              bought 1 coffee
+              bought {numCoffeesInt} coffee{numCoffeesInt > 1 ? 's' : null}
             </span>
           </div>
         </div>
