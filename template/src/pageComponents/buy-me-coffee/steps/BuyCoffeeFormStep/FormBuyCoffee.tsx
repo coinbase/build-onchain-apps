@@ -1,8 +1,10 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
 import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
 import { TransactionSteps } from '../../ContractDemo';
@@ -112,9 +114,20 @@ function FormBuyCoffee({
     [setMessage],
   );
 
-  const areInputsDisabled = contract.status !== 'ready' || loadingTransaction;
+  const formDisabled = useMemo(() => {
+    return contract.status !== 'ready' || loadingTransaction || !canAfford;
+  }, [canAfford, contract.status, loadingTransaction]);
 
   const submitButtonContent = useMemo(() => {
+    return (
+      <>
+        Send {numCoffees} coffee{numCoffees > 1 ? 's' : null} for{' '}
+        {String(buyCoffeeAmount.toFixed(4))} ETH
+      </>
+    );
+  }, [buyCoffeeAmount, numCoffees]);
+
+  const warningContent = useMemo(() => {
     if (contract.status === 'notConnected') {
       return <>Please connect your wallet to continue.</>;
     }
@@ -138,25 +151,24 @@ function FormBuyCoffee({
       return <>This contract has been deactivated on this chain.</>;
     }
 
-    return (
-      <>
-        Send {numCoffees} coffee{numCoffees > 1 ? 's' : null} for{' '}
-        {String(buyCoffeeAmount.toFixed(4))} ETH
-      </>
-    );
-  }, [canAfford, contract.status, contract.supportedChains, buyCoffeeAmount, numCoffees]);
+    return null;
+  }, [canAfford, contract.status, contract.supportedChains]);
 
   const submitButton = useMemo(() => {
     return (
       <button
         type="submit"
-        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        disabled={areInputsDisabled}
+        className={clsx([
+          'block w-full rounded-full py-4 text-center',
+          'text-sm text-black',
+          formDisabled ? 'bg-gray-400' : 'bg-white',
+        ])}
+        disabled={formDisabled}
       >
         {submitButtonContent}
       </button>
     );
-  }, [areInputsDisabled, submitButtonContent]);
+  }, [formDisabled, submitButtonContent]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
@@ -200,7 +212,7 @@ function FormBuyCoffee({
             ])}
             placeholder="Name"
             onChange={handleNameChange}
-            disabled={areInputsDisabled}
+            disabled={formDisabled}
             required
           />
         </div>
@@ -218,7 +230,7 @@ function FormBuyCoffee({
             ])}
             placeholder="@"
             onChange={handleTwitterHandleChange}
-            disabled={areInputsDisabled}
+            disabled={formDisabled}
           />
         </div>
 
@@ -235,10 +247,18 @@ function FormBuyCoffee({
             ])}
             placeholder="Say something"
             onChange={handleMessageChange}
-            disabled={areInputsDisabled}
+            disabled={formDisabled}
             required
           />
         </div>
+        {warningContent ? (
+          <div className="my-3 flex items-center justify-center">
+            <div className="mr-2">
+              <ExclamationTriangleIcon width={12} height={12} />
+            </div>
+            <div className="text-xs">{warningContent}</div>
+          </div>
+        ) : null}
         {submitButton}
       </div>
     </form>
