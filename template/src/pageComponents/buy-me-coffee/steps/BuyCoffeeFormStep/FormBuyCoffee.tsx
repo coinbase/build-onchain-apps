@@ -59,7 +59,7 @@ function FormBuyCoffee({
     ...config,
     onSuccess(data) {
       console.log('Success write buyCoffee', data);
-      setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE);
+      setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
       onComplete();
     },
     onError() {
@@ -88,7 +88,7 @@ function FormBuyCoffee({
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
       buyMeACoffee?.();
-      setTransactionStep(TransactionSteps.START_TRANSACTION);
+      setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
     },
     [buyMeACoffee, setTransactionStep],
   );
