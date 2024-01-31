@@ -17,7 +17,7 @@ export default function OutOfGasStep({
   return (
     <>
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white">
-        You're out of gas
+        You&apos;re out of gas
       </h2>
 
       <div className="text-center text-6xl">⛽</div>
