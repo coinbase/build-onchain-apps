@@ -3,12 +3,14 @@ import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
+import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
 import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
 import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
 
 export enum TransactionSteps {
-  START_TRANSACTION,
-  TRANSACTION_COMPLETE,
+  START_TRANSACTION_STEP,
+  TRANSACTION_COMPLETE_STEP,
+  OUT_OF_GAS_STEP,
 }
 
 export default function BuyMeCoffeeContractDemo() {
@@ -22,14 +24,18 @@ export default function BuyMeCoffeeContractDemo() {
   }, [refetchMemos]);
 
   const asideContent = useMemo(() => {
-    if (transactionStep === TransactionSteps.START_TRANSACTION) {
+    if (transactionStep === TransactionSteps.START_TRANSACTION_STEP) {
       return <StartTransactionStep />;
     }
 
-    if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE) {
+    if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE_STEP) {
       return (
         <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
       );
+    }
+
+    if (transactionStep === TransactionSteps.OUT_OF_GAS_STEP) {
+      return <OutOfGasStep buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />;
     }
 
     return (
