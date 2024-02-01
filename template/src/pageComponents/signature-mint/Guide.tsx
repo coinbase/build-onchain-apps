@@ -43,8 +43,7 @@ export default function Guide() {
         </p>
         <CodeBlock
           code="
-          forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url
-          ${RPC_URL} --etherscan-api-key ${BLOCK_EXPLORER_API_KEY}
+          forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url base_sepolia
         "
         />
         <h4 className="mb-6 mt-6 text-xl font-normal text-white">
