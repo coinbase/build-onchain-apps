@@ -1519,7 +1519,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.5"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@coinbase/onchainkit": "npm:0.3.0"
+    "@coinbase/onchainkit": "npm:0.3.1"
     "@coinbase/wallet-sdk": "npm:^3.9.1"
     "@farcaster/hub-nodejs": "npm:^0.10.21"
     "@jest/globals": "npm:^29.7.0"
@@ -1600,9 +1600,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coinbase/onchainkit@npm:0.3.0":
-  version: 0.3.0
-  resolution: "@coinbase/onchainkit@npm:0.3.0"
+"@coinbase/onchainkit@npm:0.3.1":
+  version: 0.3.1
+  resolution: "@coinbase/onchainkit@npm:0.3.1"
   dependencies:
     "@ethersproject/abstract-signer": "npm:^5.7.0"
     "@farcaster/fishery": "npm:^2.2.3"
@@ -1610,7 +1610,7 @@ __metadata:
     ethers: "npm:^6.10.0"
     react: "npm:^18"
     viem: "npm:^2.5.0"
-  checksum: 10c0/9444d5d9adfbb2129bad3bd6dc573ceeb61ea30cc8e46e88c227a5766f635a5ef80478db56b928de64b49dc90f4f26ec8d2f52b80f4730f63a8d1968bef688d3
+  checksum: 10c0/0c9a09b776058cda2bb6d465cf5112ee72fd5e18dc7a1310345576f602be8ef0f0ebb5852c992de8bd4894306d209b00a3a401a181e30a6e3c0ac2b6b215cd3f
   languageName: node
   linkType: hard
 
