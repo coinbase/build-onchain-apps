@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
-import { parseEther } from 'viem';
+import { TransactionExecutionError, parseEther } from 'viem';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
@@ -62,8 +62,16 @@ function FormBuyCoffee({
       setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
       onComplete();
     },
-    onError() {
-      setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
+    onError(e) {
+      if (
+        e instanceof TransactionExecutionError &&
+        e.message.toLowerCase().includes('out of gas')
+      ) {
+        setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
+      } else {
+        setTransactionStep(null);
+      }
+
       onComplete();
     },
   });
