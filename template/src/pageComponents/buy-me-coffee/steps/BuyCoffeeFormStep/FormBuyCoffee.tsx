@@ -63,7 +63,7 @@ function FormBuyCoffee({
       onComplete();
     },
     onError() {
-      setTransactionStep(null);
+      setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
       onComplete();
     },
   });
