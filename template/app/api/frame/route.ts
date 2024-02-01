@@ -1,22 +1,13 @@
-import {
-  FrameRequest,
-  getFrameAccountAddress,
-  getFrameMessage,
-  getFrameHtmlResponse,
-} from '@coinbase/onchainkit';
+import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
   const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body);
+  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_API_DOCS' });
   if (isValid) {
-    try {
-      accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
-    } catch (err) {
-      console.error(err);
-    }
+    accountAddress = message.interactor.verified_accounts[0];
   }
 
   return new NextResponse(
