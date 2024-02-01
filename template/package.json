@@ -43,7 +43,6 @@
     "scroll-into-view-if-needed": "^3.1.0",
     "shikiji": "^0.9.17",
     "shikiji-core": "^0.9.17",
-    "tls": "^0.0.1",
     "unified": "^11.0.4",
     "viem": "1.21.4",
     "wagmi": "1.4.13",

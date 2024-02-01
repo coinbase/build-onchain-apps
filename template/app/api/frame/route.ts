@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let accountAddress: string | undefined = '';
   const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_API_DOCS' });
+  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
   if (isValid) {
     accountAddress = message.interactor.verified_accounts[0];
   }
@@ -14,7 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `🌊 ${accountAddress} ⛵️`,
+          label: `🌲 ${accountAddress} 🌲`,
         },
       ],
       image: 'https://build-onchain-apps.vercel.app/release/v-0-17.png',
