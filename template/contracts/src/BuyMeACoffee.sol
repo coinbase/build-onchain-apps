@@ -19,13 +19,13 @@ pragma solidity 0.8.23;
  *   Use at your own risk, acknowledging the inherent risks of smart contract technology on the blockchain.
  *
  */
- 
+
 /**
  * @title Memos
  * @dev Memo struct
  */
 struct Memo {
-    int numCoffees;
+    uint numCoffees;
     string userName;
     string twitterHandle;
     string message;
@@ -47,7 +47,7 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(address indexed userAddress, uint256 time, int numCoffees, string userName, string twitterHandle, string message);
+    event NewMemo(address indexed userAddress, uint256 time, uint numCoffees, string userName, string twitterHandle, string message);
 
     constructor() {
         owner = payable(msg.sender);
@@ -65,8 +65,8 @@ contract BuyMeACoffee {
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(int numCoffees, string calldata userName, string calldata twitterHandle, string calldata message) public payable {
-        if (msg.value < price) {
+    function buyCoffee(uint numCoffees, string calldata userName, string calldata twitterHandle, string calldata message) public payable {
+        if (msg.value < price*numCoffees) {
             revert InsufficientFunds();
         }
 

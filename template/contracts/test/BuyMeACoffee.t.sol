@@ -6,7 +6,7 @@ import {BuyMeACoffee, Memo} from "../src/BuyMeACoffee.sol";
 
 contract BuyMeACoffeeTest is Test {
     BuyMeACoffee public buyMeACoffee;
-    int numCoffees = 1;
+    uint numCoffees = 1;
     string userName = "user";
     string twitterHandle = "testHandle";
     string message = "message";
