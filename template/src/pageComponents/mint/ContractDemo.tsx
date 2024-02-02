@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { baseSepolia } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
@@ -15,6 +14,7 @@ export default function MintContractDemo() {
   const contract = useCustom1155Contract();
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
+
   const { collectionName, description, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
     contract.status === 'ready' ? contract.address : undefined,
@@ -48,15 +48,21 @@ export default function MintContractDemo() {
   }
 
   return (
-    <div className="mt-10 grid grid-cols-1 items-stretch justify-start md:grid-cols-2mint md:gap-9">
-      <div className="align-center flex flex-col justify-start gap-5">
-        <Image src={imageAddress} alt={collectionName} width="300" height="300" />
+    <div className="my-10 gap-16 lg:flex">
+      <div className="w-full flex-shrink-0 flex-grow lg:max-w-[600px]">
+        <img src={imageAddress} alt={collectionName} className="block w-full rounded-2xl" />
       </div>
-      <div className="align-center flex flex-col justify-start gap-5">
-        <p className="mb-1 text-xl font-bold"> {collectionName}</p>
-        <p className="text-sm">{description}</p>
-        <button type="button" onClick={mint}>
-          Mint for free (requires gas)
+      <div className="flex-shrink-1 w-full flex-grow-0">
+        <h1 className="text-4xl font-bold"> {collectionName}</h1>
+
+        <p className="my-4 text-sm text-boat-footer-light-gray">{description}</p>
+
+        <button
+          type="button"
+          onClick={mint}
+          className="my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black"
+        >
+          Mint
         </button>
       </div>
     </div>
