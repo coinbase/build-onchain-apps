@@ -1,6 +1,7 @@
 import { baseSepolia } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
+import NextImage from '../../components/NextImage/NextImage';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
@@ -50,7 +51,11 @@ export default function MintContractDemo() {
   return (
     <div className="my-10 gap-16 lg:flex">
       <div className="w-full flex-shrink-0 flex-grow lg:max-w-[600px]">
-        <img src={imageAddress} alt={collectionName} className="block w-full rounded-2xl" />
+        <NextImage
+          src={imageAddress}
+          altText={collectionName}
+          className="block w-full rounded-2xl"
+        />
       </div>
       <div className="flex-shrink-1 w-full flex-grow-0">
         <h1 className="text-4xl font-bold"> {collectionName}</h1>
