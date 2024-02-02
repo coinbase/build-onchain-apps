@@ -176,6 +176,7 @@ npm uninstall -g @coinbase/build-onchain-apps
 ```
 
 <br>
+<br>
 
 ## The Team and Our Community ☁️ 🌁 ☁️
 
@@ -202,13 +203,6 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <a href="https://twitter.com/snoopies_eth">Sneh Koul</a>
       </td>
       <td align="center" valign="top">
-        <a href="https://twitter.com/alvaroraminelli">
-          <img width="80" height="80" src="https://github.com/alvaroraminelli.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
-      </td>
-      <td align="center" valign="top">
         <a href="https://twitter.com/wespickett">
           <img width="80" height="80" src="https://github.com/wespickett.png?s=100">
         </a>
@@ -218,25 +212,18 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="https://twitter.com/renanmav">
-          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/renanmav">Renan Machado</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://warpcast.com/cnasc">
-          <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
-        </a>
-        <br />
-        <a href="https://warpcast.com/cnasc">Chris Nascone</a>
-      </td>
-      <td align="center" valign="top">
         <a href="https://twitter.com/mochikuan">
           <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1712595142614347776/c5yeQaaU_400x400.jpg">
         </a>
         <br />
         <a href="https://twitter.com/mochikuan">Rose Kuan</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/renanmav">
+          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/renanmav">Renan Machado</a>
       </td>
       <td align="center" valign="top">
         <a href="https://twitter.com/0xr0b_eth">
@@ -246,9 +233,33 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <a href="https://twitter.com/0xr0b_eth">Rob Polak</a>
       </td>
     </tr>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/arsood">
+          <img width="80" height="80" src="https://github.com/arsood.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/arsood">Arun Sood</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/alvaroraminelli">
+          <img width="80" height="80" src="https://github.com/alvaroraminelli.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://warpcast.com/cnasc">
+          <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
+        </a>
+        <br />
+        <a href="https://warpcast.com/cnasc">Chris Nascone</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
+<br>
 <br>
 
 ## License
