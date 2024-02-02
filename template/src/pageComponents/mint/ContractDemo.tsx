@@ -2,6 +2,7 @@ import { baseSepolia } from 'viem/chains';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import SwitchNetwork from './SwitchNetwork';
@@ -74,6 +75,13 @@ export default function MintContractDemo() {
         >
           Mint
         </button>
+
+        <div className="flex items-center">
+          <div className="w-full max-w-[70%] flex-shrink-0 flex-grow">
+            <ProgressBar percent={45} />
+          </div>
+          <div className="w-full flex-shrink flex-grow-0 text-right">94/200 Minted</div>
+        </div>
       </div>
     </div>
   );
