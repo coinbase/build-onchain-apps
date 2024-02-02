@@ -76,11 +76,13 @@ export default function MintContractDemo() {
           Mint
         </button>
 
-        <div className="flex items-center">
-          <div className="w-full max-w-[70%] flex-shrink-0 flex-grow">
+        <div className="items-center md:flex">
+          <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">
             <ProgressBar percent={45} />
           </div>
-          <div className="w-full flex-shrink flex-grow-0 text-right">94/200 Minted</div>
+          <div className="mt-2 w-full flex-shrink flex-grow-0 text-boat-footer-light-gray md:mt-0 md:text-right">
+            94/200 Minted
+          </div>
         </div>
       </div>
     </div>
