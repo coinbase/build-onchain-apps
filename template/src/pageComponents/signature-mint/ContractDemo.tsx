@@ -1,21 +1,33 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { parseEther } from 'viem';
-import { baseSepolia, Chain } from 'viem/chains';
-import {
-  useAccount,
-  useContractRead,
-  useContractWrite,
-  useNetwork,
-  usePrepareContractWrite,
-} from 'wagmi';
-import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
+import { baseSepolia } from 'viem/chains';
+import { useAccount, useContractRead, useNetwork } from 'wagmi';
+import { useCollectionMetadata } from '../../../onchainKit';
 import { useSignatureMint721 } from '../../hooks/contracts';
 import { useDebounce } from '../../hooks/useDebounce';
 import NotConnected from '../mint/NotConnected';
 import SwitchNetwork from '../mint/SwitchNetwork';
+import FreeMintButton from './FreeMintButton';
+import PaidMintButton from './PaidMintButton';
+import ViewContractLink from './ViewContractLink';
 
 const EXPECTED_CHAIN = baseSepolia;
+
+/**
+ * Call the API backend to get a signature
+ */
+async function fetchSignature(chainId: number, address: `0x${string}` | undefined) {
+  try {
+    const response = await fetch(`/api/mint/signature/free?chainId=${chainId}&wallet=${address}`);
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+    const result = (await response.json()) as { signature: string };
+    return result.signature;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}
 
 export default function SignatureMintDemo() {
   const [signature, setSignature] = useState('');
@@ -30,8 +42,6 @@ export default function SignatureMintDemo() {
   const debouncedSigValue = useDebounce<string>(signature, 500);
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
   const contractAddress = contract.status === 'ready' ? contract.address : undefined;
-  const explorerLink = useBlockExplorerLink(chain as Chain, contractAddress);
-  const [usedFreeMint, setUsedFreeMint] = useState(false);
 
   const { collectionName, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
@@ -39,57 +49,19 @@ export default function SignatureMintDemo() {
     contract.abi,
   );
 
-  /**
-   * Call the API backend to get a signature
-   */
-  const fetchSig = useCallback(async () => {
-    try {
-      const response = await fetch(
-        `/api/mint/signature/free?chainId=${chain?.id}&wallet=${address}`,
-      );
-      if (!response.ok) {
-        setSigFailure(true);
-        return console.error(response);
-      }
-      const result = (await response.json()) as { signature: string };
-      setSignature(result.signature);
-    } catch (err) {
-      setSigFailure(true);
-      console.error(err);
-    }
-  }, [chain, address]);
-
   useEffect(() => {
     if (chain && address) {
-      void fetchSig();
+      fetchSignature(chain?.id, address)
+        .then((result) => {
+          setSigFailure(false);
+          setSignature(result);
+        })
+        .catch((err) => {
+          console.error(err);
+          setSigFailure(true);
+        });
     }
-  }, [fetchSig, chain, address]);
-
-  /**
-   * Free Mint Contract Logic
-   */
-  const { config: freeMintConfig } = usePrepareContractWrite({
-    // TODO: the chainId should be dynamic
-    address: contractAddress,
-    abi: contract.abi,
-    functionName: 'freeMint',
-    args: address ? [address, debouncedSigValue] : undefined,
-    enabled: signature.length > 0,
-  });
-  const { write: freeMint } = useContractWrite(freeMintConfig);
-
-  /**
-   * Paid Mint Contract Write Logic
-   */
-  const { config: paidMintConfig } = usePrepareContractWrite({
-    // TODO: the chainId should be dynamic
-    address: contractAddress,
-    abi: contract.abi,
-    functionName: 'mint',
-    args: [address],
-    value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
-  });
-  const { write: paidMint } = useContractWrite(paidMintConfig);
+  }, [chain, address]);
 
   const usedFreeMintResponse = useContractRead({
     // TODO: the chainId should be dynamic
@@ -102,9 +74,7 @@ export default function SignatureMintDemo() {
     cacheTime: 0,
     staleTime: 0,
   });
-  useEffect(() => {
-    setUsedFreeMint(usedFreeMintResponse.data as boolean);
-  }, [usedFreeMintResponse.data]);
+  const usedFreeMint = Boolean(usedFreeMintResponse.data);
 
   if (!isConnected) {
     return <NotConnected />;
@@ -145,13 +115,11 @@ export default function SignatureMintDemo() {
             {!sigFailure && (
               <p className="text-sm">
                 {!usedFreeMint && signature.length && (
-                  <button
-                    type="button"
-                    onClick={freeMint}
-                    className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                  >
-                    Mint NFT Free
-                  </button>
+                  <FreeMintButton
+                    signatureMint721Contract={contract}
+                    address={address}
+                    signature={debouncedSigValue}
+                  />
                 )}
                 {usedFreeMint && (
                   <button
@@ -162,24 +130,8 @@ export default function SignatureMintDemo() {
                     Freemint Used
                   </button>
                 )}
-                <button
-                  type="button"
-                  onClick={paidMint}
-                  className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                >
-                  Paid Mint
-                </button>
-                {explorerLink && (
-                  <a
-                    href={explorerLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus:shadow-outline ml-3 inline-block rounded bg-blue-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none"
-                  >
-                    {' '}
-                    View Contract
-                  </a>
-                )}
+                <PaidMintButton signatureMint721Contract={contract} address={address} />
+                <ViewContractLink chain={chain} contractAddress={contractAddress} />
               </p>
             )}
           </p>
