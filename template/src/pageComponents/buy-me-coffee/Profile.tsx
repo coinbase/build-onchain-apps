@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import UserAvatar from './Avatar.svg';
 
-export default function Introduction() {
+export default function Profile() {
   // TODO: Fetch these values dynamically
   const coffeeReceivedCount = 90;
   const userName = '0xPudgy';
