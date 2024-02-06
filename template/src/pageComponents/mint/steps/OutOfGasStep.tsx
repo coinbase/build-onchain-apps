@@ -1,14 +1,13 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
-import { MintSteps } from '../../ContractDemo';
+import { MintSteps } from '../ContractDemo';
 
-type MintCompleteStepProps = {
+type OutOfGasStepProps = {
   setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;
-  collectionName: string | null;
 };
 
-export default function MintCompleteStep({ setMintStep, collectionName }: MintCompleteStepProps) {
-  const handleMintAnother = useCallback(() => {
+export default function OutOfGasStep({ setMintStep }: OutOfGasStepProps) {
+  const handleGotIt = useCallback(() => {
     setMintStep(null);
   }, [setMintStep]);
 
@@ -20,21 +19,21 @@ export default function MintCompleteStep({ setMintStep, collectionName }: MintCo
       )}
     >
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white">
-        Congrats! You minted {collectionName}
+        You&apos;re out of gas
       </h2>
 
-      <div className="text-center text-6xl">🎉</div>
+      <div className="text-center text-6xl">⛽</div>
 
       <div className="my-4 text-center text-sm text-gray-400">
-        It will take ~ 5 minutes to show up in your wallet
+        Please fund your wallet and try minting the NFT again.
       </div>
 
       <button
         type="button"
         className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        onClick={handleMintAnother}
+        onClick={handleGotIt}
       >
-        Mint another NFT
+        Got it
       </button>
     </div>
   );

@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 import clsx from 'clsx';
 import { TransactionExecutionError } from 'viem';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
-import { useCustom1155Contract } from '../../../../hooks/contracts';
-import { EXPECTED_CHAIN, MintSteps } from '../../ContractDemo';
+import { useCustom1155Contract } from '../../../hooks/contracts';
+import { EXPECTED_CHAIN, MintSteps } from '../ContractDemo';
 
 type StartMintProps = {
   setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;

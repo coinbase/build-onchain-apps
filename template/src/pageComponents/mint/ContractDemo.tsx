@@ -6,10 +6,10 @@ import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
-import MintCompleteStep from './steps/MintCompleteStep/MintCompleteStep';
-import MintProcessingStep from './steps/MintProcessingStep/MintProcessingStep';
-import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
-import StartMintStep from './steps/StartMintStep/StartMintStep';
+import MintCompleteStep from './steps/MintCompleteStep';
+import MintProcessingStep from './steps/MintProcessingStep';
+import OutOfGasStep from './steps/OutOfGasStep';
+import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
 export const EXPECTED_CHAIN = baseSepolia;
