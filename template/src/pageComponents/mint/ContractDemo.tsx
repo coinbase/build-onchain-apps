@@ -1,15 +1,24 @@
+import { useMemo, useState } from 'react';
 import { baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
-import StartMint from './steps/StartMint/StartMint';
+import MintProcessingStep from './steps/MintProcessingStep/MintProcessingStep';
+import StartMintStep from './steps/StartMintStep/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
 export const EXPECTED_CHAIN = baseSepolia;
 
+export enum MintSteps {
+  START_MINT_STEP,
+  MINT_PROCESSING_STEP,
+}
+
 export default function MintContractDemo() {
+  const [mintStep, setMintStep] = useState<MintSteps | null>(null);
+
   const { chain } = useNetwork();
 
   const contract = useCustom1155Contract();
@@ -21,6 +30,14 @@ export default function MintContractDemo() {
     contract.status === 'ready' ? contract.address : undefined,
     contract.abi,
   );
+
+  const mintContent = useMemo(() => {
+    if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
+      return <MintProcessingStep />;
+    }
+
+    return <StartMintStep setMintStep={setMintStep} />;
+  }, [mintStep]);
 
   if (contract.status === 'notConnected') {
     return <NotConnected />;
@@ -54,7 +71,7 @@ export default function MintContractDemo() {
 
         <p className="my-4 text-sm text-boat-footer-light-gray">{description}</p>
 
-        <StartMint />
+        {mintContent}
       </div>
     </div>
   );

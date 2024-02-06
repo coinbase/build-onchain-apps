@@ -1,10 +1,15 @@
+import { useCallback } from 'react';
 import clsx from 'clsx';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../../../hooks/contracts';
-import { EXPECTED_CHAIN } from '../../ContractDemo';
+import { EXPECTED_CHAIN, MintSteps } from '../../ContractDemo';
 
-export default function StartMint() {
+type StartMintProps = {
+  setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;
+};
+
+export default function StartMintStep({ setMintStep }: StartMintProps) {
   const { chain } = useNetwork();
   const { address } = useAccount();
 
@@ -23,13 +28,26 @@ export default function StartMint() {
   // A future enhancement would be to use the `isLoading` and `isSuccess`
   // properties returned by `useContractWrite` to indicate transaction
   // status in the UI.
-  const { write: mint } = useContractWrite(config);
+  const { write: performMint } = useContractWrite({
+    ...config,
+    onSuccess() {
+      setMintStep(MintSteps.START_MINT_STEP);
+    },
+    onError() {
+      setMintStep(null);
+    },
+  });
+
+  const handleMint = useCallback(() => {
+    performMint?.();
+    setMintStep(MintSteps.MINT_PROCESSING_STEP);
+  }, [performMint, setMintStep]);
 
   return (
     <>
       <button
         type="button"
-        onClick={mint}
+        onClick={handleMint}
         className={clsx(
           'my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black',
           onCorrectNetwork ? 'bg-white' : 'bg-gray-400',
