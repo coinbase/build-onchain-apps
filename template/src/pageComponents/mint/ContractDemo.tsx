@@ -82,7 +82,7 @@ export default function MintContractDemo() {
 
         <h2 className="my-5">{String(ethAmount)} ETH</h2>
 
-        <p className="my-4 text-sm text-boat-footer-light-gray">{description}</p>
+        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">{description}</p>
 
         {mintContent}
 
