@@ -6,7 +6,7 @@ export default function MintProcessingStep() {
     <div
       className={clsx(
         'rounded-lg border border-boat-color-palette-line',
-        'bg-boat-footer-dark-gray p-8',
+        'mb-8 bg-boat-footer-dark-gray p-8',
       )}
     >
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white">

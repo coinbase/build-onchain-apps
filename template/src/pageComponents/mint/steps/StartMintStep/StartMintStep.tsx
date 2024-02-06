@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
-import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../../../hooks/contracts';
 import { EXPECTED_CHAIN, MintSteps } from '../../ContractDemo';
 
@@ -44,27 +43,16 @@ export default function StartMintStep({ setMintStep }: StartMintProps) {
   }, [performMint, setMintStep]);
 
   return (
-    <>
-      <button
-        type="button"
-        onClick={handleMint}
-        className={clsx(
-          'my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black',
-          onCorrectNetwork ? 'bg-white' : 'bg-gray-400',
-        )}
-        disabled={!onCorrectNetwork}
-      >
-        Mint
-      </button>
-
-      <div className="items-center md:flex">
-        <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">
-          <ProgressBar percent={45} />
-        </div>
-        <div className="mt-2 w-full flex-shrink flex-grow-0 text-boat-footer-light-gray md:mt-0 md:text-right">
-          94/200 Minted
-        </div>
-      </div>
-    </>
+    <button
+      type="button"
+      onClick={handleMint}
+      className={clsx(
+        'my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black',
+        onCorrectNetwork ? 'bg-white' : 'bg-gray-400',
+      )}
+      disabled={!onCorrectNetwork}
+    >
+      Mint
+    </button>
   );
 }
