@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
-import { baseSepolia } from 'viem/chains';
 import { useNetwork } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import { EXPECTED_CHAIN } from '../../constants';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import MintCompleteStep from './steps/MintCompleteStep';
@@ -11,8 +11,6 @@ import MintProcessingStep from './steps/MintProcessingStep';
 import OutOfGasStep from './steps/OutOfGasStep';
 import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
-
-export const EXPECTED_CHAIN = baseSepolia;
 
 export enum MintSteps {
   START_MINT_STEP,
