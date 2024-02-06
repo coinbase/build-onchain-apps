@@ -6,6 +6,7 @@ import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
+import MintCompleteStep from './steps/MintCompleteStep/MintCompleteStep';
 import MintProcessingStep from './steps/MintProcessingStep/MintProcessingStep';
 import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
 import StartMintStep from './steps/StartMintStep/StartMintStep';
@@ -17,6 +18,7 @@ export enum MintSteps {
   START_MINT_STEP,
   MINT_PROCESSING_STEP,
   OUT_OF_GAS_STEP,
+  MINT_COMPLETE_STEP,
 }
 
 export default function MintContractDemo() {
@@ -43,8 +45,12 @@ export default function MintContractDemo() {
       return <OutOfGasStep setMintStep={setMintStep} />;
     }
 
+    if (mintStep === MintSteps.MINT_COMPLETE_STEP) {
+      return <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />;
+    }
+
     return <StartMintStep setMintStep={setMintStep} />;
-  }, [mintStep]);
+  }, [mintStep, collectionName]);
 
   if (contract.status === 'notConnected') {
     return <NotConnected />;

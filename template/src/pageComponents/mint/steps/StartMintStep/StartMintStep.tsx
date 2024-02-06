@@ -31,7 +31,7 @@ export default function StartMintStep({ setMintStep }: StartMintProps) {
   const { write: performMint } = useContractWrite({
     ...config,
     onSuccess() {
-      setMintStep(MintSteps.START_MINT_STEP);
+      setMintStep(MintSteps.MINT_COMPLETE_STEP);
     },
     onError(e) {
       if (
