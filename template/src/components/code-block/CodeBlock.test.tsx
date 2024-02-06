@@ -5,10 +5,13 @@ import { render, screen } from '@testing-library/react';
 import CodeBlock from './CodeBlock';
 
 describe('CodeBlock', () => {
-  it('should render code snippet', async () => {
-    // reference: https://github.com/testing-library/react-testing-library/issues/1209#issuecomment-1544407773
-    render(await CodeBlock({ code: "import React from 'react';" }));
+  it('should render loading state', () => {
+    render(<CodeBlock code={"import React from 'react';"} />);
+    expect(screen.getByText('...')).toBeInTheDocument();
+  });
 
-    expect(screen.getByText("import React from 'react';")).toBeInTheDocument();
+  it('should eventually render code snippet', async () => {
+    render(<CodeBlock code={"import React from 'react';"} />);
+    expect(await screen.findByText("import React from 'react';")).toBeInTheDocument();
   });
 });
