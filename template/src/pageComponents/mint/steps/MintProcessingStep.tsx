@@ -1,5 +1,6 @@
 import { SymbolIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
+import Button from '../../../components/Button/Button';
 
 export default function MintProcessingStep() {
   return (
@@ -19,15 +20,11 @@ export default function MintProcessingStep() {
         Please confirm transaction in your wallet
       </div>
 
-      <button
-        type="submit"
-        className="flex w-full items-center justify-center rounded-full bg-black py-4 text-sm"
-      >
-        <span className="mr-2">
-          <SymbolIcon width={15} height={15} />
-        </span>
-        <span>Minting in progress</span>
-      </button>
+      <Button
+        buttonContent={<span>Minting in progress</span>}
+        icon={<SymbolIcon width={15} height={15} />}
+        variant="secondary"
+      />
     </div>
   );
 }

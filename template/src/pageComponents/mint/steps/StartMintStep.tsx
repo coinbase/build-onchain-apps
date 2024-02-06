@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import clsx from 'clsx';
 import { TransactionExecutionError } from 'viem';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
+import Button from '../../../components/Button/Button';
 import { useCustom1155Contract } from '../../../hooks/contracts';
 import { EXPECTED_CHAIN, MintSteps } from '../ContractDemo';
 
@@ -51,16 +52,11 @@ export default function StartMintStep({ setMintStep }: StartMintProps) {
   }, [performMint, setMintStep]);
 
   return (
-    <button
-      type="button"
+    <Button
+      buttonContent="Mint"
       onClick={handleMint}
-      className={clsx(
-        'my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black',
-        onCorrectNetwork ? 'bg-white' : 'bg-gray-400',
-      )}
       disabled={!onCorrectNetwork}
-    >
-      Mint
-    </button>
+      className={clsx('my-4', onCorrectNetwork ? 'bg-white' : 'bg-gray-400')}
+    />
   );
 }
