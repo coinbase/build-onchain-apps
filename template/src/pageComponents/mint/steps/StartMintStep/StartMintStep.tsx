@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
+import { TransactionExecutionError } from 'viem';
 import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { useCustom1155Contract } from '../../../../hooks/contracts';
 import { EXPECTED_CHAIN, MintSteps } from '../../ContractDemo';
@@ -32,8 +33,15 @@ export default function StartMintStep({ setMintStep }: StartMintProps) {
     onSuccess() {
       setMintStep(MintSteps.START_MINT_STEP);
     },
-    onError() {
-      setMintStep(null);
+    onError(e) {
+      if (
+        e instanceof TransactionExecutionError &&
+        e.message.toLowerCase().includes('out of gas')
+      ) {
+        setMintStep(MintSteps.OUT_OF_GAS_STEP);
+      } else {
+        setMintStep(null);
+      }
     },
   });
 

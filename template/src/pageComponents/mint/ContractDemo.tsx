@@ -7,6 +7,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
 import MintProcessingStep from './steps/MintProcessingStep/MintProcessingStep';
+import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
 import StartMintStep from './steps/StartMintStep/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
@@ -15,6 +16,7 @@ export const EXPECTED_CHAIN = baseSepolia;
 export enum MintSteps {
   START_MINT_STEP,
   MINT_PROCESSING_STEP,
+  OUT_OF_GAS_STEP,
 }
 
 export default function MintContractDemo() {
@@ -35,6 +37,10 @@ export default function MintContractDemo() {
   const mintContent = useMemo(() => {
     if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
       return <MintProcessingStep />;
+    }
+
+    if (mintStep === MintSteps.OUT_OF_GAS_STEP) {
+      return <OutOfGasStep setMintStep={setMintStep} />;
     }
 
     return <StartMintStep setMintStep={setMintStep} />;
