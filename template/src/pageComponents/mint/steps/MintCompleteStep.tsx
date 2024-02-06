@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
+import Button from '../../../components/Button/Button';
 import { MintSteps } from '../ContractDemo';
 
 type MintCompleteStepProps = {
@@ -29,13 +30,7 @@ export default function MintCompleteStep({ setMintStep, collectionName }: MintCo
         It will take ~ 5 minutes to show up in your wallet
       </div>
 
-      <button
-        type="button"
-        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        onClick={handleMintAnother}
-      >
-        Mint another NFT
-      </button>
+      <Button buttonContent="Mint another NFT" onClick={handleMintAnother} />
     </div>
   );
 }

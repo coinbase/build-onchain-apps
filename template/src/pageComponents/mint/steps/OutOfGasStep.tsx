@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
+import Button from '../../../components/Button/Button';
 import { MintSteps } from '../ContractDemo';
 
 type OutOfGasStepProps = {
@@ -28,13 +29,7 @@ export default function OutOfGasStep({ setMintStep }: OutOfGasStepProps) {
         Please fund your wallet and try minting the NFT again.
       </div>
 
-      <button
-        type="button"
-        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        onClick={handleGotIt}
-      >
-        Got it
-      </button>
+      <Button buttonContent="Got it" onClick={handleGotIt} />
     </div>
   );
 }
