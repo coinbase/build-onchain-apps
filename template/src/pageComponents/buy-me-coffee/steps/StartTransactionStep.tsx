@@ -17,6 +17,7 @@ export default function StartTransactionStep() {
       <Button
         buttonContent={<span>Transaction pending</span>}
         icon={<SymbolIcon width={15} height={15} />}
+        variant="secondary"
       />
     </>
   );

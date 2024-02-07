@@ -254,12 +254,7 @@ function FormBuyCoffee({
           </div>
         ) : null}
 
-        <Button
-          buttonContent={submitButtonContent}
-          disabled={formDisabled}
-          isSubmit
-          variant="secondary"
-        />
+        <Button buttonContent={submitButtonContent} disabled={formDisabled} isSubmit />
       </div>
     </form>
   );
