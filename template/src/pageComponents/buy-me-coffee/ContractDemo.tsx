@@ -51,7 +51,7 @@ export default function BuyMeCoffeeContractDemo() {
   return (
     <div
       className={clsx([
-        'mb-16 mt-10 grid grid-cols-1 items-stretch justify-start',
+        'my-10 grid grid-cols-1 items-stretch justify-start md:my-14',
         'md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg',
       ])}
     >
