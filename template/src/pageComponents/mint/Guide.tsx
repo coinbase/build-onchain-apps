@@ -24,7 +24,7 @@ export default function Guide() {
         Guide
       </h2>
       <hr className="mb-10 mt-6 border-zinc-400" />
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-16">
         <div>
           <GuideHeading>STEP 1</GuideHeading>
           <GuideDescription>Kick off your onchain app</GuideDescription>
