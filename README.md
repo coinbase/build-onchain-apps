@@ -256,6 +256,15 @@ Build Onchain Apps Toolkit is all about community; for any questions, feel free 
         <a href="https://warpcast.com/cnasc">Chris Nascone</a>
       </td>
     </tr>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://twitter.com/eragon5121">
+          <img width="80" height="80" src="https://github.com/eragon512.png?s=100">
+        </a>
+        <br />
+        <a href="https://twitter.com/eragon5121">Anirud Samala</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 

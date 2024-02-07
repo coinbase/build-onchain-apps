@@ -75,8 +75,6 @@ export function NavbarExperiencesList() {
     <>
       <ListItem href="/buy-me-coffee">Buy Me Coffee</ListItem>
       <ListItem href="/mint">Mint NFT</ListItem>
-      <ListItem href="/signature-mint">Signature Mint</ListItem>
-      <ListItem href="/frame">Frame</ListItem>
     </>
   );
 }
