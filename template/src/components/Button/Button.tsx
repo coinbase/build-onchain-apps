@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 type ButtonProps = {
   buttonContent: ReactNode | string;
-  type?: 'submit' | 'button' | 'reset';
+  type?: HTMLButtonElement['type'];
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   variant?: 'primary' | 'secondary';
