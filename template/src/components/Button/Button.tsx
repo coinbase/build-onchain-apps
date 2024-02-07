@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 type ButtonProps = {
   buttonContent: ReactNode | string;
-  isSubmit?: boolean;
+  type?: 'submit' | 'button' | 'reset';
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   variant?: 'primary' | 'secondary';
@@ -14,7 +14,7 @@ type ButtonProps = {
 
 export default function Button({
   buttonContent,
-  isSubmit,
+  type = 'button',
   className,
   onClick,
   variant = 'primary',
@@ -24,7 +24,8 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      type={isSubmit ? 'submit' : 'button'}
+      // eslint-disable-next-line react/button-has-type
+      type={type}
       onClick={onClick}
       className={clsx(
         'flex w-full items-center justify-center',
