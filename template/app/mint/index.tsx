@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import Banner from '../../src/components/banner/banner';
 import Header from '../../src/components/header/Header';
+import HorizontalLine from '../../src/components/horizontal-line/HorizontalLine';
 import Guide from '../../src/pageComponents/mint/Guide';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
@@ -25,7 +26,9 @@ export default function MintPage() {
       <Header />
       <main className="container mx-auto flex flex-col px-8 py-6">
         <Banner pageName="Mint NFT" pageUrl="mint" />
+        <HorizontalLine />
         <MintContractDemo />
+        <HorizontalLine />
         <Guide />
       </main>
     </>
