@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { TransactionSteps } from '../../ContractDemo';
+import Button from '../../../components/Button/Button';
+import { TransactionSteps } from '../ContractDemo';
 
 type TransactionCompleteStepProps = {
   numCoffees: number;
@@ -26,13 +27,7 @@ export default function TransactionCompleteStep({
         Thank you for supporting this endeavor!
       </div>
 
-      <button
-        type="button"
-        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        onClick={handleSendAnother}
-      >
-        Send another coffee
-      </button>
+      <Button buttonContent="Send another coffee" onClick={handleSendAnother} />
     </>
   );
 }

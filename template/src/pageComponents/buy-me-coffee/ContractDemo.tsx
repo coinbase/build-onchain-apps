@@ -3,9 +3,9 @@ import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
-import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
-import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
-import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
+import OutOfGasStep from './steps/OutOfGasStep';
+import StartTransactionStep from './steps/StartTransactionStep';
+import TransactionCompleteStep from './steps/TransactionCompleteStep';
 
 export enum TransactionSteps {
   START_TRANSACTION_STEP,

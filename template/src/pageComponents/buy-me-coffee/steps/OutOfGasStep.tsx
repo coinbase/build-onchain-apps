@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { TransactionSteps } from '../../ContractDemo';
+import Button from '../../../components/Button/Button';
+import { TransactionSteps } from '../ContractDemo';
 
 type OutOfGasStepProps = {
   buyCoffeeAmountRaw: number;
@@ -27,13 +28,7 @@ export default function OutOfGasStep({
         coffee again.
       </div>
 
-      <button
-        type="button"
-        className="block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        onClick={handleGotIt}
-      >
-        Got it
-      </button>
+      <Button buttonContent="Got it" onClick={handleGotIt} />
     </>
   );
 }
