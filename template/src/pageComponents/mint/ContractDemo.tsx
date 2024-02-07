@@ -1,16 +1,27 @@
-import { baseSepolia } from 'viem/chains';
-import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
+import { useMemo, useState } from 'react';
+import { useNetwork } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import { EXPECTED_CHAIN } from '../../constants';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
+import MintCompleteStep from './steps/MintCompleteStep';
+import MintProcessingStep from './steps/MintProcessingStep';
+import OutOfGasStep from './steps/OutOfGasStep';
+import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
-const EXPECTED_CHAIN = baseSepolia;
+export enum MintSteps {
+  START_MINT_STEP,
+  MINT_PROCESSING_STEP,
+  OUT_OF_GAS_STEP,
+  MINT_COMPLETE_STEP,
+}
 
 export default function MintContractDemo() {
-  const { address } = useAccount();
+  const [mintStep, setMintStep] = useState<MintSteps | null>(null);
+
   const { chain } = useNetwork();
 
   const contract = useCustom1155Contract();
@@ -23,18 +34,21 @@ export default function MintContractDemo() {
     contract.abi,
   );
 
-  const { config } = usePrepareContractWrite({
-    address: contract.status === 'ready' ? contract.address : undefined,
-    abi: contract.abi,
-    functionName: 'mint',
-    args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
-    enabled: onCorrectNetwork,
-  });
+  const mintContent = useMemo(() => {
+    if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
+      return <MintProcessingStep />;
+    }
 
-  // A future enhancement would be to use the `isLoading` and `isSuccess`
-  // properties returned by `useContractWrite` to indicate transaction
-  // status in the UI.
-  const { write: mint } = useContractWrite(config);
+    if (mintStep === MintSteps.OUT_OF_GAS_STEP) {
+      return <OutOfGasStep setMintStep={setMintStep} />;
+    }
+
+    if (mintStep === MintSteps.MINT_COMPLETE_STEP) {
+      return <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />;
+    }
+
+    return <StartMintStep setMintStep={setMintStep} />;
+  }, [mintStep, collectionName]);
 
   if (contract.status === 'notConnected') {
     return <NotConnected />;
@@ -66,15 +80,9 @@ export default function MintContractDemo() {
 
         <h2 className="my-5">{String(ethAmount)} ETH</h2>
 
-        <p className="my-4 text-sm text-boat-footer-light-gray">{description}</p>
+        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">{description}</p>
 
-        <button
-          type="button"
-          onClick={mint}
-          className="my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black"
-        >
-          Mint
-        </button>
+        {mintContent}
 
         <div className="items-center md:flex">
           <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">
