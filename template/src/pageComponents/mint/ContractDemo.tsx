@@ -42,9 +42,6 @@ export default function MintContractDemo() {
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
   });
 
-  // A future enhancement would be to use the `isLoading` and `isSuccess`
-  // properties returned by `useWriteContract` to indicate transaction
-  // status in the UI.
   const { writeContract } = useWriteContract();
 
   const mintContent = useMemo(() => {
@@ -77,7 +74,6 @@ export default function MintContractDemo() {
   }
 
   if (!data) {
-    // A future enhancement would be a nicer spinner here.
     return <span className="text-xl">Internal Server Error</span>;
   }
 

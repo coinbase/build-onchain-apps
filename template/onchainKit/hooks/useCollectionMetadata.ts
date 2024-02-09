@@ -67,10 +67,8 @@ export function useCollectionMetadata(enabled: boolean, address: Address | undef
   } else {
     lookupType = UriFunctionType.uri;
   }
-  // In this case the contract URI is already HTTPS. A production-ready
-  // solution would check the protocol and transform if necessary.
+
   const { data: contractURI } = useReadContract({
-    // TODO: the chainId should be dynamic
     address: address,
     abi: abi,
     functionName: lookupType.toString(),

@@ -63,6 +63,7 @@ function FormBuyCoffee({
   }, [isSuccess, onComplete, setTransactionStep]);
 
   useEffect(() => {
+    //  TODO: Need to figure out how to do out of gas in wagmi 2.0
     if (isError) {
       setTransactionStep(null);
     }

@@ -59,7 +59,6 @@ export default function SignatureMintDemo() {
   }, [fetchSig, chain, address]);
 
   const usedFreeMintResponse = useReadContract({
-    // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'usedFreeMints',
@@ -74,7 +73,6 @@ export default function SignatureMintDemo() {
    * Free Mint Contract Logic
    */
   const freeMintData = useSimulateContract({
-    // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'freeMint',
@@ -88,7 +86,6 @@ export default function SignatureMintDemo() {
    * Paid Mint Contract Write Logic
    */
   const mintData = useSimulateContract({
-    // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'mint',
