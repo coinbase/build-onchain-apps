@@ -3,7 +3,7 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import { TransactionExecutionError, parseEther } from 'viem';
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 
 import Button from '../../../../components/Button/Button';
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
@@ -43,30 +43,54 @@ function FormBuyCoffee({
   const canAfford = useLoggedInUserCanAfford(parseEther(String(buyCoffeeAmount)));
 
   // Wagmi Write call
-  const { config } = usePrepareContractWrite({
+  const { data } = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
     args: [BigInt(numCoffees), name, twitterHandle, message],
-    enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther(String(buyCoffeeAmount)),
-    onSuccess(data) {
-      console.log('Success prepare buyCoffee', data);
+    query: {
+      enabled: name !== '' && message !== '' && contract.status === 'ready',
     },
   });
 
   // Wagmi Write call
-  const { write: buyMeACoffee, data: dataBuyMeACoffee } = useContractWrite({
-    ...config,
-    onSuccess(data) {
-      console.log('Success write buyCoffee', data);
+  const {
+    writeContract: buyMeACoffee,
+    data: dataBuyMeACoffee,
+    status: statusBuyMeACoffee,
+    error: errorBuyMeACoffee,
+  } = useWriteContract();
+
+  const { status: transactionStatus } = useWaitForTransactionReceipt({
+    hash: dataBuyMeACoffee,
+    query: {
+      enabled: !!dataBuyMeACoffee,
+    },
+  });
+
+  const handleSubmit = useCallback(
+    (event: { preventDefault: () => void }) => {
+      event.preventDefault();
+      if (data?.request) {
+        buyMeACoffee?.(data?.request);
+        setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
+      } else {
+        setTransactionStep(null);
+      }
+    },
+    [buyMeACoffee, data?.request, setTransactionStep],
+  );
+
+  useEffect(() => {
+    if (statusBuyMeACoffee === 'success') {
+      console.log('Success write buyCoffee', dataBuyMeACoffee);
       setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
       onComplete();
-    },
-    onError(e) {
+    } else if (statusBuyMeACoffee === 'error') {
       if (
-        e instanceof TransactionExecutionError &&
-        e.message.toLowerCase().includes('out of gas')
+        errorBuyMeACoffee instanceof TransactionExecutionError &&
+        errorBuyMeACoffee.message.toLowerCase().includes('out of gas')
       ) {
         setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
       } else {
@@ -74,33 +98,23 @@ function FormBuyCoffee({
       }
 
       onComplete();
-    },
-  });
+    } else {
+    }
+  }, [dataBuyMeACoffee, errorBuyMeACoffee, onComplete, setTransactionStep, statusBuyMeACoffee]);
 
-  const { isLoading: loadingTransaction } = useWaitForTransaction({
-    hash: dataBuyMeACoffee?.hash,
-    enabled: !!dataBuyMeACoffee,
-    onSuccess() {
+  useEffect(() => {
+    if (transactionStatus === 'success') {
       setName('');
       setTwitterHandle('');
       setMessage('');
-    },
-    onError() {
+    } else if (transactionStatus === 'error') {
       setName('');
       setTwitterHandle('');
       setMessage('');
       setTransactionStep(null);
-    },
-  });
-
-  const handleSubmit = useCallback(
-    (event: { preventDefault: () => void }) => {
-      event.preventDefault();
-      buyMeACoffee?.();
-      setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
-    },
-    [buyMeACoffee, setTransactionStep],
-  );
+    } else {
+    }
+  }, [setTransactionStep, transactionStatus]);
 
   const handleNameChange = useCallback(
     (event: { target: { value: React.SetStateAction<string> } }) => {
@@ -124,8 +138,8 @@ function FormBuyCoffee({
   );
 
   const formDisabled = useMemo(() => {
-    return contract.status !== 'ready' || loadingTransaction || !canAfford;
-  }, [canAfford, contract.status, loadingTransaction]);
+    return Boolean(contract.status !== 'ready' || transactionStatus === 'pending' || !canAfford);
+  }, [canAfford, contract.status, transactionStatus]);
 
   const submitButtonContent = useMemo(() => {
     return (

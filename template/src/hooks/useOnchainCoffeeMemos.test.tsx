@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
-import { useContractRead } from 'wagmi';
+import { useReadContract } from 'wagmi';
 import OnchainProviders from '../providers/OnchainProviders';
 import { CoffeeMemo } from '../types';
 import { markStep } from '../utils/analytics';
@@ -14,7 +14,7 @@ jest.mock('../utils/analytics', () => ({
 
 jest.mock('wagmi', () => ({
   ...jest.requireActual<typeof import('wagmi')>('wagmi'),
-  useContractRead: jest.fn(),
+  useReadContract: jest.fn(),
 }));
 
 describe('useOnchainCoffeeMemos', () => {
@@ -32,7 +32,7 @@ describe('useOnchainCoffeeMemos', () => {
         userName: 'userName',
       },
     ];
-    (useContractRead as jest.Mock).mockImplementation(() => ({
+    (useReadContract as jest.Mock).mockImplementation(() => ({
       status: 'success',
       data: memos,
     }));
@@ -56,7 +56,7 @@ describe('useOnchainCoffeeMemos', () => {
         userName: 'userName',
       },
     ];
-    (useContractRead as jest.Mock).mockImplementation(() => ({
+    (useReadContract as jest.Mock).mockImplementation(() => ({
       status: 'error',
       data: memos,
     }));

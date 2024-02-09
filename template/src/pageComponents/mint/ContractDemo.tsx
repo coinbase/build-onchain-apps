@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
@@ -22,7 +22,7 @@ export enum MintSteps {
 export default function MintContractDemo() {
   const [mintStep, setMintStep] = useState<MintSteps | null>(null);
 
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
 
   const contract = useCustom1155Contract();
 
