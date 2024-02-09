@@ -1,9 +1,8 @@
 import { useCallback } from 'react';
-import { baseSepolia } from 'viem/chains';
 import { useSwitchChain } from 'wagmi';
 
 // TODO: use supported contracts from hook to populate selector
-const EXPECTED_CHAIN = baseSepolia;
+import { EXPECTED_CHAIN } from '../../constants';
 
 function SwitchNetwork() {
   const { switchChain } = useSwitchChain();

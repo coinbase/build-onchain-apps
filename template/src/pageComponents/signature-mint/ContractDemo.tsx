@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { parseEther } from 'viem';
-import { Chain, baseSepolia } from 'viem/chains';
+import { Chain } from 'viem/chains';
 import {
   useAccount,
   useReadContract,
@@ -9,12 +9,11 @@ import {
   useWriteContract
 } from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
+import { EXPECTED_CHAIN } from '../../constants';
 import { useSignatureMint721 } from '../../hooks/contracts';
 import { useDebounce } from '../../hooks/useDebounce';
 import NotConnected from '../mint/NotConnected';
 import SwitchNetwork from '../mint/SwitchNetwork';
-
-const EXPECTED_CHAIN = baseSepolia;
 
 export default function SignatureMintDemo() {
   const [signature, setSignature] = useState('');

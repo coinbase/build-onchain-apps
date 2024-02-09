@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { parseEther } from 'viem';
 import { useSimulateContract, useWriteContract } from 'wagmi';
 
+import Button from '../../../../components/Button/Button';
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
 import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
 import { TransactionSteps } from '../../ContractDemo';
@@ -146,22 +147,6 @@ function FormBuyCoffee({
     return null;
   }, [canAfford, contract.status, contract.supportedChains]);
 
-  const submitButton = useMemo(() => {
-    return (
-      <button
-        type="submit"
-        className={clsx([
-          'block w-full rounded-full py-4 text-center',
-          'text-sm text-black',
-          formDisabled ? 'bg-gray-400' : 'bg-white',
-        ])}
-        disabled={formDisabled}
-      >
-        {submitButtonContent}
-      </button>
-    );
-  }, [formDisabled, submitButtonContent]);
-
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="my-4 items-center lg:flex lg:gap-4">
@@ -243,6 +228,7 @@ function FormBuyCoffee({
             required
           />
         </div>
+
         {warningContent ? (
           <div className="my-3 flex items-center justify-center">
             <div className="mr-2">
@@ -251,7 +237,8 @@ function FormBuyCoffee({
             <div className="text-xs">{warningContent}</div>
           </div>
         ) : null}
-        {submitButton}
+
+        <Button buttonContent={submitButtonContent} type="submit" disabled={formDisabled} />
       </div>
     </form>
   );

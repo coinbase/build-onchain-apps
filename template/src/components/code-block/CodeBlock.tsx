@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import * as React from 'react';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeStringify from 'rehype-stringify';
@@ -20,21 +21,31 @@ async function highlightCode(code: string) {
   return String(file);
 }
 
-export default async function CodeBlock({
-  code,
-  language = 'sh',
-}: {
-  code: string;
-  language?: string;
-}) {
-  const highlightedCode = await highlightCode(code);
+function Code({ code }: { code: string }) {
+  const [innerHtml, setHtml] = useState('...');
+  useEffect(() => {
+    if (!code) {
+      return;
+    }
 
+    highlightCode(code)
+      .then((highlightedCode) => {
+        setHtml(highlightedCode);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [code]);
+  // eslint-disable-next-line react/no-danger
+  return <code dangerouslySetInnerHTML={{ __html: innerHtml }} />;
+}
+
+export default function CodeBlock({ code, language = 'sh' }: { code: string; language?: string }) {
   return (
     <div className={styles.CodeBlock}>
       <span className={styles.CodeBlockLang}>{language}</span>
       <pre className={styles.CodeBlockPre}>
-        {/* eslint-disable-next-line react/no-danger */}
-        <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+        <Code code={code} />
       </pre>
     </div>
   );

@@ -4,9 +4,9 @@ import { markStep } from 'perfume.js';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
-import OutOfGasStep from './steps/OutOfGasStep/OutOfGasStep';
-import StartTransactionStep from './steps/StartTransactionStep/StartTransactionStep';
-import TransactionCompleteStep from './steps/TransactionCompleteStep/TransactionCompleteStep';
+import OutOfGasStep from './steps/OutOfGasStep';
+import StartTransactionStep from './steps/StartTransactionStep';
+import TransactionCompleteStep from './steps/TransactionCompleteStep';
 
 export enum TransactionSteps {
   START_TRANSACTION_STEP,
@@ -54,7 +54,7 @@ export default function BuyMeCoffeeContractDemo() {
   return (
     <div
       className={clsx([
-        'mb-16 mt-10 grid grid-cols-1 items-stretch justify-start',
+        'my-10 grid grid-cols-1 items-stretch justify-start md:my-14',
         'md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg',
       ])}
     >

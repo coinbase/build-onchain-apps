@@ -1,21 +1,33 @@
-import { baseSepolia } from 'viem/chains';
-import { useAccount, useWriteContract, useSimulateContract } from 'wagmi';
+import { useMemo, useState } from 'react';
+import { useAccount, useConfig, useSimulateContract, useWriteContract } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import { EXPECTED_CHAIN } from '../../constants';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
+import MintCompleteStep from './steps/MintCompleteStep';
+import MintProcessingStep from './steps/MintProcessingStep';
+import OutOfGasStep from './steps/OutOfGasStep';
+import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
-const EXPECTED_CHAIN = baseSepolia;
+export enum MintSteps {
+  START_MINT_STEP,
+  MINT_PROCESSING_STEP,
+  OUT_OF_GAS_STEP,
+  MINT_COMPLETE_STEP,
+}
 
 export default function MintContractDemo() {
   const { address } = useAccount();
-  const { chain } = useAccount();
+  const [mintStep, setMintStep] = useState<MintSteps | null>(null);
+
+  const { chains } = useConfig()
 
   const contract = useCustom1155Contract();
 
-  const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
+  const onCorrectNetwork = chains[0]?.id === EXPECTED_CHAIN.id;
 
   const { collectionName, description, imageAddress, isLoading } = useCollectionMetadata(
     onCorrectNetwork,
@@ -35,10 +47,22 @@ export default function MintContractDemo() {
   // status in the UI.
   const { writeContract } = useWriteContract()
 
-  if (!data) {
-    // A future enhancement would be a nicer spinner here.
-    return <span className="text-xl">Internal Server Error</span>;
-  }
+
+  const mintContent = useMemo(() => {
+    if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
+      return <MintProcessingStep />;
+    }
+
+    if (mintStep === MintSteps.OUT_OF_GAS_STEP) {
+      return <OutOfGasStep setMintStep={setMintStep} />;
+    }
+
+    if (mintStep === MintSteps.MINT_COMPLETE_STEP) {
+      return <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />;
+    }
+
+    return <StartMintStep setMintStep={setMintStep} />;
+  }, [mintStep, collectionName]);
 
   if (contract.status === 'notConnected') {
     return <NotConnected />;
@@ -51,6 +75,11 @@ export default function MintContractDemo() {
   if (isLoading) {
     // A future enhancement would be a nicer spinner here.
     return <span className="text-xl">loading...</span>;
+  }
+
+  if (!data) {
+    // A future enhancement would be a nicer spinner here.
+    return <span className="text-xl">Internal Server Error</span>;
   }
 
   // TODO: Retrieve this dynamically
@@ -70,7 +99,7 @@ export default function MintContractDemo() {
 
         <h2 className="my-5">{String(ethAmount)} ETH</h2>
 
-        <p className="my-4 text-sm text-boat-footer-light-gray">{description}</p>
+        <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">{description}</p>
 
         <button
           type="button"
@@ -79,6 +108,7 @@ export default function MintContractDemo() {
         >
           Mint
         </button>
+        {mintContent}
 
         <div className="items-center md:flex">
           <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">
