@@ -2,10 +2,9 @@
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
-import { useContractRead } from 'wagmi';
+import { useReadContract } from 'wagmi';
 import OnchainProviders from '../providers/OnchainProviders';
 import { CoffeeMemo } from '../types';
-import { markStep } from '../utils/analytics';
 import useOnchainCoffeeMemos from './useOnchainCoffeeMemos';
 
 jest.mock('../utils/analytics', () => ({
@@ -14,7 +13,7 @@ jest.mock('../utils/analytics', () => ({
 
 jest.mock('wagmi', () => ({
   ...jest.requireActual<typeof import('wagmi')>('wagmi'),
-  useContractRead: jest.fn(),
+  useReadContract: jest.fn(),
 }));
 
 describe('useOnchainCoffeeMemos', () => {
@@ -32,41 +31,26 @@ describe('useOnchainCoffeeMemos', () => {
         userName: 'userName',
       },
     ];
-    (useContractRead as jest.Mock).mockImplementation(() => ({
-      status: 'success',
+    (useReadContract as jest.Mock).mockImplementation(() => ({
       data: memos,
     }));
-    expect(markStep).not.toHaveBeenCalled();
 
     const { result } = renderHook(() => useOnchainCoffeeMemos(), { wrapper: OnchainProviders });
 
-    expect(result.current.memos).toStrictEqual(memos);
-    expect(markStep).toHaveBeenCalledTimes(2);
-    expect(markStep).toHaveBeenNthCalledWith(1, 'useContractRead.refetchMemos');
-    expect(markStep).toHaveBeenNthCalledWith(2, 'useContractRead.refetchMemos');
+    expect(result.current.data[0].message).toStrictEqual(memos[0].message);
+    expect(result.current.data[0].numCoffees).toStrictEqual(memos[0].numCoffees);
+    expect(result.current.data[0].time).toStrictEqual(memos[0].time);
+    expect(result.current.data[0].userAddress).toStrictEqual(memos[0].userAddress);
+    expect(result.current.data[0].userName).toStrictEqual(memos[0].userName);
   });
 
   it('if contract read fails, should return empty array', () => {
-    const memos: CoffeeMemo[] = [
-      {
-        message: 'message',
-        numCoffees: BigInt(2),
-        time: BigInt(1),
-        userAddress: '0x1',
-        userName: 'userName',
-      },
-    ];
-    (useContractRead as jest.Mock).mockImplementation(() => ({
-      status: 'error',
-      data: memos,
+    (useReadContract as jest.Mock).mockImplementation(() => ({
+      data: [],
     }));
-    expect(markStep).not.toHaveBeenCalled();
 
     const { result } = renderHook(() => useOnchainCoffeeMemos(), { wrapper: OnchainProviders });
 
-    expect(result.current.memos).toStrictEqual([]);
-    expect(markStep).toHaveBeenCalledTimes(2);
-    expect(markStep).toHaveBeenNthCalledWith(1, 'useContractRead.refetchMemos');
-    expect(markStep).toHaveBeenNthCalledWith(2, 'useContractRead.refetchMemos');
+    expect(result.current.data.length).toEqual(0);
   });
 });

@@ -65,7 +65,7 @@ export default function BuyMeCoffeeContractDemo() {
         ])}
       >
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
-        {data.length > 0 && <Memos memos={data} />}
+        {data && data.length > 0 && <Memos memos={data} />}
       </section>
       <aside>
         <div
