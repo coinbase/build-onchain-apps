@@ -1,9 +1,9 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
-import { TransactionExecutionError, parseEther } from 'viem';
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+import { parseEther } from 'viem';
+import { useSimulateContract, useWriteContract } from 'wagmi';
 
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
 import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
@@ -30,6 +30,7 @@ function FormBuyCoffee({
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
   const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
+  const { isSuccess, isError,  writeContract } = useWriteContract()
 
   useEffect(() => {
     setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * numCoffees);
@@ -42,63 +43,46 @@ function FormBuyCoffee({
   const canAfford = useLoggedInUserCanAfford(parseEther(String(buyCoffeeAmount)));
 
   // Wagmi Write call
-  const { config } = usePrepareContractWrite({
+  const { data }  = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
     args: [BigInt(numCoffees), name, twitterHandle, message],
-    enabled: name !== '' && message !== '' && contract.status === 'ready',
     value: parseEther(String(buyCoffeeAmount)),
-    onSuccess(data) {
-      console.log('Success prepare buyCoffee', data);
-    },
   });
 
   // Wagmi Write call
-  const { write: buyMeACoffee, data: dataBuyMeACoffee } = useContractWrite({
-    ...config,
-    onSuccess(data) {
-      console.log('Success write buyCoffee', data);
-      setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
-      onComplete();
-    },
-    onError(e) {
-      if (
-        e instanceof TransactionExecutionError &&
-        e.message.toLowerCase().includes('out of gas')
-      ) {
-        setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
-      } else {
-        setTransactionStep(null);
-      }
 
-      onComplete();
-    },
-  });
-
-  const { isLoading: loadingTransaction } = useWaitForTransaction({
-    hash: dataBuyMeACoffee?.hash,
-    enabled: !!dataBuyMeACoffee,
-    onSuccess() {
-      setName('');
-      setTwitterHandle('');
-      setMessage('');
-    },
-    onError() {
-      setName('');
-      setTwitterHandle('');
-      setMessage('');
+  useEffect(() => {
+    if (isSuccess) {
+      window.alert('Success 🚀');
       setTransactionStep(null);
-    },
-  });
+      onComplete();
+    }
+  }, [isSuccess, onComplete, setTransactionStep]);
+
+  useEffect(() => {
+    if (isError) {
+      setTransactionStep(null);
+    }
+  }
+  , [isError, setTransactionStep]);
 
   const handleSubmit = useCallback(
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
-      buyMeACoffee?.();
-      setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
+      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+      if (!data || !data.request) {
+        setTransactionStep(null);
+        onComplete();
+        setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
+      }
+
+      if (data) {
+        writeContract(data.request);
+      }
     },
-    [buyMeACoffee, setTransactionStep],
+    [data, onComplete, setTransactionStep, writeContract],
   );
 
   const handleNameChange = useCallback(
@@ -123,8 +107,8 @@ function FormBuyCoffee({
   );
 
   const formDisabled = useMemo(() => {
-    return contract.status !== 'ready' || loadingTransaction || !canAfford;
-  }, [canAfford, contract.status, loadingTransaction]);
+    return contract.status !== 'ready'  || !canAfford;
+  }, [canAfford, contract.status]);
 
   const submitButtonContent = useMemo(() => {
     return (

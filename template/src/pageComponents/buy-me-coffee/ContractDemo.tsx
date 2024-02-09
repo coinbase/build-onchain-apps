@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
+import { markStep } from 'perfume.js';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
@@ -17,11 +18,12 @@ export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
 
-  const { memos, refetchMemos } = useOnchainCoffeeMemos();
+  const { data, result } = useOnchainCoffeeMemos();
 
-  const handleOncomplete = useCallback(() => {
-    void refetchMemos();
-  }, [refetchMemos]);
+  const handleOncomplete = useCallback(async () => {
+    markStep('useContractRead.refetchMemos');
+    await result.refetch()
+  }, [result]);
 
   const asideContent = useMemo(() => {
     if (transactionStep === TransactionSteps.START_TRANSACTION_STEP) {
@@ -40,13 +42,14 @@ export default function BuyMeCoffeeContractDemo() {
 
     return (
       <BuyCoffeeFormStep
-        onComplete={handleOncomplete}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onComplete={async () => handleOncomplete()}
         setTransactionStep={setTransactionStep}
         numCoffees={numCoffees}
         setNumCoffees={setNumCoffees}
       />
     );
-  }, [transactionStep, handleOncomplete, numCoffees]);
+  }, [transactionStep, numCoffees, handleOncomplete]);
 
   return (
     <div
@@ -62,7 +65,7 @@ export default function BuyMeCoffeeContractDemo() {
         ])}
       >
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
-        {memos?.length > 0 && <Memos memos={memos} />}
+        <Memos memos={data} />
       </section>
       <aside>
         <div

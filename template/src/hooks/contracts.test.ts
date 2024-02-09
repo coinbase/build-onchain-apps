@@ -4,7 +4,7 @@
 
 import { renderHook } from '@testing-library/react';
 import { baseSepolia } from 'viem/chains';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import Custom1155ABI from '../contract/Custom1155';
 import SignatureMint721ABI from '../contract/SignatureMint721';
@@ -17,10 +17,10 @@ import {
 
 jest.mock('wagmi', () => ({
   ...jest.requireActual<typeof import('wagmi')>('wagmi'),
-  useNetwork: jest.fn(() => ({ chain: undefined })),
+  useAccount: jest.fn(() => ({ chain: undefined })),
 }));
 
-const mockUseNetwork = useNetwork as jest.MockedFunction<typeof useNetwork>;
+const mockuseAccount = useAccount as jest.MockedFunction<typeof useAccount>;
 
 const useTestContract = generateContractHook({
   abi: BuyMeACoffeeABI,
@@ -33,7 +33,7 @@ const useTestContract = generateContractHook({
 describe('contracts', () => {
   describe('generateContractHook', () => {
     beforeEach(() => {
-      mockUseNetwork.mockClear();
+      mockuseAccount.mockClear();
     });
 
     it.each([
@@ -41,7 +41,7 @@ describe('contracts', () => {
       ['onUnsupportedNetwork', { id: 31337 }, undefined],
       ['ready', { id: baseSepolia.id }, '0xbaseSepolia'],
     ])('handles %s state', (state, chain, address) => {
-      mockUseNetwork.mockImplementation(() => ({ chain: chain }) as ReturnType<typeof useNetwork>);
+      mockuseAccount.mockImplementation(() => ({ chain: chain }) as ReturnType<typeof useAccount>);
       const {
         result: { current },
       } = renderHook(() => useTestContract());

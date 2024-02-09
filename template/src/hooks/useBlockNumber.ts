@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 type BlockNumberResponse = {
   block: number;
@@ -8,7 +8,7 @@ type BlockNumberResponse = {
 const useCurrentBlockNumber = (refreshIntervalMs = 10000) => {
   const [blockNumber, setBlockNumber] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
   const chainId = chain?.id;
 
   useEffect(() => {

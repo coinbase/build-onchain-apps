@@ -1,25 +1,19 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import {
   RainbowKitProvider,
-  connectorsForWallets,
-  lightTheme,
   darkTheme,
+  lightTheme
 } from '@rainbow-me/rainbowkit';
-import {
-  metaMaskWallet,
-  rainbowWallet,
-  braveWallet,
-  coinbaseWallet,
-  trustWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { base, baseSepolia } from 'viem/chains';
+import { WagmiProvider, createConfig, http } from 'wagmi';
 import { getChainsForEnvironment } from '../store/supportedChains';
 
 type Props = { children: ReactNode };
 
+const queryClient = new QueryClient();
 // TODO Docs ~~~
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '';
 if (!projectId) {
@@ -33,50 +27,42 @@ const supportedChains = getChainsForEnvironment();
 if (!supportedChains) {
   throw new Error('Must configure supported chains in store/supportedChains');
 }
-const { chains, publicClient } = configureChains(supportedChains, [publicProvider()]);
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [coinbaseWallet({ appName: 'buildonchainapps', chains })],
-  },
-  {
-    groupName: 'Other Wallets',
-    wallets: [
-      rainbowWallet({ projectId, chains }),
-      metaMaskWallet({ chains, projectId }),
-      braveWallet({ chains }),
-      trustWallet({ chains, projectId }),
-    ],
-  },
-]);
 
 /**
  * It handles the configuration for all hooks with CoinbaseWalletConnector
  * and supports connecting with Coinbase Wallet.
  */
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
+export const wagmiConfig = createConfig({
+  chains: [ baseSepolia, base],
+  transports: {
+    [baseSepolia.id]: http(),
+    [base.id]: http(),
+  }
 });
+
+
 
 /**
  * TODO Docs ~~~
  */
 function OnchainProviders({ children }: Props) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
+    <WagmiProvider config={wagmiConfig}>
+       <QueryClientProvider client={queryClient}>
+       <RainbowKitProvider
         theme={{
           lightMode: lightTheme(),
           darkMode: darkTheme(),
         }}
+        initialChain={baseSepolia}
+
       >
         {children}
       </RainbowKitProvider>
-    </WagmiConfig>
+       </QueryClientProvider>
+
+    </WagmiProvider>
   );
 }
 

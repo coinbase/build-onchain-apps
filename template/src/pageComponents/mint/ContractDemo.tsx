@@ -1,5 +1,5 @@
 import { baseSepolia } from 'viem/chains';
-import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
+import { useAccount, useWriteContract, useSimulateContract } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
@@ -11,7 +11,7 @@ const EXPECTED_CHAIN = baseSepolia;
 
 export default function MintContractDemo() {
   const { address } = useAccount();
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
 
   const contract = useCustom1155Contract();
 
@@ -23,18 +23,22 @@ export default function MintContractDemo() {
     contract.abi,
   );
 
-  const { config } = usePrepareContractWrite({
+  const { data } = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
-    enabled: onCorrectNetwork,
   });
 
   // A future enhancement would be to use the `isLoading` and `isSuccess`
-  // properties returned by `useContractWrite` to indicate transaction
+  // properties returned by `useWriteContract` to indicate transaction
   // status in the UI.
-  const { write: mint } = useContractWrite(config);
+  const { writeContract } = useWriteContract()
+
+  if (!data) {
+    // A future enhancement would be a nicer spinner here.
+    return <span className="text-xl">Internal Server Error</span>;
+  }
 
   if (contract.status === 'notConnected') {
     return <NotConnected />;
@@ -70,7 +74,7 @@ export default function MintContractDemo() {
 
         <button
           type="button"
-          onClick={mint}
+          onClick={() => writeContract(data.request)}
           className="my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black"
         >
           Mint
