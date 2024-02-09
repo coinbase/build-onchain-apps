@@ -2,7 +2,7 @@ import { baseSepolia, Chain, base } from 'viem/chains';
 import { Environment, getCurrentEnvironment } from './environment';
 
 // The list of supported Chains for a given environment
-export const SUPPORTED_CHAINS = new Map<Environment, Chain[]>([
+export const SUPPORTED_CHAINS = new Map<Environment, [Chain, ...Chain[]]>([
   [Environment.localhost, [baseSepolia]],
   [Environment.development, [baseSepolia]],
   [Environment.staging, [base]],
@@ -14,7 +14,7 @@ export const SUPPORTED_CHAINS = new Map<Environment, Chain[]>([
  * Defaults to the current environment.
  * @param env
  */
-export function getChainsForEnvironment(env?: Environment): Chain[] | undefined {
+export function getChainsForEnvironment(env?: Environment) {
   if (!env) {
     env = getCurrentEnvironment();
   }

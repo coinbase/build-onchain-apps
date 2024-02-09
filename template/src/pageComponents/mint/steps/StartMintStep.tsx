@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import clsx from 'clsx';
 import { TransactionExecutionError } from 'viem';
-import { useAccount, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
+import { useAccount, useSimulateContract, useWriteContract } from 'wagmi';
 import Button from '../../../components/Button/Button';
 import { EXPECTED_CHAIN } from '../../../constants';
 import { useCustom1155Contract } from '../../../hooks/contracts';
@@ -12,45 +12,50 @@ type StartMintProps = {
 };
 
 export default function StartMintStep({ setMintStep }: StartMintProps) {
-  const { chain } = useNetwork();
-  const { address } = useAccount();
+  const { address, chain } = useAccount();
 
   const contract = useCustom1155Contract();
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
 
-  const { config } = usePrepareContractWrite({
+  const { data } = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'mint',
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
-    enabled: onCorrectNetwork,
+    query: {
+      enabled: onCorrectNetwork,
+    },
   });
 
   // A future enhancement would be to use the `isLoading` and `isSuccess`
   // properties returned by `useContractWrite` to indicate transaction
   // status in the UI.
-  const { write: performMint } = useContractWrite({
-    ...config,
-    onSuccess() {
+  const { writeContract: performMint, status: statusMint, error: errorMint } = useWriteContract();
+
+  const handleMint = useCallback(() => {
+    if (data?.request) {
+      performMint?.(data?.request);
+    } else {
+      setMintStep(null);
+    }
+  }, [data?.request, performMint, setMintStep]);
+
+  useEffect(() => {
+    if (statusMint === 'success') {
       setMintStep(MintSteps.MINT_COMPLETE_STEP);
-    },
-    onError(e) {
+    } else if (statusMint === 'error') {
       if (
-        e instanceof TransactionExecutionError &&
-        e.message.toLowerCase().includes('out of gas')
+        errorMint instanceof TransactionExecutionError &&
+        errorMint.message.toLowerCase().includes('out of gas')
       ) {
         setMintStep(MintSteps.OUT_OF_GAS_STEP);
       } else {
         setMintStep(null);
       }
-    },
-  });
-
-  const handleMint = useCallback(() => {
-    performMint?.();
-    setMintStep(MintSteps.MINT_PROCESSING_STEP);
-  }, [performMint, setMintStep]);
+    } else {
+    }
+  }, [errorMint, setMintStep, statusMint]);
 
   return (
     <Button

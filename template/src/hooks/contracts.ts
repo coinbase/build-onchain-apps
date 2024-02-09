@@ -1,6 +1,6 @@
 import { Abi, type Chain } from 'viem';
 import { baseSepolia } from 'viem/chains';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import Custom1155ABI from '../contract/Custom1155';
 import SignatureMint721ABI from '../contract/SignatureMint721';
@@ -28,7 +28,7 @@ type Spec<T extends Abi> = {
  */
 export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   function useContract(): UseContractReturn<typeof abi> {
-    const { chain } = useNetwork();
+    const { chain } = useAccount();
     const supportedChains = Object.values(spec).map((s) => s.chain);
 
     if (!chain) {
