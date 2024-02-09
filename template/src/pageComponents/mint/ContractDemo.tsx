@@ -104,11 +104,11 @@ export default function MintContractDemo() {
         <button
           type="button"
           onClick={() => writeContract(data.request)}
-          className="my-8 block w-full rounded-full bg-white py-4 text-center text-sm text-black"
+          className=" rounded-full w-full py-2 my-4 bg-white text-center text-sm text-black"
         >
-          Mint
+            {mintContent}
+
         </button>
-        {mintContent}
 
         <div className="items-center md:flex">
           <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">

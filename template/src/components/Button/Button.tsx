@@ -29,7 +29,7 @@ export default function Button({
       onClick={onClick}
       className={clsx(
         'flex w-full items-center justify-center',
-        'py-4 text-sm',
+        ' text-sm',
         variant === 'primary' ? 'bg-white' : 'bg-black',
         variant === 'primary' ? 'text-black' : 'text-white',
         disabled && variant === 'primary' ? 'bg-gray-400' : null,
