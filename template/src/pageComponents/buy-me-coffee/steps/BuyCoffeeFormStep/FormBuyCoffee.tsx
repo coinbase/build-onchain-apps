@@ -31,7 +31,7 @@ function FormBuyCoffee({
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
   const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
-  const { isSuccess, isError,  writeContract } = useWriteContract()
+  const { isSuccess, isError, writeContract } = useWriteContract();
 
   useEffect(() => {
     setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * numCoffees);
@@ -44,7 +44,7 @@ function FormBuyCoffee({
   const canAfford = useLoggedInUserCanAfford(parseEther(String(buyCoffeeAmount)));
 
   // Wagmi Write call
-  const { data }  = useSimulateContract({
+  const { data } = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'buyCoffee',
@@ -66,8 +66,7 @@ function FormBuyCoffee({
     if (isError) {
       setTransactionStep(null);
     }
-  }
-  , [isError, setTransactionStep]);
+  }, [isError, setTransactionStep]);
 
   const handleSubmit = useCallback(
     (event: { preventDefault: () => void }) => {
@@ -108,7 +107,7 @@ function FormBuyCoffee({
   );
 
   const formDisabled = useMemo(() => {
-    return contract.status !== 'ready'  || !canAfford;
+    return contract.status !== 'ready' || !canAfford;
   }, [canAfford, contract.status]);
 
   const submitButtonContent = useMemo(() => {

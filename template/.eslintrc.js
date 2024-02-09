@@ -70,7 +70,9 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: true }],
     '@typescript-eslint/no-invalid-void-type': 'error',
     '@typescript-eslint/no-unsafe-return': 'error',
-
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
     // Readability
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: false }],

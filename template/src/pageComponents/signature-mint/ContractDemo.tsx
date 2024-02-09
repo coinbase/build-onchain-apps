@@ -2,12 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { parseEther } from 'viem';
 import { Chain } from 'viem/chains';
-import {
-  useAccount,
-  useReadContract,
-  useSimulateContract,
-  useWriteContract
-} from 'wagmi';
+import { useAccount, useReadContract, useSimulateContract, useWriteContract } from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
 import { EXPECTED_CHAIN } from '../../constants';
 import { useSignatureMint721 } from '../../hooks/contracts';
@@ -63,7 +58,6 @@ export default function SignatureMintDemo() {
     }
   }, [fetchSig, chain, address]);
 
-
   const usedFreeMintResponse = useReadContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
@@ -76,11 +70,10 @@ export default function SignatureMintDemo() {
     setUsedFreeMint(usedFreeMintResponse.data as boolean);
   }, [usedFreeMintResponse.data]);
 
-
-   /**
+  /**
    * Free Mint Contract Logic
    */
-   const freeMintData = useSimulateContract({
+  const freeMintData = useSimulateContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
@@ -88,13 +81,13 @@ export default function SignatureMintDemo() {
     args: address ? [address, debouncedSigValue] : undefined,
   });
 
-  const { writeContract } = useWriteContract()
+  const { writeContract } = useWriteContract();
   /**
    *
    *
    * Paid Mint Contract Write Logic
    */
-  const  mintData = useSimulateContract({
+  const mintData = useSimulateContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
@@ -102,7 +95,6 @@ export default function SignatureMintDemo() {
     args: [address],
     value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
   });
-
 
   if (!isConnected) {
     return <NotConnected />;
@@ -161,16 +153,16 @@ export default function SignatureMintDemo() {
                     Freemint Used
                   </button>
                 )}
-                 {/* eslint-disable-next-line @typescript-eslint/prefer-optional-chain */}
-                 { mintData && mintData.data && (
-                <button
-                  type="button"
-                  onClick={() => writeContract(mintData.data.request)}
-                  className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                >
-                  Paid Mint
-                </button>
-                 )}
+                {/* eslint-disable-next-line @typescript-eslint/prefer-optional-chain */}
+                {mintData && mintData.data && (
+                  <button
+                    type="button"
+                    onClick={() => writeContract(mintData.data.request)}
+                    className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                  >
+                    Paid Mint
+                  </button>
+                )}
                 {explorerLink && (
                   <a
                     href={explorerLink}

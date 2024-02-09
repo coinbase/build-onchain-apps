@@ -6,7 +6,10 @@ import { EXPECTED_CHAIN } from '../../constants';
 
 function SwitchNetwork() {
   const { switchChain } = useSwitchChain();
-  const handleClick = useCallback(() => (switchChain ? switchChain({ chainId: EXPECTED_CHAIN.id }) : null), [switchChain]);
+  const handleClick = useCallback(
+    () => (switchChain ? switchChain({ chainId: EXPECTED_CHAIN.id }) : null),
+    [switchChain],
+  );
   return (
     <div className="flex flex-col justify-start">
       <p className="text-sm">Please switch to {EXPECTED_CHAIN.name}</p>

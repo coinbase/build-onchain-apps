@@ -22,7 +22,7 @@ export default function BuyMeCoffeeContractDemo() {
 
   const handleOncomplete = useCallback(async () => {
     markStep('useContractRead.refetchMemos');
-    await result.refetch()
+    await result.refetch();
   }, [result]);
 
   const asideContent = useMemo(() => {

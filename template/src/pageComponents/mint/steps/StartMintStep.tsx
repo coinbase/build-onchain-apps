@@ -11,7 +11,7 @@ type StartMintProps = {
 };
 
 export default function StartMintStep({ setMintStep }: StartMintProps) {
-  const { chains } = useConfig()
+  const { chains } = useConfig();
   const { address } = useAccount();
 
   const contract = useCustom1155Contract();
@@ -25,22 +25,19 @@ export default function StartMintStep({ setMintStep }: StartMintProps) {
     args: address ? [address, BigInt(1), BigInt(1), address] : undefined,
   });
 
-  const { isSuccess, isError, writeContract} = useWriteContract()
+  const { isSuccess, isError, writeContract } = useWriteContract();
 
   useEffect(() => {
     if (isError) {
       setMintStep(null);
     }
-  }
-  , [isError, setMintStep]);
+  }, [isError, setMintStep]);
 
   useEffect(() => {
     if (isSuccess) {
       setMintStep(MintSteps.MINT_COMPLETE_STEP);
     }
-  }
-  , [isSuccess, setMintStep]);
-
+  }, [isSuccess, setMintStep]);
 
   const handleMint = useCallback(() => {
     if (!data?.request) {

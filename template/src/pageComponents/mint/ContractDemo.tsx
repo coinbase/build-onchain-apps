@@ -23,7 +23,7 @@ export default function MintContractDemo() {
   const { address } = useAccount();
   const [mintStep, setMintStep] = useState<MintSteps | null>(null);
 
-  const { chains } = useConfig()
+  const { chains } = useConfig();
 
   const contract = useCustom1155Contract();
 
@@ -45,8 +45,7 @@ export default function MintContractDemo() {
   // A future enhancement would be to use the `isLoading` and `isSuccess`
   // properties returned by `useWriteContract` to indicate transaction
   // status in the UI.
-  const { writeContract } = useWriteContract()
-
+  const { writeContract } = useWriteContract();
 
   const mintContent = useMemo(() => {
     if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
@@ -104,10 +103,9 @@ export default function MintContractDemo() {
         <button
           type="button"
           onClick={() => writeContract(data.request)}
-          className=" rounded-full w-full py-2 my-4 bg-white text-center text-sm text-black"
+          className=" my-4 w-full rounded-full bg-white py-2 text-center text-sm text-black"
         >
-            {mintContent}
-
+          {mintContent}
         </button>
 
         <div className="items-center md:flex">
