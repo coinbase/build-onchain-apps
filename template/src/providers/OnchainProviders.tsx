@@ -5,7 +5,6 @@ import {
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
-  getDefaultWallets,
   lightTheme,
 } from '@rainbow-me/rainbowkit';
 import {
@@ -18,7 +17,7 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createClient } from 'viem';
-import { WagmiProvider, createConfig, http } from 'wagmi';
+import { WagmiProvider, createConfig, createStorage, http } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
 
 type Props = { children: ReactNode };
@@ -33,15 +32,18 @@ if (!projectId) {
   throw new Error(providerErrMessage);
 }
 
-const { wallets } = getDefaultWallets();
-
 const connectors = connectorsForWallets(
   [
-    ...wallets,
-
     {
-      groupName: 'Other Wallets',
-      wallets: [rainbowWallet, metaMaskWallet, braveWallet, trustWallet, walletConnectWallet],
+      groupName: 'Sigular',
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        braveWallet,
+        trustWallet,
+        walletConnectWallet,
+      ],
     },
   ],
   {
@@ -55,11 +57,14 @@ const connectors = connectorsForWallets(
  * and supports connecting with Coinbase Wallet.
  */
 const wagmiConfig = createConfig({
+  ssr: true,
   chains: [baseSepolia, base],
   client({ chain }) {
     return createClient({ chain, transport: http() });
   },
   connectors,
+
+  storage: createStorage({ storage: window.localStorage }),
 });
 
 /**
