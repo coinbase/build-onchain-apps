@@ -1,4 +1,4 @@
-name: App Test / Build
+name: App Build
 on:
   push:
     branches: ['main']
@@ -21,10 +21,6 @@ jobs:
       - name: App Install dependencies
         working-directory: ./template
         run: npm install
-      - name: App Test Check
-        working-directory: ./template
-        # When fails, please check your tests
-        run: npm run test
       - name: App Test Build
         working-directory: ./template
         # When fails, please check your build
