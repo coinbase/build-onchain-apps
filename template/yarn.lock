@@ -1532,6 +1532,7 @@ __metadata:
     "@coinbase/wallet-sdk": "npm:^3.9.1"
     "@farcaster/hub-nodejs": "npm:^0.10.21"
     "@jest/globals": "npm:^29.7.0"
+    "@next/third-parties": "npm:^14.1.0"
     "@radix-ui/react-dropdown-menu": "npm:^2.0.6"
     "@radix-ui/react-icons": "npm:^1.3.0"
     "@radix-ui/react-navigation-menu": "npm:^1.1.4"
@@ -2716,6 +2717,18 @@ __metadata:
   version: 13.5.6
   resolution: "@next/swc-win32-x64-msvc@npm:13.5.6"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/third-parties@npm:^14.1.0":
+  version: 14.1.0
+  resolution: "@next/third-parties@npm:14.1.0"
+  dependencies:
+    third-party-capital: "npm:1.0.20"
+  peerDependencies:
+    next: ^13.0.0 || ^14.0.0
+    react: ^18.2.0
+  checksum: 10c0/39df592ddc26b39ce0512201202f78f297440f03e2df2cbd1211869960eea2592eed6f1d520dc7675bd33e68a92be823999a6d951e7bfa95460e2b218a61effa
   languageName: node
   linkType: hard
 
@@ -14070,6 +14083,13 @@ __metadata:
   dependencies:
     any-promise: "npm:^1.0.0"
   checksum: 10c0/f375aeb2b05c100a456a30bc3ed07ef03a39cbdefe02e0403fb714b8c7e57eeaad1a2f5c4ecfb9ce554ce3db9c2b024eba144843cd9e344566d9fcee73b04767
+  languageName: node
+  linkType: hard
+
+"third-party-capital@npm:1.0.20":
+  version: 1.0.20
+  resolution: "third-party-capital@npm:1.0.20"
+  checksum: 10c0/7f45ff156ec9d7e2957a5b39061be22b780ffbd2d93c127252d908e2bff6cdd09f827a95909d457c8096e036f155006a38e355a06ee11cb6d63c7f4b150bbfb0
   languageName: node
   linkType: hard
 
