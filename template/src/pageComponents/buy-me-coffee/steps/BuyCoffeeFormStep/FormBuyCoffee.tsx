@@ -58,8 +58,8 @@ function FormBuyCoffee({
   const {
     writeContract: buyMeACoffee,
     data: dataBuyMeACoffee,
-    error: errorBuyMeACoffee,
     status: statusBuyMeACoffee,
+    error: errorBuyMeACoffee,
   } = useWriteContract();
 
   const { status: transactionStatus } = useWaitForTransactionReceipt({
@@ -73,7 +73,8 @@ function FormBuyCoffee({
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
       if (data?.request) {
-        buyMeACoffee(data.request);
+        buyMeACoffee?.(data?.request);
+        setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
       } else {
         setTransactionStep(null);
       }
@@ -82,11 +83,11 @@ function FormBuyCoffee({
   );
 
   useEffect(() => {
-    if (transactionStatus === 'success') {
-      onComplete();
+    if (statusBuyMeACoffee === 'success') {
       console.log('Success write buyCoffee', dataBuyMeACoffee);
       setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
-    } else if (transactionStatus === 'error') {
+      onComplete();
+    } else if (statusBuyMeACoffee === 'error') {
       if (
         errorBuyMeACoffee instanceof TransactionExecutionError &&
         errorBuyMeACoffee.message.toLowerCase().includes('out of gas')
@@ -95,11 +96,25 @@ function FormBuyCoffee({
       } else {
         setTransactionStep(null);
       }
+
+      onComplete();
+    } else {
     }
-    setName('');
-    setTwitterHandle('');
-    setMessage('');
-  }, [dataBuyMeACoffee, errorBuyMeACoffee, onComplete, setTransactionStep, transactionStatus]);
+  }, [dataBuyMeACoffee, errorBuyMeACoffee, onComplete, setTransactionStep, statusBuyMeACoffee]);
+
+  useEffect(() => {
+    if (transactionStatus === 'success') {
+      setName('');
+      setTwitterHandle('');
+      setMessage('');
+    } else if (transactionStatus === 'error') {
+      setName('');
+      setTwitterHandle('');
+      setMessage('');
+      setTransactionStep(null);
+    } else {
+    }
+  }, [setTransactionStep, transactionStatus]);
 
   const handleNameChange = useCallback(
     (event: { target: { value: React.SetStateAction<string> } }) => {
@@ -123,8 +138,8 @@ function FormBuyCoffee({
   );
 
   const formDisabled = useMemo(() => {
-    return Boolean(contract.status !== 'ready' || statusBuyMeACoffee === 'pending' || !canAfford);
-  }, [canAfford, contract.status, statusBuyMeACoffee]);
+    return Boolean(contract.status !== 'ready' || transactionStatus === 'pending' || !canAfford);
+  }, [canAfford, contract.status, transactionStatus]);
 
   const submitButtonContent = useMemo(() => {
     return (

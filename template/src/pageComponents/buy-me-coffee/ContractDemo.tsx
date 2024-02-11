@@ -17,11 +17,11 @@ export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
 
-  const { memos, result } = useOnchainCoffeeMemos();
+  const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
-  const handleOncomplete = useCallback(async () => {
-    await result.refetch();
-  }, [result]);
+  const handleOncomplete = useCallback(() => {
+    void refetchMemos();
+  }, [refetchMemos]);
 
   const asideContent = useMemo(() => {
     if (transactionStep === TransactionSteps.START_TRANSACTION_STEP) {
@@ -40,7 +40,7 @@ export default function BuyMeCoffeeContractDemo() {
 
     return (
       <BuyCoffeeFormStep
-        onComplete={() => handleOncomplete}
+        onComplete={handleOncomplete}
         setTransactionStep={setTransactionStep}
         numCoffees={numCoffees}
         setNumCoffees={setNumCoffees}
