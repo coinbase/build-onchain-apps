@@ -51,10 +51,6 @@ const connectors = connectorsForWallets(
   },
 );
 
-/**
- * It handles the configuration for all hooks with CoinbaseWalletConnector
- * and supports connecting with Coinbase Wallet.
- */
 const wagmiConfig = createConfig({
   ssr: true,
   chains: [baseSepolia, base],
