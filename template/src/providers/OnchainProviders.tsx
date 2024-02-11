@@ -3,15 +3,25 @@
 import { ReactNode } from 'react';
 import {
   RainbowKitProvider,
-  getDefaultConfig,
-  lightTheme,
+  connectorsForWallets,
   darkTheme,
+  lightTheme,
 } from '@rainbow-me/rainbowkit';
+import {
+  braveWallet,
+  metaMaskWallet,
+  rainbowWallet,
+  trustWallet,
+  walletConnectWallet,
+  coinbaseWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { base, baseSepolia } from 'viem/chains';
-import { WagmiProvider, http } from 'wagmi';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { base, baseSepolia } from 'wagmi/chains';
 
 type Props = { children: ReactNode };
+
+const queryClient = new QueryClient();
 
 // TODO Docs ~~~
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '';
@@ -21,25 +31,42 @@ if (!projectId) {
   throw new Error(providerErrMessage);
 }
 
-// TODO Docs ~~~
-const config = getDefaultConfig({
-  appName: 'boat',
-  projectId: `${process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID}`,
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Sigular',
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        braveWallet,
+        trustWallet,
+        walletConnectWallet,
+      ],
+    },
+  ],
+  {
+    appName: 'buildonchainapps',
+    projectId,
+  },
+);
+
+const wagmiConfig = createConfig({
+  ssr: true,
   chains: [baseSepolia, base],
   transports: {
     [baseSepolia.id]: http(),
     [base.id]: http(),
   },
+  connectors,
 });
-
-const queryClient = new QueryClient();
 
 /**
  * TODO Docs ~~~
  */
 function OnchainProviders({ children }: Props) {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           theme={{
@@ -53,4 +80,5 @@ function OnchainProviders({ children }: Props) {
     </WagmiProvider>
   );
 }
+
 export default OnchainProviders;
