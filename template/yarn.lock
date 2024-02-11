@@ -1528,7 +1528,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.5"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@coinbase/onchainkit": "npm:0.4.1"
+    "@coinbase/onchainkit": "npm:0.6.1"
     "@coinbase/wallet-sdk": "npm:^3.9.1"
     "@farcaster/hub-nodejs": "npm:^0.10.21"
     "@jest/globals": "npm:^29.7.0"
@@ -1604,16 +1604,20 @@ __metadata:
     ts-jest: "npm:^29.1.1"
     typescript: "npm:~5.3.3"
     unified: "npm:^11.0.4"
-    viem: "npm:2.x"
-    wagmi: "npm:2"
+    viem: "npm:^2.7.8"
+    wagmi: "npm:^2.5.6"
     workbox-webpack-plugin: "npm:^7.0.0"
   languageName: unknown
   linkType: soft
 
-"@coinbase/onchainkit@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@coinbase/onchainkit@npm:0.4.1"
-  checksum: 10c0/78a02a10a1c9bbe322fbf1454ee830bde93f0654fe5412da6d10b3e4d99cf89c43dd4a544023ec24119cd0bd4baaed1a40d7b0c2fdf7f591747a34c88dc024e8
+"@coinbase/onchainkit@npm:0.6.1":
+  version: 0.6.1
+  resolution: "@coinbase/onchainkit@npm:0.6.1"
+  peerDependencies:
+    react: ^18
+    react-dom: ^18
+    viem: ^2.7.0
+  checksum: 10c0/fd1b45b8f385f35e7a9aee5a45557511021783cd1a8fbd4c802807b92bc8be1cd72d660ede06e1ffaac9400973230f19ec652473a3ec0b3fc65df59150c696ce
   languageName: node
   linkType: hard
 
@@ -14806,27 +14810,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"viem@npm:2.x":
-  version: 2.7.8
-  resolution: "viem@npm:2.7.8"
-  dependencies:
-    "@adraffy/ens-normalize": "npm:1.10.0"
-    "@noble/curves": "npm:1.2.0"
-    "@noble/hashes": "npm:1.3.2"
-    "@scure/bip32": "npm:1.3.2"
-    "@scure/bip39": "npm:1.2.1"
-    abitype: "npm:1.0.0"
-    isows: "npm:1.0.3"
-    ws: "npm:8.13.0"
-  peerDependencies:
-    typescript: ">=5.0.4"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10c0/f85f3563cd94daf9ad1ad013081b9974d0f60e36290fe821e547512ee5db818a919c3f83d7b8a265b7aef7cc2a5afafdd2be57549e9bee8912132f151415e371
-  languageName: node
-  linkType: hard
-
 "viem@npm:^1.0.0":
   version: 1.19.11
   resolution: "viem@npm:1.19.11"
@@ -14869,6 +14852,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"viem@npm:^2.7.8":
+  version: 2.7.8
+  resolution: "viem@npm:2.7.8"
+  dependencies:
+    "@adraffy/ens-normalize": "npm:1.10.0"
+    "@noble/curves": "npm:1.2.0"
+    "@noble/hashes": "npm:1.3.2"
+    "@scure/bip32": "npm:1.3.2"
+    "@scure/bip39": "npm:1.2.1"
+    abitype: "npm:1.0.0"
+    isows: "npm:1.0.3"
+    ws: "npm:8.13.0"
+  peerDependencies:
+    typescript: ">=5.0.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/f85f3563cd94daf9ad1ad013081b9974d0f60e36290fe821e547512ee5db818a919c3f83d7b8a265b7aef7cc2a5afafdd2be57549e9bee8912132f151415e371
+  languageName: node
+  linkType: hard
+
 "void-elements@npm:3.1.0":
   version: 3.1.0
   resolution: "void-elements@npm:3.1.0"
@@ -14885,7 +14889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wagmi@npm:2":
+"wagmi@npm:^2.5.6":
   version: 2.5.6
   resolution: "wagmi@npm:2.5.6"
   dependencies:
