@@ -23,7 +23,7 @@ function useOnchainCoffeeMemos() {
 
   return {
     memos: contractReadResult.status === 'success' ? (contractReadResult.data as CoffeeMemo[]) : [],
-    result: contractReadResult,
+    refetchMemos: contractReadResult.refetch,
   };
 }
 
