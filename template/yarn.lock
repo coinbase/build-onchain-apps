@@ -1528,7 +1528,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.5"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@coinbase/onchainkit": "npm:0.5.1"
+    "@coinbase/onchainkit": "npm:0.6.1"
     "@coinbase/wallet-sdk": "npm:^3.9.1"
     "@farcaster/hub-nodejs": "npm:^0.10.21"
     "@jest/globals": "npm:^29.7.0"
@@ -1610,14 +1610,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coinbase/onchainkit@npm:0.5.1":
-  version: 0.5.1
-  resolution: "@coinbase/onchainkit@npm:0.5.1"
+"@coinbase/onchainkit@npm:0.6.1":
+  version: 0.6.1
+  resolution: "@coinbase/onchainkit@npm:0.6.1"
   peerDependencies:
     react: ^18
     react-dom: ^18
-    viem: ^2.5.0
-  checksum: 10c0/1ea9405a57e96f9cb085ed01b9a491a282316db3e9cbb824c18a5e7c3dd9a91ee439fb3a917727b88fc17bed2fb9857dcb2b127d9dbd98a9f18a8b879a5278b8
+    viem: ^2.7.0
+  checksum: 10c0/fd1b45b8f385f35e7a9aee5a45557511021783cd1a8fbd4c802807b92bc8be1cd72d660ede06e1ffaac9400973230f19ec652473a3ec0b3fc65df59150c696ce
   languageName: node
   linkType: hard
 
