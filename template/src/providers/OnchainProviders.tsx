@@ -9,7 +9,6 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   braveWallet,
-  coinbaseWallet,
   metaMaskWallet,
   rainbowWallet,
   trustWallet,
@@ -36,14 +35,7 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Sigular',
-      wallets: [
-        rainbowWallet,
-        metaMaskWallet,
-        coinbaseWallet,
-        braveWallet,
-        trustWallet,
-        walletConnectWallet,
-      ],
+      wallets: [rainbowWallet, metaMaskWallet, braveWallet, trustWallet, walletConnectWallet],
     },
   ],
   {
@@ -63,7 +55,6 @@ const wagmiConfig = createConfig({
     return createClient({ chain, transport: http() });
   },
   connectors,
-
   storage: createStorage({ storage: window.localStorage }),
 });
 
