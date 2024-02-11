@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Abi } from 'abitype';
-import { Address, useContractRead } from 'wagmi';
+import { Abi, Address } from 'abitype';
+import { useReadContract } from 'wagmi';
 import { ipfsToHTTP } from '../core/ipfs';
 
 /**
@@ -69,14 +69,16 @@ export function useCollectionMetadata(enabled: boolean, address: Address | undef
   }
   // In this case the contract URI is already HTTPS. A production-ready
   // solution would check the protocol and transform if necessary.
-  const { data: contractURI } = useContractRead({
+  const { data: contractURI } = useReadContract({
     // TODO: the chainId should be dynamic
-    address: address,
-    abi: abi,
+    address,
+    abi,
     functionName: lookupType.toString(),
     // TODO: We should not hack a specific token here
     args: lookupType === UriFunctionType.uri ? [BigInt(1)] : undefined,
-    enabled,
+    query: {
+      enabled,
+    },
   });
   const fetchCollectionMetadata = useCallback(async () => {
     if (!contractURI) {

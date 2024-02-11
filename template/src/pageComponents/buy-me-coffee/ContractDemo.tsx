@@ -1,11 +1,8 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
 import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
-import OutOfGasStep from './steps/OutOfGasStep';
-import StartTransactionStep from './steps/StartTransactionStep';
-import TransactionCompleteStep from './steps/TransactionCompleteStep';
 
 export enum TransactionSteps {
   START_TRANSACTION_STEP,
@@ -16,37 +13,19 @@ export enum TransactionSteps {
 export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
-
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
-  const handleOncomplete = useCallback(() => {
-    void refetchMemos();
-  }, [refetchMemos]);
-
   const asideContent = useMemo(() => {
-    if (transactionStep === TransactionSteps.START_TRANSACTION_STEP) {
-      return <StartTransactionStep />;
-    }
-
-    if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE_STEP) {
-      return (
-        <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
-      );
-    }
-
-    if (transactionStep === TransactionSteps.OUT_OF_GAS_STEP) {
-      return <OutOfGasStep buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />;
-    }
-
     return (
       <BuyCoffeeFormStep
-        onComplete={handleOncomplete}
         setTransactionStep={setTransactionStep}
         numCoffees={numCoffees}
+        transactionStep={transactionStep}
         setNumCoffees={setNumCoffees}
+        refetchMemos={refetchMemos}
       />
     );
-  }, [transactionStep, handleOncomplete, numCoffees]);
+  }, [numCoffees, transactionStep, refetchMemos]);
 
   return (
     <div
@@ -62,6 +41,7 @@ export default function BuyMeCoffeeContractDemo() {
         ])}
       >
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
+
         {memos?.length > 0 && <Memos memos={memos} />}
       </section>
       <aside>

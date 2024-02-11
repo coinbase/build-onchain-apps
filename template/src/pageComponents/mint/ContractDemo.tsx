@@ -1,14 +1,10 @@
 import { useMemo, useState } from 'react';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useCollectionMetadata } from '../../../onchainKit';
 import NextImage from '../../components/NextImage/NextImage';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import { EXPECTED_CHAIN } from '../../constants';
 import { useCustom1155Contract } from '../../hooks/contracts';
 import NotConnected from './NotConnected';
-import MintCompleteStep from './steps/MintCompleteStep';
-import MintProcessingStep from './steps/MintProcessingStep';
-import OutOfGasStep from './steps/OutOfGasStep';
 import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
@@ -22,7 +18,7 @@ export enum MintSteps {
 export default function MintContractDemo() {
   const [mintStep, setMintStep] = useState<MintSteps | null>(null);
 
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
 
   const contract = useCustom1155Contract();
 
@@ -35,19 +31,13 @@ export default function MintContractDemo() {
   );
 
   const mintContent = useMemo(() => {
-    if (mintStep === MintSteps.MINT_PROCESSING_STEP) {
-      return <MintProcessingStep />;
-    }
-
-    if (mintStep === MintSteps.OUT_OF_GAS_STEP) {
-      return <OutOfGasStep setMintStep={setMintStep} />;
-    }
-
-    if (mintStep === MintSteps.MINT_COMPLETE_STEP) {
-      return <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />;
-    }
-
-    return <StartMintStep setMintStep={setMintStep} />;
+    return (
+      <StartMintStep
+        setMintStep={setMintStep}
+        mintStep={mintStep}
+        collectionName={collectionName}
+      />
+    );
   }, [mintStep, collectionName]);
 
   if (contract.status === 'notConnected') {
@@ -84,14 +74,15 @@ export default function MintContractDemo() {
 
         {mintContent}
 
-        <div className="items-center md:flex">
+        {/* TODO: hiding this progress bar till we get the number of NFT's from the contract */}
+        {/* <div className="items-center md:flex">
           <div className="w-full flex-shrink-0 flex-grow md:max-w-[70%]">
             <ProgressBar percent={45} />
           </div>
           <div className="mt-2 w-full flex-shrink flex-grow-0 text-boat-footer-light-gray md:mt-0 md:text-right">
             94/200 Minted
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
