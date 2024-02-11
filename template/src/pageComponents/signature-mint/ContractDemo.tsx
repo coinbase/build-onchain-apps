@@ -4,10 +4,9 @@ import { parseEther } from 'viem';
 import { Chain } from 'viem/chains';
 import {
   useAccount,
-  useContractRead,
-  useContractWrite,
-  useNetwork,
-  usePrepareContractWrite,
+  useReadContract,
+  useSimulateContract,
+  useWriteContract
 } from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
 import { EXPECTED_CHAIN } from '../../constants';
@@ -20,7 +19,7 @@ export default function SignatureMintDemo() {
   const [signature, setSignature] = useState('');
   const [sigFailure, setSigFailure] = useState(false);
   const { isConnected, address } = useAccount();
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
   const contract = useSignatureMint721();
   /**
    * Per Wagmi, we should debounce dynamic parameters
@@ -67,20 +66,22 @@ export default function SignatureMintDemo() {
   /**
    * Free Mint Contract Logic
    */
-  const { config: freeMintConfig } = usePrepareContractWrite({
+  const { data: freeMintConfig } = useSimulateContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'freeMint',
     args: address ? [address, debouncedSigValue] : undefined,
-    enabled: signature.length > 0,
+    query: {
+      enabled: signature.length > 0,
+    },
   });
-  const { write: freeMint } = useContractWrite(freeMintConfig);
+  const { writeContract: freeMint } = useWriteContract();
 
   /**
    * Paid Mint Contract Write Logic
    */
-  const { config: paidMintConfig } = usePrepareContractWrite({
+  const { data: paidMintConfig } = useSimulateContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
@@ -88,19 +89,20 @@ export default function SignatureMintDemo() {
     args: [address],
     value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
   });
-  const { write: paidMint } = useContractWrite(paidMintConfig);
+  const { writeContract: paidMint } = useWriteContract();
 
-  const usedFreeMintResponse = useContractRead({
+  const usedFreeMintResponse = useReadContract({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'usedFreeMints',
     args: [address],
-    enabled: (address?.length ?? 0) > 0,
-    watch: true, // Watch for changes in the data and update the state if they use their free mint
-    cacheTime: 0,
-    staleTime: 0,
+    query: {
+      enabled: (address?.length ?? 0) > 0,
+      staleTime: 0,
+    },
   });
+
   useEffect(() => {
     setUsedFreeMint(usedFreeMintResponse.data as boolean);
   }, [usedFreeMintResponse.data]);
@@ -141,12 +143,12 @@ export default function SignatureMintDemo() {
                 set in the environment file.
               </p>
             )}
-            {!sigFailure && (
+            {!sigFailure && freeMintConfig?.request && (
               <p className="text-sm">
                 {!usedFreeMint && signature.length && (
                   <button
                     type="button"
-                    onClick={freeMint}
+                    onClick={() => freeMint(freeMintConfig?.request)}
                     className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
                   >
                     Mint NFT Free
@@ -161,13 +163,18 @@ export default function SignatureMintDemo() {
                     Freemint Used
                   </button>
                 )}
-                <button
-                  type="button"
-                  onClick={paidMint}
-                  className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                >
-                  Paid Mint
-                </button>
+                {
+                  paidMintConfig?.request && (
+                    <button
+                    type="button"
+                    onClick={() => paidMint(paidMintConfig?.request)}
+                    className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
+                  >
+                    Paid Mint
+                  </button>
+                  )
+                }
+
                 {explorerLink && (
                   <a
                     href={explorerLink}

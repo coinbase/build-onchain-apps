@@ -2,14 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { useNetwork } from 'wagmi';
-import { Chain } from 'viem/chains';
 import { renderHook } from '@testing-library/react';
+import { Chain } from 'viem/chains';
 import { HashType, useBlockExplorerLink } from './useBlockExplorerLink';
-
-jest.mock('wagmi', () => ({
-  useNetwork: jest.fn(),
-}));
 
 describe('useBlockExplorerLink', () => {
   it('should return the correct explorer link when chain and address are provided', () => {
@@ -19,7 +14,6 @@ describe('useBlockExplorerLink', () => {
       },
     };
     const mockHash = '0xMockHash';
-    (useNetwork as jest.Mock).mockReturnValue({ chain: mockChain });
     const { result } = renderHook(() =>
       useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Address),
     );
@@ -33,7 +27,6 @@ describe('useBlockExplorerLink', () => {
       },
     };
     const mockHash = '0xMockHash';
-    (useNetwork as jest.Mock).mockReturnValue({ chain: mockChain });
     const { result } = renderHook(() =>
       useBlockExplorerLink(mockChain as Chain, mockHash, HashType.Transaction),
     );
