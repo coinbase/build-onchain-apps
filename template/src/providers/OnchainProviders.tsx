@@ -13,6 +13,7 @@ import {
   rainbowWallet,
   trustWallet,
   walletConnectWallet,
+  coinbaseWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, createConfig, http } from 'wagmi';
@@ -34,7 +35,14 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Sigular',
-      wallets: [rainbowWallet, metaMaskWallet, braveWallet, trustWallet, walletConnectWallet],
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        braveWallet,
+        trustWallet,
+        walletConnectWallet,
+      ],
     },
   ],
   {
