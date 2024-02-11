@@ -14,6 +14,7 @@ import {
   metaMaskWallet,
   rainbowWallet,
   trustWallet,
+  walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createClient } from 'viem';
@@ -37,13 +38,10 @@ const { wallets } = getDefaultWallets();
 const connectors = connectorsForWallets(
   [
     ...wallets,
-    {
-      groupName: 'Recommended',
-      wallets: [coinbaseWallet],
-    },
+
     {
       groupName: 'Other Wallets',
-      wallets: [rainbowWallet, metaMaskWallet, braveWallet, trustWallet],
+      wallets: [rainbowWallet, metaMaskWallet, braveWallet, trustWallet, walletConnectWallet],
     },
   ],
   {
