@@ -1,14 +1,11 @@
 import { useCallback } from 'react';
-import { useSwitchChain } from 'wagmi';
+import { useSwitchNetwork } from 'wagmi';
 // TODO: use supported contracts from hook to populate selector
 import { EXPECTED_CHAIN } from '../../constants';
 
 function SwitchNetwork() {
-  const { switchChain } = useSwitchChain();
-  const handleClick = useCallback(
-    () => switchChain?.({ chainId: EXPECTED_CHAIN.id }),
-    [switchChain],
-  );
+  const { switchNetwork } = useSwitchNetwork({ chainId: EXPECTED_CHAIN.id });
+  const handleClick = useCallback(() => (switchNetwork ? switchNetwork() : null), [switchNetwork]);
   return (
     <div className="flex flex-col justify-start">
       <p className="text-sm">Please switch to {EXPECTED_CHAIN.name}</p>
