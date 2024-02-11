@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import { parseEther } from 'viem';
 import { Chain } from 'viem/chains';
-import { useAccount, useReadContract, useSimulateContract, useWriteContract } from 'wagmi';
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  useNetwork,
+  usePrepareContractWrite,
+} from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
 import { EXPECTED_CHAIN } from '../../constants';
 import { useSignatureMint721 } from '../../hooks/contracts';
@@ -12,10 +17,10 @@ import NotConnected from '../mint/NotConnected';
 import SwitchNetwork from '../mint/SwitchNetwork';
 
 export default function SignatureMintDemo() {
-  const queryClient = useQueryClient();
   const [signature, setSignature] = useState('');
   const [sigFailure, setSigFailure] = useState(false);
-  const { isConnected, address, chain } = useAccount();
+  const { isConnected, address } = useAccount();
+  const { chain } = useNetwork();
   const contract = useSignatureMint721();
   /**
    * Per Wagmi, we should debounce dynamic parameters
@@ -62,22 +67,20 @@ export default function SignatureMintDemo() {
   /**
    * Free Mint Contract Logic
    */
-  const { data: freeMintData } = useSimulateContract({
+  const { config: freeMintConfig } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'freeMint',
     args: address ? [address, debouncedSigValue] : undefined,
-    query: {
-      enabled: signature.length > 0,
-    },
+    enabled: signature.length > 0,
   });
-  const { writeContract: freeMint } = useWriteContract();
+  const { write: freeMint } = useContractWrite(freeMintConfig);
 
   /**
    * Paid Mint Contract Write Logic
    */
-  const { data: paidMintData } = useSimulateContract({
+  const { config: paidMintConfig } = usePrepareContractWrite({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
@@ -85,40 +88,22 @@ export default function SignatureMintDemo() {
     args: [address],
     value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
   });
+  const { write: paidMint } = useContractWrite(paidMintConfig);
 
-  const { writeContract: paidMint } = useWriteContract();
-
-  const usedFreeMintResponse = useReadContract({
+  const usedFreeMintResponse = useContractRead({
     // TODO: the chainId should be dynamic
     address: contractAddress,
     abi: contract.abi,
     functionName: 'usedFreeMints',
     args: [address],
-    query: {
-      enabled: (address?.length ?? 0) > 0,
-      staleTime: 0,
-    },
+    enabled: (address?.length ?? 0) > 0,
+    watch: true, // Watch for changes in the data and update the state if they use their free mint
+    cacheTime: 0,
+    staleTime: 0,
   });
   useEffect(() => {
     setUsedFreeMint(usedFreeMintResponse.data as boolean);
   }, [usedFreeMintResponse.data]);
-
-  // Watch for changes in the data and update the state if they use their free mint
-  useEffect(() => {
-    void queryClient.invalidateQueries({ queryKey: usedFreeMintResponse.queryKey });
-  }, [queryClient, usedFreeMintResponse.queryKey]);
-
-  const handleFreeMint = useCallback(() => {
-    if (freeMintData?.request) {
-      freeMint?.(freeMintData?.request);
-    }
-  }, [freeMint, freeMintData?.request]);
-
-  const handlePaidMint = useCallback(() => {
-    if (paidMintData?.request) {
-      paidMint?.(paidMintData?.request);
-    }
-  }, [paidMint, paidMintData?.request]);
 
   if (!isConnected) {
     return <NotConnected />;
@@ -161,7 +146,7 @@ export default function SignatureMintDemo() {
                 {!usedFreeMint && signature.length && (
                   <button
                     type="button"
-                    onClick={handleFreeMint}
+                    onClick={freeMint}
                     className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
                   >
                     Mint NFT Free
@@ -178,7 +163,7 @@ export default function SignatureMintDemo() {
                 )}
                 <button
                   type="button"
-                  onClick={handlePaidMint}
+                  onClick={paidMint}
                   className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
                 >
                   Paid Mint
