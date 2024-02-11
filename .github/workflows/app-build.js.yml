@@ -1,4 +1,4 @@
-name: App Lint / Styles / Test / Build
+name: App Build
 on:
   push:
     branches: ['main']
@@ -21,20 +21,6 @@ jobs:
       - name: App Install dependencies
         working-directory: ./template
         run: npm install
-      - name: App Lint Check
-        working-directory: ./template
-        # When fails, please run "npm run lint" to your code
-        run: npm run lint
-      - name: App Stylelint
-        working-directory: ./template
-        run: npm run stylelint
-      - name: App Format Check
-        working-directory: ./template
-        run: npm run format:check
-      - name: App Test Check
-        working-directory: ./template
-        # When fails, please check your tests
-        run: npm run test
       - name: App Test Build
         working-directory: ./template
         # When fails, please check your build

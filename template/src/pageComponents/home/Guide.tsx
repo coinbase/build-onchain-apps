@@ -22,13 +22,7 @@ cd contracts
 forge install
 
 # Build
-forge build
-
-# Test
-forge test
-
-# Format
-forge fmt`;
+forge build`;
 const codeStep6 = `\`\`\`bash
 # Create a .env file using the .env.example file provided in your contracts folder and add your private key. Make sure to add a 0x in front of your key to convert it to a hex.
 # Note: Get an API key from basescan.org for Base Sepolia by creating an account
@@ -50,6 +44,10 @@ export default function Guide() {
       </section>
       <section className="mt-8 flex flex-col">
         <h4 className="text-xl font-normal text-white">Step 2</h4>
+        <p className="my-4 text-base font-normal text-zinc-400">
+          Create a <code>.env.local</code> file
+        </p>
+        <CodeBlock code="cp .env.local.default .env.local" />
         <p className="my-4 text-base font-normal text-zinc-400">
           Obtain Wallet Connect Project ID from{' '}
           <a href="https://walletconnect.com/" target="_blank">
