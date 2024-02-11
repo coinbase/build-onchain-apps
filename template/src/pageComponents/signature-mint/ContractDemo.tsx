@@ -2,12 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { parseEther } from 'viem';
 import { Chain } from 'viem/chains';
-import {
-  useAccount,
-  useReadContract,
-  useSimulateContract,
-  useWriteContract
-} from 'wagmi';
+import { useAccount, useReadContract, useSimulateContract, useWriteContract } from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
 import { EXPECTED_CHAIN } from '../../constants';
 import { useSignatureMint721 } from '../../hooks/contracts';
@@ -163,17 +158,15 @@ export default function SignatureMintDemo() {
                     Freemint Used
                   </button>
                 )}
-                {
-                  paidMintConfig?.request && (
-                    <button
+                {paidMintConfig?.request && (
+                  <button
                     type="button"
                     onClick={() => paidMint(paidMintConfig?.request)}
                     className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
                   >
                     Paid Mint
                   </button>
-                  )
-                }
+                )}
 
                 {explorerLink && (
                   <a

@@ -39,7 +39,7 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
     },
   });
 
-  const { writeContract: performMint , error: errorMint,  data: dataMint} = useWriteContract();
+  const { writeContract: performMint, error: errorMint, data: dataMint } = useWriteContract();
 
   const { status: transactionStatus } = useWaitForTransactionReceipt({
     hash: dataMint,
@@ -47,8 +47,6 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
       enabled: !!dataMint,
     },
   });
-
-
 
   useEffect(() => {
     if (transactionStatus === 'success') {
@@ -67,7 +65,6 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
     }
   }, [transactionStatus, setMintStep, errorMint]);
 
-
   const handleMint = useCallback(() => {
     if (mintData?.request) {
       performMint?.(mintData?.request);
@@ -77,30 +74,20 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
 
   return (
     <>
-        {
-      mintStep === MintSteps.START_MINT_STEP && (
-        <MintProcessingStep />)
-    }
-    {
-      mintStep === MintSteps.OUT_OF_GAS_STEP && (
-        <OutOfGasStep setMintStep={setMintStep} />)
-    }
-    {
-      mintStep === MintSteps.MINT_COMPLETE_STEP && (
-        <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />)
-    }
+      {mintStep === MintSteps.START_MINT_STEP && <MintProcessingStep />}
+      {mintStep === MintSteps.OUT_OF_GAS_STEP && <OutOfGasStep setMintStep={setMintStep} />}
+      {mintStep === MintSteps.MINT_COMPLETE_STEP && (
+        <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />
+      )}
 
-    {
-      mintStep === null && (
+      {mintStep === null && (
         <Button
           buttonContent="Mint"
           onClick={handleMint}
           disabled={!onCorrectNetwork}
           className={clsx('my-4', onCorrectNetwork ? 'bg-white' : 'bg-gray-400')}
-        />)
-    }
+        />
+      )}
     </>
-
-
   );
 }

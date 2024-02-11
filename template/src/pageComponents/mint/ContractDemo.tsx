@@ -31,7 +31,13 @@ export default function MintContractDemo() {
   );
 
   const mintContent = useMemo(() => {
-    return <StartMintStep setMintStep={setMintStep} mintStep={mintStep} collectionName={collectionName}/>;
+    return (
+      <StartMintStep
+        setMintStep={setMintStep}
+        mintStep={mintStep}
+        collectionName={collectionName}
+      />
+    );
   }, [mintStep, collectionName]);
 
   if (contract.status === 'notConnected') {

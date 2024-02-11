@@ -15,7 +15,6 @@ export default function BuyMeCoffeeContractDemo() {
   const [numCoffees, setNumCoffees] = useState(1);
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 
-
   const asideContent = useMemo(() => {
     return (
       <BuyCoffeeFormStep
