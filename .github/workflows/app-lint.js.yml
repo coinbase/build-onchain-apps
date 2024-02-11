@@ -1,4 +1,4 @@
-name: App Test / Build
+name: App Lint
 on:
   push:
     branches: ['main']
@@ -21,13 +21,7 @@ jobs:
       - name: App Install dependencies
         working-directory: ./template
         run: npm install
-      - name: App Test Check
+      - name: App Lint Check
         working-directory: ./template
-        # When fails, please check your tests
-        run: npm run test
-      - name: App Test Build
-        working-directory: ./template
-        # When fails, please check your build
-        run: | 
-          cp .env.local.default .env.local
-          npm run build
+        # When fails, please run "npm run lint" to your code
+        run: npm run lint

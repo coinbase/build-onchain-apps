@@ -43,7 +43,13 @@ npx @coinbase/build-onchain-apps@latest create
 </p>
 
 #### Step 2: Set Wallet Connect Project ID
-Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file. We leverage WalletConnect to allow end-users to connect their wallets to your site.
+Create a `.env.local` file
+
+```bash
+cp .env.local.default .env.local
+```
+
+Next, obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file. We leverage WalletConnect to allow end-users to connect their wallets to your site.
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
