@@ -81,7 +81,7 @@ export function NavbarExperiencesList() {
 
 function Navbar() {
   return (
-    <div
+    <nav
       className={clsx(
         'flex flex-1 flex-grow items-center justify-between',
         'rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl',
@@ -135,7 +135,7 @@ function Navbar() {
           <AccountConnect />
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
