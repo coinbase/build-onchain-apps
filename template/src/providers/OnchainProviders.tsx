@@ -7,11 +7,7 @@ import {
   darkTheme,
   lightTheme,
 } from '@rainbow-me/rainbowkit';
-import {
-  metaMaskWallet,
-  rainbowWallet,
-  coinbaseWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+import { metaMaskWallet, rainbowWallet, coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, createConfig, http } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
@@ -32,16 +28,11 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: 'Recommended Wallet',
-      wallets: [
-        coinbaseWallet
-      ],
+      wallets: [coinbaseWallet],
     },
     {
       groupName: 'Other Wallets',
-      wallets: [
-        rainbowWallet,
-        metaMaskWallet
-      ],
+      wallets: [rainbowWallet, metaMaskWallet],
     },
   ],
   {

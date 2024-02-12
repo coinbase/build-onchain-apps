@@ -1,11 +1,11 @@
 import '../src/global.css';
 
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { Roboto_Mono, Inter } from 'next/font/google';
 import Footer from '../src/components/footer/Footer';
 import OnchainProviders from '../src/providers/OnchainProviders';
 import { initAnalytics } from '../src/utils/analytics';
 import type { Metadata } from 'next';
+import GoogleAnalytics from '../src/components/GoogleAnalytics/GoogleAnalytics';
 
 const roboto = Roboto_Mono({
   subsets: ['latin'],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? '';
+
 
 // Stat analytics before the App renders,
 // so we can track page views and early events
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <OnchainProviders>{children}</OnchainProviders>
         <Footer />
       </body>
-      <GoogleAnalytics gaId={GA_ID} />
+      <GoogleAnalytics />
     </html>
   );
 }
