@@ -1,5 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 import clsx from 'clsx';
+import { SpinnerIcon } from '../icons/SpinnerIcon';
 
 type ButtonProps = {
   buttonContent: ReactNode | string;
@@ -8,6 +9,7 @@ type ButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   variant?: 'primary' | 'secondary';
   disabled?: boolean;
+  loading?: boolean;
   icon?: ReactNode;
   rounded?: boolean;
 };
@@ -19,9 +21,15 @@ export default function Button({
   onClick,
   variant = 'primary',
   disabled = false,
+  loading = false,
   icon,
   rounded = true,
 }: ButtonProps) {
+  const buttonIcon = loading ? (
+    <SpinnerIcon className="animate-spin" height="1.2rem" width="1.2rem" />
+  ) : (
+    icon
+  );
   return (
     <button
       // eslint-disable-next-line react/button-has-type
@@ -37,9 +45,9 @@ export default function Button({
         rounded ? 'rounded-full' : null,
         className,
       )}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
-      {icon ? <span className="mr-2">{icon}</span> : null}
+      {buttonIcon ? <span className="mr-2">{buttonIcon}</span> : null}
       {buttonContent}
     </button>
   );

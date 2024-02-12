@@ -1,6 +1,6 @@
-import { SymbolIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import Button from '../../../components/Button/Button';
+import { SpinnerIcon } from '../../../components/icons/SpinnerIcon';
 
 export default function MintProcessingStep() {
   return (
@@ -22,7 +22,7 @@ export default function MintProcessingStep() {
 
       <Button
         buttonContent={<span>Minting in progress</span>}
-        icon={<SymbolIcon width={15} height={15} />}
+        icon={<SpinnerIcon className="animate-spin" width={15} height={15} />}
         variant="secondary"
       />
     </div>
