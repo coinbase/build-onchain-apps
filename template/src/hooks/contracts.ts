@@ -1,4 +1,4 @@
-import { Abi, type Chain } from 'viem';
+import { Abi, Address, type Chain } from 'viem';
 import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
@@ -7,12 +7,12 @@ import SignatureMint721ABI from '../contract/SignatureMint721';
 
 type ContractInstance = {
   chain: Chain;
-  address: `0x${string}`;
+  address: Address;
   deactivated?: boolean;
 };
 
 type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
-  | { address: `0x${string}`; status: 'ready' }
+  | { address: Address; status: 'ready' }
   | { status: 'onUnsupportedNetwork' }
   | { status: 'notConnected' }
   | { status: 'deactivated' }
@@ -28,14 +28,14 @@ type Spec<T extends Abi> = {
  */
 export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   function useContract(): UseContractReturn<typeof abi> {
-    const { chain } = useAccount();
+    const { chain, isConnected } = useAccount();
     const supportedChains = Object.values(spec).map((s) => s.chain);
 
-    if (!chain) {
+    if (!isConnected) {
       return { abi, status: 'notConnected', supportedChains };
     }
 
-    if (chain.id in spec) {
+    if (chain && chain.id in spec) {
       if (spec[chain.id].deactivated) {
         return { abi, status: 'deactivated', supportedChains };
       }
