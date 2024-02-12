@@ -34,7 +34,7 @@ if (!projectId) {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Sigular',
+      groupName: 'Other Wallets',
       wallets: [
         rainbowWallet,
         metaMaskWallet,
