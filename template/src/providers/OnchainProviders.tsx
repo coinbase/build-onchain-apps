@@ -8,11 +8,8 @@ import {
   lightTheme,
 } from '@rainbow-me/rainbowkit';
 import {
-  braveWallet,
   metaMaskWallet,
   rainbowWallet,
-  trustWallet,
-  walletConnectWallet,
   coinbaseWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -34,14 +31,16 @@ if (!projectId) {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Sigular',
+      groupName: 'Recommended Wallet',
+      wallets: [
+        coinbaseWallet
+      ],
+    },
+    {
+      groupName: 'Other Wallets',
       wallets: [
         rainbowWallet,
-        metaMaskWallet,
-        coinbaseWallet,
-        braveWallet,
-        trustWallet,
-        walletConnectWallet,
+        metaMaskWallet
       ],
     },
   ],
