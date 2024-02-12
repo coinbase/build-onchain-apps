@@ -37,18 +37,20 @@ describe('contracts', () => {
     });
 
     it.each([
-      ['notConnected', undefined, undefined],
-      ['onUnsupportedNetwork', { id: 31337 }, undefined],
-      ['ready', { id: baseSepolia.id }, '0xbaseSepolia'],
-    ])('handles %s state', (state, chain, address) => {
-      mockUseAccount.mockImplementation(() => ({ chain: chain }) as ReturnType<typeof useAccount>);
+      ['notConnected', undefined, undefined, undefined],
+      ['notConnected', undefined, '0xbaseSepolia', undefined],
+      ['notConnected', { id: 31337 }, undefined, undefined],
+      ['onUnsupportedNetwork', { id: 31337 }, undefined, '0x123'],
+      ['ready', { id: baseSepolia.id }, '0xbaseSepolia', '0x123'],
+    ])('handles %s state', (state, chain, address, userAccount) => {
+      mockUseAccount.mockImplementation(() => ({ chain: chain, isConnected: !!userAccount }) as ReturnType<typeof useAccount>);
       const {
         result: { current },
       } = renderHook(() => useTestContract());
       expect(current.status).toBe(state);
       expect(current.abi).toEqual(BuyMeACoffeeABI);
       expect(current.supportedChains).toEqual([baseSepolia]);
-      if (address) {
+      if (address && !!userAccount) {
         expect(current).toEqual(expect.objectContaining({ address }));
       } else {
         expect(current).not.toHaveProperty('address');
