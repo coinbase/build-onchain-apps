@@ -1,5 +1,7 @@
 import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
+import { AbiParametersToPrimitiveTypes, ExtractAbiFunction } from 'abitype';
 import { ReadContractErrorType } from 'viem';
+import BuyMeACoffeeABI from '../../../../contract/BuyMeACoffee';
 import { TransactionSteps } from '../../ContractDemo';
 import FormBuyCoffee from './FormBuyCoffee';
 
@@ -8,16 +10,13 @@ type BuyCoffeeFormStepProps = {
   numCoffees: number;
   transactionStep: TransactionSteps | null;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  refetchMemos: (options?: RefetchOptions | undefined) => Promise<
+  refetchMemos: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<
     QueryObserverResult<
-      readonly {
-        numCoffees: bigint;
-        userName: string;
-        twitterHandle: string;
-        message: string;
-        time: bigint;
-        userAddress: `0x${string}`;
-      }[],
+      AbiParametersToPrimitiveTypes<
+        ExtractAbiFunction<typeof BuyMeACoffeeABI, 'getMemos'>['outputs']
+      >[0],
       ReadContractErrorType
     >
   >;

@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
+import { AbiParametersToPrimitiveTypes, ExtractAbiFunction } from 'abitype';
 import clsx from 'clsx';
 import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
 import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
-
 import Button from '../../../../components/Button/Button';
+import BuyMeACoffeeABI from '../../../../contract/BuyMeACoffee';
 import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
 import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
 import { TransactionSteps } from '../../ContractDemo';
@@ -19,16 +20,13 @@ type FormBuyCoffeeProps = {
   numCoffees: number;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
   transactionStep: TransactionSteps | null;
-  refetchMemos: (options?: RefetchOptions | undefined) => Promise<
+  refetchMemos: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<
     QueryObserverResult<
-      readonly {
-        numCoffees: bigint;
-        userName: string;
-        twitterHandle: string;
-        message: string;
-        time: bigint;
-        userAddress: `0x${string}`;
-      }[],
+      AbiParametersToPrimitiveTypes<
+        ExtractAbiFunction<typeof BuyMeACoffeeABI, 'getMemos'>['outputs']
+      >[0],
       ReadContractErrorType
     >
   >;
@@ -49,7 +47,8 @@ function FormBuyCoffee({
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
   const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
-  const [dataHash, setDataHash] = useState<string | undefined>();
+  //FIXME: this is not really needed, unless we want to show to user the hash of the transaction
+  const [txHash, setTxHash] = useState<string | undefined>();
 
   useEffect(() => {
     setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * numCoffees);
@@ -79,23 +78,32 @@ function FormBuyCoffee({
 
   const {
     writeContract: buyMeACoffee,
-    data: dataBuyMeACoffee,
+    data: buyMeACoffeeHash,
     status: statusBuyMeACoffee,
     error: errorBuyMeACoffee,
   } = useWriteContract();
 
   const { status: transactionStatus } = useWaitForTransactionReceipt({
-    hash: dataBuyMeACoffee,
+    hash: buyMeACoffeeHash,
     query: {
-      enabled: !!dataBuyMeACoffee,
+      enabled: !!buyMeACoffeeHash,
     },
   });
 
   useEffect(() => {
     async function handleTransactionStatus() {
-      if (transactionStatus === 'error' && dataHash !== '') {
+      if (transactionStatus === 'success' && txHash !== '') {
         await handleOncomplete();
-        setDataHash('');
+        setTxHash('');
+        setName('');
+        setTwitterHandle('');
+        setMessage('');
+        setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
+      }
+
+      if (errorBuyMeACoffee) {
+        await handleOncomplete();
+        setTxHash('');
         setName('');
         setTwitterHandle('');
         setMessage('');
@@ -107,18 +115,11 @@ function FormBuyCoffee({
         } else {
           setTransactionStep(null);
         }
-      } else if (transactionStatus === 'success' && dataHash !== '') {
-        await handleOncomplete();
-        setDataHash('');
-        setName('');
-        setTwitterHandle('');
-        setMessage('');
-        setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
       }
     }
     void handleTransactionStatus();
   }, [
-    dataHash,
+    txHash,
     errorBuyMeACoffee,
     handleOncomplete,
     setTransactionStep,
@@ -132,13 +133,18 @@ function FormBuyCoffee({
       if (buyCoffeeData?.request) {
         buyMeACoffee?.(buyCoffeeData?.request);
         setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
-        setDataHash(dataBuyMeACoffee);
       } else {
         setTransactionStep(null);
       }
     },
-    [buyCoffeeData?.request, buyMeACoffee, dataBuyMeACoffee, setTransactionStep],
+    [buyCoffeeData?.request, buyMeACoffee, setTransactionStep],
   );
+
+  useEffect(() => {
+    if (buyMeACoffeeHash) {
+      setTxHash(buyMeACoffeeHash);
+    }
+  }, [buyMeACoffeeHash, setTxHash]);
 
   const handleNameChange = useCallback(
     (event: { target: { value: React.SetStateAction<string> } }) => {
