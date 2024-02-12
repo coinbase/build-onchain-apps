@@ -1,18 +1,18 @@
-"use client";
-    
-import Script from "next/script";
-import { GOOGLE_ANALYTICS_ID } from "../../utils/gtag";
+'use client';
+
+import Script from 'next/script';
+import { GOOGLE_ANALYTICS_ID } from '../../utils/gtag';
 
 function GoogleAnalytics() {
   return (
     <>
       <Script
-        strategy='afterInteractive'
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
       />
       <Script
-        id='gtag-init'
-        strategy='afterInteractive'
+        id="gtag-init"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
              window.dataLayer = window.dataLayer || [];

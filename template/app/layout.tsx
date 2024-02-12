@@ -2,10 +2,10 @@ import '../src/global.css';
 
 import { Roboto_Mono, Inter } from 'next/font/google';
 import Footer from '../src/components/footer/Footer';
+import GoogleAnalytics from '../src/components/GoogleAnalytics/GoogleAnalytics';
 import OnchainProviders from '../src/providers/OnchainProviders';
 import { initAnalytics } from '../src/utils/analytics';
 import type { Metadata } from 'next';
-import GoogleAnalytics from '../src/components/GoogleAnalytics/GoogleAnalytics';
 
 const roboto = Roboto_Mono({
   subsets: ['latin'],
@@ -30,8 +30,6 @@ export const metadata: Metadata = {
     boat: '0.17.0',
   },
 };
-
-
 
 // Stat analytics before the App renders,
 // so we can track page views and early events
