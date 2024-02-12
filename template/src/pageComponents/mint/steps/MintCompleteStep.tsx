@@ -4,13 +4,13 @@ import Button from '../../../components/Button/Button';
 import { MintSteps } from '../ContractDemo';
 
 type MintCompleteStepProps = {
-  setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;
+  setMintStep: React.Dispatch<React.SetStateAction<MintSteps>>;
   collectionName: string | null;
 };
 
 export default function MintCompleteStep({ setMintStep, collectionName }: MintCompleteStepProps) {
   const handleMintAnother = useCallback(() => {
-    setMintStep(null);
+    setMintStep(MintSteps.START_MINT_STEP);
   }, [setMintStep]);
 
   return (
