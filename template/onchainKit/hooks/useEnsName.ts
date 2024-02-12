@@ -18,6 +18,7 @@ export const ensNameAction = (address?: Address) => async (): Promise<GetEnsName
  */
 export const useEnsName = (address?: Address) => {
   const ensActionKey = `ens-name-${address}`;
+  //TODO: Wagmi's useEnsName hook already uses react-query that has caching built-in. So useOnchainActionWithCache seems redundant
   const ensName = useOnchainActionWithCache(
     ensNameAction(address),
     ensActionKey,

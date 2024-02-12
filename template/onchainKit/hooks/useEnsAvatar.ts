@@ -19,6 +19,7 @@ export const ensAvatarAction =
  */
 export const useEnsAvatar = (ensName?: GetEnsNameReturnType) => {
   const ensActionKey = `ens-avatar-${ensName}` ?? '';
+  //TODO: Wagmi's useEnsAvatar hook already uses react-query that has caching built-in. So useOnchainActionWithCache seems redundant
   const ensAvatar = useOnchainActionWithCache(
     ensAvatarAction(ensName),
     ensActionKey,

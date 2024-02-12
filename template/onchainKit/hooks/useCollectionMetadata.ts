@@ -51,6 +51,7 @@ function tryParseMetadataJson(str: string): CollectionMetadataResult | undefined
  * @param abi ABI for the contract
  * @param lookupType Lookup type to use for the contract URI function
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
+ * TODO: consider using react-query for caching
  * @returns CollectionMetadataResult
  */
 export function useCollectionMetadata(enabled: boolean, address: Address | undefined, abi: Abi) {
