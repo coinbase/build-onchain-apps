@@ -16,7 +16,7 @@ export enum MintSteps {
 }
 
 export default function MintContractDemo() {
-  const [mintStep, setMintStep] = useState<MintSteps | null>(null);
+  const [mintStep, setMintStep] = useState<MintSteps>(MintSteps.START_MINT_STEP);
 
   const { chain } = useAccount();
 
