@@ -1,9 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import { parseEther } from 'viem';
 import { Chain } from 'viem/chains';
-import { useAccount, useReadContract, useSimulateContract, useWriteContract } from 'wagmi';
+import {
+  useAccount,
+  useReadContract,
+  useSimulateContract,
+  useWaitForTransactionReceipt,
+  useWriteContract,
+} from 'wagmi';
 import { useBlockExplorerLink, useCollectionMetadata } from '../../../onchainKit';
+import Button from '../../components/Button/Button';
+import { SpinnerIcon } from '../../components/icons/SpinnerIcon';
 import { EXPECTED_CHAIN } from '../../constants';
 import { useSignatureMint721 } from '../../hooks/contracts';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -11,6 +20,7 @@ import NotConnected from '../mint/NotConnected';
 import SwitchNetwork from '../mint/SwitchNetwork';
 
 export default function SignatureMintDemo() {
+  const queryClient = useQueryClient();
   const [signature, setSignature] = useState('');
   const [sigFailure, setSigFailure] = useState(false);
   const { isConnected, address } = useAccount();
@@ -62,41 +72,81 @@ export default function SignatureMintDemo() {
    * Free Mint Contract Logic
    */
   const { data: freeMintConfig } = useSimulateContract({
-    // TODO: the chainId should be dynamic
+    chainId: chain?.id,
     address: contractAddress,
     abi: contract.abi,
     functionName: 'freeMint',
     args: address ? [address, debouncedSigValue] : undefined,
     query: {
-      enabled: signature.length > 0,
+      enabled: onCorrectNetwork && signature.length > 0,
     },
   });
-  const { writeContract: freeMint } = useWriteContract();
+  const {
+    writeContract: freeMint,
+    data: freeMintTxHash,
+    status: freeMintWriteStatus,
+  } = useWriteContract();
 
   /**
    * Paid Mint Contract Write Logic
    */
   const { data: paidMintConfig } = useSimulateContract({
-    // TODO: the chainId should be dynamic
+    chainId: chain?.id,
     address: contractAddress,
     abi: contract.abi,
     functionName: 'mint',
     args: [address],
     value: parseEther('0.0001'), // You should read the contract, however, setting this to value to prevent abuse.
+    query: {
+      enabled: onCorrectNetwork,
+    },
   });
-  const { writeContract: paidMint } = useWriteContract();
+  const {
+    writeContract: paidMint,
+    data: paidMintTxHash,
+    status: paidMintWriteStatus,
+  } = useWriteContract();
+
+  const { status: freeMintTransactionStatus, data: freeMintReceipt, isLoading: isLoadingFreeMintReceipt } = useWaitForTransactionReceipt(
+    {
+      hash: freeMintTxHash,
+      query: {
+        enabled: onCorrectNetwork,
+      },
+    },
+  );
+
+  const { status: paidMintTransactionStatus, isLoading: isLoadingPaidMintReceipt } = useWaitForTransactionReceipt({
+    hash: paidMintTxHash,
+    query: {
+      enabled: onCorrectNetwork,
+    },
+  });
+
+  const isPaidMintPending =
+    paidMintWriteStatus === 'pending' || isLoadingPaidMintReceipt;
+  const isFreeMintPending =
+    freeMintWriteStatus === 'pending' || isLoadingFreeMintReceipt;
 
   const usedFreeMintResponse = useReadContract({
-    // TODO: the chainId should be dynamic
+    chainId: chain?.id,
     address: contractAddress,
     abi: contract.abi,
     functionName: 'usedFreeMints',
     args: [address],
     query: {
-      enabled: (address?.length ?? 0) > 0,
+      enabled: (address?.length ?? 0) > 0 && onCorrectNetwork,
       staleTime: 0,
+      gcTime: 0,
     },
   });
+
+  // Refetch the state of `usedFreeMints` when free mint succeeds
+  useEffect(() => {
+    if (freeMintReceipt?.status === 'success' && usedFreeMintResponse?.queryKey) {
+      void queryClient.invalidateQueries({ queryKey: usedFreeMintResponse.queryKey });
+    }
+  }, [freeMintReceipt?.status]);
 
   useEffect(() => {
     setUsedFreeMint(usedFreeMintResponse.data as boolean);
@@ -111,8 +161,11 @@ export default function SignatureMintDemo() {
   }
 
   if (isLoading) {
-    // A future enhancement would be a nicer spinner here.
-    return <span className="text-xl">loading...</span>;
+    return (
+      <span className="text-xl">
+        <SpinnerIcon className="ml-r animate-spin" height="1.2rem" width="1.2rem" /> loading...
+      </span>
+    );
   }
 
   return (
@@ -141,31 +194,19 @@ export default function SignatureMintDemo() {
             {!sigFailure && freeMintConfig?.request && (
               <p className="text-sm">
                 {!usedFreeMint && signature.length && (
-                  <button
-                    type="button"
+                  <Button
+                    buttonContent="Mint NFT Free"
                     onClick={() => freeMint(freeMintConfig?.request)}
-                    className="focus:shadow-outline rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                  >
-                    Mint NFT Free
-                  </button>
+                    loading={isFreeMintPending}
+                  />
                 )}
-                {usedFreeMint && (
-                  <button
-                    type="button"
-                    disabled
-                    className="focus:shadow-outline rounded bg-gray-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out focus:outline-none"
-                  >
-                    Freemint Used
-                  </button>
-                )}
+                {usedFreeMint && <Button buttonContent="Freemint Used" disabled />}
                 {paidMintConfig?.request && (
-                  <button
-                    type="button"
+                  <Button
+                    buttonContent="Paid Mint"
                     onClick={() => paidMint(paidMintConfig?.request)}
-                    className="focus:shadow-outline ml-3 rounded bg-green-500 px-4 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none"
-                  >
-                    Paid Mint
-                  </button>
+                    loading={isPaidMintPending}
+                  />
                 )}
 
                 {explorerLink && (
