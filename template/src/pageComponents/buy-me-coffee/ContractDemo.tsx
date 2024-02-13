@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../../hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
@@ -14,18 +14,6 @@ export default function BuyMeCoffeeContractDemo() {
   const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
-
-  const asideContent = useMemo(() => {
-    return (
-      <BuyCoffeeFormStep
-        setTransactionStep={setTransactionStep}
-        numCoffees={numCoffees}
-        transactionStep={transactionStep}
-        setNumCoffees={setNumCoffees}
-        refetchMemos={refetchMemos}
-      />
-    );
-  }, [numCoffees, transactionStep, refetchMemos]);
 
   return (
     <div
@@ -51,7 +39,13 @@ export default function BuyMeCoffeeContractDemo() {
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >
-          {asideContent}
+          <BuyCoffeeFormStep
+            setTransactionStep={setTransactionStep}
+            numCoffees={numCoffees}
+            transactionStep={transactionStep}
+            setNumCoffees={setNumCoffees}
+            refetchMemos={refetchMemos}
+          />
         </div>
       </aside>
     </div>

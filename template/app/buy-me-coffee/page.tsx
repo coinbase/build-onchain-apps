@@ -1,19 +1,27 @@
-import { generateMetadata } from '../../src/utils/generateMetadata';
-import BuyMeCoffeePage from '.';
+'use client';
 
-export const metadata = generateMetadata({
-  title: 'Build Onchain Apps Toolkit',
-  description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
-  images: 'themes.png',
-  pathname: 'buy-me-coffee',
-});
+import Banner from '../../src/components/banner/banner';
+import Header from '../../src/components/header/Header';
+import HorizontalLine from '../../src/components/horizontal-line/HorizontalLine';
+import BuyMeCoffeeContractDemo from '../../src/pageComponents/buy-me-coffee/ContractDemo';
+import Guide from '../../src/pageComponents/buy-me-coffee/Guide';
+import Profile from '../../src/pageComponents/buy-me-coffee/Profile';
 
 /**
- * Server component, which imports the BuyMeCoffeePage component (client component that has 'use client' in it)
- * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
- * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
- * https://nextjs.org/docs/app/building-your-application/rendering/client-components
+ * Use the page component to wrap the components
+ * that you want to render on the page.
  */
-export default function Page() {
-  return <BuyMeCoffeePage />;
+export default function BuyMeCoffeePage() {
+  return (
+    <>
+      <Header />
+      <main className="container mx-auto flex flex-col px-8 py-6">
+        <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
+        <HorizontalLine />
+        <Profile />
+        <BuyMeCoffeeContractDemo />
+        <Guide />
+      </main>
+    </>
+  );
 }

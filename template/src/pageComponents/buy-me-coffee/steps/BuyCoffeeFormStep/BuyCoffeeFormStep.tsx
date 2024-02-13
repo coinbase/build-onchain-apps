@@ -1,42 +1,29 @@
-import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
-import { ReadContractErrorType } from 'viem';
 import { TransactionSteps } from '../../ContractDemo';
-import FormBuyCoffee from './FormBuyCoffee';
+import OutOfGasStep from '../OutOfGasStep';
+import StartTransactionStep from '../StartTransactionStep';
+import TransactionCompleteStep from '../TransactionCompleteStep';
+import FormBuyCoffee, { type FormBuyCoffeeProps } from './FormBuyCoffee';
 
-type BuyCoffeeFormStepProps = {
-  setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
-  numCoffees: number;
+type BuyCoffeeFormStepProps = FormBuyCoffeeProps & {
   transactionStep: TransactionSteps | null;
-  setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  refetchMemos: (options?: RefetchOptions | undefined) => Promise<
-    QueryObserverResult<
-      readonly {
-        numCoffees: bigint;
-        userName: string;
-        twitterHandle: string;
-        message: string;
-        time: bigint;
-        userAddress: `0x${string}`;
-      }[],
-      ReadContractErrorType
-    >
-  >;
 };
 
-export default function BuyCoffeeFormStep({
-  setTransactionStep,
-  numCoffees,
-  setNumCoffees,
-  transactionStep,
-  refetchMemos,
-}: BuyCoffeeFormStepProps) {
-  return (
-    <FormBuyCoffee
-      setTransactionStep={setTransactionStep}
-      numCoffees={numCoffees}
-      setNumCoffees={setNumCoffees}
-      transactionStep={transactionStep}
-      refetchMemos={refetchMemos}
-    />
-  );
+export default function BuyCoffeeFormStep(props: BuyCoffeeFormStepProps) {
+  const { setTransactionStep, numCoffees, transactionStep } = props;
+
+  if (transactionStep === TransactionSteps.START_TRANSACTION_STEP) {
+    return <StartTransactionStep />;
+  }
+
+  if (transactionStep === TransactionSteps.TRANSACTION_COMPLETE_STEP) {
+    return (
+      <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
+    );
+  }
+
+  if (transactionStep === TransactionSteps.OUT_OF_GAS_STEP) {
+    return <OutOfGasStep buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />;
+  }
+
+  return <FormBuyCoffee {...props} />;
 }

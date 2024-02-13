@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? '';
 if (!projectId) {
   const providerErrMessage =
-    'To connect to all Wallets you need to provide a NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID env variable';
+    'Missing NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID in .env.local file. Obtain Wallet Connect Project ID at https://cloud.walletconnect.com';
   throw new Error(providerErrMessage);
 }
 
