@@ -1,5 +1,5 @@
+import { Avatar } from '@coinbase/onchainkit';
 import { clsx } from 'clsx';
-import { OnchainAvatar } from '../../../onchainKit';
 import { convertBigIntTimestampToDate } from '../../utils/timestamp';
 import type { CoffeeMemo } from '../../types';
 
@@ -19,7 +19,7 @@ function MemoCard({ numCoffees, userName, twitterHandle, message, userAddress, t
     <li className="flex w-full flex-col items-start gap-4">
       <div className="items-center justify-between self-stretch lg:flex">
         <div className="flex items-center gap-3">
-          <OnchainAvatar address={userAddress} />
+          <Avatar address={userAddress} />
           <div className="flex items-start gap-1">
             <span className="text-3 text-bold w-fit whitespace-nowrap font-bold text-boat-color-palette-foreground">
               {userName}

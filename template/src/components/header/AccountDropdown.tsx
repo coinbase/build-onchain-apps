@@ -1,7 +1,7 @@
+import { Avatar } from '@coinbase/onchainkit';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { clsx } from 'clsx';
 import { useAccount } from 'wagmi';
-import { OnchainAvatar } from '../../../onchainKit';
 import { AccountInfoPanel } from './AccountInfoPanel';
 
 export function AccountDropdown() {
@@ -11,9 +11,11 @@ export function AccountDropdown() {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <div className="flex h-8 w-8 items-center justify-center">
-          <button type="button" aria-label="Disconnect">
-            <OnchainAvatar address={address} />
-          </button>
+          {address && (
+            <button type="button" aria-label="Disconnect">
+              <Avatar address={address} />
+            </button>
+          )}
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

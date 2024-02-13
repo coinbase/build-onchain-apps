@@ -1,26 +1,29 @@
 import { useCallback } from 'react';
+import { Avatar, Name } from '@coinbase/onchainkit';
 import { ExitIcon } from '@radix-ui/react-icons';
 import { useAccount, useDisconnect } from 'wagmi';
-import { OnchainAddress, OnchainAvatar, useEnsName } from '../../../onchainKit';
+import { getSlicedAddress } from '../../../onchainKit/core/address';
 
 export function AccountInfoPanel() {
   const { address } = useAccount();
   const { disconnect } = useDisconnect();
-  const { ensName } = useEnsName(address);
   const handleDisconnectWallet = useCallback(() => {
     disconnect();
   }, [disconnect]);
 
+  if (!address) return null;
+
   return (
     <>
       <div className="my-4 inline-flex items-center justify-start gap-2">
-        <OnchainAvatar address={address} className="h-10 w-10 rounded-full" />
+        <Avatar address={address} className="h-10 w-10 rounded-full" />
         <div className="inline-flex flex-col items-start justify-center gap-1">
-          <div className="font-inter w-32 text-base font-medium text-white">{ensName}</div>
-          <OnchainAddress
-            address={address}
-            className="font-inter w-32 text-sm font-medium text-zinc-400"
-          />
+          <div className="font-inter w-32 text-base font-medium text-white">
+            <Name address={address} />
+          </div>
+          <span className="font-inter w-32 text-sm font-medium text-zinc-400">
+            {getSlicedAddress(address)}
+          </span>
         </div>
       </div>
       <hr className="h-px self-stretch border-transparent bg-zinc-400 bg-opacity-20" />
