@@ -16,7 +16,7 @@ export default function NavbarMobile() {
 
   if (isMobileMenuOpen) {
     return (
-      <div className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl">
+      <nav className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl">
         <div
           className={[
             'flex flex-1 flex-grow items-center justify-between',
@@ -75,12 +75,12 @@ export default function NavbarMobile() {
         <div className="mx-2">
           <AccountConnect />
         </div>
-      </div>
+      </nav>
     );
   }
 
   return (
-    <div
+    <nav
       className={[
         'flex flex-1 flex-grow items-center justify-between',
         'rounded-[50px] border border-stone-300 bg-white bg-opacity-10 p-4 backdrop-blur-2xl',
@@ -93,6 +93,6 @@ export default function NavbarMobile() {
           <HamburgerMenuIcon width="24" height="24" />
         </button>
       </div>
-    </div>
+    </nav>
   );
 }

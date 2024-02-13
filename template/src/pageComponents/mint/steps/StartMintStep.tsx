@@ -16,8 +16,8 @@ import MintProcessingStep from './MintProcessingStep';
 import OutOfGasStep from './OutOfGasStep';
 
 type StartMintProps = {
-  setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;
-  mintStep: MintSteps | null;
+  setMintStep: React.Dispatch<React.SetStateAction<MintSteps>>;
+  mintStep: MintSteps;
   collectionName: string | null;
 };
 
@@ -53,15 +53,11 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
       setMintStep(MintSteps.MINT_COMPLETE_STEP);
     }
 
-    if (transactionStatus === 'error') {
-      if (
+    if (errorMint) {
+      const isOutOfGas =
         errorMint instanceof TransactionExecutionError &&
-        errorMint.message.toLowerCase().includes('out of gas')
-      ) {
-        setMintStep(MintSteps.OUT_OF_GAS_STEP);
-      } else {
-        setMintStep(null);
-      }
+        errorMint.message.toLowerCase().includes('out of gas');
+      setMintStep(isOutOfGas ? MintSteps.OUT_OF_GAS_STEP : MintSteps.START_MINT_STEP);
     }
   }, [transactionStatus, setMintStep, errorMint]);
 
@@ -74,13 +70,13 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
 
   return (
     <>
-      {mintStep === MintSteps.START_MINT_STEP && <MintProcessingStep />}
+      {mintStep === MintSteps.MINT_PROCESSING_STEP && <MintProcessingStep />}
       {mintStep === MintSteps.OUT_OF_GAS_STEP && <OutOfGasStep setMintStep={setMintStep} />}
       {mintStep === MintSteps.MINT_COMPLETE_STEP && (
         <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />
       )}
 
-      {mintStep === null && (
+      {mintStep === MintSteps.START_MINT_STEP && (
         <Button
           buttonContent="Mint"
           onClick={handleMint}

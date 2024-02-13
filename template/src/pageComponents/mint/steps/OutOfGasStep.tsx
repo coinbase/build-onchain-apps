@@ -4,12 +4,12 @@ import Button from '../../../components/Button/Button';
 import { MintSteps } from '../ContractDemo';
 
 type OutOfGasStepProps = {
-  setMintStep: React.Dispatch<React.SetStateAction<MintSteps | null>>;
+  setMintStep: React.Dispatch<React.SetStateAction<MintSteps>>;
 };
 
 export default function OutOfGasStep({ setMintStep }: OutOfGasStepProps) {
   const handleGotIt = useCallback(() => {
-    setMintStep(null);
+    setMintStep(MintSteps.START_MINT_STEP);
   }, [setMintStep]);
 
   return (
