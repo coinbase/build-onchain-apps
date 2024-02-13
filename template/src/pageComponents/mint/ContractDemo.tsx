@@ -64,8 +64,6 @@ export default function MintContractDemo() {
     );
   }, [mintStep, collectionName]);
 
-  const isLoading = contract.status !== 'ready' || isLoadingCollectionMetadata;
-
   if (contract.status === 'notConnected') {
     return <NotConnected />;
   }
@@ -74,7 +72,7 @@ export default function MintContractDemo() {
     return <SwitchNetwork />;
   }
 
-  if (isLoading) {
+  if (isLoadingCollectionMetadata || contract.status !== 'ready') {
     return (
       <div className="my-5 flex justify-center align-middle">
         <span className="text-xl">
