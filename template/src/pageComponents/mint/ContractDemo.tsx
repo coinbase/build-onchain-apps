@@ -37,7 +37,7 @@ export default function MintContractDemo() {
     contract.abi,
   );
 
-  // Estimate free minting 1 erc1155 NFT
+  // The CustomERC1155 contract is a free mint, so instead of mint price we fetch tx fee estimate
   const { data: txFeeEstimation, isLoading: isLoadingFeeEstimate } = useEstimateGas({
     to: contract.status === 'ready' ? contract.address : undefined,
     account: address,
