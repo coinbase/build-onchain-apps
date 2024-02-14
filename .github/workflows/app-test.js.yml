@@ -19,9 +19,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: App Install dependencies
-        working-directory: ./template
+        working-directory: ./template/web
         run: npm install
       - name: App Test Check
-        working-directory: ./template
+        working-directory: ./template/web
         # When fails, please check your tests
         run: npm run test

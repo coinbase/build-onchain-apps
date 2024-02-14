@@ -19,11 +19,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: App Install dependencies
-        working-directory: ./template
+        working-directory: ./template/web
         run: npm install
       - name: App Test Build
-        working-directory: ./template
+        working-directory: ./template/web
         # When fails, please check your build
-        run: | 
+        run: |
           cp .env.local.default .env.local
           npm run build
