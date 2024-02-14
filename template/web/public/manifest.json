@@ -3,8 +3,18 @@
   "short_name": "Onchain App",
   "icons": [
     {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/icons/16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
     }
   ],
