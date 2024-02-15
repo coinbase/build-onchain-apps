@@ -70,8 +70,12 @@ export const createProject = async () => {
   });
 
   const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
+  const isWebPackageJsonUpdated = updatePackageJson(
+    newAppDir + '/web',
+    newAppName
+  );
 
-  if (isPackageJsonUpdated) {
+  if (isPackageJsonUpdated && isWebPackageJsonUpdated) {
     console.log(chalk.green(`Initializing Git and Foundry... \n`));
   }
   if (!initGit(newAppDir)) {
