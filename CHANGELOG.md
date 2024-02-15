@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.18.0
+
+### Minor Changes
+
+- 4be879c: Updated folder structure to web and contracts
+
 ## 0.17.0
 
 ### Minor Changes
