@@ -58,6 +58,5 @@ contract LocalBuyMeACoffeeContract {
         emit NewMemo(msg.sender, block.timestamp, userName, message);
 
         console2.log("New Memo was emitted");
-
     }
 }

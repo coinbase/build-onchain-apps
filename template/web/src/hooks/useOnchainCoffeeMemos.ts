@@ -16,6 +16,7 @@ function useOnchainCoffeeMemos() {
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'getMemos',
+    args: [BigInt(0), BigInt(25)], // TODO : Implement Paging
   });
   markStep('useReadContract.refetchMemos');
 

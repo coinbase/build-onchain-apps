@@ -25,7 +25,7 @@ pragma solidity 0.8.23;
  * @dev Memo struct
  */
 struct Memo {
-    uint numCoffees;
+    uint256 numCoffees;
     string userName;
     string twitterHandle;
     string message;
@@ -47,7 +47,14 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(address indexed userAddress, uint256 time, uint numCoffees, string userName, string twitterHandle, string message);
+    event NewMemo(
+        address indexed userAddress,
+        uint256 time,
+        uint256 numCoffees,
+        string userName,
+        string twitterHandle,
+        string message
+    );
 
     constructor() {
         owner = payable(msg.sender);
@@ -65,14 +72,23 @@ contract BuyMeACoffee {
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(uint numCoffees, string calldata userName, string calldata twitterHandle, string calldata message) public payable {
-        if (msg.value < price*numCoffees) {
+    function buyCoffee(
+        uint256 numCoffees,
+        string calldata userName,
+        string calldata twitterHandle,
+        string calldata message
+    ) public payable {
+        if (msg.value < price * numCoffees) {
             revert InsufficientFunds();
         }
 
         emit BuyMeACoffeeEvent(msg.sender, msg.value);
 
         if (bytes(userName).length == 0 && bytes(message).length == 0) {
+            revert InvalidArguments("Invalid userName or message");
+        }
+
+        if (bytes(userName).length > 75 || bytes(twitterHandle).length > 75 || bytes(message).length > 1024) {
             revert InvalidArguments("Invalid userName or message");
         }
 
@@ -143,8 +159,27 @@ contract BuyMeACoffee {
     /**
      * @dev Function to get the memos
      */
-    function getMemos() public view returns (Memo[] memory) {
-        return memos;
+    function getMemos(uint256 index, uint256 size) public view returns (Memo[] memory) {
+        if (index >= memos.length) {
+            revert InvalidArguments("Invalid index");
+        }
+
+        if (size > 25) {
+            revert InvalidArguments("size must be <= 25");
+        }
+
+        uint256 effectiveSize = size;
+        if (index + size > memos.length) {
+            // Adjust the size if it exceeds the array's bounds
+            effectiveSize = memos.length - index;
+        }
+
+        Memo[] memory slice = new Memo[](effectiveSize);
+        for (uint256 i = 0; i < effectiveSize; i++) {
+            slice[i] = memos[index + i];
+        }
+
+        return slice;
     }
 
     /**
