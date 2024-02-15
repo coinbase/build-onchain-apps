@@ -59,7 +59,7 @@ NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 
 ```bash
 # cd into your new project folder
-cd [app-name]
+cd [app-name]/web
 
 # Install dependencies
 yarn
@@ -155,7 +155,7 @@ git clone https://github.com/coinbase/build-onchain-apps.git
 
 ```bash
 # Go to main application
-cd template
+cd template/web
 
 # Install and run latest template
 yarn

@@ -5,6 +5,9 @@ $ npx @coinbase/build-onchain-apps@latest create`;
 const codeStep2 = `\`\`\`bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE`;
 const codeStep3 = `\`\`\`bash
+# cd into your new project folder
+cd [app-name]/web
+
 # Install dependencies
 yarn
 
