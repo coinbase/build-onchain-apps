@@ -34,7 +34,7 @@ export const updatePackageJson = (
   projectDir: string,
   appName: string
 ): boolean => {
-  const packageJsonPath = path.join(projectDir + '/web', 'package.json');
+  const packageJsonPath = path.join(projectDir, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     packageJson.name = appName;
