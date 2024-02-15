@@ -13,7 +13,7 @@ describe('supportedChains', () => {
     });
 
     it('should return mainnet for production', () => {
-      expect(getChainsForEnvironment(Environment.production)).toEqual([base]);
+      expect(getChainsForEnvironment(Environment.production)).toEqual([base, baseSepolia]);
     });
   });
 
