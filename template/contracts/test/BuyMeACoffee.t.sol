@@ -88,6 +88,18 @@ contract BuyMeACoffeeTest is Test {
         );
     }
 
+    function testEmptyMemoNoError() public {
+        Memo[] memory memos = buyMeACoffee.getMemos(15, 0);
+        assertEq(memos.length, 0);
+    }
+
+    function testInvalidIndexErrors() public {
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+
+        vm.expectRevert();
+        Memo[] memory memos = buyMeACoffee.getMemos(15, 10);
+    }
+
     /**
      * @dev Recieve function to accept ether
      */

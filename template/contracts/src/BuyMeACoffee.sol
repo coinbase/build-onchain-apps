@@ -89,7 +89,7 @@ contract BuyMeACoffee {
         }
 
         if (bytes(userName).length > 75 || bytes(twitterHandle).length > 75 || bytes(message).length > 1024) {
-            revert InvalidArguments("Invalid userName or message");
+            revert InvalidArguments("Input parameter exceeds max length");
         }
 
         memos.push(Memo(numCoffees, userName, twitterHandle, message, block.timestamp, msg.sender));
@@ -160,6 +160,10 @@ contract BuyMeACoffee {
      * @dev Function to get the memos
      */
     function getMemos(uint256 index, uint256 size) public view returns (Memo[] memory) {
+        if (memos.length == 0) {
+            return memos;
+        }
+
         if (index >= memos.length) {
             revert InvalidArguments("Invalid index");
         }
