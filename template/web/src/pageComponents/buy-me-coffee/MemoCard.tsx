@@ -16,22 +16,22 @@ function MemoCard({ numCoffees, twitterHandle, message, userAddress, time }: Cof
 
   return (
     <li className="flex w-full flex-col items-start gap-4">
-      <div className="items-center justify-between self-stretch lg:flex">
+      <div className="w-full grow items-center justify-between lg:flex">
         <div className="flex items-center gap-3">
           <Avatar address={userAddress} />
-          <div className="flex items-start gap-1">
-            <span className="text-3 text-bold w-fit whitespace-nowrap font-bold text-boat-color-palette-foreground">
+          <div className="inline-flex items-start gap-1 md:flex">
+            <span className="text-3 text-bold truncate text-wrap font-bold text-boat-color-palette-foreground">
               <Name address={userAddress} />
-              <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
-                {twitterHandle ? ` (@${twitterHandle})` : null}
-              </span>
             </span>
-            <span className="text-3 w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+            <span className="text-3 line-clamp-1 flex-1 truncate text-wrap break-all font-normal text-boat-color-palette-foregroundmuted">
+              {twitterHandle ? ` (@${twitterHandle})` : null}
+            </span>
+            <span className="text-3 whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
               bought {numCoffeesInt} coffee{numCoffeesInt > 1 ? 's' : null}
             </span>
           </div>
         </div>
-        <div className="text-3 ml-[43px] w-fit whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
+        <div className="text-3 ml-[43px] whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
           {convertedTimestamp.toDateString()}
         </div>
       </div>

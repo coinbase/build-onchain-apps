@@ -16,7 +16,7 @@ export default function NavbarMobile() {
 
   if (isMobileMenuOpen) {
     return (
-      <nav className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl">
+      <nav className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl sm:max-h-80">
         <div
           className={[
             'flex flex-1 flex-grow items-center justify-between',
@@ -35,45 +35,47 @@ export default function NavbarMobile() {
             </button>
           </div>
         </div>
-        <ul className="mx-2 flex flex-col gap-8">
-          <li className="flex">
-            <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-              <GitHubLogoIcon width="24" height="24" />
-            </NavbarLink>
-          </li>
-          <li className="flex">
-            <NavbarLink href="/#get-started">Get Started</NavbarLink>
-          </li>
-          <li className="flex">
-            <NavigationMenu.Root className="relative flex flex-grow flex-col">
-              <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
-                <NavigationMenu.Item>
-                  <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
-                    <span className="font-robotoMono text-center text-base font-normal text-white">
-                      Experiences
-                    </span>
-                    <ChevronDownIcon
-                      className="transform transition duration-200 ease-in-out group-data-[state=open]:rotate-180"
-                      width="16"
-                      height="16"
-                    />
-                  </NavigationMenu.Trigger>
-                  <NavigationMenu.Content
-                    className={clsx(
-                      'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
-                      'my-4 rounded-lg bg-opacity-90 p-6 shadow backdrop-blur-2xl',
-                    )}
-                  >
-                    <NavbarExperiencesList />
-                  </NavigationMenu.Content>
-                </NavigationMenu.Item>
-              </NavigationMenu.List>
-              <NavigationMenu.Viewport className={clsx('flex flex-col justify-center')} />
-            </NavigationMenu.Root>
-          </li>
-        </ul>
-        <div className="mx-2">
-          <AccountConnect />
+        <div className="overflow-scroll">
+          <ul className="mx-2 flex flex-col gap-8">
+            <li className="flex">
+              <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
+                <GitHubLogoIcon width="24" height="24" />
+              </NavbarLink>
+            </li>
+            <li className="flex">
+              <NavbarLink href="/#get-started">Get Started</NavbarLink>
+            </li>
+            <li className="flex">
+              <NavigationMenu.Root className="relative flex flex-grow flex-col">
+                <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
+                  <NavigationMenu.Item>
+                    <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
+                      <span className="font-robotoMono text-center text-base font-normal text-white">
+                        Experiences
+                      </span>
+                      <ChevronDownIcon
+                        className="transform transition duration-200 ease-in-out group-data-[state=open]:rotate-180"
+                        width="16"
+                        height="16"
+                      />
+                    </NavigationMenu.Trigger>
+                    <NavigationMenu.Content
+                      className={clsx(
+                        'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
+                        'my-4 rounded-lg bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                      )}
+                    >
+                      <NavbarExperiencesList />
+                    </NavigationMenu.Content>
+                  </NavigationMenu.Item>
+                </NavigationMenu.List>
+                <NavigationMenu.Viewport className={clsx('flex flex-col justify-center')} />
+              </NavigationMenu.Root>
+            </li>
+          </ul>
+          <div className="mx-2">
+            <AccountConnect />
+          </div>
         </div>
       </nav>
     );
