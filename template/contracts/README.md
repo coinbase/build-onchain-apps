@@ -17,7 +17,6 @@ Use at your own risk, acknowledging the inherent risks of smart contract technol
   - [Contracts](#contracts)
     - [BuyMeACoffee](#buymeacoffee)
     - [CustomERC1155](#customerc1155)
-    - [SignatureMintERC721](#signatureminterc721)
     - [AllowlistNFT](#allowlistnft)
 - [Project Layout](#project-layout)
 - [Usage](#usage)
@@ -36,27 +35,6 @@ This repository contains a sample `BuyMeACoffee.sol` contract which allows the u
 #### CustomERC1155
 
 It also contains a sample implementation (`CustomERC1155.sol`) of ERC1155 using openzeppelin's [ERC1155 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/IERC1155.sol)
-
-#### SignatureMintERC721
-
-Contract that allows a user to mint a ERC721 for free with a cryptographically signed message. This is useful for mints where you want to allow users to mint for free based on a signature from
-your backend API. This is an alternative approach to a merkel tree which is fully on-chain. [ERC721 contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol).
-Also makes use of the following helper libraries for signature verification:
-
-1. [OpenZeppelin MessageHashUtils](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/MessageHashUtils.sol) - Used to mimic web3 signatures.
-2. [OpenZeppelin ECDSA](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/ECDSA.sol) - Used to validate signatures are authentic.
-
-For this contract to work, you need to create a wallet which will act as the signer, you can do this in your
-favorite EOA wallet or code:
-
-```js
-const wallet = ethers.Wallet.createRandom();
-console.log(wallet.privateKey);
-console.log(wallet.address);
-```
-
-That wallet address needs to be imported as an environment parameter in the contracts project. This is needed
-because the signer is set during contract deployment: `SIGNATURE_MINT_SIGNER="0xAddress`
 
 #### AllowlistNFT
 
@@ -161,7 +139,6 @@ Note: In order to verify your smart contract on Basescan, you need an API key. Y
 source .env
 
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url base_sepolia
 ```
 
 <b>Note: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not </b>

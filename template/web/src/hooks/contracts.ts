@@ -3,7 +3,6 @@ import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import Custom1155ABI from '../contract/Custom1155';
-import SignatureMint721ABI from '../contract/SignatureMint721';
 
 type ContractInstance = {
   chain: Chain;
@@ -79,18 +78,6 @@ export const useCustom1155Contract = generateContractHook({
   [baseSepolia.id]: {
     chain: baseSepolia,
     address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
-  },
-  // more chains for this contract go here
-});
-
-/**
- * Returns contract data for the SignatureMint721 contract.
- */
-export const useSignatureMint721 = generateContractHook({
-  abi: SignatureMint721ABI,
-  [baseSepolia.id]: {
-    chain: baseSepolia,
-    address: '0x8d5acddd5e1ad1c624d84ff2e0455dd39fdb139e',
   },
   // more chains for this contract go here
 });

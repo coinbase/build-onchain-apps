@@ -12,7 +12,6 @@ export enum Environment {
 
 export enum EnvironmentKeys {
   environment = 'ENVIRONMENT',
-  signatureMintPrivateKey = 'SIGNATURE_MINT_PRIVATE_KEY',
 }
 
 export function getCurrentEnvironment(): Environment {
@@ -26,14 +25,4 @@ export function getCurrentEnvironment(): Environment {
   const releaseStageValue = Object.values(Environment).find((value) => value === stage);
 
   return releaseStageValue ?? Environment.localhost;
-}
-
-export function getSignatureMintPrivateKey(): string {
-  let key: string | undefined = process.env[EnvironmentKeys.signatureMintPrivateKey];
-
-  if (!key) {
-    key = '';
-  }
-
-  return key;
 }
