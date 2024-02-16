@@ -7,7 +7,7 @@ type MemosProps = {
 
 /**
  * Memos received from coffee purchases in BuyMeACoffee smart contract.
- * 
+ *
  * @param memos List of memos.
  */
 function Memos({ memos }: MemosProps) {

@@ -5,7 +5,7 @@ import type { CoffeeMemo } from '../../types';
 
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.
- * 
+ *
  * @param userName Name of the person who sent the memo.
  * @param twitterHandle Twitter handle of the person who sent the memo.
  * @param message Message sent by the person.
