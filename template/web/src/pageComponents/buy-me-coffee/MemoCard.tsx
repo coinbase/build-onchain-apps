@@ -6,12 +6,11 @@ import type { CoffeeMemo } from '../../types';
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.
  *
- * @param userName Name of the person who sent the memo.
  * @param twitterHandle Twitter handle of the person who sent the memo.
  * @param message Message sent by the person.
  * @param timestamp Timestamp of the memo.
  */
-function MemoCard({ numCoffees, userName, twitterHandle, message, userAddress, time }: CoffeeMemo) {
+function MemoCard({ numCoffees, twitterHandle, message, userAddress, time }: CoffeeMemo) {
   const convertedTimestamp = convertBigIntTimestampToDate(time);
   const numCoffeesInt = Number(numCoffees);
 

@@ -3,12 +3,12 @@ const createJestConfig = nextJest({
   dir: './',
 });
 const customJestConfig = {
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', 'src/onchainKit/**/index.ts', '!**/node_modules/**'],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**'],
   coverageReporters: ['clover', 'json', 'lcov', 'text'],
   moduleNameMapper: {
     'rehype-pretty-code': '<rootDir>/node_modules/rehype-pretty-code',
   },
-  roots: ['<rootDir>/src', '<rootDir>/onchainKit'],
+  roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 const asyncConfig = createJestConfig(customJestConfig);

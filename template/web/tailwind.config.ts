@@ -5,7 +5,6 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/pageComponents/**/*.{js,ts,jsx,tsx,mdx}',
-    './onchainKit/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     container: {
