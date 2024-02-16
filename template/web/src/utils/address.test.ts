@@ -1,4 +1,4 @@
-import { getSlicedAddress } from './address';
+import { getSlicedAddress } from '../../src/utils/address';
 
 describe('getSlicedAddress', () => {
   it('should return a string of class names', () => {

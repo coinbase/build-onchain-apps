@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Abi, Address } from 'abitype';
 import { useReadContract } from 'wagmi';
-import { ipfsToHTTP } from '../core/ipfs';
+import { ipfsToHTTP } from '../../src/utils/ipfs';
 
 /**
  * There is some differences in URI standards between ERC721 and 1155, handle those in this component.

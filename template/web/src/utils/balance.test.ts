@@ -1,4 +1,4 @@
-import { getAccountBalance } from './balance';
+import { getAccountBalance } from '../../src/utils/balance';
 
 describe('getAccountBalance', () => {
   it('should return a string of class names', () => {

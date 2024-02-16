@@ -1,4 +1,4 @@
-import { ipfsToHTTP } from './ipfs';
+import { ipfsToHTTP } from '../../src/utils/ipfs';
 
 describe('ipfsToHTTP', () => {
   it('converts ipfs URI to HTTPS URI', () => {

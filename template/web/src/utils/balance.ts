@@ -1,4 +1,4 @@
-import type { WagmiFetchBalanceResult } from '../types';
+import type { WagmiFetchBalanceResult } from '../../onchainKit/types';
 
 /**
  * TODO Docs
