@@ -7,13 +7,7 @@ import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
 import Custom1155ABI from '../contract/Custom1155';
-import SignatureMint721ABI from '../contract/SignatureMint721';
-import {
-  generateContractHook,
-  useBuyMeACoffeeContract,
-  useCustom1155Contract,
-  useSignatureMint721,
-} from './contracts';
+import { generateContractHook, useBuyMeACoffeeContract, useCustom1155Contract } from './contracts';
 
 jest.mock('wagmi', () => ({
   ...jest.requireActual<typeof import('wagmi')>('wagmi'),
@@ -78,18 +72,6 @@ describe('contracts', () => {
       expect(contract).toEqual({
         abi: Custom1155ABI,
         address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
-        status: 'ready',
-        supportedChains: [baseSepolia],
-      });
-    });
-  });
-
-  describe('useSignatureMint721', () => {
-    it('should return correct contract data', () => {
-      const contract = useSignatureMint721();
-      expect(contract).toEqual({
-        abi: SignatureMint721ABI,
-        address: '0x8d5acddd5e1ad1c624d84ff2e0455dd39fdb139e',
         status: 'ready',
         supportedChains: [baseSepolia],
       });

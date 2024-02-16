@@ -110,7 +110,6 @@ Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by crea
 source .env
 
 forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
-forge script script/SignatureMintERC721.s.sol:SignatureMintERC721Script --broadcast --verify --rpc-url base_sepolia
 ```
 
 **Note**: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not.

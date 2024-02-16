@@ -1,9 +1,4 @@
-import {
-  Environment,
-  EnvironmentKeys,
-  getCurrentEnvironment,
-  getSignatureMintPrivateKey,
-} from './environment';
+import { Environment, EnvironmentKeys, getCurrentEnvironment } from './environment';
 
 describe('environment', () => {
   describe('Environment', () => {
@@ -18,7 +13,6 @@ describe('environment', () => {
   describe('EnvironmentKeys', () => {
     it('should have the correct values', () => {
       expect(EnvironmentKeys.environment).toEqual('ENVIRONMENT');
-      expect(EnvironmentKeys.signatureMintPrivateKey).toEqual('SIGNATURE_MINT_PRIVATE_KEY');
     });
   });
 
@@ -36,18 +30,6 @@ describe('environment', () => {
     it('should return localhost when not mapped correctly', () => {
       process.env[EnvironmentKeys.environment] = 'baseIsTheBestL2Chain:)';
       expect(getCurrentEnvironment()).toEqual(Environment.localhost);
-    });
-  });
-
-  describe('getSignatureMintPrivateKey', () => {
-    it('should return the correct value', () => {
-      process.env[EnvironmentKeys.signatureMintPrivateKey] = '0x1234567890';
-      expect(getSignatureMintPrivateKey()).toEqual('0x1234567890');
-    });
-
-    it('should return empty string when not set', () => {
-      delete process.env[EnvironmentKeys.signatureMintPrivateKey];
-      expect(getSignatureMintPrivateKey()).toEqual('');
     });
   });
 });
