@@ -19,7 +19,7 @@ pragma solidity 0.8.23;
  *   Use at your own risk, acknowledging the inherent risks of smart contract technology on the blockchain.
  *
  */
- 
+
 import {ERC1155} from "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
 contract COFFEEKITTEN is ERC1155 {
