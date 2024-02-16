@@ -7,11 +7,13 @@ type MemosProps = {
 
 /**
  * Memos received from coffee purchases in BuyMeACoffee smart contract.
- * https://github.com/alchemyplatform/RTW3-Week2-BuyMeACoffee-Contracts/blob/main/contracts/BuyMeACoffee.sol#L28C18-L29C1
+ * 
  * @param memos List of memos.
  */
 function Memos({ memos }: MemosProps) {
-  if (!memos) return null;
+  if (!memos) {
+    return null;
+  }
   return (
     <ul className="flex w-full flex-col items-center gap-10">
       {memos
@@ -28,7 +30,8 @@ function Memos({ memos }: MemosProps) {
             />
           );
         })
-        .reverse()}
+        .reverse()
+        .slice(0, 8)}
     </ul>
   );
 }
