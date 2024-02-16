@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { Avatar, Name } from '@coinbase/onchainkit';
 import { ExitIcon } from '@radix-ui/react-icons';
 import { useAccount, useDisconnect } from 'wagmi';
-import { getSlicedAddress } from '../../../onchainKit/core/address';
+import { getSlicedAddress } from '../../utils/address';
 
 export function AccountInfoPanel() {
   const { address } = useAccount();

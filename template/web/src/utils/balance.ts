@@ -1,4 +1,9 @@
-import type { WagmiFetchBalanceResult } from '../types';
+export type WagmiFetchBalanceResult = {
+  decimals: number;
+  formatted: string;
+  symbol: string;
+  value: bigint;
+};
 
 /**
  * TODO Docs
