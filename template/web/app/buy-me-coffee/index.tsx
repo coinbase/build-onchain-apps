@@ -25,12 +25,20 @@ export default function BuyMeCoffeePage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto flex flex-col px-8 py-6">
-        <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
+      <main className="mx-auto flex flex-col py-6">
+        <section className="container px-8">
+          <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
+        </section>
         <HorizontalLine />
-        <Profile />
-        <BuyMeCoffeeContractDemo />
-        <Guide />
+        <section className="container px-8">
+          <Profile />
+        </section>
+        <section className="container px-8">
+          <BuyMeCoffeeContractDemo />
+        </section>
+        <section className="container px-8">
+          <Guide />
+        </section>
       </main>
     </>
   );

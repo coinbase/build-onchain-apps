@@ -12,7 +12,7 @@ export default function Profile() {
       {/* Fetch user avatar dynamically */}
       <Image alt="User Avatar" src={UserAvatar} className="h-28 w-28" />
       <div className="flex flex-col items-start justify-start gap-2">
-        <h1 className="w-96 text-3xl font-semibold text-white">{userName}</h1>
+        <h1 className="text-3xl font-semibold text-white">{userName}</h1>
         <p className="text-base font-normal leading-normal text-zinc-400">{aboutUser}</p>
         <p className="flex items-center justify-start gap-2">
           <Image
