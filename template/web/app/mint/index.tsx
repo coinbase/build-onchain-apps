@@ -3,13 +3,13 @@
 import dynamic from 'next/dynamic';
 import Banner from '@/components/banner/banner';
 import Header from '@/components/header/Header';
-import Guide from '@/pageComponents/mint/Guide';
+import Guide from 'app/mint/_components/Guide';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
 // for its internals we get annoying hydration errors. A future enhancement would be to
 // read token metadata through a provider that is available server-side.
 const MintContractDemo = dynamic(
-  async () => import('@/pageComponents/mint/ContractDemo').then((mod) => mod),
+  async () => import('app/mint/_components/ContractDemo').then((mod) => mod),
   {
     ssr: false,
   },

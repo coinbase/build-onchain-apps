@@ -10,10 +10,10 @@ import {
 import Button from '@/components/Button/Button';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useCustom1155Contract } from '@/hooks/contracts';
-import { MintSteps } from '../ContractDemo';
-import MintCompleteStep from './MintCompleteStep';
-import MintProcessingStep from './MintProcessingStep';
-import OutOfGasStep from './OutOfGasStep';
+import { MintSteps } from './ContractDemo';
+import StepMintComplete from './StepMintComplete';
+import StepMintProcessing from './StepMintProcessing';
+import StepOutOfGas from './StepOutOfGas';
 
 type StartMintProps = {
   setMintStep: React.Dispatch<React.SetStateAction<MintSteps>>;
@@ -70,10 +70,10 @@ export default function StartMintStep({ setMintStep, mintStep, collectionName }:
 
   return (
     <>
-      {mintStep === MintSteps.MINT_PROCESSING_STEP && <MintProcessingStep />}
-      {mintStep === MintSteps.OUT_OF_GAS_STEP && <OutOfGasStep setMintStep={setMintStep} />}
+      {mintStep === MintSteps.MINT_PROCESSING_STEP && <StepMintProcessing />}
+      {mintStep === MintSteps.OUT_OF_GAS_STEP && <StepOutOfGas setMintStep={setMintStep} />}
       {mintStep === MintSteps.MINT_COMPLETE_STEP && (
-        <MintCompleteStep setMintStep={setMintStep} collectionName={collectionName} />
+        <StepMintComplete setMintStep={setMintStep} collectionName={collectionName} />
       )}
 
       {mintStep === MintSteps.START_MINT_STEP && (

@@ -7,7 +7,7 @@ import { EXPECTED_CHAIN } from '@/constants';
 import { useCustom1155Contract } from '@/hooks/contracts';
 import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
-import StartMintStep from './steps/StartMintStep';
+import StartMintStep from './StartMintStep';
 import SwitchNetwork from './SwitchNetwork';
 
 export enum MintSteps {

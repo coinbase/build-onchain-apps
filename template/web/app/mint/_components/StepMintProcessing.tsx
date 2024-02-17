@@ -2,7 +2,7 @@ import { SymbolIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import Button from '@/components/Button/Button';
 
-export default function MintProcessingStep() {
+export default function StepMintProcessing() {
   return (
     <div
       className={clsx(
