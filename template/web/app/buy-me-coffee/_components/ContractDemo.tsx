@@ -4,14 +4,14 @@ import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
 
-export enum TransactionSteps {
-  START_TRANSACTION_STEP,
-  TRANSACTION_COMPLETE_STEP,
-  OUT_OF_GAS_STEP,
+export enum TRANSACTION_STEPS {
+  START,
+  COMPLETE,
+  OUT_OF_GAS,
 }
 
 export default function BuyMeCoffeeContractDemo() {
-  const [transactionStep, setTransactionStep] = useState<TransactionSteps | null>(null);
+  const [transactionStep, setTransactionStep] = useState<TRANSACTION_STEPS | null>(null);
   const [numCoffees, setNumCoffees] = useState(1);
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 

@@ -7,16 +7,14 @@ import Button from '@/components/Button/Button';
 import ContractAlert from '@/components/contract-alert/ContractAlert';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
-import { TransactionSteps } from './ContractDemo';
-import StepOutOfGas from './StepOutOfGas';
-import StepStartTransaction from './StepStartTransaction';
-import StepTransactionComplete from './StepTransactionComplete';
+import { TRANSACTION_STEPS } from './ContractDemo';
+import TransactionSteps from './TransactionSteps';
 
 type FormBuyCoffeeProps = {
-  setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
+  setTransactionStep: React.Dispatch<React.SetStateAction<TRANSACTION_STEPS | null>>;
   numCoffees: number;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  transactionStep: TransactionSteps | null;
+  transactionStep: TRANSACTION_STEPS | null;
   refetchMemos: (options?: RefetchOptions | undefined) => Promise<
     QueryObserverResult<
       readonly {
@@ -32,7 +30,7 @@ type FormBuyCoffeeProps = {
   >;
 };
 
-const BUY_COFFEE_AMOUNT_RAW = 0.0001;
+const GAS_COST = 0.0001;
 const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
 function FormBuyCoffee({
@@ -46,11 +44,11 @@ function FormBuyCoffee({
   const [name, setName] = useState('');
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
-  const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(BUY_COFFEE_AMOUNT_RAW);
+  const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(GAS_COST);
   const [dataHash, setDataHash] = useState<string | undefined>();
 
   useEffect(() => {
-    setBuyCoffeeAmount(BUY_COFFEE_AMOUNT_RAW * numCoffees);
+    setBuyCoffeeAmount(GAS_COST * numCoffees);
   }, [numCoffees]);
 
   // Get the correct contract info for current network (if present)
@@ -101,7 +99,7 @@ function FormBuyCoffee({
           errorBuyMeACoffee instanceof TransactionExecutionError &&
           errorBuyMeACoffee.message.toLowerCase().includes('out of gas')
         ) {
-          setTransactionStep(TransactionSteps.OUT_OF_GAS_STEP);
+          setTransactionStep(TRANSACTION_STEPS.OUT_OF_GAS);
         } else {
           setTransactionStep(null);
         }
@@ -111,7 +109,7 @@ function FormBuyCoffee({
         setName('');
         setTwitterHandle('');
         setMessage('');
-        setTransactionStep(TransactionSteps.TRANSACTION_COMPLETE_STEP);
+        setTransactionStep(TRANSACTION_STEPS.COMPLETE);
       }
     }
     void handleTransactionStatus();
@@ -129,7 +127,7 @@ function FormBuyCoffee({
       event.preventDefault();
       if (buyCoffeeData?.request) {
         buyMeACoffee?.(buyCoffeeData?.request);
-        setTransactionStep(TransactionSteps.START_TRANSACTION_STEP);
+        setTransactionStep(TRANSACTION_STEPS.START);
         setDataHash(dataBuyMeACoffee);
       } else {
         setTransactionStep(null);
@@ -172,114 +170,108 @@ function FormBuyCoffee({
     );
   }, [buyCoffeeAmount, numCoffees]);
 
+  if (transactionStep !== null) {
+    return (
+      <TransactionSteps
+        transactionStep={transactionStep}
+        numCoffees={numCoffees}
+        setTransactionStep={setTransactionStep}
+        gasCost={GAS_COST}
+      />
+    );
+  }
+
   return (
     <>
-      {transactionStep === TransactionSteps.START_TRANSACTION_STEP && <StepStartTransaction />}
-
-      {transactionStep === TransactionSteps.TRANSACTION_COMPLETE_STEP && (
-        <StepTransactionComplete numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
-      )}
-
-      {transactionStep === TransactionSteps.OUT_OF_GAS_STEP && (
-        <StepOutOfGas buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />
-      )}
-
-      {transactionStep === null && (
-        <>
-          <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
-            Buy Me a Coffee!
-          </h2>
-          <form onSubmit={handleSubmit} className="w-full">
-            <div className="my-4 items-center lg:flex lg:gap-4">
-              <div className="text-center text-4xl lg:text-left">☕</div>
-              <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
-              <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-                {NUMBER_OF_COFFEES.map((numberCoffee) => {
-                  return (
-                    <button
-                      key={`num-coffee-btn-${numberCoffee}`}
-                      type="button"
-                      className={clsx(
-                        `${
-                          numCoffees === numberCoffee
-                            ? 'bg-gradient-2'
-                            : 'border border-boat-color-orange'
-                        } block h-[40px] w-full rounded lg:w-[40px]`,
-                      )}
-                      // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                      onClick={() => setNumCoffees(numberCoffee)}
-                    >
-                      {numberCoffee}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-5">
-                <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className={clsx([
-                    'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                    'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-                  ])}
-                  placeholder="Name"
-                  onChange={handleNameChange}
-                  disabled={formDisabled}
-                  required
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="twitterHandle"
-                  className="mb-2 block text-sm font-medium text-white"
+      <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
+        Buy Me a Coffee!
+      </h2>
+      <form onSubmit={handleSubmit} className="w-full">
+        <div className="my-4 items-center lg:flex lg:gap-4">
+          <div className="text-center text-4xl lg:text-left">☕</div>
+          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+          <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
+            {NUMBER_OF_COFFEES.map((numberCoffee) => {
+              return (
+                <button
+                  key={`num-coffee-btn-${numberCoffee}`}
+                  type="button"
+                  className={clsx(
+                    `${
+                      numCoffees === numberCoffee
+                        ? 'bg-gradient-2'
+                        : 'border border-boat-color-orange'
+                    } block h-[40px] w-full rounded lg:w-[40px]`,
+                  )}
+                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                  onClick={() => setNumCoffees(numberCoffee)}
                 >
-                  Twitter handle (Optional)
-                </label>
-                <input
-                  type="text"
-                  id="twitterHandle"
-                  className={clsx([
-                    'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                    'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-                  ])}
-                  placeholder="@"
-                  onChange={handleTwitterHandleChange}
-                  disabled={formDisabled}
-                />
-              </div>
+                  {numberCoffee}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-              <div className="mb-5">
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
-                  Message
-                </label>
-                <textarea
-                  value={message}
-                  id="message"
-                  className={clsx([
-                    'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                    'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-                  ])}
-                  placeholder="Say something"
-                  onChange={handleMessageChange}
-                  disabled={formDisabled}
-                  required
-                />
-              </div>
+        <div>
+          <div className="mb-5">
+            <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              className={clsx([
+                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+              ])}
+              placeholder="Name"
+              onChange={handleNameChange}
+              disabled={formDisabled}
+              required
+            />
+          </div>
 
-              <ContractAlert contract={contract} amount={BUY_COFFEE_AMOUNT_RAW} />
+          <div className="mb-5">
+            <label htmlFor="twitterHandle" className="mb-2 block text-sm font-medium text-white">
+              Twitter handle (Optional)
+            </label>
+            <input
+              type="text"
+              id="twitterHandle"
+              className={clsx([
+                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+              ])}
+              placeholder="@"
+              onChange={handleTwitterHandleChange}
+              disabled={formDisabled}
+            />
+          </div>
 
-              <Button buttonContent={submitButtonContent} type="submit" disabled={formDisabled} />
-            </div>
-          </form>
-        </>
-      )}
+          <div className="mb-5">
+            <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
+              Message
+            </label>
+            <textarea
+              value={message}
+              id="message"
+              className={clsx([
+                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
+                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
+              ])}
+              placeholder="Say something"
+              onChange={handleMessageChange}
+              disabled={formDisabled}
+              required
+            />
+          </div>
+
+          <ContractAlert contract={contract} amount={GAS_COST} />
+
+          <Button buttonContent={submitButtonContent} type="submit" disabled={formDisabled} />
+        </div>
+      </form>
     </>
   );
 }
