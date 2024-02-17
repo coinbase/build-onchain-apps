@@ -1,6 +1,6 @@
 import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
 import { ReadContractErrorType } from 'viem';
-import { TransactionSteps } from '../../ContractDemo';
+import { TransactionSteps } from './ContractDemo';
 import FormBuyCoffee from './FormBuyCoffee';
 
 type BuyCoffeeFormStepProps = {
@@ -23,7 +23,7 @@ type BuyCoffeeFormStepProps = {
   >;
 };
 
-export default function BuyCoffeeFormStep({
+export default function StepBuyCoffeeForm({
   setTransactionStep,
   numCoffees,
   setNumCoffees,

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import NotConnected from './NotConnected';
+import NotConnected from '../../../app/mint/_components/NotConnected';
 
 describe('NotConnected', () => {
   it('should render', () => {

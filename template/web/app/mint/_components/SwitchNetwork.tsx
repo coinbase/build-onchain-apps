@@ -9,6 +9,7 @@ function SwitchNetwork() {
     () => switchChain?.({ chainId: EXPECTED_CHAIN.id }),
     [switchChain],
   );
+
   return (
     <div className="flex flex-col justify-start">
       <p className="text-sm">Please switch to {EXPECTED_CHAIN.name}</p>

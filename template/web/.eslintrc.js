@@ -155,6 +155,11 @@ module.exports = {
             "group": "external",
             "position": "before"
           },
+          {
+            "pattern": "@/**",
+            "group": "external",
+            "position": "after"
+          }
         ],
         "pathGroupsExcludedImportTypes": ["react"]
       }

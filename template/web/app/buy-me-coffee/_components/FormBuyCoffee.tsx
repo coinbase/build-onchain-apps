@@ -1,18 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
 import clsx from 'clsx';
 import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
 import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
-
 import Button from '@/components/Button/Button';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
-import { TransactionSteps } from '../../ContractDemo';
-import OutOfGasStep from '../OutOfGasStep';
-import StartTransactionStep from '../StartTransactionStep';
-import TransactionCompleteStep from '../TransactionCompleteStep';
+import { TransactionSteps } from './ContractDemo';
+import StepOutOfGas from './StepOutOfGas';
+import StepStartTransaction from './StepStartTransaction';
+import StepTransactionComplete from './StepTransactionComplete';
 
 type FormBuyCoffeeProps = {
   setTransactionStep: React.Dispatch<React.SetStateAction<TransactionSteps | null>>;
@@ -203,14 +201,14 @@ function FormBuyCoffee({
 
   return (
     <>
-      {transactionStep === TransactionSteps.START_TRANSACTION_STEP && <StartTransactionStep />}
+      {transactionStep === TransactionSteps.START_TRANSACTION_STEP && <StepStartTransaction />}
 
       {transactionStep === TransactionSteps.TRANSACTION_COMPLETE_STEP && (
-        <TransactionCompleteStep numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
+        <StepTransactionComplete numCoffees={numCoffees} setTransactionStep={setTransactionStep} />
       )}
 
       {transactionStep === TransactionSteps.OUT_OF_GAS_STEP && (
-        <OutOfGasStep buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />
+        <StepOutOfGas buyCoffeeAmountRaw={0.001} setTransactionStep={setTransactionStep} />
       )}
 
       {transactionStep === null && (
