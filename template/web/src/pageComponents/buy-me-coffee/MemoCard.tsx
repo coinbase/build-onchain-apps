@@ -1,7 +1,7 @@
 import { Avatar, Name } from '@coinbase/onchainkit';
 import { clsx } from 'clsx';
-import { convertBigIntTimestampToDate } from '../../utils/timestamp';
-import type { CoffeeMemo } from '../../types';
+import { convertBigIntTimestampToDate } from '@/utils/timestamp';
+import type { CoffeeMemo } from '@/types';
 
 /**
  * Memo received from the coffee purchase in BuyMeACoffee smart contract.

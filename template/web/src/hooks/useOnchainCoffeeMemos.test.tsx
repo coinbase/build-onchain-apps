@@ -3,9 +3,9 @@
  */
 import { renderHook } from '@testing-library/react';
 import { useReadContract } from 'wagmi';
-import OnchainProviders from '../providers/OnchainProviders';
-import { CoffeeMemo } from '../types';
-import { markStep } from '../utils/analytics';
+import OnchainProviders from '@/providers/OnchainProviders';
+import { CoffeeMemo } from '@/types';
+import { markStep } from '@/utils/analytics';
 import useOnchainCoffeeMemos from './useOnchainCoffeeMemos';
 
 jest.mock('../utils/analytics', () => ({

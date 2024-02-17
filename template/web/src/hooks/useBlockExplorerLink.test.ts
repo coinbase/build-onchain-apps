@@ -4,7 +4,7 @@
 
 import { renderHook } from '@testing-library/react';
 import { Chain } from 'viem/chains';
-import { HashType, useBlockExplorerLink } from '../../src/hooks/useBlockExplorerLink';
+import { HashType, useBlockExplorerLink } from '@/hooks/useBlockExplorerLink';
 
 describe('useBlockExplorerLink', () => {
   it('should return the correct explorer link when chain and address are provided', () => {

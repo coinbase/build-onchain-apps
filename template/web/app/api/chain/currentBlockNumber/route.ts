@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getChainById } from '../../../../src/store/supportedChains';
-import { getRpcProviderForChain } from '../../../../src/utils/provider';
+import { getChainById } from '@/store/supportedChains';
+import { getRpcProviderForChain } from '@/utils/provider';
 
 /**
  * Handler for the /api/chain/blockNumber route, this route will return the current block number

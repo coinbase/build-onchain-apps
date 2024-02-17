@@ -1,4 +1,4 @@
-import { generateMetadata } from '../src/utils/generateMetadata';
+import { generateMetadata } from '@/utils/generateMetadata';
 import Home from './home';
 
 export const metadata = generateMetadata({

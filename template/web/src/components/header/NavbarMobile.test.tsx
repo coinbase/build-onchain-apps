@@ -3,7 +3,7 @@
  */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import OnchainProviders from '../../providers/OnchainProviders';
+import OnchainProviders from '@/providers/OnchainProviders';
 import NavbarMobile from './NavbarMobile';
 
 describe('NavbarMobile', () => {

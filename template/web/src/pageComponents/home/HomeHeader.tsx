@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
-import CodeBlock from '../../components/code-block/CodeBlock';
-import Header from '../../components/header/Header';
+import CodeBlock from '@/components/code-block/CodeBlock';
+import Header from '@/components/header/Header';
 import styles from './Home.module.css';
 
 const codeStep1 = `\`\`\`bash

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import OnchainProviders from '../../providers/OnchainProviders';
+import OnchainProviders from '@/providers/OnchainProviders';
 import ContractDemo from './ContractDemo';
 
 describe('ContractDemo', () => {

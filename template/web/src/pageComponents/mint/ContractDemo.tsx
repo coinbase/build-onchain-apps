@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
-import { SpinnerIcon } from '../../components/icons/SpinnerIcon';
-import NextImage from '../../components/NextImage/NextImage';
-import { EXPECTED_CHAIN } from '../../constants';
-import { useCustom1155Contract } from '../../hooks/contracts';
-import { useCollectionMetadata } from '../../hooks/useCollectionMetadata';
+import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
+import NextImage from '@/components/NextImage/NextImage';
+import { EXPECTED_CHAIN } from '@/constants';
+import { useCustom1155Contract } from '@/hooks/contracts';
+import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
 import StartMintStep from './steps/StartMintStep';
 import SwitchNetwork from './SwitchNetwork';

@@ -1,4 +1,4 @@
-import { generateMetadata } from '../../src/utils/generateMetadata';
+import { generateMetadata } from '@/utils/generateMetadata';
 import MintPage from '.';
 
 export const metadata = generateMetadata({

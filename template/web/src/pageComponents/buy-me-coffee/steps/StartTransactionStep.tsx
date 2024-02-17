@@ -1,5 +1,5 @@
 import { SymbolIcon } from '@radix-ui/react-icons';
-import Button from '../../../components/Button/Button';
+import Button from '@/components/Button/Button';
 
 export default function StartTransactionStep() {
   return (

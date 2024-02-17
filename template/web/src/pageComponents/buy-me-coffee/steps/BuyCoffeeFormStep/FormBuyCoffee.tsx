@@ -6,9 +6,9 @@ import clsx from 'clsx';
 import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
 import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 
-import Button from '../../../../components/Button/Button';
-import { useBuyMeACoffeeContract } from '../../../../hooks/contracts';
-import { useLoggedInUserCanAfford } from '../../../../hooks/useUserCanAfford';
+import Button from '@/components/Button/Button';
+import { useBuyMeACoffeeContract } from '@/hooks/contracts';
+import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
 import { TransactionSteps } from '../../ContractDemo';
 import OutOfGasStep from '../OutOfGasStep';
 import StartTransactionStep from '../StartTransactionStep';

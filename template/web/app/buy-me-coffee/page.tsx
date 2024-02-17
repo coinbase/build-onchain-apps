@@ -1,4 +1,4 @@
-import { generateMetadata } from '../../src/utils/generateMetadata';
+import { generateMetadata } from '@/utils/generateMetadata';
 import BuyMeCoffeePage from '.';
 
 export const metadata = generateMetadata({
