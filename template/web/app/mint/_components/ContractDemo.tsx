@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo, useState } from 'react';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
