@@ -10,7 +10,7 @@ type ContractInstance = {
   deactivated?: boolean;
 };
 
-type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
+export type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
   | { address: Address; status: 'ready' }
   | { status: 'onUnsupportedNetwork' }
   | { status: 'notConnected' }
