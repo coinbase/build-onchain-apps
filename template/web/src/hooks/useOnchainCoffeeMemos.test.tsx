@@ -8,7 +8,7 @@ import { CoffeeMemo } from '@/types';
 import { markStep } from '@/utils/analytics';
 import useOnchainCoffeeMemos from './useOnchainCoffeeMemos';
 
-jest.mock('@/utils/analytics', () => ({
+jest.mock('../utils/analytics', () => ({
   markStep: jest.fn(),
 }));
 
