@@ -5,8 +5,8 @@
 import { renderHook } from '@testing-library/react';
 import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import BuyMeACoffeeABI from '../contract/BuyMeACoffee';
-import Custom1155ABI from '../contract/Custom1155';
+import BuyMeACoffeeABI from '@/contract/BuyMeACoffee';
+import Custom1155ABI from '@/contract/Custom1155';
 import { generateContractHook, useBuyMeACoffeeContract, useCustom1155Contract } from './contracts';
 
 jest.mock('wagmi', () => ({

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import Button from '../../../components/Button/Button';
+import Button from '@/components/Button/Button';
 import { TransactionSteps } from '../ContractDemo';
 
 type OutOfGasStepProps = {

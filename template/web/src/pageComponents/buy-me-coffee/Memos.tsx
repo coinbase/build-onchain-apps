@@ -1,5 +1,5 @@
 import MemoCard from './MemoCard';
-import type { CoffeeMemo } from '../../types';
+import type { CoffeeMemo } from '@/types';
 
 type MemosProps = {
   memos: CoffeeMemo[];

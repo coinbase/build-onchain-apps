@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import clsx from 'clsx';
-import Button from '../../../components/Button/Button';
+import Button from '@/components/Button/Button';
 import { MintSteps } from '../ContractDemo';
 
 type OutOfGasStepProps = {

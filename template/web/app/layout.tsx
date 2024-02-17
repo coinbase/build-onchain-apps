@@ -1,10 +1,10 @@
-import '../src/global.css';
+import '@/global.css';
 
 import { Roboto_Mono, Inter } from 'next/font/google';
-import Footer from '../src/components/footer/Footer';
-import GoogleAnalytics from '../src/components/GoogleAnalytics/GoogleAnalytics';
-import OnchainProviders from '../src/providers/OnchainProviders';
-import { initAnalytics } from '../src/utils/analytics';
+import Footer from '@/components/footer/Footer';
+import GoogleAnalytics from '@/components/GoogleAnalytics/GoogleAnalytics';
+import OnchainProviders from '@/providers/OnchainProviders';
+import { initAnalytics } from '@/utils/analytics';
 import type { Metadata } from 'next';
 
 const roboto = Roboto_Mono({

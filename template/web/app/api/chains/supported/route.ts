@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getChainsForEnvironment } from '../../../../src/store/supportedChains';
+import { getChainsForEnvironment } from '@/store/supportedChains';
 
 /**
  * Handler for the /api/chains/supported route, this route will return all the supported

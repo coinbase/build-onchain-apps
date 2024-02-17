@@ -1,4 +1,4 @@
-import CodeBlock from '../../components/code-block/CodeBlock';
+import CodeBlock from '@/components/code-block/CodeBlock';
 
 const codeStep1 = `\`\`\`bash
 $ npx @coinbase/build-onchain-apps@latest create`;

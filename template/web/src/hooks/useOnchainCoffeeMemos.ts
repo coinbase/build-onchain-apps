@@ -1,6 +1,6 @@
 import { useReadContract } from 'wagmi';
-import { CoffeeMemo } from '../types';
-import { markStep } from '../utils/analytics';
+import { CoffeeMemo } from '@/types';
+import { markStep } from '@/utils/analytics';
 import { useBuyMeACoffeeContract } from './contracts';
 
 /**

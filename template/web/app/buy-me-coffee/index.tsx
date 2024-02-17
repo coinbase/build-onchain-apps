@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Banner from '../../src/components/banner/banner';
-import Header from '../../src/components/header/Header';
-import HorizontalLine from '../../src/components/horizontal-line/HorizontalLine';
-import BuyMeCoffeeContractDemo from '../../src/pageComponents/buy-me-coffee/ContractDemo';
-import Guide from '../../src/pageComponents/buy-me-coffee/Guide';
-import Profile from '../../src/pageComponents/buy-me-coffee/Profile';
+import Banner from '@/components/banner/banner';
+import Header from '@/components/header/Header';
+import HorizontalLine from '@/components/horizontal-line/HorizontalLine';
+import BuyMeCoffeeContractDemo from '@/pageComponents/buy-me-coffee/ContractDemo';
+import Guide from '@/pageComponents/buy-me-coffee/Guide';
+import Profile from '@/pageComponents/buy-me-coffee/Profile';
 
 /**
  * Use the page component to wrap the components

@@ -7,9 +7,9 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi';
-import Button from '../../../components/Button/Button';
-import { EXPECTED_CHAIN } from '../../../constants';
-import { useCustom1155Contract } from '../../../hooks/contracts';
+import Button from '@/components/Button/Button';
+import { EXPECTED_CHAIN } from '@/constants';
+import { useCustom1155Contract } from '@/hooks/contracts';
 import { MintSteps } from '../ContractDemo';
 import MintCompleteStep from './MintCompleteStep';
 import MintProcessingStep from './MintProcessingStep';

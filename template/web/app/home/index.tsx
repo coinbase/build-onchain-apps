@@ -1,7 +1,7 @@
 'use client';
-import Guide from '../../src/pageComponents/home/Guide';
-import HomeHeader from '../../src/pageComponents/home/HomeHeader';
-import WhyUseIt from '../../src/pageComponents/home/WhyUseIt';
+import Guide from '@/pageComponents/home/Guide';
+import HomeHeader from '@/pageComponents/home/HomeHeader';
+import WhyUseIt from '@/pageComponents/home/WhyUseIt';
 
 /**
  * Use the page component to wrap the components

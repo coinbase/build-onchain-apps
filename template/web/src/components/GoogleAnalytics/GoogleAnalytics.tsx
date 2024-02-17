@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { GOOGLE_ANALYTICS_ID } from '../../utils/gtag';
+import { GOOGLE_ANALYTICS_ID } from '@/utils/gtag';
 
 function GoogleAnalytics() {
   return (
