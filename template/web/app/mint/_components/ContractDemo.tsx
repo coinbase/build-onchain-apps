@@ -7,7 +7,7 @@ import { EXPECTED_CHAIN } from '@/constants';
 import { useCustom1155Contract } from '@/hooks/contracts';
 import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
 import NotConnected from './NotConnected';
-import StartMintStep from './StartMintStep';
+import StepStartMint from './StepStartMint';
 import SwitchNetwork from './SwitchNetwork';
 
 export enum MintSteps {
@@ -56,7 +56,7 @@ export default function MintContractDemo() {
 
   const mintContent = useMemo(() => {
     return (
-      <StartMintStep
+      <StepStartMint
         setMintStep={setMintStep}
         mintStep={mintStep}
         collectionName={collectionName}

@@ -3,7 +3,7 @@ import '@/global.css';
 import { Roboto_Mono, Inter } from 'next/font/google';
 import Footer from '@/components/footer/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics/GoogleAnalytics';
-import OnchainProviders from '@/providers/OnchainProviders';
+import OnchainProviders from '@/OnchainProviders';
 import { initAnalytics } from '@/utils/analytics';
 import type { Metadata } from 'next';
 

@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { clsx } from 'clsx';
-import useOnchainCoffeeMemos from '@/hooks/useOnchainCoffeeMemos';
+import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import Memos from './Memos';
-import BuyCoffeeFormStep from './steps/BuyCoffeeFormStep/BuyCoffeeFormStep';
+import StepBuyCoffeeForm from './StepBuyCoffeeForm';
 
 export enum TransactionSteps {
   START_TRANSACTION_STEP,
@@ -17,7 +17,7 @@ export default function BuyMeCoffeeContractDemo() {
 
   const asideContent = useMemo(() => {
     return (
-      <BuyCoffeeFormStep
+      <StepBuyCoffeeForm
         setTransactionStep={setTransactionStep}
         numCoffees={numCoffees}
         transactionStep={transactionStep}

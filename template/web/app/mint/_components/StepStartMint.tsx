@@ -21,10 +21,9 @@ type StartMintProps = {
   collectionName: string | null;
 };
 
-export default function StartMintStep({ setMintStep, mintStep, collectionName }: StartMintProps) {
+export default function StepStartMint({ setMintStep, mintStep, collectionName }: StartMintProps) {
   const { chain } = useAccount();
   const { address } = useAccount();
-
   const contract = useCustom1155Contract();
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react';
-import OnchainProviders from '@/providers/OnchainProviders';
+import OnchainProviders from '@/OnchainProviders';
 import Navbar from './Navbar';
 
 describe('Navbar', () => {

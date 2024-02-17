@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react';
-import OnchainProviders from '@/providers/OnchainProviders';
-import ContractDemo from './ContractDemo';
+import OnchainProviders from '@/OnchainProviders';
+import ContractDemo from '../ContractDemo';
 
 describe('ContractDemo', () => {
   it("should render fallback if wallet isn't connected", () => {

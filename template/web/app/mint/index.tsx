@@ -1,9 +1,8 @@
 'use client';
-
 import dynamic from 'next/dynamic';
 import Banner from '@/components/banner/banner';
 import Header from '@/components/header/Header';
-import Guide from 'app/mint/_components/Guide';
+import Guide from './_components/Guide';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR
 // for its internals we get annoying hydration errors. A future enhancement would be to

@@ -1,7 +1,7 @@
 import { useReadContract } from 'wagmi';
-import { CoffeeMemo } from '@/types';
 import { markStep } from '@/utils/analytics';
-import { useBuyMeACoffeeContract } from './contracts';
+import { useBuyMeACoffeeContract } from '../../../src/hooks/contracts';
+import type { CoffeeMemo } from '../_components/types';
 
 /**
  * Hooks is abstracting away the logic of calling a read-only function on a contract.
