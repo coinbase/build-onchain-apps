@@ -7,14 +7,14 @@ import Button from '@/components/Button/Button';
 import ContractAlert from '@/components/contract-alert/ContractAlert';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
-import { TRANSACTION_STEPS } from './ContractDemo';
+import { BuyMeCoffeeSteps } from './ContractDemo';
 import TransactionSteps from './TransactionSteps';
 
 type FormBuyCoffeeProps = {
-  setTransactionStep: React.Dispatch<React.SetStateAction<TRANSACTION_STEPS | null>>;
+  setTransactionStep: React.Dispatch<React.SetStateAction<BuyMeCoffeeSteps | null>>;
   numCoffees: number;
   setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  transactionStep: TRANSACTION_STEPS | null;
+  transactionStep: BuyMeCoffeeSteps | null;
   refetchMemos: (options?: RefetchOptions | undefined) => Promise<
     QueryObserverResult<
       readonly {
@@ -99,7 +99,7 @@ function FormBuyCoffee({
           errorBuyMeACoffee instanceof TransactionExecutionError &&
           errorBuyMeACoffee.message.toLowerCase().includes('out of gas')
         ) {
-          setTransactionStep(TRANSACTION_STEPS.OUT_OF_GAS);
+          setTransactionStep(BuyMeCoffeeSteps.OUT_OF_GAS);
         } else {
           setTransactionStep(null);
         }
@@ -109,7 +109,7 @@ function FormBuyCoffee({
         setName('');
         setTwitterHandle('');
         setMessage('');
-        setTransactionStep(TRANSACTION_STEPS.COMPLETE);
+        setTransactionStep(BuyMeCoffeeSteps.COMPLETE);
       }
     }
     void handleTransactionStatus();
@@ -127,7 +127,7 @@ function FormBuyCoffee({
       event.preventDefault();
       if (buyCoffeeData?.request) {
         buyMeACoffee?.(buyCoffeeData?.request);
-        setTransactionStep(TRANSACTION_STEPS.START);
+        setTransactionStep(BuyMeCoffeeSteps.START);
         setDataHash(dataBuyMeACoffee);
       } else {
         setTransactionStep(null);

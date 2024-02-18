@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { SymbolIcon } from '@radix-ui/react-icons';
 import Button from '@/components/Button/Button';
-import { TRANSACTION_STEPS } from './ContractDemo';
+import { BuyMeCoffeeSteps } from './ContractDemo';
 import TransactionStep from './TransactionStep';
 
 type TransactionStepsProps = {
-  transactionStep: TRANSACTION_STEPS | null;
-  setTransactionStep: React.Dispatch<React.SetStateAction<TRANSACTION_STEPS | null>>;
+  transactionStep: BuyMeCoffeeSteps | null;
+  setTransactionStep: React.Dispatch<React.SetStateAction<BuyMeCoffeeSteps | null>>;
   numCoffees: number;
   gasCost: number;
 };
@@ -21,7 +21,7 @@ export default function TransactionSteps({
     setTransactionStep(null);
   }, [setTransactionStep]);
 
-  if (transactionStep === TRANSACTION_STEPS.START) {
+  if (transactionStep === BuyMeCoffeeSteps.START) {
     return (
       <TransactionStep
         status="Coffee brewing..."
@@ -37,7 +37,7 @@ export default function TransactionSteps({
     );
   }
 
-  if (transactionStep === TRANSACTION_STEPS.COMPLETE) {
+  if (transactionStep === BuyMeCoffeeSteps.COMPLETE) {
     return (
       <TransactionStep
         status={`You bought ${numCoffees} coffee${numCoffees > 1 ? 's' : ''}!`}
@@ -49,7 +49,7 @@ export default function TransactionSteps({
     );
   }
 
-  if (transactionStep === TRANSACTION_STEPS.OUT_OF_GAS) {
+  if (transactionStep === BuyMeCoffeeSteps.OUT_OF_GAS) {
     return (
       <TransactionStep
         status="You are out of gas"
@@ -63,5 +63,5 @@ export default function TransactionSteps({
     );
   }
 
-  throw Error('Missing TRANSACTION_STEPS handler');
+  throw Error('Missing BuyMeCoffeeSteps handler');
 }
