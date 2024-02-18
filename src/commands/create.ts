@@ -8,9 +8,9 @@ import {
   displayFinalInstructions,
   removeDownloadedApps,
   APPS_ENGINE_DIR,
-} from './utils/apps';
-import { isRootDirWriteable, getProjectDir } from './utils/dir';
-import { initGit, isGitInstalled } from './utils/git';
+} from '../utils/apps';
+import { isRootDirWriteable, getProjectDir } from '../utils/dir';
+import { initGit, isGitInstalled } from '../utils/git';
 
 /**
  * Responsible for copying the
