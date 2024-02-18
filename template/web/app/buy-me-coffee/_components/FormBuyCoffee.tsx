@@ -4,17 +4,13 @@ import clsx from 'clsx';
 import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
 import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import Button from '@/components/Button/Button';
-import ContractAlert from '@/components/contract-alert/ContractAlert';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
+import ContractAlert from './ContractAlert';
 import { BuyMeCoffeeSteps } from './ContractDemo';
 import TransactionSteps from './TransactionSteps';
 
 type FormBuyCoffeeProps = {
-  setTransactionStep: React.Dispatch<React.SetStateAction<BuyMeCoffeeSteps | null>>;
-  numCoffees: number;
-  setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  transactionStep: BuyMeCoffeeSteps | null;
   refetchMemos: (options?: RefetchOptions | undefined) => Promise<
     QueryObserverResult<
       readonly {
@@ -33,14 +29,9 @@ type FormBuyCoffeeProps = {
 const GAS_COST = 0.0001;
 const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
-function FormBuyCoffee({
-  setTransactionStep,
-  numCoffees,
-  setNumCoffees,
-  transactionStep,
-  refetchMemos,
-}: FormBuyCoffeeProps) {
-  // Component state
+function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
+  const [transactionStep, setTransactionStep] = useState<BuyMeCoffeeSteps | null>(null);
+  const [numCoffees, setNumCoffees] = useState(1);
   const [name, setName] = useState('');
   const [twitterHandle, setTwitterHandle] = useState('');
   const [message, setMessage] = useState('');
