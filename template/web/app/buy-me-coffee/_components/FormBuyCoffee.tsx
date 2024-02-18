@@ -10,6 +10,17 @@ import ContractAlert from './ContractAlert';
 import { BuyMeCoffeeSteps } from './ContractDemo';
 import TransactionSteps from './TransactionSteps';
 
+const GAS_COST = 0.0001;
+const NUMBER_OF_COFFEES = [1, 2, 3, 4];
+
+function Label({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) {
+  return (
+    <label htmlFor={htmlFor} className="mb-2 block text-sm font-medium text-white">
+      {children}
+    </label>
+  );
+}
+
 type FormBuyCoffeeProps = {
   refetchMemos: (options?: RefetchOptions | undefined) => Promise<
     QueryObserverResult<
@@ -25,9 +36,6 @@ type FormBuyCoffeeProps = {
     >
   >;
 };
-
-const GAS_COST = 0.0001;
-const NUMBER_OF_COFFEES = [1, 2, 3, 4];
 
 function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
   const [transactionStep, setTransactionStep] = useState<BuyMeCoffeeSteps | null>(null);
@@ -182,33 +190,29 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
           <div className="text-center text-4xl lg:text-left">☕</div>
           <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
           <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-            {NUMBER_OF_COFFEES.map((numberCoffee) => {
-              return (
-                <button
-                  key={`num-coffee-btn-${numberCoffee}`}
-                  type="button"
-                  className={clsx(
-                    `${
-                      numCoffees === numberCoffee
-                        ? 'bg-gradient-2'
-                        : 'border border-boat-color-orange'
-                    } block h-[40px] w-full rounded lg:w-[40px]`,
-                  )}
-                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                  onClick={() => setNumCoffees(numberCoffee)}
-                >
-                  {numberCoffee}
-                </button>
-              );
-            })}
+            {NUMBER_OF_COFFEES.map((numberCoffee) => (
+              <button
+                key={`num-coffee-btn-${numberCoffee}`}
+                type="button"
+                className={clsx(
+                  `${
+                    numCoffees === numberCoffee
+                      ? 'bg-gradient-2'
+                      : 'border border-boat-color-orange'
+                  } block h-[40px] w-full rounded lg:w-[40px]`,
+                )}
+                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                onClick={() => setNumCoffees(numberCoffee)}
+              >
+                {numberCoffee}
+              </button>
+            ))}
           </div>
         </div>
 
         <div>
           <div className="mb-5">
-            <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-              Name
-            </label>
+            <Label htmlFor="name">Name</Label>
             <input
               type="text"
               id="name"
@@ -224,9 +228,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
           </div>
 
           <div className="mb-5">
-            <label htmlFor="twitterHandle" className="mb-2 block text-sm font-medium text-white">
-              Twitter handle (Optional)
-            </label>
+            <Label htmlFor="twitterHandle">Twitter handle (Optional)</Label>
             <input
               type="text"
               id="twitterHandle"
@@ -241,9 +243,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
           </div>
 
           <div className="mb-5">
-            <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
-              Message
-            </label>
+            <Label htmlFor="message">Message</Label>
             <textarea
               value={message}
               id="message"
