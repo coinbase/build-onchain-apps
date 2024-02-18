@@ -3,12 +3,6 @@ import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
 
-export enum BuyMeCoffeeSteps {
-  START,
-  COMPLETE,
-  OUT_OF_GAS,
-}
-
 export default function BuyMeCoffeeContractDemo() {
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
 

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
 import { markStep } from '@/utils/analytics';
 import { useBuyMeACoffeeContract } from '../../../src/hooks/contracts';
@@ -20,10 +21,14 @@ function useOnchainCoffeeMemos() {
   });
   markStep('useReadContract.refetchMemos');
 
-  return {
-    memos: contractReadResult.status === 'success' ? (contractReadResult.data as CoffeeMemo[]) : [],
-    refetchMemos: contractReadResult.refetch,
-  };
+  return useMemo(
+    () => ({
+      memos:
+        contractReadResult.status === 'success' ? (contractReadResult.data as CoffeeMemo[]) : [],
+      refetchMemos: contractReadResult.refetch,
+    }),
+    [contractReadResult],
+  );
 }
 
 export default useOnchainCoffeeMemos;

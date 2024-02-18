@@ -1,27 +1,22 @@
-import { useCallback } from 'react';
 import { SymbolIcon } from '@radix-ui/react-icons';
 import Button from '@/components/Button/Button';
-import { BuyMeCoffeeSteps } from './ContractDemo';
 import TransactionStep from './TransactionStep';
+import { TransactionStates } from './useSmartContractForms';
 
 type TransactionStepsProps = {
-  transactionStep: BuyMeCoffeeSteps | null;
-  setTransactionStep: React.Dispatch<React.SetStateAction<BuyMeCoffeeSteps | null>>;
-  numCoffees: number;
+  transactionStep: TransactionStates | null;
+  coffeeCount: number;
   gasCost: number;
+  resetContractForms: () => void;
 };
 
 export default function TransactionSteps({
   transactionStep,
-  numCoffees,
-  setTransactionStep,
+  coffeeCount,
+  resetContractForms: resetContractForms,
   gasCost,
 }: TransactionStepsProps) {
-  const resetStep = useCallback(() => {
-    setTransactionStep(null);
-  }, [setTransactionStep]);
-
-  if (transactionStep === BuyMeCoffeeSteps.START) {
+  if (transactionStep === TransactionStates.START) {
     return (
       <TransactionStep
         status="Coffee brewing..."
@@ -37,19 +32,19 @@ export default function TransactionSteps({
     );
   }
 
-  if (transactionStep === BuyMeCoffeeSteps.COMPLETE) {
+  if (transactionStep === TransactionStates.COMPLETE) {
     return (
       <TransactionStep
-        status={`You bought ${numCoffees} coffee${numCoffees > 1 ? 's' : ''}!`}
+        status={`You bought ${coffeeCount} coffee${coffeeCount > 1 ? 's' : ''}!`}
         icon="🎁"
         helpText="Thank you for supporting this endeavor!"
       >
-        <Button buttonContent="Send another coffee" onClick={resetStep} />
+        <Button buttonContent="Send another coffee" onClick={resetContractForms} />
       </TransactionStep>
     );
   }
 
-  if (transactionStep === BuyMeCoffeeSteps.OUT_OF_GAS) {
+  if (transactionStep === TransactionStates.OUT_OF_GAS) {
     return (
       <TransactionStep
         status="You are out of gas"
@@ -58,10 +53,14 @@ export default function TransactionSteps({
           gasCost,
         )} ETH and try sending a coffee again.`}
       >
-        <Button buttonContent="Got it" onClick={resetStep} />
+        <Button buttonContent="Got it" onClick={resetContractForms} />
       </TransactionStep>
     );
   }
 
-  throw Error('Missing BuyMeCoffeeSteps handler');
+  if (transactionStep === null) {
+    return null;
+  }
+
+  throw Error('Missing TransactionStates handler');
 }
