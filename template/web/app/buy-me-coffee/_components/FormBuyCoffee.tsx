@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
 import clsx from 'clsx';
 import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
 import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import Button from '@/components/Button/Button';
+import ContractAlert from '@/components/contract-alert/ContractAlert';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
 import { TransactionSteps } from './ContractDemo';
@@ -172,33 +172,6 @@ function FormBuyCoffee({
     );
   }, [buyCoffeeAmount, numCoffees]);
 
-  const warningContent = useMemo(() => {
-    if (contract.status === 'notConnected') {
-      return <>Please connect your wallet to continue.</>;
-    }
-
-    if (!canAfford) {
-      return (
-        <>You must have at least {String(BUY_COFFEE_AMOUNT_RAW)} ETH in your wallet to continue.</>
-      );
-    }
-
-    if (contract.status === 'onUnsupportedNetwork') {
-      return (
-        <>
-          Please connect to one of the supported networks to continue:{' '}
-          {contract.supportedChains.map((c) => c.name).join(', ')}
-        </>
-      );
-    }
-
-    if (contract.status === 'deactivated') {
-      return <>This contract has been deactivated on this chain.</>;
-    }
-
-    return null;
-  }, [canAfford, contract.status, contract.supportedChains]);
-
   return (
     <>
       {transactionStep === TransactionSteps.START_TRANSACTION_STEP && <StepStartTransaction />}
@@ -300,14 +273,7 @@ function FormBuyCoffee({
                 />
               </div>
 
-              {warningContent ? (
-                <div className="my-3 flex items-center justify-center">
-                  <div className="mr-2">
-                    <ExclamationTriangleIcon width={12} height={12} />
-                  </div>
-                  <div className="text-xs">{warningContent}</div>
-                </div>
-              ) : null}
+              <ContractAlert contract={contract} amount={BUY_COFFEE_AMOUNT_RAW} />
 
               <Button buttonContent={submitButtonContent} type="submit" disabled={formDisabled} />
             </div>
