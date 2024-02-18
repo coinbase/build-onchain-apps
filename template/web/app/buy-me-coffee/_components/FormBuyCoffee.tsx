@@ -1,181 +1,64 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { RefetchOptions, QueryObserverResult } from '@tanstack/react-query';
+import { useCallback } from 'react';
 import clsx from 'clsx';
-import { ReadContractErrorType, TransactionExecutionError, parseEther } from 'viem';
-import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
+import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
-import ContractAlert from '@/components/contract-alert/ContractAlert';
 import { useBuyMeACoffeeContract } from '@/hooks/contracts';
-import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
-import { BuyMeCoffeeSteps } from './ContractDemo';
+import useFields from '../_hooks/useFields';
+import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
+import ContractAlert from './ContractAlert';
+import InputText from './InputText';
+import Label from './Label';
+import TextArea from './TextArea';
 import TransactionSteps from './TransactionSteps';
-
-type FormBuyCoffeeProps = {
-  setTransactionStep: React.Dispatch<React.SetStateAction<BuyMeCoffeeSteps | null>>;
-  numCoffees: number;
-  setNumCoffees: React.Dispatch<React.SetStateAction<number>>;
-  transactionStep: BuyMeCoffeeSteps | null;
-  refetchMemos: (options?: RefetchOptions | undefined) => Promise<
-    QueryObserverResult<
-      readonly {
-        numCoffees: bigint;
-        userName: string;
-        twitterHandle: string;
-        message: string;
-        time: bigint;
-        userAddress: `0x${string}`;
-      }[],
-      ReadContractErrorType
-    >
-  >;
-};
+import useSmartContractForms from './useSmartContractForms';
 
 const GAS_COST = 0.0001;
-const NUMBER_OF_COFFEES = [1, 2, 3, 4];
+const COFFEE_COUNT = [1, 2, 3, 4];
 
-function FormBuyCoffee({
-  setTransactionStep,
-  numCoffees,
-  setNumCoffees,
-  transactionStep,
-  refetchMemos,
-}: FormBuyCoffeeProps) {
-  // Component state
-  const [name, setName] = useState('');
-  const [twitterHandle, setTwitterHandle] = useState('');
-  const [message, setMessage] = useState('');
-  const [buyCoffeeAmount, setBuyCoffeeAmount] = useState(GAS_COST);
-  const [dataHash, setDataHash] = useState<string | undefined>();
+const initFields = {
+  name: '',
+  twitterHandle: '',
+  message: '',
+  coffeeCount: 1,
+};
 
-  useEffect(() => {
-    setBuyCoffeeAmount(GAS_COST * numCoffees);
-  }, [numCoffees]);
+type Fields = {
+  name: string;
+  twitterHandle: string;
+  coffeeCount: number;
+  message: string;
+};
 
-  // Get the correct contract info for current network (if present)
+type FormBuyCoffeeProps = {
+  refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
+};
+
+function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
   const contract = useBuyMeACoffeeContract();
 
-  // Calculate if the user can afford to buy coffee
-  const canAfford = useLoggedInUserCanAfford(parseEther(String(buyCoffeeAmount)));
+  const { fields, setField, resetFields } = useFields<Fields>(initFields);
 
-  const handleOncomplete = useCallback(async () => {
+  const reset = useCallback(async () => {
+    resetFields();
     await refetchMemos();
-  }, [refetchMemos]);
+  }, [refetchMemos, resetFields]);
 
-  // Wagmi Write call
-  const { data: buyCoffeeData } = useSimulateContract({
-    address: contract.status === 'ready' ? contract.address : undefined,
-    abi: contract.abi,
-    functionName: 'buyCoffee',
-    args: [BigInt(numCoffees), name, twitterHandle, message],
-    query: {
-      enabled: name !== '' && message !== '' && contract.status === 'ready',
-    },
-    value: parseEther(String(buyCoffeeAmount)),
-  });
+  const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
+    useSmartContractForms({
+      gasFee: parseEther(String(GAS_COST * fields.coffeeCount)),
+      contract,
+      name: 'buyCoffee',
+      arguments: [fields.coffeeCount, fields.name, fields.twitterHandle, fields.message],
+      enableSubmit: fields.name !== '' && fields.message !== '',
+      reset,
+    });
 
-  const {
-    writeContract: buyMeACoffee,
-    data: dataBuyMeACoffee,
-    status: statusBuyMeACoffee,
-    error: errorBuyMeACoffee,
-  } = useWriteContract();
-
-  const { status: transactionStatus } = useWaitForTransactionReceipt({
-    hash: dataBuyMeACoffee,
-    query: {
-      enabled: !!dataBuyMeACoffee,
-    },
-  });
-
-  useEffect(() => {
-    async function handleTransactionStatus() {
-      if (transactionStatus === 'error' && dataHash !== '') {
-        await handleOncomplete();
-        setDataHash('');
-        setName('');
-        setTwitterHandle('');
-        setMessage('');
-        if (
-          errorBuyMeACoffee instanceof TransactionExecutionError &&
-          errorBuyMeACoffee.message.toLowerCase().includes('out of gas')
-        ) {
-          setTransactionStep(BuyMeCoffeeSteps.OUT_OF_GAS);
-        } else {
-          setTransactionStep(null);
-        }
-      } else if (transactionStatus === 'success' && dataHash !== '') {
-        await handleOncomplete();
-        setDataHash('');
-        setName('');
-        setTwitterHandle('');
-        setMessage('');
-        setTransactionStep(BuyMeCoffeeSteps.COMPLETE);
-      }
-    }
-    void handleTransactionStatus();
-  }, [
-    dataHash,
-    errorBuyMeACoffee,
-    handleOncomplete,
-    setTransactionStep,
-    statusBuyMeACoffee,
-    transactionStatus,
-  ]);
-
-  const handleSubmit = useCallback(
-    (event: { preventDefault: () => void }) => {
-      event.preventDefault();
-      if (buyCoffeeData?.request) {
-        buyMeACoffee?.(buyCoffeeData?.request);
-        setTransactionStep(BuyMeCoffeeSteps.START);
-        setDataHash(dataBuyMeACoffee);
-      } else {
-        setTransactionStep(null);
-      }
-    },
-    [buyCoffeeData?.request, buyMeACoffee, dataBuyMeACoffee, setTransactionStep],
-  );
-
-  const handleNameChange = useCallback(
-    (event: { target: { value: React.SetStateAction<string> } }) => {
-      setName(event.target.value);
-    },
-    [setName],
-  );
-
-  const handleTwitterHandleChange = useCallback(
-    (event: { target: { value: React.SetStateAction<string> } }) => {
-      setTwitterHandle(event.target.value);
-    },
-    [setTwitterHandle],
-  );
-
-  const handleMessageChange = useCallback(
-    (event: { target: { value: React.SetStateAction<string> } }) => {
-      setMessage(event.target.value);
-    },
-    [setMessage],
-  );
-
-  const formDisabled = useMemo(() => {
-    return contract.status !== 'ready' || statusBuyMeACoffee === 'pending' || !canAfford;
-  }, [canAfford, contract.status, statusBuyMeACoffee]);
-
-  const submitButtonContent = useMemo(() => {
-    return (
-      <>
-        Send {numCoffees} coffee{numCoffees > 1 ? 's' : null} for{' '}
-        {String(buyCoffeeAmount.toFixed(4))} ETH
-      </>
-    );
-  }, [buyCoffeeAmount, numCoffees]);
-
-  if (transactionStep !== null) {
+  if (transactionState !== null) {
     return (
       <TransactionSteps
-        transactionStep={transactionStep}
-        numCoffees={numCoffees}
-        setTransactionStep={setTransactionStep}
+        transactionStep={transactionState}
+        coffeeCount={fields.coffeeCount}
+        resetContractForms={resetContractForms}
         gasCost={GAS_COST}
       />
     );
@@ -186,90 +69,81 @@ function FormBuyCoffee({
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
         Buy Me a Coffee!
       </h2>
-      <form onSubmit={handleSubmit} className="w-full">
+      <form onSubmit={onSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">
           <div className="text-center text-4xl lg:text-left">☕</div>
           <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
           <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-            {NUMBER_OF_COFFEES.map((numberCoffee) => {
-              return (
-                <button
-                  key={`num-coffee-btn-${numberCoffee}`}
-                  type="button"
-                  className={clsx(
-                    `${
-                      numCoffees === numberCoffee
-                        ? 'bg-gradient-2'
-                        : 'border border-boat-color-orange'
-                    } block h-[40px] w-full rounded lg:w-[40px]`,
-                  )}
-                  // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                  onClick={() => setNumCoffees(numberCoffee)}
-                >
-                  {numberCoffee}
-                </button>
-              );
-            })}
+            {COFFEE_COUNT.map((count) => (
+              <button
+                key={`num-coffee-btn-${count}`}
+                type="button"
+                className={clsx(
+                  `${
+                    fields.coffeeCount === count
+                      ? 'bg-gradient-2'
+                      : 'border border-boat-color-orange'
+                  } block h-[40px] w-full rounded lg:w-[40px]`,
+                )}
+                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                onClick={() => setField('coffeeCount', count)}
+              >
+                {count}
+              </button>
+            ))}
           </div>
         </div>
 
         <div>
           <div className="mb-5">
-            <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
-              Name
-            </label>
-            <input
-              type="text"
+            <Label htmlFor="name">Name</Label>
+            <InputText
               id="name"
-              className={clsx([
-                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-              ])}
               placeholder="Name"
-              onChange={handleNameChange}
-              disabled={formDisabled}
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('name', evt.target.value)}
+              disabled={disabled}
               required
             />
           </div>
 
           <div className="mb-5">
-            <label htmlFor="twitterHandle" className="mb-2 block text-sm font-medium text-white">
-              Twitter handle (Optional)
-            </label>
-            <input
-              type="text"
+            <Label htmlFor="twitterHandle">Twitter handle (Optional)</Label>
+            <InputText
               id="twitterHandle"
-              className={clsx([
-                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-              ])}
               placeholder="@"
-              onChange={handleTwitterHandleChange}
-              disabled={formDisabled}
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => {
+                setField('twitterHandle', evt.target.value);
+              }}
+              disabled={disabled}
             />
           </div>
 
           <div className="mb-5">
-            <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
-              Message
-            </label>
-            <textarea
-              value={message}
+            <Label htmlFor="message">Message</Label>
+            <TextArea
               id="message"
-              className={clsx([
-                'block w-full rounded-lg border border-gray-600 bg-boat-color-gray-900',
-                'p-2 text-sm text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500',
-              ])}
               placeholder="Say something"
-              onChange={handleMessageChange}
-              disabled={formDisabled}
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('message', evt.target.value)}
+              disabled={disabled}
               required
             />
           </div>
 
           <ContractAlert contract={contract} amount={GAS_COST} />
 
-          <Button buttonContent={submitButtonContent} type="submit" disabled={formDisabled} />
+          <Button
+            buttonContent={
+              <>
+                Send {fields.coffeeCount} coffee{fields.coffeeCount > 1 ? 's' : null} for{' '}
+                {String((GAS_COST * fields.coffeeCount).toFixed(4))} ETH
+              </>
+            }
+            type="submit"
+            disabled={disabled}
+          />
         </div>
       </form>
     </>

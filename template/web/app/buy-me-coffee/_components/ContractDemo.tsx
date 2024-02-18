@@ -1,31 +1,10 @@
-import { useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
 
-export enum BuyMeCoffeeSteps {
-  START,
-  COMPLETE,
-  OUT_OF_GAS,
-}
-
 export default function BuyMeCoffeeContractDemo() {
-  const [transactionStep, setTransactionStep] = useState<BuyMeCoffeeSteps | null>(null);
-  const [numCoffees, setNumCoffees] = useState(1);
   const { memos, refetchMemos } = useOnchainCoffeeMemos();
-
-  const asideContent = useMemo(() => {
-    return (
-      <FormBuyCoffee
-        setTransactionStep={setTransactionStep}
-        numCoffees={numCoffees}
-        transactionStep={transactionStep}
-        setNumCoffees={setNumCoffees}
-        refetchMemos={refetchMemos}
-      />
-    );
-  }, [numCoffees, transactionStep, refetchMemos]);
 
   return (
     <div
@@ -51,7 +30,7 @@ export default function BuyMeCoffeeContractDemo() {
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >
-          {asideContent}
+          <FormBuyCoffee refetchMemos={refetchMemos} />
         </div>
       </aside>
     </div>

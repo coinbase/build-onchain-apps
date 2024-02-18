@@ -1,8 +1,8 @@
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Abi, parseEther } from 'viem';
 
-import { UseContractReturn } from '../../hooks/contracts';
-import { useLoggedInUserCanAfford } from '../../hooks/useUserCanAfford';
+import { UseContractReturn } from '@/hooks/contracts';
+import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
 
 function useCanUserAfford(amount: number) {
   return useLoggedInUserCanAfford(parseEther(String(amount)));
