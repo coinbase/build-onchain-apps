@@ -132,8 +132,11 @@ forge fmt
 
 ### Deploy and verify contracts on Base Sepolia
 
-Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex.
-Note: In order to verify your smart contract on Basescan, you need an API key. You can get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account.
+Open `.env` file.
+
+`PRIVATE_KEY` is your private wallet key. Make sure to prefix it by "0x" to convert to a hex string.
+
+`BLOCK_EXPLORER_API_KEY` is your API Key from [basescan.org](https://docs.basescan.org/getting-started) for Base Sepolia
 
 ```bash
 source .env

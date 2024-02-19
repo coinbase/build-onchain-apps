@@ -45,7 +45,7 @@ export async function setupProject(projectDir: string, projectName: string) {
     removeDownloadedApps(projectDir + '/contracts/lib/murky');
 
     spinner.message(
-      'git submodule add https://github.com/openzeppelin/openzeppelin-contracts contracts/lib/openzeppelin-contracts'
+      'git submodule add https://github.com/openzeppelin/openzeppelin-contracts'
     );
     await execAsync(
       'git submodule add https://github.com/openzeppelin/openzeppelin-contracts contracts/lib/openzeppelin-contracts',
@@ -55,7 +55,7 @@ export async function setupProject(projectDir: string, projectName: string) {
     );
 
     spinner.message(
-      'git submodule add https://github.com/foundry-rs/forge-std contracts/lib/forge-std'
+      'git submodule add https://github.com/foundry-rs/forge-std'
     );
     await execAsync(
       'git submodule add https://github.com/foundry-rs/forge-std contracts/lib/forge-std',
@@ -65,7 +65,7 @@ export async function setupProject(projectDir: string, projectName: string) {
     );
 
     spinner.message(
-      'git submodule add https://github.com/chiru-labs/ERC721A contracts/lib/ERC721A'
+      'git submodule add https://github.com/chiru-labs/ERC721A'
     );
     await execAsync(
       'git submodule add https://github.com/chiru-labs/ERC721A contracts/lib/ERC721A',
@@ -75,7 +75,7 @@ export async function setupProject(projectDir: string, projectName: string) {
     );
 
     spinner.message(
-      'git submodule add https://github.com/vectorized/solady contracts/lib/solady'
+      'git submodule add https://github.com/vectorized/solady'
     );
     await execAsync(
       'git submodule add https://github.com/vectorized/solady contracts/lib/solady',
@@ -85,7 +85,7 @@ export async function setupProject(projectDir: string, projectName: string) {
     );
 
     spinner.message(
-      'git submodule add https://github.com/dmfxyz/murky contracts/lib/murky'
+      'git submodule add https://github.com/dmfxyz/murky'
     );
     await execAsync(
       'git submodule add https://github.com/dmfxyz/murky contracts/lib/murky',

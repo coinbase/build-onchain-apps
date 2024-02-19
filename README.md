@@ -43,21 +43,7 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps Toolkit'>
 </p>
 
-#### Step 2: Set Wallet Connect Project ID
-
-Create a `.env.local` file
-
-```bash
-cp .env.local.example .env.local
-```
-
-Next, obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file. We leverage WalletConnect to allow end-users to connect their wallets to your site.
-
-```bash
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
-```
-
-#### Step 3: Install and Run your onchain app
+#### Step 2: Install and Run your onchain app
 
 ```bash
 # cd into your new project folder
@@ -106,8 +92,11 @@ forge build
 
 #### Step 3: Deploy contracts to Base Sepolia
 
-Create a `.env` file using the `.env.example` file provided in your contracts folder and add your private key. Make sure to add a `0x` in front of your key to convert it to a hex string.
-Note: Get an API key from [here](https://basescan.org/) for Base Sepolia by creating an account
+Open `contract/.env` file.
+
+`PRIVATE_KEY` is your private wallet key. Make sure to prefix it by "0x" to convert to a hex string.
+
+`BLOCK_EXPLORER_API_KEY` is your API Key from [basescan.org](https://docs.basescan.org/getting-started) for Base Sepolia
 
 ```bash
 source .env
@@ -141,7 +130,7 @@ Read below to learn how you can take part in improving Build Onchain Apps Toolki
 
 ### [Contributing Guide](CONTRIBUTING.md)
 
-### Develop
+### Template Development for BOAT
 
 To build and test either the CLI or the main App, start by cloning the repo.
 
@@ -161,7 +150,7 @@ yarn
 yarn dev
 ```
 
-### Develop the CLI
+### CLI Development for BOAT
 
 ```bash
 # From the root repo
