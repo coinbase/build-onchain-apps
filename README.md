@@ -15,6 +15,7 @@ We do this by taking an opinionated approach to streamlining early decisions you
 Whether you're a hackathon participant or an ambitious entrepreneur looking to build the next big thing, this toolkit is designed with you in mind. 💙
 
 **Out of the box** 🧰 🧙 ✨
+
 - Progressive Web App support using [Next.js](https://nextjs.org/) 🏗️
 - Ethereum L2 support through [Base](https://base.org/) 🔵
 - Wallet connect integration with [RainbowKit](https://www.rainbowkit.com) 🌈
@@ -28,8 +29,8 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 <br >
 
 ## Getting Started
-To get started building with BOAT, follow this step-by-step guide. You'll be able to explore the pre-configured contracts and experiment with them.
 
+To get started building with BOAT, follow this step-by-step guide. You'll be able to explore the pre-configured contracts and experiment with them.
 
 #### Step 1: Kick off your onchain app
 
@@ -43,10 +44,11 @@ npx @coinbase/build-onchain-apps@latest create
 </p>
 
 #### Step 2: Set Wallet Connect Project ID
+
 Create a `.env.local` file
 
 ```bash
-cp .env.local.default .env.local
+cp .env.local.example .env.local
 ```
 
 Next, obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file. We leverage WalletConnect to allow end-users to connect their wallets to your site.
@@ -78,6 +80,7 @@ yarn dev
 <br >
 
 ## Deploy your own contracts
+
 #### Step 1: Kick start your contracts
 
 ```bash
@@ -116,8 +119,6 @@ forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify -
 
 For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
-
-
 <br>
 
 ## For a Live demo use
@@ -129,7 +130,6 @@ For more information on contracts, visit [here](https://github.com/coinbase/buil
 ## Do you need gas for Base Sepolia? 🔵
 
 Learn how you can obtain free testnet funds here: https://docs.base.org/tools/network-faucets/.
-
 
 <br>
 

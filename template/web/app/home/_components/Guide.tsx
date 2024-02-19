@@ -50,7 +50,7 @@ export default function Guide() {
         <p className="my-4 text-base font-normal text-zinc-400">
           Create a <code>.env.local</code> file
         </p>
-        <CodeBlock code="cp .env.local.default .env.local" />
+        <CodeBlock code="cp .env.local.example .env.local" />
         <p className="my-4 text-base font-normal text-zinc-400">
           Obtain Wallet Connect Project ID from{' '}
           <a href="https://walletconnect.com/" target="_blank">

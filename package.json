@@ -4,10 +4,10 @@
   "repository": "https://github.com/coinbase/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
-    "chalk": "^4.1.2",
+    "@clack/prompts": "^0.7.0",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
-    "inquirer": "^8.2.5",
+    "picocolors": "^1.0.0",
     "rimraf": "^5.0.5",
     "tslib": "^2.3.0"
   },

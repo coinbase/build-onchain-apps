@@ -5,7 +5,7 @@
 #### Step 1: Create a `.env.local` file
 
 ```bash
-cp .env.local.default .env.local
+cp .env.local.example .env.local
 ```
 
 #### Step 2: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
