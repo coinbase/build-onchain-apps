@@ -1,88 +1,32 @@
-import * as chalk from 'chalk';
-import * as fs from 'fs';
-import * as inquirer from 'inquirer';
-import {
-  downloadAndExtractApps,
-  getAppDir,
-  updatePackageJson,
-  displayFinalInstructions,
-  removeDownloadedApps,
-  APPS_ENGINE_DIR,
-} from './utils/apps';
-import { isRootDirWriteable, getProjectDir } from './utils/dir';
-import { initGit, isGitInstalled } from './utils/git';
+import * as prompts from '@clack/prompts';
 
-/**
- * Responsible for copying the
- * onchain app and create new project.
- */
+import { getProjectDir } from './utils/dir';
+
+import { checkMinimumRequirements } from './create/checkMinimumRequirements';
+import { checkProjectDir } from './create/checkProjectDir';
+import { getUserInput } from './create/getUserInput';
+import { setupEnvFiles } from './create/setupEnvFiles';
+import { setupProject } from './create/setupProject';
+import { outro } from './create/outro';
+
 export const createProject = async () => {
-  // Check if the current directory is writeable
-  // If not, exit the process
-  if (!(await isRootDirWriteable())) {
-    console.error(
-      chalk.red(
-        'The application path is not writable, please check folder permissions and try again.'
-      )
-    );
-    console.error(
-      chalk.white(
-        'It is likely you do not have write permissions for this folder.'
-      )
-    );
-    process.exit(1);
-  }
+  await checkMinimumRequirements();
 
-  if (!isGitInstalled()) {
-    console.error(chalk.white('Please install git and then continue'));
-    process.exit(1);
-  }
+  prompts.intro('Welcome aboard to BOAT (Build Onchain Apps Toolkit)! ⛵️');
 
-  console.log(
-    `${chalk.cyan(
-      'Downloading files from coinbase/build-onchain-apps. This might take a moment... \n'
-    )}`
-  );
+  const { project, envVars } = await getUserInput();
 
-  // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
-  await downloadAndExtractApps();
-  const newAppNameAnswer = await inquirer.prompt([
-    {
-      type: 'input',
-      name: 'newAppName',
-      message: 'Enter the name for your new onchain app:',
-      validate: (input: string) =>
-        !!input || 'onchain app name cannot be empty.',
-    },
-  ]);
+  prompts.log.info('Setting up project. This might take a moment.');
 
-  const newAppName = newAppNameAnswer.newAppName;
-  const newAppDir = getProjectDir(newAppName);
+  const projectDir = getProjectDir(project.name);
 
-  if (fs.existsSync(newAppDir)) {
-    console.error(chalk.red('A directory with the App name already exists.'));
-    removeDownloadedApps(APPS_ENGINE_DIR);
-    process.exit(1);
-  }
+  checkProjectDir(projectDir);
 
-  fs.cpSync(getAppDir(), newAppDir, {
-    recursive: true,
-  });
+  await setupProject(projectDir, project.name);
 
-  const isPackageJsonUpdated = updatePackageJson(newAppDir, newAppName);
-  const isWebPackageJsonUpdated = updatePackageJson(
-    newAppDir + '/web',
-    newAppName
-  );
+  setupEnvFiles(projectDir, envVars);
 
-  if (isPackageJsonUpdated && isWebPackageJsonUpdated) {
-    console.log(chalk.green(`Initializing Git and Foundry... \n`));
-  }
-  if (!initGit(newAppDir)) {
-    console.error(chalk.white('Error initializing Git and Foundry'));
-    process.exit(1);
-  }
-  displayFinalInstructions(newAppName);
+  outro(project.name);
 
-  removeDownloadedApps(APPS_ENGINE_DIR);
+  process.exit(0);
 };
