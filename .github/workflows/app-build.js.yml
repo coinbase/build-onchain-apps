@@ -25,5 +25,5 @@ jobs:
         working-directory: ./template/web
         # When fails, please check your build
         run: |
-          cp .env.local.default .env.local
+          cp .env.local.example .env.local
           npm run build
