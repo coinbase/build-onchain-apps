@@ -1,6 +1,6 @@
 import { baseSepolia } from 'viem/chains';
-import { useBuyMeACoffeeContract } from './useBuyMeACoffeeContract';
 import BuyMeACoffeeABI from './BuyMeACoffeeABI';
+import { useBuyMeACoffeeContract } from './useBuyMeACoffeeContract';
 
 describe('useBuyMeACoffeeContract', () => {
   it('should return correct contract data', () => {
