@@ -2,7 +2,7 @@
 
 # [Build Onchain Apps Toolkit (⛵️)](https://github.com/coinbase/build-onchain-apps/)
 
-> Accelerate your onchain creativity with the Build Onchain Apps Toolkit. ☕️
+> AAccelerate your onchain creativity with the Build Onchain Apps Toolkit. ☕️
 
 [![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
