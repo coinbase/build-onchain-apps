@@ -26,7 +26,7 @@ export async function getUserInput() {
       },
       setupModules: () => {
         return prompts.confirm({
-          message: 'Include dApp experiences',
+          message: 'Include Onchain App experiences',
           initialValue: true,
         });
       },
