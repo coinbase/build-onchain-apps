@@ -1,5 +1,6 @@
 import { exec } from 'child_process';
 import * as fs from 'fs';
+import * as path from 'path';
 import * as prompts from '@clack/prompts';
 import * as color from 'picocolors';
 import {
@@ -20,6 +21,31 @@ async function execAsync(command: string, options = {}) {
   });
 }
 
+function setupBlankApp(projectDir: string) {
+  const appPath = path.join(projectDir, './web/app/page.tsx');
+
+  const content = `import { generateMetadata } from '@/utils/generateMetadata';
+
+export const metadata = generateMetadata({
+  title: 'Build Onchain Apps Toolkit',
+  description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
+  images: 'themes.png',
+  pathname: '',
+});
+
+/**
+ * Server component, which imports the Home component (client component that has 'use client' in it)
+ * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+ * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
+ * https://nextjs.org/docs/app/building-your-application/rendering/client-components
+ */
+export default function Page() {
+  return <div>Hello World</div>;
+}
+`;
+  fs.writeFileSync(appPath, content);
+}
+
 export async function setupProject(projectDir: string, project) {
   try {
     const spinner = prompts.spinner();
@@ -29,7 +55,9 @@ export async function setupProject(projectDir: string, project) {
     removeDownloadedApps(APPS_ENGINE_DIR);
 
     // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
-    await execAsync('git clone https://github.com/coinbase/build-onchain-apps.git temp-build-onchain-apps');
+    await execAsync(
+      'git clone https://github.com/coinbase/build-onchain-apps.git temp-build-onchain-apps'
+    );
 
     fs.cpSync(getAppDir(), projectDir, {
       recursive: true,
@@ -105,14 +133,16 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (!project.setupModules) {
-      removeDownloadedApps(projectDir + "/web/app/buy-me-coffee");
-      removeDownloadedApps(projectDir + "/web/app/mint");
-      removeDownloadedApps(projectDir + "/web/app/home");
+      removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
+      removeDownloadedApps(projectDir + '/web/app/mint');
+      removeDownloadedApps(projectDir + '/web/app/home');
+
+      setupBlankApp(projectDir);
     }
 
     spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
   } catch (e) {
-    console.error(e)
+    console.error(e);
     prompts.log.error(color.red('Error initializing Git and Foundry'));
     process.exit(1);
   }

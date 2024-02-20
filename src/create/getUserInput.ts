@@ -26,7 +26,7 @@ export async function getUserInput() {
       },
       setupModules: () => {
         return prompts.confirm({
-          message: 'Install demo apps',
+          message: 'Include dApp experiences',
           initialValue: true,
         });
       },
