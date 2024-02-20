@@ -53,4 +53,3 @@ export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
 
   return useContract;
 }
-

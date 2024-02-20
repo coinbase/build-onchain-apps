@@ -1,5 +1,5 @@
 import { baseSepolia } from 'viem/chains';
-import { generateContractHook } from "@/hooks/contracts";
+import { generateContractHook } from '@/hooks/contracts';
 import Custom1155ABI from './Custom1155ABI';
 
 /**
