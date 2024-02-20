@@ -1,5 +1,5 @@
 import { generateMetadata } from '@/utils/generateMetadata';
-import Home from './home';
+import Home from './(demo)/home';
 
 export const metadata = generateMetadata({
   title: 'Build Onchain Apps Toolkit',
