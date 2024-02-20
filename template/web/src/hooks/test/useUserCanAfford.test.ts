@@ -1,5 +1,5 @@
 import { useAccount, useBalance } from 'wagmi';
-import { useAddressCanAfford, useLoggedInUserCanAfford } from './useUserCanAfford';
+import { useAddressCanAfford, useLoggedInUserCanAfford } from '../useUserCanAfford';
 
 jest.mock('wagmi', () => ({
   useBalance: jest.fn().mockReturnValue({ data: { value: 100n } }),

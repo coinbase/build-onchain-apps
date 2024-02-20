@@ -1,4 +1,4 @@
-import { convertBigIntTimestampToDate } from './timestamp';
+import { convertBigIntTimestampToDate } from '../timestamp';
 
 describe('convertBigIntTimestampToDate', () => {
   it('should convert a big int timestamp to a date', () => {

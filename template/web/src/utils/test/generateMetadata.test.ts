@@ -1,4 +1,4 @@
-import { generateMetadata } from './generateMetadata';
+import { generateMetadata } from '../generateMetadata';
 
 describe('generateMetadata', () => {
   it('should set metadataBase default', () => {

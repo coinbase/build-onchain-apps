@@ -5,7 +5,7 @@
 import { renderHook } from '@testing-library/react';
 import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import { generateContractHook } from './contracts';
+import { generateContractHook } from '../contracts';
 import MockABI from './MockABI';
 
 jest.mock('wagmi', () => ({

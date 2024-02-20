@@ -1,4 +1,4 @@
-import { Environment, EnvironmentKeys, getCurrentEnvironment } from './environment';
+import { Environment, EnvironmentKeys, getCurrentEnvironment } from '../environment';
 
 describe('environment', () => {
   describe('Environment', () => {

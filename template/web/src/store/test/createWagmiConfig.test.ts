@@ -1,6 +1,6 @@
-import { createWagmiConfig } from './createWagmiConfig';
-import { Environment, EnvironmentKeys } from './environment';
-import { SUPPORTED_CHAINS } from './supportedChains';
+import { createWagmiConfig } from '../createWagmiConfig';
+import { Environment, EnvironmentKeys } from '../environment';
+import { SUPPORTED_CHAINS } from '../supportedChains';
 
 describe('createWagmiConfig', () => {
   const OLD_ENV = process.env;
