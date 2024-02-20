@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 195c444: - **feat**: better CLI.
+- **feat**: better CLI.
 
 ## 0.18.0
 
