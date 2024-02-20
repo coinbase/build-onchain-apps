@@ -1,4 +1,4 @@
-import '@/global.css';
+import './global.css';
 
 import { Roboto_Mono, Inter } from 'next/font/google';
 import GoogleAnalytics from '@/components/GoogleAnalytics/GoogleAnalytics';
