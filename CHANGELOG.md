@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.20.0
+
+### Minor Changes
+
+- b1d4d0d: **feat**: better CLI.
+
 ## 0.19.0
 
 ### Minor Changes
