@@ -1,17 +1,20 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import OnchainProviders from '@/OnchainProviders';
 import Navbar from './Navbar';
 
 describe('Navbar', () => {
-  it('mounts', () => {
+  it('mounts', async () => {
     render(
       <OnchainProviders>
         <Navbar />
       </OnchainProviders>,
     );
-    expect(screen.getByText('Get Started')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('Get Started')).toBeInTheDocument();
+    });
   });
 });
