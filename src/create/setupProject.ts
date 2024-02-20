@@ -20,7 +20,7 @@ async function execAsync(command: string, options = {}) {
   });
 }
 
-export async function setupProject(projectDir: string, projectName: string) {
+export async function setupProject(projectDir: string, project) {
   try {
     const spinner = prompts.spinner();
 
@@ -96,7 +96,7 @@ export async function setupProject(projectDir: string, projectName: string) {
 
     const isWebPackageJsonUpdated = updatePackageJson(
       projectDir + '/web',
-      projectName
+      project.name
     );
 
     if (!isWebPackageJsonUpdated) {
@@ -104,7 +104,13 @@ export async function setupProject(projectDir: string, projectName: string) {
       process.exit(1);
     }
 
-    spinner.stop(`Onchain app ${projectName} created successfully! 🚀`);
+    if (!project.setupModules) {
+      removeDownloadedApps(projectDir + "/web/app/buy-me-coffee");
+      removeDownloadedApps(projectDir + "/web/app/mint");
+      removeDownloadedApps(projectDir + "/web/app/home");
+    }
+
+    spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
   } catch (e) {
     console.error(e)
     prompts.log.error(color.red('Error initializing Git and Foundry'));
