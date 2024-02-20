@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import OnchainProviders from '@/OnchainProviders';
 import NavbarMobile from './NavbarMobile';
@@ -24,6 +24,8 @@ describe('NavbarMobile', () => {
     );
     await userEvent.click(screen.getByRole('button'));
 
-    expect(screen.getByText('Get Started')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Get Started')).toBeInTheDocument();
+    });
   });
 });

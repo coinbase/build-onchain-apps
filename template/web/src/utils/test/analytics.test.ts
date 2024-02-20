@@ -1,4 +1,4 @@
-import { initAnalytics, markStep } from './analytics';
+import { initAnalytics, markStep } from '../analytics';
 
 describe('analytics', () => {
   // TODO Add real tests

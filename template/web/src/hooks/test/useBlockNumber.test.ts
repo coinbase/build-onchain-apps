@@ -4,7 +4,7 @@
 
 import { renderHook, waitFor } from '@testing-library/react';
 import { useAccount } from 'wagmi';
-import useCurrentBlockNumber from './useBlockNumber';
+import useCurrentBlockNumber from '../useBlockNumber';
 
 jest.mock('wagmi', () => ({
   useAccount: jest.fn(),

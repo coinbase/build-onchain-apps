@@ -22,7 +22,7 @@ export const createProject = async () => {
 
   checkProjectDir(projectDir);
 
-  await setupProject(projectDir, project.name);
+  await setupProject(projectDir, project);
 
   setupEnvFiles(projectDir, envVars);
 

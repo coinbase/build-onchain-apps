@@ -1,8 +1,5 @@
 import { Abi, Address, type Chain } from 'viem';
-import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import BuyMeACoffeeABI from '@/contract/BuyMeACoffee';
-import Custom1155ABI from '@/contract/Custom1155';
 
 type ContractInstance = {
   chain: Chain;
@@ -56,28 +53,3 @@ export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
 
   return useContract;
 }
-
-/**
- * Returns contract data for the BuyMeACoffee contract.
- */
-export const useBuyMeACoffeeContract = generateContractHook({
-  abi: BuyMeACoffeeABI,
-  [baseSepolia.id]: {
-    chain: baseSepolia,
-    address: '0xcE0EBD0282e247553eb8fDdeE3281b5EC09ddD16',
-  },
-
-  // ... more chains for this contract go here
-});
-
-/**
- * Returns contract data for the Custom1155 contract.
- */
-export const useCustom1155Contract = generateContractHook({
-  abi: Custom1155ABI,
-  [baseSepolia.id]: {
-    chain: baseSepolia,
-    address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
-  },
-  // more chains for this contract go here
-});

@@ -1,4 +1,4 @@
-import isClient from './isClient';
+import isClient from '../isClient';
 
 describe('isClient', () => {
   it('should return true if window is undefined', () => {

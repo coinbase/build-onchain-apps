@@ -24,6 +24,12 @@ export async function getUserInput() {
           },
         });
       },
+      setupModules: () => {
+        return prompts.confirm({
+          message: 'Include Onchain App experiences',
+          initialValue: true,
+        });
+      },
       setupEnvironmentVariables: () => {
         return prompts.confirm({
           message: 'Configure environment variables?',

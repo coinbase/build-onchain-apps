@@ -9,7 +9,7 @@ import {
 } from 'wagmi';
 import Button from '@/components/Button/Button';
 import { EXPECTED_CHAIN } from '@/constants';
-import { useCustom1155Contract } from '@/hooks/contracts';
+import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
 import { MintSteps } from './ContractDemo';
 import StepMintComplete from './StepMintComplete';
 import StepMintProcessing from './StepMintProcessing';

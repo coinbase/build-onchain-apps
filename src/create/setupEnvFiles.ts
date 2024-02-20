@@ -7,7 +7,7 @@ export function setupEnvFiles(projectDir: string, envVar: EnvVar) {
 
   const envLocalPath = path.join(projectDir, './web/.env.local');
   const content = `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=${envVar.walletConnectProjectID ?? ''}
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=${envVar.walletConnectProjectID ?? 'NOT_CONFIGURED'}
 ENVIRONMENT=localhost
 `;
   fs.writeFileSync(envLocalPath, content);

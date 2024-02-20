@@ -1,6 +1,6 @@
 import { baseSepolia, base } from 'viem/chains';
-import { Environment } from './environment';
-import { getChainsForEnvironment } from './supportedChains';
+import { Environment } from '../environment';
+import { getChainsForEnvironment } from '../supportedChains';
 
 describe('supportedChains', () => {
   describe('getChainsForEnvironment', () => {

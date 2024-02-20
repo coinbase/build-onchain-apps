@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
 import { markStep } from '@/utils/analytics';
-import { useBuyMeACoffeeContract } from '../../../src/hooks/contracts';
+import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
 import type { CoffeeMemo } from '../_components/types';
 
 /**

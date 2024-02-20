@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Banner from '@/components/banner/banner';
+import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Guide from './_components/Guide';
 
@@ -27,6 +28,7 @@ export default function MintPage() {
         <MintContractDemo />
         <Guide />
       </main>
+      <Footer />
     </>
   );
 }

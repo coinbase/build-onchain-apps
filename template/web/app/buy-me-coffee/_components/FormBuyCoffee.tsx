@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import clsx from 'clsx';
 import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
-import { useBuyMeACoffeeContract } from '@/hooks/contracts';
+import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
 import useFields from '../_hooks/useFields';
 import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import ContractAlert from './ContractAlert';

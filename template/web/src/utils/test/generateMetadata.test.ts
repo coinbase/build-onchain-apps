@@ -1,4 +1,4 @@
-import { generateMetadata } from './generateMetadata';
+import { generateMetadata } from '../generateMetadata';
 
 describe('generateMetadata', () => {
   it('should set metadataBase default', () => {
@@ -23,7 +23,7 @@ describe('generateMetadata', () => {
         process.env[envVar] = envValue;
         jest.resetModules();
 
-        const { generateMetadata: generateMetadata2 } = await import('./generateMetadata');
+        const { generateMetadata: generateMetadata2 } = await import('../generateMetadata');
         const metadata = generateMetadata2({
           title: 'Build Onchain Apps Toolkit',
           description:
