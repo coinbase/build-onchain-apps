@@ -5,9 +5,8 @@
 import { renderHook } from '@testing-library/react';
 import { baseSepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import BuyMeACoffeeABI from '@/contract/BuyMeACoffee';
-import Custom1155ABI from '@/contract/Custom1155';
-import { generateContractHook, useBuyMeACoffeeContract, useCustom1155Contract } from './contracts';
+import { generateContractHook } from './contracts';
+import MockABI from './MockABI';
 
 jest.mock('wagmi', () => ({
   ...jest.requireActual<typeof import('wagmi')>('wagmi'),
@@ -17,7 +16,7 @@ jest.mock('wagmi', () => ({
 const mockUseAccount = useAccount as jest.MockedFunction<typeof useAccount>;
 
 const useTestContract = generateContractHook({
-  abi: BuyMeACoffeeABI,
+  abi: MockABI,
   [baseSepolia.id]: {
     chain: baseSepolia,
     address: '0xbaseSepolia',
@@ -44,7 +43,7 @@ describe('contracts', () => {
         result: { current },
       } = renderHook(() => useTestContract());
       expect(current.status).toBe(state);
-      expect(current.abi).toEqual(BuyMeACoffeeABI);
+      expect(current.abi).toEqual(MockABI);
       expect(current.supportedChains).toEqual([baseSepolia]);
       if (address && !!userAccount) {
         expect(current).toEqual(expect.objectContaining({ address }));
@@ -54,27 +53,4 @@ describe('contracts', () => {
     });
   });
 
-  describe('useBuyMeACoffeeContract', () => {
-    it('should return correct contract data', () => {
-      const contract = useBuyMeACoffeeContract();
-      expect(contract).toEqual({
-        abi: BuyMeACoffeeABI,
-        address: '0xcE0EBD0282e247553eb8fDdeE3281b5EC09ddD16',
-        status: 'ready',
-        supportedChains: [baseSepolia],
-      });
-    });
-  });
-
-  describe('useCustom1155Contract', () => {
-    it('should return correct contract data', () => {
-      const contract = useCustom1155Contract();
-      expect(contract).toEqual({
-        abi: Custom1155ABI,
-        address: '0x6268A5F72528E5297e5A63B35e523E5C131cC88C',
-        status: 'ready',
-        supportedChains: [baseSepolia],
-      });
-    });
-  });
 });
