@@ -8,7 +8,7 @@
 
 <br />
 
-**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save 6+ weeks of initial onchain app setup and eliminate the hassle of integrating onchain components with web2 infrastructure. 🌊
+**Build Onchain Apps Toolkit** (aka BOAT ⛵️) will help you save weeks of initial app setup and the hassle of integrating onchain components with web2 infrastructure. 🌊
 
 We do this by taking an opinionated approach to streamlining early decisions you must make when building an onchain app.
 
@@ -30,9 +30,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 
 ## Getting Started
 
-To get started building with BOAT, follow this step-by-step guide. You'll be able to explore the pre-configured contracts and experiment with them.
-
-#### Step 1: Kick off your onchain app
+To get started building with BOAT, just run our CLI, and you will be guided to have an Onchain App and running.
 
 ```bash
 npx @coinbase/build-onchain-apps@latest create
@@ -43,227 +41,44 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps Toolkit'>
 </p>
 
-#### Step 2: Install and Run your onchain app
 
-```bash
-# cd into your new project folder
-cd [app-name]/web
+#### _Congrats, Time to enjoy your onchain app with some coffee ☕️_
 
-# Install dependencies
-yarn
 
-# Run onchain app
-yarn dev
-```
+## Build and deploy your own contracts
 
-<p align='center'>
-  <img src='./docs/images/build-onchain-apps-step-2-date-11-25.gif'
-  width='800' alt='Build Onchain Apps'>
-</p>
+Check out the [Contracts README](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
-#### _Congrats ✨, Time to enjoy your onchain app with some coffee ☕️_
-
-<br >
-
-## Deploy your own contracts
-
-#### Step 1: Kick start your contracts
-
-```bash
-# Install Foundry
-
-curl -L https://foundry.paradigm.xyz | bash
-foundryup
-```
-
-Follow the instructions of foundryup to completely setup foundry
-
-#### Step 2: Build, test and format the sample contracts
-
-```bash
-cd contracts
-
-# Install dependencies
-forge install
-
-# Build
-forge build
-```
-
-#### Step 3: Deploy contracts to Base Sepolia
-
-Open `contract/.env` file.
-
-`PRIVATE_KEY` is your private wallet key. Make sure to prefix it by "0x" to convert to a hex string.
-
-`BLOCK_EXPLORER_API_KEY` is your API Key from [basescan.org](https://docs.basescan.org/getting-started) for Base Sepolia
-
-```bash
-source .env
-
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
-```
-
-**Note**: The above command will print the address of your contract and a link to the block explorer. Click on the block explorer link to verify whether your contract has been deployed or not.
-
-For more information on contracts, visit [here](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
-
-<br>
 
 ## For a Live demo use
 
-- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template)
+- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template/web)
 
-<br>
 
 ## Do you need gas for Base Sepolia? 🔵
 
 Learn how you can obtain free testnet funds here: https://docs.base.org/tools/network-faucets/.
 
-<br>
 
-## Contributing ☕️
+## Community ☁️ 🌁 ☁️
 
-Read below to learn how you can take part in improving Build Onchain Apps Toolkit.
+Check out the following places for more BOAT-related content:
 
-### [Code of Conduct](CODE_OF_CONDUCT.md)
+- Follow @zizzamia ([X](https://twitter.com/zizzamia), [Farcaster](https://warpcast.com/zizzamia)) for project updates
+- Join the discussions on our [OnchainKit warpcast channel](https://warpcast.com/~/channel/onchainkit)
 
-### [Contributing Guide](CONTRIBUTING.md)
+## Authors
 
-### Template Development for BOAT
-
-To build and test either the CLI or the main App, start by cloning the repo.
-
-```bash
-# Clone the repo
-git clone https://github.com/coinbase/build-onchain-apps.git
-```
-
-### Develop the App
-
-```bash
-# Go to main application
-cd template/web
-
-# Install and run latest template
-yarn
-yarn dev
-```
-
-### CLI Development for BOAT
-
-```bash
-# From the root repo
-# Install and build latest dependencies
-yarn
-yarn build
-
-# Link the local package to the global npm registry
-npm link
-
-# Test CLI using the local package
-build-onchain-apps create
-
-# After testing, unlink the package from the global npm registry
-npm unlink @coinbase/build-onchain-apps
-npm uninstall -g @coinbase/build-onchain-apps
-```
-
-<br>
-<br>
-
-## The Team and Our Community ☁️ 🌁 ☁️
-
-Build Onchain Apps Toolkit is all about community; for any questions, feel free to:
-
-1. [Open an issue](https://github.com/coinbase/build-onchain-apps/issues/new?assignees=&labels=type%3A+documentation&projects=&template=documentation_request.yml&title=Documentation+Request%3A+)
-2. [Tell us what project you build](https://github.com/coinbase/build-onchain-apps/discussions/64) ⛵️
-3. Reach out to the core maintainers on Twitter or Farcaster
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/Zizzamia">
-          <img width="80" height="80" src="https://github.com/zizzamia.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/Zizzamia">Leonardo Zizzamia</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/snoopies_eth">
-          <img width="80" height="80" src="https://github.com/Sneh1999.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/snoopies_eth">Sneh Koul</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/wespickett">
-          <img width="80" height="80" src="https://github.com/wespickett.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/wespickett">Wesley Pickett</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/mochikuan">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1712595142614347776/c5yeQaaU_400x400.jpg">
-        </a>
-        <br />
-        <a href="https://twitter.com/mochikuan">Rose Kuan</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/renanmav">
-          <img width="80" height="80" src="https://github.com/renanmav.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/renanmav">Renan Machado</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/0xr0b_eth">
-          <img width="80" height="80" src="https://github.com/robpolak.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/0xr0b_eth">Rob Polak</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/arsood">
-          <img width="80" height="80" src="https://github.com/arsood.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/arsood">Arun Sood</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/alvaroraminelli">
-          <img width="80" height="80" src="https://github.com/alvaroraminelli.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/alvaroraminelli">Alvaro Raminelli</a>
-      </td>
-      <td align="center" valign="top">
-        <a href="https://warpcast.com/cnasc">
-          <img width="80" height="80" src="https://github.com/cnasc.png?s=100">
-        </a>
-        <br />
-        <a href="https://warpcast.com/cnasc">Chris Nascone</a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" valign="top">
-        <a href="https://twitter.com/eragon5121">
-          <img width="80" height="80" src="https://github.com/eragon512.png?s=100">
-        </a>
-        <br />
-        <a href="https://twitter.com/eragon5121">Anirud Samala</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-<br>
+- [@zizzamia](https://github.com/zizzamia) ([X](https://twitter.com/Zizzamia))
+- [@Sneh1999](https://github.com/Sneh1999) ([X](https://twitter.com/snoopies_eth))
+- [@wespickett](https://github.com/wespickett) ([X](https://twitter.com/wespickett))
+- [@mochikuan](https://github.com/mochikuan) ([X](https://twitter.com/mochikuan))
+- [@renanmav](https://github.com/renanmav) ([X](https://twitter.com/renanmav))
+- [@robpolak](https://github.com/robpolak) ([X](https://twitter.com/0xr0b_eth))
+- [@kyhyco](https://github.com/kyhyco)
+- [@cnasc](https://github.com/cnasc) ([warpcast](https://warpcast.com/cnasc))
+- [@arsood](https://github.com/arsood) ([X](https://twitter.com/arsood))
+- [@eragon512](https://github.com/eragon512) ([X](https://twitter.com/eragon5121))
 
 ## License
 
