@@ -41,24 +41,19 @@ npx @coinbase/build-onchain-apps@latest create
   width='800' alt='Build Onchain Apps Toolkit'>
 </p>
 
-
 #### _Congrats, Time to enjoy your onchain app with some coffee ☕️_
-
 
 ## Build and deploy your own contracts
 
 Check out the [Contracts README](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
 
-
 ## For a Live demo use
 
 - [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template/web)
 
-
 ## Do you need gas for Base Sepolia? 🔵
 
 Learn how you can obtain free testnet funds here: https://docs.base.org/tools/network-faucets/.
-
 
 ## Community ☁️ 🌁 ☁️
 

@@ -10,12 +10,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "commonjs",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@coinbase/build-onchain-apps": ["src/index.ts"]
+      "@coinbase/build-onchain-apps": [
+        "src/index.ts"
+      ]
     }
   },
   "files": [],
