@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.21.0
+
+### Minor Changes
+
+- 43aaccf: change basescan api key during cli app creation
+
 ## 0.20.0
 
 ### Minor Changes
