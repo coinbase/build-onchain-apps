@@ -9,28 +9,28 @@ export default function Vault() {
       <div className="border-boat-gold border border-x-0 border-t-0" />
 
       <div className="my-4 flex gap-4">
-        <div>
+        <div className="w-full">
           <NextImage
             src="/account_abstraction/sword.png"
             altText="Sword"
             className="block rounded-xl opacity-30"
           />
         </div>
-        <div>
+        <div className="w-full">
           <NextImage
             src="/account_abstraction/shield.png"
             altText="Shield"
             className="block rounded-xl opacity-30"
           />
         </div>
-        <div>
+        <div className="w-full">
           <NextImage
             src="/account_abstraction/bow_arrow.png"
             altText="Bow and Arrow"
             className="block rounded-xl opacity-30"
           />
         </div>
-        <div>
+        <div className="w-full">
           <NextImage
             src="/account_abstraction/wing_suit.png"
             altText="Wing Suit"
@@ -43,11 +43,16 @@ export default function Vault() {
       <div className="border-boat-gold border border-x-0 border-t-0" />
 
       <div className="my-4 flex gap-4">
-        <NextImage
-          src="/account_abstraction/mystery_box.png"
-          altText="Mystery Box"
-          className="block max-w-[130px] rounded-xl"
-        />
+        <div className="w-full">
+          <NextImage
+            src="/account_abstraction/mystery_box.png"
+            altText="Mystery Box"
+            className="block rounded-xl"
+          />
+        </div>
+        <div className="w-full" />
+        <div className="w-full" />
+        <div className="w-full" />
       </div>
     </div>
   );
