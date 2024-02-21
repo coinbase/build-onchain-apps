@@ -67,7 +67,7 @@ export async function getUserInput() {
             placeholder: 'Visit https://docs.basescan.org/getting-started',
             validate: (value) => {
               if (value.length === 0) return;
-              if (value.length < 64) return 'Key must be 64 characters';
+              if (value.length < 34) return 'Key must be 34 characters';
             },
           });
         },
