@@ -4,7 +4,7 @@ import Vault from './Vault';
 
 export default function AccountAbstractionDemo() {
   return (
-    <div className="rounded-xl border border-boat-color-palette-line">
+    <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <Header />
       <div className="flex">
         <Vault />
