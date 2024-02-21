@@ -1,5 +1,6 @@
 import { Abi, Address, type Chain } from 'viem';
 import { useAccount } from 'wagmi';
+import { getChainsForEnvironment } from '@/store/supportedChains';
 
 type ContractInstance = {
   chain: Chain;
@@ -10,7 +11,6 @@ type ContractInstance = {
 export type UseContractReturn<T extends Abi> = { abi: T; supportedChains: Chain[] } & (
   | { address: Address; status: 'ready' }
   | { status: 'onUnsupportedNetwork' }
-  | { status: 'notConnected' }
   | { status: 'deactivated' }
 );
 
@@ -24,12 +24,15 @@ type Spec<T extends Abi> = {
  */
 export function generateContractHook<T extends Abi>({ abi, ...spec }: Spec<T>) {
   function useContract(): UseContractReturn<typeof abi> {
-    const { chain, isConnected } = useAccount();
+    const { chain: accountChain } = useAccount();
     const supportedChains = Object.values(spec).map((s) => s.chain);
 
-    if (!isConnected) {
-      return { abi, status: 'notConnected', supportedChains };
-    }
+    // use a supported chain available in current env as fallback
+    const chain =
+      accountChain ??
+      supportedChains.find((supportedChain) =>
+        getChainsForEnvironment().some((envChain) => supportedChain.id === envChain.id),
+      );
 
     if (chain && chain.id in spec) {
       if (spec[chain.id].deactivated) {
