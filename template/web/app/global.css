@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Google Fonts - Roboto Mono */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
   --quick-nav-display: none;
   --component-highlights-item-width: calc(100vw - 100px);
