@@ -42,9 +42,6 @@ const config: Config = {
         'boat-color-orange': '#f55925',
         'boat-gold': '#7b602f',
       },
-      fontFamily: {
-        roboto: ['Roboto Mono', 'monospace'],
-      },
     },
   },
   plugins: [],

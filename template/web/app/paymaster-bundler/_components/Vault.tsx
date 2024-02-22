@@ -3,10 +3,10 @@ import Item from './Item';
 export default function Vault() {
   return (
     <div className="w-full rounded-bl-xl bg-boat-color-gray-900 px-8 py-10">
-      <h2 className="mb-5 font-roboto text-2xl">Vault</h2>
+      <h2 className="font-robotoMono mb-5 text-2xl">Vault</h2>
 
-      <h3 className="mb-1 font-roboto text-lg">Weapons</h3>
-      <div className="border border-x-0 border-t-0 border-boat-gold" />
+      <h3 className="font-robotoMono mb-1 text-lg">Weapons</h3>
+      <div className="border-boat-gold border border-x-0 border-t-0" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/sword.png" altText="Sword" active={false} />
@@ -20,8 +20,8 @@ export default function Vault() {
         />
       </div>
 
-      <h3 className="mb-1 font-roboto text-lg">Mystery boxes</h3>
-      <div className="border border-x-0 border-t-0 border-boat-gold" />
+      <h3 className="font-robotoMono mb-1 text-lg">Mystery boxes</h3>
+      <div className="border-boat-gold border border-x-0 border-t-0" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/mystery_box.png" altText="Mystery Box" />

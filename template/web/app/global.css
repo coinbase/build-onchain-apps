@@ -1,6 +1,3 @@
-/* Google Fonts - Roboto Mono */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
 /* stylelint-disable custom-property-pattern -- RainbowKit does not use kebab-case */
 @tailwind base;
 @tailwind components;

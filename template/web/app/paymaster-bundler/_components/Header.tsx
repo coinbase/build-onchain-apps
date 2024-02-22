@@ -13,7 +13,7 @@ export default function Header() {
             className="block h-[30px] w-[25px]"
           />
         </div>
-        <h1 className="font-roboto text-2xl text-boat-color-orange">KNIGHT WARRIORS</h1>
+        <h1 className="font-robotoMono text-2xl text-boat-color-orange">KNIGHT WARRIORS</h1>
       </div>
       <div className="mt-2 flex items-center gap-4 md:mt-0">
         <div className="flex">
