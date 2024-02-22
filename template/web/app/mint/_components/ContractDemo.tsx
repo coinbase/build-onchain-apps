@@ -20,7 +20,7 @@ export enum MintSteps {
 export default function MintContractDemo() {
   const [mintStep, setMintStep] = useState<MintSteps>(MintSteps.START_MINT_STEP);
 
-  const { chain, address } = useAccount();
+  const { chain, address, isConnected } = useAccount();
 
   const contract = useCustom1155Contract();
 
@@ -64,7 +64,7 @@ export default function MintContractDemo() {
     );
   }, [mintStep, collectionName]);
 
-  if (contract.status === 'notConnected') {
+  if (!isConnected) {
     return <NotConnected />;
   }
 
