@@ -4,14 +4,14 @@ import Banner from '@/components/banner/banner';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import HorizontalLine from '@/components/horizontal-line/HorizontalLine';
-import AccountAbstractionDemo from './_components/AccountAbstractionDemo';
 import Guide from './_components/Guide';
+import PaymasterBundlerDemo from './_components/PaymasterBundlerDemo';
 
 /**
  * Use the page component to wrap the components
  * that you want to render on the page.
  */
-export default function AccountAbstractionPage() {
+export default function PaymasterBundlerPage() {
   return (
     <>
       <Header />
@@ -21,7 +21,7 @@ export default function AccountAbstractionPage() {
         </section>
         <HorizontalLine />
         <section className="container px-8">
-          <AccountAbstractionDemo />
+          <PaymasterBundlerDemo />
         </section>
         <section className="container px-8">
           <Guide />
