@@ -6,7 +6,7 @@ export default function Vault() {
       <h2 className="font-robotoMono mb-5 text-2xl">Vault</h2>
 
       <h3 className="font-robotoMono mb-1 text-lg">Weapons</h3>
-      <div className="border-boat-gold border border-x-0 border-t-0" />
+      <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/sword.png" altText="Sword" active={false} />
@@ -21,7 +21,7 @@ export default function Vault() {
       </div>
 
       <h3 className="font-robotoMono mb-1 text-lg">Mystery boxes</h3>
-      <div className="border-boat-gold border border-x-0 border-t-0" />
+      <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/mystery_box.png" altText="Mystery Box" />
