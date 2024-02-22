@@ -1,5 +1,5 @@
-import { roboto } from 'app/fonts';
 import clsx from 'clsx';
+import { roboto } from 'app/fonts';
 import Item from './Item';
 
 export default function Vault() {
@@ -8,7 +8,7 @@ export default function Vault() {
       <h2 className={clsx('mb-5 text-2xl', roboto.className)}>Vault</h2>
 
       <h3 className={clsx('mb-1 text-lg', roboto.className)}>Weapons</h3>
-      <div className="border-boat-gold border border-x-0 border-t-0" />
+      <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/sword.png" altText="Sword" active={false} />
@@ -23,7 +23,7 @@ export default function Vault() {
       </div>
 
       <h3 className={clsx('mb-1 text-lg', roboto.className)}>Mystery boxes</h3>
-      <div className="border-boat-gold border border-x-0 border-t-0" />
+      <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
         <Item src="/account_abstraction/mystery_box.png" altText="Mystery Box" />
