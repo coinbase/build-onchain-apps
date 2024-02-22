@@ -83,8 +83,6 @@ export default function Footer() {
         </div>
 
         <div className="container mx-auto flex w-full gap-8 px-8 text-base font-normal leading-7">
-          <span>Docs</span>
-          <span>Support Us</span>
           <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
             <GitHubLogoIcon width="24" height="24" />
           </NavbarLink>
