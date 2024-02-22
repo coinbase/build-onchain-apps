@@ -1,3 +1,5 @@
+import { roboto } from 'app/fonts';
+import clsx from 'clsx';
 import NextImage from '@/components/NextImage/NextImage';
 
 const LIGHTNINGS = [1, 2, 3];
@@ -13,7 +15,9 @@ export default function Header() {
             className="block h-[30px] w-[25px]"
           />
         </div>
-        <h1 className="font-robotoMono text-2xl text-boat-color-orange">KNIGHT WARRIORS</h1>
+        <h1 className={clsx('text-2xl text-boat-color-orange', roboto.className)}>
+          KNIGHT WARRIORS
+        </h1>
       </div>
       <div className="mt-2 flex items-center gap-4 md:mt-0">
         <div className="flex">
