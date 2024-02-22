@@ -7,7 +7,6 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import BuyMeCoffeeContractDemo from './_components/ContractDemo';
 import Guide from './_components/Guide';
-import Profile from './_components/Profile';
 
 /**
  * Use the page component to wrap the components
@@ -33,9 +32,6 @@ export default function BuyMeCoffeePage() {
           <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
         </section>
         <HorizontalLine />
-        <section className="container px-8">
-          <Profile />
-        </section>
         <section className="container px-8">
           <BuyMeCoffeeContractDemo />
         </section>
