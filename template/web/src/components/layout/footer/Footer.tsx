@@ -51,8 +51,8 @@ export default function Footer() {
                 BUILD ONCHAIN APPS
               </NextLink>
               <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-            <GitHubLogoIcon width="24" height="24" />
-          </NavbarLink>
+                <GitHubLogoIcon width="24" height="24" />
+              </NavbarLink>
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center">

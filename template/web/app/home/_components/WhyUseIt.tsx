@@ -84,9 +84,12 @@ export default function HomeMain() {
           <li className="mt-5 inline-flex items-center justify-start gap-4">
             <CheckIcon width="24" height="24" />
             <span className="font-inter text-xl font-normal leading-7 text-white">
-          Support for a local testnet node for testing smart contracts using <a href="https://book.getfoundry.sh/reference/anvil/" target="_blank">
-            Anvil </a>  🧪
-          </span>
+              Support for a local testnet node for testing smart contracts using{' '}
+              <a href="https://book.getfoundry.sh/reference/anvil/" target="_blank">
+                Anvil{' '}
+              </a>{' '}
+              🧪
+            </span>
           </li>
         </ul>
       </div>
