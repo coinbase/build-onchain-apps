@@ -28,7 +28,7 @@ export async function getUserInput() {
       selectedModules: () => {
         return prompts.multiselect({
           message: 'Select Onchain App experiences (press space to select)',
-          initialValues: experiences.map(({ value }) => value),
+          initialValues: experiences.map(({ value }) => value).filter(value => value !== 'paymaster-bundler'),
           options: experiences,
           required: false,
         });
