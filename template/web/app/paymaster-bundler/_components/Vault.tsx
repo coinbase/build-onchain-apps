@@ -12,7 +12,12 @@ export default function Vault() {
         <Item src="/account_abstraction/sword.png" altText="Sword" active={false} />
         <Item src="/account_abstraction/shield.png" altText="Shield" active={false} />
         <Item src="/account_abstraction/bow_arrow.png" altText="Bow and Arrow" active={false} />
-        <Item src="/account_abstraction/wing_suit.png" altText="Wing Suit" active={false} />
+        <Item
+          src="/account_abstraction/wing_suit.png"
+          altText="Wing Suit"
+          active={false}
+          amount={4}
+        />
       </div>
 
       <h3 className="font-roboto mb-1 text-lg">Mystery boxes</h3>

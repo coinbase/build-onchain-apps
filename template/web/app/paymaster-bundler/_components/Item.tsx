@@ -5,10 +5,11 @@ type ItemProps = {
   src: string;
   altText: string;
   active?: boolean;
+  amount?: number;
   className?: string;
 };
 
-export default function Item({ src, altText, active = true, className }: ItemProps) {
+export default function Item({ src, altText, active = true, amount, className }: ItemProps) {
   return (
     <div className="relative w-full">
       <NextImage
@@ -16,6 +17,12 @@ export default function Item({ src, altText, active = true, className }: ItemPro
         altText={altText}
         className={clsx('block rounded-xl', active ? null : 'opacity-30', className)}
       />
+
+      {amount ? (
+        <div className="border-boat-gold absolute bottom-[5px] right-[5px] flex h-[20px] w-[20px] items-center justify-center rounded-full border bg-black text-xs">
+          {amount}
+        </div>
+      ) : null}
     </div>
   );
 }
