@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
 import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
+import AccountConnect from '@/components/layout/header/AccountConnect';
 import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
@@ -97,12 +98,14 @@ export default function MintContractDemo() {
 
         {contract.status === 'onUnsupportedNetwork' && <SwitchNetwork />}
 
-        {isConnected && (
+        {isConnected ? (
           <StepStartMint
             setMintStep={setMintStep}
             mintStep={mintStep}
             collectionName={collectionName}
           />
+        ) : (
+          <AccountConnect />
         )}
 
         {/* TODO: hiding this progress bar till we get the number of NFT's from the contract */}
