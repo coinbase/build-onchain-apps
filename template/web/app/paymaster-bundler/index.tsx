@@ -17,7 +17,7 @@ export default function PaymasterBundlerPage() {
       <Header />
       <main className="mx-auto flex flex-col py-6">
         <section className="container px-8">
-          <Banner pageName="Account Abstraction" pageUrl="account-abstraction" />
+          <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" />
         </section>
         <HorizontalLine />
         <section className="container px-8">
