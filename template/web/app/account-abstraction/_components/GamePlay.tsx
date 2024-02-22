@@ -1,4 +1,3 @@
-import Button from '@/components/Button/Button';
 import NextImage from '@/components/NextImage/NextImage';
 
 export default function GamePlay() {
@@ -18,7 +17,13 @@ export default function GamePlay() {
 
       <div className="mt-8">
         <div className="mx-auto max-w-[130px]">
-          <Button buttonContent="Open box" />
+          {/* TODO: Make this a button variant */}
+          <button
+            type="button"
+            className="block w-full rounded-full border border-boat-color-orange py-4"
+          >
+            Open box
+          </button>
         </div>
       </div>
     </div>
