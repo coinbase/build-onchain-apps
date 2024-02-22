@@ -33,10 +33,6 @@ export default function BuyMeCoffeePage() {
         </section>
         <HorizontalLine />
         <section className="container px-8">
-          {/* Commenting this out because we dont fetch this dynamically */}
-          {/* <Profile /> */}
-        </section>
-        <section className="container px-8">
           <BuyMeCoffeeContractDemo />
         </section>
         <section className="container px-8">
