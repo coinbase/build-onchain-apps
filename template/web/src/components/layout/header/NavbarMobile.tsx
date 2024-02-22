@@ -8,7 +8,8 @@ import {
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import AccountConnect from './AccountConnect';
-import { NavbarExperiencesList, NavbarLink, NavbarTitle } from './Navbar';
+import { Experiences } from './Experiences';
+import { NavbarLink, NavbarTitle } from './Navbar';
 
 export default function NavbarMobile() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function NavbarMobile() {
                         'my-4 rounded-lg bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                       )}
                     >
-                      <NavbarExperiencesList />
+                      <Experiences />
                     </NavigationMenu.Content>
                   </NavigationMenu.Item>
                 </NavigationMenu.List>

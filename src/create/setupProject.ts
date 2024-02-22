@@ -9,6 +9,25 @@ import {
   removeDownloadedApps,
   APPS_ENGINE_DIR,
 } from '../utils/apps';
+import { experiences } from './experiences';
+
+function generateNavbarExperiencesList(projectDir: string, experiences) {
+  const filePath = path.join(projectDir, '/web/src/components/layout/header/Experiences.tsx');
+  const content = `
+import { ListItem } from './ListItem';
+
+export function Experiences() {
+  return (
+    <>
+${experiences.map(({ value, label }) => (
+    `      <ListItem href="/${value}">${label}</ListItem>`
+  )).join('\n')}
+    </>
+  );
+}
+`
+  fs.writeFileSync(filePath, content);
+};
 
 async function execAsync(command: string, options = {}) {
   return new Promise((resolve, reject) => {
@@ -56,7 +75,7 @@ export async function setupProject(projectDir: string, project) {
 
     // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
     await execAsync(
-      'git clone https://github.com/coinbase/build-onchain-apps.git temp-build-onchain-apps'
+      'git clone ~/src/base/build-onchain-apps temp-build-onchain-apps'
     );
 
     fs.cpSync(getAppDir(), projectDir, {
@@ -66,6 +85,7 @@ export async function setupProject(projectDir: string, project) {
     removeDownloadedApps(APPS_ENGINE_DIR);
 
     await execAsync('git init', { cwd: projectDir, stdio: 'ignore' });
+
     removeDownloadedApps(projectDir + '/contracts/lib/openzeppelin-contracts');
     removeDownloadedApps(projectDir + '/contracts/lib/forge-std');
     removeDownloadedApps(projectDir + '/contracts/lib/ERC721A');
@@ -132,13 +152,29 @@ export async function setupProject(projectDir: string, project) {
       process.exit(1);
     }
 
-    if (!project.setupModules) {
+    if (project.selectedModules.length === 0) {
       removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
       removeDownloadedApps(projectDir + '/web/app/mint');
       removeDownloadedApps(projectDir + '/web/app/home');
+      removeDownloadedApps(projectDir + '/web/src/experiences');
 
       setupBlankApp(projectDir);
+    } else {
+      if (!project.selectedModules.includes('buy-me-coffee')) {
+        removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
+      }
+
+      if (!project.selectedModules.includes('mint')) {
+        removeDownloadedApps(projectDir + '/web/app/mint');
+      }
+
+      const selectedExperiences = experiences.filter(({ value }) => project.selectedModules.includes(value));
+
+      generateNavbarExperiencesList(projectDir, selectedExperiences);
     }
+
+    await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
+    await execAsync('git commit -m "initalized with build-onchain-apps"', { cwd: projectDir, stdio: 'ignore' });
 
     spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
   } catch (e) {

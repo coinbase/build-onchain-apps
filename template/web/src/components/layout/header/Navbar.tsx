@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
 import { ChevronDownIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
 import AccountConnect from './AccountConnect';
+import { Experiences } from './Experiences';
 
 export function NavbarLink({
   href,
@@ -25,34 +25,6 @@ export function NavbarLink({
   );
 }
 
-const ListItem = forwardRef(function ListItem(
-  {
-    children,
-    target,
-    href,
-  }: {
-    href: string;
-    children: React.ReactNode;
-    target?: string;
-  },
-  ref: React.Ref<HTMLAnchorElement>,
-) {
-  return (
-    <div className="inline-flex items-center justify-start gap-8">
-      <NavigationMenu.Link asChild className="flex items-center justify-start gap-1">
-        <a
-          href={href}
-          className={clsx('font-robotoMono text-base font-normal text-white no-underline')}
-          ref={ref}
-          target={target}
-        >
-          {children}
-        </a>
-      </NavigationMenu.Link>
-    </div>
-  );
-});
-
 export function NavbarTitle() {
   return (
     <div className="flex h-8 items-center justify-start gap-4">
@@ -67,16 +39,6 @@ export function NavbarTitle() {
         BUILD ONCHAIN APPS
       </NextLink>
     </div>
-  );
-}
-
-export function NavbarExperiencesList() {
-  return (
-    <>
-      <ListItem href="/buy-me-coffee">Buy Me Coffee</ListItem>
-      <ListItem href="/mint">Mint NFT</ListItem>
-      <ListItem href="/paymaster-bundler">Paymaster Bundler</ListItem>
-    </>
   );
 }
 
@@ -120,7 +82,7 @@ function Navbar() {
                         'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
                       )}
                     >
-                      <NavbarExperiencesList />
+                      <Experiences />
                     </NavigationMenu.Content>
                   </NavigationMenu.Item>
                 </NavigationMenu.List>

@@ -16,10 +16,7 @@ export const createProject = async () => {
 
   const { project, envVars } = await getUserInput();
 
-  prompts.log.info('Setting up project. This might take a moment.');
-
   const projectDir = getProjectDir(project.name);
-
   checkProjectDir(projectDir);
 
   await setupProject(projectDir, project);

@@ -1,8 +1,8 @@
 'use client';
 import dynamic from 'next/dynamic';
-import Banner from '@/components/banner/banner';
-import Footer from '@/components/footer/Footer';
-import Header from '@/components/header/Header';
+import Banner from '@/components/layout/banner/banner';
+import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
 import Guide from './_components/Guide';
 
 // Because the mint page relies so heavily on client-side state, without disabling SSR

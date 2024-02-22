@@ -2,7 +2,7 @@
 
 import { GitHubLogoIcon, ArrowTopRightIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
-import { NavbarLink } from '@/components/header/Navbar';
+import { NavbarLink } from '@/components/layout/header/Navbar';
 
 export default function Footer() {
   return (

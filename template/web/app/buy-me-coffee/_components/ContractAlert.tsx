@@ -1,6 +1,7 @@
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Abi, parseEther } from 'viem';
 
+import { useAccount } from 'wagmi';
 import { UseContractReturn } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
 
@@ -25,9 +26,10 @@ type ContractAlertProps = {
 };
 
 export default function ContractAlert({ contract, amount }: ContractAlertProps) {
+  const { isConnected } = useAccount();
   const canAfford = useCanUserAfford(amount);
 
-  if (contract.status === 'notConnected') {
+  if (!isConnected) {
     return <ContractAlertLayout>Please connect your wallet to continue.</ContractAlertLayout>;
   }
 
