@@ -79,6 +79,11 @@ export default function Footer() {
                 Mint NFT <ArrowTopRightIcon width="16" height="16" />
               </span>
             </NavbarLink>
+            <NavbarLink href="/paymaster-bundler">
+              <span className="flex items-center gap-1 px-2">
+                Paymaster Bundler <ArrowTopRightIcon width="16" height="16" />
+              </span>
+            </NavbarLink>
           </div>
         </div>
 
