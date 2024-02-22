@@ -19,7 +19,7 @@ export default function Item({ src, altText, active = true, amount, className }:
       />
 
       {amount ? (
-        <div className="border-boat-gold absolute bottom-[5px] right-[5px] flex h-[20px] w-[20px] items-center justify-center rounded-full border bg-black text-xs">
+        <div className="absolute bottom-[5px] right-[5px] flex h-[20px] w-[20px] items-center justify-center rounded-full border border-boat-gold bg-black text-xs">
           {amount}
         </div>
       ) : null}
