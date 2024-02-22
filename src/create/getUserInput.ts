@@ -1,4 +1,5 @@
 import * as prompts from '@clack/prompts';
+import { experiences } from './experiences';
 
 export type EnvVar = {
   walletConnectProjectID: string;
@@ -24,10 +25,12 @@ export async function getUserInput() {
           },
         });
       },
-      setupModules: () => {
-        return prompts.confirm({
-          message: 'Include Onchain App experiences',
-          initialValue: true,
+      selectedModules: () => {
+        return prompts.multiselect({
+          message: 'Select Onchain App experiences (press space to select)',
+          initialValues: ['buy-me-coffee', 'mint'],
+          options: experiences,
+          required: false,
         });
       },
       setupEnvironmentVariables: () => {
