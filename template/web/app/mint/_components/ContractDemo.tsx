@@ -1,12 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
 import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
 import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
+import { getChainsForEnvironment } from '@/store/supportedChains';
 import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
-import NotConnected from './NotConnected';
 import StepStartMint from './StepStartMint';
 import SwitchNetwork from './SwitchNetwork';
 
@@ -20,9 +20,12 @@ export enum MintSteps {
 export default function MintContractDemo() {
   const [mintStep, setMintStep] = useState<MintSteps>(MintSteps.START_MINT_STEP);
 
-  const { chain, address, isConnected } = useAccount();
+  const { chain: accountChain, address, isConnected } = useAccount();
 
   const contract = useCustom1155Contract();
+
+  const chain =
+    accountChain ?? getChainsForEnvironment().find((envChain) => EXPECTED_CHAIN.id === envChain.id);
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
 
@@ -54,25 +57,7 @@ export default function MintContractDemo() {
 
   const mintTxFeeEstimation = txFeeEstimation ? formatEther(txFeeEstimation, 'gwei') : 'Unknown';
 
-  const mintContent = useMemo(() => {
-    return (
-      <StepStartMint
-        setMintStep={setMintStep}
-        mintStep={mintStep}
-        collectionName={collectionName}
-      />
-    );
-  }, [mintStep, collectionName]);
-
-  if (!isConnected) {
-    return <NotConnected />;
-  }
-
-  if (contract.status === 'onUnsupportedNetwork') {
-    return <SwitchNetwork />;
-  }
-
-  if (isLoadingCollectionMetadata || contract.status !== 'ready') {
+  if (isLoadingCollectionMetadata) {
     return (
       <div className="my-5 flex justify-center align-middle">
         <span className="text-xl">
@@ -94,21 +79,31 @@ export default function MintContractDemo() {
       <div className="flex-shrink-1 mt-10 w-full flex-grow-0 lg:mt-0">
         <h1 className="text-4xl font-bold">{collectionName}</h1>
 
-        <h2 className="my-5">
-          Estimated tx fee:{' '}
-          {isLoadingFeeEstimate ? (
-            <SpinnerIcon className="inline animate-spin" height="1.2rem" width="1.2rem" />
-          ) : (
-            <>
-              {mintTxFeeEstimation}
-              {chain?.nativeCurrency.symbol ?? 'ETH'}
-            </>
-          )}
-        </h2>
+        {isConnected && (
+          <h2 className="my-5">
+            Estimated tx fee:{' '}
+            {isLoadingFeeEstimate ? (
+              <SpinnerIcon className="inline animate-spin" height="1.2rem" width="1.2rem" />
+            ) : (
+              <>
+                {mintTxFeeEstimation}
+                {chain?.nativeCurrency.symbol ?? 'ETH'}
+              </>
+            )}
+          </h2>
+        )}
 
         <p className="mb-6 mt-4 text-sm text-boat-footer-light-gray">{description}</p>
 
-        {mintContent}
+        {contract.status === 'onUnsupportedNetwork' && <SwitchNetwork />}
+
+        {isConnected && (
+          <StepStartMint
+            setMintStep={setMintStep}
+            mintStep={mintStep}
+            collectionName={collectionName}
+          />
+        )}
 
         {/* TODO: hiding this progress bar till we get the number of NFT's from the contract */}
         {/* <div className="items-center md:flex">
