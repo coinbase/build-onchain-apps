@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.22.0
+
+### Minor Changes
+
+- 1a5e62c: - **feat**: module select during cli create
+  - **feat**: read onchain data without connected wallet
+  - **chore**: complete Guide for /mint
+  - **feat**: update side nav feels
+  - **docs**: README cleanup
+
 ## 0.21.0
 
 ### Minor Changes
