@@ -2,7 +2,7 @@ import GamePlay from './GamePlay';
 import Header from './Header';
 import Vault from './Vault';
 
-export default function AccountAbstractionDemo() {
+export default function PaymasterBundlerDemo() {
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <Header />
