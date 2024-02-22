@@ -1,9 +1,9 @@
 'use client';
 
-import Banner from '@/components/banner/banner';
-import Footer from '@/components/footer/Footer';
-import Header from '@/components/header/Header';
 import HorizontalLine from '@/components/horizontal-line/HorizontalLine';
+import Banner from '@/components/layout/banner/banner';
+import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
 import Guide from './_components/Guide';
 import PaymasterBundlerDemo from './_components/PaymasterBundlerDemo';
 
