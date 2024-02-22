@@ -4,7 +4,7 @@ const LIGHTNINGS = [1, 2, 3];
 
 export default function Header() {
   return (
-    <div className="flex justify-between rounded-t-xl border border-x-0 border-t-0 border-boat-color-palette-line bg-boat-footer-dark-gray p-6">
+    <div className="justify-between rounded-t-xl border border-x-0 border-t-0 border-boat-color-palette-line bg-boat-footer-dark-gray p-6 md:flex">
       <div className="flex items-center gap-3">
         <div>
           <NextImage
@@ -15,7 +15,7 @@ export default function Header() {
         </div>
         <h1 className="text-2xl text-boat-color-orange">KNIGHT WARRIORS</h1>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="mt-2 flex items-center gap-4 md:mt-0">
         <div className="flex">
           {LIGHTNINGS.map((l) => {
             return (

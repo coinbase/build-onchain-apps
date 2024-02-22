@@ -6,7 +6,7 @@ export default function AccountAbstractionDemo() {
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <Header />
-      <div className="flex">
+      <div className="lg:flex">
         <Vault />
         <GamePlay />
       </div>
