@@ -1,5 +1,5 @@
 'use client';
-import Footer from '@/components/footer/Footer';
+import Footer from '@/components/layout/footer/Footer';
 import Guide from './_components/Guide';
 import HomeHeader from './_components/HomeHeader';
 import WhyUseIt from './_components/WhyUseIt';
