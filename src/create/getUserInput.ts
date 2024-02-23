@@ -27,7 +27,8 @@ export async function getUserInput() {
       },
       selectedModules: () => {
         return prompts.multiselect({
-          message: 'Select Onchain App experiences (press space to select)',
+          message:
+            'Select Onchain App experiences (press space to remove an experience)',
           initialValues: experiences.map(({ value }) => value),
           options: experiences,
           required: false,
