@@ -228,7 +228,7 @@ export default function Guide() {
             <CodeBlock code={codeStep9} language="solidity" />
           </Section>
         </main>
-        <TableOfContents title="On this guide" contents={contents} />
+        <TableOfContents title="Guide" contents={contents} />
       </div>
     </div>
   );

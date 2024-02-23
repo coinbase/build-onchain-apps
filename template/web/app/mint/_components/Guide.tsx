@@ -172,7 +172,7 @@ export default function Guide() {
           </Section>
         </main>
 
-        <TableOfContents title="On this guide" contents={contents} />
+        <TableOfContents title="Guide" contents={contents} />
       </div>
     </div>
   );
