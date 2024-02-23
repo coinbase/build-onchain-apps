@@ -122,17 +122,16 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (project.selectedModules.length === 0) {
-      removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
-      removeDownloadedApps(projectDir + '/web/app/mint');
-      removeDownloadedApps(projectDir + '/web/src/experiences');
-    } else {
-      if (!project.selectedModules.includes('buy-me-coffee')) {
-        removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
-      }
+      experiences.map(({ value }) => {
+        removeDownloadedApps(projectDir + `/web/app/${value}`);
+      })
 
-      if (!project.selectedModules.includes('mint')) {
-        removeDownloadedApps(projectDir + '/web/app/mint');
-      }
+    } else {
+      experiences
+        .filter(({ value }) => !project.selectedModules.includes(value))
+        .map(({ value }) => {
+          removeDownloadedApps(projectDir + `/web/app/${value}`);
+        });
 
       const selectedExperiences = experiences.filter(({ value }) =>
         project.selectedModules.includes(value)
