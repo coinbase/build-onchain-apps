@@ -50,8 +50,10 @@ export default function PaymasterBundlerDemo() {
         functionName: 'balanceOf',
         args: [address],
       });
+
       // Get the token IDs and metadata by token ID
       var tokens = [];
+
       for (let i = 0; i < Number(numTokens); i++) {
         const tokenID = await client.readContract({
           address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
@@ -66,8 +68,10 @@ export default function PaymasterBundlerDemo() {
           functionName: 'tokenURI',
           args: [Number(tokenID)],
         });
+
         tokens.push(tokenJSONLink as string);
       }
+
       console.log(tokens);
       setOwnedTokens(tokens);
     };
@@ -88,6 +92,7 @@ export default function PaymasterBundlerDemo() {
 
       try {
         const eip1193provider = await activeWallet.getEthereumProvider();
+
         const walletClient = createWalletClient({
           account: activeWallet.address as `0x${string}`,
           chain: sepolia, // Replace this with the chain used by your application
