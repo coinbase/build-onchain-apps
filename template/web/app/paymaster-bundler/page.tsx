@@ -16,7 +16,7 @@ export default function PaymasterBundlerPage() {
     <>
       <Header />
       <Main>
-        <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" />
+        <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
         <PaymasterBundlerDemo />
         <Guide />
       </Main>
