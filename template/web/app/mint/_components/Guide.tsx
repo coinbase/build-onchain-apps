@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import { useGuideScroll, P, H3, H4, Section, Hr } from '@/components/layout/guide';
+import { useGuideScroll, P, H3, H4, Section, Hr, A } from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`solidity
 function publicMint(uint256 _amount) external payable whenLive {
@@ -47,15 +47,10 @@ export default function Guide() {
             <H4>Contract Summary</H4>
             <P>
               The <code>AllowlistNFT.sol</code> smart contract is an extension of an ERC721 smart
-              contract. The{' '}
-              <a href="https://github.com/chiru-labs/ERC721A" target="_blank">
-                ERC721A
-              </a>{' '}
+              contract. The <A href="https://github.com/chiru-labs/ERC721A">ERC721A</A>{' '}
               implementation is an extension of the{' '}
-              <a href="https://eips.ethereum.org/EIPS/eip-721" target="_blank">
-                ERC721 specification
-              </a>
-              , and is optimized for gas savings and batch operations.
+              <A href="https://eips.ethereum.org/EIPS/eip-721">ERC721 specification</A>, and is
+              optimized for gas savings and batch operations.
             </P>
           </Section>
           <Section id="publicMint-explanation">
@@ -65,52 +60,37 @@ export default function Guide() {
             <P>
               The <code>publicMint</code> function allows anyone to mint an NFT from the contract so
               long as the mint is{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L131"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchAin-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L131">
                 live
-              </a>{' '}
+              </A>{' '}
               and the allowlist time period{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L132"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L132">
                 has elapsed
-              </a>
+              </A>
               .
             </P>
             <CodeBlock code={codeStep1} language="solidity" />
             <P>
               The above conditions correspond to the{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L38"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L38">
                 <code>live</code>
-              </a>{' '}
+              </A>{' '}
               and{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L42"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L42">
                 <code>allowlistClose</code>
-              </a>{' '}
+              </A>{' '}
               variables, respectively. These values are stored as state variables in the contract,
               and are set in the{' '}
-              <a href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L76">
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L76">
                 <code>constructor</code>
-              </a>
+              </A>
               .
             </P>
             <P>
               The modifier{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L57"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L57">
                 <code>whenLive</code>
-              </a>{' '}
+              </A>{' '}
               is attached to the <code>publicMint</code> function, which checks the value of the{' '}
               <code>live</code> state variable to determine whether to revert the transaction or
               not.
@@ -118,23 +98,17 @@ export default function Guide() {
             <CodeBlock code={codeStep2} language="solidity" />
             <P>
               The owner of the contract can call the{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L160"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L160">
                 toggleLive
-              </a>{' '}
+              </A>{' '}
               function to flip the boolean value of live, thus enabling and disabling minting NFTs.
             </P>
             <P>
               Assuming <code>live</code> is set to true, the <code>publicMint</code> function will
               then ensure that the timestamp of the block being mined is{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L132"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L132">
                 greater than
-              </a>{' '}
+              </A>{' '}
               the timestamp stored in <code>allowlistClose</code>. Otherwise, the transaction will
               revert.
             </P>
@@ -143,42 +117,30 @@ export default function Guide() {
               If the above check succeeds, then the requested number of NFTs to mint will be
               calculated and added to the total number of NFTs the caller (<code>msg.sender</code>)
               has minted previously. If this new total exceeds the maximum allowed NFTs to mint{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L139"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L139">
                 per-person
-              </a>{' '}
+              </A>{' '}
               or{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L140"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L140">
                 globally
-              </a>
+              </A>
               , then the transaction will revert.
             </P>
             <CodeBlock code={codeStep4} language="solidity" />
             <P>
               Then, the function will check the supplied amount of ETH (<code>msg.value</code>) to
               ensure that{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L141"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L141">
                 enough ETH has been provided
-              </a>{' '}
+              </A>{' '}
               to mint the requested number of NFTs at the current price.
             </P>
             <CodeBlock code={codeStep5} language="solidity" />
             <P>
               Assuming all these checks succeed, <code>publicMint</code> will then{' '}
-              <a
-                href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L143"
-                target="_blank"
-              >
+              <A href="https://github.com/coinbase/build-onchain-apps/blob/v0.18.0/template/contracts/src/AllowlistNFT.sol#L143">
                 mint
-              </a>{' '}
+              </A>{' '}
               the specified amount of NFTs to the caller address.
             </P>
             <CodeBlock code={codeStep6} language="solidity" />
