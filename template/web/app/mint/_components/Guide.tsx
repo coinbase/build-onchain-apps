@@ -1,6 +1,15 @@
-import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import { useGuideScroll, P, H3, H4, Section, Hr, A } from '@/components/layout/guide';
+import {
+  useGuideScroll,
+  P,
+  H3,
+  H4,
+  Section,
+  Hr,
+  A,
+  TableOfContents,
+} from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`solidity
 function publicMint(uint256 _amount) external payable whenLive {
@@ -33,9 +42,25 @@ _mint(msg.sender, _amount);
 `;
 
 export default function Guide() {
-  const pathname = usePathname();
-
   useGuideScroll();
+
+  const contents = useMemo(
+    () => [
+      {
+        href: '#contract-summary',
+        label: 'Contract Summary',
+      },
+      {
+        href: '#publicMint-explanation',
+        label: (
+          <>
+            <code className="text-xs">publicMint</code> Explanation
+          </>
+        ),
+      },
+    ],
+    [],
+  );
 
   return (
     <>
@@ -146,31 +171,8 @@ export default function Guide() {
             <CodeBlock code={codeStep6} language="solidity" />
           </Section>
         </main>
-        <aside className="flex-shrink-1 relative mt-10 hidden w-full flex-grow-0 xl:block">
-          <nav className="sticky top-28 flex flex-col gap-2 border-s-2 py-2 ps-4">
-            <h2 className="text-base font-bold">On this guide</h2>
-            <ul className="flex flex-col gap-2">
-              <li>
-                <a
-                  href="#contract-summary"
-                  data-active={pathname.includes('#contract-summary')}
-                  className="text-base text-sm font-normal text-zinc-400 no-underline underline-offset-2 hover:underline data-[active=true]:text-white"
-                >
-                  Contract Summary
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#publicMint-explanation"
-                  data-active={pathname.includes('#publicMint-explanation')}
-                  className="text-base text-sm font-normal text-zinc-400 no-underline underline-offset-2 hover:underline data-[active=true]:text-white"
-                >
-                  <code className="text-xs">publicMint</code> Explanation
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+
+        <TableOfContents title="On this guide" contents={contents} />
       </div>
     </>
   );
