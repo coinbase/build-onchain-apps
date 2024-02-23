@@ -20,7 +20,8 @@ export default function HomeHeader() {
           APPS
         </h1>
         <p className={styles.HomeHeaderParagraph}>
-          Accelerate your web3 creativity with the <br />
+          Accelerate your web3 creativity with
+          <br />
           Build Onchain Apps Toolkit.
         </p>
         <div className={styles.HomeHeaderCta}>
