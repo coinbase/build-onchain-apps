@@ -27,7 +27,7 @@ function TableOfContents({ title, contents }: TableOfContentsProps) {
   const pathname = usePathname();
   return (
     <aside className="relative hidden xl:block">
-      <nav className="sticky top-28 flex flex-col gap-2 border-s-2 py-2 ps-4">
+      <nav className="sticky top-28 flex flex-col gap-2 border-s border-gray-500 py-2 ps-4">
         <h2 className="text-base font-bold">
           <a href={title.href} className="no-underline">
             {title.label}
