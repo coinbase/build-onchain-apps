@@ -120,7 +120,7 @@ export default function Guide() {
           </Section>
           <Section id="buyCoffee-explanation">
             <H4>
-              <code>buyCoffee</code> Explanation
+              <code className="text-xl">buyCoffee</code> Explanation
             </H4>
             <P>
               <code>buyCoffee</code> is a <code>public payable</code> function that allows a user to
@@ -171,7 +171,7 @@ export default function Guide() {
           </Section>
           <Section id="getMemos-explanation">
             <H4>
-              <code>getMemos</code> Explanation
+              <code className="text-xl">getMemos</code> Explanation
             </H4>
             <P>
               <code>getMemos</code> is a <code>public view</code> function that returns an array of{' '}

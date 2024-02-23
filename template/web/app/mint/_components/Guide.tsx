@@ -80,7 +80,7 @@ export default function Guide() {
           </Section>
           <Section id="publicMint-explanation">
             <H4>
-              <code>publicMint</code> Explanation
+              <code className="text-xl">publicMint</code> Explanation
             </H4>
             <P>
               The <code>publicMint</code> function allows anyone to mint an NFT from the contract so
