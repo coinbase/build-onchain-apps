@@ -1,6 +1,16 @@
-import NextImage from '@/components/NextImage/NextImage';
 
-export default function GamePlay() {
+import { parseAbiItem, encodeFunctionData } from "viem"
+import NextImage from '@/components/NextImage/NextImage';
+import { nftAbi } from "./abi";
+
+type GameplayProps = {
+  smartAccount: any;
+}
+
+export default function GamePlay(props: GameplayProps) {
+  const smartAccount = props.smartAccount;
+
+
   return (
     <div className="w-full px-10 py-10">
       <div>
@@ -20,7 +30,20 @@ export default function GamePlay() {
           {/* TODO: Make this a button variant */}
           <button
             type="button"
-            className="block w-full rounded-full border border-boat-color-orange py-4"
+            className="block w-full rounded-full border border-boat-color-orange py-4" //TODO: add disabled
+            onClick={async () => {
+              const data = encodeFunctionData({
+                abi: nftAbi,
+                functionName: "mintTo",
+                args: [smartAccount.account.address, 0],
+              })
+              const res = await smartAccount.sendTransaction({
+                to: "0x06a7b468423065C925882227168504793Fe65e36",
+                data: data,
+                value: BigInt(0)
+              })
+              console.log("res", res)
+            }}
           >
             Open box
           </button>
