@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import { useGuideScroll, P, H3, H4, Section } from '@/components/layout/guide';
+import { useGuideScroll, P, H3, H4, Section, Hr } from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`bash
 $ npx @coinbase/build-onchain-apps@latest create`;
@@ -90,7 +90,7 @@ export default function Guide() {
       <H3 id="get-started">Getting started</H3>
       <div className="space-between flex gap-8">
         <div className="w-full">
-          <hr className="mt-2 h-px bg-white" />
+          <Hr />
           {[
             {
               id: 'step-1',

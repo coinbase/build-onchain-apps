@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import { useGuideScroll, P, H3, H4, Section } from '@/components/layout/guide';
+import { useGuideScroll, P, H3, H4, Section, Hr } from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`solidity
 if (msg.value < price * numCoffees) {
@@ -74,6 +74,7 @@ export default function Guide() {
   return (
     <>
       <H3 id="guide">Guide</H3>
+      <Hr />
       <div className="h-px bg-white" />
       <div className="gap-16 lg:flex">
         <main className="w-full flex-shrink-0 flex-grow xl:max-w-[900px]">
