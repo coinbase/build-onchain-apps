@@ -12,22 +12,27 @@ import {
 import { experiences } from './experiences';
 
 function generateNavbarExperiencesList(projectDir: string, experiences) {
-  const filePath = path.join(projectDir, '/web/src/components/layout/header/Experiences.tsx');
+  const filePath = path.join(
+    projectDir,
+    '/web/src/components/layout/header/Experiences.tsx'
+  );
   const content = `
 import { ListItem } from './ListItem';
 
 export function Experiences() {
   return (
     <>
-${experiences.map(({ value, label }) => (
-    `      <ListItem href="/${value}">${label}</ListItem>`
-  )).join('\n')}
+${experiences
+  .map(
+    ({ value, label }) => `      <ListItem href="/${value}">${label}</ListItem>`
+  )
+  .join('\n')}
     </>
   );
 }
-`
+`;
   fs.writeFileSync(filePath, content);
-};
+}
 
 async function execAsync(command: string, options = {}) {
   return new Promise((resolve, reject) => {
@@ -103,9 +108,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/chiru-labs/ERC721A'
-    );
+    spinner.message('git submodule add https://github.com/chiru-labs/ERC721A');
     await execAsync(
       'git submodule add https://github.com/chiru-labs/ERC721A contracts/lib/ERC721A',
       {
@@ -113,9 +116,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/vectorized/solady'
-    );
+    spinner.message('git submodule add https://github.com/vectorized/solady');
     await execAsync(
       'git submodule add https://github.com/vectorized/solady contracts/lib/solady',
       {
@@ -123,9 +124,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/dmfxyz/murky'
-    );
+    spinner.message('git submodule add https://github.com/dmfxyz/murky');
     await execAsync(
       'git submodule add https://github.com/dmfxyz/murky contracts/lib/murky',
       {
@@ -146,10 +145,7 @@ export async function setupProject(projectDir: string, project) {
     if (project.selectedModules.length === 0) {
       removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
       removeDownloadedApps(projectDir + '/web/app/mint');
-      removeDownloadedApps(projectDir + '/web/app/home');
       removeDownloadedApps(projectDir + '/web/src/experiences');
-
-      setupBlankApp(projectDir);
     } else {
       if (!project.selectedModules.includes('buy-me-coffee')) {
         removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
@@ -159,13 +155,18 @@ export async function setupProject(projectDir: string, project) {
         removeDownloadedApps(projectDir + '/web/app/mint');
       }
 
-      const selectedExperiences = experiences.filter(({ value }) => project.selectedModules.includes(value));
+      const selectedExperiences = experiences.filter(({ value }) =>
+        project.selectedModules.includes(value)
+      );
 
       generateNavbarExperiencesList(projectDir, selectedExperiences);
     }
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
-    await execAsync('git commit -m "initalized with build-onchain-apps"', { cwd: projectDir, stdio: 'ignore' });
+    await execAsync('git commit -m "initalized with build-onchain-apps"', {
+      cwd: projectDir,
+      stdio: 'ignore',
+    });
 
     spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
   } catch (e) {
