@@ -79,6 +79,17 @@ function Section({
   );
 }
 
+const tocContent = [
+  {
+    href: '#step-1',
+    label: 'Step 1: Create your onchain app',
+  },
+  {
+    href: '#step-2',
+    label: 'Step 2: Run your onchain app',
+  },
+];
+
 export default function Guide() {
   useEffect(() => {
     function convertRemToPixels(rem: number) {
@@ -144,16 +155,7 @@ export default function Guide() {
             href: '#get-started',
             label: 'Getting Started',
           }}
-          contents={[
-            {
-              href: '#step-1',
-              label: 'Step 1: Create your onchain app',
-            },
-            {
-              href: '#step-2',
-              label: 'Step 2: Run your onchain app',
-            },
-          ]}
+          contents={tocContent}
         />
       </div>
     </>
