@@ -6,37 +6,11 @@ const codeStep1 = `\`\`\`bash
 $ npx @coinbase/build-onchain-apps@latest create`;
 
 const codeStep3 = `\`\`\`bash
-# cd into your new project folder
-cd [app-name]/web
-
 # Install dependencies
 yarn
 
 # Run onchain app
 yarn dev`;
-
-const codeStep4 = `\`\`\`bash
-# Install Foundry
-
-curl -L https://foundry.paradigm.xyz | bash
-foundryup`;
-
-const codeStep5 = `\`\`\`bash
-cd contracts
-
-# Install dependencies
-forge install
-
-# Build
-forge build`;
-
-const codeStep6 = `\`\`\`bash
-# Create a .env file using the .env.example file provided in your contracts folder and add your private key.
-# Make sure to add a 0x in front of your key to convert it to a hex.
-# Note: Get an API key from basescan.org for Base Sepolia by creating an account
-
-forge script script/BuyMeACoffee.s.sol:BuyMeACoffeeScript --broadcast --verify --rpc-url base_sepolia
-`;
 
 type TableOfContentsProps = {
   title: {
@@ -149,32 +123,14 @@ export default function Guide() {
             {
               id: 'step-1',
               title: 'Step 1',
-              subtext: 'Kick off your onchain app',
+              subtext: 'Create your onchain app',
               codeBlock: <CodeBlock code={codeStep1} />,
             },
             {
               id: 'step-2',
               title: 'Step 2',
-              subtext: 'Install and Run your onchain app',
+              subtext: 'Run your onchain app',
               codeBlock: <CodeBlock code={codeStep3} />,
-            },
-            {
-              id: 'step-3',
-              title: 'Step 3',
-              subtext: 'Kick start your contracts',
-              codeBlock: <CodeBlock code={codeStep4} />,
-            },
-            {
-              id: 'step-4',
-              title: 'Step 4',
-              subtext: 'Build, test and format the sample contracts',
-              codeBlock: <CodeBlock code={codeStep5} />,
-            },
-            {
-              id: 'step-5',
-              title: 'Step 5',
-              subtext: 'Deploy contracts to Base Sepolia',
-              codeBlock: <CodeBlock code={codeStep6} />,
             },
           ].map(({ id, title, subtext, codeBlock }) => (
             <Section key={id} id={id} title={title} subtext={subtext}>
@@ -185,29 +141,17 @@ export default function Guide() {
 
         <TableOfContents
           title={{
-            href: '/#get-started',
+            href: '#get-started',
             label: 'Getting Started',
           }}
           contents={[
             {
               href: '#step-1',
-              label: 'Step 1: Kick off your onchain app',
+              label: 'Step 1: Create your onchain app',
             },
             {
               href: '#step-2',
-              label: 'Step 2: Install and Run your onchain app',
-            },
-            {
-              href: '#step-3',
-              label: 'Step 3: Kick start your contracts',
-            },
-            {
-              href: '#step-4',
-              label: 'Step 4: Build the sample contracts',
-            },
-            {
-              href: '#step-5',
-              label: 'Step 5: Deploy contracts to Base Sepolia',
+              label: 'Step 2: Run your onchain app',
             },
           ]}
         />
