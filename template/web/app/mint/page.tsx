@@ -1,19 +1,36 @@
-import { generateMetadata } from '@/utils/generateMetadata';
-import MintPage from '.';
+'use client';
 
-export const metadata = generateMetadata({
-  title: 'Build Onchain Apps - Mint',
-  description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
-  images: 'themes.png',
-  pathname: 'mint',
-});
+import dynamic from 'next/dynamic';
+import Banner from '@/components/layout/banner/banner';
+import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
+import Main from '@/components/layout/Main';
+import Guide from './_components/Guide';
+
+// Because the mint page relies so heavily on client-side state, without disabling SSR
+// for its internals we get annoying hydration errors. A future enhancement would be to
+// read token metadata through a provider that is available server-side.
+const MintContractDemo = dynamic(
+  async () => import('app/mint/_components/ContractDemo').then((mod) => mod),
+  {
+    ssr: false,
+  },
+);
 
 /**
- * Server component, which imports the MintPage component (client component that has 'use client' in it)
- * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
- * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
- * https://nextjs.org/docs/app/building-your-application/rendering/client-components
+ * Use the page component to wrap the components
+ * that you want to render on the page.
  */
-export default function Page() {
-  return <MintPage />;
+export default function MintPage() {
+  return (
+    <>
+      <Header />
+      <Main>
+        <Banner pageName="Mint NFT" pageUrl="mint" />
+        <MintContractDemo />
+        <Guide />
+      </Main>
+      <Footer />
+    </>
+  );
 }
