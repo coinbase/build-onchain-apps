@@ -38,8 +38,12 @@ export default function PaymasterBundlerDemo() {
   // Fetch the NFTs
   useEffect(() => {
     const fetchNFTs = async () => {
+      if (!smartAccount) return;
+      if (!client) return;
+
       // Get # of NFTs owned by address
-      const address = smartAccount.account.address;
+      const address = smartAccount.account?.address;
+
       const numTokens = await client.readContract({
         address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
         abi: nftAbi,
@@ -67,9 +71,9 @@ export default function PaymasterBundlerDemo() {
       console.log(tokens);
       setOwnedTokens(tokens);
     };
-    if (!smartAccount) return;
+
     void fetchNFTs();
-  }, [smartAccount]);
+  }, [smartAccount, client]);
 
   // Fetch the active wallet
   useEffect(() => {
@@ -80,32 +84,37 @@ export default function PaymasterBundlerDemo() {
   // Fetch the privy client
   useEffect(() => {
     const fetchPrivyClient = async () => {
+      if (!activeWallet) return;
+
       try {
         const eip1193provider = await activeWallet.getEthereumProvider();
-        const client = createWalletClient({
+        const walletClient = createWalletClient({
           account: activeWallet.address as `0x${string}`,
           chain: sepolia, // Replace this with the chain used by your application
           transport: custom(eip1193provider),
         });
 
-        setPrivyClient(client);
+        setPrivyClient(walletClient);
       } catch (error) {
         console.error('Error initializing privyClient:', error);
       }
     };
 
-    if (!activeWallet) return;
     void fetchPrivyClient();
   }, [activeWallet]);
 
   // Create the smart account
   useEffect(() => {
     const createSmartAccount = async () => {
+      if (!privyClient) return;
+
       const signer = walletClientToSmartAccountSigner(privyClient);
+
       const publicClient = createPublicClient({
         chain: sepolia, // Replace this with the chain of your app
         transport: http(rpcUrl),
       });
+
       setPublicClient(publicClient);
 
       const simpleSmartAccountClient = await signerToSimpleSmartAccount(publicClient, {
@@ -113,19 +122,21 @@ export default function PaymasterBundlerDemo() {
         signer: signer,
         factoryAddress: factoryAddress,
       });
+
       const cloudPaymaster = createPimlicoPaymasterClient({
         transport: http(paymasterUrl),
       });
+
       const smartAccountClient = createSmartAccountClient({
         account: simpleSmartAccountClient,
         chain: sepolia, // or whatever chain you are using
         transport: http(rpcUrl),
         sponsorUserOperation: cloudPaymaster.sponsorUserOperation, // if using a paymaster
       });
+
       setSmartAccount(smartAccountClient);
     };
 
-    if (!privyClient) return;
     void createSmartAccount();
   }, [privyClient]);
 
