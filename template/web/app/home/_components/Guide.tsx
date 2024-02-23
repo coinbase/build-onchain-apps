@@ -1,4 +1,3 @@
-import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
 import { useGuideScroll, P, H3, H4, Section, Hr, TableOfContents } from '@/components/layout/guide';
 
