@@ -27,34 +27,33 @@ export default function HomeMain() {
         </h2>
         <ul className="items-left flex flex-col justify-center gap-4">
           <ListItem>
-            Progressive Web App support using <A href="https://nextjs.org/">Next.js</A> 🏗️
+            Progressive Web App support using <A href="https://nextjs.org/">Next.js</A>
           </ListItem>
           <ListItem>
-            Eth L2 support through <A href="https://base.org/">Base</A> 🔵
+            Eth L2 support through <A href="https://base.org/">Base</A>
           </ListItem>
           <ListItem>
-            Smart contract deployment with <A href="https://book.getfoundry.sh/">Foundry</A> ☁️
+            Smart contract deployment with <A href="https://book.getfoundry.sh/">Foundry</A>
           </ListItem>
           <ListItem>
             Support for a local testnet node for testing smart contracts using{' '}
-            <A href="https://book.getfoundry.sh/reference/anvil/">Anvil</A> 🧪
+            <A href="https://book.getfoundry.sh/reference/anvil/">Anvil</A>
           </ListItem>
           <ListItem>
-            Wallet connect integration with <A href="https://www.rainbowkit.com/">RainbowKit</A> 🌈
+            Wallet connect integration with <A href="https://www.rainbowkit.com/">RainbowKit</A>
           </ListItem>
           <ListItem>
             Live examples and documentation for web3 experiences with{' '}
-            <A href="https://wagmi.sh/">wagmi</A> and <A href="https://viem.sh/">viem</A> 🚀
+            <A href="https://wagmi.sh/">wagmi</A> and <A href="https://viem.sh/">viem</A>
           </ListItem>
           <ListItem>
-            Latest styling best practices with <A href="https://tailwindcss.com/">Tailwind CSS</A>{' '}
-            💅
+            Latest styling best practices with <A href="https://tailwindcss.com/">Tailwind CSS</A>
           </ListItem>
           <ListItem>
             Insights into Web Vitals performance metrics with{' '}
             <A href="https://zizzamia.github.io/perfume/">Perfume.js</A>
           </ListItem>
-          <ListItem>Easy maintenance with linting, formatting, and tests ✅</ListItem>
+          <ListItem>Easy maintenance with linting, formatting, and tests</ListItem>
         </ul>
       </div>
     </section>
