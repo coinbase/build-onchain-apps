@@ -11,17 +11,12 @@ type BannerProps = {
 export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
   return (
     <section
-      className={
-        wip
-          ? clsx(
-              'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
-              'rounded-lg border border-zinc-400 border-opacity-20 bg-boat-color-yellow-60 text-black',
-            )
-          : clsx(
-              'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
-              'rounded-lg border border-zinc-400 border-opacity-20  bg-neutral-900 text-white',
-            )
-      }
+      className={clsx(
+        'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
+        `rounded-lg border border-zinc-400 border-opacity-10  ${
+          wip ? `bg-boat-color-yellow-60 text-black` : `bg-neutral-900 text-white`
+        }`,
+      )}
     >
       <div className="flex items-start justify-start gap-2 md:gap-6">
         <div className="flex h-6 w-6 shrink-0 items-center justify-center md:h-12 md:w-12">
