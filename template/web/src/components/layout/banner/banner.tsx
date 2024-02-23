@@ -14,7 +14,7 @@ export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
       className={clsx(
         'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
         `rounded-lg border border-zinc-400 border-opacity-10  ${
-          wip ? `bg-boat-color-yellow-60 text-black` : `bg-neutral-900 text-white`
+          wip ? 'bg-boat-color-yellow-60 text-black' : 'bg-neutral-900 text-white'
         }`,
       )}
     >
