@@ -8,10 +8,6 @@ import Header from '@/components/layout/header/Header';
 import Guide from './_components/Guide';
 import PaymasterBundlerDemo from './_components/PaymasterBundlerDemo';
 
-const handleLogin = (user: any) => {
-  console.log(`User ${user.id} logged in!`)
-}
-
 /**
  * Use the page component to wrap the components
  * that you want to render on the page.
@@ -31,7 +27,7 @@ export default function PaymasterBundlerPage() {
             onSuccess={handleLogin}
             config={{
               embeddedWallets: {
-                createOnLogin: 'users-without-wallets' // or 'all-users'
+                createOnLogin: 'users-without-wallets', // or 'all-users'
               },
               loginMethods: ['email', 'wallet'],
               appearance: {

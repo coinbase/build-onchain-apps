@@ -1,19 +1,26 @@
-import { generateMetadata } from '@/utils/generateMetadata';
-import PaymasterBundler from '.';
+'use client';
 
-export const metadata = generateMetadata({
-  title: 'Build Onchain Apps Toolkit',
-  description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
-  images: 'themes.png',
-  pathname: 'paymaster-bundler',
-});
+import Banner from '@/components/layout/banner/banner';
+import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
+import Main from '@/components/layout/Main';
+import Guide from './_components/Guide';
+import PaymasterBundlerApp from './_components/PaymasterBundlerApp';
 
 /**
- * Server component, which imports the PaymasterBundler component (client component that has 'use client' in it)
- * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
- * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
- * https://nextjs.org/docs/app/building-your-application/rendering/client-components
+ * Use the page component to wrap the components
+ * that you want to render on the page.
  */
-export default function Page() {
-  return <PaymasterBundler />;
+export default function PaymasterBundlerPage() {
+  return (
+    <>
+      <Header />
+      <Main>
+        <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
+        <PaymasterBundlerApp />
+        <Guide />
+      </Main>
+      <Footer />
+    </>
+  );
 }

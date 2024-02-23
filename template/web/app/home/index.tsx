@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHeader />
-      <main className="container mx-auto flex flex-col px-8 py-28">
+      <main className="container mx-auto flex flex-col px-8 py-16">
         <WhyUseIt />
         <Guide />
       </main>

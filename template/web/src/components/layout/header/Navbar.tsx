@@ -66,7 +66,7 @@ function Navbar() {
               <NavigationMenu.Root className="relative">
                 <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
                   <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
+                    <NavigationMenu.Trigger className="group flex h-16 items-center justify-start gap-1">
                       <span className="font-robotoMono text-center text-base font-normal text-white">
                         Experiences
                       </span>
@@ -79,7 +79,7 @@ function Navbar() {
                     <NavigationMenu.Content
                       className={clsx(
                         'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
-                        'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                        'rounded-lg bg-neutral-900 p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />
