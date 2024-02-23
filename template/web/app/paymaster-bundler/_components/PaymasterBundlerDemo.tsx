@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useWallets, usePrivy, ConnectedWallet } from '@privy-io/react-auth';
+import React, { useEffect, useState } from 'react';
+import { useWallets, ConnectedWallet } from '@privy-io/react-auth';
 
 import {
   SmartAccountClient,
