@@ -12,27 +12,22 @@ import {
 import { experiences } from './experiences';
 
 function generateNavbarExperiencesList(projectDir: string, experiences) {
-  const filePath = path.join(
-    projectDir,
-    '/web/src/components/layout/header/Experiences.tsx'
-  );
+  const filePath = path.join(projectDir, '/web/src/components/layout/header/Experiences.tsx');
   const content = `
 import { ListItem } from './ListItem';
 
 export function Experiences() {
   return (
     <>
-${experiences
-  .map(
-    ({ value, label }) => `      <ListItem href="/${value}">${label}</ListItem>`
-  )
-  .join('\n')}
+${experiences.map(({ value, label }) => (
+    `      <ListItem href="/${value}">${label}</ListItem>`
+  )).join('\n')}
     </>
   );
 }
-`;
+`
   fs.writeFileSync(filePath, content);
-}
+};
 
 async function execAsync(command: string, options = {}) {
   return new Promise((resolve, reject) => {
