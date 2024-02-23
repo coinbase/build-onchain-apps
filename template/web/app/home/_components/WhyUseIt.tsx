@@ -1,96 +1,59 @@
 import { CheckIcon } from '@radix-ui/react-icons';
 
+function ListItem({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="inline-flex items-center justify-start gap-4">
+      <CheckIcon width="24" height="24" />
+      <span className="font-inter text-xl font-normal leading-7 text-white">{children}</span>
+    </li>
+  );
+}
+
+function A({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" className="text-blue-500 no-underline">
+      {children}
+    </a>
+  );
+}
+
 export default function HomeMain() {
   return (
-    <section className="mb-24 flex flex-col items-center justify-center">
+    <section className="mb-12 flex flex-col items-center justify-center">
       <div className="w-full md:w-4/5">
-        <h2 className="mb-14 text-center text-xl font-medium text-white md:text-2xl lg:text-3xl">
+        <h2 className="mb-10 text-center text-xl font-medium text-white md:text-2xl lg:text-3xl">
           Save weeks of initial app setup and the hassle of integrating onchain components with web2
           infrastructure.
         </h2>
-        <ul className="items-left flex flex-col justify-center">
-          <li className="inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Progressive Web App support using{' '}
-              <a href="https://nextjs.org/" target="_blank">
-                Next.js
-              </a>{' '}
-              🏗️
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Eth L2 support through{' '}
-              <a href="https://base.org/" target="_blank">
-                Base
-              </a>{' '}
-              🔵
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Wallet connect integration with{' '}
-              <a href="https://www.rainbowkit.com/" target="_blank">
-                RainbowKit
-              </a>{' '}
-              🌈
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Live examples and documentation for web3 experiences with{' '}
-              <a href="https://wagmi.sh/" target="_blank">
-                wagmi
-              </a>{' '}
-              and{' '}
-              <a href="https://viem.sh/" target="_blank">
-                viem
-              </a>{' '}
-              🚀
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Latest styling best practices with{' '}
-              <a href="https://tailwindcss.com/" target="_blank">
-                Tailwind CSS
-              </a>{' '}
-              💅
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Easy maintenance with linting, formatting, and tests ✅
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Smart contract deployment with Foundry ☁️
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Insights into Web Vitals performance metrics with Perfume.js 📈
-            </span>
-          </li>
-          <li className="mt-5 inline-flex items-center justify-start gap-4">
-            <CheckIcon width="24" height="24" />
-            <span className="font-inter text-xl font-normal leading-7 text-white">
-              Support for a local testnet node for testing smart contracts using{' '}
-              <a href="https://book.getfoundry.sh/reference/anvil/" target="_blank">
-                Anvil{' '}
-              </a>{' '}
-              🧪
-            </span>
-          </li>
+        <ul className="items-left flex flex-col justify-center gap-4">
+          <ListItem>
+            Progressive Web App support using <A href="https://nextjs.org/">Next.js</A>
+          </ListItem>
+          <ListItem>
+            Eth L2 support through <A href="https://base.org/">Base</A>
+          </ListItem>
+          <ListItem>
+            Smart contract deployment with <A href="https://book.getfoundry.sh/">Foundry</A>
+          </ListItem>
+          <ListItem>
+            Support for a local testnet node for testing smart contracts using{' '}
+            <A href="https://book.getfoundry.sh/reference/anvil/">Anvil</A>
+          </ListItem>
+          <ListItem>
+            Wallet connect integration with <A href="https://www.rainbowkit.com/">RainbowKit</A>
+          </ListItem>
+          <ListItem>
+            Live examples and documentation for web3 experiences with{' '}
+            <A href="https://wagmi.sh/">wagmi</A> and <A href="https://viem.sh/">viem</A>
+          </ListItem>
+          <ListItem>
+            Latest styling best practices with <A href="https://tailwindcss.com/">Tailwind CSS</A>
+          </ListItem>
+          <ListItem>
+            Insights into Web Vitals performance metrics with{' '}
+            <A href="https://zizzamia.github.io/perfume/">Perfume.js</A>
+          </ListItem>
+          <ListItem>Easy maintenance with linting, formatting, and tests</ListItem>
         </ul>
       </div>
     </section>
