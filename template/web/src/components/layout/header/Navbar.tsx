@@ -79,7 +79,7 @@ function Navbar() {
                     <NavigationMenu.Content
                       className={clsx(
                         'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
-                        'rounded-lg bg-neutral-900 bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                        'rounded-lg bg-neutral-900 p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />

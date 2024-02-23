@@ -63,7 +63,7 @@ export default function NavbarMobile() {
                     <NavigationMenu.Content
                       className={clsx(
                         'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
-                        'my-4 rounded-lg bg-opacity-90 p-6 shadow backdrop-blur-2xl',
+                        'my-4 rounded-lg p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />
