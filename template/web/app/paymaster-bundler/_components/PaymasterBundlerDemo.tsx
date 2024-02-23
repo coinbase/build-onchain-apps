@@ -26,7 +26,7 @@ const entryPoint = '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789';
 const factoryAddress = '0x9406Cc6185a346906296840746125a0E44976454';
 
 export default function PaymasterBundlerDemo() {
-  const { login, logout } = usePrivy();
+  const { logout } = usePrivy();
   const { wallets } = useWallets();
 
   const [activeWallet, setActiveWallet] = useState<ConnectedWallet | undefined>();
@@ -34,6 +34,8 @@ export default function PaymasterBundlerDemo() {
   const [privyClient, setPrivyClient] = useState<WalletClient | undefined>();
   const [smartAccount, setSmartAccount] = useState<SmartAccountClient | undefined>();
   const [ownedTokens, setOwnedTokens] = useState<string[]>([]);
+
+  console.log(ownedTokens);
 
   // Fetch the NFTs
   useEffect(() => {
@@ -72,7 +74,6 @@ export default function PaymasterBundlerDemo() {
         tokens.push(tokenJSONLink as string);
       }
 
-      console.log(tokens);
       setOwnedTokens(tokens);
     };
 
@@ -153,13 +154,6 @@ export default function PaymasterBundlerDemo() {
 
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
-      <button
-        type="button"
-        className="block w-full rounded-full border border-boat-color-orange py-4"
-        onClick={login}
-      >
-        Login
-      </button>
       <button
         type="button"
         className="block w-full rounded-full border border-boat-color-orange py-4"

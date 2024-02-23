@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { usePrivy } from '@privy-io/react-auth';
 import { SmartAccountClient } from 'permissionless';
 import { encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
@@ -24,6 +25,8 @@ const getRandomNumber = () => {
 };
 
 export default function GamePlay({ smartAccount }: GameplayProps) {
+  const { login, authenticated, ready } = usePrivy();
+
   const handleOpenBox = useCallback(() => {
     void (async () => {
       if (!smartAccount) return;
@@ -63,18 +66,30 @@ export default function GamePlay({ smartAccount }: GameplayProps) {
 
       <h1 className="text-center text-2xl">Athena Mystery Box</h1>
 
-      <div className="mt-8">
-        <div className="mx-auto max-w-[130px]">
-          {/* TODO: Make this a button variant */}
-          <button
-            type="button"
-            className="block w-full rounded-full border border-boat-color-orange py-4" //TODO: add disabled
-            onClick={handleOpenBox}
-          >
-            Open box
-          </button>
+      {ready ? (
+        <div className="mt-8">
+          <div className="mx-auto max-w-[130px]">
+            {/* TODO: Make this a button variant */}
+            {authenticated ? (
+              <button
+                type="button"
+                className="block w-full rounded-full border border-boat-color-orange py-4" //TODO: add disabled
+                onClick={handleOpenBox}
+              >
+                Open box
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="block w-full rounded-full border border-boat-color-orange py-4"
+                onClick={login}
+              >
+                Play
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

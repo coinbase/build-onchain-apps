@@ -4,7 +4,7 @@ import PaymasterBundlerDemo from './PaymasterBundlerDemo';
 
 export default function PaymasterBundlerApp() {
   const handleLogin = useCallback((user: User) => {
-    console.log(`User ${user.id} logged in!`);
+    console.log(`Successfully authenticated with Privy! Your User ID: ${user.id}`);
   }, []);
 
   return (
