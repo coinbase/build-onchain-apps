@@ -1,11 +1,12 @@
-
-import { parseAbiItem, encodeFunctionData } from "viem"
+import { useCallback } from 'react';
+import { SmartAccountClient } from 'permissionless';
+import { encodeFunctionData } from 'viem';
 import NextImage from '@/components/NextImage/NextImage';
-import { nftAbi } from "./abi";
+import { nftAbi } from './abi';
 
 type GameplayProps = {
-  smartAccount: any;
-}
+  smartAccount?: SmartAccountClient;
+};
 
 const getRandomNumber = () => {
   let randomNumber;
@@ -18,12 +19,29 @@ const getRandomNumber = () => {
     // 75% chance of getting a number between 1 and 3
     randomNumber = Math.floor(randomValue * 3) + 1;
   }
-  return randomNumber
-}
+  return randomNumber;
+};
 
-export default function GamePlay(props: GameplayProps) {
-  const smartAccount = props.smartAccount;
+export default function GamePlay({ smartAccount }: GameplayProps) {
+  const handleOpenBox = useCallback(async () => {
+    if (!smartAccount) return;
 
+    const data = encodeFunctionData({
+      abi: nftAbi,
+      functionName: 'mintTo',
+      args: [smartAccount.account?.address, getRandomNumber()],
+    });
+
+    try {
+      await smartAccount.sendTransaction({
+        to: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
+        data: data,
+        value: BigInt(0),
+      });
+    } catch (e) {
+      console.log('Privy: Error sending transaction', e);
+    }
+  }, [smartAccount]);
 
   return (
     <div className="w-full px-10 py-10">
@@ -45,18 +63,7 @@ export default function GamePlay(props: GameplayProps) {
           <button
             type="button"
             className="block w-full rounded-full border border-boat-color-orange py-4" //TODO: add disabled
-            onClick={async () => {
-              const data = encodeFunctionData({
-                abi: nftAbi,
-                functionName: "mintTo",
-                args: [smartAccount.account.address, getRandomNumber()],
-              })
-              const res = await smartAccount.sendTransaction({
-                to: "0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49",
-                data: data,
-                value: BigInt(0)
-              })
-            }}
+            onClick={handleOpenBox}
           >
             Open box
           </button>
