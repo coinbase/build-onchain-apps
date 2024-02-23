@@ -15,7 +15,7 @@ export default function BuyMeCoffeeContractDemo() {
     >
       <section
         className={clsx([
-          'rounded-3xl border border-solid border-boat-color-palette-line',
+          'rounded-lg border border-solid border-boat-color-palette-line',
           'bg-boat-color-palette-backgroundalternate p-10',
         ])}
       >
@@ -26,7 +26,7 @@ export default function BuyMeCoffeeContractDemo() {
       <aside>
         <div
           className={clsx([
-            'mt-10 rounded-3xl border border-solid border-boat-color-palette-line',
+            'mt-10 rounded-lg border border-solid border-boat-color-palette-line',
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >
