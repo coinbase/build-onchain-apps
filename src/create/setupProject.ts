@@ -66,7 +66,7 @@ export async function setupProject(projectDir: string, project) {
 
     // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
     await execAsync(
-      'git clone ~/src/base/build-onchain-apps temp-build-onchain-apps'
+      'git clone https://github.com/coinbase/build-onchain-apps temp-build-onchain-apps'
     );
 
     fs.cpSync(getAppDir(), projectDir, {
