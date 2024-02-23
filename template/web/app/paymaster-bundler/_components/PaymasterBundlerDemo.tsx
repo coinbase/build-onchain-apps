@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useWallets, usePrivy, ConnectedWallet } from '@privy-io/react-auth';
 
 import {
@@ -145,6 +145,12 @@ export default function PaymasterBundlerDemo() {
     void createSmartAccount();
   }, [privyClient]);
 
+  const handleLogout = useCallback(() => {
+    void (async () => {
+      await logout();
+    })();
+  }, [logout]);
+
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <button
@@ -157,7 +163,7 @@ export default function PaymasterBundlerDemo() {
       <button
         type="button"
         className="block w-full rounded-full border border-boat-color-orange py-4"
-        onClick={logout}
+        onClick={handleLogout}
       >
         Logout
       </button>
