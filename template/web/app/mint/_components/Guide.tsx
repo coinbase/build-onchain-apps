@@ -63,7 +63,7 @@ export default function Guide() {
   );
 
   return (
-    <>
+    <div>
       <H3 id="guide">Guide</H3>
       <div className="gap-16 lg:flex">
         <main className="w-full flex-shrink-0 flex-grow xl:max-w-[900px]">
@@ -174,6 +174,6 @@ export default function Guide() {
 
         <TableOfContents title="On this guide" contents={contents} />
       </div>
-    </>
+    </div>
   );
 }

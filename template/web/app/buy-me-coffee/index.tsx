@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import HorizontalLine from '@/components/horizontal-line/HorizontalLine';
 import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
+import Main from '@/components/layout/Main';
 import BuyMeCoffeeContractDemo from './_components/ContractDemo';
 import Guide from './_components/Guide';
 
@@ -27,18 +27,11 @@ export default function BuyMeCoffeePage() {
   return (
     <>
       <Header />
-      <main className="mx-auto flex flex-col py-6">
-        <section className="container px-8">
-          <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
-        </section>
-        <HorizontalLine />
-        <section className="container px-8">
-          <BuyMeCoffeeContractDemo />
-        </section>
-        <section className="container px-8">
-          <Guide />
-        </section>
-      </main>
+      <Main>
+        <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
+        <BuyMeCoffeeContractDemo />
+        <Guide />
+      </Main>
       <Footer />
     </>
   );
