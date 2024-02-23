@@ -65,9 +65,9 @@ export default function Guide() {
   return (
     <>
       <H3 id="guide">Guide</H3>
-      <Hr />
       <div className="gap-16 lg:flex">
         <main className="w-full flex-shrink-0 flex-grow xl:max-w-[900px]">
+          <Hr />
           <Section id="contract-summary">
             <H4>Contract Summary</H4>
             <P>

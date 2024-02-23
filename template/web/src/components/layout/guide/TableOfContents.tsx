@@ -12,7 +12,7 @@ export default function TableOfContents({ title, contents }: TableOfContentsProp
   const pathname = usePathname();
 
   return (
-    <aside className="flex-shrink-1 relative mt-10 hidden w-full flex-grow-0 xl:block">
+    <aside className="flex-shrink-1 relative hidden w-full flex-grow-0 xl:block">
       <nav className="sticky top-28 flex flex-col gap-2 border-s-2 border-gray-500 py-2 ps-4">
         <h2 className="text-base font-bold">{title}</h2>
         <ul className="flex flex-col gap-2">
