@@ -7,6 +7,20 @@ type GameplayProps = {
   smartAccount: any;
 }
 
+const getRandomNumber = () => {
+  let randomNumber;
+  // Generate a random number between 0 and 3
+  const randomValue = Math.random();
+  if (randomValue < 0.25) {
+    // 25% chance of getting 0
+    randomNumber = 0;
+  } else {
+    // 75% chance of getting a number between 1 and 3
+    randomNumber = Math.floor(randomValue * 3) + 1;
+  }
+  return randomNumber
+}
+
 export default function GamePlay(props: GameplayProps) {
   const smartAccount = props.smartAccount;
 
@@ -35,14 +49,13 @@ export default function GamePlay(props: GameplayProps) {
               const data = encodeFunctionData({
                 abi: nftAbi,
                 functionName: "mintTo",
-                args: [smartAccount.account.address, 0],
+                args: [smartAccount.account.address, getRandomNumber()],
               })
               const res = await smartAccount.sendTransaction({
-                to: "0x06a7b468423065C925882227168504793Fe65e36",
+                to: "0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49",
                 data: data,
                 value: BigInt(0)
               })
-              console.log("res", res)
             }}
           >
             Open box

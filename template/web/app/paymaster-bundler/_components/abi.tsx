@@ -22,6 +22,130 @@ export const nftAbi = [
     },
     {
         "inputs": [],
+        "name": "ERC721EnumerableForbiddenBatchMint",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721IncorrectOwner",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC721InsufficientApproval",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "approver",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721InvalidApprover",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721InvalidOperator",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721InvalidOwner",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "receiver",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721InvalidReceiver",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            }
+        ],
+        "name": "ERC721InvalidSender",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC721NonexistentToken",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "ERC721OutOfBoundsIndex",
+        "type": "error"
+    },
+    {
+        "inputs": [],
         "name": "NonExistentTokenURI",
         "type": "error"
     },
@@ -37,13 +161,13 @@ export const nftAbi = [
             {
                 "indexed": true,
                 "internalType": "address",
-                "name": "spender",
+                "name": "approved",
                 "type": "address"
             },
             {
                 "indexed": true,
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -93,7 +217,7 @@ export const nftAbi = [
             {
                 "indexed": true,
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -130,12 +254,12 @@ export const nftAbi = [
         "inputs": [
             {
                 "internalType": "address",
-                "name": "spender",
+                "name": "to",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -193,7 +317,7 @@ export const nftAbi = [
         "inputs": [
             {
                 "internalType": "uint256",
-                "name": "",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -212,12 +336,12 @@ export const nftAbi = [
         "inputs": [
             {
                 "internalType": "address",
-                "name": "",
+                "name": "owner",
                 "type": "address"
             },
             {
                 "internalType": "address",
-                "name": "",
+                "name": "operator",
                 "type": "address"
             }
         ],
@@ -292,7 +416,7 @@ export const nftAbi = [
         "inputs": [
             {
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -300,7 +424,7 @@ export const nftAbi = [
         "outputs": [
             {
                 "internalType": "address",
-                "name": "owner",
+                "name": "",
                 "type": "address"
             }
         ],
@@ -321,7 +445,7 @@ export const nftAbi = [
             },
             {
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],
@@ -344,7 +468,7 @@ export const nftAbi = [
             },
             {
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             },
             {
@@ -412,6 +536,49 @@ export const nftAbi = [
         "inputs": [
             {
                 "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenByIndex",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenOfOwnerByIndex",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
                 "name": "tokenId",
                 "type": "uint256"
             }
@@ -422,6 +589,19 @@ export const nftAbi = [
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -441,7 +621,7 @@ export const nftAbi = [
             },
             {
                 "internalType": "uint256",
-                "name": "id",
+                "name": "tokenId",
                 "type": "uint256"
             }
         ],

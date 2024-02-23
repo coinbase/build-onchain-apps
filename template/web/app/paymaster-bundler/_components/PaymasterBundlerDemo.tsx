@@ -7,6 +7,7 @@ import { createSmartAccountClient, walletClientToSmartAccountSigner } from "perm
 import { signerToSimpleSmartAccount } from "permissionless/accounts";
 import { createPimlicoPaymasterClient } from "permissionless/clients/pimlico";
 import { createPublicClient, http } from "viem";
+import { nftAbi } from "./abi";
 
 import GamePlay from './GamePlay';
 import Header from './Header';
@@ -23,8 +24,45 @@ export default function PaymasterBundlerDemo() {
   const { wallets } = useWallets();
 
   const [activeWallet, setActiveWallet] = useState<any>(null);
+  const [client, setPublicClient] = useState<any>(null);
   const [privyClient, setPrivyClient] = useState<any>(null);
   const [smartAccount, setSmartAccount] = useState<any>(null);
+  const [ownedTokens, setOwnedTokens] = useState<any>([]);
+
+  // Fetch the NFTs
+  useEffect(() => {
+    const fetchNFTs = async () => {
+      // Get # of NFTs owned by address
+      const address = smartAccount.account.address;
+      const numTokens = await client.readContract({
+        address: "0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49",
+        abi: nftAbi,
+        functionName: "balanceOf",
+        args: [address],
+      })
+      // Get the token IDs and metadata by token ID
+      var tokens = []
+      for (let i = 0; i < Number(numTokens); i++) {
+        const tokenID = await client.readContract({
+          address: "0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49",
+          abi: nftAbi,
+          functionName: "tokenOfOwnerByIndex",
+          args: [address, i],
+        })
+        const tokenJSON = await client.readContract({
+          address: "0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49",
+          abi: nftAbi,
+          functionName: "tokenURI",
+          args: [Number(tokenID)],
+        })
+        tokens.push(tokenJSON)
+      }
+      console.log(tokens)
+      setOwnedTokens(tokens)
+    }
+    if (!smartAccount) return;
+    void fetchNFTs();
+  }, [smartAccount])
 
   // Fetch the active wallet
   useEffect(() => {
@@ -62,6 +100,7 @@ export default function PaymasterBundlerDemo() {
         chain: sepolia, // Replace this with the chain of your app
         transport: http(rpcUrl),
       })
+      setPublicClient(publicClient);
 
       const simpleSmartAccountClient = await signerToSimpleSmartAccount(publicClient, {
         entryPoint: entryPoint,
