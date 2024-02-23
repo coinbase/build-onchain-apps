@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { SmartAccountClient } from 'permissionless';
 import { encodeFunctionData } from 'viem';
+import { sepolia } from 'viem/chains';
 import NextImage from '@/components/NextImage/NextImage';
 import { nftAbi } from './abi';
 
@@ -25,6 +26,7 @@ const getRandomNumber = () => {
 export default function GamePlay({ smartAccount }: GameplayProps) {
   const handleOpenBox = useCallback(async () => {
     if (!smartAccount) return;
+    if (!smartAccount.account) return;
 
     const data = encodeFunctionData({
       abi: nftAbi,
@@ -37,6 +39,8 @@ export default function GamePlay({ smartAccount }: GameplayProps) {
         to: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
         data: data,
         value: BigInt(0),
+        account: smartAccount.account,
+        chain: sepolia,
       });
     } catch (e) {
       console.log('Privy: Error sending transaction', e);
