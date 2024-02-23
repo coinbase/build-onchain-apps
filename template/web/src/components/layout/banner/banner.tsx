@@ -41,7 +41,7 @@ export default function Banner({ pageName, pageUrl }: BannerProps) {
           href={`/${pageUrl}#guide`}
           className={clsx(
             'font-inter w-full rounded-3xl bg-white px-4 py-2',
-            'text-center text-sm font-medium leading-normal text-black',
+            'text-center text-sm font-medium leading-normal text-black no-underline',
           )}
         >
           Read the Guide

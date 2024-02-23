@@ -9,13 +9,13 @@ export default function BuyMeCoffeeContractDemo() {
   return (
     <div
       className={clsx([
-        'my-10 grid grid-cols-1 items-stretch justify-start md:my-14',
+        'grid grid-cols-1 items-stretch justify-start',
         'md:grid-cols-2CoffeeMd md:gap-9 lg:grid-cols-2CoffeeLg',
       ])}
     >
       <section
         className={clsx([
-          'rounded-3xl border border-solid border-boat-color-palette-line',
+          'rounded-lg border border-solid border-boat-color-palette-line',
           'bg-boat-color-palette-backgroundalternate p-10',
         ])}
       >
@@ -26,7 +26,7 @@ export default function BuyMeCoffeeContractDemo() {
       <aside>
         <div
           className={clsx([
-            'mt-10 rounded-3xl border border-solid border-boat-color-palette-line',
+            'mt-10 rounded-lg border border-solid border-boat-color-palette-line',
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >

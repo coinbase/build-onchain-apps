@@ -1,4 +1,5 @@
 import { CheckIcon } from '@radix-ui/react-icons';
+import { A } from '@/components/layout/guide';
 
 function ListItem({ children }: { children: React.ReactNode }) {
   return (
@@ -6,14 +7,6 @@ function ListItem({ children }: { children: React.ReactNode }) {
       <CheckIcon width="24" height="24" />
       <span className="font-inter text-xl font-normal leading-7 text-white">{children}</span>
     </li>
-  );
-}
-
-function A({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a href={href} target="_blank" className="text-blue-500 no-underline">
-      {children}
-    </a>
   );
 }
 

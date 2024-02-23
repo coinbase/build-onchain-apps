@@ -69,7 +69,7 @@ export default function MintContractDemo() {
   }
 
   return (
-    <div className="my-10 gap-16 lg:my-20 lg:flex">
+    <div className="gap-16 lg:flex">
       <div className="w-full flex-shrink-0 flex-grow lg:max-w-[400px] xl:max-w-[600px]">
         <NextImage
           src={imageAddress}
