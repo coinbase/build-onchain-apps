@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import useGuideScroll from '@/components/layout/guide/useGuideScroll';
+import { useGuideScroll, P, H3, H4, Section } from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`bash
 $ npx @coinbase/build-onchain-apps@latest create`;
@@ -51,15 +51,7 @@ function TableOfContents({ title, contents }: TableOfContentsProps) {
   );
 }
 
-function H3({ id, children }: { id?: string; children: string }) {
-  return (
-    <h3 id={id} className="mt-8 scroll-mt-28 text-4xl font-medium text-white">
-      {children}
-    </h3>
-  );
-}
-
-function Section({
+function GuideSection({
   id,
   title,
   subtext,
@@ -71,11 +63,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mt-10 flex scroll-mt-28 flex-col">
-      <h4 className="text-xl font-normal text-white">{title}</h4>
-      <p className="my-4 text-base font-normal text-zinc-400">{subtext}</p>
+    <Section id={id}>
+      <H4>{title}</H4>
+      <P>{subtext}</P>
       {children}
-    </section>
+    </Section>
   );
 }
 
@@ -113,9 +105,9 @@ export default function Guide() {
               codeBlock: <CodeBlock code={codeStep3} />,
             },
           ].map(({ id, title, subtext, codeBlock }) => (
-            <Section key={id} id={id} title={title} subtext={subtext}>
+            <GuideSection key={id} id={id} title={title} subtext={subtext}>
               {codeBlock}
-            </Section>
+            </GuideSection>
           ))}
         </div>
 

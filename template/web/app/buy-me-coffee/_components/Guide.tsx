@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 import CodeBlock from '@/components/code-block/CodeBlock';
-import useGuideScroll from '@/components/layout/guide/useGuideScroll';
+import { useGuideScroll, P, H3, H4, Section } from '@/components/layout/guide';
 
 const codeStep1 = `\`\`\`solidity
 if (msg.value < price * numCoffees) {
@@ -73,25 +73,23 @@ export default function Guide() {
 
   return (
     <>
-      <h3 className="mb-6 text-4xl font-medium text-white" id="guide">
-        Guide
-      </h3>
+      <H3 id="guide">Guide</H3>
       <div className="h-px bg-white" />
       <div className="gap-16 lg:flex">
         <main className="w-full flex-shrink-0 flex-grow xl:max-w-[900px]">
-          <section className="mt-10 flex scroll-mt-28 flex-col" id="contract-summary">
-            <h4 className="text-xl font-normal text-white">Contract Summary</h4>
-            <p className="my-4 text-base font-normal text-zinc-400">
+          <Section id="contract-summary">
+            <H4>Contract Summary</H4>
+            <P>
               The <code>BuyMeACoffee.sol</code> smart contract allows users to send ETH donations to
               the owner of the contract. Users who donate ETH by buying the owner a contract can
               also submit a message.
-            </p>
-          </section>
-          <section className="mt-10 flex scroll-mt-28 flex-col" id="buyCoffee-explanation">
-            <h4 className="text-xl font-normal text-white">
+            </P>
+          </Section>
+          <Section id="buyCoffee-explanation">
+            <H4>
               <code>buyCoffee</code> Explanation
-            </h4>
-            <p className="my-4 text-base font-normal text-zinc-400">
+            </H4>
+            <P>
               <code>buyCoffee</code> is a <code>public payable</code> function that allows a user to
               specify the number of coffees they would like to buy for the owner of the contract.
               This acts as a donation mechanism, where the user supplies enough ETH to cover the
@@ -103,9 +101,9 @@ export default function Guide() {
                 ensures
               </a>{' '}
               that enough ETH has been provided in the function call.
-            </p>
+            </P>
             <CodeBlock code={codeStep1} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               In addition, the user provides their name, twitter handle, and a custom message that
               can be retrieved form the contract to display later. The <code>buyCoffee</code>{' '}
               function ensures that a non-empty name and message{' '}
@@ -116,9 +114,9 @@ export default function Guide() {
                 have been provided
               </a>
               .
-            </p>
+            </P>
             <CodeBlock code={codeStep2} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               There is also a check to make sure the provided name, twitter handle, and message{' '}
               <a
                 href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L91-L93"
@@ -127,9 +125,9 @@ export default function Guide() {
                 do not exceed
               </a>{' '}
               75 bytes.
-            </p>
+            </P>
             <CodeBlock code={codeStep3} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               The message is then instantiated as a <code>Memo</code> struct object, which consists
               of the following{' '}
               <a
@@ -139,9 +137,9 @@ export default function Guide() {
                 fields
               </a>
               :
-            </p>
+            </P>
             <CodeBlock code={codeStep4} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               The new <code>Memo</code> struct is then{' '}
               <a
                 href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L95"
@@ -150,21 +148,21 @@ export default function Guide() {
                 pushed
               </a>{' '}
               into the <code>memos</code> storage variable.
-            </p>
+            </P>
             <CodeBlock code={codeStep5} language="solidity" />
-          </section>
-          <section className="mt-10 flex scroll-mt-28 flex-col" id="getMemos-explanation">
-            <h4 className="text-xl font-normal text-white">
+          </Section>
+          <Section id="getMemos-explanation">
+            <H4>
               <code>getMemos</code> Explanation
-            </h4>
-            <p className="my-4 text-base font-normal text-zinc-400">
+            </H4>
+            <P>
               <code>getMemos</code> is a <code>public view</code> function that returns an array of{' '}
               <code>Memo</code> elements from the
               <code>memos</code> storage variable. The user provides an index and size parameter,
               which dictate the start position and total number of <code>Memo</code> elements to
               return.
-            </p>
-            <p className="my-4 text-base font-normal text-zinc-400">
+            </P>
+            <P>
               If the total length of the <code>memos</code> storage variable is 0, then the{' '}
               <a
                 href="https://github.com/coinbase/build-onchain-apps/blob/v0.21.0/template/contracts/src/BuyMeACoffee.sol#L164"
@@ -173,9 +171,9 @@ export default function Guide() {
                 empty array
               </a>{' '}
               will be returned.
-            </p>
+            </P>
             <CodeBlock code={codeStep6} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               If the provided index exceeds the total length of the <code>memos</code> storage
               variable, then the call will{' '}
               <a
@@ -192,9 +190,9 @@ export default function Guide() {
                 revert
               </a>
               .
-            </p>
+            </P>
             <CodeBlock code={codeStep7} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               <code>getMemos</code> then calculates the total number of elements that can be
               returned given the index and size, as the requested number of elements may exceeds the
               end of the <code>memos</code>
@@ -206,9 +204,9 @@ export default function Guide() {
                 will be truncated
               </a>{' '}
               to the total number of elements remaining in the <code>memos</code> storage variable.
-            </p>
+            </P>
             <CodeBlock code={codeStep8} language="solidity" />
-            <p className="my-4 text-base font-normal text-zinc-400">
+            <P>
               Once the number of elements to return has been calculated, the function will iterate
               through the <code>memos</code> array,{' '}
               <a
@@ -226,9 +224,9 @@ export default function Guide() {
                 will be returned
               </a>{' '}
               .
-            </p>
+            </P>
             <CodeBlock code={codeStep9} language="solidity" />
-          </section>
+          </Section>
         </main>
         <aside className="flex-shrink-1 relative mt-10 hidden w-full flex-grow-0 xl:block">
           <nav className="sticky top-28 flex flex-col gap-2 border-s-2 py-2 ps-4">
