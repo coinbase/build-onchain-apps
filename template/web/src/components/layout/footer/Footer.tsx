@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="container mx-auto flex w-full flex-col justify-between gap-16 px-8 md:flex-row">
           <div className="flex flex-col justify-between">
             <div className="flex h-8 items-center justify-start gap-4">
-              <NextLink href="/" passHref className="relative h-8 w-8">
+              <NextLink href="/" passHref className="relative h-8 w-8" aria-label="Home page">
                 <FooterIcon />
               </NextLink>
               <NextLink
@@ -23,7 +23,11 @@ export default function Footer() {
                 BUILD ONCHAIN APPS
               </NextLink>
               <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-                <GitHubLogoIcon width="24" height="24" />
+                <GitHubLogoIcon
+                  width="24"
+                  height="24"
+                  aria-label="build-onchain-apps Github respository"
+                />
               </NavbarLink>
             </div>
 

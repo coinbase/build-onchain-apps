@@ -9,16 +9,19 @@ export function NavbarLink({
   href,
   children,
   target,
+  ariaLabel,
 }: {
   href: string;
   children: React.ReactNode;
   target?: string;
+  ariaLabel?: string;
 }) {
   return (
     <NextLink
       href={href}
       className="font-robotoMono px-0 text-center text-base font-normal text-white no-underline"
       target={target}
+      aria-label={ariaLabel}
     >
       {children}
     </NextLink>
@@ -28,13 +31,14 @@ export function NavbarLink({
 export function NavbarTitle() {
   return (
     <div className="flex h-8 items-center justify-start gap-4">
-      <NextLink href="/" passHref className="relative h-8 w-8">
+      <NextLink href="/" passHref className="relative h-8 w-8" aria-label="Home page">
         <div className="absolute size-8 rounded-full bg-white" />
       </NextLink>
       <NextLink
         href="/"
         passHref
         className="font-robotoMono text-center text-xl font-medium text-white no-underline"
+        aria-label="build-onchain-apps Github repository"
       >
         BUILD ONCHAIN APPS
       </NextLink>
@@ -56,7 +60,11 @@ function Navbar() {
           <ul className="hidden items-center justify-start gap-8 md:flex">
             <li className="flex">
               <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
-                <GitHubLogoIcon width="24" height="24" />
+                <GitHubLogoIcon
+                  width="24"
+                  height="24"
+                  aria-label="build-onchain-apps Github respository"
+                />
               </NavbarLink>
             </li>
             <li className="flex">
