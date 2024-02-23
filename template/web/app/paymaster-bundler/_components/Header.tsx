@@ -1,10 +1,20 @@
+import { useCallback } from 'react';
+import { usePrivy } from '@privy-io/react-auth';
+import { roboto } from 'app/fonts';
 import clsx from 'clsx';
 import NextImage from '@/components/NextImage/NextImage';
-import { roboto } from 'app/fonts';
 
 const LIGHTNINGS = [1, 2, 3];
 
 export default function Header() {
+  const { logout, authenticated } = usePrivy();
+
+  const handleLogout = useCallback(() => {
+    void (async () => {
+      await logout();
+    })();
+  }, [logout]);
+
   return (
     <div className="justify-between rounded-t-xl border border-x-0 border-t-0 border-boat-color-palette-line bg-boat-footer-dark-gray p-6 md:flex">
       <div className="flex items-center gap-3">
@@ -40,6 +50,18 @@ export default function Header() {
             className="block h-[48px] w-[48px]"
           />
         </div>
+
+        {authenticated ? (
+          <div className="w-[100px]">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="block w-full rounded-full border border-boat-color-orange py-2"
+            >
+              Logout
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

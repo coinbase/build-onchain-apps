@@ -19,7 +19,6 @@ import Header from './Header';
 import Vault from './Vault';
 
 export default function PaymasterBundlerDemo() {
-  const { logout } = usePrivy();
   const { wallets } = useWallets();
 
   const [activeWallet, setActiveWallet] = useState<ConnectedWallet | undefined>();
@@ -139,21 +138,8 @@ export default function PaymasterBundlerDemo() {
     void createSmartAccount();
   }, [privyClient]);
 
-  const handleLogout = useCallback(() => {
-    void (async () => {
-      await logout();
-    })();
-  }, [logout]);
-
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
-      <button
-        type="button"
-        className="block w-full rounded-full border border-boat-color-orange py-4"
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
       <Header />
       <div className="lg:flex">
         <Vault />
