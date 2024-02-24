@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.25.0
+
+### Minor Changes
+
+- 7d55c5b: **fix** - on a blank app, remove experiences from the header
+
+## 0.24.0
+
+### Minor Changes
+
+- 1849cf0: **chore** - fix create command by @kyhyco #427
+
 ## 0.23.0
 
 ### Minor Changes

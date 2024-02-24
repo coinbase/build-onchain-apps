@@ -39,6 +39,7 @@ const config: Config = {
         'boat-color-pink-50': '#d058c1',
         'boat-color-purple-60': '#b388f5',
         'boat-color-yellow-60': '#e9b300',
+        'boat-color-yellow-70': '#FFD200',
         'boat-color-orange': '#f55925',
         'boat-gold': '#7b602f',
       },

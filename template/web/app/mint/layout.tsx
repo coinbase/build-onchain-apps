@@ -1,8 +1,9 @@
 import { generateMetadata } from '@/utils/generateMetadata';
 
 export const metadata = generateMetadata({
-  title: 'Build Onchain Apps - Mint',
-  description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
+  title: 'Mint - BOAT',
+  description:
+    'Save weeks of initial app setup and the hassle of integrating onchain components with web2 infrastructure.',
   images: 'themes.png',
   pathname: 'mint',
 });

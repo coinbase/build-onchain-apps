@@ -40,22 +40,6 @@ async function execAsync(command: string, options = {}) {
   });
 }
 
-function setupBlankApp(projectDir: string) {
-  const appPath = path.join(projectDir, './web/app/page.tsx');
-
-  const content = `/**
- * Server component, which imports the Home component (client component that has 'use client' in it)
- * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
- * https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-4-migrating-pages
- * https://nextjs.org/docs/app/building-your-application/rendering/client-components
- */
-export default function Page() {
-  return <div>Hello World</div>;
-}
-`;
-  fs.writeFileSync(appPath, content);
-}
-
 export async function setupProject(projectDir: string, project) {
   try {
     const spinner = prompts.spinner();
@@ -103,9 +87,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/chiru-labs/ERC721A'
-    );
+    spinner.message('git submodule add https://github.com/chiru-labs/ERC721A');
     await execAsync(
       'git submodule add https://github.com/chiru-labs/ERC721A contracts/lib/ERC721A',
       {
@@ -113,9 +95,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/vectorized/solady'
-    );
+    spinner.message('git submodule add https://github.com/vectorized/solady');
     await execAsync(
       'git submodule add https://github.com/vectorized/solady contracts/lib/solady',
       {
@@ -123,9 +103,7 @@ export async function setupProject(projectDir: string, project) {
       }
     );
 
-    spinner.message(
-      'git submodule add https://github.com/dmfxyz/murky'
-    );
+    spinner.message('git submodule add https://github.com/dmfxyz/murky');
     await execAsync(
       'git submodule add https://github.com/dmfxyz/murky contracts/lib/murky',
       {
@@ -144,28 +122,30 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (project.selectedModules.length === 0) {
-      removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
-      removeDownloadedApps(projectDir + '/web/app/mint');
-      removeDownloadedApps(projectDir + '/web/app/home');
-      removeDownloadedApps(projectDir + '/web/src/experiences');
+      experiences.map(({ value }) => {
+        removeDownloadedApps(projectDir + `/web/app/${value}`);
+      })
 
-      setupBlankApp(projectDir);
+      generateNavbarExperiencesList(projectDir, []);
     } else {
-      if (!project.selectedModules.includes('buy-me-coffee')) {
-        removeDownloadedApps(projectDir + '/web/app/buy-me-coffee');
-      }
+      experiences
+        .filter(({ value }) => !project.selectedModules.includes(value))
+        .map(({ value }) => {
+          removeDownloadedApps(projectDir + `/web/app/${value}`);
+        });
 
-      if (!project.selectedModules.includes('mint')) {
-        removeDownloadedApps(projectDir + '/web/app/mint');
-      }
-
-      const selectedExperiences = experiences.filter(({ value }) => project.selectedModules.includes(value));
+      const selectedExperiences = experiences.filter(({ value }) =>
+        project.selectedModules.includes(value)
+      );
 
       generateNavbarExperiencesList(projectDir, selectedExperiences);
     }
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
-    await execAsync('git commit -m "initalized with build-onchain-apps"', { cwd: projectDir, stdio: 'ignore' });
+    await execAsync('git commit -m "initalized with build-onchain-apps"', {
+      cwd: projectDir,
+      stdio: 'ignore',
+    });
 
     spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
   } catch (e) {

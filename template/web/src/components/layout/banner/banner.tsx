@@ -13,8 +13,8 @@ export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
     <section
       className={clsx(
         'flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-0',
-        `rounded-lg border border-zinc-400 border-opacity-10  ${
-          wip ? 'bg-boat-color-yellow-60 text-black' : 'bg-neutral-900 text-white'
+        `rounded-lg border border-zinc-400 border-opacity-10 bg-neutral-900  ${
+          wip ? 'text-boat-color-yellow-70' : 'text-white'
         }`,
       )}
     >
@@ -34,9 +34,8 @@ export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
           </h1>
           {wip ? (
             <div className="font-inter text-base font-normal leading-normal ">
-              Just a quick heads up: this experience is a work in progress! 👀 Keep an eye out for
-              updates and improvements as we work on making it even better! Thanks for your patience
-              and support! 😊
+              Just a quick heads up: this experience is a work in progress, keep an eye out for
+              updates as we work on making it even better!
             </div>
           ) : (
             <div className="font-inter text-base font-normal leading-normal">
