@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.24.0
+
+### Minor Changes
+
+- 1849cf0: **chore** - fix create command by @kyhyco #427
+
 ## 0.23.0
 
 ### Minor Changes
