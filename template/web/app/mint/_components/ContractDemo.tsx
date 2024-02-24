@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
+import { FallbackImage } from '@/components/FallbackImage/FallbackImage';
 import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
 import AccountConnect from '@/components/layout/header/AccountConnect';
 import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
 import { getChainsForEnvironment } from '@/store/supportedChains';
+import { getSlicedAddress } from '@/utils/address';
 import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
 import StepStartMint from './StepStartMint';
 import SwitchNetwork from './SwitchNetwork';
@@ -30,16 +32,14 @@ export default function MintContractDemo() {
 
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
 
-  const {
-    collectionName,
-    description,
-    imageAddress,
-    isLoading: isLoadingCollectionMetadata,
-  } = useCollectionMetadata(
-    onCorrectNetwork,
-    contract.status === 'ready' ? contract.address : undefined,
-    contract.abi,
-  );
+  const { data: collectionMetadata, isLoading: isLoadingCollectionMetadata } =
+    useCollectionMetadata({
+      enabled: onCorrectNetwork,
+      address: contract.status === 'ready' ? contract.address : undefined,
+      abi: contract.abi,
+    });
+
+  const { collectionName, description, imageAddress } = collectionMetadata ?? {};
 
   // The CustomERC1155 contract is a free mint, so instead of mint price we fetch tx fee estimate
   const { data: txFeeEstimation, isLoading: isLoadingFeeEstimate } = useEstimateGas({
@@ -58,6 +58,8 @@ export default function MintContractDemo() {
 
   const mintTxFeeEstimation = txFeeEstimation ? formatEther(txFeeEstimation, 'gwei') : 'Unknown';
 
+  const collectionNameOrAddress = collectionName ?? (contract.status === 'ready' ? `Collection: ${getSlicedAddress(contract.address)}` : '');
+
   if (isLoadingCollectionMetadata) {
     return (
       <div className="my-5 flex justify-center align-middle">
@@ -71,14 +73,19 @@ export default function MintContractDemo() {
   return (
     <div className="gap-16 lg:flex">
       <div className="w-full flex-shrink-0 flex-grow lg:max-w-[400px] xl:max-w-[600px]">
-        <NextImage
-          src={imageAddress}
-          altText={collectionName}
-          className="block w-full rounded-2xl"
-        />
+        {imageAddress && collectionNameOrAddress ? (
+          <NextImage
+            src={imageAddress}
+            altText={collectionNameOrAddress}
+            className="block w-full rounded-2xl"
+          />
+        ) : (
+          <FallbackImage />
+        )}
       </div>
+
       <div className="flex-shrink-1 mt-10 w-full flex-grow-0 lg:mt-0">
-        <h1 className="text-4xl font-bold">{collectionName}</h1>
+        <h1 className="text-4xl font-bold">{collectionNameOrAddress}</h1>
 
         {isConnected && (
           <h2 className="my-5">
@@ -102,7 +109,7 @@ export default function MintContractDemo() {
           <StepStartMint
             setMintStep={setMintStep}
             mintStep={mintStep}
-            collectionName={collectionName}
+            collectionName={collectionNameOrAddress}
           />
         ) : (
           <AccountConnect />

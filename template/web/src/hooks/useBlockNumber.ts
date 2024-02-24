@@ -1,56 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { Chain } from 'viem/chains';
 import { useAccount } from 'wagmi';
 
 type BlockNumberResponse = {
   block: number;
 };
 
-const useCurrentBlockNumber = (refreshIntervalMs = 10000) => {
-  const [blockNumber, setBlockNumber] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+type Props = {
+  refetchInterval?: number;
+  enabled?: boolean;
+  chainId?: Chain['id'];
+};
+
+//TODO: consider using wagmi's `useBlockNumber` instead
+const useCurrentBlockNumber = (props?: Props) => {
+  const { refetchInterval = 10000, enabled = true, chainId } = props ?? {};
   const { chain } = useAccount();
-  const chainId = chain?.id;
+  const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
 
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    const fetchBlockNumber = async () => {
-      if (!chainId) {
-        setBlockNumber(0);
-        return;
+  return useQuery({
+    queryKey: ['useCurrentBlockNumber', chainIdFromArgumentOrConnectedWallet],
+    queryFn: async () => {
+      if (!chainIdFromArgumentOrConnectedWallet) {
+        return 0;
       }
-
-      setIsLoading(true);
-
-      try {
-        const response = await fetch(`/api/chain/currentBlockNumber?chainId=${chainId}`);
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-
-        const data = (await response.json()) as BlockNumberResponse;
-        setBlockNumber(data.block);
-      } catch (err) {
-        // Handle error
-      } finally {
-        setIsLoading(false);
+      const response = await fetch(
+        `/api/chain/currentBlockNumber?chainId=${chainIdFromArgumentOrConnectedWallet}`,
+      );
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
       }
-    };
-
-    // Refresh current block number every 15 seconds.
-    const fetchBlockNumberWrapper = () => {
-      fetchBlockNumber().catch(console.error); // Handle promise rejection
-    };
-    // TODO: Implement a shared state or other mechanism to prevent overloading the backend with multiple intervals.
-    intervalId = setInterval(fetchBlockNumberWrapper, refreshIntervalMs);
-    void fetchBlockNumber();
-
-    return () => {
-      clearInterval(intervalId); // Clear interval on cleanup
-    };
-  }, [chainId, refreshIntervalMs]);
-
-  return { isLoading, blockNumber };
+      const data = (await response.json()) as BlockNumberResponse;
+      return data.block;
+    },
+    refetchInterval,
+    enabled: enabled,
+  });
 };
 
 export default useCurrentBlockNumber;

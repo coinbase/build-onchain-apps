@@ -21,6 +21,18 @@ const nextConfig = withPWA({
         protocol: 'https',
         hostname: 'ipfs.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'cloudflare-ipfs.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'gateway.pinata.cloud',
+      },
+      {
+        protocol: 'https',
+        hostname: 'nftstorage.link',
+      },
     ],
   },
 });
