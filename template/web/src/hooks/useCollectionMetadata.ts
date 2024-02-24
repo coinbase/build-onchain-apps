@@ -74,6 +74,7 @@ type Props = {
   abi: Abi;
   chainId?: Chain['id'];
   gatewayHostname?: string;
+  cacheTime?: number;
 };
 
 /**
@@ -82,10 +83,11 @@ type Props = {
  * @param abi ABI for the contract
  * @param chainId Chain ID for the contract. If not provided, the chain ID from the connected wallet will be used.
  * @param gatewayHostname Optional IPFS gateway hostname
+ * @param cacheTime Optional cache time for the query
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
  * @returns CollectionMetadataResult
  */
-export function useCollectionMetadata({ address, enabled, abi, chainId, gatewayHostname }: Props) {
+export function useCollectionMetadata({ address, enabled, abi, chainId, gatewayHostname, cacheTime }: Props) {
   const { chain } = useAccount();
   const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
   const publicClient = usePublicClient({ chainId: chainIdFromArgumentOrConnectedWallet });
@@ -142,5 +144,6 @@ export function useCollectionMetadata({ address, enabled, abi, chainId, gatewayH
     },
     refetchOnWindowFocus: false,
     enabled: hookEnabled,
+    gcTime: cacheTime,
   });
 }
