@@ -87,7 +87,14 @@ type Props = {
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
  * @returns CollectionMetadataResult
  */
-export function useCollectionMetadata({ address, enabled, abi, chainId, gatewayHostname, cacheTime }: Props) {
+export function useCollectionMetadata({
+  address,
+  enabled,
+  abi,
+  chainId,
+  gatewayHostname,
+  cacheTime,
+}: Props) {
   const { chain } = useAccount();
   const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
   const publicClient = usePublicClient({ chainId: chainIdFromArgumentOrConnectedWallet });

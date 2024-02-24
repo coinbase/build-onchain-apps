@@ -58,7 +58,9 @@ export default function MintContractDemo() {
 
   const mintTxFeeEstimation = txFeeEstimation ? formatEther(txFeeEstimation, 'gwei') : 'Unknown';
 
-  const collectionNameOrAddress = collectionName ?? (contract.status === 'ready' ? `Collection: ${getSlicedAddress(contract.address)}` : '');
+  const collectionNameOrAddress =
+    collectionName ??
+    (contract.status === 'ready' ? `Collection: ${getSlicedAddress(contract.address)}` : '');
 
   if (isLoadingCollectionMetadata) {
     return (

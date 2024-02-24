@@ -4,7 +4,7 @@ import styles from './FallbackImage.module.css';
 
 export function FallbackImage() {
   return (
-    <div className="size-full items-center justify-center bg-slate-100 flex">
+    <div className="flex size-full items-center justify-center bg-slate-100">
       <ImageIcon
         className={clsx(
           styles.FallbackImageIcon,
