@@ -126,6 +126,7 @@ export async function setupProject(projectDir: string, project) {
         removeDownloadedApps(projectDir + `/web/app/${value}`);
       })
 
+      generateNavbarExperiencesList(projectDir, []);
     } else {
       experiences
         .filter(({ value }) => !project.selectedModules.includes(value))
