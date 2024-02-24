@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.25.0
+
+### Minor Changes
+
+- 7d55c5b: **fix** - on a blank app, remove experiences from the header
+
 ## 0.24.0
 
 ### Minor Changes
