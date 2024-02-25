@@ -1,30 +1,12 @@
 import { roboto } from 'app/fonts';
 import clsx from 'clsx';
+import { ALL_ITEMS } from '../constants';
 import { OwnedTokensType } from '../types';
 import Item from './Item';
 
 type VaultProps = {
   ownedTokens: OwnedTokensType;
 };
-
-const ALL_ITEMS = [
-  {
-    name: 'Apollo Sword',
-    image: '/account_abstraction/sword.png',
-  },
-  {
-    name: 'Artemis Shield',
-    image: '/account_abstraction/shield.png',
-  },
-  {
-    name: 'Hera Bow and Arrow',
-    image: '/account_abstraction/bow_arrow.png',
-  },
-  {
-    name: 'Dionysus Wing Suit',
-    image: '/account_abstraction/wing_suit.png',
-  },
-];
 
 export default function Vault({ ownedTokens }: VaultProps) {
   return (
