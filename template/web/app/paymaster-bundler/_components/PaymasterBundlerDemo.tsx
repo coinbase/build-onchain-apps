@@ -11,6 +11,7 @@ import { createPimlicoPaymasterClient } from 'permissionless/clients/pimlico';
 import { PublicClient, WalletClient, createWalletClient, custom } from 'viem';
 import { createPublicClient, http } from 'viem';
 import { sepolia } from 'viem/chains'; // Replace this with the chain used by your application
+import fetchNFTs from '../_utils/fetchNFTs';
 import { rpcUrl, paymasterUrl, entryPoint, factoryAddress } from '../constants';
 import { nftAbi } from './abi';
 
@@ -31,45 +32,16 @@ export default function PaymasterBundlerDemo() {
 
   // Fetch the NFTs
   useEffect(() => {
-    const fetchNFTs = async () => {
+    const fetchOwnedNFTs = async () => {
       if (!smartAccount) return;
       if (!client) return;
 
-      // Get # of NFTs owned by address
-      const address = smartAccount.account?.address;
-
-      const numTokens = await client.readContract({
-        address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-        abi: nftAbi,
-        functionName: 'balanceOf',
-        args: [address],
-      });
-
-      // Get the token IDs and metadata by token ID
-      var tokens = [];
-
-      for (let i = 0; i < Number(numTokens); i++) {
-        const tokenID = await client.readContract({
-          address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-          abi: nftAbi,
-          functionName: 'tokenOfOwnerByIndex',
-          args: [address, i],
-        });
-
-        const tokenJSONLink = await client.readContract({
-          address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-          abi: nftAbi,
-          functionName: 'tokenURI',
-          args: [Number(tokenID)],
-        });
-
-        tokens.push(tokenJSONLink as string);
-      }
+      const tokens = await fetchNFTs(smartAccount, client);
 
       setOwnedTokens(tokens);
     };
 
-    void fetchNFTs();
+    void fetchOwnedNFTs();
   }, [smartAccount, client]);
 
   // Fetch the active wallet
