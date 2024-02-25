@@ -71,6 +71,7 @@ export const transformIpfsUrlToUrlGateway = (
     throw new Error('gatewayHostname should not start with http');
   }
 
+  //Get url parts after the cid, to append them back to the new gateway url
   const splitUrl = ipfsURI.split(results.cid);
   //case 1 - the ipfs://cid path
   if (ipfsURI.includes(`ipfs://${results.cid}`)) {
