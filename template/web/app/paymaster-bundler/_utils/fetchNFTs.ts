@@ -2,12 +2,7 @@ import { SmartAccountClient } from 'permissionless';
 import { PublicClient } from 'viem';
 
 import { nftAbi } from '../_components/abi';
-
-type NFTType = {
-  image: string;
-  name: string;
-  rarity: number;
-};
+import { NFTType } from '../types';
 
 export default async function fetchNFTs(smartAccount: SmartAccountClient, client: PublicClient) {
   // Get # of NFTs owned by address

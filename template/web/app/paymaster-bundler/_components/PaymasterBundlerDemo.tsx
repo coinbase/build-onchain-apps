@@ -13,8 +13,8 @@ import { createPublicClient, http } from 'viem';
 import { sepolia } from 'viem/chains'; // Replace this with the chain used by your application
 import fetchNFTs from '../_utils/fetchNFTs';
 import { rpcUrl, paymasterUrl, entryPoint, factoryAddress } from '../constants';
-import { nftAbi } from './abi';
 
+import { NFTType } from '../types';
 import GamePlay from './GamePlay';
 import Header from './Header';
 import Vault from './Vault';
@@ -26,7 +26,7 @@ export default function PaymasterBundlerDemo() {
   const [client, setPublicClient] = useState<PublicClient | undefined>();
   const [privyClient, setPrivyClient] = useState<WalletClient | undefined>();
   const [smartAccount, setSmartAccount] = useState<SmartAccountClient | undefined>();
-  const [ownedTokens, setOwnedTokens] = useState<string[]>([]);
+  const [ownedTokens, setOwnedTokens] = useState<NFTType[]>([]);
 
   console.log(ownedTokens);
 
