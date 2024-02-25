@@ -9,17 +9,21 @@ export const ALL_ITEMS = [
   {
     name: 'Dionysus Wing Suit',
     image: '/account_abstraction/wing_suit.png',
+    rarity: 512,
   },
   {
     name: 'Apollo Sword',
     image: '/account_abstraction/sword.png',
+    rarity: 2542,
   },
   {
     name: 'Artemis Shield',
     image: '/account_abstraction/shield.png',
+    rarity: 7592,
   },
   {
     name: 'Hera Bow and Arrow',
     image: '/account_abstraction/bow_arrow.png',
+    rarity: 5948,
   },
 ];
