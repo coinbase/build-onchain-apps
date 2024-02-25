@@ -4,6 +4,7 @@ import { Chain } from 'viem/chains';
 import { useAccount, usePublicClient } from 'wagmi';
 import { ipfsToHTTP } from '@/utils/ipfs';
 
+// Minimal ABI with contractURI view function
 const AbiWithContractURI = [
   {
     inputs: [],
@@ -14,6 +15,7 @@ const AbiWithContractURI = [
   },
 ] as const;
 
+// Minimal ABI with uri view function
 const AbiWithUri = [
   {
     inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
@@ -105,9 +107,6 @@ export function useCollectionMetadata({
     ? uriFunctionType.contractURI
     : uriFunctionType.uri;
 
-  const hookEnabled =
-    enabled && !!chainIdFromArgumentOrConnectedWallet && !!address && !!publicClient;
-
   return useQuery({
     queryKey: ['useCollectionMetadata', address, chainIdFromArgumentOrConnectedWallet],
     queryFn: async () => {
@@ -150,7 +149,7 @@ export function useCollectionMetadata({
       }
     },
     refetchOnWindowFocus: false,
-    enabled: hookEnabled,
+    enabled: enabled && !!chainIdFromArgumentOrConnectedWallet,
     gcTime: cacheTime,
   });
 }
