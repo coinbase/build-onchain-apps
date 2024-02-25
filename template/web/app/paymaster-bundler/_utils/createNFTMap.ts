@@ -1,7 +1,7 @@
-import { NFTType } from '../types';
+import { NFTType, OwnedTokensType } from '../types';
 
 export default function createNFTMap(tokenJSONs: NFTType[]) {
-  const NFTMap = {};
+  const NFTMap = {} as OwnedTokensType;
 
   tokenJSONs.forEach((tokenJSON) => {
     if (NFTMap[tokenJSON.name]) {
