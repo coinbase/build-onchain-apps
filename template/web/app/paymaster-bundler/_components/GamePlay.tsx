@@ -1,13 +1,18 @@
-import { useCallback } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 import { SmartAccountClient } from 'permissionless';
-import { encodeFunctionData } from 'viem';
+import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
 import NextImage from '@/components/NextImage/NextImage';
+import createNFTMap from '../_utils/createNFTMap';
+import fetchNFTs from '../_utils/fetchNFTs';
+import { OwnedTokensType } from '../types';
 import { nftAbi } from './abi';
 
 type GameplayProps = {
+  setOwnedTokens: Dispatch<SetStateAction<OwnedTokensType>>;
   smartAccount?: SmartAccountClient;
+  client?: PublicClient;
 };
 
 const getRandomNumber = () => {
@@ -24,13 +29,14 @@ const getRandomNumber = () => {
   return randomNumber;
 };
 
-export default function GamePlay({ smartAccount }: GameplayProps) {
+export default function GamePlay({ setOwnedTokens, smartAccount, client }: GameplayProps) {
   const { login, authenticated, ready } = usePrivy();
 
   const handleOpenBox = useCallback(() => {
     void (async () => {
       if (!smartAccount) return;
       if (!smartAccount.account) return;
+      if (!client) return;
 
       const data = encodeFunctionData({
         abi: nftAbi,
@@ -46,11 +52,16 @@ export default function GamePlay({ smartAccount }: GameplayProps) {
           account: smartAccount.account,
           chain: sepolia,
         });
+
+        const tokens = await fetchNFTs(smartAccount, client);
+        const tokenMap = createNFTMap(tokens);
+
+        setOwnedTokens(tokenMap);
       } catch (e) {
         console.log('Privy: Error sending transaction', e);
       }
     })();
-  }, [smartAccount]);
+  }, [smartAccount, client, setOwnedTokens]);
 
   return (
     <div className="w-full px-10 py-10">

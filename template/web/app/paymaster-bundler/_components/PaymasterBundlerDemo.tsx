@@ -115,7 +115,7 @@ export default function PaymasterBundlerDemo() {
       <Header />
       <div className="lg:flex">
         <Vault ownedTokens={ownedTokens} />
-        <GamePlay smartAccount={smartAccount} />
+        <GamePlay setOwnedTokens={setOwnedTokens} smartAccount={smartAccount} client={client} />
       </div>
     </div>
   );
