@@ -3,6 +3,12 @@ import { PublicClient } from 'viem';
 
 import { nftAbi } from '../_components/abi';
 
+type NFTType = {
+  image: string;
+  name: string;
+  rarity: number;
+};
+
 export default async function fetchNFTs(smartAccount: SmartAccountClient, client: PublicClient) {
   // Get # of NFTs owned by address
   const address = smartAccount.account?.address;
@@ -35,5 +41,27 @@ export default async function fetchNFTs(smartAccount: SmartAccountClient, client
     tokens.push(tokenJSONLink as string);
   }
 
-  return tokens;
+  const fetchOps = [] as Promise<unknown>[];
+  const tokenJSONs = [] as NFTType[];
+
+  tokens.forEach((token) => {
+    fetchOps.push(
+      (async () => {
+        try {
+          const tokenResponse = await fetch(token);
+          const parsedToken = (await tokenResponse.json()) as NFTType;
+
+          console.log(parsedToken, 'ARUN - PARSED');
+
+          tokenJSONs.push(parsedToken);
+        } catch (e) {
+          console.log('Error parsing JSON');
+        }
+      })(),
+    );
+  });
+
+  await Promise.all(fetchOps);
+
+  return tokenJSONs;
 }
