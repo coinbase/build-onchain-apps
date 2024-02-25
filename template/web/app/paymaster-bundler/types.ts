@@ -3,3 +3,5 @@ export type NFTType = {
   name: string;
   rarity: number;
 };
+
+export type OwnedTokensType = Record<string, number>;

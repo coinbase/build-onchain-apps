@@ -11,10 +11,11 @@ import { createPimlicoPaymasterClient } from 'permissionless/clients/pimlico';
 import { PublicClient, WalletClient, createWalletClient, custom } from 'viem';
 import { createPublicClient, http } from 'viem';
 import { sepolia } from 'viem/chains'; // Replace this with the chain used by your application
+import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
 import { rpcUrl, paymasterUrl, entryPoint, factoryAddress } from '../constants';
 
-import { NFTType } from '../types';
+import { OwnedTokensType } from '../types';
 import GamePlay from './GamePlay';
 import Header from './Header';
 import Vault from './Vault';
@@ -26,9 +27,7 @@ export default function PaymasterBundlerDemo() {
   const [client, setPublicClient] = useState<PublicClient | undefined>();
   const [privyClient, setPrivyClient] = useState<WalletClient | undefined>();
   const [smartAccount, setSmartAccount] = useState<SmartAccountClient | undefined>();
-  const [ownedTokens, setOwnedTokens] = useState<NFTType[]>([]);
-
-  console.log(ownedTokens);
+  const [ownedTokens, setOwnedTokens] = useState<OwnedTokensType>({});
 
   // Fetch the NFTs
   useEffect(() => {
@@ -37,8 +36,9 @@ export default function PaymasterBundlerDemo() {
       if (!client) return;
 
       const tokens = await fetchNFTs(smartAccount, client);
+      const tokenMap = createNFTMap(tokens);
 
-      setOwnedTokens(tokens);
+      setOwnedTokens(tokenMap);
     };
 
     void fetchOwnedNFTs();
@@ -114,7 +114,7 @@ export default function PaymasterBundlerDemo() {
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <Header />
       <div className="lg:flex">
-        <Vault />
+        <Vault ownedTokens={ownedTokens} />
         <GamePlay smartAccount={smartAccount} />
       </div>
     </div>
