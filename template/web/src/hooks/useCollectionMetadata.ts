@@ -145,7 +145,7 @@ export function useCollectionMetadata({
         return {
           collectionName: json.name,
           description: json.description,
-          imageAddress: ipfsToHTTP(json.image, gatewayHostname),
+          imageAddress: ipfsToHTTP(json.image || '', gatewayHostname),
         };
       }
     },
