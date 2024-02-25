@@ -42,30 +42,19 @@ const getIsAbiWithUriViewFunction = (abi: Abi) =>
 const isValidAbi = (abi: Abi) =>
   getIsAbiWithContractURIViewFunction(abi) || getIsAbiWithUriViewFunction(abi);
 
-// A future enhancement would be to track error state from the contract read
-// and the fetch so that we can gracefully surface issues to users.
-type CollectionMetadataResult = {
-  collectionName: string | undefined;
-  description: string | undefined;
-  imageAddress: string | undefined;
-};
-
 type JsonMetadata = {
   name: string | undefined;
   description: string | undefined;
   image: string | undefined;
 };
 
-function tryParseMetadataJson(
-  str: string,
-  gatewayHostname?: string,
-): CollectionMetadataResult | undefined {
+function tryParseMetadataJson(str: string, gatewayHostname?: string): JsonMetadata | undefined {
   try {
     const json = JSON.parse(str) as JsonMetadata;
     return {
-      collectionName: json.name,
+      name: json.name,
       description: json.description,
-      imageAddress: json.image ? ipfsToHTTP(json.image, gatewayHostname) : undefined,
+      image: json.image ? ipfsToHTTP(json.image, gatewayHostname) : undefined,
     };
   } catch {}
 }
@@ -87,7 +76,8 @@ type Props = {
  * @param gatewayHostname Optional IPFS gateway hostname
  * @param cacheTime Optional cache time for the query
  * TODO: standardize once https://github.com/ethereum/ERCs/pull/150 is settled
- * @returns CollectionMetadataResult
+ * TODO: A future enhancement would be to track error state from the contract read and the fetch so that we can gracefully surface issues to users.
+ * @returns JsonMetadata
  */
 export function useCollectionMetadata({
   address,
@@ -142,9 +132,9 @@ export function useCollectionMetadata({
         }
         const json = (await response.json()) as JsonMetadata;
         return {
-          collectionName: json.name,
+          name: json.name,
           description: json.description,
-          imageAddress: ipfsToHTTP(json.image ?? '', gatewayHostname),
+          image: ipfsToHTTP(json.image ?? '', gatewayHostname),
         };
       }
     },

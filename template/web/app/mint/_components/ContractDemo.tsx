@@ -39,7 +39,7 @@ export default function MintContractDemo() {
       abi: contract.abi,
     });
 
-  const { collectionName, description, imageAddress } = collectionMetadata ?? {};
+  const { name: collectionName, description, image: collectionImageUrl } = collectionMetadata ?? {};
 
   // The CustomERC1155 contract is a free mint, so instead of mint price we fetch tx fee estimate
   const { data: txFeeEstimation, isLoading: isLoadingFeeEstimate } = useEstimateGas({
@@ -76,9 +76,9 @@ export default function MintContractDemo() {
   return (
     <div className="gap-16 lg:flex">
       <div className="w-full flex-shrink-0 flex-grow lg:max-w-[400px] xl:max-w-[600px]">
-        {imageAddress && collectionNameOrAddress ? (
+        {collectionImageUrl ? (
           <NextImage
-            src={imageAddress}
+            src={collectionImageUrl}
             altText={collectionNameOrAddress}
             className="block w-full rounded-2xl"
           />
