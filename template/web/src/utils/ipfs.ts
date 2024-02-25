@@ -55,7 +55,7 @@ export const containsCID = (ipfsURI?: string | null) => {
  * Transforms an IPFS URL to a desired gateway.
  * The input URL can either already be a http url or an ipfs uri.
  * Supports ipns and ipfs uris with folder paths
- * @param ipfsURI - ipfs uri or http url (ipfs://${cid} or http://ipfs.io/ipfs/${cid})
+ * @param ipfsURI - ipfs uri or http url (ipfs://${cid} or http://{gatewayHostname | 'ipfs.io'}/ipfs/${cid})
  * @param gatewayHostname - preferred gateway provider
  */
 export const transformIpfsUrlToUrlGateway = (
