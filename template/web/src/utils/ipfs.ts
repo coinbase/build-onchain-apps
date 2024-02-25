@@ -8,7 +8,7 @@ export const DEFAULT_IPFS_GATEWAY_KEYS = {
 };
 
 export type DefaultIpfsGatewayKeys =
-    (typeof DEFAULT_IPFS_GATEWAY_KEYS)[keyof typeof DEFAULT_IPFS_GATEWAY_KEYS];
+  (typeof DEFAULT_IPFS_GATEWAY_KEYS)[keyof typeof DEFAULT_IPFS_GATEWAY_KEYS];
 
 export type IpfsGateways = Record<DefaultIpfsGatewayKeys, string>;
 
@@ -59,8 +59,8 @@ export const containsCID = (ipfsURI?: string | null) => {
  * @param gatewayHostname - preferred gateway provider
  */
 export const transformIpfsUrlToUrlGateway = (
-    ipfsURI?: string | null,
-    gatewayHostname = DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.pinata],
+  ipfsURI?: string | null,
+  gatewayHostname = DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.pinata],
 ) => {
   const results = containsCID(ipfsURI);
   if (!ipfsURI || !results.containsCid || !results.cid) {
@@ -118,8 +118,8 @@ export const ipfsToHTTP = (ipfsURI?: string | null, gatewayHostname?: string) =>
 
   if (containsCID(ipfsURI).containsCid) {
     return transformIpfsUrlToUrlGateway(
-        ipfsURI,
-        gatewayHostname ?? DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.ipfsIo],
+      ipfsURI,
+      gatewayHostname ?? DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.ipfsIo],
     );
   }
 
