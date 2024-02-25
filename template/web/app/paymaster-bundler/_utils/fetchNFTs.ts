@@ -46,11 +46,9 @@ export default async function fetchNFTs(smartAccount: SmartAccountClient, client
           const tokenResponse = await fetch(token);
           const parsedToken = (await tokenResponse.json()) as NFTType;
 
-          console.log(parsedToken, 'ARUN - PARSED');
-
           tokenJSONs.push(parsedToken);
         } catch (e) {
-          console.log('Error parsing JSON');
+          console.error('Error parsing JSON');
         }
       })(),
     );
