@@ -60,7 +60,7 @@ export const containsCID = (ipfsURI?: string | null) => {
  */
 export const transformIpfsUrlToUrlGateway = (
   ipfsURI?: string | null,
-  gatewayHostname = DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.pinata],
+  gatewayHostname = DEFAULT_IPFS_GATEWAY_HOSTNAMES[DEFAULT_IPFS_GATEWAY_KEYS.ipfsIo],
 ) => {
   const results = containsCID(ipfsURI);
   if (!ipfsURI || !results.containsCid || !results.cid) {
