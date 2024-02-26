@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { PrivyProvider, User } from '@privy-io/react-auth';
+import { privyID } from '../constants';
 import PaymasterBundlerDemo from './PaymasterBundlerDemo';
 
 export default function PaymasterBundlerApp() {
@@ -9,13 +10,13 @@ export default function PaymasterBundlerApp() {
 
   return (
     <PrivyProvider
-      appId="clsxnba7r00tragoglekx9or7" // put this in an .env
+      appId={privyID ?? 'not-set'}
       onSuccess={handleLogin}
       config={{
         embeddedWallets: {
           createOnLogin: 'users-without-wallets', // or 'all-users'
         },
-        loginMethods: ['email', 'wallet'],
+        loginMethods: ['email'],
         appearance: {
           theme: 'dark',
           accentColor: '#676FFF',
