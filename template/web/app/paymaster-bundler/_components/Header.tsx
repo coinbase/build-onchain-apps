@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
+import { roboto } from 'app/fonts';
 import clsx from 'clsx';
 import NextImage from '@/components/NextImage/NextImage';
-import { roboto } from 'app/fonts';
 
 const LIGHTNINGS = [1, 2, 3];
 
@@ -56,7 +56,7 @@ export default function Header() {
             <button
               type="button"
               onClick={handleLogout}
-              className="block w-full rounded-full border border-boat-color-orange py-2"
+              className="block w-full rounded-full border border-boat-color-orange py-2 hover:bg-gray-800"
             >
               Logout
             </button>

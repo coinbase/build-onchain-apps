@@ -89,7 +89,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
             {authenticated ? (
               <button
                 type="button"
-                className="flex w-full items-center justify-center rounded-full border border-boat-color-orange py-4"
+                className="flex w-full items-center justify-center rounded-full border border-boat-color-orange py-4 hover:bg-gray-800"
                 onClick={handleOpenBox}
               >
                 {loading ? (
@@ -106,7 +106,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
             ) : (
               <button
                 type="button"
-                className="block w-full rounded-full border border-boat-color-orange py-4"
+                className="block w-full rounded-full border border-boat-color-orange py-4 hover:bg-gray-800"
                 onClick={login}
               >
                 Play
