@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useWallets, ConnectedWallet } from '@privy-io/react-auth';
+import { useWallets, ConnectedWallet, usePrivy } from '@privy-io/react-auth';
 
 import {
   SmartAccountClient,
@@ -22,6 +22,7 @@ import Vault from './Vault';
 
 export default function PaymasterBundlerDemo() {
   const { wallets } = useWallets();
+  const { authenticated } = usePrivy();
 
   const [activeWallet, setActiveWallet] = useState<ConnectedWallet | undefined>();
   const [client, setPublicClient] = useState<PublicClient | undefined>();
@@ -41,8 +42,10 @@ export default function PaymasterBundlerDemo() {
       setOwnedTokens(tokenMap);
     };
 
-    void fetchOwnedNFTs();
-  }, [smartAccount, client]);
+    if (authenticated) {
+      void fetchOwnedNFTs();
+    }
+  }, [smartAccount, client, authenticated]);
 
   // Fetch the active wallet
   useEffect(() => {
