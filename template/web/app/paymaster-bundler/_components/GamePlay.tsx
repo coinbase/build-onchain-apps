@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
-import { SymbolIcon } from '@radix-ui/react-icons';
+import { ReloadIcon, SymbolIcon } from '@radix-ui/react-icons';
+import clsx from 'clsx';
 import { SmartAccountClient } from 'permissionless';
 import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
+import Button from '@/components/Button/Button';
 import NextImage from '@/components/NextImage/NextImage';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
@@ -74,6 +76,10 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
     })();
   }, [smartAccount, client, setOwnedTokens]);
 
+  const handleRestart = useCallback(() => {
+    setMintedNFT(null);
+  }, []);
+
   return (
     <div className="w-full px-10 py-10">
       <div>
@@ -95,26 +101,37 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
       )}
 
       {ready ? (
-        <div className="mt-8">
+        <div className={clsx(mintedNFT ? 'mt-2' : 'mt-8')}>
           <div className="mx-auto max-w-[130px]">
             {/* TODO: Make this a button variant */}
             {authenticated ? (
-              <button
-                type="button"
-                className="flex w-full items-center justify-center rounded-full border border-boat-color-orange py-4 hover:bg-gray-800"
-                onClick={handleOpenBox}
-              >
-                {loading ? (
-                  <>
-                    <span className="mr-2">
-                      <SymbolIcon width={15} height={15} />
-                    </span>
-                    <span>Loading...</span>
-                  </>
+              <div>
+                {mintedNFT ? (
+                  <Button
+                    buttonContent="Restart demo"
+                    onClick={handleRestart}
+                    variant="secondary"
+                    icon={<ReloadIcon width={15} height={15} />}
+                  />
                 ) : (
-                  <span>Open box</span>
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-center rounded-full border border-boat-color-orange py-4 hover:bg-gray-800"
+                    onClick={handleOpenBox}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="mr-2">
+                          <SymbolIcon width={15} height={15} />
+                        </span>
+                        <span>Loading...</span>
+                      </>
+                    ) : (
+                      <span>Open box</span>
+                    )}
+                  </button>
                 )}
-              </button>
+              </div>
             ) : (
               <button
                 type="button"
