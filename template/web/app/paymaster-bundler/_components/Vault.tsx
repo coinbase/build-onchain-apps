@@ -1,5 +1,5 @@
-import { roboto } from 'app/fonts';
 import clsx from 'clsx';
+import { roboto } from 'app/fonts';
 import { ALL_ITEMS } from '../constants';
 import { OwnedTokensType } from '../types';
 import Item from './Item';
