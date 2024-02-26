@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback } from 'react';
 import { PrivyProvider } from '@privy-io/react-auth';
 import { privyID } from '../constants';
@@ -7,8 +9,6 @@ export default function PaymasterBundlerApp() {
   const handleLogin = useCallback(() => {
     console.log('Successfully authenticated with Privy!');
   }, []);
-
-  if (!privyID) return null;
 
   return (
     <PrivyProvider
