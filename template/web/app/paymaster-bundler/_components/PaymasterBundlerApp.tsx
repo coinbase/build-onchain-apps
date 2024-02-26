@@ -10,7 +10,7 @@ export default function PaymasterBundlerApp() {
     console.log('Successfully authenticated with Privy!');
   }, []);
 
-  if (!privyID) return null;
+  if (!privyID?.length) return null;
 
   return (
     <PrivyProvider
