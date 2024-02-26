@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 import { ReloadIcon, SymbolIcon } from '@radix-ui/react-icons';
+import { useSpring, animated } from '@react-spring/web';
 import clsx from 'clsx';
 import { SmartAccountClient } from 'permissionless';
 import { PublicClient, encodeFunctionData } from 'viem';
@@ -37,6 +38,13 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
   const [loading, setLoading] = useState(false);
   const { login, authenticated, ready } = usePrivy();
   const [mintedNFT, setMintedNFT] = useState<NFTType | null>(null);
+  const [flipped, setFlipped] = useState(false);
+
+  const { transform, opacity } = useSpring({
+    opacity: flipped ? 1 : 0,
+    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 },
+  });
 
   const handleOpenBox = useCallback(() => {
     void (async () => {
@@ -69,6 +77,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
         setOwnedTokens(tokenMap);
         setLoading(false);
         setMintedNFT(ALL_ITEMS[randomNumber]);
+        setFlipped(true);
       } catch (e) {
         console.log('Privy: Error sending transaction', e);
         setLoading(false);
@@ -78,17 +87,39 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
 
   const handleRestart = useCallback(() => {
     setMintedNFT(null);
+    setFlipped(false);
   }, []);
 
   return (
     <div className="w-full px-10 py-10">
-      <div>
+      <animated.div
+        style={{
+          opacity: opacity.to((o) => 1 - o),
+          transform,
+          display: flipped ? 'none' : 'block',
+        }}
+      >
         <NextImage
-          src={mintedNFT ? mintedNFT.image : '/account_abstraction/mystery_box.png'}
+          src="/account_abstraction/mystery_box.png"
           altText="Mystery Box"
           className="block rounded-2xl"
         />
-      </div>
+      </animated.div>
+
+      <animated.div
+        style={{
+          opacity,
+          transform,
+          rotateX: '180deg',
+          display: flipped ? 'block' : 'none',
+        }}
+      >
+        <NextImage
+          src={mintedNFT?.image ?? ''}
+          altText={mintedNFT?.name ?? ''}
+          className="block rounded-2xl"
+        />
+      </animated.div>
 
       {mintedNFT ? (
         <div className="my-4 text-center text-violet-200">Rarity score: {mintedNFT.rarity}</div>
