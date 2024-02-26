@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
+import { SymbolIcon } from '@radix-ui/react-icons';
 import { SmartAccountClient } from 'permissionless';
 import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
@@ -30,10 +31,12 @@ const getRandomNumber = () => {
 };
 
 export default function GamePlay({ setOwnedTokens, smartAccount, client }: GameplayProps) {
+  const [loading, setLoading] = useState(false);
   const { login, authenticated, ready } = usePrivy();
 
   const handleOpenBox = useCallback(() => {
     void (async () => {
+      setLoading(true);
       if (!smartAccount) return;
       if (!smartAccount.account) return;
       if (!client) return;
@@ -57,8 +60,10 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
         const tokenMap = createNFTMap(tokens);
 
         setOwnedTokens(tokenMap);
+        setLoading(false);
       } catch (e) {
         console.log('Privy: Error sending transaction', e);
+        setLoading(false);
       }
     })();
   }, [smartAccount, client, setOwnedTokens]);
@@ -84,10 +89,19 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
             {authenticated ? (
               <button
                 type="button"
-                className="block w-full rounded-full border border-boat-color-orange py-4" //TODO: add disabled
+                className="flex w-full items-center justify-center rounded-full border border-boat-color-orange py-4"
                 onClick={handleOpenBox}
               >
-                Open box
+                {loading ? (
+                  <>
+                    <span className="mr-2">
+                      <SymbolIcon width={15} height={15} />
+                    </span>
+                    <span>Loading...</span>
+                  </>
+                ) : (
+                  <span>Open box</span>
+                )}
               </button>
             ) : (
               <button
