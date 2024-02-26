@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
-import { PrivyProvider, User } from '@privy-io/react-auth';
+import { PrivyProvider } from '@privy-io/react-auth';
 import { privyID } from '../constants';
 import PaymasterBundlerDemo from './PaymasterBundlerDemo';
 
 export default function PaymasterBundlerApp() {
-  const handleLogin = useCallback((user: User) => {
-    console.log(`Successfully authenticated with Privy! Your User ID: ${user.id}`);
+  const handleLogin = useCallback(() => {
+    console.log('Successfully authenticated with Privy!');
   }, []);
 
   if (!privyID) return null;
