@@ -1,8 +1,14 @@
 import clsx from 'clsx';
 import { roboto } from 'app/fonts';
+import { ALL_ITEMS } from '../constants';
+import { OwnedTokensType } from '../types';
 import Item from './Item';
 
-export default function Vault() {
+type VaultProps = {
+  ownedTokens: OwnedTokensType;
+};
+
+export default function Vault({ ownedTokens }: VaultProps) {
   return (
     <div className="w-full rounded-bl-xl bg-boat-color-gray-900 px-8 py-10">
       <h2 className={clsx('mb-5 text-2xl', roboto.className)}>Vault</h2>
@@ -11,15 +17,17 @@ export default function Vault() {
       <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
-        <Item src="/account_abstraction/sword.png" altText="Sword" active={false} />
-        <Item src="/account_abstraction/shield.png" altText="Shield" active={false} />
-        <Item src="/account_abstraction/bow_arrow.png" altText="Bow and Arrow" active={false} />
-        <Item
-          src="/account_abstraction/wing_suit.png"
-          altText="Wing Suit"
-          active={false}
-          amount={4}
-        />
+        {ALL_ITEMS.map((item) => {
+          return (
+            <Item
+              key={item.name}
+              src={item.image}
+              altText={item.name}
+              active={!!ownedTokens[item.name]}
+              amount={ownedTokens[item.name] > 1 ? ownedTokens[item.name] : undefined}
+            />
+          );
+        })}
       </div>
 
       <h3 className={clsx('mb-1 text-lg', roboto.className)}>Mystery boxes</h3>
