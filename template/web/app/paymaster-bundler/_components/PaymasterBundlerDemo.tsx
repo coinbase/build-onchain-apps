@@ -78,6 +78,7 @@ export default function PaymasterBundlerDemo() {
     const createSmartAccount = async () => {
       if (!privyClient) return;
 
+      //@ts-expect-error Privy client makes Account optional whereas walletClientToSmartAccountSigner expects an Account causing type mismatch
       const signer = walletClientToSmartAccountSigner(privyClient);
 
       const publicClient = createPublicClient({
