@@ -1,4 +1,4 @@
-export const nftAbi = [
+export const PaymasterBundlerABI = [
   {
     inputs: [
       {

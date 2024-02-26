@@ -8,11 +8,11 @@ import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
 import Button from '@/components/Button/Button';
 import NextImage from '@/components/NextImage/NextImage';
+import { PaymasterBundlerABI } from '../_contracts/PaymasterBundlerABI';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
 import { ALL_ITEMS } from '../constants';
 import { NFTType, OwnedTokensType } from '../types';
-import { nftAbi } from './abi';
 
 type GameplayProps = {
   setOwnedTokens: Dispatch<SetStateAction<OwnedTokensType>>;
@@ -57,7 +57,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
       const randomNumber = getRandomNumber();
 
       const data = encodeFunctionData({
-        abi: nftAbi,
+        abi: PaymasterBundlerABI,
         functionName: 'mintTo',
         args: [smartAccount.account?.address, randomNumber],
       });

@@ -1,7 +1,7 @@
 import { SmartAccountClient } from 'permissionless';
 import { PublicClient } from 'viem';
 
-import { nftAbi } from '../_components/abi';
+import { PaymasterBundlerABI } from '../_contracts/PaymasterBundlerABI';
 import { NFTType } from '../types';
 
 export default async function fetchNFTs(smartAccount: SmartAccountClient, client: PublicClient) {
@@ -10,7 +10,7 @@ export default async function fetchNFTs(smartAccount: SmartAccountClient, client
 
   const numTokens = await client.readContract({
     address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-    abi: nftAbi,
+    abi: PaymasterBundlerABI,
     functionName: 'balanceOf',
     args: [address],
   });
@@ -21,14 +21,14 @@ export default async function fetchNFTs(smartAccount: SmartAccountClient, client
   for (let i = 0; i < Number(numTokens); i++) {
     const tokenID = await client.readContract({
       address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-      abi: nftAbi,
+      abi: PaymasterBundlerABI,
       functionName: 'tokenOfOwnerByIndex',
       args: [address, i],
     });
 
     const tokenJSONLink = await client.readContract({
       address: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
-      abi: nftAbi,
+      abi: PaymasterBundlerABI,
       functionName: 'tokenURI',
       args: [Number(tokenID)],
     });
