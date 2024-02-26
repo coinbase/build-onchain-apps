@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 import { ReloadIcon, SymbolIcon } from '@radix-ui/react-icons';
 import { useSpring, animated } from '@react-spring/web';
@@ -89,6 +89,13 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
     setMintedNFT(null);
     setFlipped(false);
   }, []);
+
+  useEffect(() => {
+    if (!authenticated) {
+      handleRestart();
+      setOwnedTokens({});
+    }
+  }, [authenticated, handleRestart, setOwnedTokens]);
 
   return (
     <div className="w-full px-10 py-10">
