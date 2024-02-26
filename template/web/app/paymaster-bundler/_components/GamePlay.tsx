@@ -7,7 +7,8 @@ import { sepolia } from 'viem/chains';
 import NextImage from '@/components/NextImage/NextImage';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
-import { OwnedTokensType } from '../types';
+import { ALL_ITEMS } from '../constants';
+import { NFTType, OwnedTokensType } from '../types';
 import { nftAbi } from './abi';
 
 type GameplayProps = {
@@ -33,18 +34,22 @@ const getRandomNumber = () => {
 export default function GamePlay({ setOwnedTokens, smartAccount, client }: GameplayProps) {
   const [loading, setLoading] = useState(false);
   const { login, authenticated, ready } = usePrivy();
+  const [mintedNFT, setMintedNFT] = useState<NFTType | null>(null);
 
   const handleOpenBox = useCallback(() => {
     void (async () => {
-      setLoading(true);
       if (!smartAccount) return;
       if (!smartAccount.account) return;
       if (!client) return;
 
+      setLoading(true);
+
+      const randomNumber = getRandomNumber();
+
       const data = encodeFunctionData({
         abi: nftAbi,
         functionName: 'mintTo',
-        args: [smartAccount.account?.address, getRandomNumber()],
+        args: [smartAccount.account?.address, randomNumber],
       });
 
       try {
@@ -61,6 +66,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
 
         setOwnedTokens(tokenMap);
         setLoading(false);
+        setMintedNFT(ALL_ITEMS[randomNumber]);
       } catch (e) {
         console.log('Privy: Error sending transaction', e);
         setLoading(false);
@@ -72,15 +78,21 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
     <div className="w-full px-10 py-10">
       <div>
         <NextImage
-          src="/account_abstraction/mystery_box.png"
+          src={mintedNFT ? mintedNFT.image : '/account_abstraction/mystery_box.png'}
           altText="Mystery Box"
           className="block rounded-2xl"
         />
       </div>
 
-      <div className="my-4 text-center text-violet-200">Rarity score: 501</div>
+      {mintedNFT ? (
+        <div className="my-4 text-center text-violet-200">Rarity score: {mintedNFT.rarity}</div>
+      ) : null}
 
-      <h1 className="text-center text-2xl">Athena Mystery Box</h1>
+      {mintedNFT ? (
+        <h1 className="text-center text-2xl">{mintedNFT.name}</h1>
+      ) : (
+        <h1 className="mt-6 text-center text-2xl">Athena Mystery Box</h1>
+      )}
 
       {ready ? (
         <div className="mt-8">
