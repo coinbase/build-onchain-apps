@@ -3,7 +3,7 @@ import { entryPoint } from '../constants';
 import { PaymasterBundlerABI } from './PaymasterBundlerABI';
 import { usePaymasterBundlerContract } from './usePaymasterBundlerContract';
 
-describe('useBuyMeACoffeeContract', () => {
+describe('usePaymasterBundlerContract', () => {
   it('should return correct contract data', () => {
     const contract = usePaymasterBundlerContract();
 
