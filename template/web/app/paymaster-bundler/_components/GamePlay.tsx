@@ -146,7 +146,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
               <div>
                 {mintedNFT ? (
                   <Button
-                    buttonContent="Restart demo"
+                    buttonContent="Open new box"
                     onClick={handleRestart}
                     variant="secondary"
                     icon={<ReloadIcon width={15} height={15} />}
