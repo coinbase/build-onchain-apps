@@ -162,7 +162,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
                         <span className="mr-2">
                           <SymbolIcon width={15} height={15} />
                         </span>
-                        <span>Loading...</span>
+                        <span>Loading</span>
                       </>
                     ) : (
                       <span>Open box</span>
