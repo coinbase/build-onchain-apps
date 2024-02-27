@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { roboto } from 'app/fonts';
+import clsx from 'clsx';
 import { ALL_ITEMS } from '../constants';
 import { OwnedTokensType } from '../types';
 import Item from './Item';
@@ -24,7 +24,7 @@ export default function Vault({ ownedTokens }: VaultProps) {
               src={item.image}
               altText={item.name}
               active={!!ownedTokens[item.name]}
-              amount={ownedTokens[item.name] > 1 ? ownedTokens[item.name] : undefined}
+              amount={ownedTokens[item.name]}
             />
           );
         })}
