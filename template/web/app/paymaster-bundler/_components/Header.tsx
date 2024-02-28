@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
-import { roboto } from 'app/fonts';
 import clsx from 'clsx';
 import NextImage from '@/components/NextImage/NextImage';
+import { roboto } from 'app/fonts';
 
 const LIGHTNINGS = [1, 2, 3];
 
