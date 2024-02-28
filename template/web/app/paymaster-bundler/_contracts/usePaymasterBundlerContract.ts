@@ -1,7 +1,7 @@
 import { baseSepolia } from 'viem/chains';
 import { generateContractHook } from '@/hooks/contracts';
 import { entryPoint } from '../constants';
-import { PaymasterBundlerABI } from './PaymasterBundlerABI';
+import PaymasterBundlerABI from './PaymasterBundlerABI';
 
 /**
  * Returns contract data for the PaymasterBundler contract.
