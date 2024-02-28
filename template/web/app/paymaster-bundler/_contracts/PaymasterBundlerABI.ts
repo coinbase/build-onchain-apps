@@ -1,4 +1,4 @@
-export const PaymasterBundlerABI = [
+const abi = [
   {
     inputs: [
       {
@@ -630,4 +630,6 @@ export const PaymasterBundlerABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
-];
+] as const;
+
+export default abi;

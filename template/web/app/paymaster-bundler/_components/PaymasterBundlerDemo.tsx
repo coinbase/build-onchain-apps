@@ -37,6 +37,7 @@ export default function PaymasterBundlerDemo() {
       if (!client) return;
 
       const tokens = await fetchNFTs(smartAccount, client);
+      if (!tokens) return;
       const tokenMap = createNFTMap(tokens);
 
       setOwnedTokens(tokenMap);
