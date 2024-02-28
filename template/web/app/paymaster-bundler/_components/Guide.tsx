@@ -50,16 +50,16 @@ export default function Guide() {
       },
       {
         href: '#sign-up',
-        label: 'Sign Up For Coinbase Cloud'
+        label: 'Sign Up For Coinbase Cloud',
       },
       {
         href: '#authentication',
-        label: 'Set Up Your Embedded Wallet'
+        label: 'Set Up Your Embedded Wallet',
       },
       {
         href: '#customization',
-        label: 'Send Your Own Sponsored Transactions'
-      }
+        label: 'Send Your Own Sponsored Transactions',
+      },
     ],
     [],
   );
@@ -73,30 +73,32 @@ export default function Guide() {
           <Section id="intro">
             <H4>Paymaster & Bundler Experience</H4>
             <P>
-              Welcome to the Paymaster & Bundler experience!
-              This guide will help you get started with Coinbase Cloud&apos;s Paymaster.
+              Welcome to the Paymaster & Bundler experience! This guide will help you get started
+              with Coinbase Cloud&apos;s Paymaster.
             </P>
             <P>
-              If you haven&apos;t done so already, check the <A href="https://buildonchainapps.xyz/">Build Onchain Apps</A> homepage to get the repo running locally.
+              If you haven&apos;t done so already, check the{' '}
+              <A href="https://buildonchainapps.xyz/">Build Onchain Apps</A> homepage to get the
+              repo running locally.
             </P>
           </Section>
           <Section id="sign-up">
-            <H4>
-              1. Sign up for Coinbase Cloud and create your Base project
-            </H4>
+            <H4>1. Sign up for Coinbase Cloud and create your Base project</H4>
             <P>
               This example uses Coinbase Cloud&apos;s Paymaster and Bundler to sponsor transactions.
             </P>
             Get started with .25 ETH in free credits:
             <Ul>
               <Li>
-                Navigate to <A href="https://coinbase.com/cloud/products/base/rpc">https://coinbase.com/cloud/products/base/rpc</A>
+                Navigate to{' '}
+                <A href="https://coinbase.com/cloud/products/base/rpc">
+                  https://coinbase.com/cloud/products/base/rpc
+                </A>
               </Li>
+              <Li>Sign up for a Coinbase Cloud account, if you don&apos;t have one already</Li>
               <Li>
-                Sign up for a Coinbase Cloud account, if you don&apos;t have one already
-              </Li>
-              <Li>
-                Create a <p className="inline font-bold">Base</p> project under{' '} <p className="inline font-bold"> Start a New Project</p>
+                Create a <p className="inline font-bold">Base</p> project under{' '}
+                <p className="inline font-bold"> Start a New Project</p>
               </Li>
               <Ul>
                 <Li>
@@ -117,17 +119,16 @@ export default function Guide() {
               <Li>
                 Copy your RPC URL, and set it as{' '}
                 <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_RPC_URL</p> and{' '}
-                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_PAYMASTER_URL</p> in
-                the .env file.
+                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_PAYMASTER_URL</p>{' '}
+                in the .env file.
               </Li>
             </Ul>
           </Section>
           <Section id="authentication">
-            <H4>
-              2. Set up your embedded wallet & signer
-            </H4>
+            <H4>2. Set up your embedded wallet & signer</H4>
             <P>
-              This example uses Privy embedded wallets for authentication and as a signer for the smart contract account.
+              This example uses Privy embedded wallets for authentication and as a signer for the
+              smart contract account.
             </P>
             However, you can use any other embedded wallet or signer.
             <Ul>
@@ -136,38 +137,42 @@ export default function Guide() {
               </Li>
               <Li>
                 Create an app, copy your app ID, and set it as{' '}
-                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_PRIVY_ID</p> in the
-                .env file.
+                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_PRIVY_ID</p> in
+                the .env file.
               </Li>
+              <Li>You can customize the logo and name of your application in the dashboard.</Li>
               <Li>
-                You can customize the logo and name of your application in the dashboard.
-              </Li>
-              <Li>
-                To change the signer for the smart contract account, modify these lines in <code>PaymasterBundlerDemo.tsx</code>
+                To change the signer for the smart contract account, modify these lines in{' '}
+                <code>PaymasterBundlerDemo.tsx</code>
               </Li>
               <CodeBlock code={signerCodeStep} language="javascript" />
             </Ul>
           </Section>
           <Section id="customization">
-            <H4>
-              3. Send your own sponsored transactions!
-            </H4>
+            <H4>3. Send your own sponsored transactions!</H4>
             <Ul>
               <Li>
-                Get started by modifying <code>./_contracts</code> and replacing it with the <A href="https://docs.soliditylang.org/en/latest/abi-spec.html">contract ABI</A> of your choice.
+                Get started by modifying <code>./_contracts</code> and replacing it with the{' '}
+                <A href="https://docs.soliditylang.org/en/latest/abi-spec.html">contract ABI</A> of
+                your choice.
               </Li>
               <Li>
-                In <code>constants.ts</code>, modify the <p className="inline font-bold text-boat-color-orange">contract_address</p> environment variable.
+                In <code>constants.ts</code>, modify the{' '}
+                <p className="inline font-bold text-boat-color-orange">contract_address</p>{' '}
+                environment variable.
               </Li>
               <Li>
-                In the <code>handleOpenBox</code> callback in <code>Gameplay.tsx</code>, you&apos;ll want to modify these lines.
+                In the <code>handleOpenBox</code> callback in <code>Gameplay.tsx</code>, you&apos;ll
+                want to modify these lines.
                 <P>
-                  Replace the <code>encodeFunctionData</code> parameters with the ABI, function name, and arguments of the contract you&apos;re calling.
+                  Replace the <code>encodeFunctionData</code> parameters with the ABI, function
+                  name, and arguments of the contract you&apos;re calling.
                 </P>
               </Li>
               <CodeBlock code={customizationStep} language="javascript" />
               <Li>
-                To integrate with other SDKs like Alchemy or Pimlico, refer to the Coinbase Cloud <A href="https://github.com/coinbase/paymaster-bundler-examples">example repo</A>.
+                To integrate with other SDKs like Alchemy or Pimlico, refer to the Coinbase Cloud{' '}
+                <A href="https://github.com/coinbase/paymaster-bundler-examples">example repo</A>.
               </Li>
             </Ul>
           </Section>
