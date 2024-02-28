@@ -1,6 +1,6 @@
 import { baseSepolia } from 'viem/chains';
 import { generateContractHook } from '@/hooks/contracts';
-import { entryPoint } from '../constants';
+import { contractAddress } from '../constants';
 import PaymasterBundlerABI from './PaymasterBundlerABI';
 
 /**
@@ -10,7 +10,7 @@ export const usePaymasterBundlerContract = generateContractHook({
   abi: PaymasterBundlerABI,
   [baseSepolia.id]: {
     chain: baseSepolia,
-    address: entryPoint,
+    address: contractAddress,
   },
 
   // ... more chains for this contract go here

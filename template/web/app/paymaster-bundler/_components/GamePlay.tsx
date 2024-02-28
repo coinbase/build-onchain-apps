@@ -8,7 +8,7 @@ import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
 import Button from '@/components/Button/Button';
 import NextImage from '@/components/NextImage/NextImage';
-import { PaymasterBundlerABI } from '../_contracts/PaymasterBundlerABI';
+import PaymasterBundlerABI from '../_contracts/PaymasterBundlerABI';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
 import { ALL_ITEMS } from '../constants';

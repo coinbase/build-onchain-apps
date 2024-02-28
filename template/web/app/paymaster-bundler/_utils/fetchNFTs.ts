@@ -1,7 +1,7 @@
 import { SmartAccountClient } from 'permissionless';
 import { PublicClient } from 'viem';
 
-import { PaymasterBundlerABI } from '../_contracts/PaymasterBundlerABI';
+import PaymasterBundlerABI from '../_contracts/PaymasterBundlerABI';
 import { NFTType } from '../types';
 
 export default async function fetchNFTs(smartAccount: SmartAccountClient, client: PublicClient) {
