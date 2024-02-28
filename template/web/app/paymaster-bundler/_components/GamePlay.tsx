@@ -8,7 +8,7 @@ import { PublicClient, encodeFunctionData } from 'viem';
 import { sepolia } from 'viem/chains';
 import Button from '@/components/Button/Button';
 import NextImage from '@/components/NextImage/NextImage';
-import PaymasterBundlerABI from '../_contracts/PaymasterBundlerABI';
+import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
 import { ALL_ITEMS, contractAddress } from '../constants';
@@ -39,6 +39,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
   const { login, authenticated, ready } = usePrivy();
   const [mintedNFT, setMintedNFT] = useState<NFTType | null>(null);
   const [flipped, setFlipped] = useState(false);
+  const contract = usePaymasterBundlerContract();
 
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
@@ -57,7 +58,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
       const randomNumber = getRandomNumber();
 
       const data = encodeFunctionData({
-        abi: PaymasterBundlerABI,
+        abi: contract.abi,
         functionName: 'mintTo',
         args: [smartAccount.account?.address, randomNumber],
       });

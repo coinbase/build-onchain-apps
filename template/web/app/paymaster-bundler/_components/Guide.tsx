@@ -25,7 +25,7 @@ const simpleSmartAccountClient = await signerToSimpleSmartAccount(publicClient, 
 
 const customizationStep = `\`\`\`javascript
 const data = encodeFunctionData({
-  abi: PaymasterBundlerABI,
+  abi: contract.abi,
   functionName: 'mintTo',
   args: [smartAccount.account?.address, randomNumber],
 });
