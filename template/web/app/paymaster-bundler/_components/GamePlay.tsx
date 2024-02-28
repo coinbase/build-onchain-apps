@@ -11,7 +11,7 @@ import NextImage from '@/components/NextImage/NextImage';
 import PaymasterBundlerABI from '../_contracts/PaymasterBundlerABI';
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
-import { ALL_ITEMS } from '../constants';
+import { ALL_ITEMS, contractAddress } from '../constants';
 import { NFTType, OwnedTokensType } from '../types';
 
 type GameplayProps = {
@@ -64,7 +64,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
 
       try {
         await smartAccount.sendTransaction({
-          to: '0x66519FCAee1Ed65bc9e0aCc25cCD900668D3eD49',
+          to: contractAddress,
           data: data,
           value: BigInt(0),
           account: smartAccount.account,
@@ -72,6 +72,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
         });
 
         const tokens = await fetchNFTs(smartAccount, client);
+        if (!tokens) return;
         const tokenMap = createNFTMap(tokens);
 
         setOwnedTokens(tokenMap);
