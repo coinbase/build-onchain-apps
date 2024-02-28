@@ -1,6 +1,6 @@
 import { baseSepolia } from 'viem/chains';
 import { entryPoint } from '../constants';
-import { PaymasterBundlerABI } from './PaymasterBundlerABI';
+import PaymasterBundlerABI from './PaymasterBundlerABI';
 import { usePaymasterBundlerContract } from './usePaymasterBundlerContract';
 
 describe('usePaymasterBundlerContract', () => {
