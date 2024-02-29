@@ -32,7 +32,7 @@ const getRandomNumber = () => {
     randomNumber = 0;
   } else {
     // 75% chance of getting a number between 1 and 3
-    randomNumber = Math.floor(randomValue * 3) + 1;
+    randomNumber = Math.ceil(randomValue * 3) + 1;
   }
   return randomNumber;
 };
