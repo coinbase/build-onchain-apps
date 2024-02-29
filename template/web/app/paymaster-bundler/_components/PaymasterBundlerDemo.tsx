@@ -13,11 +13,12 @@ import { createPublicClient, http } from 'viem';
 import { sepolia } from 'viem/chains'; // Replace this with the chain used by your application
 import createNFTMap from '../_utils/createNFTMap';
 import fetchNFTs from '../_utils/fetchNFTs';
-import { rpcUrl, paymasterUrl, entryPoint, factoryAddress } from '../constants';
+import { rpcUrl, paymasterUrl, entryPoint, factoryAddress, ALL_ITEMS } from '../constants';
 
 import { OwnedTokensType } from '../types';
 import GamePlay from './GamePlay';
 import Header from './Header';
+import Item from './Item';
 import Vault from './Vault';
 
 export default function PaymasterBundlerDemo() {
@@ -29,6 +30,9 @@ export default function PaymasterBundlerDemo() {
   const [privyClient, setPrivyClient] = useState<WalletClient | undefined>();
   const [smartAccount, setSmartAccount] = useState<SmartAccountClient | undefined>();
   const [ownedTokens, setOwnedTokens] = useState<OwnedTokensType>({});
+  const [showSponsoredModal, setShowSponsoredModal] = useState<boolean>(false);
+  const [transactionHash, setTransactionHash] = useState<string>('');
+  const [mintedItem, setMintedItem] = useState<number>(0);
 
   // Fetch the NFTs
   useEffect(() => {
@@ -118,9 +122,55 @@ export default function PaymasterBundlerDemo() {
   return (
     <div className="mb-10 rounded-xl border border-boat-color-palette-line">
       <Header />
-      <div className="lg:flex">
+      <div className="relative lg:flex">
         <Vault ownedTokens={ownedTokens} />
-        <GamePlay setOwnedTokens={setOwnedTokens} smartAccount={smartAccount} client={client} />
+        <GamePlay
+          setOwnedTokens={setOwnedTokens}
+          setShowSponsoredModal={setShowSponsoredModal}
+          setTransactionHash={setTransactionHash}
+          setMintedItem={setMintedItem}
+          smartAccount={smartAccount}
+          client={client}
+        />
+        {showSponsoredModal && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-700 h-700 relative z-10 rounded-2xl border border-gray-600 bg-black p-6 shadow-lg">
+              <button
+                type="button"
+                className="absolute right-3 top-2 text-white"
+                onClick={() => setShowSponsoredModal(false)}
+              >
+                X
+              </button>
+              <div className="mb-5 flex flex-col items-center">
+                <Item
+                  src={ALL_ITEMS[mintedItem].image}
+                  altText={ALL_ITEMS[mintedItem].name}
+                  className="mx-auto my-auto mb-5 max-h-[100px] max-w-[100px]"
+                />
+                <p>{ALL_ITEMS[mintedItem].name}</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="text-sm text-green-400">NFT mint successfully sponsored!</p>
+                <p className="text-sm">{ALL_ITEMS[mintedItem].name} added to your vault.</p>
+                <button
+                  type="button"
+                  className="mt-5 block w-full rounded-full border border-boat-color-orange py-4 hover:bg-gray-800"
+                  onClick={() => window.open(`https://sepolia.basescan.org/tx/${transactionHash}`)}
+                >
+                  <div className="flex justify-center">
+                    <span>View on Basescan</span>
+                    <img
+                      src="/account_abstraction/etherscan.png"
+                      alt="Etherscan"
+                      className="mb-1 ml-2 mt-1 h-5 w-5"
+                    />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

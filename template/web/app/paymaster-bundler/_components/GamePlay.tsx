@@ -16,6 +16,9 @@ import { NFTType, OwnedTokensType } from '../types';
 
 type GameplayProps = {
   setOwnedTokens: Dispatch<SetStateAction<OwnedTokensType>>;
+  setShowSponsoredModal: Dispatch<SetStateAction<boolean>>;
+  setTransactionHash: Dispatch<SetStateAction<string>>;
+  setMintedItem: Dispatch<SetStateAction<number>>;
   smartAccount?: SmartAccountClient;
   client?: PublicClient;
 };
@@ -34,7 +37,14 @@ const getRandomNumber = () => {
   return randomNumber;
 };
 
-export default function GamePlay({ setOwnedTokens, smartAccount, client }: GameplayProps) {
+export default function GamePlay({
+  setOwnedTokens,
+  setShowSponsoredModal,
+  setTransactionHash,
+  setMintedItem,
+  smartAccount,
+  client,
+}: GameplayProps) {
   const [loading, setLoading] = useState(false);
   const { login, authenticated, ready } = usePrivy();
   const [mintedNFT, setMintedNFT] = useState<NFTType | null>(null);
@@ -64,7 +74,7 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
       });
 
       try {
-        await smartAccount.sendTransaction({
+        const txHash = await smartAccount.sendTransaction({
           to: contractAddress,
           data: data,
           value: BigInt(0),
@@ -80,12 +90,15 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
         setLoading(false);
         setMintedNFT(ALL_ITEMS[randomNumber]);
         setFlipped(true);
+        setMintedItem(randomNumber);
+        setTransactionHash(txHash);
+        setShowSponsoredModal(true);
       } catch (e) {
         console.log('Privy: Error sending transaction', e);
         setLoading(false);
       }
     })();
-  }, [smartAccount, client, setOwnedTokens]);
+  }, [smartAccount, client, setOwnedTokens, setShowSponsoredModal]);
 
   const handleRestart = useCallback(() => {
     setMintedNFT(null);
@@ -162,9 +175,9 @@ export default function GamePlay({ setOwnedTokens, smartAccount, client }: Gamep
                     {loading ? (
                       <>
                         <span className="mr-2">
-                          <SymbolIcon width={15} height={15} />
+                          <SymbolIcon width={15} height={15} className="animate-spin" />
                         </span>
-                        <span>Loading</span>
+                        <span>Minting</span>
                       </>
                     ) : (
                       <span>Open box</span>

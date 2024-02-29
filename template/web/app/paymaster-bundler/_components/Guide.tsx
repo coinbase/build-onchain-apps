@@ -90,10 +90,8 @@ export default function Guide() {
             Get started with .25 ETH in free credits:
             <Ul>
               <Li>
-                Navigate to{' '}
-                <A href="https://coinbase.com/cloud/products/base/rpc">
-                  https://coinbase.com/cloud/products/base/rpc
-                </A>
+                Navigate to the{' '}
+                <A href="https://coinbase.com/cloud/products/base/rpc">Base Node homepage</A>
               </Li>
               <Li>Sign up for a Coinbase Cloud account, if you don&apos;t have one already</Li>
               <Li>
@@ -163,11 +161,8 @@ export default function Guide() {
               </Li>
               <Li>
                 In the <code>handleOpenBox</code> callback in <code>Gameplay.tsx</code>, you&apos;ll
-                want to modify these lines.
-                <P>
-                  Replace the <code>encodeFunctionData</code> parameters with the ABI, function
-                  name, and arguments of the contract you&apos;re calling.
-                </P>
+                want to replace the <code>encodeFunctionData</code> parameters with the ABI,
+                function name, and arguments of the contract you&apos;re calling.
               </Li>
               <CodeBlock code={customizationStep} language="javascript" />
               <Li>
