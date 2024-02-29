@@ -17,7 +17,7 @@ export default function NavbarMobile() {
 
   if (isMobileMenuOpen) {
     return (
-      <nav className="mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl sm:max-h-80">
+      <nav className="sm:max-h-300 mx-2 flex flex-col gap-4 rounded-[25px] bg-black bg-opacity-50 p-2 backdrop-blur-2xl">
         <div
           className={[
             'flex flex-1 flex-grow items-center justify-between',
@@ -36,7 +36,7 @@ export default function NavbarMobile() {
             </button>
           </div>
         </div>
-        <div className="overflow-scroll">
+        <div>
           <ul className="mx-2 flex flex-col gap-8">
             <li className="flex">
               <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
