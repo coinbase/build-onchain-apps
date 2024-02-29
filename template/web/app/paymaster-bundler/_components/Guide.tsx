@@ -91,7 +91,9 @@ export default function Guide() {
             <Ul>
               <Li>
                 Navigate to the{' '}
-                <A href="https://coinbase.com/cloud/products/base/rpc">Base Node homepage</A>
+                <A href="https://coinbase.com/cloud/products/base/rpc?utm_source=boat">
+                  Base Node homepage
+                </A>
               </Li>
               <Li>Sign up for a Coinbase Cloud account, if you don&apos;t have one already</Li>
               <Li>
