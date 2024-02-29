@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Avatar, Name } from '@coinbase/onchainkit';
+import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { ExitIcon } from '@radix-ui/react-icons';
 import { useAccount, useDisconnect } from 'wagmi';
 import { getSlicedAddress } from '@/utils/address';

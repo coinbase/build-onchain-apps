@@ -1,4 +1,4 @@
-import { Avatar } from '@coinbase/onchainkit';
+import { Avatar } from '@coinbase/onchainkit/identity';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { clsx } from 'clsx';
 import { useAccount } from 'wagmi';
