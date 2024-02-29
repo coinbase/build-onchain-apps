@@ -37,7 +37,7 @@ export default function NavbarMobile() {
           </div>
         </div>
         <div>
-          <ul className="mx-2 flex flex-col gap-8">
+          <ul className="mx-2 flex flex-col gap-4">
             <li className="flex">
               <NavbarLink href="https://github.com/coinbase/build-onchain-apps" target="_blank">
                 <GitHubLogoIcon width="24" height="24" />
@@ -63,7 +63,7 @@ export default function NavbarMobile() {
                     <NavigationMenu.Content
                       className={clsx(
                         'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
-                        'my-4 rounded-lg p-6 shadow backdrop-blur-2xl',
+                        'mt-4 rounded-lg p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />
@@ -74,7 +74,7 @@ export default function NavbarMobile() {
               </NavigationMenu.Root>
             </li>
           </ul>
-          <div className="mx-2">
+          <div className="mx-2 mt-4">
             <AccountConnect />
           </div>
         </div>

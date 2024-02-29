@@ -4,6 +4,10 @@ import { clsx } from 'clsx';
 import { useAccount } from 'wagmi';
 import { AccountInfoPanel } from './AccountInfoPanel';
 
+const DropdownMenuContentStyle = {
+  marginTop: '-22px',
+};
+
 export function AccountDropdown() {
   const { address } = useAccount();
 
@@ -24,8 +28,9 @@ export function AccountDropdown() {
           sideOffset={40}
           className={clsx(
             'h-42 inline-flex w-60 flex-col items-start justify-start',
-            'rounded-lg bg-neutral-900 bg-opacity-90 px-6 py-2 shadow backdrop-blur-2xl',
+            'rounded-lg bg-neutral-900 bg-opacity-90 px-6 pb-2 pt-6 shadow backdrop-blur-2xl',
           )}
+          style={DropdownMenuContentStyle}
         >
           <AccountInfoPanel />
         </DropdownMenu.Content>
