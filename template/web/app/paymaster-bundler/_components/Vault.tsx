@@ -13,7 +13,7 @@ export default function Vault({ ownedTokens }: VaultProps) {
     <div className="w-full rounded-bl-xl bg-boat-color-gray-900 px-8 py-10">
       <h2 className={clsx('mb-5 text-2xl', roboto.className)}>VAULT</h2>
 
-      <h3 className={clsx('mb-1 text-lg', roboto.className)}>Weapons</h3>
+      <h3 className={clsx('mb-1 text-lg', roboto.className)}>Items</h3>
       <div className="border border-x-0 border-t-0 border-boat-gold" />
 
       <div className="my-4 flex gap-4">
