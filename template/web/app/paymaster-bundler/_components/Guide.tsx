@@ -79,7 +79,8 @@ export default function Guide() {
             <P>
               If you haven&apos;t done so already, check the{' '}
               <A href="https://buildonchainapps.xyz/">Build Onchain Apps</A> homepage to get the
-              repo running locally.
+              repo running locally. You&apos;ll also need to complete the setup steps below to
+              render the application locally.
             </P>
           </Section>
           <Section id="sign-up">
