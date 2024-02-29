@@ -1,5 +1,10 @@
 import { useCallback, useState } from 'react';
-import { Cross1Icon, GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import {
+  ChevronDownIcon,
+  Cross1Icon,
+  GitHubLogoIcon,
+  HamburgerMenuIcon,
+} from '@radix-ui/react-icons';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import AccountConnect from './AccountConnect';
@@ -45,19 +50,24 @@ export default function NavbarMobile() {
               <NavigationMenu.Root className="relative flex flex-grow flex-col">
                 <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
                   <NavigationMenu.Item>
-                    <div className="group flex items-center justify-start gap-1">
+                    <NavigationMenu.Trigger className="group flex items-center justify-start gap-1">
                       <span className="font-robotoMono text-center text-base font-normal text-white">
                         Experiences
                       </span>
-                    </div>
-                    <div
+                      <ChevronDownIcon
+                        className="transform transition duration-200 ease-in-out group-data-[state=open]:rotate-180"
+                        width="16"
+                        height="16"
+                      />
+                    </NavigationMenu.Trigger>
+                    <NavigationMenu.Content
                       className={clsx(
                         'h-38 inline-flex flex-grow flex-col items-start justify-start gap-6',
                         'my-4 rounded-lg p-6 shadow backdrop-blur-2xl',
                       )}
                     >
                       <Experiences />
-                    </div>
+                    </NavigationMenu.Content>
                   </NavigationMenu.Item>
                 </NavigationMenu.List>
                 <NavigationMenu.Viewport className={clsx('flex flex-col justify-center')} />
