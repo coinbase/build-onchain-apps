@@ -2,62 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Abi, Address } from 'abitype';
 import { Chain } from 'viem/chains';
 import { useAccount, usePublicClient } from 'wagmi';
-import { ipfsToHTTP } from '@/utils/ipfs';
-
-// Minimal ABI with contractURI view function
-const AbiWithContractURI = [
-  {
-    inputs: [],
-    name: 'contractURI',
-    outputs: [{ internalType: 'string', name: '', type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const;
-
-// Minimal ABI with uri view function
-const AbiWithUri = [
-  {
-    inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
-    name: 'uri',
-    outputs: [{ internalType: 'string', name: '', type: 'string' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const;
-
-/**
- * There is some differences in URI standards between ERC721 and 1155, handle those in this component.
- */
-const uriFunctionType = {
-  uri: 'uri',
-  contractURI: 'contractURI',
-} as const;
-
-const getIsAbiWithContractURIViewFunction = (abi: Abi) =>
-  !!abi.find((el) => el.type === 'function' && el.name === uriFunctionType.contractURI);
-const getIsAbiWithUriViewFunction = (abi: Abi) =>
-  !!abi.find((el) => el.type === 'function' && el.name === uriFunctionType.uri);
-
-const isValidAbi = (abi: Abi) =>
-  getIsAbiWithContractURIViewFunction(abi) || getIsAbiWithUriViewFunction(abi);
-
-type JsonMetadata = {
-  name: string | undefined;
-  description: string | undefined;
-  image: string | undefined;
-};
-
-function tryParseMetadataJson(str: string, gatewayHostname?: string): JsonMetadata | undefined {
-  try {
-    const json = JSON.parse(str) as JsonMetadata;
-    return {
-      name: json.name,
-      description: json.description,
-      image: json.image ? ipfsToHTTP(json.image, gatewayHostname) : undefined,
-    };
-  } catch {}
-}
+import { getCollectionMetadataAction, JsonMetadata } from '@/actions/get-collection-metadata';
 
 type Props = {
   enabled: boolean;
@@ -91,52 +36,14 @@ export function useCollectionMetadata({
   const chainIdFromArgumentOrConnectedWallet = chainId ?? chain?.id;
   const publicClient = usePublicClient({ chainId: chainIdFromArgumentOrConnectedWallet });
 
-  //TODO: kinds of a hack, is there a more prescriptive way we can do this lookup?
-  const isAbiWithContractURIViewFunction = getIsAbiWithContractURIViewFunction(abi);
-  const contractMetadataFunctionName = isAbiWithContractURIViewFunction
-    ? uriFunctionType.contractURI
-    : uriFunctionType.uri;
-
-  return useQuery({
+  return useQuery<JsonMetadata>({
     queryKey: ['useCollectionMetadata', address, chainIdFromArgumentOrConnectedWallet],
     queryFn: async () => {
       if (!publicClient || !address) {
         throw new Error('Public client not available or address not provided');
       }
-
-      if (!isValidAbi(abi)) {
-        throw new Error('ABI does not contain a valid function to get contract metadata uri');
-      }
-
-      const contractURI = await publicClient?.readContract({
-        abi: isAbiWithContractURIViewFunction ? AbiWithContractURI : AbiWithUri,
-        // TODO: We should not hack a specific token here
-        args: isAbiWithContractURIViewFunction ? [] : [BigInt(1)],
-        functionName: contractMetadataFunctionName,
-        address,
-      });
-
-      /**
-       * Contract URIs can either be hosted externally (e.g. IPFS or HTTP) or stored as data within the contract itself as json.
-       * While this is not defined in https://datatracker.ietf.org/doc/html/rfc3986#section-1.1.2 it is a common
-       * practice out in the wild.
-       * TODO: Also handle base64 encoded data i.e. `window.atob(str.split(';base64,')[1] || '')`
-       */
-      const jsonParsedMetadata = tryParseMetadataJson(contractURI, gatewayHostname);
-      if (jsonParsedMetadata) {
-        return jsonParsedMetadata;
-      } else {
-        const response = await fetch(ipfsToHTTP(contractURI, gatewayHostname));
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        const json = (await response.json()) as JsonMetadata;
-        return {
-          name: json.name,
-          description: json.description,
-          image: ipfsToHTTP(json.image ?? '', gatewayHostname),
-        };
-      }
+      // eslint-disable-next-line @typescript-eslint/return-await
+      return await getCollectionMetadataAction({ address, abi, publicClient, gatewayHostname });
     },
     refetchOnWindowFocus: false,
     enabled: enabled && !!chainIdFromArgumentOrConnectedWallet,
