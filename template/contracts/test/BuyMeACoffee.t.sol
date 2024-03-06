@@ -46,7 +46,7 @@ contract BuyMeACoffeeTest is Test {
     function testPaging() public {
         uint256 amtToAdd = 100;
         for (uint256 i = 0; i < amtToAdd; i++) {
-            buyMeACoffee.buyCoffee{value: 0.0001 ether}(1, "");
+            buyMeACoffee.buyCoffee{value: 0.0001 ether}(1, Strings.toString(i));
         }
         for (uint256 i = 0; i < amtToAdd; i++) {
             Memo[] memory memos = buyMeACoffee.getMemos(i, 1);
@@ -82,6 +82,12 @@ contract BuyMeACoffeeTest is Test {
 
         vm.expectRevert();
         Memo[] memory memos = buyMeACoffee.getMemos(15, 10);
+    }
+
+    function testSetPriceForCoffee() public {
+        buyMeACoffee.setPriceForCoffee(0.0002 ether);
+        buyMeACoffee.buyCoffee{value: 0.0002 ether}(numCoffees, message);
+        assertEq(buyMeACoffee.getMemos(0, 10).length, 1);
     }
 
     /**
