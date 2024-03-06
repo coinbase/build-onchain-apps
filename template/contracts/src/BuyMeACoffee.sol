@@ -45,16 +45,11 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(
-        address indexed userAddress,
-        uint256 time,
-        uint256 numCoffees,
-        string message
-    );
+    event NewMemo(address indexed userAddress, uint256 time, uint256 numCoffees, string message);
 
     constructor() {
         owner = payable(msg.sender);
-        price = 0.0001 ether;
+        price = 0.00004 ether;
     }
 
     /**
@@ -66,10 +61,7 @@ contract BuyMeACoffee {
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(
-        uint256 numCoffees,
-        string calldata message
-    ) public payable {
+    function buyCoffee(uint256 numCoffees, string calldata message) public payable {
         if (msg.value < price * numCoffees) {
             revert InsufficientFunds();
         }
