@@ -3,7 +3,7 @@ import { Abi, Address } from 'abitype';
 import { PublicClient } from 'viem';
 import { ipfsToHTTP } from '@/utils/ipfs';
 
-const AbiWithContractURI = [
+const AbiFunctionContractURI = [
   {
     inputs: [],
     name: 'contractURI',
@@ -14,7 +14,7 @@ const AbiWithContractURI = [
 ] as const;
 
 // Minimal ABI with uri view function
-const AbiWithUri = [
+const AbiFunctionWithUri = [
   {
     inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
     name: 'uri',
@@ -35,11 +35,11 @@ const uriFunctionType = {
 const getIsAbiWithContractURIViewFunction = (abi: Abi) =>
   !!abi.find(
     (el) => el.type === 'function' && el.name === uriFunctionType.contractURI,
-  ) as unknown as typeof AbiWithContractURI;
+  ) as unknown as typeof AbiFunctionContractURI;
 const getIsAbiWithUriViewFunction = (abi: Abi) =>
   !!abi.find(
     (el) => el.type === 'function' && el.name === uriFunctionType.uri,
-  ) as unknown as typeof AbiWithUri;
+  ) as unknown as typeof AbiFunctionWithUri;
 
 const isValidAbi = (abi: Abi) =>
   getIsAbiWithContractURIViewFunction(abi) || getIsAbiWithUriViewFunction(abi);
@@ -89,13 +89,13 @@ export const getCollectionMetadataAction = async ({
 
   const contractURI = isAbiWithContractURIViewFunction
     ? await publicClient?.readContract({
-        abi: AbiWithContractURI,
+        abi: AbiFunctionContractURI,
         args: [],
         functionName: uriFunctionType.contractURI,
         address,
       })
     : await publicClient?.readContract({
-        abi: AbiWithUri,
+        abi: AbiFunctionWithUri,
         args: [BigInt(1)],
         functionName: uriFunctionType.uri,
         address,
