@@ -8,8 +8,6 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 contract BuyMeACoffeeTest is Test {
     BuyMeACoffee public buyMeACoffee;
     uint256 numCoffees = 1;
-    string userName = "user";
-    string twitterHandle = "testHandle";
     string message = "message";
 
     function setUp() public {
@@ -17,23 +15,22 @@ contract BuyMeACoffeeTest is Test {
     }
 
     function testGetMemos() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, message);
         assertEq(buyMeACoffee.getMemos(0, 10).length, 1);
         Memo memory memo = buyMeACoffee.getMemos(0, 10)[0];
-        assertEq(memo.userName, userName);
         assertEq(memo.message, message);
     }
 
     function testRemoveMemo() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, message);
         assertEq(buyMeACoffee.getMemos(0, 10).length, 1);
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, "test", "testHandle", "testMessage");
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, "testMessage");
         buyMeACoffee.removeMemo(0);
-        assertEq(buyMeACoffee.getMemos(0, 10)[0].userName, "test");
+        assertEq(buyMeACoffee.getMemos(0, 10)[0].message, "testMessage");
     }
 
     function testModifyMemoMessage() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, message);
         assertEq(buyMeACoffee.getMemos(0, 10).length, 1);
         buyMeACoffee.modifyMemoMessage(0, "new message");
         Memo memory memo = buyMeACoffee.getMemos(0, 10)[0];
@@ -41,7 +38,7 @@ contract BuyMeACoffeeTest is Test {
     }
 
     function testWithdrawTips() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, message);
         buyMeACoffee.withdrawTips();
         assertEq(address(buyMeACoffee).balance, 0);
     }
@@ -49,12 +46,11 @@ contract BuyMeACoffeeTest is Test {
     function testPaging() public {
         uint256 amtToAdd = 100;
         for (uint256 i = 0; i < amtToAdd; i++) {
-            buyMeACoffee.buyCoffee{value: 0.0001 ether}(1, Strings.toString(i), "", "");
+            buyMeACoffee.buyCoffee{value: 0.0001 ether}(1, Strings.toString(i));
         }
         for (uint256 i = 0; i < amtToAdd; i++) {
             Memo[] memory memos = buyMeACoffee.getMemos(i, 1);
             assertEq(memos.length, 1);
-            assertEq(memos[0].userName, Strings.toString(i));
         }
     }
 
@@ -69,23 +65,11 @@ contract BuyMeACoffeeTest is Test {
 
     function testMaxMemoMessageSize() public {
         vm.expectRevert();
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, generateLongString(1026));
-    }
-
-    function testMaxMemoUsernameSize() public {
-        vm.expectRevert();
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, generateLongString(76), twitterHandle, message);
-    }
-
-    function testMaxMemoTwitterSize() public {
-        vm.expectRevert();
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, generateLongString(76), message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, generateLongString(1026));
     }
 
     function testMaxMemoAllSizesAtMaximumShouldAccept() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(
-            numCoffees, generateLongString(75), generateLongString(75), generateLongString(1024)
-        );
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, generateLongString(1024));
     }
 
     function testEmptyMemoNoError() public {
@@ -94,10 +78,16 @@ contract BuyMeACoffeeTest is Test {
     }
 
     function testInvalidIndexErrors() public {
-        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, userName, twitterHandle, message);
+        buyMeACoffee.buyCoffee{value: 0.0001 ether}(numCoffees, message);
 
         vm.expectRevert();
         Memo[] memory memos = buyMeACoffee.getMemos(15, 10);
+    }
+
+    function testSetPriceForCoffee() public {
+        buyMeACoffee.setPriceForCoffee(0.0002 ether);
+        buyMeACoffee.buyCoffee{value: 0.0002 ether}(numCoffees, message);
+        assertEq(buyMeACoffee.getMemos(0, 10).length, 1);
     }
 
     /**
