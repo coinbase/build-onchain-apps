@@ -37,6 +37,7 @@ struct Memo {
  */
 contract BuyMeACoffee {
     address payable public owner;
+    uint256 public price;
     Memo[] public memos;
 
     error InsufficientFunds();
@@ -53,6 +54,7 @@ contract BuyMeACoffee {
 
     constructor() {
         owner = payable(msg.sender);
+        price = 0.0001 ether;
     }
 
     /**
@@ -66,7 +68,6 @@ contract BuyMeACoffee {
      */
     function buyCoffee(
         uint256 numCoffees,
-        uint256 price,
         string calldata message
     ) public payable {
         if (msg.value < price * numCoffees) {
@@ -141,6 +142,17 @@ contract BuyMeACoffee {
 
         (bool sent,) = owner.call{value: address(this).balance}("");
         require(sent, "Failed to send Ether");
+    }
+
+    /**
+     * @dev Function to get the price of a coffee
+     */
+    function setPriceForCoffee(uint256 _price) public {
+        if (msg.sender != owner) {
+            revert OnlyOwner();
+        }
+
+        price = _price;
     }
 
     /**
