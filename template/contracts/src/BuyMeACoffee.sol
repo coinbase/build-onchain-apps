@@ -26,8 +26,6 @@ pragma solidity 0.8.23;
  */
 struct Memo {
     uint256 numCoffees;
-    string userName;
-    string twitterHandle;
     string message;
     uint256 time;
     address userAddress;
@@ -39,7 +37,6 @@ struct Memo {
  */
 contract BuyMeACoffee {
     address payable public owner;
-    uint256 public price;
     Memo[] public memos;
 
     error InsufficientFunds();
@@ -51,14 +48,11 @@ contract BuyMeACoffee {
         address indexed userAddress,
         uint256 time,
         uint256 numCoffees,
-        string userName,
-        string twitterHandle,
         string message
     );
 
     constructor() {
         owner = payable(msg.sender);
-        price = 0.0001 ether;
     }
 
     /**
@@ -67,15 +61,12 @@ contract BuyMeACoffee {
 
     /**
      * @dev Function to buy a coffee
-     * @param  userName The name of the user
-     * @param  twitterHandle The Twitter handle of the user
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
     function buyCoffee(
         uint256 numCoffees,
-        string calldata userName,
-        string calldata twitterHandle,
+        uint256 price,
         string calldata message
     ) public payable {
         if (msg.value < price * numCoffees) {
@@ -84,17 +75,17 @@ contract BuyMeACoffee {
 
         emit BuyMeACoffeeEvent(msg.sender, msg.value);
 
-        if (bytes(userName).length == 0 && bytes(message).length == 0) {
-            revert InvalidArguments("Invalid userName or message");
+        if (bytes(message).length == 0) {
+            revert InvalidArguments("Invalid message");
         }
 
-        if (bytes(userName).length > 75 || bytes(twitterHandle).length > 75 || bytes(message).length > 1024) {
+        if (bytes(message).length > 1024) {
             revert InvalidArguments("Input parameter exceeds max length");
         }
 
-        memos.push(Memo(numCoffees, userName, twitterHandle, message, block.timestamp, msg.sender));
+        memos.push(Memo(numCoffees, message, block.timestamp, msg.sender));
 
-        emit NewMemo(msg.sender, block.timestamp, numCoffees, userName, twitterHandle, message);
+        emit NewMemo(msg.sender, block.timestamp, numCoffees, message);
     }
 
     /**
