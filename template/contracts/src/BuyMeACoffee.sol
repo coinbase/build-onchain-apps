@@ -26,8 +26,6 @@ pragma solidity 0.8.23;
  */
 struct Memo {
     uint256 numCoffees;
-    string userName;
-    string twitterHandle;
     string message;
     uint256 time;
     address userAddress;
@@ -47,18 +45,11 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(
-        address indexed userAddress,
-        uint256 time,
-        uint256 numCoffees,
-        string userName,
-        string twitterHandle,
-        string message
-    );
+    event NewMemo(address indexed userAddress, uint256 time, uint256 numCoffees, string message);
 
     constructor() {
         owner = payable(msg.sender);
-        price = 0.0001 ether;
+        price = 0.00004 ether;
     }
 
     /**
@@ -67,34 +58,27 @@ contract BuyMeACoffee {
 
     /**
      * @dev Function to buy a coffee
-     * @param  userName The name of the user
-     * @param  twitterHandle The Twitter handle of the user
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(
-        uint256 numCoffees,
-        string calldata userName,
-        string calldata twitterHandle,
-        string calldata message
-    ) public payable {
+    function buyCoffee(uint256 numCoffees, string calldata message) public payable {
         if (msg.value < price * numCoffees) {
             revert InsufficientFunds();
         }
 
         emit BuyMeACoffeeEvent(msg.sender, msg.value);
 
-        if (bytes(userName).length == 0 && bytes(message).length == 0) {
-            revert InvalidArguments("Invalid userName or message");
+        if (bytes(message).length == 0) {
+            revert InvalidArguments("Invalid message");
         }
 
-        if (bytes(userName).length > 75 || bytes(twitterHandle).length > 75 || bytes(message).length > 1024) {
+        if (bytes(message).length > 1024) {
             revert InvalidArguments("Input parameter exceeds max length");
         }
 
-        memos.push(Memo(numCoffees, userName, twitterHandle, message, block.timestamp, msg.sender));
+        memos.push(Memo(numCoffees, message, block.timestamp, msg.sender));
 
-        emit NewMemo(msg.sender, block.timestamp, numCoffees, userName, twitterHandle, message);
+        emit NewMemo(msg.sender, block.timestamp, numCoffees, message);
     }
 
     /**
@@ -150,6 +134,17 @@ contract BuyMeACoffee {
 
         (bool sent,) = owner.call{value: address(this).balance}("");
         require(sent, "Failed to send Ether");
+    }
+
+    /**
+     * @dev Function to get the price of a coffee
+     */
+    function setPriceForCoffee(uint256 _price) public {
+        if (msg.sender != owner) {
+            revert OnlyOwner();
+        }
+
+        price = _price;
     }
 
     /**
