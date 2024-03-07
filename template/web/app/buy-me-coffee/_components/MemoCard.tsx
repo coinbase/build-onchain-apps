@@ -1,4 +1,4 @@
-import { Avatar, Name } from '@coinbase/onchainkit';
+import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { clsx } from 'clsx';
 import { convertBigIntTimestampToDate } from '@/utils/timestamp';
 import type { CoffeeMemo } from './types';
