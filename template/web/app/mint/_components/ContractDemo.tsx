@@ -37,6 +37,7 @@ export default function MintContractDemo() {
       enabled: onCorrectNetwork,
       address: contract.status === 'ready' ? contract.address : undefined,
       abi: contract.abi,
+      chainId: EXPECTED_CHAIN.id,
     });
 
   const { name: collectionName, description, image: collectionImageUrl } = collectionMetadata ?? {};
