@@ -6,7 +6,7 @@ import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
 import AccountConnect from '@/components/layout/header/AccountConnect';
 import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
-import { useCollectionMetadata } from '@/hooks/useCollectionMetadata';
+import { useERC1155TokenMetadata } from '@/hooks/useERC1155TokenMetadata';
 import { getChainsForEnvironment } from '@/store/supportedChains';
 import { getSlicedAddress } from '@/utils/address';
 import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
@@ -33,7 +33,7 @@ export default function MintContractDemo() {
   const onCorrectNetwork = chain?.id === EXPECTED_CHAIN.id;
 
   const { data: collectionMetadata, isLoading: isLoadingCollectionMetadata } =
-    useCollectionMetadata({
+    useERC1155TokenMetadata({
       enabled: onCorrectNetwork,
       address: contract.status === 'ready' ? contract.address : undefined,
       abi: contract.abi,
