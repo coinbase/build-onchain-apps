@@ -34,33 +34,29 @@ const uriFunctionType = {
 
 // Returns true if ABI has a contractURI view function
 const getIsAbiWithContractURIViewFunction = (abi: Abi) => {
-  const contractURIAbiFunction = abi.find(
-    (abiComponent) => {
-      return abiComponent.type === 'function' && abiComponent.name === uriFunctionType.contractURI;
-    },
-  ) as unknown as typeof AbiFunctionContractURI;
+  const contractURIAbiFunction = abi.find((abiComponent) => {
+    return abiComponent.type === 'function' && abiComponent.name === uriFunctionType.contractURI;
+  }) as unknown as typeof AbiFunctionContractURI;
 
   return !!contractURIAbiFunction;
-}
+};
 
 // Returns true if ABI has a uri view function
 const getIsAbiWithUriViewFunction = (abi: Abi) => {
-  const uriAbiFunction = abi.find(
-    (abiComponent) => {
-      return abiComponent.type === 'function' && abiComponent.name === uriFunctionType.uri
-    }
-  ) as unknown as typeof AbiFunctionWithUri;
+  const uriAbiFunction = abi.find((abiComponent) => {
+    return abiComponent.type === 'function' && abiComponent.name === uriFunctionType.uri;
+  }) as unknown as typeof AbiFunctionWithUri;
 
   return !!uriAbiFunction;
-}
+};
 
 // Return true if the ABI has either a contractURI or uri view function
 const isValidAbi = (abi: Abi) => {
-  const hasContractUriAbiFunction = getIsAbiWithContractURIViewFunction(abi)
+  const hasContractUriAbiFunction = getIsAbiWithContractURIViewFunction(abi);
   const hasUriAbiFunction = getIsAbiWithUriViewFunction(abi);
 
   return hasContractUriAbiFunction || hasUriAbiFunction;
-}
+};
 
 export type JsonMetadata = {
   name: string | undefined;
