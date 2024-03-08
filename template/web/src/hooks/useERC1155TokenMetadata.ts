@@ -67,7 +67,7 @@ export function useERC1155TokenMetadata({
       }
 
       if (!getIsAbiWithUriViewFunction(abi)) {
-        throw new Error('ABI does not have a contractURI view function');
+        throw new Error('ABI does not have a `uri` view function');
       }
 
       const uri = await publicClient.readContract({
