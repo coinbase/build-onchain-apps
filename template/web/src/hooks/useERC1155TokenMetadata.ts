@@ -71,7 +71,7 @@ export function useERC1155TokenMetadata({
       }
 
       const uri = await publicClient.readContract({
-        abi: minimalERC1155Abi,
+        abi: abi as typeof minimalERC1155Abi,
         functionName: 'uri',
         address,
         args: [tokenId],
