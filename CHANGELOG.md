@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.26.0
+
+### Minor Changes
+
+- 18c725a: **fix** - add new env variables for template/web
+
 ## 0.25.0
 
 ### Minor Changes
