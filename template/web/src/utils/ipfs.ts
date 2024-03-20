@@ -8,6 +8,9 @@
  * embedded in the ipfs URI.
  */
 export const ipfsToHTTP = function (ipfsURI: string, gateway = 'ipfs.io') {
+  if (ipfsURI.startsWith('http')) {
+    return ipfsURI.replace('http://', 'https://');
+  }
   // IPNS Name is a Multihash of a serialized PublicKey.
   const cid = ipfsURI.replace('ipfs://', '');
 
