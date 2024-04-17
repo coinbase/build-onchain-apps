@@ -98,7 +98,15 @@ export default function GamePlay({
         setLoading(false);
       }
     })();
-  }, [smartAccount, client, setOwnedTokens, setShowSponsoredModal]);
+  }, [
+    smartAccount,
+    client,
+    setOwnedTokens,
+    setShowSponsoredModal,
+    contract.abi,
+    setMintedItem,
+    setTransactionHash,
+  ]);
 
   const handleRestart = useCallback(() => {
     setMintedNFT(null);
