@@ -4,7 +4,7 @@ out = "out"
 test = "test"
 libs = ["lib"]
 fs_permissions = [{ access = "read", path = "./" }]
-solc = "0.8.23"
+solc = "0.8.24"
 
 [rpc_endpoints]
 base = "https://mainnet.base.org"
