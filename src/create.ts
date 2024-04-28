@@ -12,7 +12,7 @@ import { outro } from './create/outro';
 export const createProject = async () => {
   await checkMinimumRequirements();
 
-  prompts.intro('Welcome aboard to BOAT (Build Onchain Apps Toolkit)! ⛵️');
+  prompts.intro('Welcome aboard to BOAT (Build Onchain Apps Template)! ⛵️');
 
   const { project, envVars } = await getUserInput();
 

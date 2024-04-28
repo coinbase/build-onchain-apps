@@ -1,4 +1,4 @@
-# Build Onchain Apps Toolkit
+# Build Onchain Apps Template
 
 This project has two main folders:
 

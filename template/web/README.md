@@ -1,4 +1,4 @@
-# Build Onchain Apps Toolkit Experiences
+# Build Onchain Apps Template experiences
 
 ## Getting Started
 

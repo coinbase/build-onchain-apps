@@ -3,7 +3,7 @@ import { generateMetadata } from '../generateMetadata';
 describe('generateMetadata', () => {
   it('should set metadataBase default', () => {
     const metadata = generateMetadata({
-      title: 'Build Onchain Apps Toolkit',
+      title: 'Build Onchain Apps Template',
       description: 'Build Onchain Applications with the best consumer experience in a few minutes.',
       images: 'themes.png',
       pathname: '',
@@ -25,7 +25,7 @@ describe('generateMetadata', () => {
 
         const { generateMetadata: generateMetadata2 } = await import('../generateMetadata');
         const metadata = generateMetadata2({
-          title: 'Build Onchain Apps Toolkit',
+          title: 'Build Onchain Apps Template',
           description:
             'Build Onchain Applications with the best consumer experience in a few minutes.',
           images: 'themes.png',
