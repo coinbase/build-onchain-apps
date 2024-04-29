@@ -7,6 +7,7 @@ export function createWagmiConfig() {
     chains: [baseSepolia],
     connectors: [
       coinbaseWallet({
+        appChainIds: [baseSepolia.id],
         appName: 'buildonchainapps',
       }),
     ],
