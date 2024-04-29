@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "0.13.4",
-    "@coinbase/wallet-sdk": "^3.9.1",
+    "@coinbase/wallet-sdk": "4.0.0-beta.12",
     "@farcaster/hub-nodejs": "^0.11.9",
     "@privy-io/react-auth": "^1.56.2",
     "@radix-ui/react-dropdown-menu": "^2.0.6",

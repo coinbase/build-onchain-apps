@@ -8,6 +8,7 @@ import {
   updatePackageJson,
   removeDownloadedApps,
   APPS_ENGINE_DIR,
+  renameDownloadedFile,
 } from '../utils/apps';
 import { experiences } from './experiences';
 
@@ -139,6 +140,14 @@ export async function setupProject(projectDir: string, project) {
       );
 
       generateNavbarExperiencesList(projectDir, selectedExperiences);
+    }
+
+    if (project.pickSmartWallet) {
+      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
+    } else {
+      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
+      const newFilename = projectDir + '/web/src/store/createWagmiConfig.ts';
+      renameDownloadedFile(projectDir + '/web/src/store/createWagmiConfigWithRK.ts', newFilename);
     }
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });

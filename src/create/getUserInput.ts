@@ -25,6 +25,12 @@ export async function getUserInput() {
           },
         });
       },
+      pickSmartWallet: () => {
+        return prompts.confirm({
+          message: 'Do you want to use Smart Wallet?',
+          initialValue: true,
+        });
+      },
       selectedModules: () => {
         return prompts.multiselect({
           message:
