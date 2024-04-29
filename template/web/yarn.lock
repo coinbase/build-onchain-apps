@@ -1524,7 +1524,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
     "@coinbase/onchainkit": "npm:0.13.4"
-    "@coinbase/wallet-sdk": "npm:4.0.0-beta.12"
+    "@coinbase/wallet-sdk": "npm:4.0.0-rc.0"
     "@farcaster/hub-nodejs": "npm:^0.11.9"
     "@jest/globals": "npm:^29.7.0"
     "@privy-io/react-auth": "npm:^1.56.2"
@@ -1659,9 +1659,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coinbase/wallet-sdk@npm:4.0.0-beta.12":
-  version: 4.0.0-beta.12
-  resolution: "@coinbase/wallet-sdk@npm:4.0.0-beta.12"
+"@coinbase/wallet-sdk@npm:4.0.0-rc.0":
+  version: 4.0.0-rc.0
+  resolution: "@coinbase/wallet-sdk@npm:4.0.0-rc.0"
   dependencies:
     buffer: "npm:^6.0.3"
     clsx: "npm:^1.2.1"
@@ -1669,7 +1669,7 @@ __metadata:
     keccak: "npm:^3.0.3"
     preact: "npm:^10.16.0"
     sha.js: "npm:^2.4.11"
-  checksum: 10c0/17f1edba3f04035bc796a1a976355ff7c0926d1e0e681db740f8c26e1bafe4e37104a879c0bae1c8e69740c64ae3da04abc9a762c313dab0f4fd38757b54972e
+  checksum: 10c0/74da37efc7719d0d3587f84328077450cbfa18c81e53c68b8f75bc7736935b5455dec678ac53df542438c87b775e67a6968fd0d69fb454f31708a280ba096a3d
   languageName: node
   linkType: hard
 
