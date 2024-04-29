@@ -15,10 +15,10 @@ export const createProject = async () => {
   prompts.intro('Welcome aboard to BOAT (Build Onchain Apps Template)! ⛵️');
 
   const { project, envVars } = await getUserInput();
-
+  
   const projectDir = getProjectDir(project.name);
   checkProjectDir(projectDir);
-
+  
   await setupProject(projectDir, project);
 
   setupEnvFiles(projectDir, envVars);

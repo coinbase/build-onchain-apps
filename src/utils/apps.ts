@@ -17,6 +17,14 @@ export async function removeDownloadedApps(app: string) {
   }
 }
 
+export async function renameDownloadedFile(oldName: string, newName: string) {
+  try {
+    fs.renameSync(oldName, newName);
+  } catch (e) {
+    console.error('Error while renaming directories:', e);
+  }
+}
+
 export const updatePackageJson = (
   projectDir: string,
   projectName: string
