@@ -12,15 +12,17 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      
+      - name: Setup
+        uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+      
       - name: App Install dependencies
         working-directory: ./template/web
-        run: npm install
+        run: yarn --immutable
+      
       - name: App Test Build
         working-directory: ./template/web
         # When fails, please check your build
