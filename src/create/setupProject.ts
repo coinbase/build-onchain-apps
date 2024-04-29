@@ -143,7 +143,7 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (project.pickSmartWallet) {
-      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
+      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfigWithRK.ts');
     } else {
       removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
       const newFilename = projectDir + '/web/src/store/createWagmiConfig.ts';

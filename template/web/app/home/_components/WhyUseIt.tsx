@@ -33,7 +33,8 @@ export default function HomeMain() {
             <A href="https://book.getfoundry.sh/reference/anvil/">Anvil</A>
           </ListItem>
           <ListItem>
-            Wallet connect integration with <A href="https://www.rainbowkit.com/">RainbowKit</A>
+            Wallet connect integration with{' '}
+            <A href="https://www.coinbase.com/wallet/smart-wallet">Smart Wallet</A>
           </ListItem>
           <ListItem>
             Live examples and documentation for web3 experiences with{' '}
