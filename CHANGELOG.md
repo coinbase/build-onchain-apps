@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.27.0
+
+### Minor Changes
+
+- c821e67: **feat**: added CDP (Coinbase Developer Portal) Node as RPC URL. You can learn more about this at https://www.coinbase.com/developer-platform/products/base-node
+
 ## 0.26.0
 
 ### Minor Changes
