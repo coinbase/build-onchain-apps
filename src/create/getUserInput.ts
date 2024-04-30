@@ -75,10 +75,12 @@ export async function getUserInput() {
         rpcUrl: () => {
           return prompts.text({
             message: 'Base RPC URL [required]',
-            placeholder: 'Visit https://portal.cdp.coinbase.com/products/base',
+            placeholder:
+              'Visit https://www.coinbase.com/developer-platform/products/base-node',
             validate: (value) => {
               if (value.length === 0) return;
-              if (value.length < 79) return 'RPC must be at least 79 characters';
+              if (value.length < 79)
+                return 'RPC must be at least 79 characters';
             },
           });
         },
