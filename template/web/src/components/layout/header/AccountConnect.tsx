@@ -16,6 +16,8 @@ function AccountConnect() {
   const connector = connectors[0];
   const chainId = useChainId();
 
+  console.log('Account Status:', account.status);
+
   return (
     <div
       className="flex flex-grow"
