@@ -2,10 +2,14 @@
 
 ## Getting Started
 
-#### Step 1: Obtain Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
+#### Step 1: Setup Environment Variables
+
+- Obtain the Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
+- Obtain a Base RPC URL from [Coinbase Developer Platform](https://portal.cdp.coinbase.com/products/base) and assign to the `.env.local` file
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
+NEXT_PUBLIC_RPC_URL=ADD_RPC_URL_HERE
 ```
 
 #### Step 2: Install and Run your onchain app

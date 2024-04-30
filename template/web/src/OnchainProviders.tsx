@@ -11,7 +11,14 @@ type Props = { children: ReactNode };
 
 const queryClient = new QueryClient();
 
-const wagmiConfig = createWagmiConfig();
+const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL ?? '';
+if (!rpcUrl) {
+  const rpcErrMessage =
+    'To connect to the blockchain you need to provide a NEXT_PUBLIC_RPC_URL env variable';
+  throw new Error(rpcErrMessage);
+}
+
+const wagmiConfig = createWagmiConfig(rpcUrl);
 
 /**
  * TODO Docs ~~~
