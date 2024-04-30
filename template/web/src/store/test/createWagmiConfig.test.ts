@@ -1,6 +1,6 @@
+import { baseSepolia } from 'viem/chains';
 import { createWagmiConfig } from '../createWagmiConfig';
 import { Environment, EnvironmentKeys } from '../environment';
-import { SUPPORTED_CHAINS } from '../supportedChains';
 
 describe('createWagmiConfig', () => {
   const OLD_ENV = process.env;
@@ -22,8 +22,7 @@ describe('createWagmiConfig', () => {
     Environment.production,
   ])('returns valid Wagmi config when env=%s', (environment) => {
     process.env[EnvironmentKeys.environment] = environment;
-    expect(createWagmiConfig('PROJECT_ID')).toMatchObject({
-      chains: SUPPORTED_CHAINS[environment],
-    });
+    const config = createWagmiConfig();
+    expect(config.chains[0].id).toEqual(baseSepolia.id);
   });
 });

@@ -143,11 +143,17 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (project.pickSmartWallet) {
-      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
+      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfigWithRK.ts');
+      removeDownloadedApps(projectDir + '/web/src/OnchainProvidersWithRK.ts');
     } else {
+      // Replace createWagmiConfig.ts with createWagmiConfigWithRK.ts content
       removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
       const newFilename = projectDir + '/web/src/store/createWagmiConfig.ts';
       renameDownloadedFile(projectDir + '/web/src/store/createWagmiConfigWithRK.ts', newFilename);
+      // Replace OnchainProviders.ts with OnchainProvidersWithRK.ts content
+      removeDownloadedApps(projectDir + '/web/src/onchainProviders.ts');
+      const newProviderFilename = projectDir + '/web/src/onchainProviders.ts';
+      renameDownloadedFile(projectDir + '/web/src/OnchainProvidersWithRK.ts', newProviderFilename);
     }
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
