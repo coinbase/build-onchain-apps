@@ -1,5 +1,5 @@
 import { baseSepolia } from 'viem/chains';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useChainId, useConnect, useDisconnect } from 'wagmi';
 import { AccountDropdown } from './AccountDropdown';
 import { AccountInfoPanel } from './AccountInfoPanel';
 
@@ -11,18 +11,10 @@ import { AccountInfoPanel } from './AccountInfoPanel';
  */
 function AccountConnect() {
   const account = useAccount();
-  const { connectors, connect, error, status } = useConnect();
+  const { connectors, connect, status } = useConnect();
   const { disconnect } = useDisconnect();
-
   const connector = connectors[0];
-
-  if (error) {
-    console.error(error);
-  }
-
-  if (account) {
-    console.log('Account:', account.status, account.address, account.chainId);
-  }
+  const chainId = useChainId();
 
   return (
     <div
@@ -49,7 +41,7 @@ function AccountConnect() {
           );
         }
 
-        if (account.status === 'connected' && account.chainId !== baseSepolia.id) {
+        if (account.status === 'connected' && chainId !== baseSepolia.id) {
           return (
             <button onClick={() => disconnect()} type="button">
               Wrong network
