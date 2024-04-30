@@ -63,6 +63,7 @@ export async function getUserInput() {
     envVars = await prompts.group(
       {
         walletConnectProjectID: () => {
+          if (project.pickSmartWallet) return;
           return prompts.text({
             message: 'WalletConnect Project ID [optional]',
             placeholder: 'Visit https://cloud.walletconnect.com',
