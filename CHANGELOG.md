@@ -4,41 +4,41 @@
 
 ### Minor Changes
 
-- 7d55c5b: **fix** - on a blank app, remove experiences from the header
+- **fix**: on a blank app, remove experiences from the header. 7d55c5b
 
 ## 0.24.0
 
 ### Minor Changes
 
-- 1849cf0: **chore** - fix create command by @kyhyco #427
+- **chore**: fix create command. By @kyhyco #427 1849cf0
 
 ## 0.23.0
 
 ### Minor Changes
 
-- d2ecd19: - **fix**: git clone command.
+- **fix**: git clone command. d2ecd19
 
 ## 0.22.0
 
 ### Minor Changes
 
-- 1a5e62c: - **feat**: module select during cli create
-  - **feat**: read onchain data without connected wallet
-  - **chore**: complete Guide for /mint
-  - **feat**: update side nav feels
-  - **docs**: README cleanup
+- **feat**: module select during cli create. 1a5e62c
+- **feat**: read onchain data without connected wallet
+- **chore**: complete Guide for /mint
+- **feat**: update side nav feels
+- **docs**: README cleanup
 
 ## 0.21.0
 
 ### Minor Changes
 
-- 43aaccf: change basescan api key during cli app creation
+- **feat**: change basescan api key during cli app creation. 43aaccf
 
 ## 0.20.0
 
 ### Minor Changes
 
-- b1d4d0d: **feat**: better CLI.
+- **feat**: better CLI. b1d4d0d
 
 ## 0.19.0
 
@@ -50,7 +50,7 @@
 
 ### Minor Changes
 
-- 4be879c: Updated folder structure to web and contracts
+- **feat**: Updated folder structure to web and contracts. 4be879c
 
 ## 0.17.0
 
