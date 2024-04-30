@@ -4,6 +4,7 @@ import { experiences } from './experiences';
 export type EnvVar = {
   walletConnectProjectID: string;
   blockExplorerApiKey: string;
+  rpcUrl: string;
 };
 
 function kebabcase(str: string) {
@@ -68,6 +69,16 @@ export async function getUserInput() {
             validate: (value) => {
               if (value.length === 0) return;
               if (value.length < 32) return 'Key must be 32 characters';
+            },
+          });
+        },
+        rpcUrl: () => {
+          return prompts.text({
+            message: 'Base RPC URL [required]',
+            placeholder: 'Visit https://portal.cdp.coinbase.com/products/base',
+            validate: (value) => {
+              if (value.length === 0) return;
+              if (value.length < 79) return 'RPC must be at least 79 characters';
             },
           });
         },
