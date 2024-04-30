@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.26.0
+
+### Minor Changes
+
+- 18c725a: - **feat**: added Smart Wallet to template. By @zizzamia #469
+
 ## 0.25.0
 
 ### Minor Changes
