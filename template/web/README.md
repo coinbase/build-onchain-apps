@@ -5,7 +5,7 @@
 #### Step 1: Setup Environment Variables
 
 - Obtain the Wallet Connect Project ID from [walletconnect.com](https://cloud.walletconnect.com/sign-in) and assign to the `.env.local` file
-- Obtain a Base RPC URL from [Coinbase Developer Platform](https://portal.cdp.coinbase.com/products/base) and assign to the `.env.local` file
+- Obtain a Base RPC URL from [Coinbase Developer Platform](https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat) and assign to the `.env.local` file
 
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
