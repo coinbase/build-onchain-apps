@@ -77,7 +77,7 @@ export async function getUserInput() {
           return prompts.text({
             message: 'Base RPC URL [required]',
             placeholder:
-              'Visit https://www.coinbase.com/developer-platform/products/base-node',
+              'Visit https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat',
             validate: (value) => {
               if (value.length === 0) return;
               if (value.length < 79)
