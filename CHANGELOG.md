@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.28.0
+
+### Minor Changes
+
+- 79afd16: - **feat**: add metrics tracking to CDP links. By @0xAlecv #475
+
 ## 0.27.0
 
 ### Minor Changes
