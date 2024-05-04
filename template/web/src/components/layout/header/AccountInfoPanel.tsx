@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { ExitIcon } from '@radix-ui/react-icons';
 import { useAccount, useDisconnect } from 'wagmi';
-import { getSlicedAddress } from '@/utils/address';
 
 export function AccountInfoPanel() {
   const { address } = useAccount();
@@ -22,7 +21,7 @@ export function AccountInfoPanel() {
             <Name address={address} />
           </div>
           <span className="font-inter w-32 text-sm font-medium text-zinc-400">
-            {getSlicedAddress(address)}
+            <Name address={address} showAddress />
           </span>
         </div>
       </div>

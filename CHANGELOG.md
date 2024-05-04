@@ -4,13 +4,13 @@
 
 ### Minor Changes
 
-- c821e67: **feat**: added CDP (Coinbase Developer Portal) Node as RPC URL. You can learn more about this at https://www.coinbase.com/developer-platform/products/base-node
+- **feat**: added CDP (Coinbase Developer Portal) Node as RPC URL. You can learn more about this at https://www.coinbase.com/developer-platform/products/base-node . By @0xAlec #474 c821e67
 
 ## 0.26.0
 
 ### Minor Changes
 
-- 18c725a: - **feat**: added Smart Wallet to template. By @zizzamia #469
+- **feat**: added Smart Wallet to template. By @zizzamia #469 18c725a
 
 ## 0.25.0
 

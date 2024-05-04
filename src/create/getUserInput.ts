@@ -41,12 +41,6 @@ export async function getUserInput() {
           required: false,
         });
       },
-      setupEnvironmentVariables: () => {
-        return prompts.confirm({
-          message: 'Configure environment variables?',
-          initialValue: true,
-        });
-      },
     },
     {
       onCancel: () => {
@@ -58,52 +52,48 @@ export async function getUserInput() {
 
   project.name = kebabcase(project.name);
 
-  let envVars = {} as EnvVar;
-  if (project.setupEnvironmentVariables) {
-    envVars = await prompts.group(
-      {
-        walletConnectProjectID: () => {
-          if (project.pickSmartWallet) return;
-          return prompts.text({
-            message: 'WalletConnect Project ID [optional]',
-            placeholder: 'Visit https://cloud.walletconnect.com',
-            validate: (value) => {
-              if (value.length === 0) return;
-              if (value.length < 32) return 'Key must be 32 characters';
-            },
-          });
-        },
-        rpcUrl: () => {
-          return prompts.text({
-            message: 'Base RPC URL [required]',
-            placeholder:
-              'Visit https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat',
-            validate: (value) => {
-              if (value.length === 0) return;
-              if (value.length < 79)
-                return 'RPC must be at least 79 characters';
-            },
-          });
-        },
-        blockExplorerApiKey: () => {
-          return prompts.text({
-            message: 'Basescan Block Explorer API Key [optional]',
-            placeholder: 'Visit https://docs.basescan.org/getting-started',
-            validate: (value) => {
-              if (value.length === 0) return;
-              if (value.length < 34) return 'Key must be 34 characters';
-            },
-          });
-        },
+  const envVars = await prompts.group(
+    {
+      walletConnectProjectID: () => {
+        if (project.pickSmartWallet) return;
+        return prompts.text({
+          message: 'WalletConnect Project ID',
+          placeholder: 'Visit https://cloud.walletconnect.com',
+          validate: (value) => {
+            if (value.length === 0) return;
+            if (value.length < 32) return 'Key must be 32 characters';
+          },
+        });
       },
-      {
-        onCancel: () => {
-          prompts.cancel('Cancelled');
-          process.exit(0);
-        },
-      }
-    );
-  }
+      rpcUrl: () => {
+        return prompts.text({
+          message: 'Base RPC URL',
+          placeholder:
+            'Visit https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat',
+          validate: (value) => {
+            if (value.length === 0) return;
+            if (value.length < 79) return 'RPC must be at least 79 characters';
+          },
+        });
+      },
+      blockExplorerApiKey: () => {
+        return prompts.text({
+          message: 'Basescan Block Explorer API Key [optional]',
+          placeholder: 'Visit https://docs.basescan.org/getting-started',
+          validate: (value) => {
+            if (value.length === 0) return;
+            if (value.length < 34) return 'Key must be 34 characters';
+          },
+        });
+      },
+    },
+    {
+      onCancel: () => {
+        prompts.cancel('Cancelled');
+        process.exit(0);
+      },
+    }
+  );
 
   return { project, envVars };
 }
