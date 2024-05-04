@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { getName } from '@coinbase/onchainkit/identity';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
+
 import { FallbackImage } from '@/components/FallbackImage/FallbackImage';
 import { SpinnerIcon } from '@/components/icons/SpinnerIcon';
 import AccountConnect from '@/components/layout/header/AccountConnect';
@@ -8,7 +10,6 @@ import NextImage from '@/components/NextImage/NextImage';
 import { EXPECTED_CHAIN } from '@/constants';
 import { useERC1155TokenMetadata } from '@/hooks/useERC1155TokenMetadata';
 import { getChainsForEnvironment } from '@/store/supportedChains';
-import { getSlicedAddress } from '@/utils/address';
 import { useCustom1155Contract } from '../_contracts/useCustom1155Contract';
 import StepStartMint from './StepStartMint';
 import SwitchNetwork from './SwitchNetwork';
@@ -62,7 +63,9 @@ export default function MintContractDemo() {
   // Collection metadata might not have `name` field, so we fallback to shortened address
   const collectionNameOrAddress =
     collectionName ??
-    (contract.status === 'ready' ? `Collection: ${getSlicedAddress(contract.address)}` : '');
+    (contract.status === 'ready'
+      ? `Collection: ${getName({ address: contract.address, showAddress: true })}`
+      : '');
 
   if (isLoadingCollectionMetadata) {
     return (

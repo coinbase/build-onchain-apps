@@ -18,7 +18,7 @@
     "test:coverage:open": "yarn test:coverage && open coverage/lcov-report/index.html"
   },
   "dependencies": {
-    "@coinbase/onchainkit": "0.13.4",
+    "@coinbase/onchainkit": "0.14.0",
     "@coinbase/wallet-sdk": "4.0.0-beta.12",
     "@farcaster/hub-nodejs": "^0.11.9",
     "@privy-io/react-auth": "^1.56.2",
