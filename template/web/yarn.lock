@@ -1523,7 +1523,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.5"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@coinbase/onchainkit": "npm:0.14.0"
+    "@coinbase/onchainkit": "npm:0.14.2"
     "@coinbase/wallet-sdk": "npm:4.0.0-beta.12"
     "@farcaster/hub-nodejs": "npm:^0.11.9"
     "@jest/globals": "npm:^29.7.0"
@@ -1610,9 +1610,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coinbase/onchainkit@npm:0.14.0":
-  version: 0.14.0
-  resolution: "@coinbase/onchainkit@npm:0.14.0"
+"@coinbase/onchainkit@npm:0.14.2":
+  version: 0.14.2
+  resolution: "@coinbase/onchainkit@npm:0.14.2"
   peerDependencies:
     "@tanstack/react-query": ^5
     "@xmtp/frames-validator": ^0.6.0
@@ -1621,7 +1621,7 @@ __metadata:
     react: ^18
     react-dom: ^18
     viem: ^2.7.0
-  checksum: 10c0/09a200656d192cbf4bb594689aac3203c743de0786c31bf547fcde5af4174bc3188d4575e1838789b003df14da26d7110b36e1bb6907964d500004ba8d5d9955
+  checksum: 10c0/caecd0b873ee8139a27190a84492ea0af15c465fac591bcbf41da229eb903a718fe6374ef73a43937be440d06c00fb75abe8fe0fc077e8a90c58a2f0c33910e4
   languageName: node
   linkType: hard
 
