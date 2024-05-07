@@ -55,7 +55,7 @@ _Using BuyMeACoffee smart contract as an example below_
 
 ### Importing updated ABI to frontend code
 
-After updating your smart contract code, run `forget build` in the `contracts` folder. This will create a json in the `contracts/out` directory.
+After updating your smart contract code, run `forge build` in the `contracts` folder. This will create a json in the `contracts/out` directory.
 
 The output json contains additional information. We only need the `abi` property from that json object. Let's use `jq` to extract just the `abi` property
 
