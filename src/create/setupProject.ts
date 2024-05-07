@@ -156,6 +156,11 @@ export async function setupProject(projectDir: string, project) {
       renameDownloadedFile(projectDir + '/web/src/OnchainProvidersWithRK.tsx', newProviderFilename);
     }
 
+    // Prepare simple homepage
+    removeDownloadedApps(projectDir + '/web/app/home');
+    renameDownloadedFile(projectDir + '/web/src/simple', projectDir + '/web/app/home');
+
+
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
     await execAsync('git commit -m "initalized with build-onchain-apps"', {
       cwd: projectDir,
