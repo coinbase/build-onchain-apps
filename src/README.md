@@ -7,3 +7,9 @@ This folder contains cli code for `build-onchain-apps`
 ## How to modify blank app
 
 We eject a blank page.tsx file to `template/web/app/pages`. `create/setupProject.ts` → `setupBlankApp` function contains the blank page file.
+
+## To test from root
+
+```
+ts-node src/index.ts create
+```

@@ -127,6 +127,13 @@ export async function setupProject(projectDir: string, project) {
       process.exit(1);
     }
 
+    // Prepare simple homepage
+    removeDownloadedApps(projectDir + '/web/app/home');
+    renameDownloadedFile(
+      projectDir + '/web/app/simple',
+      projectDir + '/web/app/home'
+    );
+
     if (project.selectedModules.length === 0) {
       experiences.map(({ value }) => {
         removeDownloadedApps(projectDir + `/web/app/${value}`);
@@ -168,13 +175,6 @@ export async function setupProject(projectDir: string, project) {
         newProviderFilename
       );
     }
-
-    // Prepare simple homepage
-    removeDownloadedApps(projectDir + '/web/app/home');
-    renameDownloadedFile(
-      projectDir + '/web/src/simple',
-      projectDir + '/web/app/home'
-    );
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
     await execAsync('git commit -m "initalized with build-onchain-apps"', {

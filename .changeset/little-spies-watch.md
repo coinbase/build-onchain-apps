@@ -2,4 +2,4 @@
 '@coinbase/build-onchain-apps': patch
 ---
 
-ok
+- **feat**: started simple Homepage to showcase SW. By @zizzamia
