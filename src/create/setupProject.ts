@@ -13,22 +13,27 @@ import {
 import { experiences } from './experiences';
 
 function generateNavbarExperiencesList(projectDir: string, experiences) {
-  const filePath = path.join(projectDir, '/web/src/components/layout/header/Experiences.tsx');
+  const filePath = path.join(
+    projectDir,
+    '/web/src/components/layout/header/Experiences.tsx'
+  );
   const content = `
 import { ListItem } from './ListItem';
 
 export function Experiences() {
   return (
     <>
-${experiences.map(({ value, label }) => (
-    `      <ListItem href="/${value}">${label}</ListItem>`
-  )).join('\n')}
+${experiences
+  .map(
+    ({ value, label }) => `      <ListItem href="/${value}">${label}</ListItem>`
+  )
+  .join('\n')}
     </>
   );
 }
-`
+`;
   fs.writeFileSync(filePath, content);
-};
+}
 
 async function execAsync(command: string, options = {}) {
   return new Promise((resolve, reject) => {
@@ -125,7 +130,7 @@ export async function setupProject(projectDir: string, project) {
     if (project.selectedModules.length === 0) {
       experiences.map(({ value }) => {
         removeDownloadedApps(projectDir + `/web/app/${value}`);
-      })
+      });
 
       generateNavbarExperiencesList(projectDir, []);
     } else {
@@ -143,23 +148,33 @@ export async function setupProject(projectDir: string, project) {
     }
 
     if (project.pickSmartWallet) {
-      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfigWithRK.ts');
+      removeDownloadedApps(
+        projectDir + '/web/src/store/createWagmiConfigWithRK.ts'
+      );
       removeDownloadedApps(projectDir + '/web/src/OnchainProvidersWithRK.tsx');
     } else {
       // Replace createWagmiConfig.ts with createWagmiConfigWithRK.ts content
       removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
       const newFilename = projectDir + '/web/src/store/createWagmiConfig.ts';
-      renameDownloadedFile(projectDir + '/web/src/store/createWagmiConfigWithRK.ts', newFilename);
+      renameDownloadedFile(
+        projectDir + '/web/src/store/createWagmiConfigWithRK.ts',
+        newFilename
+      );
       // Replace OnchainProviders.ts with OnchainProvidersWithRK.ts content
       removeDownloadedApps(projectDir + '/web/src/OnchainProviders.tsx');
       const newProviderFilename = projectDir + '/web/src/OnchainProviders.tsx';
-      renameDownloadedFile(projectDir + '/web/src/OnchainProvidersWithRK.tsx', newProviderFilename);
+      renameDownloadedFile(
+        projectDir + '/web/src/OnchainProvidersWithRK.tsx',
+        newProviderFilename
+      );
     }
 
     // Prepare simple homepage
     removeDownloadedApps(projectDir + '/web/app/home');
-    renameDownloadedFile(projectDir + '/web/src/simple', projectDir + '/web/app/home');
-
+    renameDownloadedFile(
+      projectDir + '/web/src/simple',
+      projectDir + '/web/app/home'
+    );
 
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
     await execAsync('git commit -m "initalized with build-onchain-apps"', {

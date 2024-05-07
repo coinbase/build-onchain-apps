@@ -1,5 +1,5 @@
 'use client';
-import { useAccount } from "wagmi";
+import { useAccount } from 'wagmi';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 
@@ -19,9 +19,15 @@ export default function HomePage() {
           <br />
           <h3 className="text-lg">Account</h3>
           <ul>
-            <li><b>status</b>: {account.status}</li>
-            <li><b>addresses</b>: {JSON.stringify(account.addresses)}</li>
-            <li><b>chainId</b>: {account.chainId}</li>
+            <li>
+              <b>status</b>: {account.status}
+            </li>
+            <li>
+              <b>addresses</b>: {JSON.stringify(account.addresses)}
+            </li>
+            <li>
+              <b>chainId</b>: {account.chainId}
+            </li>
           </ul>
         </div>
       </main>
