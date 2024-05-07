@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.28.2
+
+### Patch Changes
+
+- 5666cd4: - **feat**: started simple Homepage to showcase SW. By @zizzamia
+
 ## 0.28.1
 
 ### Patch Changes
