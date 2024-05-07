@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.28.1
+
+### Patch Changes
+
+- 4317480: - **fix**: setup error because of a typo in file names. By @matejos (#480)
+  - **chore**: latest OnchainKit version. By @zizzamia
+
 ## 0.28.0
 
 ### Minor Changes
