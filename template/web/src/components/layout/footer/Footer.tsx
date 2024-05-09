@@ -63,6 +63,11 @@ export default function Footer() {
                 Paymaster Bundler <ArrowTopRightIcon width="16" height="16" />
               </span>
             </NavbarLink>
+            <NavbarLink href="/new-paymaster-bundler">
+              <span className="flex items-center gap-1 px-2">
+                New Paymaster Bundler <ArrowTopRightIcon width="16" height="16" />
+              </span>
+            </NavbarLink>
           </div>
         </div>
       </div>
