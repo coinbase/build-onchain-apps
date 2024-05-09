@@ -11,8 +11,4 @@ export const experiences = [
     value: 'paymaster-bundler',
     label: 'Paymaster Bundler',
   },
-  {
-    value: 'new-paymaster-bunlder',
-    label: 'New Paymaster Bundler',
-  }
 ];
