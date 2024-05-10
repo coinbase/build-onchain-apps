@@ -8,13 +8,7 @@ export async function POST(req: NextRequest) {
   }
 
   // forward to Coinbase Developer Platform RPC
-  return fetch(rpcUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(req.body),
-  })
+  return fetch(rpcUrl, req)
     .then(async (response) => {
       // Return the response data to the client
       return NextResponse.json(await response.json(), {
