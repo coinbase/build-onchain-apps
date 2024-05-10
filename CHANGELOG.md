@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.29.0
+
+### Minor Changes
+
+- 1197879: **feat** use api route for CDP RPC URL
+
 ## 0.28.2
 
 ### Patch Changes
