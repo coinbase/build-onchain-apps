@@ -8,8 +8,8 @@ export function setupEnvFiles(projectDir: string, envVar: EnvVar) {
   const envLocalPath = path.join(projectDir, './web/.env.local');
   const content = `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=${envVar.walletConnectProjectID ?? '"GET_ID_FROM_WALLET_CONNET" # See https://cloud.walletconnect.com'}
-NEXT_PUBLIC_RPC_URL=${envVar.rpcUrl ?? '"GET_FROM_COINBASE_DEVELOPER_PLATFORM" # See https://portal.cdp.coinbase.com/products/base'}
-NEXT_PUBLIC_PAYMASTER_URL=${envVar.rpcUrl ?? '"GET_FROM_COINBASE_DEVELOPER_PLATFORM" # See https://portal.cdp.coinbase.com/products/base'}
+NEXT_PRIVATE_RPC_URL=${envVar.rpcUrl ?? '"GET_FROM_COINBASE_DEVELOPER_PLATFORM" # See https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat'}
+NEXT_PRIVATE_PAYMASTER_URL=${envVar.rpcUrl ?? '"GET_FROM_COINBASE_DEVELOPER_PLATFORM" # See https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat'}
 NEXT_PUBLIC_PRIVY_ID="GET_FROM_PRIVY"
 ENVIRONMENT=localhost
 `;

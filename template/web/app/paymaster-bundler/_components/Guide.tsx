@@ -96,7 +96,10 @@ export default function Guide() {
                   Base Node homepage
                 </A>
               </Li>
-              <Li>Sign up for a Coinbase Cloud account, if you don&apos;t have one already</Li>
+              <Li>
+                Sign up for a Coinbase Developer Platform account, if you don&apos;t have one
+                already
+              </Li>
               <Li>
                 Create a <p className="inline font-bold">Base</p> project under{' '}
                 <p className="inline font-bold"> Start a New Project</p>
@@ -119,8 +122,10 @@ export default function Guide() {
               </Ul>
               <Li>
                 Copy your RPC URL, and set it as{' '}
-                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_RPC_URL</p> and{' '}
-                <p className="inline font-bold text-boat-color-orange">NEXT_PUBLIC_PAYMASTER_URL</p>{' '}
+                <p className="inline font-bold text-boat-color-orange">NEXT_PRIVATE_RPC_URL</p> and{' '}
+                <p className="inline font-bold text-boat-color-orange">
+                  NEXT_PRIVATE_PAYMASTER_URL
+                </p>{' '}
                 in the .env file.
               </Li>
             </Ul>
