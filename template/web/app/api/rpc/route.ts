@@ -4,7 +4,14 @@ const rpcUrl = process.env.NEXT_PRIVATE_RPC_URL;
 
 export async function POST(req: NextRequest) {
   if (rpcUrl === undefined) {
-    return NextResponse.json({}, { status: 500, statusText: 'Internal Server Error' });
+    return NextResponse.json(
+      {},
+      {
+        status: 401,
+        statusText:
+          'You need a RPC URL! Get yours at https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat',
+      },
+    );
   }
 
   // forward to Coinbase Developer Platform RPC
