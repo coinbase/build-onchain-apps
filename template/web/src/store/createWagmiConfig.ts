@@ -8,6 +8,7 @@ export function createWagmiConfig(rpcUrl: string, projectId?: string) {
     console.log('projectId:', projectId);
   }
 
+  // Temporary hack, until we configure a FE page in OnchainKit to copy just the API key
   const baseUrl = rpcUrl.replace(/\/v1\/(.+?)\//, '/v1/base/');
   const baseSepoliaUrl = rpcUrl.replace(/\/v1\/(.+?)\//, '/v1/base-sepolia/');
 
