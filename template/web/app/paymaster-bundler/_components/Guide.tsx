@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useMemo } from 'react';
 import CodeBlock from '@/components/code-block/CodeBlock';
 import {

@@ -1,6 +1,7 @@
 import { ENTRYPOINT_ADDRESS_V06, UserOperation } from 'permissionless';
 import { Address, BlockTag, Hex, decodeAbiParameters, decodeFunctionData } from 'viem';
 import { baseSepolia } from 'viem/chains';
+import { myNFTABI, myNFTAddress } from './ABIs/myNFT';
 import { client } from './api/PaymasterProxy';
 import {
   coinbaseSmartWalletABI,
@@ -9,7 +10,6 @@ import {
   erc1967ProxyImplementationSlot,
   magicSpendAddress,
 } from './constants';
-import { myNFTABI, myNFTAddress } from './ABIs/myNFT';
 
 /**
  * willSponsor function checks if a user operation should be sponsored based on several criteria.

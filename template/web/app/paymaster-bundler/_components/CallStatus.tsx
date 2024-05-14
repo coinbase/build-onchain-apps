@@ -15,5 +15,5 @@ export function CallStatus({ id }: { id: string }) {
     },
   });
 
-  return <div>Status: {callsStatus?.status || 'loading'}</div>;
+  return <div>Status: {callsStatus?.status ?? 'loading'}</div>;
 }

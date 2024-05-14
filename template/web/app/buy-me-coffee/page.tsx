@@ -19,7 +19,6 @@ export default function BuyMeCoffeePage() {
     setIsMounted(true);
   }, []);
 
-  //  Fix hydration issues
   if (!isMounted) {
     return null;
   }
@@ -27,12 +26,14 @@ export default function BuyMeCoffeePage() {
   return (
     <>
       <Header />
-      <Main>
-        <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
-        <BuyMeCoffeeContractDemo />
-        <Guide />
-      </Main>
-      <Footer />
+      <div className="mt-[60px]">
+        <Main>
+          <Banner pageName="Buy Me A Coffee" pageUrl="buy-me-coffee" />
+          <BuyMeCoffeeContractDemo />
+          <Guide />
+        </Main>
+        <Footer />
+      </div>
     </>
   );
 }

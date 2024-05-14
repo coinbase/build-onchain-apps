@@ -1,13 +1,13 @@
 import { useAccount } from 'wagmi';
 import { useWriteContracts } from 'wagmi/experimental';
+import { myNFTABI } from '../ABIs/myNFT';
 import { CallStatus } from './CallStatus';
 import { Capabilities } from './Capabilities';
-import { myNFTABI } from '../ABIs/myNFT';
 
-const isLocalhost = Boolean(
+const isLocalhost = typeof window !== 'undefined' && (
   window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1' ||
-    window.location.hostname === '::1',
+  window.location.hostname === '127.0.0.1' ||
+  window.location.hostname === '::1'
 );
 
 // Use the local API URL to target the Paymaster directly without a proxy if running on localhost,
@@ -54,6 +54,12 @@ export default function PaymasterBundlerDemo() {
     }
   };
 
+  const handleMintClick = () => {
+    handleMint().catch(error => {
+      console.error('Error in handleMint:', error);
+    });
+  };
+
   return (
     <div className="p-5 font-sans">
       <div className="mb-5">
@@ -76,7 +82,7 @@ export default function PaymasterBundlerDemo() {
         <button
           type="button"
           className="mt-2 block w-full cursor-pointer rounded-full border-2 border-black bg-white py-3.5 text-lg font-bold text-black hover:bg-gray-800 hover:text-white"
-          onClick={handleMint}
+          onClick={handleMintClick}
         >
           Mint NFT
         </button>

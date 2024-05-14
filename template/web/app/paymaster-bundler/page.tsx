@@ -15,12 +15,14 @@ export default function PaymasterBundlerPage() {
   return (
     <>
       <Header />
-      <Main>
-        <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
-        <PaymasterBundlerApp />
-        <Guide />
-      </Main>
-      <Footer />
+      <div className="mt-[60px]">
+        <Main>
+          <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
+          <PaymasterBundlerApp />
+          <Guide />
+        </Main>
+        <Footer />
+      </div>
     </>
   );
 }

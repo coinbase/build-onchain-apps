@@ -25,12 +25,14 @@ export default function MintPage() {
   return (
     <>
       <Header />
-      <Main>
-        <Banner pageName="Mint NFT" pageUrl="mint" />
-        <MintContractDemo />
-        <Guide />
-      </Main>
-      <Footer />
+      <div className="mt-[60px]">
+        <Main>
+          <Banner pageName="Mint NFT" pageUrl="mint" />
+          <MintContractDemo />
+          <Guide />
+        </Main>
+        <Footer />
+      </div>
     </>
   );
 }
