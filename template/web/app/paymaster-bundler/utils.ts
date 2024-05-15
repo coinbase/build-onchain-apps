@@ -3,8 +3,8 @@ import { Address, BlockTag, Hex, decodeAbiParameters, decodeFunctionData } from 
 import { baseSepolia } from 'viem/chains';
 import { myNFTABI, myNFTAddress } from './_contracts/myNFTABI';
 import { client } from './api/PaymasterProxy';
+import { coinbaseSmartWalletABI } from './_contracts/coinbaseSmartWalletABI';
 import {
-  coinbaseSmartWalletABI,
   coinbaseSmartWalletProxyBytecode,
   coinbaseSmartWalletV1Implementation,
   erc1967ProxyImplementationSlot,
