@@ -1,7 +1,4 @@
-import { ENTRYPOINT_ADDRESS_V06, UserOperation } from 'permissionless';
-import { paymasterActionsEip7677 } from 'permissionless/experimental';
-import { createClient, createPublicClient, http } from 'viem';
-import { baseSepolia } from 'viem/chains';
+import { UserOperation } from 'permissionless';
 import { willSponsor } from '../utils';
 import { paymasterClient } from '../../../../web/src/components/SmartWallets/PaymasterClient';
 
