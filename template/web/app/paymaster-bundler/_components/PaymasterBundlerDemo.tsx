@@ -1,18 +1,15 @@
-import { useAccount } from 'wagmi';
+import { useAccount, useReadContract } from 'wagmi';
 import { useWriteContracts } from 'wagmi/experimental';
-import { myNFTABI } from '../ABIs/myNFT';
+import { myNFTABI } from '../_contracts/myNFTABI';
 import { CallStatus } from './CallStatus';
-import { Capabilities } from './Capabilities';
+import { Capabilities } from '../../../src/components/SmartWallets/Capabilities';
+import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
+import isLocal from '../../../src/utils/isLocal';
 
-const isLocalhost = typeof window !== 'undefined' && (
-  window.location.hostname === 'localhost' ||
-  window.location.hostname === '127.0.0.1' ||
-  window.location.hostname === '::1'
-);
-
-// Use the local API URL to target the Paymaster directly without a proxy if running on localhost,
-// otherwise use the Paymaster Proxy.
-const defaultUrl = isLocalhost
+// Use the local API URL to target the Paymaster directly without a proxy
+// if running on localhost, otherwise use the Paymaster Proxy.
+const isLocalEnv = isLocal();
+const defaultUrl = isLocalEnv
   ? `https://api.developer.coinbase.com/rpc/v1/base-sepolia/z7inYI-NRNAOF9kgaW4Suf-30N6DuMra`
   : `${document.location.origin}/paymaster-bundler/api/`;
 
@@ -21,6 +18,13 @@ console.log('Default url: ', defaultUrl);
 export default function PaymasterBundlerDemo() {
   const account = useAccount();
   const { data: id, writeContracts } = useWriteContracts();
+
+  const contract = usePaymasterBundlerContract();
+
+  if (contract.status !== 'ready') {
+    console.error('Contract is not ready');
+    return;
+  }
 
   const handleMint = async () => {
     console.log('Default url: ', defaultUrl);
@@ -35,8 +39,8 @@ export default function PaymasterBundlerDemo() {
       writeContracts({
         contracts: [
           {
-            address: '0x119Ea671030FBf79AB93b436D2E20af6ea469a19',
-            abi: myNFTABI,
+            address: contract.address,
+            abi: contract.abi,
             functionName: 'safeMint',
             args: [account.address],
           },
@@ -55,7 +59,7 @@ export default function PaymasterBundlerDemo() {
   };
 
   const handleMintClick = () => {
-    handleMint().catch(error => {
+    handleMint().catch((error) => {
       console.error('Error in handleMint:', error);
     });
   };

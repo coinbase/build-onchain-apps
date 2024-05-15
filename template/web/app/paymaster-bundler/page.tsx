@@ -5,7 +5,7 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
 import Guide from './_components/Guide';
-import PaymasterBundlerApp from './_components/PaymasterBundlerApp';
+import PaymasterBundlerDemo from './_components/PaymasterBundlerDemo';
 
 /**
  * Use the page component to wrap the components
@@ -18,7 +18,8 @@ export default function PaymasterBundlerPage() {
       <div className="mt-[60px]">
         <Main>
           <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
-          <PaymasterBundlerApp />
+          <h1>Paymaster Bundler App</h1>
+          <PaymasterBundlerDemo />
           <Guide />
         </Main>
         <Footer />
