@@ -66,23 +66,20 @@ export default function PaymasterBundlerDemo() {
 
   return (
     <div className="p-5 font-sans">
-      <div className="mb-5">
-        <h2 className="border-b-2 border-gray-300">Account Details</h2>
+      <section className="mb-5">
+        <header>
+          <h2 className="border-b-2 border-gray-300">Account Details</h2>
+        </header>
         <div className="mt-2 text-lg">
-          <strong>Status:</strong> {account.status}
-          <br />
-          <strong>Chain ID:</strong> {account.chainId}
-          <br />
-          <strong>Addresses:</strong> {JSON.stringify(account.addresses)}
-          <br />
-          <Capabilities />
-          <br />
+          <strong>Smart Wallet Address:</strong> {JSON.stringify(account.address)}
         </div>
-      </div>
-      <div>
-        <h2 className="border-b-2 border-gray-300">
-          Mint an NFT using Smart Wallets. Sponsored by Coinbase!
-        </h2>
+      </section>
+      <section>
+        <header>
+          <h1 className="border-b-2 border-gray-300">
+            Mint an NFT using Smart Wallets. Sponsored by Coinbase!
+          </h1>
+        </header>
         <button
           type="button"
           className="mt-2 block w-full cursor-pointer rounded-full border-2 border-black bg-white py-3.5 text-lg font-bold text-black hover:bg-gray-800 hover:text-white"
@@ -97,7 +94,7 @@ export default function PaymasterBundlerDemo() {
             <strong>Transaction ID:</strong> {id}
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }
