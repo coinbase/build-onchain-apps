@@ -5,6 +5,8 @@ import { CallStatus } from './CallStatus';
 import { Capabilities } from '../../../src/components/SmartWallets/Capabilities';
 import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
 import isLocal from '../../../src/utils/isLocal';
+import clsx from 'clsx';
+
 
 // Use the local API URL to target the Paymaster directly without a proxy
 // if running on localhost, otherwise use the Paymaster Proxy.
@@ -65,24 +67,35 @@ export default function PaymasterBundlerDemo() {
   };
 
   return (
-    <div className="p-5 font-sans">
-      <section className="mb-5">
+    <div className={clsx('p-5', 'font-sans')}>
+      <section className={clsx('mb-5')}>
         <header>
-          <h2 className="border-b-2 border-gray-300">Account Details</h2>
+          <h2 className={clsx('border-b-2', 'border-gray-300')}>Account Details</h2>
         </header>
-        <div className="mt-2 text-lg">
+        <div className={clsx('mt-2', 'text-lg')}>
           <strong>Smart Wallet Address:</strong> {JSON.stringify(account.address)}
         </div>
       </section>
       <section>
         <header>
-          <h1 className="border-b-2 border-gray-300">
+          <h1 className={clsx('border-b-2', 'border-gray-300')}>
             Mint an NFT using Smart Wallets. Sponsored by Coinbase!
           </h1>
         </header>
         <button
           type="button"
-          className="mt-2 block w-full cursor-pointer rounded-full border-2 border-black bg-white py-3.5 text-lg font-bold text-black hover:bg-gray-800 hover:text-white"
+          className={clsx(
+            'mt-2',
+            'block',
+            'w-full',
+            'cursor-pointer',
+            'rounded-full',
+            'bg-white',
+            'py-3.5',
+            'text-lg',
+            'font-bold',
+            'text-black',
+          )}
           onClick={handleMintClick}
         >
           Mint NFT
@@ -90,7 +103,7 @@ export default function PaymasterBundlerDemo() {
         <br />
         {id && <CallStatus id={id} />}
         {id && (
-          <div className="mt-2 text-lg">
+          <div className={clsx('mt-2', 'text-lg')}>
             <strong>Transaction ID:</strong> {id}
           </div>
         )}
