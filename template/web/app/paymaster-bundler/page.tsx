@@ -15,7 +15,7 @@ export default function PaymasterBundlerPage() {
   return (
     <>
       <Header />
-      <div className="mt-[60px]">
+      {/* <div className="mt-[60px]"> */}
         <Main>
           <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
           <h1>Paymaster Bundler App</h1>
@@ -23,7 +23,7 @@ export default function PaymasterBundlerPage() {
           <Guide />
         </Main>
         <Footer />
-      </div>
+      {/* </div> */}
     </>
   );
 }
