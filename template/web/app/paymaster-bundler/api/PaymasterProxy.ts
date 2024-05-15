@@ -1,6 +1,6 @@
 import { UserOperation } from 'permissionless';
-import { willSponsor } from '../utils';
 import { paymasterClient } from '../../../../web/src/components/SmartWallets/PaymasterClient';
+import { willSponsor } from '../utils';
 
 type PaymasterRequest = {
   method: string;

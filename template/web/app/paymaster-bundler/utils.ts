@@ -1,9 +1,9 @@
 import { ENTRYPOINT_ADDRESS_V06, UserOperation } from 'permissionless';
 import { Address, BlockTag, Hex, decodeAbiParameters, decodeFunctionData } from 'viem';
 import { baseSepolia } from 'viem/chains';
+import { coinbaseSmartWalletABI } from './_contracts/coinbaseSmartWalletABI';
 import { myNFTABI, myNFTAddress } from './_contracts/myNFTABI';
 import { client } from './api/PaymasterProxy';
-import { coinbaseSmartWalletABI } from './_contracts/coinbaseSmartWalletABI';
 import {
   coinbaseSmartWalletProxyBytecode,
   coinbaseSmartWalletV1Implementation,

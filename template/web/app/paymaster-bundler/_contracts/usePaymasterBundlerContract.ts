@@ -1,6 +1,6 @@
-import { myNFTABI } from '../_contracts/myNFTABI';
 import { baseSepolia } from 'viem/chains';
 import { generateContractHook } from '@/hooks/contracts';
+import { myNFTABI } from '../_contracts/myNFTABI';
 
 export const usePaymasterBundlerContract = generateContractHook({
     abi: myNFTABI,
