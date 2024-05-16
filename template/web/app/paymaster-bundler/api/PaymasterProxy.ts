@@ -1,7 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { UserOperation } from 'permissionless';
 import { paymasterClient } from '../../../../web/src/components/SmartWallets/PaymasterClient';
 import { willSponsor } from '../utils/willSponsor';
-import { NextRequest, NextResponse } from 'next/server';
 
 const rpcUrl = process.env.NEXT_PRIVATE_RPC_URL;
 

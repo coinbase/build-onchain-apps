@@ -1,7 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { UserOperation } from 'permissionless';
 import { paymasterClient } from '../../../../web/src/components/SmartWallets/PaymasterClient';
 import { willSponsor } from '../../paymaster-bundler/utils/willSponsor';
-import { NextRequest, NextResponse } from 'next/server';
 
 type PaymasterRequest = {
   method: string;
