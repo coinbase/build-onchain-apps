@@ -1,3 +1,4 @@
+import { ConnectAccount } from '@coinbase/onchainkit/wallet';
 import { baseSepolia } from 'viem/chains';
 import { useAccount, useChainId, useConnect, useDisconnect } from 'wagmi';
 import { AccountDropdown } from './AccountDropdown';
@@ -11,12 +12,9 @@ import { AccountInfoPanel } from './AccountInfoPanel';
  */
 function AccountConnect() {
   const account = useAccount();
-  const { connectors, connect, status } = useConnect();
+  const { status } = useConnect();
   const { disconnect } = useDisconnect();
-  const connector = connectors[0];
   const chainId = useChainId();
-
-  console.log('Account Status:', account.status);
 
   return (
     <div
@@ -32,15 +30,7 @@ function AccountConnect() {
     >
       {(() => {
         if (account.status === 'disconnected') {
-          return (
-            <button
-              onClick={() => connect({ connector })}
-              type="button"
-              className="inline-flex h-10 flex-grow items-center justify-center gap-2 rounded-3xl bg-white px-4 py-2"
-            >
-              <div className="text-sm font-medium leading-normal text-black">Connect wallet</div>
-            </button>
-          );
+          return <ConnectAccount />;
         }
 
         if (account.status === 'connected' && chainId !== baseSepolia.id) {

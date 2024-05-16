@@ -154,28 +154,6 @@ export async function setupProject(projectDir: string, project) {
       generateNavbarExperiencesList(projectDir, selectedExperiences);
     }
 
-    if (project.pickSmartWallet) {
-      removeDownloadedApps(
-        projectDir + '/web/src/store/createWagmiConfigWithRK.ts'
-      );
-      removeDownloadedApps(projectDir + '/web/src/OnchainProvidersWithRK.tsx');
-    } else {
-      // Replace createWagmiConfig.ts with createWagmiConfigWithRK.ts content
-      removeDownloadedApps(projectDir + '/web/src/store/createWagmiConfig.ts');
-      const newFilename = projectDir + '/web/src/store/createWagmiConfig.ts';
-      renameDownloadedFile(
-        projectDir + '/web/src/store/createWagmiConfigWithRK.ts',
-        newFilename
-      );
-      // Replace OnchainProviders.ts with OnchainProvidersWithRK.ts content
-      removeDownloadedApps(projectDir + '/web/src/OnchainProviders.tsx');
-      const newProviderFilename = projectDir + '/web/src/OnchainProviders.tsx';
-      renameDownloadedFile(
-        projectDir + '/web/src/OnchainProvidersWithRK.tsx',
-        newProviderFilename
-      );
-    }
-
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
     await execAsync('git commit -m "initalized with build-onchain-apps"', {
       cwd: projectDir,

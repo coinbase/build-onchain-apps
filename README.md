@@ -18,7 +18,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 
 - Progressive Web App support using [Next.js](https://nextjs.org/) 🏗️
 - Ethereum L2 support through [Base](https://base.org/) 🔵
-- Wallet connect integration with [RainbowKit](https://www.rainbowkit.com) 🌈
+- Easy account creation with [Smart Wallet](https://www.smartwallet.dev/why)
 - Live examples and documentation for Minting and Payments experiences with [wagmi](https://wagmi.sh/) and [Viem](https://viem.sh/) 🚀
 - Latest styling best practices with [Tailwind CSS](https://tailwindcss.com/) 💅
 - Easy maintenance with linting, formatting, and tests ✅

@@ -2,7 +2,6 @@ import * as prompts from '@clack/prompts';
 import { experiences } from './experiences';
 
 export type EnvVar = {
-  walletConnectProjectID: string;
   blockExplorerApiKey: string;
   rpcUrl: string;
 };
@@ -24,12 +23,6 @@ export async function getUserInput() {
             if (!value) return 'Please enter a name.';
             return;
           },
-        });
-      },
-      pickSmartWallet: () => {
-        return prompts.confirm({
-          message: 'Do you want to use Smart Wallet?',
-          initialValue: true,
         });
       },
       selectedModules: () => {
@@ -54,17 +47,6 @@ export async function getUserInput() {
 
   const envVars = await prompts.group(
     {
-      walletConnectProjectID: () => {
-        if (project.pickSmartWallet) return;
-        return prompts.text({
-          message: 'WalletConnect Project ID',
-          placeholder: 'Visit https://cloud.walletconnect.com',
-          validate: (value) => {
-            if (value.length === 0) return;
-            if (value.length < 32) return 'Key must be 32 characters';
-          },
-        });
-      },
       rpcUrl: () => {
         return prompts.text({
           message: 'Base RPC URL',
