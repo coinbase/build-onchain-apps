@@ -1,9 +1,7 @@
 import clsx from 'clsx';
-import { useAccount, useReadContract } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useWriteContracts } from 'wagmi/experimental';
-import { Capabilities } from '../../../src/components/SmartWallets/Capabilities';
 import isLocal from '../../../src/utils/isLocal';
-import { myNFTABI } from '../_contracts/myNFTABI';
 import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
 import { CallStatus } from './CallStatus';
 
@@ -50,6 +48,8 @@ export default function PaymasterBundlerDemo() {
         ],
         capabilities: {
           paymasterService: {
+            // add button that calls api locally 
+            // set up own vercel 
             url: `${document.location.origin}/api/paymasterProxy`,
           },
         },
