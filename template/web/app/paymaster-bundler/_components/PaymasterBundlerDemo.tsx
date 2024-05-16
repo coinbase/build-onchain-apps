@@ -13,7 +13,8 @@ import { CallStatus } from './CallStatus';
 const isLocalEnv = isLocal();
 const defaultUrl = isLocalEnv
   ? `https://api.developer.coinbase.com/rpc/v1/base-sepolia/z7inYI-NRNAOF9kgaW4Suf-30N6DuMra`
-  : `${document.location.origin}/paymaster-bundler/api/`;
+  : `${document.location.origin}/api/paymaster-proxy`;
+// /api/paymasterProxy'
 
 console.log('Default url: ', defaultUrl);
 
@@ -49,7 +50,7 @@ export default function PaymasterBundlerDemo() {
         ],
         capabilities: {
           paymasterService: {
-            url: defaultUrl,
+            url: `${document.location.origin}/api/paymasterProxy`,
           },
         },
       });
