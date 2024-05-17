@@ -15,9 +15,6 @@ const rpcUrl = '/api/rpc';
 
 const wagmiConfig = createWagmiConfig(rpcUrl);
 
-/**
- * TODO Docs ~~~
- */
 function OnchainProviders({ children }: Props) {
   return (
     <WagmiProvider config={wagmiConfig}>
