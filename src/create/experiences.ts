@@ -7,8 +7,4 @@ export const experiences = [
     value: 'mint',
     label: 'Mint NFT',
   },
-  {
-    value: 'paymaster-bundler',
-    label: 'Paymaster Bundler',
-  },
 ];
