@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.30.0
+
+### Minor Changes
+
+- 6c6e571: - **feat**: made Smart Wallet the only choice for BOAT.
+
 ## 0.29.0
 
 ### Minor Changes
