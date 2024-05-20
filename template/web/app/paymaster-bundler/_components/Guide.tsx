@@ -175,11 +175,7 @@ export function App() {
   return (
     <div>
       <h2>Transact With Paymaster</h2>
-      <p>{JSON.stringify
-JSON.stringify(value: any, replacer?: ((this: any, key: string, value: any) => any) | undefined, space?: string | number | undefined): string (+1 overload)
-Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
-
-(capabilities)}</p>
+      <p>{JSON.stringify(capabilities)}</p>
       <div>
         <button
           onClick={() => {

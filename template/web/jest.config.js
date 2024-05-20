@@ -8,7 +8,11 @@ const customJestConfig = {
   moduleNameMapper: {
     'rehype-pretty-code': '<rootDir>/node_modules/rehype-pretty-code',
   },
-  roots: ['<rootDir>/src'],
+  roots: [
+    '<rootDir>/src',
+    '<rootDir>/app/api/paymasterProxy',
+    '<rootDir>/app/paymaster-bundler/utils/',
+  ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 const asyncConfig = createJestConfig(customJestConfig);

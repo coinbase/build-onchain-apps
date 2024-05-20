@@ -26,5 +26,10 @@ export function CallStatus({ id }: CallStatusProps): JSX.Element {
     },
   }) as UseCallsStatusReturnType;
 
-  return <div>Status: {callsStatus?.status ?? 'loading'}</div>;
+  return (
+    <div>
+      <br />
+      <strong>Status:</strong> {callsStatus?.status ?? 'loading'}
+    </div>
+  );
 }
