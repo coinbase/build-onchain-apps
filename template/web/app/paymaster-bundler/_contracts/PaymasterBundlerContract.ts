@@ -1,6 +1,6 @@
+import { abi } from './PaymasterBundlerABI';
 import { baseSepolia } from 'viem/chains';
 import { generateContractHook } from '@/hooks/contracts';
-import { abi } from './PaymasterBundlerABI';
 
 export const usePaymasterBundlerContract = generateContractHook({
   abi: abi,
