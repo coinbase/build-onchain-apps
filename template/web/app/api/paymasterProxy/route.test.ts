@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { paymasterClient } from '@/utils/paymasterClient';
 import { POST } from './route';
 
-jest.mock('@/utils/paymasterClient');
+jest.mock('../../../src/utils/paymasterClient');
 
 describe('POST function', () => {
   beforeEach(() => {

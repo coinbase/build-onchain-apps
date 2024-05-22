@@ -9,7 +9,7 @@ function useCanUserAfford(amount: number) {
   return useLoggedInUserCanAfford(parseEther(String(amount)));
 }
 
-function ContractAlertLayout({ children }: { children: React.ReactNode }) {
+export function ContractAlertLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="my-3 flex items-center justify-center">
       <div className="mr-2">

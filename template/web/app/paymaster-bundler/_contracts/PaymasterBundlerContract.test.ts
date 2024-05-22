@@ -1,7 +1,7 @@
 import { baseSepolia } from 'viem/chains';
 import { SMART_WALLET_ENTRY_POINT_ADDRESS } from '../constants';
 import { abi } from './PaymasterBundlerABI';
-import { usePaymasterBundlerContract } from './PaymasterBundlerContract';
+import { usePaymasterBundlerContract } from './usePaymasterBundlerContract';
 
 describe('usePaymasterBundlerContract', () => {
   it('should return correct contract data', () => {
