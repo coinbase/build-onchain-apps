@@ -1,7 +1,10 @@
 'use client';
-import clsx from 'clsx';
+import Banner from '@/components/layout/banner/banner';
+import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
+import Guide from './_components/Guide';
+import PaymasterBundlerApp from './_components/PaymasterBundlerDemo';
 
 /**
  * Use the page component to wrap the components
@@ -12,10 +15,13 @@ export default function PaymasterBundlerPage() {
     <>
       <Header />
       <Main>
-        <h1 className={clsx('text-4xl', 'font-bold', 'text-center', 'mt-8')}>
-          🚧 Paymaster Bundler App - Coming Soon! 🚧
-        </h1>
+        <Banner pageName="Paymaster Bundler" pageUrl="paymaster-bundler" wip />
+        <div className="rounded-lg bg-gray-900 px-4 py-6 text-white">
+          <PaymasterBundlerApp />
+        </div>
+        <Guide />
       </Main>
+      <Footer />
     </>
   );
 }
