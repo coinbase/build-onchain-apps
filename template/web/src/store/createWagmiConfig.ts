@@ -17,6 +17,7 @@ export function createWagmiConfig(rpcUrl: string, projectId?: string) {
     connectors: [
       coinbaseWallet({
         appName: 'buildonchainapps',
+        preference: 'smartWalletOnly',
       }),
     ],
     ssr: true,
