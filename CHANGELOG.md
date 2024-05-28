@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.0
+
+### Minor Changes
+
+- f1c40cd: - **feat**: Update the paymaster bundler experience to use the Coinbase Smart Wallet paymaster. By @cpcramer
+
 ## 0.30.0
 
 ### Minor Changes
