@@ -20,7 +20,7 @@ export default function Banner({ pageName, pageUrl, wip }: BannerProps) {
     >
       <div className="flex items-start justify-start gap-2 md:gap-6">
         <div className="flex h-6 w-6 shrink-0 items-center justify-center md:h-12 md:w-12">
-          <Image
+          <img
             src="/hammerandpick.svg"
             width={10}
             height={10}
