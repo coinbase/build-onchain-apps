@@ -8,13 +8,13 @@ import { CallStatus } from './CallStatus';
 
 // Use the local API URL to target the Paymaster directly without a proxy
 // if running on localhost, otherwise use the Paymaster Proxy.
-const paymasterURL = process.env.NEXT_PRIVATE_PAYMASTER_URL;
+const paymasterURL = process.env.NEXT_PUBLIC_PAYMASTER_URL;
 const isLocalEnv = isLocal();
 const defaultUrl = isLocalEnv ? paymasterURL : `${document.location.origin}/api/paymaster-proxy`;
 
 export default function PaymasterBundlerDemo() {
   const { address } = useAccount();
-  const { data: transactionID, writeContracts } = useWriteContracts();
+  const { data: callID, writeContracts } = useWriteContracts();
   const contract = usePaymasterBundlerContract();
 
   if (contract.status !== 'ready') {
@@ -76,12 +76,7 @@ export default function PaymasterBundlerDemo() {
         >
           Mint NFT
         </button>
-        {transactionID && <CallStatus id={transactionID} />}
-        {transactionID && (
-          <div className={clsx('mt-4 overflow-x-auto rounded-lg bg-gray-800 p-4 text-lg')}>
-            <strong>Transaction ID:</strong> <span className="break-all">{transactionID}</span>
-          </div>
-        )}
+        {callID && <CallStatus id={callID} />}
       </section>
     </div>
   );

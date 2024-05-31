@@ -3,7 +3,7 @@ import { paymasterActionsEip7677 } from 'permissionless/experimental';
 import { createClient, http } from 'viem';
 import { baseSepolia } from 'viem/chains';
 
-const paymasterService = process.env.NEXT_PRIVATE_PAYMASTER_URL ?? '';
+const paymasterService = process.env.NEXT_PUBLIC_PAYMASTER_URL ?? '';
 
 export const paymasterClient = createClient({
   chain: baseSepolia,
