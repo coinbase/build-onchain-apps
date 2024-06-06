@@ -6,11 +6,12 @@ import isLocal from '../../../src/utils/isLocal';
 import { usePaymasterBundlerContract } from '../_contracts/usePaymasterBundlerContract';
 import { CallStatus } from './CallStatus';
 
-// Use the local API URL to target the Paymaster directly without a proxy
-// if running on localhost, otherwise use the Paymaster Proxy.
-const paymasterURL = process.env.NEXT_PUBLIC_PAYMASTER_URL;
+// Target the Paymaster directly without a proxy if running on localhost.
+// Use the Paymaster Proxy when deployed.
 const isLocalEnv = isLocal();
-const defaultUrl = isLocalEnv ? paymasterURL : `${document.location.origin}/api/paymaster-proxy`;
+const defaultUrl = isLocalEnv
+  ? process.env.NEXT_PUBLIC_PAYMASTER_URL
+  : `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}/api/paymaster-proxy`;
 
 export default function PaymasterBundlerDemo() {
   const { address } = useAccount();

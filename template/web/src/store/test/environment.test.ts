@@ -12,7 +12,7 @@ describe('environment', () => {
 
   describe('EnvironmentKeys', () => {
     it('should have the correct values', () => {
-      expect(EnvironmentKeys.environment).toEqual('ENVIRONMENT');
+      expect(EnvironmentKeys.environment).toEqual('NEXT_PUBLIC_ENVIRONMENT');
     });
   });
 
