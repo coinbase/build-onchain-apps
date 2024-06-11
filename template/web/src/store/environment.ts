@@ -11,7 +11,7 @@ export enum Environment {
 }
 
 export enum EnvironmentKeys {
-  environment = 'ENVIRONMENT',
+  environment = 'NEXT_PUBLIC_ENVIRONMENT',
 }
 
 export function getCurrentEnvironment(): Environment {
