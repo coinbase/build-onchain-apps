@@ -1,10 +1,13 @@
 import { clsx } from 'clsx';
+import Button from '@/components/Button/Button';
 import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import FormBuyCoffee from './FormBuyCoffee';
 import Memos from './Memos';
 
 export default function BuyMeCoffeeContractDemo() {
-  const { memos, refetchMemos } = useOnchainCoffeeMemos();
+  const pageSize = 5;
+  const { memos, refetchMemos, currentPage, goToPreviousPage, goToNextPage } =
+    useOnchainCoffeeMemos(pageSize);
 
   return (
     <div
@@ -22,6 +25,23 @@ export default function BuyMeCoffeeContractDemo() {
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">Messages from supporters</h2>
 
         {memos?.length > 0 && <Memos memos={memos} />}
+        <div className="mt-4 flex flex items-center justify-between">
+          <Button
+            className="w-auto px-10"
+            onClick={goToPreviousPage}
+            disabled={currentPage < 1}
+            buttonContent={<span>Read older messages</span>}
+          />
+
+          <div>Page {currentPage + 1}</div>
+
+          <Button
+            className="w-auto px-10"
+            onClick={goToNextPage}
+            disabled={memos.length < pageSize}
+            buttonContent={<span>Read newer messages</span>}
+          />
+        </div>
       </section>
       <aside>
         <div
