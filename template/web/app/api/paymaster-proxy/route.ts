@@ -1,6 +1,11 @@
+import { isValidAAEntrypoint, isWalletASmartWallet } from '@coinbase/onchainkit/wallet';
 import { NextRequest, NextResponse } from 'next/server';
 import { UserOperation } from 'permissionless';
-import { paymasterClient } from '@/utils/paymasterClient';
+import { client, paymasterClient } from '@/utils/paymasterClient';
+import type {
+  IsValidAAEntrypointOptions,
+  IsWalletASmartWalletOptions,
+} from '@coinbase/onchainkit/wallet';
 
 type PaymasterRequest = {
   method: string;
@@ -16,7 +21,22 @@ type PaymasterRequest = {
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const reqBody: PaymasterRequest = (await req.json()) as PaymasterRequest;
   const { method, params } = reqBody;
-  const [userOp] = params;
+  const [userOp, entrypoint] = params;
+
+  // Verify the entrypoint address
+  if (!isValidAAEntrypoint({ entrypoint } as IsValidAAEntrypointOptions)) {
+    return NextResponse.json({ error: 'invalid entrypoint' }, { status: 400 });
+  }
+
+  // Validate the User Operation by checking if the sender address is a proxy with the expected bytecode.
+  if (
+    !(await isWalletASmartWallet({
+      client,
+      userOp,
+    } as IsWalletASmartWalletOptions))
+  ) {
+    return NextResponse.json({ error: 'invalid wallet' }, { status: 400 });
+  }
 
   try {
     let result;
