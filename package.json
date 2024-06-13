@@ -1,6 +1,6 @@
 {
   "name": "@coinbase/build-onchain-apps",
-  "version": "0.31.0",
+  "version": "0.31.1",
   "repository": "https://github.com/coinbase/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
