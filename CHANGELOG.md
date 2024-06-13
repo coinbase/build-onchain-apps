@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.1
+
+### Patch Changes
+
+- 9508542: - **fix**: Update Paymaster URL environment variable. By @cpcramer
+
 ## 0.31.0
 
 ### Minor Changes
