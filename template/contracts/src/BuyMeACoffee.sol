@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.23;
+pragma solidity ^0.8.23;
 /**
  * ----------------------------------------------------------------------------------------------------------------
  * ---------██████╗ ██╗   ██╗██╗██╗     ██████╗        ██████╗ ███╗   ██╗ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗-----
@@ -47,14 +47,7 @@ contract BuyMeACoffee {
     error OnlyOwner();
 
     event BuyMeACoffeeEvent(address indexed buyer, uint256 price);
-    event NewMemo(
-        address indexed userAddress,
-        uint256 time,
-        uint256 numCoffees,
-        string userName,
-        string twitterHandle,
-        string message
-    );
+    event NewMemo(address indexed userAddress, uint256 time, uint256 numCoffees, string userName, string twitterHandle, string message);
 
     constructor() {
         owner = payable(msg.sender);
@@ -72,12 +65,7 @@ contract BuyMeACoffee {
      * @param  message The message of the user
      * (Note: Using calldata for gas efficiency)
      */
-    function buyCoffee(
-        uint256 numCoffees,
-        string calldata userName,
-        string calldata twitterHandle,
-        string calldata message
-    ) public payable {
+    function buyCoffee(uint256 numCoffees, string calldata userName, string calldata twitterHandle, string calldata message) public payable {
         if (msg.value < price * numCoffees) {
             revert InsufficientFunds();
         }
@@ -191,3 +179,4 @@ contract BuyMeACoffee {
      */
     receive() external payable {}
 }
+

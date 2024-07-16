@@ -1,0 +1,23 @@
+commit QmNMWr9TSHSngaTzBb4mnde6CYFN489DAYCP87D3qpJaix
+Branch: main
+Signed-off by: danimesq.eth (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
+Signature: de4c3477846f2c07ebc449fe37ed8d6d571e7a399aa33ec618646c41d5e7514c3224e34515f7181398ca19ae3519291b6f9d84091de2f56fbcda945f14c7e00201
+
+------------------------------
+
+Commit CID if including git's SHA1: QmTA1aT7No2rDhrRRKvxmmmCgdhFbg64kHkQVxfUc822Lg
+Commit CID if containing only file hashes: QmTtbTwdqETsj6DYz5GX5r51uq7oiG1sQNrZwDuLunmp4o
+
+------------------------------
+
+.gitmeta version: r8
+Local folder: /home/daniella/Desktop/build-onchain-apps
+Remote Name: origin
+Remote URL: https://github.com/FrameworkJavascript/build-onchain-apps.git
+
+------------------------------
+
+chown -h 1000:1000 'template/contracts/src/BuyMeACoffee.sol'
+chmod 0664 'template/contracts/src/BuyMeACoffee.sol'
+/usr/bin/touch -hcmd "2024-07-15 23:28:11.9467077260 -0300" 'template/contracts/src/BuyMeACoffee.sol'
+/usr/bin/touch -hcad "2024-07-15 23:28:46.9628015370 -0300" 'template/contracts/src/BuyMeACoffee.sol'
