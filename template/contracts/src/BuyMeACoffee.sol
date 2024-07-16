@@ -175,7 +175,7 @@ contract BuyMeACoffee {
     }
 
     /**
-     * @dev Recieve function to accept ether
+     * @dev Receive function to accept ether
      */
     receive() external payable {}
 }
