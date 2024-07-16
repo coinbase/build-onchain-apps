@@ -141,6 +141,17 @@ contract BuyMeACoffee {
     }
 
     /**
+     * @dev Function to get the price of a coffee
+     */
+    function setPriceForCoffee(uint256 _price) public {
+        if (msg.sender != owner) {
+            revert OnlyOwner();
+        }
+
+        price = _price;
+    }
+
+    /**
      * READ FUNCTIONS *************
      */
 
