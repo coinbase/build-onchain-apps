@@ -19,10 +19,12 @@ export function createWagmiConfig(rpcUrl: string, projectId?: string) {
         appName: 'buildonchainapps',
         preference: 'smartWalletOnly',
       }),
-     injected(),
-     walletConnect({ '5c037c25632aba81c7a316f333dbb2e2' }),
-  //     metaMask(),
-     safe(),
+      injected(),
+      walletConnect({
+        projectId: '5c037c25632aba81c7a316f333dbb2e2'
+      }),
+      // metaMask(),
+      safe(),
     ],
     ssr: true,
     transports: {
