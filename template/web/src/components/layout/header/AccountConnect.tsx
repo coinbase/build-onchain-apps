@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { ConnectAccount } from '@coinbase/onchainkit/wallet';
 import { baseSepolia } from 'viem/chains';
 import { useAccount, useChainId, useConnect, useDisconnect } from 'wagmi';
@@ -15,6 +16,10 @@ function AccountConnect() {
   const { status } = useConnect();
   const { disconnect } = useDisconnect();
   const chainId = useChainId();
+
+  const handleDisconnect = useCallback(() => {
+    disconnect();
+  }, [disconnect]);
 
   return (
     <div
@@ -35,7 +40,7 @@ function AccountConnect() {
 
         if (account.status === 'connected' && chainId !== baseSepolia.id) {
           return (
-            <button onClick={() => disconnect()} type="button">
+            <button onClick={handleDisconnect} type="button">
               Wrong network
             </button>
           );
