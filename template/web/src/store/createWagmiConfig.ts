@@ -1,6 +1,7 @@
 import { createConfig, http } from 'wagmi';
 import { base, baseSepolia } from 'wagmi/chains';
-import { coinbaseWallet } from 'wagmi/connectors';
+import { injected, metaMask, safe, walletConnect, coinbaseWallet } from 'wagmi/connectors';
+import { WALLET_CONNECT_PROJECT_ID } from '@/utils/wagmi';
 
 export function createWagmiConfig(rpcUrl: string, projectId?: string) {
   // Keep this till we fully deprecated RK inside the template
@@ -19,6 +20,12 @@ export function createWagmiConfig(rpcUrl: string, projectId?: string) {
         appName: 'buildonchainapps',
         preference: 'smartWalletOnly',
       }),
+      injected(),
+      walletConnect({
+        projectId: WALLET_CONNECT_PROJECT_ID
+      }),
+      // metaMask(),
+      safe(),
     ],
     ssr: true,
     transports: {
