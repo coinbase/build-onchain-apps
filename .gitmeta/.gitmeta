@@ -1,0 +1,23 @@
+commit QmZkMBXJqzcZvMB12jDBSC8Cm4kx6j34CuJcJYhjCasVKQ
+Branch: pr-projperiod
+Signed-off by: danimesq.eth (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
+Signature: b1f0864947c433ef39d4ff32c249e9bce2533708a4bcb14534af697f1709cfb10bfdfe71b4d8475abc614ca2894acd66702db918b71a7953362a4dd792bf405a01
+
+------------------------------
+
+Commit CID if including git's SHA1: QmYb8H6ZWDUPJu4xfYwEjNNfuBhaGtqqLgrRC57fZ6bX4B
+Commit CID if containing only file hashes: QmfZBk8kPxL2Rpdz8NQXDo38MX1szv9brb4GKr5mu7oyaa
+
+------------------------------
+
+.gitmeta version: r8
+Local folder: /home/daniella/Desktop/Untitled Folder 2/build-onchain-apps
+Remote Name: origin
+Remote URL: https://github.com/coinbase/build-onchain-apps.git
+
+------------------------------
+
+chown -h 1000:1000 'AIConversation.txt'
+chmod 0664 'AIConversation.txt'
+/usr/bin/touch -hcmd "2024-07-17 14:17:32.2112124210 -0300" 'AIConversation.txt'
+/usr/bin/touch -hcad "2024-07-17 14:17:42.3974187220 -0300" 'AIConversation.txt'
