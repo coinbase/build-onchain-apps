@@ -37,6 +37,17 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
   const contract = useBuyMeACoffeeContract();
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
+  const [ethPrice, setEthPrice] = useState<number | null>(null);
+  
+  useEffect(() => {
+    const fetchEthPrice = async () => {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+      const data = await response.json();
+      setEthPrice(data.ethereum.usd);
+    };
+
+    fetchEthPrice();
+  }, []);
 
   const reset = useCallback(async () => {
     resetFields();
@@ -87,6 +98,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
                 )}
                 // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
                 onClick={() => setField('coffeeCount', count)}
+                title={`${(GAS_COST * count).toFixed(4)} ETH / $${ethPrice ? (GAS_COST * count * ethPrice).toFixed(2) : 'loading...'} `}
               >
                 {count}
               </button>
@@ -134,16 +146,16 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
 
           <ContractAlert contract={contract} amount={GAS_COST} />
 
-          <Button
-            buttonContent={
-              <>
-                Send {fields.coffeeCount} coffee{fields.coffeeCount > 1 ? 's' : null} for{' '}
-                {String((GAS_COST * fields.coffeeCount).toFixed(4))} ETH
-              </>
-            }
-            type="submit"
-            disabled={disabled}
-          />
+<Button
+  buttonContent={
+    <>
+      Send {fields.coffeeCount} cupcake{fields.coffeeCount > 1 ? 's' : ''} for{' '}
+      {(GAS_COST * fields.coffeeCount).toFixed(4)} ETH (${ethPrice ? (GAS_COST * fields.coffeeCount * ethPrice).toFixed(2) : 'loading...'})
+    </>
+  }
+  type="submit"
+  disabled={disabled}
+/>
         </div>
       </form>
     </>
