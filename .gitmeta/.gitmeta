@@ -1,0 +1,23 @@
+commit QmcdhDVjsw2sjXHQhFe1oBCf3YxpqRQSj8dEzjyMjXUWng
+Branch: pr-buymecoffeeusdprice
+Signed-off by: danimesq.eth (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
+Signature: 1321824b307bec956b38cd6b1242f3ab2ee0c4beb8e71785413e5d365f1edfd46006c8a900937b7809b3dbd9bca2fcac4d50d265e43e293dde0448b1c987deb501
+
+------------------------------
+
+Commit CID if including git's SHA1: QmRWoaB4WMmJFHEiY4Qkucu4462sfjcESUMPTV3UVfrWbf
+Commit CID if containing only file hashes: QmPh3EXUmBkxYqvhjmk5wERKbtBZExMqd3DxfnT7yb4yAg
+
+------------------------------
+
+.gitmeta version: r8
+Local folder: /home/daniella/Desktop/Untitled Folder 2/build-onchain-apps
+Remote Name: origin
+Remote URL: https://github.com/FrameworkJavascript/build-onchain-apps.git
+
+------------------------------
+
+chown -h 1000:1000 'template/web/app/buy-me-coffee/_components/AIConversation.txt'
+chmod 0664 'template/web/app/buy-me-coffee/_components/AIConversation.txt'
+/usr/bin/touch -hcmd "2024-07-18 02:14:36.8951316870 -0300" 'template/web/app/buy-me-coffee/_components/AIConversation.txt'
+/usr/bin/touch -hcad "2024-07-18 02:14:46.0180326000 -0300" 'template/web/app/buy-me-coffee/_components/AIConversation.txt'
