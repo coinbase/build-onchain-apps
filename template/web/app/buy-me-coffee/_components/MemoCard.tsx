@@ -24,7 +24,7 @@ function MemoCard({ numCoffees, twitterHandle, message, userAddress, time }: Cof
               <Name address={userAddress} />
             </span>
             <span className="text-3 line-clamp-1 flex-1 truncate text-wrap break-all font-normal text-boat-color-palette-foregroundmuted">
-              {twitterHandle ? ` (@${twitterHandle})` : null}
+              {twitterHandle ? <a href={`https://twitter.com/${twitterHandle}`} target="_blank" rel="noopener noreferrer">(@{twitterHandle})</a> : ''}
             </span>
             <span className="text-3 whitespace-nowrap font-normal text-boat-color-palette-foregroundmuted">
               bought {numCoffeesInt} coffee{numCoffeesInt > 1 ? 's' : null}
