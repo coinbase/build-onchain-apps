@@ -1,7 +1,6 @@
 {
   "name": "build-onchain-apps",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "build": "rm -rf .next && next build",
     "check": "yarn format && yarn lint && yarn stylelint",
