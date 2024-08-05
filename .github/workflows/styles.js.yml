@@ -1,4 +1,4 @@
-name: App Test
+name: Styles / Format
 on:
   push:
     branches: ['main']
@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: App Install dependencies
-        working-directory: ./template/web
+      - name: Install dependencies
         run: yarn --immutable
 
-      - name: App Test Check
-        working-directory: ./template/web
-        # When fails, please check your tests
-        run: npm run test
+      - name: Stylelint
+        run: npm run stylelint
+
+      - name: Format Check
+        run: npm run format:check
