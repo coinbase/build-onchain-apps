@@ -1,4 +1,4 @@
-name: App Build
+name: Lint
 on:
   push:
     branches: ['main']
@@ -12,20 +12,16 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       
       - name: Setup
         uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
-      
-      - name: App Install dependencies
-        working-directory: ./template/web
+
+      - name: Install dependencies
         run: yarn --immutable
       
-      - name: App Test Build
-        working-directory: ./template/web
-        # When fails, please check your build
-        run: |
-          cp .env.local.example .env.local
-          npm run build
+      - name: Lint Check
+        # When fails, please run "npm run lint" to your code
+        run: npm run lint
