@@ -1,0 +1,89 @@
+name: ci
+
+on:
+  push:
+    paths:
+      - '**.sol'
+      - '**.yml'
+
+jobs:
+  tests:
+    name: Forge Testing
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        profile: [post-shanghai,post-shanghai-via-ir,solc-past-versions-0,solc-past-versions-1,via-ir,min-solc,min-solc-via-ir,intense]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install Dependencies
+        run: forge install
+
+      - name: Run Tests with ${{ matrix.profile }}
+        run: >
+          ( [ "${{ matrix.profile }}" = "post-shanghai" ] &&
+            forge test --use 0.8.23 --evm-version "shanghai"
+          ) ||
+          ( [ "${{ matrix.profile }}" = "post-shanghai-via-ir" ] &&
+            forge test --use 0.8.23 --evm-version "shanghai" --via-ir
+          ) ||
+          ( [ "${{ matrix.profile }}" = "solc-past-versions-0" ] &&
+            forge test --use 0.8.5 --fuzz-runs 16 &&
+            forge test --use 0.8.6 --fuzz-runs 16 &&
+            forge test --use 0.8.7 --fuzz-runs 16 &&
+            forge test --use 0.8.8 --fuzz-runs 16 &&
+            forge test --use 0.8.9 --fuzz-runs 16 &&
+            forge test --use 0.8.10 --fuzz-runs 16 &&
+            forge test --use 0.8.11 --fuzz-runs 16 &&
+            forge test --use 0.8.12 --fuzz-runs 16
+          ) ||
+          ( [ "${{ matrix.profile }}" = "solc-past-versions-1" ] &&
+            forge test --use 0.8.13 --fuzz-runs 16 &&
+            forge test --use 0.8.14 --fuzz-runs 16 &&
+            forge test --use 0.8.15 --fuzz-runs 16 &&
+            forge test --use 0.8.16 --fuzz-runs 16 &&
+            forge test --use 0.8.17 --fuzz-runs 16 &&
+            forge test --use 0.8.18 --fuzz-runs 16 &&
+            forge test --use 0.8.19 --fuzz-runs 16 &&
+            forge test --use 0.8.20 --fuzz-runs 16 &&
+            forge test --use 0.8.21 --fuzz-runs 16 &&
+            forge test --use 0.8.22 --fuzz-runs 16
+          ) ||
+          ( [ "${{ matrix.profile }}" = "via-ir" ] &&
+            forge test --via-ir
+          ) ||
+          ( [ "${{ matrix.profile }}" = "min-solc" ] &&
+            forge fmt --check &&
+            forge test --use 0.8.4
+          ) ||
+          ( [ "${{ matrix.profile }}" = "min-solc-via-ir" ] &&
+            forge test --use 0.8.4 --via-ir
+          ) ||
+          ( [ "${{ matrix.profile }}" = "intense" ] &&
+            forge test --fuzz-runs 5000
+          )
+
+  codespell:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run codespell
+        uses: codespell-project/actions-codespell@v2.0
+        with:
+          check_filenames: true
+          ignore_words_list: usera
+          skip: ./.git,package-lock.json,ackee-blockchain-solady-report.pdf,EIP712Mock.sol

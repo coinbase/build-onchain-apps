@@ -1,0 +1,22 @@
+{
+  "name": "murky-differential",
+  "version": "1.0.0",
+  "description": "Scripts to perform solidity/js merkle tree testing",
+  "main": "generate.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ethereumjs-util": "^7.1.4",
+    "ethers": "^5.6.4",
+    "rlp": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  },
+  "scripts": {
+    "compile": "npx tsc --esModuleInterop ./*.ts",
+    "generate-root": "node generate_root.js",
+    "generate-root-129": "node generate_root.js",
+    "generate-root-cli": "node generate_root_cli.js"
+  }
+}

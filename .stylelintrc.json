@@ -1,0 +1,17 @@
+{ 
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
+  ],
+  "ignoreFiles": [
+    "coverage/**/*.css"
+  ],
+  "rules": {
+    "alpha-value-notation": "number",
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["tailwind"]
+    }],
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null
+  }
+}

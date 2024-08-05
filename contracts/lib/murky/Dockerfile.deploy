@@ -1,0 +1,7 @@
+from ghcr.io/gakonst/foundry:nightly
+
+WORKDIR /murky
+COPY . .
+RUN forge build
+RUN forge test
+ENTRYPOINT ["forge", "create"]

@@ -1,0 +1,85 @@
+/* stylelint-disable custom-property-pattern -- RainbowKit does not use kebab-case */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --quick-nav-display: none;
+  --component-highlights-item-width: calc(100vw - 100px);
+  --developer-experience-code-window-background: var(--slate-12);
+
+  /* Palette */
+  --palette-bg-black: #0a0b0d;
+  --palette-bg-soft-black: #141519;
+  --palette-bg-white: #fff;
+
+  /* Build Onchain Apps shared variables */
+  --boat-color-background: var(--palette-bg-black);
+  --boat-color-text: var(--palette-bg-white);
+
+  /* Indicates that the element can be rendered using 
+   * the operating system dark color scheme. 
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme */
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+html .font-robotoMono {
+  font-family: var(--font-roboto-mono);
+}
+
+html .font-inter {
+  font-family: var(--font-inter);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--boat-color-background);
+  color: var(--boat-color-text);
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+a {
+  text-decoration: underline;
+}
+
+svg {
+  display: block;
+  overflow: visible;
+  vertical-align: middle;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-feature-settings: normal;
+  font-size: 14px;
+  font-variation-settings: normal;
+}
+
+/* stylelint-disable-next-line */
+#__next {
+  position: relative;
+  z-index: 0;
+}
