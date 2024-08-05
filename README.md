@@ -4,7 +4,7 @@
 
 > Accelerate your onchain creativity with the Build Onchain Apps Template. ☕️
 
-[![Current version](https://img.shields.io/github/tag/coinbase/build-onchain-apps?color=3498DB&label=version)](https://github.com/coinbase/build-onchain-apps/blob/main/CHANGELOG.md) [![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/coinbase/build-onchain-apps.svg?color=3498DB)](https://github.com/coinbase/build-onchain-apps/stargazers) [![GitHub](https://img.shields.io/github/license/coinbase/build-onchain-apps?color=3498DB)](https://github.com/coinbase/build-onchain-apps/blob/main/LICENSE)
 
 <br />
 
@@ -30,26 +30,95 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 
 ## Getting Started
 
-To get started building with BOAT, just run our CLI, and you will be guided to have an Onchain App and running.
+#### Step 1: Setup Environment Variables
+
+- Obtain a Base RPC URL from [Coinbase Developer Platform](https://www.coinbase.com/developer-platform/products/base-node?utm_source=boat) and assign to the `.env.local` file
 
 ```bash
-npx @coinbase/build-onchain-apps@latest create
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
+NEXT_PRIVATE_RPC_URL=ADD_RPC_URL_HERE
 ```
 
-<p align='center'>
-  <img src='./docs/images/build-onchain-apps-step-1.gif'
-  width='800' alt='Build Onchain Apps Template'>
-</p>
+#### Step 2: Install and Run your onchain app
 
-#### _Congrats, Time to enjoy your onchain app with some coffee ☕️_
+```bash
+# Install
+yarn
 
-## Build and deploy your own contracts
+# Run
+yarn dev
+```
 
-Check out the [Contracts README](https://github.com/coinbase/build-onchain-apps/blob/main/template/contracts/README.md)
+## Develop
 
-## For a Live demo use
+To format and lint the package locally use these quick steps.
 
-- [Stackblitz](https://stackblitz.com/github/coinbase/build-onchain-apps/tree/main/template/web)
+```bash
+# Format fix
+yarn format
+
+# Lint fix
+yarn lint
+```
+
+## Updating ABI
+
+After you create a project using BOAT, these are the folders and files you are interested in when updating a smart contract:
+_Using BuyMeACoffee smart contract as an example below_
+
+```bash
+<project-name>
+├── contracts
+│   ├── src
+│   │   └── BuyMeACoffee.sol          ← smart contract code
+│   └──out/BuyMeACoffee.sol
+│       └── BuyMeACoffee.json         ← output from "forge build" which contains the updated ABI
+│
+└── web/app/buy-me-coffee
+    └── _contracts
+        ├── BuyMeACoffeeABI.ts             ← copy of ABI from contracts/out/BuyMeACoffee.json
+        └── useBuyMeACoffeeContract.ts     ← deploy address
+```
+
+### Importing updated ABI to frontend code
+
+After updating your smart contract code, run `forge build` in the `contracts` folder. This will create a json in the `contracts/out` directory.
+
+The output json contains additional information. We only need the `abi` property from that json object. Let's use `jq` to extract just the `abi` property
+
+```bash
+# from the "contract" folder
+
+jq .abi out/BuyMeACoffee/BuyMeACoffee.json
+```
+
+Take the output of `jq` and update `web/app/buy-me-coffee/_contracts/BuyMeACoffeeABI.ts`
+
+Done with first step!
+
+### Deploying your smart contract and updating frontend code
+
+Make sure you got all the environment variables squared away in `contracts/.env` and get some base sepolia eth from a faucet!
+
+To deploy your smart contract,
+
+```bash
+# from the "contract" folder
+
+source .env && forge script script/LocalContract.s.sol:LocalContractScript  --broadcast --rpc-url https://sepolia.base.org
+```
+
+In the long output, find the value for `Contract Address`.
+
+Copy that value and update `web/app/buy-me-coffee/_contracts/useBuyMeACoffeeContract.ts` with the new address.
+
+## Outro
+
+This is one of the more error prone steps. Take it step by step.
+
+If you are new smart contract deployment, just try deploying the existing `BuyMeACoffee` contract and replace the contract address. After, try updating `BuyMeACoffee.sol` and get the new ABI in your frontend code.
+
+We are thinking of ways to make this step easier in the future! Happy hacking!
 
 ## Do you need gas for Base Sepolia? 🔵
 
