@@ -1,20 +1,20 @@
-[submodule "template/contracts/lib/forge-std"]
-	path = template/contracts/lib/forge-std
+[submodule "contracts/lib/forge-std"]
+	path = contracts/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	ignore = dirty
-[submodule "template/contracts/lib/openzeppelin-contracts"]
-	path = template/contracts/lib/openzeppelin-contracts
+[submodule "contracts/lib/openzeppelin-contracts"]
+	path = contracts/lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
 	ignore = dirty
-[submodule "template/contracts/lib/ERC721A"]
-	path = template/contracts/lib/ERC721A
+[submodule "contracts/lib/ERC721A"]
+	path = contracts/lib/ERC721A
 	url = https://github.com/chiru-labs/ERC721A
 	ignore = dirty
-[submodule "template/contracts/lib/solady"]
-	path = template/contracts/lib/solady
+[submodule "contracts/lib/solady"]
+	path = contracts/lib/solady
 	url = https://github.com/vectorized/solady
 	ignore = dirty
-[submodule "template/contracts/lib/murky"]
-	path = template/contracts/lib/murky
+[submodule "contracts/lib/murky"]
+	path = contracts/lib/murky
 	url = https://github.com/dmfxyz/murky
 	ignore = dirty

@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+name: tests
+
+jobs:
+  check:
+    name: Run All Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.1
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+      
+      - name: Run Fuzzed Unit Tests
+        run: forge test --no-match-path src/test/StandardInput.t.sol
+      
+      - name: Run Differential Tests
+        run: |
+          npm --prefix differential_testing/scripts/ install
+          npm --prefix differential_testing/scripts/ run compile
+          FOUNDRY_FUZZ_RUNS=512 forge test --ffi --contracts differential_testing/test/DifferentialTests.t.sol 
+
+      - name: Run Standard Gas Snapshotting
+        run: forge snapshot --gas-report --ffi --match-path src/test/StandardInput.t.sol

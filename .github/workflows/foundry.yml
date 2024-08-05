@@ -24,14 +24,14 @@ jobs:
           version: nightly
 
       - name: Run Forge build
-        working-directory: ./template/contracts
+        working-directory: ./contracts
         run: |
           forge --version
           forge build --sizes
         id: build
 
       - name: Run Forge tests
-        working-directory: ./template/contracts
+        working-directory: ./contracts
         run: |
           forge test -vvv
         id: test

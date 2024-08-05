@@ -1,0 +1,8 @@
+cache/
+out/
+*.txt
+differential_testing/**/node_modules
+differential_testing/**/*.js
+differential_testing/data/input
+
+!remappings.txt
