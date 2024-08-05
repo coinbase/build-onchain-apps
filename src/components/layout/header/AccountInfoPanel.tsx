@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Avatar, Name } from '@coinbase/onchainkit/identity';
+import { Address, Avatar, Name } from '@coinbase/onchainkit/identity';
 import { ExitIcon } from '@radix-ui/react-icons';
 import { useAccount, useDisconnect } from 'wagmi';
 
@@ -21,7 +21,7 @@ export function AccountInfoPanel() {
             <Name address={address} />
           </div>
           <span className="font-inter w-32 text-sm font-medium text-zinc-400">
-            <Name address={address} showAddress />
+            <Address address={address} />
           </span>
         </div>
       </div>

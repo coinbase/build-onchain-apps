@@ -13,4 +13,5 @@ export const client = createPublicClient({
 export const paymasterClient = createClient({
   chain: baseSepolia,
   transport: http(paymasterService),
+// @ts-ignore todo fix
 }).extend(paymasterActionsEip7677({ entryPoint: ENTRYPOINT_ADDRESS_V06 }));
