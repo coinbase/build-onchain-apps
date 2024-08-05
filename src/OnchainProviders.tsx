@@ -7,6 +7,8 @@ import { baseSepolia } from 'viem/chains';
 import { WagmiProvider } from 'wagmi';
 import { createWagmiConfig } from '@/store/createWagmiConfig';
 
+import '@coinbase/onchainkit/styles.css';
+
 type Props = { children: ReactNode };
 
 const queryClient = new QueryClient();

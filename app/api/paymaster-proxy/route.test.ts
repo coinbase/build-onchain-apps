@@ -1,4 +1,4 @@
-import { isValidAAEntrypoint, isWalletASmartWallet } from '@coinbase/onchainkit/wallet';
+import { isValidAAEntrypoint, isWalletACoinbaseSmartWallet } from '@coinbase/onchainkit/wallet';
 import { NextRequest } from 'next/server';
 import { paymasterClient } from '@/utils/paymasterClient';
 import { POST } from './route';
@@ -16,7 +16,7 @@ describe('POST function', () => {
 
   it('should return 200 and the result on success for pm_getPaymasterStubData', async () => {
     (isValidAAEntrypoint as jest.Mock).mockReturnValue(true);
-    (isWalletASmartWallet as jest.Mock).mockResolvedValue(true);
+    (isWalletACoinbaseSmartWallet as jest.Mock).mockResolvedValue(true);
     (paymasterClient.getPaymasterStubData as jest.Mock).mockResolvedValue('stub data result');
 
     const req = {
@@ -35,7 +35,7 @@ describe('POST function', () => {
 
   it('should return 200 and the result on success for pm_getPaymasterData', async () => {
     (isValidAAEntrypoint as jest.Mock).mockReturnValue(true);
-    (isWalletASmartWallet as jest.Mock).mockResolvedValue(true);
+    (isWalletACoinbaseSmartWallet as jest.Mock).mockResolvedValue(true);
     (paymasterClient.getPaymasterData as jest.Mock).mockResolvedValue('paymaster data result');
 
     const req = {
@@ -69,7 +69,7 @@ describe('POST function', () => {
   });
   it('should return 400 and error message if isWalletASmartWallet returns false', async () => {
     (isValidAAEntrypoint as jest.Mock).mockReturnValue(true);
-    (isWalletASmartWallet as jest.Mock).mockResolvedValue(false);
+    (isWalletACoinbaseSmartWallet as jest.Mock).mockResolvedValue(false);
 
     const req = {
       json: jest.fn().mockResolvedValue({

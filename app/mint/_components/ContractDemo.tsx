@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { getName } from '@coinbase/onchainkit/identity';
 import { encodeFunctionData, formatEther } from 'viem';
 import { useAccount, useEstimateGas } from 'wagmi';
 
@@ -64,7 +63,7 @@ export default function MintContractDemo() {
   const collectionNameOrAddress =
     collectionName ??
     (contract.status === 'ready'
-      ? `Collection: ${getName({ address: contract.address, showAddress: true })}`
+      ? `Collection: ${contract.address}`
       : '');
 
   if (isLoadingCollectionMetadata) {
